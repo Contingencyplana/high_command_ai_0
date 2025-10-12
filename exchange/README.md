@@ -13,3 +13,9 @@ This directory mirrors the structure of the forthcoming `high_command_exchange` 
 - `ledger/` — Journal and machine index linking every payload.
 
 Populate this structure via Forge tooling or manual commits until the standalone exchange repository is provisioned.
+
+## Governance
+
+- License: MIT (`LICENSE`)
+- Contribution guidelines: see `CONTRIBUTING.md`
+- Audit trail: update `ledger/journal.md` and `ledger/index.json` whenever orders close
