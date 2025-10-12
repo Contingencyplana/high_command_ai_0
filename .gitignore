@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 logs/forge.log
+logs/exchange_watcher_state.json
 archives/*
 exchange/CONTRIBUTING.md
 exchange/LICENSE

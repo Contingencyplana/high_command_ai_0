@@ -17,6 +17,7 @@ Codifies the shared communications substrate that links High Command (`high_comm
 | Storage | Dedicated git repository `high_command_exchange` mounted by every workspace | Object store or secure document DB | Keeps orders/reports immutable and auditable. |
 | Access | Git submodule or checkout at `exchange/` inside each workspace | Dedicated sync daemon or API client | Allows offline work with eventual sync. |
 | Auth | GitHub SSH/HTTPS credentials | Secrets broker or service principal | Same credentials as doctrine repos for now. |
+| Telemetry | `tools/exchange_watcher.py` (local polling utility) | Push-based notification service | Provides lightweight automation for detecting new artefacts. |
 
 **Directory Layout (`exchange/`)**
 
@@ -144,6 +145,8 @@ Valid `status` values: `received`, `in-progress`, `completed`, `declined`.
 6. **Report** — Field submits `field-report@1.0`; High Command reviews and moves report to `reports/archived/`.
 7. **Close-Out** — High Command issues closure note in `ledger/journal.md` and updates `ledger/index.json`.
 
+📡 *Automation Hook:* Field workspaces should run `python -m tools.exchange_watcher --watch` (or equivalent scheduling) so new orders, pending acknowledgements, and inbox reports surface immediately without manual polling.
+
 Every state transition must leave a git commit trail for full auditability.
 
 ---
@@ -156,14 +159,18 @@ Every state transition must leave a git commit trail for full auditability.
 {
   "version": "1.0.0",
   "orders": {
-    "order-2025-10-12-001": {
+    "order-2025-10-12-003": {
       "status": "closed",
-      "files": {
-        "order": "orders/dispatched/order-2025-10-12-001.json",
-        "ack": "acknowledgements/logged/ack-2025-10-12-003.json",
-        "report": "reports/archived/report-2025-10-12-017.json"
-      }
+      "order_path": "orders/dispatched/order-2025-10-12-003.json",
+      "ack_path": "acknowledgements/logged/order-2025-10-12-003-ack.json",
+      "report_path": "reports/archived/order-2025-10-12-003-report.json"
     }
+  },
+  "acks": {
+    "order-2025-10-12-003-ack": "acknowledgements/logged/order-2025-10-12-003-ack.json"
+  },
+  "reports": {
+    "order-2025-10-12-003-report": "reports/archived/order-2025-10-12-003-report.json"
   }
 }
 ```
@@ -179,16 +186,22 @@ Automation scripts should regenerate the index after each sync to guarantee refe
 - **Human Checkpoint:** Orders with `priority = urgent` require human sign-off recorded in `ledger/journal.md`.
 - **Retention:** Reports stay in `archived/` indefinitely; attachments may be pruned via rolling hash audit after 90 days.
 - **Encryption (Future):** When secrets emerge, encapsulate attachments with workspace-specific keys and store only fingerprints in the exchange repo.
+- **Governance Collateral:** Every workspace interacting with the exchange must surface `LICENSE`, `CODE_OF_CONDUCT.md`, and `CONTRIBUTING.md` aligned with High Command’s templates; include links in `exchange/README.md`.
 
 ---
 
-## 🚀 6. Immediate Tasks
+## � 6. Automation Aides
 
-1. **Create `high_command_exchange` repository** with directory layout above.
-2. **Author schema validator** (Python or Node) to lint JSON payloads before commit.
-3. **Embed sync hooks** in both workspaces:
-   - `sync_exchange.ps1` / `.sh` for manual pulls/pushes.
-   - Optional pre-commit hook ensuring no pending orders lack acknowledgements.
-4. **Document usage protocol** in `exchange/ledger/journal.md` referencing this scroll.
+- **Exchange Watcher (`tools/exchange_watcher.py`):** Polls the exchange tree, tracks the last-seen snapshot, and prints new orders, pending acknowledgements, and inbox reports. Supports one-shot checks or continuous monitoring via `--watch`.
+- **Schema Validator (`tools/schema_validator.py`):** Validates payloads against canonical schemas prior to commit; integrate into CI or pre-commit flows.
+- **Forge Logs:** Events recorded in `logs/forge.log` provide cross-reference between doctrine automation and exchange activity.
 
-When these tasks complete, High Command and the field will share a stable, auditable signal network ready for scale.
+---
+
+## 🚀 7. Immediate Tasks
+
+1. **Deploy exchange watcher scheduling** — Embed the watcher in each field workspace (cron, scheduled task, or daemon) so operators receive near-real-time order prompts.
+2. **Maintain governance parity** — Whenever doctrine evolves (licenses, conduct, contribution flow), issue orders to downstream workspaces and log completion in the ledger.
+3. **Plan Toyfoundry integration** — Define manufacturing pipeline requirements and map how Toyfoundry will consume exchange directives and report production telemetry.
+
+With these actions, High Command and field theatres operate from a shared doctrine, automated alerting, and evolving strategic roadmap.

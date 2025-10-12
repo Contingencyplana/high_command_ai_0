@@ -18,7 +18,7 @@ grows safely, beautifully, and playfully within the Great Daylands.
 
 | Symbol | Big Idea Family | Core Function | Example Workspaces | What It Adds to SHAGI |
 |:------:|:----------------|:--------------|:-------------------|:----------------------|
-| 🧠 | **High Command & Toysoldiers Armature** | Discipline + Emergence = Strategic Intelligence | `high_command_ai_0`, `toysoldiers_ai_0–255` | Builds cognition through order–chaos balance; trains reasoning and pattern recognition. |
+| 🧠 | **High Command & Toysoldiers Armature** | Discipline + Emergence = Strategic Intelligence | `high_command_ai_0`, `toysoldiers_ai_0–255` | Builds cognition through order–chaos balance, keeps exchange automation humming, and ensures governance doctrine stays synchronized. |
 | 🎶 | **Harmony & Music Makers Octave** | Emotional Intelligence + Creativity | `music_maker_topsy_0`, `music_maker_thorn_0`, `enchanted_music_box_0` | Teaches feeling, tone, rhythm, and the empathy of sound. |
 | 📖 | **Storybook & Archipelago Realms** | Narrative Intelligence + Ethics | `storybook_archipelago`, `love_and_sharing_novels`, `picture_books_ai_1` | Shapes moral reasoning and imagination through interactive storytelling. |
 | 🏗️ | **Builders & Supreme Simplicity Arc** | Structural Intelligence + Engineering Order | `builder_rhythm_0`, `supreme_simplicity_0`, `grand_planning_0` | Provides architecture, reproducibility, and recursive clarity — SHAGI’s skeleton. |
