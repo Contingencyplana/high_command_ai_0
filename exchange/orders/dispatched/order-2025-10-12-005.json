@@ -1,0 +1,42 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-10-12-005",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "standard",
+  "timestamp_issued": "2025-10-12T22:00:00Z",
+  "summary": "Establish Toyfoundry manufacturing array",
+  "directives": [
+    {
+      "step": 1,
+      "action": "init_repo",
+      "details": "Create the `toyfoundry_ai_0` workspace or repository mirroring High Command governance collateral (`LICENSE`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`) and link the `high_command_exchange` submodule at `exchange/`."
+    },
+    {
+      "step": 2,
+      "action": "bootstrap_forge_extensions",
+      "details": "Copy or extend Forge tooling (`tools/forge/`) to include stubs for Toyfoundry rituals (forge, drill, parade, purge, promote). Provide command skeletons with logging hooks."
+    },
+    {
+      "step": 3,
+      "action": "automation_hooks",
+      "details": "Install `tools/exchange_watcher.py` and `tools/schema_validator.py`, wiring watcher polling into local developer workflow so new orders surface automatically."
+    },
+    {
+      "step": 4,
+      "action": "report_plan",
+      "details": "Draft `planning/toyfoundry/production_plan.md` summarising initial batch sizes, diversity targets, and telemetry metrics aligned with the Q4 2025 Operational Charter."
+    },
+    {
+      "step": 5,
+      "action": "acknowledge",
+      "details": "Submit acknowledgement and report detailing repository location, automation status, and any blockers."
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-12-004"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-10-26T00:00:00Z",
+  "attachments": []
+}

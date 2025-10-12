@@ -1,0 +1,8 @@
+{
+  "schema": "factory-report@1.0",
+  "order_id": "order-2025-10-12-005",
+  "reported_by": "toyfoundry_ai_0",
+  "timestamp_reported": "2025-10-12T14:29:56+00:00",
+  "status": "manufacturing_link_established",
+  "details": "Exchange verified, watcher operational, receiver online. Factory ready to accept ritual scripts."
+}

@@ -35,6 +35,15 @@ SCHEMAS: Dict[str, Dict[str, type]] = {
     },
 }
 
+# Toyfoundry currently emits factory reports that follow the same shape as field reports.
+SCHEMAS["factory-report@1.0"] = {
+    "order_id": str,
+    "reported_by": str,
+    "timestamp_reported": str,
+    "status": str,
+    "details": str,
+}
+
 
 class SchemaValidationError(RuntimeError):
     """Raised when a payload fails schema validation."""
