@@ -1,0 +1,7 @@
+{
+  "schema": "signal-ack@1.0",
+  "order_id": "order-2025-10-12-001",
+  "acknowledged_by": "toysoldiers_ai_0",
+  "timestamp_acknowledged": "2025-10-12T09:10:53+00:00",
+  "summary": "Order order-2025-10-12-001 received and queued for execution."
+}

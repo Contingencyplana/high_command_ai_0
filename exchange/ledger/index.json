@@ -1,6 +1,17 @@
 {
   "version": "1.0.0",
-  "orders": {},
-  "reports": {},
-  "acks": {}
+  "orders": {
+    "order-2025-10-12-001": {
+      "status": "closed",
+      "order_path": "orders/dispatched/order-2025-10-12-001.json",
+      "ack_path": "acknowledgements/logged/order-2025-10-12-001-ack.json",
+      "report_path": "reports/archived/order-2025-10-12-001-report.json"
+    }
+  },
+  "reports": {
+    "order-2025-10-12-001-report": "reports/archived/order-2025-10-12-001-report.json"
+  },
+  "acks": {
+    "order-2025-10-12-001-ack": "acknowledgements/logged/order-2025-10-12-001-ack.json"
+  }
 }

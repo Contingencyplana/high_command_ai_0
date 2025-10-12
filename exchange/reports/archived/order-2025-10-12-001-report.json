@@ -1,0 +1,8 @@
+{
+  "schema": "field-report@1.0",
+  "order_id": "order-2025-10-12-001",
+  "reported_by": "toysoldiers_ai_0",
+  "timestamp_reported": "2025-10-12T09:10:53+00:00",
+  "status": "completed",
+  "details": "Exchange receiver executed directives and stood up acknowledgement/report pipeline."
+}
