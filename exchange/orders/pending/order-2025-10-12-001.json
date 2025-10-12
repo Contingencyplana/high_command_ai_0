@@ -1,0 +1,31 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-10-12-001",
+  "issued_by": "high_command_ai_0",
+  "target": "toysoldiers_ai_0",
+  "priority": "standard",
+  "timestamp_issued": "2025-10-12T18:00:00Z",
+  "summary": "Implement exchange receiver loop",
+  "directives": [
+    {
+      "step": 1,
+      "action": "create_script",
+      "path": "tools/exchange_receiver.py",
+      "notes": "Script polls exchange/orders/pending/, validates payloads, and emits acknowledgements"
+    },
+    {
+      "step": 2,
+      "action": "implement_ack",
+      "details": "On receipt, generate signal-ack@1.0 payload referencing order_id and move order to dispatched/ after commit"
+    },
+    {
+      "step": 3,
+      "action": "implement_report",
+      "details": "After executing directives, emit field-report@1.0 payload and place under reports/inbox/"
+    }
+  ],
+  "dependencies": [],
+  "requires_ack": true,
+  "expires_at": "2025-10-19T00:00:00Z",
+  "attachments": []
+}
