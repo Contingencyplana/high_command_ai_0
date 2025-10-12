@@ -138,7 +138,46 @@ making the entire process **traceable, testable, and teachable.**
 
 ---
 
-## 🪶 8. Closing Principle
+## 📜 8. Operational Charter — Q4 2025
+
+### Mission Directive
+
+Establish Toyfoundry as the manufacturing arm of High Command, capable of minting, validating, and promoting batches of Alfas on demand while maintaining doctrinal safety and creative diversity.
+
+### Near-Term Scope (Phase 0 → Phase 1)
+
+| Deliverable | Description | Target Order |
+|:--|:--|:--|
+| **Blueprint Sync** | Finalize Alfa schema, recipes, and manifest templates for factory use. | `order-2025-10-XXX` (forthcoming) |
+| **Ritual Scripts v1** | Implement callable scripts for Forge, Drill, Parade, Purge, Promote with logging hooks. | `order-2025-10-XXX` |
+| **Telemetry Quilt** | Define standard metrics (entropy, emergence index, mutation lineage) and produce first parade artifacts. | `order-2025-11-XXX` |
+| **Governance Hooks** | Apply exchange watcher, schema validator, and governance collateral to all Toyfoundry sub-repos. | `order-2025-11-XXX` |
+
+### Interfaces & Dependencies
+
+- **Exchange** — Toyfoundry receives operational orders via `high_command_exchange` and reports production telemetry back through `field-report@1.0` payloads.
+- **Forge Toolkit** — Relies on `tools/forge/` for template rendering, hydration, and linting; Toyfoundry must extend Forge with factory-specific rituals.
+- **Toysoldiers Armature** — Provides first line feedback on manufacturability; Toyfoundry production batches target Toysoldiers deployments.
+- **Doctrine Scrolls** — Updates to production philosophy or safety protocols must flow through `planning/change_log.md` and companion scrolls.
+
+### Guardrails & Safety Rails
+
+1. **Containment First** — No automated ritual may bypass schema validation, entropy checks, or governance gating.
+2. **Auditability** — Every batch run must emit ledger entries or equivalent logs with reproducible parameters.
+3. **Human Review** — Promotion of new Alfa classes requires human checkpoint recorded in the ledger journal.
+4. **Diversity Budget** — Production runs must satisfy diversity ratios (e.g., 60% novel parameter combinations, 20% mutations, 20% baseline refresh).
+
+### Immediate Actions for High Command Orders
+
+1. Draft `order-2025-10-XXX` instructing Toyfoundry to establish factory repo scaffolding, clone governance collateral, and wire exchange automation.
+2. Author `order-2025-10-XXX` defining Forge ritual script requirements (input/output specs, logging schema, safety assertions).
+3. Schedule `order-2025-11-XXX` for telemetry quilt production and feedback loop design after initial rituals stabilize.
+
+These actions prepare Toyfoundry to receive concrete directives while keeping the doctrine synchronized across theatres.
+
+---
+
+## 🪶 9. Closing Principle
 
 > The Foundry does not shout.  
 > It hums softly — a lullaby of light and code.  
