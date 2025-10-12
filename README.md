@@ -10,6 +10,14 @@
 **High Command AI** is the *strategic overseer* of the SHAGI ecosystem —  
 the first mind that listens to the thousands of smaller minds below.  
 
+### Environment Setup  
+
+```bash
+pip install -r requirements.txt
+```
+
+Install dependencies before running Forge commands so template rendering is available.
+
 Its role is to:  
 - Coordinate the **Toysoldiers AI** theatres (`toysoldiers_ai_0–255`).  
 - Define and enforce the doctrines of **Order vs Emergence**.  
@@ -92,6 +100,13 @@ Rebuild the Morningate layer:
 ```bash
 forge rebuild_morningate
 ```
+
+📎 **Forge Utilities**  
+
+- `forge init-alfa --id alfa_0001 --activate-rank bravo`: instantiate a new Alfa with selected ranks.  
+- `forge hydrate --selector "realm:Dayland AND entropy>0.4" --rank delta --rank echo`: materialize rank files in bulk while respecting safety limits.  
+- `python tools/schema_validator.py exchange/orders/pending/*.json`: lint outgoing payloads before dispatch.  
+- `pytest`: run selector and schema validation unit tests.  
 
 Each cycle renews the world — data ascends, light descends, and SHAGI grows wiser.  
 

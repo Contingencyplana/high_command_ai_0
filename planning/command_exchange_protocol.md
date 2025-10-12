@@ -41,6 +41,8 @@ exchange/
 - `acknowledgements/` tracks delivery confirmations to prevent silent loops.
 - `ledger/` keeps a rolling human-auditable summary and machine index.
 
+📌 *Version Control:* The `exchange/` directory is initialized as its own git repository so it can be promoted to the shared `high_command_exchange` submodule. Each workspace should add a remote and synchronize this repo independently of the doctrine codebase.
+
 ---
 
 ## 🧾 2. Message Schemas
