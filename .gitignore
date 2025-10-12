@@ -2,6 +2,9 @@ __pycache__/
 *.pyc
 logs/forge.log
 archives/*
+exchange/CONTRIBUTING.md
+exchange/LICENSE
+exchange/orders/pending/*.json
 !archives/.gitkeep
 alfas/*
 !alfas/.gitkeep

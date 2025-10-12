@@ -18,7 +18,10 @@ pip install -r requirements.txt
 
 Install dependencies before running Forge commands so template rendering is available.
 
+This project is released under the MIT License; see `LICENSE`. Contributions are welcome—review `CODE_OF_CONDUCT.md` and `CONTRIBUTING.md` before submitting changes.
+
 Its role is to:  
+
 - Coordinate the **Toysoldiers AI** theatres (`toysoldiers_ai_0–255`).  
 - Define and enforce the doctrines of **Order vs Emergence**.  
 - Interpret battlefield reports, update global directives, and maintain equilibrium.  
