@@ -1,4 +1,4 @@
-# 🌅 morningate_reflection_layer.md — The Open Window of SHAGI
+# 🌅 morningate_reflection_layer.md (morningate.games website) — The Open Window of SHAGI
 
 ## 1. Purpose
 
