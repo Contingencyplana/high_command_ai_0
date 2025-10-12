@@ -1,0 +1,9 @@
+{
+  "schema": "field-report@1.0",
+  "report_id": "order-2025-10-12-003-report",
+  "origin": "toysoldiers_ai_0",
+  "relates_to": "order-2025-10-12-003",
+  "timestamp_submitted": "2025-10-12T10:21:35+00:00",
+  "status": "completed",
+  "summary": "Completed directives for order-2025-10-12-003: Adopt governance collateral across the field repository"
+}

@@ -1,0 +1,10 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-12-003-ack",
+  "referenced_id": "order-2025-10-12-003",
+  "sender": "toysoldiers_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-12T10:21:35+00:00",
+  "status": "acknowledged",
+  "notes": "Adopt governance collateral across the field repository"
+}

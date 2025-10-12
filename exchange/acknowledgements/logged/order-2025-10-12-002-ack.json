@@ -1,0 +1,10 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-12-002-ack",
+  "referenced_id": "order-2025-10-12-002",
+  "sender": "toysoldiers_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-12T10:18:04+00:00",
+  "status": "acknowledged",
+  "notes": "Order received and queued for execution."
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-10-12-002",
+  "issued_by": "high_command_ai_0",
+  "target": "toysoldiers_ai_0",
+  "priority": "standard",
+  "timestamp_issued": "2025-10-12T18:30:00Z",
+  "summary": "Align exchange receiver payloads with published schemas",
+  "directives": [
+    {
+      "step": 1,
+      "action": "update_ack_payload",
+      "details": "Modify exchange_receiver.py so the acknowledgement payload matches signal-ack@1.0 (ack_id, referenced_id, sender, receiver, timestamp_sent, status, optional notes)."
+    },
+    {
+      "step": 2,
+      "action": "update_report_payload",
+      "details": "Modify exchange_receiver.py so the report payload matches field-report@1.0 (report_id, origin, relates_to, timestamp_submitted, status, summary, optional metrics/artifacts)."
+    },
+    {
+      "step": 3,
+      "action": "add_order_checks",
+      "details": "Warn if an order is past expires_at and log a concise summary when moving the order to dispatched/."
+    },
+    {
+      "step": 4,
+      "action": "validate_payloads",
+      "details": "Run python tools/schema_validator.py against the generated ack and report payloads before committing."
+    }
+  ],
+  "dependencies": ["order-2025-10-12-001"],
+  "requires_ack": true,
+  "expires_at": "2025-10-19T00:00:00Z",
+  "attachments": []
+}
