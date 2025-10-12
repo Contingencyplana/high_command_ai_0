@@ -1,0 +1,37 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-10-12-003",
+  "issued_by": "high_command_ai_0",
+  "target": "toysoldiers_ai_0",
+  "priority": "standard",
+  "timestamp_issued": "2025-10-12T21:00:00Z",
+  "summary": "Adopt governance collateral across the field repository",
+  "directives": [
+    {
+      "step": 1,
+      "action": "add_license",
+      "details": "Introduce MIT LICENSE at the repository root mirroring high_command_ai_0 issuance (copyright 2025 Contingencyplana)."
+    },
+    {
+      "step": 2,
+      "action": "add_code_of_conduct",
+      "details": "Publish CODE_OF_CONDUCT.md aligned with SHAGI doctrine; reuse the language provided in high_command_ai_0 unless field-specific adjustments are required."
+    },
+    {
+      "step": 3,
+      "action": "add_contributing",
+      "details": "Add CONTRIBUTING.md detailing setup, validation, and reporting expectations for toysoldiers_ai_0. Reference forge tooling and exchange schema adherence."
+    },
+    {
+      "step": 4,
+      "action": "acknowledge_governance",
+      "details": "Relay a brief acknowledgement via exchange acknowledging adoption and flagging any deviations or pending tasks."
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-12-001"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-10-19T00:00:00Z",
+  "attachments": []
+}

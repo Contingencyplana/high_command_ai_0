@@ -6,6 +6,12 @@
       "order_path": "orders/dispatched/order-2025-10-12-001.json",
       "ack_path": "acknowledgements/logged/order-2025-10-12-001-ack.json",
       "report_path": "reports/archived/order-2025-10-12-001-report.json"
+    },
+    "order-2025-10-12-003": {
+      "status": "pending",
+      "order_path": "orders/pending/order-2025-10-12-003.json",
+      "ack_path": null,
+      "report_path": null
     }
   },
   "reports": {
