@@ -1,0 +1,37 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-10-12-006",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "standard",
+  "timestamp_issued": "2025-10-13T00:30:00Z",
+  "summary": "Forge ritual Alfa mint commissioning",
+  "directives": [
+    {
+      "step": 1,
+      "action": "deploy_ritual_script",
+      "details": "Add the `forge_mint_alfa.py` ritual script under `tools/forge/` in toyfoundry_ai_0, following existing Forge scaffolding patterns." 
+    },
+    {
+      "step": 2,
+      "action": "configure_integration",
+      "details": "Wire the ritual into Toyfoundry automation so the manufacturing watcher can surface Alfa mint tasks and log telemetry hooks." 
+    },
+    {
+      "step": 3,
+      "action": "execute_validation_mint",
+      "details": "Run a single Alfa mint dry-run against the manufacturing pipeline to validate script correctness and produce initial telemetry." 
+    },
+    {
+      "step": 4,
+      "action": "report_results",
+      "details": "Submit acknowledgement and manufacturing report summarising ritual deployment, dry-run outcome, and any follow-up work needed." 
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-12-005"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-10-27T00:00:00Z",
+  "attachments": []
+}
