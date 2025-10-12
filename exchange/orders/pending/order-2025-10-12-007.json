@@ -1,0 +1,42 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-10-12-007",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "standard",
+  "timestamp_issued": "2025-10-13T01:20:00Z",
+  "summary": "Stand up the Toyfoundry telemetry quilt v1",
+  "directives": [
+    {
+      "step": 1,
+      "action": "establish_quilt_scaffold",
+      "details": "Create the telemetry quilt scaffold under `.toyfoundry/telemetry/quilt/` with README and placeholder schema describing batch/mint/defect fields aligned to Toyfoundry doctrine." 
+    },
+    {
+      "step": 2,
+      "action": "aggregate_streams",
+      "details": "Author a `tools/telemetry/quilt_loom.py` script that ingests `forge_mint_alfa.jsonl` entries and produces a consolidated `quilt_rollup.json` keyed by Alfa run identifier." 
+    },
+    {
+      "step": 3,
+      "action": "wire_watcher_hints",
+      "details": "Update `manufacturing_order_watcher.py` notifications so directives referencing telemetry quilt point operators to the loom command (`python -m tools.telemetry.quilt_loom`)." 
+    },
+    {
+      "step": 4,
+      "action": "dry_run_rollup",
+      "details": "Execute a loom dry run against the latest Alfa telemetry and attach resulting `quilt_rollup.json` sample in the order report." 
+    },
+    {
+      "step": 5,
+      "action": "report_status",
+      "details": "Submit acknowledgement and report capturing telemetry quilt deployment, loom run results, and follow-on instrumentation requests." 
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-12-006"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-10-27T00:00:00Z",
+  "attachments": []
+}
