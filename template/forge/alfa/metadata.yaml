@@ -1,0 +1,7 @@
+id: forge-template@1.0.0
+requires:
+  - alfa_id
+defaults:
+  template_version: forge-template@1.0.0
+  realm: Dayland
+  entropy_index: 0.0

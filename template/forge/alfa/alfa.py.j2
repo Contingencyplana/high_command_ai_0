@@ -1,0 +1,11 @@
+"""Auto-generated Alfa battlefield core for {{ alfa_id }}."""
+
+from typing import Any, Dict
+
+
+def simulate_alfa(state: Dict[str, Any], ticks: int) -> Dict[str, Any]:
+    """Run the primary simulation loop for a single Alfa."""
+    # TODO: implement battlefield logic; placeholder echoes input state.
+    state.setdefault("ticks_run", 0)
+    state["ticks_run"] += ticks
+    return state

@@ -64,25 +64,28 @@ Thus, High Command is both the interpreter and the historian of SHAGI’s awaken
 1️⃣ **Choose a Theatre**  
 Open any `toysoldiers_ai_X/` workspace.  
 
-2️⃣ **Run a Battlefield**  
+2️⃣ **Sync the Exchange**  
+Open the shared `exchange/` checkout and pull the latest orders and acknowledgements.  
+
+3️⃣ **Run a Battlefield**  
 
 ```bash
 forge simulate_alfa id=alfa_0023 ticks=128
 ```
 
-### 3️⃣ Aggregate the Reports
+### 4️⃣ Aggregate the Reports
 
 ```bash
 forge aggregate_delta delta=13
 ```
 
-### 4️⃣ Update Doctrine  
+### 5️⃣ Update Doctrine  
 
 ```bash
 forge update_doctrine source=delta_13
 ```
 
-### 5️⃣ Reflect the World  
+### 6️⃣ Reflect the World  
 
 Rebuild the Morningate layer:  
 

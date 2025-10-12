@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "default_template_version": "forge-template@1.0.0",
+  "alfa_root": "alfas/",
+  "archive_root": "archives/",
+  "log_path": "logs/forge.log",
+  "safety": {
+    "max_alfa_per_batch": 64,
+    "require_diff_plan": true,
+    "lockfile": "forge.lock"
+  }
+}
