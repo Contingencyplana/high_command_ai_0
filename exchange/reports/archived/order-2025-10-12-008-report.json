@@ -1,0 +1,13 @@
+{
+  "schema": "factory-report@1.0",
+  "order_id": "order-2025-10-12-008",
+  "reported_by": "toyfoundry_ai_0",
+  "timestamp_reported": "2025-10-14T09:30:00Z",
+  "summary": "Composite telemetries from Forge, Drill, Parade, Purge, Promote integrated into quilt rollups.",
+  "details": "Mint count: 1; rituals ingested: forge, drill, parade, purge, promote; rollups: quilt_rollup.json, quilt_rollup_all.json; status: completed.",
+  "attachments": [
+    ".toyfoundry/telemetry/quilt/quilt_rollup.json",
+    ".toyfoundry/telemetry/quilt/quilt_rollup_all.json"
+  ],
+  "status": "completed"
+}
