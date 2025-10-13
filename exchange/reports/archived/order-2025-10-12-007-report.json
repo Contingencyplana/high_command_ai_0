@@ -1,0 +1,10 @@
+{
+  "schema": "factory-report@1.0",
+  "order_id": "order-2025-10-12-007",
+  "reported_by": "toyfoundry_ai_0",
+  "timestamp_reported": "2025-10-13T15:55:00Z",
+  "summary": "Telemetry quilt loom operational; initial quilt_rollup.json generated and validated.",
+  "details": "Looms active: 1; quilts generated: 1; rollup: .toyfoundry/telemetry/quilt/quilt_rollup.json; status: success.",
+  "attachments": [".toyfoundry/telemetry/quilt/quilt_rollup.json"],
+  "status": "completed"
+}
