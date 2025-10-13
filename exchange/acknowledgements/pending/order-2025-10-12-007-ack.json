@@ -1,0 +1,10 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "ack-2025-10-13-002",
+  "referenced_id": "order-2025-10-12-007",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-13T04:05:00Z",
+  "status": "received",
+  "notes": "Telemetry quilt order acknowledged; loom and aggregator work commencing."
+}
