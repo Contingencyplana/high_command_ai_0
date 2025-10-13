@@ -1,4 +1,4 @@
-"""Schema validation utilities for SHAGI message payloads."""
+ """Schema validation utilities for SHAGI message payloads."""
 
 from __future__ import annotations
 
