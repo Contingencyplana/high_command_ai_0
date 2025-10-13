@@ -42,6 +42,12 @@
       "order_path": "orders/dispatched/order-2025-10-12-007.json",
       "ack_path": "acknowledgements/logged/order-2025-10-12-007-ack.json",
       "report_path": "reports/archived/order-2025-10-12-007-report.json"
+    },
+    "order-2025-10-12-008": {
+      "status": "pending",
+      "order_path": "orders/pending/order-2025-10-12-008.json",
+      "ack_path": null,
+      "report_path": null
     }
   },
   "reports": {

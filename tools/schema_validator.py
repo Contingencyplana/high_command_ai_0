@@ -17,6 +17,16 @@ SCHEMAS: Dict[str, Dict[str, type]] = {
         "directives": list,
         "requires_ack": bool,
     },
+    "factory-order@1.0": {
+        "order_id": str,
+        "issued_by": str,
+        "target": str,
+        "priority": str,
+        "timestamp_issued": str,
+        "summary": str,
+        "directives": list,
+        "requires_ack": bool,
+    },
     "field-report@1.0": {
         "report_id": str,
         "origin": str,

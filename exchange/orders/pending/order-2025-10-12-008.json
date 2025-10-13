@@ -1,0 +1,42 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-12-008",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-10-13T16:10:00Z",
+  "summary": "Integrate full ritual telemetry suite into Toyfoundry quilt and deliver composite roll-up.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "ingest_additional_streams",
+      "details": "Extend the telemetry quilt scaffold to ingest Forge, Parade, Purge, and Promote ritual logs alongside existing mint telemetry." 
+    },
+    {
+      "step": 2,
+      "action": "normalize_events",
+      "details": "Define schema fragments for each ritual and ensure the loom can normalize key metrics (batch ids, timestamps, outcome flags) before stitching." 
+    },
+    {
+      "step": 3,
+      "action": "update_loom_pipeline",
+      "details": "Upgrade `tools/telemetry/quilt_loom.py` (or successor) to build a composite roll-up keyed by Alfa operation, referencing all ritual contributions." 
+    },
+    {
+      "step": 4,
+      "action": "regenerate_rollup",
+      "details": "Run the enhanced loom against current telemetry and deposit `quilt_rollup_all.json` alongside the existing Alfa roll-up." 
+    },
+    {
+      "step": 5,
+      "action": "ack_and_report",
+      "details": "Submit acknowledgement and factory report capturing integration status, coverage across rituals, and follow-on telemetry asks." 
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-12-007"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-10-28T00:00:00Z",
+  "attachments": []
+}
