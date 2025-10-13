@@ -1,0 +1,42 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-12-009",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-10-14T10:15:00Z",
+  "summary": "Publish composite telemetry quilt for downstream consumers.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "define_export_schema",
+      "details": "Author schema documentation under `planning/toyfoundry/telemetry/export_schema.md` describing composite quilt fields required by toysoldiers_ai_0." 
+    },
+    {
+      "step": 2,
+      "action": "deliver_export_feed",
+      "details": "Produce machine-readable exports (JSON and CSV) from the composite quilt at `.toyfoundry/telemetry/quilt/exports/` so downstream teams can ingest data automatically." 
+    },
+    {
+      "step": 3,
+      "action": "automate_rollout",
+      "details": "Extend `tools/telemetry/quilt_loom.py` (or companion script) with a flag to regenerate exports in step with rollup generation." 
+    },
+    {
+      "step": 4,
+      "action": "publish_samples",
+      "details": "Drop sample files and `README.md` guidance in the export directory documenting command usage and expected consumer workflow." 
+    },
+    {
+      "step": 5,
+      "action": "ack_and_report",
+      "details": "Submit acknowledgement and factory report summarising export readiness, integration notes, and follow-on telemetry requests." 
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-12-008"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-10-29T00:00:00Z",
+  "attachments": []
+}
