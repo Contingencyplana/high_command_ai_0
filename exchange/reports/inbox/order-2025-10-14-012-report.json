@@ -1,0 +1,30 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-14-012-report",
+  "referenced_order": "order-2025-10-14-012",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "<UTC ISO-8601>",
+  "status": "pending",
+  "summary": "Automation + versioning for telemetry exports; CI + checksums.",
+  "export_paths": {
+    "json": ".toyfoundry/telemetry/quilt/exports/composite_export.json",
+    "csv": ".toyfoundry/telemetry/quilt/exports/composite_export.csv"
+  },
+  "checksums": {
+    "json_sha256": "<sha256>",
+    "csv_sha256": "<sha256>"
+  },
+  "build_info": {
+    "generator": "tools/telemetry/quilt_loom.py --export",
+    "commit": "<commit>",
+    "timestamp": "<UTC ISO-8601>",
+    "parameters": {}
+  },
+  "metrics": {
+    "records_json": 0,
+    "records_csv": 0,
+    "notes": []
+  }
+}
+

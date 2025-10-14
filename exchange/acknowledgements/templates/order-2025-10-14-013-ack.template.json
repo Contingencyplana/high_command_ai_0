@@ -1,0 +1,40 @@
+{
+  "schema": "factory-ack@1.0",
+  "order_id": "order-2025-10-14-013",
+  "workspace": "toysoldiers_ai_0",
+  "acknowledged_by": "toysoldiers_ai_0",
+  "owner": "toysoldiers_ai_0",
+  "timestamp_ack": "<UTC ISO-8601>",
+  "status": "accepted",
+  "initial_approach": {
+    "sources": {
+      "json": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.json",
+      "csv": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.csv"
+    },
+    "schema_version_expected": "v1.0",
+    "dq_checks": [
+      "non_empty",
+      "allowed_rituals",
+      "duration_ms_range",
+      "units_positive"
+    ],
+    "monitoring": {
+      "mode": "lightweight",
+      "signals": [
+        "schema_drift",
+        "ingestion_failure"
+      ]
+    }
+  },
+  "risks": [
+    "Unexpected fields or types",
+    "Timezone/format inconsistencies",
+    "CSV quoting/encoding edge cases"
+  ],
+  "next_events": [
+    "Ingest sample artifacts",
+    "Validate schema + DQ",
+    "Submit acceptance report"
+  ]
+}
+

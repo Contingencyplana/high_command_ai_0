@@ -1,0 +1,32 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-14-013-report",
+  "referenced_order": "order-2025-10-14-013",
+  "sender": "toysoldiers_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "<UTC ISO-8601>",
+  "status": "pending",
+  "summary": "Ingestion + validation + monitoring of Toyfoundry exports.",
+  "sources": {
+    "sample_json": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.json",
+    "sample_csv": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.csv",
+    "export_schema_path": ".imports/toyfoundry/telemetry/quilt/exports/export_schema.md"
+  },
+  "ingestion_log": {
+    "records_total": 0,
+    "parse_errors": [],
+    "notes": []
+  },
+  "schema_validation": {
+    "expected_version": "v1.0",
+    "confirmed_version": "<pending>",
+    "field_mismatches": [],
+    "unexpected_fields": []
+  },
+  "acceptance": {
+    "status": "pending",
+    "constraints": [],
+    "blockers": []
+  }
+}
+

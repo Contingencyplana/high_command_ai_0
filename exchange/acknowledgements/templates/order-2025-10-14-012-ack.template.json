@@ -1,0 +1,41 @@
+{
+  "schema": "factory-ack@1.0",
+  "order_id": "order-2025-10-14-012",
+  "workspace": "toyfoundry_ai_0",
+  "acknowledged_by": "toyfoundry_ai_0",
+  "owner": "toyfoundry_ai_0",
+  "timestamp_ack": "<UTC ISO-8601>",
+  "status": "accepted",
+  "initial_approach": {
+    "export_integration": {
+      "tool": "tools/telemetry/quilt_loom.py",
+      "flag": "--export",
+      "notes": "Regenerate exports alongside rollups"
+    },
+    "schema_version": "v1.0",
+    "artifacts": [
+      "composite_export.json",
+      "composite_export.csv",
+      "build_info.json",
+      "*.sha256"
+    ],
+    "ci": {
+      "trigger": "push: main",
+      "steps": [
+        "regenerate_exports",
+        "verify_checksums"
+      ]
+    }
+  },
+  "risks": [
+    "Export drift vs rollup timing",
+    "Checksum mismatches on Windows vs *nix",
+    "Schema version bump coordination"
+  ],
+  "next_events": [
+    "Wire export generation",
+    "Publish checksums + README",
+    "File factory report"
+  ]
+}
+
