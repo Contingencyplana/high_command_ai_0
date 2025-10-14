@@ -1,0 +1,32 @@
+{
+  "schema": "factory-ack@1.0",
+  "order_id": "order-2025-10-14-010",
+  "workspace": "toyfoundry_ai_0",
+  "acknowledged_by": "toyfoundry_ai_0",
+  "owner": "toyfoundry_ai_0",
+  "timestamp_ack": "<UTC ISO-8601>",
+  "status": "accepted",
+  "initial_approach": {
+    "export_schema_path": "<planning/toyfoundry/telemetry/export_schema.md>",
+    "exports": {
+      "json": "<.toyfoundry/telemetry/quilt/exports/composite_export.json>",
+      "csv": "<.toyfoundry/telemetry/quilt/exports/composite_export.csv>"
+    },
+    "build_info_path": "<.toyfoundry/telemetry/quilt/exports/build_info.json>",
+    "checksums": [
+      { "path": "<artifact path>", "sha256": "<hash>" }
+    ],
+    "sample_excerpt_path": "<optional: path to 10-row sample>"
+  },
+  "risks": [
+    "Schema mismatch between producer and consumer",
+    "Missing provenance (build_info/checksums)",
+    "Access control/sensitivity mislabeling"
+  ],
+  "next_events": [
+    "Publish paths and provenance to High Command",
+    "Share sample with toysoldiers_ai_0 for ingestion test",
+    "Attend schema review per invite"
+  ]
+}
+

@@ -1,0 +1,37 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-14-010",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "medium",
+  "timestamp_issued": "2025-10-14T00:00:00Z",
+  "summary": "Confirm artifact locations and provide provenance for telemetry exports.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "confirm_and_provide_provenance",
+      "details": "Provide paths to export_schema.md, composite_export.json and composite_export.csv; attach or publish build_info.json and SHA256 checksums for export artifacts; optionally include a 10-row sample for ingestion testing.",
+      "checklist": [
+        "Path to planning/toyfoundry/telemetry/export_schema.md",
+        "Path to .toyfoundry/telemetry/quilt/exports/composite_export.json",
+        "Path to .toyfoundry/telemetry/quilt/exports/composite_export.csv",
+        "Provide build_info.json (commit, generated_at, parameters, generator)",
+        "Provide SHA256 checksums for all export artifacts",
+        "Optional: 10-row sample excerpt for consumer validation"
+      ],
+      "acceptance_criteria": [
+        "All referenced paths resolve in toyfoundry_ai_0 repo",
+        "build_info.json present alongside exports and populated",
+        "Checksums provided and verifiable",
+        "Sample provided or explicitly waived"
+      ]
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-12-009"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-10-21T00:00:00Z",
+  "attachments": []
+}
+
