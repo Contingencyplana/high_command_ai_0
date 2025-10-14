@@ -34,4 +34,3 @@ Reviewer roles: toyfoundry_ai_0 (producer), toysoldiers_ai_0 (consumer), High Co
   - [ ] Sample export validates against JSON Schema
   - [ ] Consumer ingestion test passes end-to-end
   - [ ] README includes CLI usage and expected workflow
-
