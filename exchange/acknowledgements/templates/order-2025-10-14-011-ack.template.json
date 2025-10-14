@@ -1,0 +1,33 @@
+{
+  "schema": "factory-ack@1.0",
+  "order_id": "order-2025-10-14-011",
+  "workspace": "toysoldiers_ai_0",
+  "acknowledged_by": "toysoldiers_ai_0",
+  "owner": "toysoldiers_ai_0",
+  "timestamp_ack": "<UTC ISO-8601>",
+  "status": "accepted",
+  "initial_approach": {
+    "ingest_sample_path": "<path to sample (json/csv)>",
+    "schema_version_expected": "<e.g., v1.0>",
+    "validator": {
+      "tool": "<validator tool/command>",
+      "rules": ["types", "nullability", "allowed_values"]
+    },
+    "acceptance_criteria": [
+      "No parse errors",
+      "Field set matches export_schema.md",
+      "Schema version confirmed"
+    ]
+  },
+  "risks": [
+    "Unexpected fields or type mismatches",
+    "Timezone/format inconsistencies in timestamps",
+    "CSV quoting/encoding edge cases"
+  ],
+  "next_events": [
+    "Run ingestion and record results",
+    "Share acceptance or issues list with High Command",
+    "Coordinate fixes if needed"
+  ]
+}
+

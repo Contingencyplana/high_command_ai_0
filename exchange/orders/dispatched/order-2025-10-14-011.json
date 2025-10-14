@@ -1,0 +1,38 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-14-011",
+  "issued_by": "high_command_ai_0",
+  "target": "toysoldiers_ai_0",
+  "priority": "medium",
+  "timestamp_issued": "2025-10-14T00:00:00Z",
+  "summary": "Consumer validation and acceptance of Toyfoundry telemetry exports.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "fetch_sample_and_ingest",
+      "details": "Obtain sample export referenced by Order 010 report (or coordinate with Toyfoundry for access) and perform ingestion into the consumer pipeline. Produce an ingestion_log with record counts and any parse errors."
+    },
+    {
+      "step": 2,
+      "action": "validate_schema_version",
+      "details": "Confirm schema version matches Toyfoundry's export_schema.md. Validate field names, types, nullability, and allowed values. Identify any mismatches or unexpected fields."
+    },
+    {
+      "step": 3,
+      "action": "consumer_acceptance",
+      "details": "If ingestion passes, provide acceptance sign-off with the confirmed schema version and any constraints. If issues exist, provide a concise list of blockers with severity and recommended changes."
+    },
+    {
+      "step": 4,
+      "action": "ack_and_report",
+      "details": "Submit acknowledgement and a factory report summarizing ingestion outcome, schema validation results, and requested follow-ups. Place report in exchange/reports/inbox/order-2025-10-14-011-report.json."
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-14-010"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-10-21T00:00:00Z",
+  "attachments": []
+}
+
