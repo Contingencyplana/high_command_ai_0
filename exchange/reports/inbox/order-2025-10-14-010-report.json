@@ -1,0 +1,60 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "report-2025-10-14-145400",
+  "referenced_order": "order-2025-10-14-010",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-14T04:54:00.8264370Z",
+  "status": "ready_for_review",
+  "summary": "Providing artifact locations, provenance (build_info + SHA256), and 10-row samples for telemetry exports.",
+  "deliverables": {
+    "export_paths": {
+      "csv": ".toyfoundry/telemetry/quilt/exports/composite_export.csv",
+      "json": ".toyfoundry/telemetry/quilt/exports/composite_export.json"
+    },
+    "build_info_path": ".toyfoundry/telemetry/quilt/exports/build_info.json",
+    "samples": {
+      "csv": ".toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.csv",
+      "json": ".toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.json"
+    },
+    "export_schema_path": "planning/toyfoundry/telemetry/export_schema.md"
+  },
+  "metrics": {
+    "records_total": 4,
+    "sizes_bytes": {
+      "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\composite_export.csv": 1614,
+      "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\composite_export.json": 3121,
+      "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\samples\\composite_export.sample.json": 3120,
+      "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\samples\\composite_export.sample.csv": 1614
+    },
+    "rituals": [
+      {
+        "ritual": "drill",
+        "count": 1
+      },
+      {
+        "ritual": "parade",
+        "count": 1
+      },
+      {
+        "ritual": "promote",
+        "count": 1
+      },
+      {
+        "ritual": "purge",
+        "count": 1
+      }
+    ]
+  },
+  "checksums": {
+    "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\composite_export.csv": "e607bc75e0f0a3bc575bcfc2a1b4049e56374c5f0a23c830f30b1fce792b6616",
+    "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\composite_export.json": "1a3b172481f54e5b97988944b0bfd441c941abcf14e36d4c51143ab5db197b61",
+    "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\samples\\composite_export.sample.json": "b9961c6c6f9f55120186ab1afb915b4e07fa4318f05a776158eef6f300261a52",
+    "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\samples\\composite_export.sample.csv": "e607bc75e0f0a3bc575bcfc2a1b4049e56374c5f0a23c830f30b1fce792b6616"
+  },
+  "integration_notes": [
+    "CSV event_metadata is a JSON string; downstream should parse as JSON.",
+    "Regenerate via: python -m tools.telemetry.quilt_loom --export",
+    "Schema documented in planning/toyfoundry/telemetry/export_schema.md"
+  ]
+}

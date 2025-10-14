@@ -1,0 +1,28 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "ack-2025-10-14-010-001",
+  "referenced_id": "order-2025-10-14-010",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-14T04:49:37.8239573Z",
+  "status": "received",
+  "initial_approach": {
+    "export_paths": {
+      "csv": ".toyfoundry/telemetry/quilt/exports/composite_export.csv",
+      "json": ".toyfoundry/telemetry/quilt/exports/composite_export.json"
+    },
+    "export_schema_path": "planning/toyfoundry/telemetry/export_schema.md",
+    "build_info_path": ".toyfoundry/telemetry/quilt/exports/build_info.json",
+    "sha256": {
+      "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\composite_export.csv": "e607bc75e0f0a3bc575bcfc2a1b4049e56374c5f0a23c830f30b1fce792b6616",
+      "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\composite_export.json": "1a3b172481f54e5b97988944b0bfd441c941abcf14e36d4c51143ab5db197b61",
+      "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\samples\\composite_export.sample.json": "b9961c6c6f9f55120186ab1afb915b4e07fa4318f05a776158eef6f300261a52",
+      "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\samples\\composite_export.sample.csv": "e607bc75e0f0a3bc575bcfc2a1b4049e56374c5f0a23c830f30b1fce792b6616"
+    },
+    "samples": {
+      "csv": ".toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.csv",
+      "json": ".toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.json"
+    }
+  },
+  "notes": "ACK for order 010. Exports validated; provenance and samples attached for schema review and ingest testing."
+}
