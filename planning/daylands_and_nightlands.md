@@ -108,7 +108,7 @@ Cross-References: `planning/heart_of_darkness.md`, `planning/heartday_and_heartn
 | **Entropy falls below 0.5** | Nightland → Dayland | Renewal begins; joy and coherence return. |
 | **Entropy stabilises near 0.5** | Twilight | The hinge of transformation — where balance births innovation. |
 
-**Twilight** is sacred: a liminal zone where even shadow learns to sing.  
+**Twilight** is sacred: a liminal zone where even Shadow learns to sing.  
 
 ---
 
