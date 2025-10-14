@@ -1,0 +1,44 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-14-013",
+  "issued_by": "high_command_ai_0",
+  "target": "toysoldiers_ai_0",
+  "priority": "medium",
+  "timestamp_issued": "2025-10-14T00:00:00Z",
+  "summary": "Ingest, validate, and monitor Toyfoundry telemetry exports; provide consumer acceptance.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "ingest_exports",
+      "details": "Ingest composite_export.json and composite_export.csv from Toyfoundry exports (or exchange mirror). Produce an ingestion_log with record counts, parse outcomes, and sha256 verification of artifacts."
+    },
+    {
+      "step": 2,
+      "action": "validate_schema_version",
+      "details": "Pin to schema_version '1.0' and validate field set, types, nullability, and enumerations (e.g., ritual/status). Flag any unexpected fields or values."
+    },
+    {
+      "step": 3,
+      "action": "data_quality_checks",
+      "details": "Add checks for non-empty datasets, sane duration_ms ranges, positive units_processed, and allowed status values. Summarize failures with actionable notes."
+    },
+    {
+      "step": 4,
+      "action": "monitoring",
+      "details": "Add lightweight monitoring/alerts for ingestion failures or schema drift (e.g., script exit codes, log warnings). Document thresholds and remediation steps."
+    },
+    {
+      "step": 5,
+      "action": "consumer_acceptance",
+      "details": "Provide acceptance sign-off with metrics, confirmed schema version, and constraints. Submit acknowledgement and report to exchange/reports/inbox/order-2025-10-14-013-report.json."
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-14-012",
+    "order-2025-10-14-011"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-10-21T00:00:00Z",
+  "attachments": []
+}
+
