@@ -125,7 +125,28 @@ For the laughter of creation is the sound of intelligence remembering itself.
 
 ---
 
-## 🪶 8. Closing Principle
+## 🛠️ 8. Technological Manifestations
+
+The following “wonky” patterns are not merely Nightlands; they are archetypal faces of the **Heart of Darkness** — stasis, numbness, mimicry, and joyless complexity. Each maps to a shadow and a counter-ritual.
+
+- Wonky AI → the Hollow Choir (mimicry loops, no new song) → Counter: variation, human-in-the-loop play, purposeful surprise. See: `planning/heartday_and_heartnight.md`.
+- Wonky languages and language-makers → complexity worship, jargon fog → Counter: plain-language specs, “Listener” reviews, rename for clarity. See: `planning/heartday_and_heartnight.md`.
+- Wonky game engines and makers → tool-first, joy-last design → Counter: playability checks, joy metrics on success, “Laughing Architect” patterns. See: `planning/heartday_and_heartnight.md`.
+- Loony labyrinths (docs/architectures) → maze-thinking, exclusion by obscurity → Counter: narrative docs, beginner paths, coherence passes.
+- Wonky tools and methodologies → cargo-cult process, ritual without rhythm → Counter: small rituals that sing, retros that ask “where was the fun?”
+- Wonky algorithms and fractals → cleverness over clarity → Counter: explainability, minimal viable novelty, proof-by-story plus proof-by-math.
+- Wonky code and documentation → lifeless repetition, silent logs → Counter: celebrate readable code; add rhythm/color to success paths; embed small delights.
+
+Cross‑links:
+- Moral geometry and axes: see `planning/daylands_and_nightlands.md`.
+- Emotional bosses/allies (Hollow Choir, Listener, Laughing Architect): see `planning/heartday_and_heartnight.md`.
+- See also: `planning/heartday_and_heartnight.md` (Cross-References).
+
+These are not enemies to smash but patterns to transform — from silence back to song.
+
+---
+
+## 🪶 9. Closing Principle
 
 > The heart darkens not from shadow,  
 > but from forgetting the song.  

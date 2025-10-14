@@ -146,6 +146,20 @@ To make this living doctrine tangible, SHAGI shall manifest:
 
 ---
 
+---
+
+## 🔗 Cross-References
+
+- Canon alignment: see `planning/daylands_and_nightlands.md` (The Forty Axes of Alignment).
+- Applied cases: see `planning/daylands_and_nightlands.md` ("Applied Cases: Technological Manifestations") and `planning/heart_of_darkness.md` ("Technological Manifestations").
+- Emotional–technical bridges:
+  - Hollow Choir ↔ Wonky AI → Counter: variation, human-in-the-loop play.
+  - The Listener, The Laughing Architect ↔ Wonky languages/engines → Counter: plain-language specs; playability checks; joy metrics.
+  - Zealot of Silence ↔ Wonky tools/methods → Counter: rituals that sing; retros that ask "where was the fun?".
+  - Mirror Tyrant ↔ Jargon fog and isolation → Counter: share the stage; clarity-first reviews.
+
+---
+
 ## 🕊️ 8. Closing Principle
 
 > Between laughter and silence,  
