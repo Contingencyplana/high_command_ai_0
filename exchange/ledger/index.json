@@ -51,7 +51,7 @@
     },
     "order-2025-10-12-009": {
       "status": "closed",
-      "order_path": "orders/in_progress/order-2025-10-12-009.json",
+      "order_path": "orders/dispatched/order-2025-10-12-009.json",
       "ack_path": "acknowledgements/logged/order-2025-10-12-009-ack.json",
       "report_path": "reports/archived/order-2025-10-12-009-report.json"
     }
