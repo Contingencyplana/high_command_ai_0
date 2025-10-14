@@ -34,3 +34,11 @@ The War Office is the heart and conscience.
 
 ## Motto
 *"We keep the machine kind."*
+
+---
+
+## TODO — ACK Reconciliation (Orders 012–013)
+- [ ] When 012 ACK arrives: move from `exchange/acknowledgements/pending/order-2025-10-14-012-ack.json` to `exchange/acknowledgements/logged/order-2025-10-14-012-ack.json`; update `exchange/ledger/index.json` status accordingly.
+- [ ] When 012 report is finalized: move report from `exchange/reports/inbox/order-2025-10-14-012-report.json` to `exchange/reports/archived/order-2025-10-14-012-report.json`; append ledger journal entry and tag closeout.
+- [ ] When 013 ACK arrives: move from `exchange/acknowledgements/pending/order-2025-10-14-013-ack.json` to `exchange/acknowledgements/logged/order-2025-10-14-013-ack.json`; update ledger.
+- [ ] When 013 report is finalized: archive report; add ledger journal note and close out.
