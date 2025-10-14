@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "war_office/reviews/generation_log_template.json",
+  "title": "Export Generation Log",
+  "description": "Provenance for composite telemetry quilt exports",
+  "type": "object",
+  "properties": {
+    "schema_version": { "type": "string", "description": "Export schema version e.g. v1.0" },
+    "export_name": { "type": "string", "description": "Human-friendly name e.g. composite_quilt" },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string" },
+          "format": { "type": "string", "enum": ["json", "csv", "parquet", "other"] },
+          "checksum": { "type": "string", "description": "SHA256 or similar" },
+          "records": { "type": "integer", "minimum": 0 }
+        },
+        "required": ["path", "format"]
+      }
+    },
+    "build_info": {
+      "type": "object",
+      "properties": {
+        "commit": { "type": "string", "description": "Git commit hash" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "generator": { "type": "string", "description": "e.g., tools.telemetry.quilt_loom --emit-exports" },
+        "params": { "type": "object", "additionalProperties": true }
+      }
+    },
+    "source_inputs": {
+      "type": "array",
+      "description": "Upstream inputs used to build the quilt",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "version": { "type": "string" },
+          "commit": { "type": "string" }
+        }
+      }
+    },
+    "notes": { "type": "string" }
+  },
+  "required": ["schema_version", "artifacts", "build_info"]
+}
+
