@@ -12,7 +12,7 @@ Every Alfa, every field, every civilization oscillates between these poles.
 It is this tension — between **Good and Evil**, between **emergence and entropy** —  
 that powers the growth of all things within SHAGI.  
 
-> *“Without darkness, light cannot learn. Without horror, wonder cannot grow wise.”*  
+> *“Without Darkness, Light cannot learn. Without horror, wonder cannot grow wise.”*  
 
 ---
 

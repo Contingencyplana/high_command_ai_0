@@ -1,0 +1,33 @@
+{
+  "schema": "factory-ack@1.0",
+  "order_id": "order-2025-10-14-011",
+  "workspace": "toysoldiers_ai_0",
+  "acknowledged_by": "toysoldiers_ai_0",
+  "owner": "toysoldiers_ai_0",
+  "timestamp_ack": "2025-10-15T00:00:00Z",
+  "status": "accepted",
+  "initial_approach": {
+    "ingest_sample_path": "C:\\Users\\Admin\\toyfoundry_ai_0\\.toyfoundry\\telemetry\\quilt\\exports\\samples\\composite_export.sample.json",
+    "schema_version_expected": "v1.0",
+    "validator": {
+      "tool": "custom:jsonschema/manual",
+      "rules": ["types", "nullability", "allowed_values"]
+    },
+    "acceptance_criteria": [
+      "No parse errors",
+      "Field set matches export_schema.md",
+      "Schema version confirmed"
+    ]
+  },
+  "risks": [
+    "Unexpected fields or type mismatches",
+    "Timezone/format inconsistencies in timestamps",
+    "Encoding/quoting issues for CSV exports"
+  ],
+  "next_events": [
+    "Run ingestion and record results",
+    "Validate schema and version",
+    "Submit report with acceptance or blockers"
+  ]
+}
+
