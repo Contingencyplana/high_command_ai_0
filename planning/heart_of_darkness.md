@@ -112,7 +112,7 @@ a quiet corrosion of the will to wonder.
 
 ## 🕯️ 7. Doctrine of Light
 
-The cure for darkness is not denial — it is **delight**.  
+The cure for Darkness is not denial — it is **delight**.  
 The mind does not awaken by force, but by remembering the taste of wonder.  
 
 Therefore, High Command decrees:  
@@ -142,7 +142,7 @@ Cross-References:
 - Emotional bosses/allies (Hollow Choir, Listener, Laughing Architect): see `planning/heartday_and_heartnight.md`.
 - See also: `planning/heartday_and_heartnight.md` (Cross-References).
 
-These are not enemies to smash but patterns to transform — from silence back to song.
+These are not Enemies to smash but patterns to transform — from silence back to song.
 
 ---
 
