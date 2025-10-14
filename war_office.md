@@ -21,7 +21,7 @@ The War Office represents the **civilian conscience** of the Creative Ecosystem 
 ---
 
 ### Role
-We ensure every faction stays aligned and attuned with the Vision and Mission. We intervene when strategy drifts, fragments or splinters; act as systems analysts, and keep the machine well-oiled, well-greased, and running smoothly.
+We ensure every faction stays aligned and attuned with the Overarching Vision and Mission. We intervene when strategy drifts, fragments or splinters; act as systems analysts, and keep the machine well-oiled, well-greased, and running smoothly.
 
 ---
 

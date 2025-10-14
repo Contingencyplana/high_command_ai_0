@@ -1,0 +1,36 @@
+{
+<<<<<<< HEAD
+  "schema": "factory-ack@1.0",
+  "order_id": "order-2025-10-12-009",
+  "workspace": "toyfoundry_ai_0",
+  "acknowledged_by": "toyfoundry_ai_0",
+  "owner": "toyfoundry_ai_0",
+  "timestamp_ack": "2025-10-14T03:07:13.1233547Z",
+  "status": "accepted",
+  "initial_approach": {
+    "schema_doc": "Author export_schema.md covering fields, types, nullability, and lineage.",
+    "exports": "Emit JSON and CSV from composite quilt under .toyfoundry/telemetry/quilt/exports/.",
+    "automation": "Add regen flag to tools/telemetry/quilt_loom.py and couple to rollup generation.",
+    "samples": "Provide sample files and README with CLI usage and consumer workflow."
+  },
+  "risks": [
+    "Dependency order-2025-10-12-008 alignment and data availability.",
+    "PII/privacy review for telemetry fields; enforce redaction where needed.",
+    "Schema drift between producers and consumers; lock with versioning."
+  ],
+  "next_events": [
+    "Move order to in_progress.",
+    "Publish export_schema.md and request review from toysoldiers_ai_0."
+  ]
+}
+=======
+  "schema": "signal-ack@1.0",
+  "ack_id": "ack-2025-10-14-001",
+  "referenced_id": "order-2025-10-12-009",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-14T10:35:00Z",
+  "status": "received",
+  "notes": "Composite telemetry export order acknowledged; schema and export automation work underway."
+}
+>>>>>>> 5813b86bd9065b9c8c9050a77ffbd04a6aa69d54

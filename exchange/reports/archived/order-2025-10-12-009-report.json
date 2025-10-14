@@ -1,0 +1,45 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "report-2025-10-14-122951",
+  "referenced_order": "order-2025-10-12-009",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-14T02:29:51.3288689Z",
+  "status": "ready_for_ingest",
+  "summary": "Composite telemetry quilt exports generated and validated.",
+  "export_paths": {
+    "json": ".toyfoundry/telemetry/quilt/exports/composite_export.json",
+    "csv": ".toyfoundry/telemetry/quilt/exports/composite_export.csv"
+  },
+  "metrics": {
+    "first_last_updated": {
+      "last": "2025-10-13T23:41:15.115199+10:00",
+      "first": "2025-10-13T23:41:15.115199+10:00"
+    },
+    "rituals": [
+      {
+        "ritual": "drill",
+        "count": 1
+      },
+      {
+        "ritual": "parade",
+        "count": 1
+      },
+      {
+        "ritual": "promote",
+        "count": 1
+      },
+      {
+        "ritual": "purge",
+        "count": 1
+      }
+    ],
+    "mint_only_placeholders": 0,
+    "records_total": 4
+  },
+  "integration_notes": [
+    "Fields align with planning/toyfoundry/telemetry/export_schema.md",
+    "Use event_metadata JSON string in CSV for arbitrary keys",
+    "Regenerate via: python -m tools.telemetry.quilt_loom --export"
+  ]
+}
