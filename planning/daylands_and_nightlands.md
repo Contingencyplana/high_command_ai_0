@@ -1,5 +1,5 @@
 # ☀️🌑 daylands_and_nightlands.md — The Dual Realms of Emergence  
-*Planning Scroll — `high_command_ai_0/planning/`*  
+*Division: High Command AI — World Cosmology Doctrine*  
 
 ---
 
@@ -89,14 +89,14 @@ To guard the Daylands is to preserve these five freedoms of becoming.
 These manifestations traverse multiple axes; they are not new axes.  
 
 - Wonky AI → 16 Marvel/Banality, 21 Joy/Misery, 31 Resonance/Dissonance → Counter: variation, human-in-the-loop play. See: `planning/heart_of_darkness.md`.
-- Wonky languages/makers → 26 Clarity/Confusion, 33 Rhyme & Reason/Dribble & Twaddle, 36 Coherence/Fragmentation → Counter: plain-language specs, “Listener” reviews. See: `planning/heartday_and_heartnight.md`.
+- Wonky languages/makers → 26 Clarity/Confusion, 33 Rhyme & Reason/Dribble & Twaddle, 36 Coherence/Fragmentation → Counter: plain-language specs, "Listener" reviews. See: `planning/heartday_and_heartnight.md`.
 - Wonky engines/makers → 21 Joy/Misery, 23 Play/Punishment → Counter: playability checks, joy metrics. See: `planning/heartday_and_heartnight.md`.
 - Loony labyrinths → 26 Clarity/Confusion, 36 Coherence/Fragmentation, 37 Sanctuary/Exposure → Counter: narrative docs, beginner paths, coherence passes.
-- Wonky tools/methods → 8 Spontaneity/Dead Planning, 22 Wisdom/Sly Cunning, 39 Meaning/Void → Counter: small rituals, retros that ask “where was the fun?”
+- Wonky tools/methods → 8 Spontaneity/Dead Planning, 22 Wisdom/Sly Cunning, 39 Meaning/Void → Counter: small rituals, retros that ask "where was the fun?"
 - Wonky algorithms/fractals → 22 Wisdom/Sly Cunning, 26 Clarity/Confusion, 33 Rhyme & Reason/Dribble & Twaddle → Counter: explainability, minimal viable novelty.
 - Wonky code/docs → 16 Marvel/Banality, 21 Joy/Misery, 39 Meaning/Void → Counter: celebrate readability; add rhythm/color to success paths.
 
-Cross‑links: `planning/heart_of_darkness.md`, `planning/heartday_and_heartnight.md` (Cross-References).
+Cross-References: `planning/heart_of_darkness.md`, `planning/heartday_and_heartnight.md` (Cross-References).
 
 ---
 
