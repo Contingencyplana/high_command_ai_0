@@ -80,14 +80,14 @@
       "report_path": "reports/inbox/order-2025-10-14-013-report.json"
     },
     "order-2025-10-15-014": {
-      "status": "dispatched",
-      "order_path": "orders/dispatched/order-2025-10-15-014.json",
+      "status": "pending",
+      "order_path": "orders/pending/order-2025-10-15-014.json",
       "ack_path": "acknowledgements/pending/order-2025-10-15-014-ack.json",
       "report_path": "reports/inbox/order-2025-10-15-014-report.json"
     },
     "order-2025-10-15-015": {
-      "status": "dispatched",
-      "order_path": "orders/dispatched/order-2025-10-15-015.json",
+      "status": "pending",
+      "order_path": "orders/pending/order-2025-10-15-015.json",
       "ack_path": "acknowledgements/pending/order-2025-10-15-015-ack.json",
       "report_path": "reports/inbox/order-2025-10-15-015-report.json"
     }
