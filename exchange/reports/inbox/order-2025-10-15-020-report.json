@@ -1,0 +1,17 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-020-report",
+  "referenced_order": "order-2025-10-15-020",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "",
+  "status": "in_progress",
+  "summary": "Standard run (small scale) - draft stub.",
+  "artifacts": {
+    "csv": {"path": "", "records": null, "sha256": ""},
+    "json": {"path": "", "records": null, "sha256": ""},
+    "manifest": {"path": "", "sha256": ""}
+  },
+  "notes": []
+}
+

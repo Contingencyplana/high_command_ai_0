@@ -1,0 +1,33 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-021-report",
+  "referenced_order": "order-2025-10-15-021",
+  "sender": "toysoldiers_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "",
+  "status": "in_progress",
+  "summary": "Consumer roll-in for standard run - draft stub.",
+  "ingestion": {
+    "records_total": null,
+    "sha256_verified": false
+  },
+  "schema_validation": {
+    "expected_version": "v1.0",
+    "confirmed_version": null,
+    "field_mismatches": [],
+    "unexpected_fields": []
+  },
+  "dq_checks": {
+    "non_empty": null,
+    "allowed_rituals": null,
+    "allowed_status": null,
+    "units_positive": null,
+    "duration_ms_range": null
+  },
+  "monitoring": {
+    "alerts_configured": false,
+    "channel": "",
+    "owner": ""
+  }
+}
+
