@@ -1,0 +1,9 @@
+{
+  "schema": "factory-ack@1.0",
+  "order_id": "order-2025-10-15-023",
+  "requested_by": "high_command_ai_0",
+  "workspace": "high_command_ai_0",
+  "status": "pending",
+  "timestamp_requested": "2025-10-15T00:42:00Z"
+}
+

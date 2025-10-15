@@ -1,0 +1,16 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-023-report",
+  "referenced_order": "order-2025-10-15-023",
+  "sender": "high_command_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "",
+  "status": "in_progress",
+  "summary": "HC Alfa guardrails - draft stub.",
+  "evidence": {
+    "hooksPath_enabled": false,
+    "validator_pass_log": "",
+    "config_snapshot": ""
+  }
+}
+

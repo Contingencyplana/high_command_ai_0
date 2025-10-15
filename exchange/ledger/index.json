@@ -128,6 +128,19 @@
       "ack_path": "acknowledgements/pending/order-2025-10-15-021-ack.json",
       "report_path": "reports/inbox/order-2025-10-15-021-report.json"
     }
+    ,
+    "order-2025-10-15-022": {
+      "status": "pending",
+      "order_path": "orders/pending/order-2025-10-15-022.json",
+      "ack_path": "acknowledgements/pending/order-2025-10-15-022-ack.json",
+      "report_path": "reports/inbox/order-2025-10-15-022-report.json"
+    },
+    "order-2025-10-15-023": {
+      "status": "pending",
+      "order_path": "orders/pending/order-2025-10-15-023.json",
+      "ack_path": "acknowledgements/pending/order-2025-10-15-023-ack.json",
+      "report_path": "reports/inbox/order-2025-10-15-023-report.json"
+    }
   },
   "reports": {
     "order-2025-10-12-001-report": "reports/archived/order-2025-10-12-001-report.json",
@@ -150,7 +163,9 @@
     "order-2025-10-15-018-report": "reports/archived/order-2025-10-15-018-report.json",
     "order-2025-10-15-019-report": "reports/archived/order-2025-10-15-019-report.json",
     "order-2025-10-15-020-report": "reports/inbox/order-2025-10-15-020-report.json",
-    "order-2025-10-15-021-report": "reports/inbox/order-2025-10-15-021-report.json"
+    "order-2025-10-15-021-report": "reports/inbox/order-2025-10-15-021-report.json",
+    "order-2025-10-15-022-report": "reports/inbox/order-2025-10-15-022-report.json",
+    "order-2025-10-15-023-report": "reports/inbox/order-2025-10-15-023-report.json"
   },
   "acks": {
     "order-2025-10-12-001-ack": "acknowledgements/logged/order-2025-10-12-001-ack.json",
@@ -173,6 +188,8 @@
     "order-2025-10-15-018-ack": "acknowledgements/logged/order-2025-10-15-018-ack.json",
     "order-2025-10-15-019-ack": "acknowledgements/logged/order-2025-10-15-019-ack.json",
     "order-2025-10-15-020-ack": "acknowledgements/pending/order-2025-10-15-020-ack.json",
-    "order-2025-10-15-021-ack": "acknowledgements/pending/order-2025-10-15-021-ack.json"
+    "order-2025-10-15-021-ack": "acknowledgements/pending/order-2025-10-15-021-ack.json",
+    "order-2025-10-15-022-ack": "acknowledgements/pending/order-2025-10-15-022-ack.json",
+    "order-2025-10-15-023-ack": "acknowledgements/pending/order-2025-10-15-023-ack.json"
   }
 }

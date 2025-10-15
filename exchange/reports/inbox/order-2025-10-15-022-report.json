@@ -1,0 +1,17 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-022-report",
+  "referenced_order": "order-2025-10-15-022",
+  "sender": "high_command_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "",
+  "status": "in_progress",
+  "summary": "HC Alfa pilot setup - draft stub.",
+  "components": {
+    "hc_alfa_exchange": {"created": false, "scope": "exchange/**"},
+    "hc_alfa_ops": {"created": false, "scripts": ["scripts/hc_publish.ps1", "scripts/field_sync.ps1"]},
+    "hc_alfa_briefing": {"created": false, "outputs": ["planning/briefings/"]}
+  },
+  "audit": {"dry_run": true, "logs": []}
+}
+
