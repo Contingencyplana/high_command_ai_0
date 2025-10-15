@@ -1,0 +1,32 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "<order-YYYY-MM-DD-SEQ-report>",
+  "referenced_order": "<order-YYYY-MM-DD-SEQ>",
+  "sender": "<workspace>",
+  "receiver": "<issuer>",
+  "timestamp_sent": "<ISO8601>",
+  "status": "completed",
+  "summary": "Outcome summary of proposal → sandbox → canary → GA.",
+  "artifacts": {
+    "build_info": "<path>",
+    "checksums": {
+      "sha256": {
+        "<artifact_path>": "<hash>"
+      }
+    },
+    "attachments": []
+  },
+  "pipeline": {
+    "proposal": {"status": "passed", "notes": []},
+    "sandbox": {"status": "passed", "notes": []},
+    "canary": {"status": "passed", "notes": []},
+    "ga": {"status": "passed", "notes": []}
+  },
+  "safety": {
+    "approvals": ["<reviewer>", "<safety_officer>", "<release_steward>"] ,
+    "caps": {"role": "<role>", "limits": {"rate_per_min": 10, "scope": "<scope>"}},
+    "rollback_plan": "<clear, tested rollback steps>",
+    "retention": "<window and storage class>"
+  }
+}
+

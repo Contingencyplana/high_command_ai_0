@@ -1,0 +1,15 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "<order-YYYY-MM-DD-SEQ-ack>",
+  "referenced_id": "<order-YYYY-MM-DD-SEQ>",
+  "sender": "<receiver_workspace>",
+  "receiver": "<issuer>",
+  "timestamp_sent": "<ISO8601>",
+  "status": "acknowledged",
+  "notes": [
+    "Roles/caps verified",
+    "Approvals chain established",
+    "Sandbox + canary lanes prepared"
+  ]
+}
+

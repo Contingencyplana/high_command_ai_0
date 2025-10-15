@@ -1,0 +1,34 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-024-report",
+  "referenced_order": "order-2025-10-15-024",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-15T08:20:00Z",
+  "status": "completed",
+  "summary": "Seeded change order; passed sandbox and canary for docs/templates safety pipeline.",
+  "artifacts": {
+    "build_info": "planning/change_log.md",
+    "checksums": {
+      "sha256": {}
+    },
+    "attachments": [
+      "tools/telemetry/canary_sandbox.sample.json",
+      "planning/templates/safety_gate_template.md",
+      "planning/ai_agents_and_safety.md"
+    ]
+  },
+  "pipeline": {
+    "proposal": {"status": "passed", "notes": ["Daylands charter and safety checklist agreed"]},
+    "sandbox": {"status": "passed", "notes": ["Templates parse; lanes config validated"]},
+    "canary": {"status": "passed", "notes": ["No alerts; rollback runbook present"]},
+    "ga": {"status": "pending", "notes": ["GA after broader review"]}
+  },
+  "safety": {
+    "approvals": ["reviewer@toyfoundry", "safety_officer@toyfoundry", "release_steward@toyfoundry"],
+    "caps": {"role": "docs_change", "limits": {"rate_per_min": 10, "scope": "planning/** tools/**"}},
+    "rollback_plan": "Revert docs/templates changes; restore prior versions; announce in exchange.",
+    "retention": "Documentation retained indefinitely; CI artifacts 30 days"
+  }
+}
+

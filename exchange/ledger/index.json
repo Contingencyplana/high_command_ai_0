@@ -140,6 +140,12 @@
       "order_path": "orders/pending/order-2025-10-15-023.json",
       "ack_path": "acknowledgements/pending/order-2025-10-15-023-ack.json",
       "report_path": "reports/inbox/order-2025-10-15-023-report.json"
+    },
+    "order-2025-10-15-024": {
+      "status": "closed",
+      "order_path": "orders/pending/order-2025-10-15-024.json",
+      "ack_path": "acknowledgements/logged/order-2025-10-15-024-ack.json",
+      "report_path": "reports/archived/order-2025-10-15-024-report.json"
     }
   },
   "reports": {
@@ -165,7 +171,8 @@
     "order-2025-10-15-020-report": "reports/inbox/order-2025-10-15-020-report.json",
     "order-2025-10-15-021-report": "reports/inbox/order-2025-10-15-021-report.json",
     "order-2025-10-15-022-report": "reports/inbox/order-2025-10-15-022-report.json",
-    "order-2025-10-15-023-report": "reports/inbox/order-2025-10-15-023-report.json"
+    "order-2025-10-15-023-report": "reports/inbox/order-2025-10-15-023-report.json",
+    "order-2025-10-15-024-report": "reports/archived/order-2025-10-15-024-report.json"
   },
   "acks": {
     "order-2025-10-12-001-ack": "acknowledgements/logged/order-2025-10-12-001-ack.json",
@@ -190,6 +197,7 @@
     "order-2025-10-15-020-ack": "acknowledgements/pending/order-2025-10-15-020-ack.json",
     "order-2025-10-15-021-ack": "acknowledgements/pending/order-2025-10-15-021-ack.json",
     "order-2025-10-15-022-ack": "acknowledgements/pending/order-2025-10-15-022-ack.json",
-    "order-2025-10-15-023-ack": "acknowledgements/pending/order-2025-10-15-023-ack.json"
+    "order-2025-10-15-023-ack": "acknowledgements/pending/order-2025-10-15-023-ack.json",
+    "order-2025-10-15-024-ack": "acknowledgements/logged/order-2025-10-15-024-ack.json"
   }
 }

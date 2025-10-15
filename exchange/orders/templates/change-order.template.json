@@ -1,0 +1,21 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "<order-YYYY-MM-DD-SEQ>",
+  "issued_by": "<issuer>",
+  "target": "<workspace_or_agent>",
+  "priority": "normal",
+  "timestamp_issued": "<ISO8601>",
+  "summary": "Describe the change (what/why/risk).",
+  "directives": [
+    { "step": 1, "action": "propose_change", "details": "Intent, scope, risks, owners, rollback, timebox." },
+    { "step": 2, "action": "sandbox_validation", "details": "Run unit/sim, schema + DQ, telemetry hooks." },
+    { "step": 3, "action": "canary_rollout", "details": "Limited rollout with pass criteria and rollback rehearsed." },
+    { "step": 4, "action": "general_availability", "details": "Publish build_info + checksums; update docs; monitoring active." },
+    { "step": 5, "action": "submit_report", "details": "Send completed report with artifacts and outcomes." }
+  ],
+  "dependencies": [],
+  "requires_ack": true,
+  "expires_at": "<ISO8601>",
+  "attachments": []
+}
+

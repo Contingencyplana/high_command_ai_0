@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-15-024-ack",
+  "referenced_id": "order-2025-10-15-024",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-15T08:05:00Z",
+  "status": "received",
+  "notes": [
+    "Roles verified; scope limited to docs + templates",
+    "Sandbox and canary lanes prepared via tools/telemetry/canary_sandbox.sample.json"
+  ]
+}
+
