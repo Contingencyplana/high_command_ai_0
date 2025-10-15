@@ -1,0 +1,21 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-15-019",
+  "issued_by": "high_command_ai_0",
+  "target": "toysoldiers_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-10-15T00:22:00Z",
+  "summary": "Close-out 015: ingest exports, run schema/DQ checks, set acceptance, and submit completed report.",
+  "directives": [
+    { "step": 1, "action": "ingest_exports", "details": "Load composite_export.json/csv from Toyfoundry canary; record record counts and verify SHA256." },
+    { "step": 2, "action": "validate_schema_version", "details": "Confirm schema_version=v1.0 and validate fields/types/nullability/enums." },
+    { "step": 3, "action": "run_dq_checks", "details": "Run non_empty, allowed_rituals/status, units_positive, duration_ms_range; capture failures with thresholds." },
+    { "step": 4, "action": "set_acceptance", "details": "Provide Go/No-Go with metrics and constraints; document any blockers and remediation." },
+    { "step": 5, "action": "submit_report", "details": "Update and submit report at exchange/reports/inbox/order-2025-10-15-019-report.json with status=completed and monitoring notes." }
+  ],
+  "dependencies": ["order-2025-10-15-015", "order-2025-10-14-013", "order-2025-10-15-018"],
+  "requires_ack": true,
+  "expires_at": "2025-10-18T00:00:00Z",
+  "attachments": []
+}
+

@@ -1,0 +1,20 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-15-018",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-10-15T00:20:00Z",
+  "summary": "Close-out 014: finalize canary batches, publish artifacts + checksums, and submit completed report.",
+  "directives": [
+    { "step": 1, "action": "produce_or_confirm_canary", "details": "If not already produced under 014, run 1–2 canary Alfa batches and record build_info." },
+    { "step": 2, "action": "emit_and_verify_exports", "details": "Publish composite_export.json/csv with SHA256 and build_info.json; verify checksums match recorded values." },
+    { "step": 3, "action": "document_retention_and_rollback", "details": "State retention window and rollback steps for the canary artifacts." },
+    { "step": 4, "action": "submit_report", "details": "Update and submit report at exchange/reports/inbox/order-2025-10-15-018-report.json with status=completed and artifact locations, counts, checksums." }
+  ],
+  "dependencies": ["order-2025-10-15-014", "order-2025-10-14-012"],
+  "requires_ack": true,
+  "expires_at": "2025-10-18T00:00:00Z",
+  "attachments": []
+}
+

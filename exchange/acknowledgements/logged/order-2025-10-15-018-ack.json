@@ -3,7 +3,6 @@
   "order_id": "order-2025-10-15-018",
   "requested_by": "high_command_ai_0",
   "workspace": "toyfoundry_ai_0",
-  "status": "pending",
-  "timestamp_requested": "2025-10-15T00:20:00Z"
+  "status": "received",
+  "timestamp_requested": "2025-10-15T05:53:31Z"
 }
-
