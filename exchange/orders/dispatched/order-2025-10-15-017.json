@@ -1,0 +1,49 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-15-017",
+  "issued_by": "high_command_ai_0",
+  "target": "toysoldiers_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-10-15T00:12:00Z",
+  "summary": "Install exchange watcher and enable detection of pending orders; ACK receipt.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "create_tools_directory",
+      "details": "Ensure tools/ exists; create if missing."
+    },
+    {
+      "step": 2,
+      "action": "install_canonical_watcher",
+      "details": "Copy exchange/attachments/tools/exchange_watcher.py to tools/exchange_watcher.py."
+    },
+    {
+      "step": 3,
+      "action": "verify_detection",
+      "details": "From workspace root, run: python -m tools.exchange_watcher --reset; confirm pending orders printed."
+    },
+    {
+      "step": 4,
+      "action": "acknowledge",
+      "details": "Update ACK to status 'received' with current timestamp in exchange/acknowledgements/pending/order-2025-10-15-017-ack.json."
+    },
+    {
+      "step": 5,
+      "action": "report",
+      "details": "Submit short report to exchange/reports/inbox/order-2025-10-15-017-report.json summarizing install outcome."
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-15-015",
+    "order-2025-10-14-013"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-10-18T00:00:00Z",
+  "attachments": [
+    {
+      "type": "python",
+      "path": "attachments/tools/exchange_watcher.py"
+    }
+  ]
+}
+

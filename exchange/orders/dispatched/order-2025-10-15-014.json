@@ -1,0 +1,38 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-15-014",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-10-15T00:00:00Z",
+  "summary": "Canary Alfa Batch Production (1-2 batches) with real exports, checksums, and rollback plan.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "produce_canary_batches",
+      "details": "Produce 1-2 Alfa batches with telemetry enabled; record build_info (commit, params, timestamp)."
+    },
+    {
+      "step": 2,
+      "action": "emit_exports",
+      "details": "Emit composite_export.json and composite_export.csv; include build_info.json and SHA256 checksums alongside artifacts."
+    },
+    {
+      "step": 3,
+      "action": "document_retention_and_rollback",
+      "details": "Document export retention window and a rollback plan for canary batches (delete artifacts + revert toggles)."
+    },
+    {
+      "step": 4,
+      "action": "ack_and_report",
+      "details": "Submit acknowledgement and a factory report summarizing artifacts, checksums, and rollback to exchange/reports/inbox/order-2025-10-15-014-report.json."
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-14-012"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-10-17T00:00:00Z",
+  "attachments": []
+}
+

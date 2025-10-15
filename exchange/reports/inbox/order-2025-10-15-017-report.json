@@ -1,0 +1,12 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-017-report",
+  "referenced_order": "order-2025-10-15-017",
+  "sender": "toysoldiers_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "",
+  "status": "in_progress",
+  "summary": "Watcher installation - draft stub.",
+  "notes": []
+}
+

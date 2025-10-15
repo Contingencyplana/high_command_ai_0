@@ -1,0 +1,44 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-15-015",
+  "issued_by": "high_command_ai_0",
+  "target": "toysoldiers_ai_0",
+  "priority": "medium",
+  "timestamp_issued": "2025-10-15T00:00:00Z",
+  "summary": "Canary Consumer Acceptance of Toyfoundry exports with schema/DQ checks and monitoring.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "ingest_exports",
+      "details": "Ingest composite_export.json and composite_export.csv from canary; record counts and sha256 verification."
+    },
+    {
+      "step": 2,
+      "action": "validate_schema_version",
+      "details": "Confirm schema_version v1.0; validate field set, types, nullability, and enumerations (ritual/status)."
+    },
+    {
+      "step": 3,
+      "action": "data_quality_checks",
+      "details": "Run non_empty, allowed_rituals, allowed_status, units_positive, duration_ms_range checks; summarize failures."
+    },
+    {
+      "step": 4,
+      "action": "monitoring",
+      "details": "Enable lightweight monitoring/alerts for ingestion failure or schema drift; define thresholds and remediation."
+    },
+    {
+      "step": 5,
+      "action": "consumer_acceptance",
+      "details": "Provide Go/No-Go with metrics, confirmed schema version, constraints; submit ack + report to exchange/reports/inbox/order-2025-10-15-015-report.json."
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-15-014",
+    "order-2025-10-14-013"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-10-17T00:00:00Z",
+  "attachments": []
+}
+
