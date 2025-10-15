@@ -1,12 +1,28 @@
 # ⚒️ forge_automation_spec.md — The Forge Design Doctrine
 
-*Planning Scroll — `high_command_ai_0/planning/`*
+*Division: High Command AI — Forge Automation Doctrine*
 
 ---
 
 ## 🌍 Purpose
 
-Defines the automation toolkit ("The Forge") that constructs, hydrates, archives, and audits Alfa minds across High Command and field workspaces. Establishes interface contracts, template strategy, and safety instrumentation before large-scale Alfa generation begins.
+Defines the automation toolkit ("The Forge") that constructs, hydrates, archives, and audits Alfa minds across High Command, Toyfoundry, and field workspaces. Establishes interface contracts, template strategy, and safety instrumentation before large-scale Alfa generation begins.
+
+### Non-Goals
+
+- Selecting model architectures or runtime orchestration.
+- Acting as a deployment runner; integrates with existing CI/CD.
+- Providing data labeling or evaluation frameworks.
+- Replacing human review; instead, it enforces review gates.
+
+### Success Criteria
+
+- Reproducible outputs from versioned templates with checksums recorded.
+- Complete audit trail per run (JSONL logs + human journal entries).
+- Safety gates enforced (diff-plan, lockfile, batch limits) by default.
+- Cross-repo parity: same commands/flags behave identically.
+- CI hook verifies templates/config on PRs that touch Forge areas.
+- New Alfa bootstrap + validate completes in ≤ 5 minutes locally.
 
 ---
 
@@ -128,15 +144,50 @@ Selectors run against `ledger/index.json` to build target lists. Forge refuses c
 - **Command Exchange:** `batch-run` can emit `field-report@1.0` payloads automatically into the exchange repo.
 - **CI Hooks:** Optional GitHub Actions workflow can run `forge validate` on pull requests touching template or config files.
 - **Schema Validator:** Shared library used by both Forge and manual scripts to ensure `manifest.json` and message payloads stay in sync.
+ - **Ops Playbook:** See "10. Verification Playbook" for quick validation commands (dry-run renders, safety gates, logs, CI checks).
 
 ---
 
 ## 🚀 9. Immediate Implementation Tasks
 
 1. **Bootstrap template library** inside `template/forge/` with minimal Alfa pair (`alfa.py`, `manifest.json`).
+   - Acceptance: Rendering from versioned templates produces identical outputs across machines; `manifest.json` includes SHA256 checksums recorded.
 2. **Author Forge CLI skeleton** (Python `typer` or Node `oclif` suggested) with commands `init-alfa`, `diff-plan`, and `validate` stubbed.
+   - Acceptance: `diff-plan` runs without mutation and is required for destructive ops; command/flag surface is identical in High Command, Toyfoundry, and field repos.
 3. **Implement logging subsystem** writing JSON lines + journal entries.
+   - Acceptance: Each run emits JSONL entries with {timestamp, operator, params, targets, git-diff}; `logs/forge_journal.md` updated; failures create bundles under `logs/failures/<ts>/`.
 4. **Draft selector interpreter** operating on `ledger/index.json`.
+   - Acceptance: Safety gates enforced — batch limit respected, lockfile halts mutations, and `--approved-by` required for sensitive transitions.
 5. **Write integration tests** that spin up a synthetic workspace, run `init-alfa`, and assert manifest correctness.
+   - Acceptance: Test suite (including template/config validation) completes locally in ≤ 5 minutes; CI hook verifies Forge areas on PRs.
 
 Completing these tasks will arm High Command with a disciplined automation forge ready for large-scale Alfa deployment.
+
+---
+
+## 🧪 10. Verification Playbook
+
+Use these quick checks to validate the Success Criteria and Acceptance bullets manually.
+
+- Templates
+  - Render (dry-run): `forge init-alfa --id alfa_test --template-version forge-template@1.0.0 --diff-plan`
+  - Repro check: run render on two machines; compare checksums in `alfas/alfa_test/manifest.json`.
+
+- CLI Safety
+  - Destructive guard: `forge hydrate --id alfa_test --force` → must require `--diff-plan` first.
+  - Lockfile: `New-Item forge.lock`; rerun a mutating command → must refuse; then `Remove-Item forge.lock`.
+
+- Logging
+  - JSONL present: search `logs/forge.log` for the command, e.g., `init-alfa`.
+  - Journal present: `tail -n 20 logs/forge_journal.md` (or platform equivalent).
+  - Failure bundle: intentionally fail `forge validate`; confirm `logs/failures/<timestamp>/` created.
+
+- Selector & Batch Limits
+  - Batch limit enforced: `forge batch-run --selector 'entropy>=0.5'` → capped unless `--override` used.
+  - Sensitive transition gate: `forge batch-run --selector 'realm:nightland' --approved-by "Ops Lead"` required.
+
+- CI Hook
+  - Open a PR that changes `template/forge/**`; ensure CI runs `forge validate` and reports status.
+
+- Time Budget
+  - Measure: run `forge init-alfa ...` then `forge validate ...` locally; total ≤ 5 minutes.
