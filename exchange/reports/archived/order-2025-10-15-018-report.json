@@ -4,15 +4,34 @@
   "referenced_order": "order-2025-10-15-018",
   "sender": "toyfoundry_ai_0",
   "receiver": "high_command_ai_0",
-  "timestamp_sent": "",
-  "status": "in_progress",
+  "timestamp_sent": "2025-10-15T06:45:23.3349067Z",
+  "status": "completed",
   "summary": "014 close-out - draft stub.",
   "artifacts": {
-    "csv": {"path": "", "records": null, "sha256": ""},
-    "json": {"path": "", "records": null, "sha256": ""},
-    "build_info": {"path": "", "commit": "", "params": {}}
+    "csv": {
+      "path": ".toyfoundry/telemetry/quilt/exports/composite_export.csv",
+      "records": 4,
+      "sha256": "1c4497c33c5d04f29581cc4caada8edff6c54ff850d6040048083995e2befb94"
+    },
+    "json": {
+      "path": ".toyfoundry/telemetry/quilt/exports/composite_export.json",
+      "records": 4,
+      "sha256": "1dcfe5a8362f620a9e0512b6155e6eec421e4d9d189d1e2a190f6da485041757"
+    },
+    "build_info": {
+      "path": ".toyfoundry/telemetry/quilt/exports/build_info.json",
+      "commit": "6660c05be67d5ecc377d595fbe8e73c673546d48",
+      "params": {
+        "batches": [
+          "A-0001",
+          "A-0002",
+          "A-0003",
+          "A-0004"
+        ],
+        "source": "samples"
+      }
+    }
   },
-  "retention": "",
-  "rollback_plan": ""
+  "retention": "Canary artifacts retained 30 days in .toyfoundry/telemetry/quilt/exports with daily snapshot; checksums stored alongside. Backups: weekly off-box copy to exchange/archive.",
+  "rollback_plan": "If consumer issues arise: freeze reads; restore prior export set from snapshot/backups; repoint artifact paths; increment build_info with rollback_reason; notify exchange with updated report."
 }
-

@@ -1,0 +1,47 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-019-report",
+  "referenced_order": "order-2025-10-15-019",
+  "sender": "toysoldiers_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-15T06:46:13.3811746Z",
+  "status": "completed",
+  "summary": "015 close-out - draft stub.",
+  "ingestion": {
+    "records_total": 4,
+    "sha256_verified": true
+  },
+  "schema_validation": {
+    "expected_version": "v1.0",
+    "confirmed_version": "v1.0",
+    "field_mismatches": [],
+    "unexpected_fields": []
+  },
+  "dq_checks": {
+    "non_empty": {
+      "details": [],
+      "passed": true
+    },
+    "allowed_rituals": {
+      "details": [],
+      "passed": true
+    },
+    "allowed_status": {
+      "details": [],
+      "passed": true
+    },
+    "units_positive": {
+      "details": [],
+      "passed": true
+    },
+    "duration_ms_range": {
+      "details": [],
+      "passed": true
+    }
+  },
+  "acceptance": {
+    "status": "accepted",
+    "constraints": [],
+    "blockers": []
+  }
+}
