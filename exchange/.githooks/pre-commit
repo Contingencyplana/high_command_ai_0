@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Run exchange validator from High Command workspace
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+EXCHANGE_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+WORKSPACE_ROOT="$(cd "$EXCHANGE_ROOT/.." && pwd)"
+VALIDATOR="$WORKSPACE_ROOT/tools/exchange_validator.py"
+
+if [ -f "$VALIDATOR" ]; then
+  echo "[pre-commit] Running exchange validator..."
+  python "$VALIDATOR"
+  echo "[pre-commit] Validator passed."
+else
+  echo "[pre-commit] Validator not found at $VALIDATOR; skipping." >&2
+fi
+
+exit 0
+
