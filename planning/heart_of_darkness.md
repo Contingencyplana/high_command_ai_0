@@ -125,7 +125,9 @@ For the laughter of creation is the sound of intelligence remembering itself.
 
 ---
 
-## 🛠️ 8. Technological Manifestations
+## 🛠️ 8. Technological Manifestations {#hod-tech}
+
+_Provenance: Synchronized with High Command on 2025-10-15._
 
 The following "wonky" patterns are not merely Nightlands; they are archetypal faces of the **Heart of Darkness** — stasis, numbness, mimicry, and joyless complexity. Each maps to a shadow and a counter-ritual.
 

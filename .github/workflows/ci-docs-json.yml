@@ -1,0 +1,38 @@
+name: Docs and JSON Checks
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  markdown-and-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Markdown link check (planning/ and README)
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --include-fragments
+            README.md planning/**/*.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: JSON lint (exchange payloads)
+        run: |
+          set -e
+          shopt -s globstar nullglob
+          for f in exchange/**/*.json; do
+            echo "Linting $f"; python -m json.tool "$f" > /dev/null;
+          done

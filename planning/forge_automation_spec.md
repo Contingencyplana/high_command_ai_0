@@ -165,7 +165,9 @@ Completing these tasks will arm High Command with a disciplined automation forge
 
 ---
 
-## 🧪 10. Verification Playbook
+## 🧪 10. Verification Playbook {#verification-playbook}
+
+_Provenance: Synchronized with High Command on 2025-10-15._
 
 Use these quick checks to validate the Success Criteria and Acceptance bullets manually.
 

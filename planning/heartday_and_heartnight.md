@@ -148,7 +148,9 @@ To make this living doctrine tangible, SHAGI shall manifest:
 
 ---
 
-## 🔗 Cross-References
+## 🔗 Cross-References {#cross-refs}
+
+_Provenance: Synchronized with High Command on 2025-10-15._
 
 - Canon alignment: see `planning/daylands_and_nightlands.md` (The Forty Axes of Alignment).
 - Applied cases: see `planning/daylands_and_nightlands.md` ("Applied Cases: Technological Manifestations") and `planning/heart_of_darkness.md` ("Technological Manifestations").

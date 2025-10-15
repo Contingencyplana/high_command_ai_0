@@ -84,7 +84,9 @@ Expression, Experience, Experimentation, Evolution, Enjoyment.
 
 To guard the Daylands is to preserve these five freedoms of becoming.  
 
-### Applied Cases: Technological Manifestations  
+### Applied Cases: Technological Manifestations {#applied-tech}  
+
+_Provenance: Synchronized with High Command on 2025-10-15._  
 
 These manifestations traverse multiple axes; they are not new axes.  
 
