@@ -144,7 +144,7 @@ Selectors run against `ledger/index.json` to build target lists. Forge refuses c
 - **Command Exchange:** `batch-run` can emit `field-report@1.0` payloads automatically into the exchange repo.
 - **CI Hooks:** Optional GitHub Actions workflow can run `forge validate` on pull requests touching template or config files.
 - **Schema Validator:** Shared library used by both Forge and manual scripts to ensure `manifest.json` and message payloads stay in sync.
- - **Ops Playbook:** See "10. Verification Playbook" for quick validation commands (dry-run renders, safety gates, logs, CI checks).
+- **Ops Playbook:** See "10. Verification Playbook" for quick validation commands (dry-run renders, safety gates, logs, CI checks).
 
 ---
 
