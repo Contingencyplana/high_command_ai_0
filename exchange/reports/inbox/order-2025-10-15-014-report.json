@@ -1,0 +1,23 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-014-report",
+  "referenced_order": "order-2025-10-15-014",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "",
+  "status": "in_progress",
+  "summary": "Canary batches produced and exports emitted — draft stub.",
+  "artifacts": {
+    "export_json": "<path>",
+    "export_csv": "<path>",
+    "build_info": "<path>",
+    "checksums": {
+      "export_json_sha256": "",
+      "export_csv_sha256": ""
+    }
+  },
+  "retention_and_rollback": {
+    "retention_window": "",
+    "rollback_plan": ""
+  }
+}
