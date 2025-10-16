@@ -1,0 +1,43 @@
+{
+  "status": "in_progress",
+  "schema": "factory-report@1.0",
+  "sender": "toysoldiers_ai_0",
+  "referenced_order": "order-2025-10-15-031",
+  "receiver": "high_command_ai_0",
+  "results": {
+    "acceptance": {
+      "status": "pending",
+      "constraints": [],
+      "blockers": []
+    },
+    "batches": [
+      {
+        "name": "b1",
+        "records_total": null,
+        "dq": {},
+        "sha256_verified": false,
+        "schema": {
+          "unexpected": [],
+          "mismatches": [],
+          "confirmed": null,
+          "expected": "v1.0"
+        }
+      },
+      {
+        "name": "b2",
+        "records_total": null,
+        "dq": {},
+        "sha256_verified": false,
+        "schema": {
+          "unexpected": [],
+          "mismatches": [],
+          "confirmed": null,
+          "expected": "v1.0"
+        }
+      }
+    ]
+  },
+  "timestamp_sent": "",
+  "summary": "Ingestion/validation in progress (b1/b2).",
+  "report_id": "order-2025-10-15-031-report"
+}

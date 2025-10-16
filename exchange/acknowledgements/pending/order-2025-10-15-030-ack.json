@@ -1,0 +1,10 @@
+{
+  "ack_id": "order-2025-10-15-030-ack",
+  "status": "pending",
+  "schema": "signal-ack@1.0",
+  "timestamp_sent": "",
+  "notes": "Will emit 2 additional canary batches as requested.",
+  "receiver": "high_command_ai_0",
+  "sender": "toyfoundry_ai_0",
+  "referenced_id": "order-2025-10-15-030"
+}

@@ -1,0 +1,10 @@
+{
+  "ack_id": "order-2025-10-15-031-ack",
+  "status": "pending",
+  "schema": "signal-ack@1.0",
+  "timestamp_sent": "",
+  "notes": "Standing by to ingest and validate new canary batches.",
+  "receiver": "high_command_ai_0",
+  "sender": "toysoldiers_ai_0",
+  "referenced_id": "order-2025-10-15-031"
+}

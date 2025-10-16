@@ -1,0 +1,32 @@
+{
+  "target": "toysoldiers_ai_0",
+  "expires_at": "2025-10-23T00:00:00Z",
+  "issued_by": "high_command_ai_0",
+  "schema": "factory-order@1.0",
+  "attachments": [],
+  "directives": [
+    {
+      "step": 1,
+      "action": "ingest_new_canary_batches",
+      "details": "Pull canary_batch_b1.json/csv and canary_batch_b2.json/csv; record totals; verify SHA256 per file."
+    },
+    {
+      "step": 2,
+      "action": "validate_schema_and_dq",
+      "details": "Confirm schema v1.0; run DQ (non_empty, allowed_enums, units_positive, duration_ms_range) per batch; summarize."
+    },
+    {
+      "step": 3,
+      "action": "set_acceptance_and_report",
+      "details": "Set Go/No-Go with constraints/blockers; submit to exchange/reports/inbox/order-2025-10-15-031-report.json including per-batch results."
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-15-030"
+  ],
+  "order_id": "order-2025-10-15-031",
+  "summary": "Ingest the two new Toyfoundry canary batches; verify SHA256; validate schema v1.0 + DQ per batch; set acceptance; submit report.",
+  "priority": "standard",
+  "requires_ack": true,
+  "timestamp_issued": "2025-10-15T10:30:00Z"
+}

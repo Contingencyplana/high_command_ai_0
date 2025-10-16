@@ -1,0 +1,37 @@
+{
+  "target": "toyfoundry_ai_0",
+  "expires_at": "2025-10-23T00:00:00Z",
+  "issued_by": "high_command_ai_0",
+  "schema": "factory-order@1.0",
+  "attachments": [],
+  "directives": [
+    {
+      "step": 1,
+      "action": "propose_change",
+      "details": "State intent, scope, risks, rollback; include Order 025 metadata (owner/timestamp/approvals)."
+    },
+    {
+      "step": 2,
+      "action": "emit_canary_batch_b1",
+      "details": "Produce canary_batch_b1.csv/json with build_info.json and .sha256; record counts."
+    },
+    {
+      "step": 3,
+      "action": "emit_canary_batch_b2",
+      "details": "Produce canary_batch_b2.csv/json with build_info.json and .sha256; record counts."
+    },
+    {
+      "step": 4,
+      "action": "submit_report",
+      "details": "Send to exchange/reports/inbox/order-2025-10-15-030-report.json with per-batch paths, counts, checksums, confirmed schema, DQ results, retention=7d, rollback plan."
+    }
+  ],
+  "dependencies": [
+    "order-2025-10-15-028"
+  ],
+  "order_id": "order-2025-10-15-030",
+  "summary": "Expand canary: emit 2 additional distinct batches as separate files, each with build_info and SHA256; include retention and rollback.",
+  "priority": "high",
+  "requires_ack": true,
+  "timestamp_issued": "2025-10-15T10:30:00Z"
+}

@@ -1,0 +1,42 @@
+{
+  "artifacts": {
+    "batches": [
+      {
+        "json": "",
+        "records": null,
+        "dq": {},
+        "name": "b1",
+        "sha256": {
+          "json": "",
+          "csv": ""
+        },
+        "build_info": "",
+        "csv": "",
+        "schema_confirmed": null
+      },
+      {
+        "json": "",
+        "records": null,
+        "dq": {},
+        "name": "b2",
+        "sha256": {
+          "json": "",
+          "csv": ""
+        },
+        "build_info": "",
+        "csv": "",
+        "schema_confirmed": null
+      }
+    ],
+    "rollback_ready": true,
+    "retention_days": 7
+  },
+  "status": "in_progress",
+  "schema": "factory-report@1.0",
+  "sender": "toyfoundry_ai_0",
+  "referenced_order": "order-2025-10-15-030",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "",
+  "summary": "Additional canary batches in progress.",
+  "report_id": "order-2025-10-15-030-report"
+}
