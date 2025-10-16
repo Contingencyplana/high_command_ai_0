@@ -1,0 +1,26 @@
+{
+  "report_id": "order-2025-10-15-029-report",
+  "acceptance": {
+    "constraints": [],
+    "status": "pending",
+    "blockers": []
+  },
+  "timestamp_sent": "",
+  "summary": "Ingestion/validation in progress.",
+  "sender": "toysoldiers_ai_0",
+  "status": "in_progress",
+  "receiver": "high_command_ai_0",
+  "schema": "factory-report@1.0",
+  "dq_checks": {},
+  "schema_validation": {
+    "unexpected_fields": [],
+    "expected_version": "v1.0",
+    "field_mismatches": [],
+    "confirmed_version": null
+  },
+  "referenced_order": "order-2025-10-15-029",
+  "ingestion": {
+    "sha256_verified": false,
+    "records_total": null
+  }
+}

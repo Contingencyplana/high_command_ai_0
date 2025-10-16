@@ -1,0 +1,10 @@
+{
+  "receiver": "high_command_ai_0",
+  "sender": "toyfoundry_ai_0",
+  "status": "pending",
+  "notes": "Preparing canary batches and telemetry exports.",
+  "timestamp_sent": "",
+  "ack_id": "order-2025-10-15-028-ack",
+  "referenced_id": "order-2025-10-15-028",
+  "schema": "signal-ack@1.0"
+}

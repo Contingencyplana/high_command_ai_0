@@ -1,0 +1,23 @@
+{
+  "report_id": "order-2025-10-15-028-report",
+  "timestamp_sent": "",
+  "summary": "Canary Alfa batches in progress.",
+  "sender": "toyfoundry_ai_0",
+  "status": "in_progress",
+  "receiver": "high_command_ai_0",
+  "schema": "factory-report@1.0",
+  "artifacts": {
+    "export_json": "",
+    "checksums": {
+      "export_json_sha256": "",
+      "export_csv_sha256": ""
+    },
+    "build_info": "",
+    "export_csv": ""
+  },
+  "referenced_order": "order-2025-10-15-028",
+  "retention_and_rollback": {
+    "rollback_plan": "",
+    "retention_window": ""
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "priority": "high",
+  "dependencies": [
+    "order-2025-10-15-024"
+  ],
+  "requires_ack": true,
+  "summary": "Canary Alfa batches: emit composite_export (CSV/JSON), build_info.json, and SHA256; submit report with retention/rollback.",
+  "directives": [
+    {
+      "details": "State intent, scope, risks, rollback; include Order 025 metadata (owner/timestamp/approvals).",
+      "step": 1,
+      "action": "propose_change"
+    },
+    {
+      "details": "Dry-run forge scripts; validate schema/DQ locally; prepare canary lanes.",
+      "step": 2,
+      "action": "sandbox_validation"
+    },
+    {
+      "details": "Mint 2–3 canary batches with telemetry; emit composite_export.json/csv, build_info.json, and .sha256 files.",
+      "step": 3,
+      "action": "canary_batches"
+    },
+    {
+      "details": "Send to exchange/reports/inbox/order-2025-10-15-028-report.json with artifact paths, counts, checksums, retention, rollback.",
+      "step": 4,
+      "action": "submit_report"
+    }
+  ],
+  "schema": "factory-order@1.0",
+  "target": "toyfoundry_ai_0",
+  "expires_at": "2025-10-22T00:00:00Z",
+  "timestamp_issued": "2025-10-15T10:00:00Z",
+  "issued_by": "high_command_ai_0",
+  "order_id": "order-2025-10-15-028",
+  "attachments": []
+}

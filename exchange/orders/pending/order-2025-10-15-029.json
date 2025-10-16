@@ -1,0 +1,32 @@
+{
+  "priority": "standard",
+  "dependencies": [
+    "order-2025-10-15-028"
+  ],
+  "requires_ack": true,
+  "summary": "Ingest Toyfoundry canary exports; validate schema/DQ; set consumer acceptance; submit report.",
+  "directives": [
+    {
+      "details": "Pull composite_export.json/csv from Toyfoundry canary; record totals; verify SHA256.",
+      "step": 1,
+      "action": "ingest_exports"
+    },
+    {
+      "details": "Schema v1.0: fields/types/nullability/enums; DQ checks: non_empty, allowed_enums, units_positive, duration_ms_range.",
+      "step": 2,
+      "action": "validate_schema_and_dq"
+    },
+    {
+      "details": "Set Go/No-Go with constraints/blockers; submit to exchange/reports/inbox/order-2025-10-15-029-report.json.",
+      "step": 3,
+      "action": "set_acceptance_and_report"
+    }
+  ],
+  "schema": "factory-order@1.0",
+  "target": "toysoldiers_ai_0",
+  "expires_at": "2025-10-22T00:00:00Z",
+  "timestamp_issued": "2025-10-15T10:00:00Z",
+  "issued_by": "high_command_ai_0",
+  "order_id": "order-2025-10-15-029",
+  "attachments": []
+}
