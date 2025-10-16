@@ -5,7 +5,7 @@ logs/exchange_watcher_state.json
 archives/*
 exchange/CONTRIBUTING.md
 exchange/LICENSE
-exchange/orders/pending/*.json
+
 !archives/.gitkeep
 alfas/*
 !alfas/.gitkeep
