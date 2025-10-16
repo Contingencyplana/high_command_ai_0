@@ -1,0 +1,9 @@
+{
+  "schema": "factory-ack@1.0",
+  "order_id": "order-2025-10-14-013",
+  "requested_by": "high_command_ai_0",
+  "workspace": "toysoldiers_ai_0",
+  "status": "pending",
+  "timestamp_requested": "2025-10-15T00:35:00Z"
+}
+
