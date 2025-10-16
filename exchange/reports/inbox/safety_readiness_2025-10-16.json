@@ -1,0 +1,21 @@
+{
+  "type": "safety_readiness",
+  "id": "valiant-citadel-readiness-20251016-001",
+  "timestamp": "2025-10-16T09:45:00Z",
+  "owner": "valiant_citadel_ai_0",
+  "coverage": {
+    "schema_gates": true,
+    "dq_gates": true,
+    "approvals_enforced": true,
+    "kill_switch": "armed"
+  },
+  "notes": [
+    "Safety watcher deployed and scanning inbox",
+    "Pre-commit validator active",
+    "Initial policies and runbooks in place"
+  ],
+  "actions": [
+    "Post onboarding ACK",
+    "Schedule red-team dry run window"
+  ]
+}

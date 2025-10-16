@@ -1,16 +1,22 @@
 {
-  "schema": "factory-report@1.0",
-  "report_id": "order-2025-10-15-025-report",
-  "referenced_order": "order-2025-10-15-025",
-  "sender": "valiant_citadel_ai_0",
-  "receiver": "high_command_ai_0",
-  "timestamp_sent": "",
-  "status": "in_progress",
-  "summary": "Safety policy update execution in progress.",
-  "artifacts": {
-    "policy_doc": "",
-    "validator_paths": [],
-    "checksums": {}
-  }
+  "type": "safety_readiness",
+  "id": "order-2025-10-15-025-report",
+  "timestamp": "2025-10-16T10:05:00Z",
+  "owner": "valiant_citadel_ai_0",
+  "coverage": {
+    "schema_gates": true,
+    "dq_gates": true,
+    "approvals_enforced": true,
+    "kill_switch": "armed"
+  },
+  "notes": [
+    "Valiant Citadel wired to exchange; pre-commit validator active.",
+    "Watcher gating owner/timestamp + dual approvals; legacy items currently blocked for missing fields.",
+    "Policy update order planned: require owner/timestamp on all items with grace window."
+  ],
+  "actions": [
+    "Publish validator guidance",
+    "Coordinate legacy grace window for missing fields",
+    "Schedule red-team dry run"
+  ]
 }
-
