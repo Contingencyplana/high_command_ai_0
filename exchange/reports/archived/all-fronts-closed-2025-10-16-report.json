@@ -1,0 +1,50 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "all-fronts-closed-2025-10-16-report",
+  "sender": "high_command_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-16T06:26:47.6906434Z",
+  "status": "completed",
+  "summary": "Orders 012–031 closed across all fronts; policy 025 enacted (warn_only until 2025-10-23).",
+  "coverage": {
+    "consumer_acceptance": "accepted",
+    "safety_policy": {
+      "warn_only_until": "2025-10-23T00:00:00Z",
+      "dual_key_protected": true,
+      "owner_timestamp_required": true
+    },
+    "canary": {
+      "batches": [
+        "b1",
+        "b2"
+      ],
+      "validated": true
+    },
+    "orders_closed": [
+      "012",
+      "013",
+      "014",
+      "015",
+      "016",
+      "017",
+      "018",
+      "019",
+      "020",
+      "021",
+      "022",
+      "023",
+      "024",
+      "025",
+      "026",
+      "027",
+      "028",
+      "029",
+      "030",
+      "031"
+    ]
+  },
+  "notes": [
+    "Validators wired in pre-commit/CI; ledger validated OK.",
+    "Retention: 7 days (canary artifacts), rollback rehearsed and documented."
+  ]
+}

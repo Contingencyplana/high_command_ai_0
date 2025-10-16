@@ -8,3 +8,4 @@
 2025-10-16T05:00:41.5722135Z - Order order-2025-10-15-028 closed; ack logged and report archived.
 
 2025-10-16T05:00:41.5879708Z - Order order-2025-10-15-029 closed; ack logged and report archived.
+- 2025-10-16T06:26:47.6906434Z - All fronts closed; policy 025 enacted (warn_only until 2025-10-23); summary archived.

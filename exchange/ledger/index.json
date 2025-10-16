@@ -225,7 +225,8 @@
     "order-2025-10-15-028-report": "reports/archived/order-2025-10-15-028-report.json",
     "order-2025-10-15-029-report": "reports/archived/order-2025-10-15-029-report.json",
     "order-2025-10-15-030-report": "reports/inbox/order-2025-10-15-030-report.json",
-    "order-2025-10-15-031-report": "reports/inbox/order-2025-10-15-031-report.json"
+    "order-2025-10-15-031-report": "reports/inbox/order-2025-10-15-031-report.json",
+    "all-fronts-closed-2025-10-16-report": "reports/archived/all-fronts-closed-2025-10-16-report.json"
   },
   "acks": {
     "order-2025-10-12-009-ack": "acknowledgements/logged/order-2025-10-12-009-ack.json",
