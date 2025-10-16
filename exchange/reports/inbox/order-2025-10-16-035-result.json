@@ -1,0 +1,19 @@
+{
+  "schema": "factory-report@1.0",
+  "order_id": "order-2025-10-16-035",
+  "reported_by": "high_command_ai_0",
+  "timestamp_reported": "2025-10-16T14:47:15.8982873Z",
+  "status": "completed",
+  "summary": "24h limited_live monitor completed; thresholds respected.",
+  "metrics": {
+    "policy_violations": 0,
+    "max_ops_per_min": 3,
+    "dark_signs": 0,
+    "samples": 3
+  },
+  "artifacts": {
+    "monitor_log": "logs/clerk_monitor/035/telemetry.jsonl",
+    "monitor_log_sha256": "4AB868A43EA6812A8B799E945CDB8906D180EF9AB2B27E397300203E4B2C71F7"
+  },
+  "recommendation": "promote"
+}
