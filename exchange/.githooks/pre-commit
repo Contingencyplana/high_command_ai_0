@@ -1,19 +1,22 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/usr/bin/env pwsh
+$ErrorActionPreference = 'SilentlyContinue'
+Write-Host "[pre-commit] Validating exchange JSON payloads..."
+$jsons = git diff --cached --name-only | Where-Object { $_ -like 'exchange/*.json' -or $_ -like 'exchange/*/*.json' -or $_ -like 'exchange/*/*/*.json' }
+if ($jsons) {
+  python tools/schema_validator.py $jsons
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "[pre-commit] Validation failed. Aborting commit." -ForegroundColor Red
+    exit 1
+  }
 
-# Run exchange validator from High Command workspace
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-EXCHANGE_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-WORKSPACE_ROOT="$(cd "$EXCHANGE_ROOT/.." && pwd)"
-VALIDATOR="$WORKSPACE_ROOT/tools/exchange_validator.py"
-
-if [ -f "$VALIDATOR" ]; then
-  echo "[pre-commit] Running exchange validator..."
-  python "$VALIDATOR"
-  echo "[pre-commit] Validator passed."
-else
-  echo "[pre-commit] Validator not found at $VALIDATOR; skipping." >&2
-fi
-
+  Write-Host "[pre-commit] Rebuilding ledger index..."
+  python tools/ledger_indexer.py --write
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "[pre-commit] Ledger indexer failed. Aborting commit." -ForegroundColor Red
+    exit 1
+  }
+  if (Test-Path 'exchange/ledger/index.json') {
+    git add exchange/ledger/index.json | Out-Null
+  }
+}
 exit 0
-

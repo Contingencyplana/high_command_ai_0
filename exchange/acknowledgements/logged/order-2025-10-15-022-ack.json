@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-15-022-ack",
+  "referenced_id": "order-2025-10-15-022",
+  "sender": "high_command_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-16T12:45:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "HC Alfa pilot scaffolding underway",
+    "Dry-run only until approvals in place"
+  ]
+}
+

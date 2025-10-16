@@ -1,0 +1,17 @@
+{
+  "schema": "factory-report@1.0",
+  "order_id": "order-2025-10-15-023",
+  "reported_by": "high_command_ai_0",
+  "timestamp_reported": "2025-10-16T12:54:00Z",
+  "status": "completed",
+  "summary": "Guardrails configured: allowlists + rate limits, pre-commit validator hook, and documentation appendices.",
+  "artifacts": {
+    "config": "tools/hc_alfa_pilot.config.json",
+    "hook": "exchange/.githooks/pre-commit",
+    "docs": [
+      "planning/command_exchange_protocol_appendix.md",
+      "planning/war_rooms_and_war_tables_appendix.md"
+    ]
+  }
+}
+

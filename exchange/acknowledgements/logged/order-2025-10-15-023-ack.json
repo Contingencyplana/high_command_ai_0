@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-15-023-ack",
+  "referenced_id": "order-2025-10-15-023",
+  "sender": "high_command_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-16T12:46:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Guardrails config + hooks to be added",
+    "Approvals workflow appendix to be documented"
+  ]
+}
+

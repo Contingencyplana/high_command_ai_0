@@ -1,0 +1,20 @@
+{
+  "schema": "factory-report@1.0",
+  "order_id": "order-2025-10-15-022",
+  "reported_by": "high_command_ai_0",
+  "timestamp_reported": "2025-10-16T12:52:00Z",
+  "status": "completed",
+  "summary": "HC Alfa pilot scaffolding created (exchange, ops, briefing) with dry-run guardrails.",
+  "artifacts": {
+    "scripts": [
+      "tools/hc_alfa/exchange.py",
+      "tools/hc_alfa/ops.py",
+      "tools/hc_alfa/briefing.py"
+    ],
+    "logs": [
+      "logs/hc_alfa/.gitkeep"
+    ],
+    "briefing_sample": "planning/briefings/2025-10-16.md"
+  }
+}
+

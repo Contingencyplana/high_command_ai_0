@@ -25,7 +25,7 @@
     {
       "step": 4,
       "action": "approvals_workflow",
-      "details": "Define human approval gates for any Alfa mutation (dry-run → approval → apply); document in planning/war_rooms_and_war_tables.md (appendix)."
+      "details": "Define human approval gates for any Alfa mutation (dry-run -> approval -> apply); document in planning/war_rooms_and_war_tables.md (appendix)."
     },
     {
       "step": 5,
