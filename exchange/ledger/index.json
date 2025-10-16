@@ -178,10 +178,8 @@
     "order-2025-10-15-029": {
       "status": "closed",
       "order_path": "orders/pending/order-2025-10-15-029.json",
-<<<<<<< HEAD
-      "ack_path": "acknowledgements/pending/order-2025-10-15-029-ack.json",
-      "status": "pending",
-      "report_path": "reports/inbox/order-2025-10-15-029-report.json"
+      "ack_path": "acknowledgements/logged/order-2025-10-15-029-ack.json",
+      "report_path": "reports/archived/order-2025-10-15-029-report.json"
     },
     "order-2025-10-15-030": {
       "order_path": "orders/pending/order-2025-10-15-030.json",
@@ -194,10 +192,6 @@
       "status": "pending",
       "ack_path": "acknowledgements/pending/order-2025-10-15-031-ack.json",
       "report_path": "reports/inbox/order-2025-10-15-031-report.json"
-=======
-      "ack_path": "acknowledgements/logged/order-2025-10-15-029-ack.json",
-      "report_path": "reports/archived/order-2025-10-15-029-report.json"
->>>>>>> 1ed0e41889fd77c1d96f7e7f6c648601fd62e749
     }
   },
   "reports": {
@@ -228,15 +222,15 @@
     "order-2025-10-15-024-report": "reports/archived/order-2025-10-15-024-report.json",
     "order-2025-10-15-026-report": "reports/archived/order-2025-10-15-026-report.json",
     "order-2025-10-15-027-report": "reports/archived/order-2025-10-15-027-report.json",
-<<<<<<< HEAD
-    "order-2025-10-15-028-report": "reports/inbox/order-2025-10-15-028-report.json",
-    "order-2025-10-15-029-report": "reports/inbox/order-2025-10-15-029-report.json",
+
+    "order-2025-10-15-028-report": "reports/archived/order-2025-10-15-028-report.json",
+    "order-2025-10-15-029-report": "reports/archived/order-2025-10-15-029-report.json",
     "order-2025-10-15-030-report": "reports/inbox/order-2025-10-15-030-report.json",
     "order-2025-10-15-031-report": "reports/inbox/order-2025-10-15-031-report.json"
-=======
+
     "order-2025-10-15-028-report": "reports/archived/order-2025-10-15-028-report.json",
     "order-2025-10-15-029-report": "reports/archived/order-2025-10-15-029-report.json"
->>>>>>> 1ed0e41889fd77c1d96f7e7f6c648601fd62e749
+
   },
   "acks": {
     "order-2025-10-12-009-ack": "acknowledgements/logged/order-2025-10-12-009-ack.json",
@@ -266,15 +260,17 @@
     "order-2025-10-15-024-ack": "acknowledgements/logged/order-2025-10-15-024-ack.json",
     "order-2025-10-15-026-ack": "acknowledgements/logged/order-2025-10-15-026-ack.json",
     "order-2025-10-15-027-ack": "acknowledgements/logged/order-2025-10-15-027-ack.json",
-<<<<<<< HEAD
+
     "order-2025-10-15-025-approval": "acknowledgements/logged/order-2025-10-15-025-approval.json",
     "order-2025-10-15-028-ack": "acknowledgements/pending/order-2025-10-15-028-ack.json",
     "order-2025-10-15-029-ack": "acknowledgements/pending/order-2025-10-15-029-ack.json",
     "order-2025-10-15-030-ack": "acknowledgements/pending/order-2025-10-15-030-ack.json",
     "order-2025-10-15-031-ack": "acknowledgements/pending/order-2025-10-15-031-ack.json"
-=======
+
     "order-2025-10-15-028-ack": "acknowledgements/logged/order-2025-10-15-028-ack.json",
     "order-2025-10-15-029-ack": "acknowledgements/logged/order-2025-10-15-029-ack.json"
->>>>>>> 1ed0e41889fd77c1d96f7e7f6c648601fd62e749
+
   }
 }
+
+
