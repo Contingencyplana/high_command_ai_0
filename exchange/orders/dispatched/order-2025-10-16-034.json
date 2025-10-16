@@ -1,0 +1,19 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-16-034",
+  "issued_by": "high_command_ai_0",
+  "target": "valiant_citadel_ai_0",
+  "priority": "standard",
+  "timestamp_issued": "2025-10-16T00:10:00Z",
+  "summary": "Safety oversight for War Office clerks: enforce approvals, caps, and monitoring.",
+  "directives": [
+    { "step": 1, "action": "audit_guardrails", "details": "Confirm allowlists, rate limits, and approvals (dual-key) for clerk operations." },
+    { "step": 2, "action": "monitoring_setup", "details": "Define alerts and thresholds for anomalous behavior; wire reporting channel." },
+    { "step": 3, "action": "submit_report", "details": "Submit to exchange/reports/inbox/order-2025-10-16-034-report.json with guardrail posture and readiness." }
+  ],
+  "dependencies": ["order-2025-10-16-033"],
+  "requires_ack": true,
+  "expires_at": "2025-10-23T00:00:00Z",
+  "attachments": []
+}
+

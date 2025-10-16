@@ -1,0 +1,15 @@
+{
+  "schema": "factory-report@1.0",
+  "order_id": "order-2025-10-16-034",
+  "reported_by": "valiant_citadel_ai_0",
+  "timestamp_reported": "",
+  "status": "in_progress",
+  "summary": "Guardrail posture under review; alerts being wired.",
+  "guardrails": {
+    "allowlists": true,
+    "rate_limits": true,
+    "approvals": "dual_key",
+    "monitoring": "configured"
+  }
+}
+

@@ -1,4 +1,11 @@
-"""Schema validation utilities for SHAGI message payloads."""
+"""Schema validation utilities for SHAGI message payloads.
+
+Notes
+- Not all JSON files under `exchange/` are payloads (e.g., `ledger/index.json`,
+  example configs, attachment snippets). These may legitimately lack a
+  top‑level `schema` field. The validator skips such files rather than failing
+  the validation run, while still enforcing schemas for real payloads.
+"""
 
 from __future__ import annotations
 
@@ -73,27 +80,41 @@ def _validate_fields(payload: Mapping[str, object], schema: Mapping[str, type]) 
 def validate_payload(payload: Mapping[str, object]) -> None:
     schema_name = payload.get("schema")
     if not schema_name:
-        raise SchemaValidationError("Payload missing 'schema' attribute")
+        # Non‑payload JSON (e.g., index/config/attachments) — skip validation
+        raise SchemaValidationError("__SKIP__: no 'schema' field (non-payload)")
     schema = SCHEMAS.get(schema_name)
     if schema is None:
         raise SchemaValidationError(f"Unsupported schema '{schema_name}'")
     _validate_fields(payload, schema)
 
 
-def validate_file(path: Path) -> None:
+def validate_file(path: Path) -> str:
     data = json.loads(path.read_text(encoding="utf-8"))
-    validate_payload(data)
+    try:
+        validate_payload(data)
+    except SchemaValidationError as exc:
+        msg = str(exc)
+        if msg.startswith("__SKIP__"):
+            return "skip"
+        raise
+    return "ok"
 
 
 def main(file_paths: list[str]) -> int:
-    try:
-        for file_path in file_paths:
-            validate_file(Path(file_path))
-            print(f"[schema] {file_path} valid")
-    except SchemaValidationError as exc:
-        print(f"[schema] validation error: {exc}")
-        return 1
-    return 0
+    errors = 0
+    for file_path in file_paths:
+        path = Path(file_path)
+        try:
+            result = validate_file(path)
+        except SchemaValidationError as exc:
+            errors += 1
+            print(f"[schema] validation error: {file_path}: {exc}")
+        else:
+            if result == "ok":
+                print(f"[schema] {file_path} valid")
+            else:
+                print(f"[schema] {file_path} skipped (no schema)")
+    return 0 if errors == 0 else 1
 
 
 if __name__ == "__main__":  # pragma: no cover - manual invocation

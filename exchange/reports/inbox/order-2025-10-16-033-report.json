@@ -1,0 +1,12 @@
+{
+  "schema": "factory-report@1.0",
+  "order_id": "order-2025-10-16-033",
+  "reported_by": "high_command_ai_0",
+  "timestamp_reported": "",
+  "status": "in_progress",
+  "summary": "HC canary installation and dry-run routines executing.",
+  "tasks": ["draft_briefing", "queue_ledger_note", "propose_doc_edit"],
+  "caps_enforced": true,
+  "anomalies": []
+}
+

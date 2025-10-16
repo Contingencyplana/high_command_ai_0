@@ -1,0 +1,21 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-16-032",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-10-16T00:00:00Z",
+  "summary": "Mint War Office clerk Alfas (canary) with minimal scopes and provenance.",
+  "directives": [
+    { "step": 1, "action": "propose_change", "details": "Draft RFC: intent, risks, exit criteria; include Order 025 metadata (owner/timestamp/approvals)." },
+    { "step": 2, "action": "define_recipe", "details": "Define 'war_office_clerk' recipe with strict allowlists and rate limits." },
+    { "step": 3, "action": "mint_canary", "details": "Mint 2–3 canary clerks (clerk_b1, clerk_b2, optional clerk_b3) with manifests and build_info." },
+    { "step": 4, "action": "emit_telemetry", "details": "Write manifests, build_info.json, and checksums; stitch quilt exports if applicable." },
+    { "step": 5, "action": "submit_report", "details": "Send report to exchange/reports/inbox/order-2025-10-16-032-report.json with paths, counts, checksums, retention=7d, rollback." }
+  ],
+  "dependencies": ["order-2025-10-15-025"],
+  "requires_ack": true,
+  "expires_at": "2025-10-23T00:00:00Z",
+  "attachments": []
+}
+

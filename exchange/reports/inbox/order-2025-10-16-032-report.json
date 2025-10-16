@@ -1,0 +1,18 @@
+{
+  "schema": "factory-report@1.0",
+  "order_id": "order-2025-10-16-032",
+  "reported_by": "toyfoundry_ai_0",
+  "timestamp_reported": "",
+  "status": "in_progress",
+  "summary": "Clerk canary mint in progress.",
+  "artifacts": {
+    "manifests": [],
+    "build_info": [],
+    "checksums": {}
+  },
+  "retention_and_rollback": {
+    "retention_days": 7,
+    "rollback_plan": "Freeze reads; restore last known-good clerk set; repoint build_info with rollback_reason; notify exchange."
+  }
+}
+

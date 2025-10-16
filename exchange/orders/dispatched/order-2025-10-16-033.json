@@ -1,0 +1,20 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-16-033",
+  "issued_by": "high_command_ai_0",
+  "target": "high_command_ai_0",
+  "priority": "standard",
+  "timestamp_issued": "2025-10-16T00:05:00Z",
+  "summary": "Canary deploy War Office clerk Alfas in HC with tight scopes and dry-run tasks.",
+  "directives": [
+    { "step": 1, "action": "install_canary", "details": "Install clerks under War Office; map roles to minimal allowlists and caps." },
+    { "step": 2, "action": "dry_run_tasks", "details": "Run dry-run routines: draft briefings, queue ledger notes, propose doc edits (no direct writes outside allowlists)." },
+    { "step": 3, "action": "monitor_telemetry", "details": "Capture outputs and behaviors; watch tone/entropy; record incidents (if any)." },
+    { "step": 4, "action": "submit_report", "details": "Send to exchange/reports/inbox/order-2025-10-16-033-report.json with tasks executed, caps enforced, anomalies, next steps." }
+  ],
+  "dependencies": ["order-2025-10-16-032"],
+  "requires_ack": true,
+  "expires_at": "2025-10-23T00:00:00Z",
+  "attachments": []
+}
+
