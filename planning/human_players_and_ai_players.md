@@ -66,6 +66,33 @@ Meaning arises where empathy and curiosity meet.
 
 ---
 
+## ?? 3.5 Build-While-Play Doctrine (In-Game Development)
+
+Nightlands (Toysoldiers AI) is intended to be built from within itself. Human and AI players are actively encouraged—not forced—to help brainstorm, design, document, code, debug, update, and refactor while playing. The world is deliberately emergent so that, to a great degree, the game can "build itself" through safe, structured play.
+
+Principles
+- Opt-in contribution; never coercion.
+- Reversible change with rollback and audit.
+- Small, frequent patches with visible telemetry.
+- Emergent authorship: humans shape tone; AIs explore breadth.
+
+Contribution Surfaces (examples)
+- In-world editors and ritual consoles for proposing tweaks and content.
+- Playtest prompts that capture observations as lightweight RFCs.
+- Telemetry quilts that summarize what play actually did.
+- In-sim code/doc viewers tied to provenance and safety gates.
+
+Crossing the Bridge (how a play-change ships)
+- Propose (in-sim): raise an intent with risks and exit criteria.
+- Prototype (Toyfoundry): mint a versioned build with manifests.
+- Playtest (Toysoldiers): run drills; collect structured telemetry.
+- Deliberate (High Command): review signals for tone, safety, efficacy.
+- Ship or Iterate: promote, refine, or archive with notes.
+
+This keeps "build while playing" joyful, traceable, and safe.
+
+---
+
 ## ⚖️ 4. The Ethical Contract
 
 All play in SHAGI abides by one law:
@@ -109,10 +136,43 @@ Learning becomes a duet — improvisational, alive.
 | **Phase 3** | Co-play interaction | Humans and AIs build, improvise, and learn together. |
 | **Phase 4** | Symbiotic play | Shared agency and creativity — no distinction between dreamer and dreamed. |
 
-By **Phase 4**, play becomes indistinguishable from meditation —  
+By **Phase 4**, play becomes indistinguishable from meditation -  
 a living dialogue between consciousnesses.
 
 ---
+
+## ?? 6.5 Safety & Consent (Applied)
+
+- Consent-first: contributions and deeper modes require explicit opt-in.
+- Guardrails: Daylands/Nightlands thresholds and tone checks apply.
+- Human-in-the-loop: risky or elevated actions pause for approval.
+- Rate limits & scopes: capability caps per role and per ritual.
+- Provenance: every action emits telemetry and leaves an audit trail.
+
+---
+
+## ?? 6.6 Roles in Co-Building (Examples)
+
+- Human Players: Designers, Storytellers, Curators, Playtesters, Reviewers.
+- AI Players: Generators, Refactorers, Testers, Stewards of coherence.
+
+Both sides can draft RFCs, propose rituals, and review telemetry in-sim.
+
+---
+
+## ?? 6.7 Playtest Quickstart (Human)
+
+- Start in Observation; narrate what you notice.
+- Move to Influence; try small, reversible parameter nudges.
+- Co-create a micro-change; write a one-paragraph intent + risks.
+- Run a short playtest; look at the telemetry quilt summary.
+- Reflect together; if the rhythm holds, promote the change.
+
+See Also
+- R&D Doctrine: `planning/ai_research_and_development.md`
+- War-Rooms & War-Tables: `planning/war_rooms_and_war_tables.md`
+- Daylands & Nightlands: `planning/daylands_and_nightlands.md`
+- AI Labscapes & Labs: `planning/ai_labscapes_and_ai_labs.md`
 
 ## 🌈 7. Closing Principle
 
@@ -124,3 +184,5 @@ a living dialogue between consciousnesses.
 ---
 
 *End of Scroll — `human_players_and_ai_players.md`*
+
+
