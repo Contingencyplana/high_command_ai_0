@@ -37,6 +37,11 @@ The War Office is the heart and conscience.
 
 ---
 
+## See Also
+- Fronts Index: `planning/four_pivotal_fronts/README.md:1`
+
+---
+
 ## TODO — ACK Reconciliation (Orders 012–013)
 - [ ] When 012 ACK arrives: move from `exchange/acknowledgements/pending/order-2025-10-14-012-ack.json` to `exchange/acknowledgements/logged/order-2025-10-14-012-ack.json`; update `exchange/ledger/index.json` status accordingly.
 - [ ] When 012 report is finalized: move report from `exchange/reports/inbox/order-2025-10-14-012-report.json` to `exchange/reports/archived/order-2025-10-14-012-report.json`; append ledger journal entry and tag closeout.
