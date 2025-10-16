@@ -1,0 +1,11 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-15-025-ack",
+  "referenced_id": "order-2025-10-15-025",
+  "sender": "valiant_citadel_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "",
+  "status": "pending",
+  "notes": "Awaiting workspace provisioning and policy publication."
+}
+

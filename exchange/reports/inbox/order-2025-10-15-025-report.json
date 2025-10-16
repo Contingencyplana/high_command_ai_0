@@ -1,0 +1,16 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-025-report",
+  "referenced_order": "order-2025-10-15-025",
+  "sender": "valiant_citadel_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "",
+  "status": "in_progress",
+  "summary": "Safety policy update execution in progress.",
+  "artifacts": {
+    "policy_doc": "",
+    "validator_paths": [],
+    "checksums": {}
+  }
+}
+
