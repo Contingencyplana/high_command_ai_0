@@ -147,7 +147,7 @@
     },
     "order-2025-10-15-025": {
       "status": "closed",
-      "order_path": "orders/pending/order-2025-10-15-025.json",
+      "order_path": "orders/completed/order-2025-10-15-025.json",
       "ack_path": "acknowledgements/logged/order-2025-10-15-025-ack.json",
       "report_path": "reports/archived/order-2025-10-15-025-report.json"
     },
@@ -220,6 +220,7 @@
     "order-2025-10-15-024-ack": "acknowledgements/logged/order-2025-10-15-024-ack.json",
     "order-2025-10-15-025-ack": "acknowledgements/logged/order-2025-10-15-025-ack.json",
     "order-2025-10-15-026-ack": "acknowledgements/pending/order-2025-10-15-026-ack.json",
-    "order-2025-10-15-027-ack": "acknowledgements/pending/order-2025-10-15-027-ack.json"
+    "order-2025-10-15-027-ack": "acknowledgements/pending/order-2025-10-15-027-ack.json",
+    "order-2025-10-15-025-approval": "acknowledgements/logged/order-2025-10-15-025-approval.json"
   }
 }

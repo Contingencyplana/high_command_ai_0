@@ -1,0 +1,27 @@
+{
+  "schema": "safety-approval@1.0",
+  "approval_id": "order-2025-10-15-025-approval",
+  "referenced_id": "order-2025-10-15-025",
+  "sender": "high_command_ai_0",
+  "receiver": "valiant_citadel_ai_0",
+  "timestamp_sent": "2025-10-16T03:49:53.4445080Z",
+  "approvers": [
+    {
+      "type": "human",
+      "id": "VisionHolder",
+      "workspace": "war_office",
+      "timestamp": "2025-10-16T03:49:53.4445080Z",
+      "role": "civilian"
+    },
+    {
+      "type": "ai",
+      "id": "SafetyLead",
+      "workspace": "valiant_citadel_ai_0",
+      "timestamp": "2025-10-16T03:49:53.4445080Z",
+      "role": "safety"
+    }
+  ],
+  "notes": [
+    "Dual-key approval recorded; grace window to 2025-10-23T00:00:00Z"
+  ]
+}
