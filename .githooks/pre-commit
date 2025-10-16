@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Allow opt-out
+if [[ "${SKIP_EXCHANGE_VALIDATION:-}" == "1" ]]; then
+  echo "[pre-commit] SKIP_EXCHANGE_VALIDATION=1 set; skipping exchange validation" >&2
+  exit 0
+fi
+
+# Validate Exchange consistency
+if command -v python >/dev/null 2>&1; then
+  python -m tools.exchange_validator
+else
+  echo "[pre-commit] Python not found; cannot run tools.exchange_validator" >&2
+  exit 1
+fi
+
+# Optional: template/lanes validation if present
+if [[ -f "tools/ci/validate_templates.ps1" ]]; then
+  if command -v pwsh >/dev/null 2>&1; then
+    pwsh -NoProfile -File tools/ci/validate_templates.ps1
+  elif command -v powershell >/dev/null 2>&1; then
+    powershell -NoProfile -File tools/ci/validate_templates.ps1
+  fi
+fi
