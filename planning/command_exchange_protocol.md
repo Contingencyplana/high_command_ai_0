@@ -190,7 +190,7 @@ Automation scripts should regenerate the index after each sync to guarantee refe
 
 ---
 
-## � 6. Automation Aides
+## 6. Automation Aides
 
 - **Exchange Watcher (`tools/exchange_watcher.py`):** Polls the exchange tree, tracks the last-seen snapshot, and prints new orders, pending acknowledgements, and inbox reports. Supports one-shot checks or continuous monitoring via `--watch`.
 - **Schema Validator (`tools/schema_validator.py`):** Validates payloads against canonical schemas prior to commit; integrate into CI or pre-commit flows.

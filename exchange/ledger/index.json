@@ -152,7 +152,7 @@
       "report_path": "reports/archived/order-2025-10-15-024-report.json"
     },
     "order-2025-10-15-025-policy-update": {
-      "status": "closed",
+      "status": "pending",
       "order_path": "orders/pending/order-2025-10-15-025-policy-update.json",
       "ack_path": null,
       "report_path": null
@@ -224,9 +224,8 @@
     "order-2025-10-15-027-report": "reports/archived/order-2025-10-15-027-report.json",
     "order-2025-10-15-028-report": "reports/archived/order-2025-10-15-028-report.json",
     "order-2025-10-15-029-report": "reports/archived/order-2025-10-15-029-report.json",
-    "order-2025-10-15-030-report": "reports/inbox/order-2025-10-15-030-report.json",
-    "order-2025-10-15-031-report": "reports/inbox/order-2025-10-15-031-report.json",
-    "all-fronts-closed-2025-10-16-report": "reports/archived/all-fronts-closed-2025-10-16-report.json"
+    "order-2025-10-15-030-report": "reports/archived/order-2025-10-15-030-report.json",
+    "order-2025-10-15-031-report": "reports/archived/order-2025-10-15-031-report.json"
   },
   "acks": {
     "order-2025-10-12-009-ack": "acknowledgements/logged/order-2025-10-12-009-ack.json",
@@ -262,6 +261,3 @@
     "order-2025-10-15-031-ack": "acknowledgements/logged/order-2025-10-15-031-ack.json"
   }
 }
-
-
-
