@@ -1,0 +1,21 @@
+{
+  "mode": "local",
+  "upstream_root": "C:/path/to/high_command_exchange",
+  "mapping": {
+    "local": {
+      "orders_pending": "exchange/orders/pending",
+      "reports_inbox": "exchange/reports/inbox",
+      "acks_pending": "exchange/acknowledgements/pending",
+      "acks_logged": "exchange/acknowledgements/logged"
+    },
+    "upstream": {
+      "orders_pending": "orders/pending",
+      "orders_dispatched": "orders/dispatched",
+      "reports_inbox": "reports/inbox",
+      "reports_archived": "reports/archived",
+      "acks_pending": "acknowledgements/pending",
+      "acks_logged": "acknowledgements/logged"
+    }
+  }
+}
+
