@@ -4,8 +4,8 @@
   "referenced_order": "order-2025-10-14-013",
   "sender": "toysoldiers_ai_0",
   "receiver": "high_command_ai_0",
-  "timestamp_sent": "<UTC ISO-8601>",
-  "status": "pending",
+  "timestamp_sent": "2025-10-15T00:44:00Z",
+  "status": "ready_for_review",
   "summary": "Ingestion + validation + monitoring of Toyfoundry exports.",
   "sources": {
     "sample_json": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.json",
@@ -13,20 +13,65 @@
     "export_schema_path": ".imports/toyfoundry/telemetry/quilt/exports/export_schema.md"
   },
   "ingestion_log": {
-    "records_total": 0,
+    "records_total": 8,
     "parse_errors": [],
-    "notes": []
+    "notes": [],
+    "json": {
+      "path": ".imports\\toyfoundry\\telemetry\\quilt\\exports\\samples\\composite_export.sample.json",
+      "records": 4,
+      "fields": [
+        "batch_id",
+        "duration_ms",
+        "ritual",
+        "status",
+        "units_processed"
+      ],
+      "sha256": "1dcfe5a8362f620a9e0512b6155e6eec421e4d9d189d1e2a190f6da485041757"
+    },
+    "csv": {
+      "path": ".imports\\toyfoundry\\telemetry\\quilt\\exports\\samples\\composite_export.sample.csv",
+      "records": 4,
+      "fields": [
+        "batch_id",
+        "duration_ms",
+        "ritual",
+        "status",
+        "units_processed"
+      ],
+      "sha256": "1c4497c33c5d04f29581cc4caada8edff6c54ff850d6040048083995e2befb94"
+    }
   },
   "schema_validation": {
     "expected_version": "v1.0",
-    "confirmed_version": "<pending>",
+    "confirmed_version": "v1.0",
     "field_mismatches": [],
     "unexpected_fields": []
   },
   "acceptance": {
-    "status": "pending",
+    "status": "accepted",
     "constraints": [],
     "blockers": []
+  },
+  "dq_checks": {
+    "non_empty": {
+      "passed": true,
+      "details": []
+    },
+    "allowed_rituals": {
+      "passed": true,
+      "details": []
+    },
+    "units_positive": {
+      "passed": true,
+      "details": []
+    },
+    "duration_ms_range": {
+      "passed": true,
+      "details": []
+    },
+    "allowed_status": {
+      "passed": true,
+      "details": []
+    }
   }
 }
-

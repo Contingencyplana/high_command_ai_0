@@ -1,14 +1,14 @@
 {
-  "schema": "factory-report@1.0",
+  "schema": "field-report@1.0",
   "report_id": "order-2025-10-15-027-report",
-  "referenced_order": "order-2025-10-15-027",
-  "sender": "toysoldiers_ai_0",
-  "receiver": "high_command_ai_0",
-  "timestamp_sent": "",
-  "status": "in_progress",
-  "summary": "Pointer README creation in progress.",
+  "origin": "toysoldiers_ai_0",
+  "relates_to": "order-2025-10-15-027",
+  "timestamp_submitted": "2025-10-16T12:36:00Z",
+  "status": "completed",
+  "summary": "Added Four Pivotal Fronts pointer README linking to High Command canon; included consumer acceptance responsibilities.",
   "artifacts": {
-    "pointer_path": "planning/four_pivotal_fronts/README.md"
+    "pointer_path": "planning/four_pivotal_fronts/README.md",
+    "sha256": "7B3E278E10FAECD219716D55AE60C44EE18038C4897ACC45B3626B4B3DBD1CA9"
   }
 }
 
