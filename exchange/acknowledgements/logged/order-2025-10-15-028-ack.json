@@ -1,0 +1,13 @@
+{
+  "notes": [
+    "Owner/timestamp present per Order 025",
+    "Proceeding with canary plan (2–3 batches)"
+  ],
+  "ack_id": "order-2025-10-15-028-ack",
+  "timestamp_sent": "2025-10-16T05:04:30Z",
+  "schema": "signal-ack@1.0",
+  "sender": "toyfoundry_ai_0",
+  "referenced_id": "order-2025-10-15-028",
+  "receiver": "high_command_ai_0",
+  "status": "acknowledged"
+}

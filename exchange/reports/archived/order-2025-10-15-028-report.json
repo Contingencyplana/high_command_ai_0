@@ -1,0 +1,28 @@
+{
+  "reported_by": "toyfoundry_ai_0",
+  "summary": "Canary Alfa batches generated and validated locally; composite exports ready for consumer ingestion.",
+  "policy": {
+    "owner": "toyfoundry_ai_0",
+    "timestamp": "2025-10-16T05:04:30Z",
+    "approvals": [
+      "SafetyLead",
+      "DutyCommander"
+    ]
+  },
+  "schema": "factory-report@1.0",
+  "canary": {
+    "retention_days": 7,
+    "batches_planned": 2,
+    "rollback_ready": true,
+    "batches_emitted": 1
+  },
+  "artifacts": {
+    "composite_csv_sha256": "1C4497C33C5D04F29581CC4CAADA8EDFF6C54FF850D6040048083995E2BEFB94",
+    "composite_csv_path": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.csv",
+    "composite_json_path": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.json",
+    "composite_json_sha256": "1DCFE5A8362F620A9E0512B6155E6EEC421E4D9D189D1E2A190F6DA485041757"
+  },
+  "status": "completed",
+  "order_id": "order-2025-10-15-028",
+  "timestamp_reported": "2025-10-16T05:04:30Z"
+}
