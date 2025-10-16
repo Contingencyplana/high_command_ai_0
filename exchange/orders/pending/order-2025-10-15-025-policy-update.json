@@ -1,0 +1,28 @@
+{
+  "type": "safety_policy_update",
+  "id": "order-2025-10-15-025-policy-update",
+  "timestamp": "2025-10-16T10:20:00Z",
+  "owner": "valiant_citadel_ai_0",
+  "acceptance": "blocked",
+  "policy": {
+    "require_fields": ["owner", "timestamp"],
+    "dual_key": true,
+    "legacy": {
+      "warn_only": true,
+      "cutoff_utc": "2025-10-23T00:00:00Z"
+    },
+    "validator_guidance": {
+      "pre_commit": "tools/ci/validate_safety_repo.ps1 ensures core runbooks/policies/kill-switch docs exist",
+      "watcher": "tools/ci/safety_watcher.ps1 enforces required fields, dual approvals, and schema checks",
+      "schemas": [
+        "exchange/schemas/order.schema.json",
+        "exchange/schemas/report.schema.json",
+        "exchange/schemas/ack.schema.json"
+      ]
+    }
+  },
+  "notes": [
+    "Publish policy to require owner/timestamp across all messages with a grace window, then enforce",
+    "Maintain dual-key approvals for protected orders"
+  ]
+}

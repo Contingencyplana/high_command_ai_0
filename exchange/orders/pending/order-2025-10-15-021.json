@@ -1,0 +1,23 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-15-021",
+  "issued_by": "high_command_ai_0",
+  "target": "toysoldiers_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-10-15T00:32:00Z",
+  "summary": "Consumer roll-in for standard run: schema drift guard, DQ thresholds, and monitoring alerts.",
+  "directives": [
+    { "step": 1, "action": "ingest_standard_exports", "details": "Ingest Toyfoundry standard run exports; verify SHA256 from export_manifest.json." },
+    { "step": 2, "action": "enforce_schema_guard", "details": "Validate schema_version=v1.0 and enforce field/type/nullability/enum invariants; fail if drift detected." },
+    { "step": 3, "action": "apply_dq_thresholds", "details": "Apply thresholds for non_empty, allowed_rituals/status, units_positive, duration_ms_range; record failures and remediation steps." },
+    { "step": 4, "action": "configure_monitoring", "details": "Set lightweight alerts for ingestion failure or schema drift; document channel and oncall/owner." },
+    { "step": 5, "action": "submit_report", "details": "Submit acceptance report to exchange/reports/inbox/order-2025-10-15-021-report.json with metrics, thresholds, and alert config." }
+  ],
+  "dependencies": ["order-2025-10-15-020", "order-2025-10-15-019"],
+  "requires_ack": true,
+  "expires_at": "2025-10-19T00:00:00Z",
+  "attachments": [
+    { "type": "python", "path": "attachments/tools/exchange_validator.py" }
+  ]
+}
+

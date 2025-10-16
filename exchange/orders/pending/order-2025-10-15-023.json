@@ -1,0 +1,43 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-15-023",
+  "issued_by": "high_command_ai_0",
+  "target": "high_command_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-10-15T00:42:00Z",
+  "summary": "HC-020B: Configure guardrails for HC Alfas (permissions, approvals, rate limits, CI/validator integration).",
+  "directives": [
+    {
+      "step": 1,
+      "action": "permissions_allowlists",
+      "details": "Author hc_alfa_pilot.config.json with allowed_paths per Alfa, max_mutations_per_run, rate_limit_s, and lockfile path; store at tools/."
+    },
+    {
+      "step": 2,
+      "action": "enable_precommit_validator",
+      "details": "Enable exchange/.githooks/pre-commit as repo hooksPath; ensure validator passes on commit and blocks placement/ledger drift."
+    },
+    {
+      "step": 3,
+      "action": "ci_placeholder",
+      "details": "Add local CI placeholder docs for running validator on PRs; include command lines and required environment in planning/command_exchange_protocol.md appendix."
+    },
+    {
+      "step": 4,
+      "action": "approvals_workflow",
+      "details": "Define human approval gates for any Alfa mutation (dry-run → approval → apply); document in planning/war_rooms_and_war_tables.md (appendix)."
+    },
+    {
+      "step": 5,
+      "action": "submit_report",
+      "details": "Submit guardrails report to exchange/reports/inbox/order-2025-10-15-023-report.json with evidence: hooksPath enabled, validator pass screenshot/log, config snapshot."
+    }
+  ],
+  "dependencies": ["order-2025-10-15-022"],
+  "requires_ack": true,
+  "expires_at": "2025-10-20T00:00:00Z",
+  "attachments": [
+    { "type": "python", "path": "attachments/tools/exchange_validator.py" }
+  ]
+}
+

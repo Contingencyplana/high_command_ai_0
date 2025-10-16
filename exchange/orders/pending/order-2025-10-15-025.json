@@ -1,0 +1,44 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-15-025",
+  "issued_by": "high_command_ai_0",
+  "target": "valiant_citadel_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-10-15T09:00:00Z",
+  "summary": "Safety policy update: require owner+timestamp on orders/reports, dual-key approvals for protected orders, and grace window before enforcement.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "publish_safety_policy",
+      "details": "Publish policy requiring order/report owner and timestamp fields; define protected order types requiring dual-key approvals."
+    },
+    {
+      "step": 2,
+      "action": "configure_grace_window",
+      "details": "Until 2025-10-23T00:00:00Z, warn (do not block) when owner/timestamp or approvals are missing; after cutoff, block and set acceptance=blocked."
+    },
+    {
+      "step": 3,
+      "action": "implement_validation",
+      "details": "Provide validator hooks/docs for manufacturing and field workspaces to check required fields and approvals prior to commit/publish."
+    },
+    {
+      "step": 4,
+      "action": "monitor_and_report",
+      "details": "Monitor exchange for violations; emit a safety_readiness report with observed compliance, warnings, and any enforcement events."
+    }
+  ],
+  "dependencies": ["order-2025-10-15-024"],
+  "requires_ack": true,
+  "expires_at": "2025-10-29T00:00:00Z",
+  "attachments": [
+    { "type": "markdown", "path": "planning/ai_agents_and_safety.md" },
+    { "type": "markdown", "path": "planning/templates/safety_gate_template.md" }
+  ],
+  "parameters": {
+    "grace_window_end": "2025-10-23T00:00:00Z",
+    "approvers": ["SafetyLead", "DutyCommander"],
+    "protected_order_types": ["safety_freeze", "safety_rollback", "safety_policy_update"]
+  }
+}
+

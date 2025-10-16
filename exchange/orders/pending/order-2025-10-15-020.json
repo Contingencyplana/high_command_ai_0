@@ -1,0 +1,23 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-15-020",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-10-15T00:30:00Z",
+  "summary": "Scale beyond canary: small standard run with batch limits, automated checksums, and export manifest.",
+  "directives": [
+    { "step": 1, "action": "configure_batch_limits", "details": "Set max_alfa_per_batch=8; document parameters used for this run (template version, toggles)." },
+    { "step": 2, "action": "execute_standard_run", "details": "Produce standard batches under configured limit with telemetry enabled." },
+    { "step": 3, "action": "emit_exports", "details": "Emit composite_export.json/csv with build_info.json and SHA256 checksums; generate export_manifest.json summarizing artifacts + checksums." },
+    { "step": 4, "action": "publish_locations", "details": "Record export locations and checksums in report; ensure paths are accessible to consumers." },
+    { "step": 5, "action": "submit_report", "details": "Submit run summary to exchange/reports/inbox/order-2025-10-15-020-report.json with counts, checksums, and any anomalies." }
+  ],
+  "dependencies": ["order-2025-10-15-018"],
+  "requires_ack": true,
+  "expires_at": "2025-10-19T00:00:00Z",
+  "attachments": [
+    { "type": "python", "path": "attachments/tools/exchange_validator.py" }
+  ]
+}
+

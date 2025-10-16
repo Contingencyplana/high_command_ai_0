@@ -1,0 +1,43 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-15-022",
+  "issued_by": "high_command_ai_0",
+  "target": "high_command_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-10-15T00:40:00Z",
+  "summary": "HC-020A: Instantiate High Command Alfa pilot (exchange, ops, briefing) under tight guardrails.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "instantiate_hc_alfa_exchange",
+      "details": "Create hc_alfa_exchange with RW scope limited to exchange/**; responsibilities: validate orders/acks/reports, enforce placement policy, auto-move order to dispatched on ACK with ledger update (dry-run by default)."
+    },
+    {
+      "step": 2,
+      "action": "instantiate_hc_alfa_ops",
+      "details": "Create hc_alfa_ops to orchestrate publish/sync using scripts/hc_publish.ps1 and scripts/field_sync.ps1; obey lockfile and rate limits; default dry-run."
+    },
+    {
+      "step": 3,
+      "action": "instantiate_hc_alfa_briefing",
+      "details": "Create hc_alfa_briefing to compile exchange reports into concise War Office briefings; output planning/briefings/YYYY-MM-DD.md with deltas and anomalies."
+    },
+    {
+      "step": 4,
+      "action": "audit_and_approvals",
+      "details": "All actions must support --dry-run and require human approval for mutations; write JSONL audit to logs/hc_alfa/*.jsonl with timestamps, operator, diffs, rationale."
+    },
+    {
+      "step": 5,
+      "action": "submit_report",
+      "details": "Submit pilot setup report to exchange/reports/inbox/order-2025-10-15-022-report.json including created components, scopes, dry-run evidence, and next KPIs."
+    }
+  ],
+  "dependencies": ["order-2025-10-15-021"],
+  "requires_ack": true,
+  "expires_at": "2025-10-20T00:00:00Z",
+  "attachments": [
+    { "type": "python", "path": "attachments/tools/exchange_validator.py" }
+  ]
+}
+

@@ -1,0 +1,22 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-15-024",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "normal",
+  "timestamp_issued": "2025-10-15T08:00:00Z",
+  "summary": "Pilot Daylands safety pipeline on a docs-only change using sandbox → canary gates.",
+  "directives": [
+    { "step": 1, "action": "propose_change", "details": "Introduce Daylands charter + safety checklist and wire gates." },
+    { "step": 2, "action": "sandbox_validation", "details": "Validate templates and lanes config; no code paths touched beyond planning/ and tools/telemetry/" },
+    { "step": 3, "action": "canary_rollout", "details": "Simulate canary lane using telemetry lanes sample; confirm monitoring/rollback runbooks present." },
+    { "step": 4, "action": "submit_report", "details": "Send outcome to exchange/reports/inbox/order-2025-10-15-024-report.json with pipeline statuses and links." }
+  ],
+  "dependencies": ["order-2025-10-15-023"],
+  "requires_ack": true,
+  "expires_at": "2025-10-22T00:00:00Z",
+  "attachments": [
+    { "type": "json", "path": "tools/telemetry/canary_sandbox.sample.json" }
+  ]
+}
+
