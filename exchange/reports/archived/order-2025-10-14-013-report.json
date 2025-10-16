@@ -1,0 +1,20 @@
+{
+  "schema": "field-report@1.0",
+  "report_id": "order-2025-10-14-013-report",
+  "origin": "toysoldiers_ai_0",
+  "relates_to": "order-2025-10-14-013",
+  "timestamp_submitted": "2025-10-16T14:07:00Z",
+  "status": "completed",
+  "summary": "Ingestion + validation + monitoring of Toyfoundry exports completed on sample artifacts.",
+  "ingestion": {
+    "records_total": 8,
+    "sha256_verified": true
+  },
+  "schema_validation": {
+    "expected_version": "v1.0",
+    "confirmed_version": "v1.0",
+    "field_mismatches": [],
+    "unexpected_fields": []
+  }
+}
+

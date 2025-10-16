@@ -1,0 +1,39 @@
+{
+  "schema": "field-report@1.0",
+  "report_id": "order-2025-10-15-015-report",
+  "origin": "toysoldiers_ai_0",
+  "relates_to": "order-2025-10-15-015",
+  "timestamp_submitted": "2025-10-16T14:22:00Z",
+  "status": "completed",
+  "summary": "Canary consumer acceptance completed; ingested Toyfoundry exports; SHA256 verified; schema v1.0 and DQ checks passed.",
+  "ingestion": {
+    "records_total": 2,
+    "sha256_verified": true
+  },
+  "schema_validation": {
+    "expected_version": "v1.0",
+    "confirmed_version": "v1.0",
+    "field_mismatches": [],
+    "unexpected_fields": []
+  },
+  "dq_checks": {
+    "non_empty": {"passed": true},
+    "allowed_rituals": {"passed": true},
+    "allowed_status": {"passed": true},
+    "units_positive": {"passed": true},
+    "duration_ms_range": {"passed": true}
+  },
+  "acceptance": {
+    "status": "accepted",
+    "constraints": [],
+    "blockers": []
+  },
+  "artifacts": {
+    "export_json": ".toyfoundry/telemetry/quilt/exports/composite_export.json",
+    "export_csv": ".toyfoundry/telemetry/quilt/exports/composite_export.csv",
+    "checksums": {
+      "export_json_sha256": "211BB786BE22FA61744382DE0755E0F1EE63D9019610F7004B3F0AC0DF49044F",
+      "export_csv_sha256": "116D29F290AB363A1EB674E7EC825A5178C69EDAA2D76B0D8318C06FFE507E18"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "factory-report@1.0",
+  "order_id": "order-2025-10-14-012",
+  "reported_by": "toyfoundry_ai_0",
+  "timestamp_reported": "2025-10-16T14:05:00Z",
+  "status": "completed",
+  "summary": "Automation + versioning for telemetry exports in place; exports generated with checksums.",
+  "artifacts": {
+    "export_json": ".toyfoundry/telemetry/quilt/exports/composite_export.json",
+    "export_csv": ".toyfoundry/telemetry/quilt/exports/composite_export.csv",
+    "checksums": {
+      "json_sha256": "211BB786BE22FA61744382DE0755E0F1EE63D9019610F7004B3F0AC0DF49044F",
+      "csv_sha256": "116D29F290AB363A1EB674E7EC825A5178C69EDAA2D76B0D8318C06FFE507E18"
+    }
+  },
+  "metrics": {
+    "records_json": 2,
+    "records_csv": 2
+  }
+}
+

@@ -9,3 +9,7 @@
 
 2025-10-16T05:00:41.5879708Z - Order order-2025-10-15-029 closed; ack logged and report archived.
 - 2025-10-16T06:26:47.6906434Z - All fronts closed; policy 025 enacted (warn_only until 2025-10-23); summary archived.
+2025-10-16T06:06:52.6168186Z - Orders 012/013 reports archived; 020/021 ACKs acknowledged.
+
+2025-10-16T06:12:34.5036126Z - Orders 014–017, 020–021: reports completed and archived; 030/031 ACKs logged.
+

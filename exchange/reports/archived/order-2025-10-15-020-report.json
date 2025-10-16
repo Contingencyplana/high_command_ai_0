@@ -1,0 +1,15 @@
+{
+  "schema": "factory-report@1.0",
+  "order_id": "order-2025-10-15-020",
+  "reported_by": "toyfoundry_ai_0",
+  "timestamp_reported": "2025-10-16T14:28:00Z",
+  "status": "completed",
+  "summary": "Standard run (small scale) completed; exports emitted with checksums and manifest.",
+  "artifacts": {
+    "json": {"path": ".toyfoundry/telemetry/quilt/exports/composite_export.json", "records": 2, "sha256": "211BB786BE22FA61744382DE0755E0F1EE63D9019610F7004B3F0AC0DF49044F"},
+    "csv": {"path": ".toyfoundry/telemetry/quilt/exports/composite_export.csv", "records": 2, "sha256": "116D29F290AB363A1EB674E7EC825A5178C69EDAA2D76B0D8318C06FFE507E18"},
+    "manifest": {"path": ".toyfoundry/telemetry/quilt/exports/build_info.json", "sha256": "580AF9C06BD84983538920D211522D21C0120163A55BC3C30BB6156A7C491D8C"}
+  },
+  "notes": []
+}
+

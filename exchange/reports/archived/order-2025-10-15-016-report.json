@@ -1,0 +1,17 @@
+{
+  "schema": "factory-report@1.0",
+  "order_id": "order-2025-10-15-016",
+  "reported_by": "toyfoundry_ai_0",
+  "timestamp_reported": "2025-10-16T14:24:00Z",
+  "status": "completed",
+  "summary": "Watcher standardization completed; hooks and validator unified; docs updated.",
+  "artifacts": {
+    "hook": "exchange/.githooks/pre-commit",
+    "validator": "tools/schema_validator.py"
+  },
+  "notes": [
+    "Pre-commit validation enforced for exchange JSON",
+    "Allowlist + rate limits documented in hc_alfa_pilot.config.json"
+  ]
+}
+

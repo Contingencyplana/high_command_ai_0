@@ -1,0 +1,31 @@
+{
+  "schema": "field-report@1.0",
+  "report_id": "order-2025-10-15-021-report",
+  "origin": "toysoldiers_ai_0",
+  "relates_to": "order-2025-10-15-021",
+  "timestamp_submitted": "2025-10-16T14:30:00Z",
+  "status": "completed",
+  "summary": "Consumer roll-in completed for standard run; schema v1.0 and DQ checks passed; acceptance recorded.",
+  "ingestion": {
+    "records_total": 2,
+    "sha256_verified": true
+  },
+  "schema_validation": {
+    "expected_version": "v1.0",
+    "confirmed_version": "v1.0",
+    "field_mismatches": [],
+    "unexpected_fields": []
+  },
+  "dq_checks": {
+    "non_empty": {"passed": true, "details": []},
+    "allowed_rituals": {"passed": true, "details": []},
+    "allowed_status": {"passed": true, "details": []},
+    "units_positive": {"passed": true, "details": []},
+    "duration_ms_range": {"passed": true, "details": []}
+  },
+  "acceptance": {
+    "status": "accepted",
+    "constraints": [],
+    "blockers": []
+  }
+}

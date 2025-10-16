@@ -1,0 +1,13 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-15-020-ack",
+  "referenced_id": "order-2025-10-15-020",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-16T14:10:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Standard run started; will emit report"
+  ]
+}
+

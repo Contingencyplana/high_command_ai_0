@@ -1,0 +1,33 @@
+{
+  "timestamp_submitted": "2025-10-16T06:24:29Z",
+  "relates_to": "order-2025-10-15-025-policy-update",
+  "origin": "valiant_citadel_ai_0",
+  "report_id": "safety_policy_enactment_2025-10-16",
+  "schema": "policy-report@1.0",
+  "status": "completed",
+  "summary": "Owner/timestamp required; dual-key approvals for protected orders; grace window active; validators wired.",
+  "details": {
+    "validators": {
+      "schemas": [
+        "exchange/schemas/order.schema.json",
+        "exchange/schemas/report.schema.json",
+        "exchange/schemas/ack.schema.json"
+      ],
+      "watcher": "tools/ci/safety_watcher.ps1",
+      "pre_commit": "tools/ci/validate_safety_repo.ps1"
+    },
+    "readiness_reports": [
+      "exchange/reports/inbox/safety_onboarding_ack_2025-10-16.json",
+      "exchange/reports/inbox/safety_readiness_2025-10-16.json"
+    ],
+    "require_fields": [
+      "owner",
+      "timestamp"
+    ],
+    "dual_key": true,
+    "grace_window": {
+      "cutoff_utc": "2025-10-23T00:00:00Z",
+      "warn_only": true
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "field-report@1.0",
+  "report_id": "order-2025-10-15-017-report",
+  "origin": "toysoldiers_ai_0",
+  "relates_to": "order-2025-10-15-017",
+  "timestamp_submitted": "2025-10-16T14:25:00Z",
+  "status": "completed",
+  "summary": "Watcher installed across field; monitoring configured and emitting alerts.",
+  "notes": [
+    "Exchange watcher running",
+    "Alerts channel: alerts/toysoldiers/ingestion"
+  ]
+}
+

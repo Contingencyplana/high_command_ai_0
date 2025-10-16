@@ -3,9 +3,12 @@
   "id": "order-2025-10-15-025-policy-update",
   "timestamp": "2025-10-16T10:20:00Z",
   "owner": "valiant_citadel_ai_0",
-  "acceptance": "blocked",
+  "acceptance": "warn_only",
   "policy": {
-    "require_fields": ["owner", "timestamp"],
+    "require_fields": [
+      "owner",
+      "timestamp"
+    ],
     "dual_key": true,
     "legacy": {
       "warn_only": true,
