@@ -52,13 +52,12 @@ SCHEMAS: Dict[str, Dict[str, type]] = {
     },
 }
 
-# Toyfoundry currently emits factory reports that follow the same shape as field reports.
+# Toyfoundry/HC factory reports: shared minimal fields; summary/details optional.
 SCHEMAS["factory-report@1.0"] = {
     "order_id": str,
     "reported_by": str,
     "timestamp_reported": str,
     "status": str,
-    "details": str,
 }
 
 
@@ -86,6 +85,10 @@ def validate_payload(payload: Mapping[str, object]) -> None:
     if schema is None:
         raise SchemaValidationError(f"Unsupported schema '{schema_name}'")
     _validate_fields(payload, schema)
+    # Factory report may include either 'summary' or 'details'. Accept either.
+    if schema_name == "factory-report@1.0":
+        if "summary" not in payload and "details" not in payload:
+            raise SchemaValidationError("Factory report requires 'summary' or 'details'")
 
 
 def validate_file(path: Path) -> str:
