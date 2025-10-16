@@ -5,6 +5,7 @@
   "owner": "valiant_citadel_ai_0",
   "ack": {
     "order_id": "order-2025-10-15-025",
-    "message": "Acknowledged receipt. Citadel proceeding with policy publication and readiness actions."
+    "message": "Acknowledged receipt. Citadel proceeding with policy publication and readiness actions.",
+    "status": "acknowledged"
   }
 }

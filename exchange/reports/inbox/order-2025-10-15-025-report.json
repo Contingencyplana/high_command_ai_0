@@ -3,6 +3,7 @@
   "id": "order-2025-10-15-025-report",
   "timestamp": "2025-10-16T10:05:00Z",
   "owner": "valiant_citadel_ai_0",
+  "status": "ready",
   "coverage": {
     "schema_gates": true,
     "dq_gates": true,
@@ -13,6 +14,11 @@
     "Valiant Citadel wired to exchange; pre-commit validator active.",
     "Watcher gating owner/timestamp + dual approvals; legacy items currently blocked for missing fields.",
     "Policy update order planned: require owner/timestamp on all items with grace window."
+  ],
+  "links": [
+    "policies/policy_engine.md",
+    "policies/kill_switch.md",
+    "docs/GETTING_STARTED.md"
   ],
   "actions": [
     "Publish validator guidance",
