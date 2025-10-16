@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-16-035-ack-b",
+  "referenced_id": "order-2025-10-16-035",
+  "sender": "valiant_citadel_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-16T15:10:30Z",
+  "status": "acknowledged",
+  "notes": [
+    "Dual-key approval (B): Safety officer",
+    "Kill-switch armed; watcher green"
+  ]
+}
+

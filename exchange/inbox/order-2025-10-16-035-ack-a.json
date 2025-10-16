@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-16-035-ack-a",
+  "referenced_id": "order-2025-10-16-035",
+  "sender": "high_command_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-16T15:10:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Dual-key approval (A): War Office approver",
+    "Proceed to limited_live under caps"
+  ]
+}
+

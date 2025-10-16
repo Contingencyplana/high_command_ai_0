@@ -1,0 +1,20 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-16-035",
+  "issued_by": "high_command_ai_0",
+  "target": "high_command_ai_0",
+  "priority": "standard",
+  "timestamp_issued": "2025-10-16T00:20:00Z",
+  "summary": "Promotion: clerk canaries from dry_run to limited_live with strict caps and monitoring.",
+  "directives": [
+    { "step": 1, "action": "enter_limited_live", "details": "Activate 3 canary clerks under limited_live lane only." },
+    { "step": 2, "action": "apply_caps", "details": "Caps: 3 ops/min, 6 ops/order, 60 ops/day; scope = War Office clerical tasks only." },
+    { "step": 3, "action": "monitor_24h", "details": "Run 24h monitor; abort on policy violation, abnormal rate, or any dark sign." },
+    { "step": 4, "action": "submit_report", "details": "Post 24h results with metrics, anomalies (if any), and recommendation to promote or rollback." }
+  ],
+  "dependencies": ["order-2025-10-16-032", "order-2025-10-16-033", "order-2025-10-16-034"],
+  "requires_ack": true,
+  "expires_at": "2025-10-23T00:00:00Z",
+  "attachments": []
+}
+
