@@ -1,19 +1,32 @@
 {
-  "schema": "factory-report@1.0",
-  "order_id": "order-2025-10-16-035",
-  "reported_by": "high_command_ai_0",
-  "timestamp_reported": "2025-10-16T14:47:15.8982873Z",
-  "status": "completed",
-  "summary": "24h limited_live monitor completed; thresholds respected.",
-  "metrics": {
-    "policy_violations": 0,
-    "max_ops_per_min": 3,
-    "dark_signs": 0,
-    "samples": 3
+  "order_id": "035",
+  "started_at": "",
+  "expected_end_at": "",
+  "status": "pending",
+  "totals": {
+    "samples": 0,
+    "ops_total": null
   },
-  "artifacts": {
-    "monitor_log": "logs/clerk_monitor/035/telemetry.jsonl",
-    "monitor_log_sha256": "4AB868A43EA6812A8B799E945CDB8906D180EF9AB2B27E397300203E4B2C71F7"
+  "avg_ops_per_min": null,
+  "max_ops_per_min": null,
+  "violations": 0,
+  "dark_signs": 0,
+  "alerts": [],
+  "watcher_state": {
+    "first_timestamp": null,
+    "last_timestamp": null,
+    "caps": {
+      "ops_per_min": 3,
+      "ops_per_order": 6,
+      "ops_per_day": 60
+    },
+    "adherence": {
+      "within_ops_per_min": null,
+      "within_ops_per_order": null,
+      "within_ops_per_day": null
+    }
   },
-  "recommendation": "promote"
+  "recommendation": "pending",
+  "notes": "Prefilled stub. At T+24h, run tools\\hc_alfa\\summarize_telemetry.ps1 to produce the final result."
 }
+

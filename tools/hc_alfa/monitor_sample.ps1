@@ -2,7 +2,8 @@ param(
   [string]$Out = 'logs/clerk_monitor/035/telemetry.jsonl',
   [int]$PolicyViolations = 0,
   [int]$OpsPerMin = 0,
-  [int]$DarkSigns = 0
+  [int]$DarkSigns = 0,
+  [string]$Agent
 )
 
 $ErrorActionPreference = 'Stop'
@@ -13,11 +14,26 @@ if ($dir -and -not (Test-Path $dir)) {
 }
 
 $ts = [DateTime]::UtcNow.ToString('o')
+
+# Base record fields
+$base = [hashtable]@{ timestamp = $ts }
+if ($Agent) { $base['agent'] = $Agent }
+
+function New-Rec($metric, $value) {
+  $h = $base.Clone()
+  $h['metric'] = $metric
+  $h['value'] = $value
+  return ($h | ConvertTo-Json -Compress)
+}
+
 $lines = @()
-$lines += (@{ timestamp = $ts; metric = 'policy_violations'; value = $PolicyViolations } | ConvertTo-Json -Compress)
-$lines += (@{ timestamp = $ts; metric = 'ops_per_min'; value = $OpsPerMin } | ConvertTo-Json -Compress)
-$lines += (@{ timestamp = $ts; metric = 'dark_signs'; value = $DarkSigns } | ConvertTo-Json -Compress)
+$lines += (New-Rec 'policy_violations' $PolicyViolations)
+$lines += (New-Rec 'ops_per_min' $OpsPerMin)
+$lines += (New-Rec 'dark_signs' $DarkSigns)
 
 Add-Content -Path $Out -Value ($lines -join "`n") -Encoding UTF8
-Write-Host "Appended sample(s) to $Out at $ts"
-
+if ($Agent) {
+  Write-Host "Appended sample(s) to $Out at $ts (Agent: $Agent)"
+} else {
+  Write-Host "Appended sample(s) to $Out at $ts"
+}
