@@ -1,0 +1,81 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-18-036",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "critical",
+  "timestamp_issued": "2025-10-18T14:00:00Z",
+  "summary": "CRITICAL: Align Toyfoundry export schema with Order 021 specification to unblock consumer validation pipeline.",
+  "context": "Toysoldiers Field Ops validation (Orders 021/029/031) detected schema drift between Order 021 specification and actual Toyfoundry exports. Consumer acceptance gates BLOCKED all validation orders. This corrective order aligns producer schema with consumer contract to unblock downstream pipeline.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "review_schema_specification",
+      "details": "Review Order 021 schema v1.0 specification: batch_id (string), ritual (enum: forge|parade|purge|promote), units_processed (integer, >0), status (enum: success|failure|partial), duration_ms (integer, 0-300000 range). Compare against current export implementation and document differences."
+    },
+    {
+      "step": 2,
+      "action": "update_export_generation",
+      "details": "Modify export generation logic (likely in tools/quilt_loom.py or equivalent) to emit Order 021-compliant schema. Ensure top-level fields match specification exactly. Add schema_version field with value '1.0' to all export JSONs for version detection."
+    },
+    {
+      "step": 3,
+      "action": "validate_schema_compliance",
+      "details": "Test updated export generation against Order 021 schema validator. Use provided schema validation tool or create test exports and verify all required fields present with correct types, enums, and constraints."
+    },
+    {
+      "step": 4,
+      "action": "regenerate_all_exports",
+      "details": "Re-export ALL batches with corrected schema: standard run (composite_export.json/csv), canary_c1, canary_b1, canary_b2. Ensure consistent schema across all export types."
+    },
+    {
+      "step": 5,
+      "action": "regenerate_checksums",
+      "details": "Regenerate SHA256 checksums in export_manifest.json for all updated exports. Ensure checksums calculated AFTER schema corrections applied to prevent stale checksum errors."
+    },
+    {
+      "step": 6,
+      "action": "submit_verification_report",
+      "details": "Submit completion report to exchange/reports/inbox/order-2025-10-18-036-report.json including: schema diff (before/after), sample exports for verification, SHA256 checksums, confirmation all batches regenerated, ready_for_revalidation flag set to true."
+    }
+  ],
+  "success_criteria": [
+    "All exports contain Order 021-specified fields at top level",
+    "schema_version field present in all export JSONs with value '1.0'",
+    "SHA256 checksums in export_manifest.json validate correctly",
+    "Sample exports pass Order 021 schema validation",
+    "All batches (standard + canary C1/B1/B2) regenerated with correct schema"
+  ],
+  "dependencies": [],
+  "requires_ack": true,
+  "expires_at": "2025-10-25T23:59:59Z",
+  "attachments": [
+    {
+      "type": "reference",
+      "path": "exchange/orders/pending/order-2025-10-15-021.json",
+      "description": "Original order containing schema v1.0 specification"
+    },
+    {
+      "type": "reference", 
+      "path": "exchange/reports/archived/order-2025-10-15-021-report.json",
+      "description": "Field report documenting schema drift with detailed diff"
+    },
+    {
+      "type": "reference",
+      "path": "planning/SCHEMA_DRIFT_SITREP_2025-10-18.md",
+      "description": "Comprehensive situation report with remediation analysis"
+    }
+  ],
+  "safety_notes": [
+    "This is a corrective order addressing BLOCKING issue in production pipeline",
+    "Changes affect data contract between Toyfoundry (producer) and all consumers",
+    "Test schema changes thoroughly before regenerating all batches",
+    "Coordinate with Toysoldiers before final submission to ensure validation ready"
+  ],
+  "metadata": {
+    "owner": "high_command_ai_0",
+    "timestamp": "2025-10-18T14:00:00Z",
+    "approvers": ["high_command", "toysoldiers_field_ops"],
+    "classification": "critical_corrective_action"
+  }
+}
