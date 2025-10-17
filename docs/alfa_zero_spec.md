@@ -22,7 +22,7 @@ Transform the VSCode/PowerShell/GitHub workflow into a **playable 16×16 emoji b
 1. **Grid-to-Order translation:** User clicks grid cells → system issues High Command factory-order
 2. **Telemetry-to-Victory mapping:** Factory reports feed win/loss conditions
 3. **Emoji battlefield UX:** All game state rendered as 16×16 emoji grid
-4. **Fractal extensibility:** Alfa Zero sits in `golf_00/alfa_000`; future Alfas (001-4095) follow same pattern
+4. **Fractal extensibility:** Alfa Zero sits in `golf_00/delta_00/alfa_00`; future Alfas (001-4095) follow same pattern
 
 ---
 
@@ -218,12 +218,13 @@ class AlfaZeroController:
 ```
 high_command_ai_0/
 ├── golf_00/
-│   └── alfa_000/
-│       ├── grid_state.json          # Current 16×16 emoji state
-│       ├── resources.json           # {ore, ingots, swords, turn_count}
-│       ├── controller.py            # Grid click → order translation
-│       ├── renderer.py              # Telemetry → emoji updates
-│       └── victory_check.py         # Win/loss evaluation
+│   └── delta_00/
+│       └── alfa_00/
+│           ├── grid_state.json          # Current 16×16 emoji state
+│           ├── resources.json           # {ore, ingots, swords, turn_count}
+│           ├── controller.py            # Grid click → order translation
+│           ├── renderer.py              # Telemetry → emoji updates
+│           └── victory_check.py         # Win/loss evaluation
 ├── exchange/
 │   └── orders/
 │       └── alfa_zero/               # Alfa Zero-specific orders
@@ -272,8 +273,9 @@ high_command_ai_0/
 
 **Fractal extensibility validates when:**
 
-6. ✅ Alfa_000 code can be cloned → Alfa_001 with different mission parameters
-7. ✅ 16 Alfas (000-015) fit cleanly in `golf_00/` folder structure
+6. ✅ Alfa_00 code can be cloned → Delta_01/Alfa_00 with different mission parameters
+7. ✅ 16 Alfas (00-15) fit cleanly in `golf_00/delta_00/` folder structure
+8. ✅ Pattern scales to 16 deltas × 16 alfas = 256 missions per golf theater
 
 ---
 

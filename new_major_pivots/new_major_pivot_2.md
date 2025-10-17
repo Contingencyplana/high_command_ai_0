@@ -125,17 +125,20 @@ Each **Alfa** is:
 ## Development Roadmap
 
 ### Phase 1: Alfa Zero Prototype (1 week)
-- Build one playable 16×16 grid (static first, then live)
+
+- Build one playable 16×16 grid (static first, then live) in `golf_00/delta_00/alfa_00/`
 - Wire to exchange protocol (clicks → orders → reports → grid updates)
 - Validate victory/defeat conditions
 
 ### Phase 2: Fractal Expansion (2-4 weeks)
-- Clone Alfa Zero → 16 variants (one per golf_00 slot)
+
+- Clone Alfa Zero → 16 variants (populate full `golf_00/delta_00/` sector)
 - Implement routing algorithm (victory → next priority Alfa)
 - Add save/load game state
 
 ### Phase 3: Full Deployment (2-3 months)
-- Scale to 4,096 Alfas (golf_00 through golf_15)
+
+- Scale to 4,096 Alfas (golf_00 through golf_15, all delta sectors populated)
 - Procedural generation of Alfas from workflow templates
 - Multiplayer support (multiple human operators + AI agents)
 

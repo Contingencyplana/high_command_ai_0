@@ -142,19 +142,19 @@ The **Four Major Pivots** represent a fundamental shift in how we build **Nightl
 ## Next Actions
 
 ### Immediate (This Week)
-1. **Build Alfa Zero Phase 1** — Static 16×16 grid renderer (terminal-based)
+1. **Build Alfa Zero Phase 1** — Static 16×16 grid renderer (terminal-based) in `golf_00/delta_00/alfa_00/`
 2. **Close Order-031** — Archive after Toysoldiers report (pre-pivot cleanup)
-3. **Update documentation** — Cascade pivots into README.md, war_office.md
+3. **Update documentation** — Cascade pivots into README.md, war_office.md ✅ **Done**
 
 ### Short-Term (Next 2-4 Weeks)
 1. **Alfa Zero Phase 2** — Wire grid to exchange protocol
 2. **Alfa Zero Phase 3** — Implement telemetry → grid updates + victory conditions
-3. **Populate Golf_00** — Create first 16 Alfas (validate templates)
+3. **Populate Golf_00/Delta_00** — Create first 16 Alfas (validate templates)
 
 ### Medium-Term (Next 2-3 Months)
-1. **Scale to 256 Alfas** — Full Golf_00 population
-2. **Expand to Golf_00-03** — 1,024 Alfas (early campaign)
-3. **Multiplayer prototype** — Multiple operators in different Alfas
+1. **Scale to Golf_00 complete** — 256 Alfas (16 delta sectors)
+2. **Expand to Golf_00-03** — 1,024 Alfas (4 golf theaters, early campaign)
+3. **Multiplayer prototype** — Multiple operators in different theaters/sectors
 
 ---
 
