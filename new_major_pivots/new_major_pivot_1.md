@@ -19,7 +19,7 @@ Current workflow requires extensive interaction with:
 - ~70-80% dev-ops (coding, debugging, documentation, terminal commands)
 - ~20-30% strategic/creative work
 
-**Impact on operator:** Soul-destroying boredom, cognitive drain, unsustainable long-term
+**Impact on operator:** Soul-destroying incredible boredom and tedium; mindless, soulless and heartless drudgery; consequent cognitive and creative drain, unsustainable long-term
 
 ---
 
