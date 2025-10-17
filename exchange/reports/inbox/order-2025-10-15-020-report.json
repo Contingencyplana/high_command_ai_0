@@ -1,0 +1,74 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-020-report",
+  "order_id": "order-2025-10-15-020",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-10-18T13:00:00Z",
+  "status": "completed",
+  "summary": "Order 020 executed successfully via playable workflow overlay. Standard batch of 8 Alfas minted with max_alfa_per_batch=8 configuration. All exports generated with SHA256 checksums. Victory conditions satisfied.",
+  "details": {
+    "execution_method": "Path A - Playable workflow with real forge backend",
+    "batch_configuration": {
+      "max_alfa_per_batch": 8,
+      "template_version": "1.0",
+      "forge_version": "forge_mint_alfa.py v1.0"
+    },
+    "alfas_minted": [
+      "alfa-1760719553-00000001",
+      "alfa-1760719553-00000002",
+      "alfa-1760719553-00000003",
+      "alfa-1760719553-00000004",
+      "alfa-1760719553-00000005",
+      "alfa-1760719553-00000006",
+      "alfa-1760719553-00000007",
+      "alfa-1760719553-00000008"
+    ],
+    "artifacts_generated": [
+      {
+        "type": "composite_export_json",
+        "path": ".toyfoundry/telemetry/quilt/exports/composite_export.json",
+        "sha256": "89DFAD6059B28113EDB9D26A6457D2C519EE89BA7A204620D155A4DA2F6E1381",
+        "accessible": true
+      },
+      {
+        "type": "composite_export_csv",
+        "path": ".toyfoundry/telemetry/quilt/exports/composite_export.csv",
+        "sha256": "898B6CB367687EB4CFA3BA9440509295220601B9A5AE5E68B9A258D0735E595C",
+        "accessible": true
+      },
+      {
+        "type": "build_info",
+        "path": ".toyfoundry/telemetry/quilt/exports/build_info.json",
+        "accessible": true
+      },
+      {
+        "type": "export_manifest",
+        "path": ".toyfoundry/telemetry/quilt/exports/export_manifest.json",
+        "accessible": true
+      }
+    ],
+    "telemetry_summary": {
+      "total_mint_events": 9,
+      "successful_mints": 8,
+      "ritual_events": 4,
+      "composite_rollup": ".toyfoundry/telemetry/quilt/quilt_rollup_all.json"
+    },
+    "victory_conditions_met": [
+      "Composite export JSON generated with SHA256",
+      "Composite export CSV generated with SHA256",
+      "Minted batch with max_alfa_per_batch=8",
+      "Build info and export manifest created",
+      "All artifact locations published and accessible"
+    ],
+    "anomalies": []
+  },
+  "next_steps": "Alfas ready for toysoldier integration. Recommend executing Order 028 (canary batches) next to expand production capacity with safety gates.",
+  "attachments": [
+    {
+      "type": "export_manifest",
+      "path": ".toyfoundry/telemetry/quilt/exports/export_manifest.json"
+    }
+  ]
+}
+

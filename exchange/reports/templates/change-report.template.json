@@ -1,10 +1,10 @@
 {
   "schema": "factory-report@1.0",
   "report_id": "<order-YYYY-MM-DD-SEQ-report>",
-  "referenced_order": "<order-YYYY-MM-DD-SEQ>",
-  "sender": "<workspace>",
+  "order_id": "<order-YYYY-MM-DD-SEQ>",
+  "reported_by": "<workspace>",
   "receiver": "<issuer>",
-  "timestamp_sent": "<ISO8601>",
+  "timestamp_reported": "<ISO8601>",
   "status": "completed",
   "summary": "Outcome summary of proposal → sandbox → canary → GA.",
   "artifacts": {

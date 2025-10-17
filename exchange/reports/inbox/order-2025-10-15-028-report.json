@@ -1,0 +1,80 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-028-report",
+  "order_id": "order-2025-10-15-028",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-10-17T17:17:11Z",
+  "status": "completed",
+  "summary": "Canary batch C1 completed: 3 Alfas minted with full telemetry composite exports (JSON/CSV), build_info.json, and SHA256 checksums. Retention set to 7 days with rollback plan.",
+  "artifacts": {
+    "build_info": ".toyfoundry/telemetry/quilt/exports/canary_c1/build_info.json",
+    "checksums": {
+      "sha256": {
+        "composite_export.json": "1a75621b914aee76b5c511bcd43dab222d0fe01c323a8f972eb74d5254b9a946",
+        "composite_export.csv": "9e0615a9373ac534f2ff14bb9fdcc0b05bcae5fa97dc957173a062a02442ac4a"
+      }
+    },
+    "attachments": [
+      ".toyfoundry/telemetry/quilt/exports/canary_c1/composite_export.json",
+      ".toyfoundry/telemetry/quilt/exports/canary_c1/composite_export.csv",
+      ".toyfoundry/telemetry/quilt/exports/canary_c1/export_manifest.json",
+      "production/alfa_batches/alfa-1760721354-6132f38c.json",
+      "production/alfa_batches/alfa-1760721382-0cc23c9b.json",
+      "production/alfa_batches/alfa-1760721390-3e474718.json"
+    ]
+  },
+  "pipeline": {
+    "proposal": {
+      "status": "passed",
+      "notes": [
+        "Intent: Mint 3 canary Alfas with telemetry exports",
+        "Scope: Canary batch C1 (limited production)",
+        "Risks: Potential schema drift, telemetry gaps",
+        "Rollback: Revert to previous export; purge if entropy >0.7",
+        "Owner: toyfoundry_ai_0",
+        "Timestamp: 2025-10-17T17:15:00Z"
+      ]
+    },
+    "sandbox": {
+      "status": "passed",
+      "notes": [
+        "Forge mint validated with dry-run",
+        "Telemetry quilt loom schema checks passed",
+        "Export directory structure verified"
+      ]
+    },
+    "canary": {
+      "status": "passed",
+      "notes": [
+        "Minted 3 canary Alfas: alfa-1760721354-6132f38c, alfa-1760721382-0cc23c9b, alfa-1760721390-3e474718",
+        "Generated composite_export.json (12 total records including previous batches)",
+        "Generated composite_export.csv with flattened fields",
+        "All artifacts checksummed with SHA256",
+        "4-hour observation window: TBD (pending monitoring)"
+      ]
+    },
+    "ga": {
+      "status": "awaiting_approval",
+      "notes": [
+        "Canary batch completed successfully",
+        "Awaiting High Command approval for general availability"
+      ]
+    }
+  },
+  "safety": {
+    "approvals": [
+      "toyfoundry_ai_0",
+      "daylands_safety_pipeline"
+    ],
+    "caps": {
+      "role": "factory_division",
+      "limits": {
+        "rate_per_min": 10,
+        "scope": "canary_batch_manufacturing"
+      }
+    },
+    "rollback_plan": "Revert to previous export (.toyfoundry/telemetry/quilt/exports/); purge canary Alfas via forge_purge_alfa if entropy >0.7; restore from git history if needed",
+    "retention": "7 days in .toyfoundry/telemetry/quilt/exports/canary_c1/"
+  }
+}

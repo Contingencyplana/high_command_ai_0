@@ -1,0 +1,10 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-15-030-ack",
+  "referenced_id": "order-2025-10-15-030",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-18T12:00:00Z",
+  "status": "acknowledged",
+  "notes": "Acknowledged. Order 030 directs expanding canary production with 2 additional distinct batches (canary_batch_b1, canary_batch_b2) as separate files with build_info.json and SHA256 checksums. Will execute directive steps: (1) propose change with intent/scope/risks/rollback including Order 025 metadata, (2) emit canary_batch_b1.csv/json with build_info and checksums, (3) emit canary_batch_b2.csv/json with build_info and checksums, (4) submit report with per-batch paths, counts, checksums, schema validation, DQ results, retention=7d, and rollback plan. Dependencies satisfied (order-2025-10-15-028 canary batch framework established). Target completion before expiry 2025-10-23T00:00:00Z."
+}

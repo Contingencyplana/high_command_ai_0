@@ -1,0 +1,74 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-024-report",
+  "order_id": "order-2025-10-15-024",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-10-18T13:00:00Z",
+  "status": "completed",
+  "summary": "Order 024 Daylands safety pipeline pilot completed successfully. Docs-only change executed with sandbox validation and canary simulation. Charter updated, monitoring/rollback runbooks documented.",
+  "details": {
+    "change_proposal": {
+      "intent": "Pilot Daylands safety pipeline framework on docs-only change",
+      "scope": "Updated planning/daylands_and_nightlands.md with Order 024 requirements",
+      "risks": "Minimal - documentation change only, no code execution",
+      "rollback": "git revert if charter content needs revision",
+      "owner": "toyfoundry_ai_0",
+      "timestamp": "2025-10-18T13:00:00Z"
+    },
+    "sandbox_validation": {
+      "status": "PASS",
+      "details": "Templates and lanes configuration validated. Schema checks green. No production paths modified.",
+      "validation_steps": [
+        "Verified planning/ directory write permissions",
+        "Validated markdown syntax",
+        "Confirmed no code execution paths modified",
+        "Checked schema validator still operational"
+      ]
+    },
+    "canary_rollout": {
+      "status": "PASS (Simulated)",
+      "details": "Simulated canary lane using existing telemetry infrastructure. Monitoring runbooks documented. Rollback procedures defined.",
+      "canary_configuration": {
+        "max_alfas_per_canary": 3,
+        "observation_window_hours": 4,
+        "telemetry_enhanced": true,
+        "rollback_automatic": true
+      },
+      "monitoring_metrics": [
+        "Forge ritual success rate (target: >95%)",
+        "Telemetry event latency (target: <2s)",
+        "Alfa diversity score (target: >0.6 per batch)",
+        "Export artifact validation rate (target: 100%)"
+      ]
+    },
+    "pipeline_statuses": {
+      "sandbox_gate": "PASS",
+      "canary_gate": "PASS",
+      "production_gate": "AWAITING_APPROVAL"
+    },
+    "documentation_updates": [
+      {
+        "file": "planning/daylands_and_nightlands.md",
+        "sections_added": [
+          "Pipeline Stages (Order 024 Implementation)",
+          "Monitoring & Rollback Runbooks",
+          "Order 024 Pilot Status"
+        ],
+        "order_025_compliance": "Owner and timestamp metadata added"
+      }
+    ],
+    "runbooks_documented": {
+      "monitoring": "Key metrics defined with targets for canary/production observation",
+      "rollback": "Triggers and procedure documented with example PowerShell commands"
+    }
+  },
+  "next_steps": "Daylands safety pipeline framework operational. Ready for Order 028 (canary Alfa batches) which will execute first real canary rollout with enhanced telemetry.",
+  "attachments": [
+    {
+      "type": "charter_document",
+      "path": "planning/daylands_and_nightlands.md"
+    }
+  ]
+}
+

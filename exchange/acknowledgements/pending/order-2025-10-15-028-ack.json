@@ -1,0 +1,10 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-15-028-ack",
+  "referenced_id": "order-2025-10-15-028",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-18T12:00:00Z",
+  "status": "acknowledged",
+  "notes": "Acknowledged. Order 028 directs canary Alfa batch production with exports (CSV/JSON), build_info.json, and SHA256 checksums. Will execute directive steps: (1) propose change with intent/scope/risks/rollback including Order 025 metadata, (2) sandbox validation with dry-run forge scripts and schema/DQ checks, (3) mint 2-3 canary batches with telemetry emitting composite exports and checksums, (4) submit report with artifact paths, counts, checksums, retention policy, and rollback plan. Dependencies satisfied (order-2025-10-15-024 Daylands pipeline framework available). Target completion before expiry 2025-10-22T00:00:00Z. Execution method: playable workflow overlay via Initial Alfa prototype per Four Major Pivots."
+}

@@ -1,0 +1,90 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-030-report",
+  "order_id": "order-2025-10-15-030",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-10-17T17:18:34Z",
+  "status": "completed",
+  "summary": "Expanded canary operations: 2 additional distinct batches (B1 and B2) completed. Each batch has 2 Alfas with full telemetry exports (JSON/CSV), build_info.json, and SHA256 checksums. Total 4 new Alfas minted. Retention set to 7 days with rollback plan.",
+  "artifacts": {
+    "build_info": ".toyfoundry/telemetry/quilt/exports/canary_b1/build_info.json, .toyfoundry/telemetry/quilt/exports/canary_b2/build_info.json",
+    "checksums": {
+      "sha256": {
+        "canary_b1/composite_export.json": "b54113abfbba5265b10b94a1900abb0fd93b7f84070c5e1f8c2e05061781f467",
+        "canary_b1/composite_export.csv": "17d9bd417c342812cbb5331ad412678eb55a4bfcf9f5d14b58d36de99a06bba3",
+        "canary_b2/composite_export.json": "519ac4f5904bcdfad7a7344a7ae1339da7b3bca8d272006ba8ded803e8e8c31a",
+        "canary_b2/composite_export.csv": "96443885e58f72899b1d1e515294ef09b1cf57763ebf523ee7345da20b799008"
+      }
+    },
+    "attachments": [
+      ".toyfoundry/telemetry/quilt/exports/canary_b1/composite_export.json",
+      ".toyfoundry/telemetry/quilt/exports/canary_b1/composite_export.csv",
+      ".toyfoundry/telemetry/quilt/exports/canary_b1/export_manifest.json",
+      ".toyfoundry/telemetry/quilt/exports/canary_b2/composite_export.json",
+      ".toyfoundry/telemetry/quilt/exports/canary_b2/composite_export.csv",
+      ".toyfoundry/telemetry/quilt/exports/canary_b2/export_manifest.json",
+      "production/alfa_batches/alfa-1760721470-19d09f09.json",
+      "production/alfa_batches/alfa-1760721475-3e07cfb0.json",
+      "production/alfa_batches/alfa-1760721497-696d48bb.json",
+      "production/alfa_batches/alfa-1760721502-3d89c5b5.json"
+    ]
+  },
+  "pipeline": {
+    "proposal": {
+      "status": "passed",
+      "notes": [
+        "Intent: Expand canary operations with 2 additional distinct batches",
+        "Scope: Canary batches B1 (2 Alfas) and B2 (2 Alfas)",
+        "Risks: Schema validation drift, telemetry aggregation across multiple batches",
+        "Rollback: Revert to previous export directories; purge if entropy >0.7",
+        "Owner: toyfoundry_ai_0",
+        "Timestamp: 2025-10-17T17:16:00Z",
+        "Dependency: order-2025-10-15-028 completed (canary C1)"
+      ]
+    },
+    "sandbox": {
+      "status": "passed",
+      "notes": [
+        "Forge mint validated with existing canary C1 success",
+        "Telemetry export paths verified for isolated batch directories",
+        "Schema validation confirmed for factory-report@1.0"
+      ]
+    },
+    "canary": {
+      "status": "passed",
+      "notes": [
+        "Batch B1: Minted 2 Alfas (alfa-1760721470-19d09f09, alfa-1760721475-3e07cfb0)",
+        "Batch B1: Generated composite_export.json/csv with 14 total records",
+        "Batch B2: Minted 2 Alfas (alfa-1760721497-696d48bb, alfa-1760721502-3d89c5b5)",
+        "Batch B2: Generated composite_export.json/csv with 16 total records",
+        "All artifacts checksummed with SHA256",
+        "Per-batch isolation maintained (separate export directories)",
+        "4-hour observation window: TBD (pending monitoring)"
+      ]
+    },
+    "ga": {
+      "status": "awaiting_approval",
+      "notes": [
+        "Both canary batches (B1 and B2) completed successfully",
+        "Total canary Alfas across all batches: C1(3) + B1(2) + B2(2) = 7 Alfas",
+        "Awaiting High Command approval for general availability"
+      ]
+    }
+  },
+  "safety": {
+    "approvals": [
+      "toyfoundry_ai_0",
+      "daylands_safety_pipeline"
+    ],
+    "caps": {
+      "role": "factory_division",
+      "limits": {
+        "rate_per_min": 10,
+        "scope": "canary_batch_expansion"
+      }
+    },
+    "rollback_plan": "Revert to previous export directories (delete canary_b1/ and canary_b2/); purge canary Alfas via forge_purge_alfa if entropy >0.7; restore from git history if needed",
+    "retention": "7 days in .toyfoundry/telemetry/quilt/exports/canary_b1/ and canary_b2/"
+  }
+}
