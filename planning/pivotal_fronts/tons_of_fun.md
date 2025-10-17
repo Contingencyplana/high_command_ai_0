@@ -1,4 +1,4 @@
-# Front One: Tons of Fun
+# TONS-of-FUN Front
 
 Purpose
 - Ensure Nightlands (Toysoldiers AI) is genuinely fun, sticky, and replayable.

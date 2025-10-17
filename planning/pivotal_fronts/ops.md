@@ -1,4 +1,4 @@
-# Enabler: Operations & Exchange Integrity
+# Enabler Front: Operations & Exchange Integrity
 
 Purpose
 - Keep the exchange, ledger, and sync reliable so the other fronts can move.

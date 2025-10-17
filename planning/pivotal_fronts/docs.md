@@ -1,4 +1,4 @@
-# Front Three: Documentation
+# Documentation Front
 
 Purpose
 - Make doctrine and plans clear, parseable, and actionable for humans and AI tooling.
