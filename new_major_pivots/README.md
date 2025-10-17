@@ -134,7 +134,7 @@ The **Four Major Pivots** represent a fundamental shift in how we build **Nightl
 - SHAGI research publications cite playable workflows as novel approach
 
 **Pivot Four:**
-- All 4,096 Alfas addressable via golf_XX/alfa_YYYY
+- All 4,096 Alfas addressable via golf_XX/delta_YY/alfa_ZZ
 - Telemetry aggregation scales to 4,096 concurrent Alfas
 
 ---

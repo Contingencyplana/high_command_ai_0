@@ -10,3 +10,9 @@ exchange/LICENSE
 alfas/*
 !alfas/.gitkeep
 forge.lock
+
+# Editor backup files
+*.bak
+*~
+*.swp
+*.swo
