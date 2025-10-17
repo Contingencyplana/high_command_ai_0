@@ -3,30 +3,73 @@
   "report_id": "order-2025-10-15-021-report",
   "origin": "toysoldiers_ai_0",
   "relates_to": "order-2025-10-15-021",
-  "timestamp_submitted": "2025-10-16T14:30:00Z",
-  "status": "completed",
-  "summary": "Consumer roll-in completed for standard run; schema v1.0 and DQ checks passed; acceptance recorded.",
-  "ingestion": {
-    "records_total": 2,
-    "sha256_verified": true
+  "timestamp_submitted": "2025-10-18T12:30:00+00:00",
+  "status": "blocked",
+  "summary": "Order 021 consumer validation BLOCKED due to schema drift. Toyfoundry exports use different schema than expected by Order 021 directives.",
+  "details": {
+    "step_1_ingest": {
+      "status": "completed",
+      "exports_location": ".imports/toyfoundry/telemetry/quilt/exports/",
+      "files_ingested": [
+        "composite_export.json",
+        "composite_export.csv",
+        "export_manifest.json",
+        "build_info.json"
+      ],
+      "sha256_verification": "FAILED",
+      "sha256_errors": [
+        "composite_export.json hash mismatch (expected vs actual differ)",
+        "composite_export.csv hash mismatch (expected vs actual differ)",
+        "Checksums appear stale or exports regenerated after manifest creation"
+      ]
+    },
+    "step_2_schema_guard": {
+      "status": "failed",
+      "expected_schema": "v1.0 with fields: batch_id, ritual, units_processed, status, duration_ms",
+      "actual_schema": "Different structure with fields: operation_id, mint_name, ritual, event_status, event_metadata.batch_id, mint_runs, ritual_completed, etc.",
+      "drift_detected": true,
+      "errors_count": 19,
+      "sample_errors": [
+        "Record 0: Missing fields {'duration_ms', 'units_processed', 'status', 'batch_id'}",
+        "All records missing expected schema fields"
+      ],
+      "blocker": "Schema mismatch prevents validation - actual export schema does not match Order 021 expected schema"
+    },
+    "step_3_dq_thresholds": {
+      "status": "failed",
+      "errors_count": 34,
+      "sample_errors": [
+        "batch_id field not at top level (nested in event_metadata)",
+        "ritual field present but DQ checks designed for different schema structure"
+      ],
+      "blocker": "DQ thresholds cannot be applied to mismatched schema"
+    },
+    "step_4_monitoring": {
+      "status": "not_started",
+      "reason": "Blocked by schema validation failures"
+    },
+    "consumer_acceptance": "REJECT",
+    "blockers": [
+      "Schema drift: Order 021 expected schema v1.0 (batch_id, ritual, units_processed, status, duration_ms) but Toyfoundry exports use different structure (operation_id, event_status, event_metadata, mint_*, ritual_*)",
+      "SHA256 checksums stale or exports regenerated",
+      "No schema version field in exports to detect version automatically",
+      "Recommendation: Either update Order 021 directives to match actual Toyfoundry export schema, or update Toyfoundry export schema to match Order 021 expectations"
+    ],
+    "remediation_steps": [
+      "High Command to clarify canonical export schema version",
+      "Either: Update Toysoldiers validation logic to accept actual schema",
+      "Or: Request Toyfoundry to emit exports matching Order 021 schema specification",
+      "Add schema_version field to exports for automatic version detection",
+      "Re-run SHA256 checksum generation after schema alignment"
+    ],
+    "records_analyzed": 19,
+    "validation_tool": "tools/validate_order_021.py",
+    "validation_timestamp": "2025-10-18T12:30:00+00:00"
   },
-  "schema_validation": {
-    "expected_version": "v1.0",
-    "confirmed_version": "v1.0",
-    "field_mismatches": [],
-    "unexpected_fields": []
-  },
-  "dq_checks": {
-    "non_empty": {"passed": true, "details": []},
-    "allowed_rituals": {"passed": true, "details": []},
-    "allowed_status": {"passed": true, "details": []},
-    "units_positive": {"passed": true, "details": []},
-    "duration_ms_range": {"passed": true, "details": []}
-  },
-  "acceptance": {
-    "status": "accepted",
-    "constraints": [],
-    "blockers": []
-  }
+  "attachments": [
+    {
+      "type": "validation_log",
+      "description": "Full validation output showing schema mismatches"
+    }
+  ]
 }
-

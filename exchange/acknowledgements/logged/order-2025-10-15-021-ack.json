@@ -4,11 +4,7 @@
   "referenced_id": "order-2025-10-15-021",
   "sender": "toysoldiers_ai_0",
   "receiver": "high_command_ai_0",
-  "timestamp_sent": "2025-10-16T14:11:00Z",
+  "timestamp_sent": "2025-10-18T12:30:00+00:00",
   "status": "acknowledged",
-  "notes": [
-    "Consumer roll-in started; will submit report"
-  ]
+  "notes": "Order 021 acknowledged. Consumer validation attempted but BLOCKED due to schema drift between Order 021 expectations and actual Toyfoundry export schema. See report for details and remediation recommendations."
 }
-
-

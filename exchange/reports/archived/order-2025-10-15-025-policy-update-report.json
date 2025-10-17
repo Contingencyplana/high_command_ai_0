@@ -1,0 +1,9 @@
+{
+  "schema": "field-report@1.0",
+  "report_id": "order-2025-10-15-025-policy-update-report",
+  "origin": "toysoldiers_ai_0",
+  "relates_to": "order-2025-10-15-025-policy-update",
+  "timestamp_submitted": "2025-10-18T12:00:00+00:00",
+  "status": "acknowledged",
+  "summary": "Safety policy update (Order 025) acknowledged and adopted. Required metadata fields (owner, timestamp, approvers for protected orders) will be enforced on all future messages. Dual-key approval process confirmed for protected orders. Grace period ending 2025-10-23T00:00:00Z noted; all future messages will include required metadata. Validator guidance reviewed: pre-commit checks via tools/ci/validate_safety_repo.ps1, watcher enforcement via tools/ci/safety_watcher.ps1, schemas referenced from exchange/schemas/."
+}

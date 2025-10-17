@@ -1,50 +1,21 @@
 {
-  "reported_by": "toysoldiers_ai_0",
-  "summary": "Ingested Toyfoundry canary composite exports; schema v1.0 and DQ checks passed; consumer acceptance set to accepted.",
-  "sources": {
-    "export_schema_path": ".imports/toyfoundry/telemetry/quilt/exports/export_schema.md",
-    "sample_json": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.json",
-    "sample_csv": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.csv"
-  },
-  "schema": "factory-report@1.0",
-  "ingestion": {
-    "sha256_verified": true,
-    "records_total": 8
-  },
-  "dq_checks": {
-    "non_empty": {
-      "details": [],
-      "passed": true
-    },
-    "units_positive": {
-      "details": [],
-      "passed": true
-    },
-    "allowed_rituals": {
-      "details": [],
-      "passed": true
-    },
-    "duration_ms_range": {
-      "details": [],
-      "passed": true
-    },
-    "allowed_status": {
-      "details": [],
-      "passed": true
-    }
-  },
-  "status": "completed",
-  "order_id": "order-2025-10-15-029",
-  "acceptance": {
-    "constraints": [],
-    "status": "accepted"
-  },
-  "schema_validation": {
-    "confirmed_version": "v1.0",
-    "expected_version": "v1.0",
-    "unexpected_fields": [],
-    "field_mismatches": []
-  },
-  "timestamp_reported": "2025-10-16T05:04:30Z"
+  "schema": "field-report@1.0",
+  "report_id": "order-2025-10-15-029-report",
+  "origin": "toysoldiers_ai_0",
+  "relates_to": "order-2025-10-15-029",
+  "timestamp_submitted": "2025-10-18T13:00:00+00:00",
+  "status": "blocked",
+  "summary": "Order 029 canary C1 validation BLOCKED - same schema drift issue as Order 021.",
+  "details": {
+    "exports_location": ".imports/toyfoundry/telemetry/quilt/exports/canary_c1/",
+    "files_ingested": [
+      "composite_export.json",
+      "composite_export.csv",
+      "export_manifest.json",
+      "build_info.json"
+    ],
+    "schema_drift": "Canary exports use same schema as standard run - mismatch with Order 029 expectations",
+    "consumer_acceptance": "BLOCKED",
+    "blocker": "Awaiting schema alignment resolution from Order 021"
+  }
 }
-
