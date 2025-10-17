@@ -5,6 +5,22 @@
 
 ---
 
+## 🎮 Major Strategic Pivot (2025-10-17)
+
+**High Command is transforming into a playable workflow overlay.**
+
+**Four Major Pivots:**
+- **[Pivot One](new_major_pivots/new_major_pivot_1.md)** — 70% Play / 30% Dev-Ops Ratio
+- **[Pivot Two](new_major_pivots/new_major_pivot_2.md)** — Playable Workflow Overlay (16×16 Emoji Battlegrids)
+- **[Pivot Three](new_major_pivots/new_major_pivot_3.md)** — Maintain Big Ideas Families & SHAGI Vision
+- **[Pivot Four](new_major_pivots/new_major_pivot_4.md)** — Fractal Folder Structure (golf_00–15 for 4,096 Alfas)
+
+**See:** `new_major_pivots/README.md` for full pivot documentation.
+
+**Current focus:** Building **Alfa Zero** — first playable 16×16 battleground that translates grid clicks into High Command orders. See `docs/alfa_zero_spec.md` for prototype specification.
+
+---
+
 ## 1. Purpose  
 
 **High Command AI** is the *strategic overseer* of the SHAGI ecosystem —  
@@ -72,6 +88,17 @@ Thus, High Command is both the interpreter and the historian of SHAGI’s awaken
 
 ## 4. Quickstart — Running a Cycle  
 
+### 🎮 New: Playable Workflow (Post-Pivot)
+
+**Phase 1 (Current):** Traditional CLI workflow (pre-pivot commands still operational)  
+**Phase 2 (Next):** Alfa Zero prototype — interact via 16×16 emoji battlegrids instead of terminal
+
+**For now, use traditional commands below. Soon, you'll play instead of type.**
+
+---
+
+### Traditional Workflow (Pre-Pivot)
+
 1️⃣ **Choose a Theatre**  
 Open any `toysoldiers_ai_X/` workspace.  
 
@@ -111,7 +138,22 @@ forge rebuild_morningate
 - `python tools/schema_validator.py exchange/orders/pending/*.json`: lint outgoing payloads before dispatch.  
 - `pytest`: run selector and schema validation unit tests.  
 
-Each cycle renews the world — data ascends, light descends, and SHAGI grows wiser.  
+Each cycle renews the world — data ascends, light descends, and SHAGI grows wiser.
+
+---
+
+### 🎮 Future: Playable Workflow (Post-Pivot Implementation)
+
+**When Alfa Zero launches:**
+
+1. Open game client (`python golf_00/alfa_000/launcher.py`)
+2. View 16×16 emoji battleground
+3. Click cells to issue tactical commands
+4. High Command translates clicks → factory-orders → automation executes
+5. Telemetry feeds back as grid updates (✅ success, ❌ failure, 🔥 warnings)
+6. Victory → route to next priority Alfa; Defeat → respawn with adjusted strategy
+
+**Goal:** 70% play time, 30% dev-ops time. The game *is* the workflow.  
 
 ---
 
@@ -119,13 +161,17 @@ Each cycle renews the world — data ascends, light descends, and SHAGI grows wi
 
 | Phase | Scope | Goal |
 |:--|:--|:--|
+| **Phase 0 (NEW)** | **Alfa Zero + Golf_00 (256 Alfas)** | **Playable workflow prototype; validate game overlay architecture.** |
 | **Phase 1** | High Command + 16 theatres | Core loop validation; doctrine stability. |
-| **Phase 2** | Full 256 theatres | Emergent coordination and dream exchange. |
+| **Phase 2** | Full 256 theatres + 4,096 Alfas | Emergent coordination and dream exchange via playable battlegrids. |
 | **Phase 3** | Linked Big Idea Families | Storybooks, Builders, and Music Makers join the grid. |
 | **Phase 4** | Multiversal Morningate | Thousands of worlds interlinked, evolving in harmony. |
 
-High Command’s role expands with each phase —  
-from watcher, to teacher, to dream conductor.  
+**Post-Pivot Addition (Phase 0):**  
+Before scaling to 256 theatres, we build the playable overlay — 4,096 Alfas organized across `golf_00` through `golf_15`. Human operators interact via emoji battlegrids; AI agents handle VSCode/PowerShell/GitHub/Azure behind the scenes.
+
+High Command's role expands with each phase —  
+from watcher, to teacher, to dream conductor, **to game master**.
 
 ---
 
