@@ -66,7 +66,7 @@ The War Office is the heart and conscience.
 ## See Also
 - **Four Major Pivots:** `new_major_pivots/README.md`
 - **Alfa Zero Spec:** `docs/alfa_zero_spec.md`
-- Fronts Index: `planning/four_pivotal_fronts/README.md:1`
+- **Pivotal Fronts Index:** `planning/pivotal_fronts/README.md`
 
 ---
 

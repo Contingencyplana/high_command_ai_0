@@ -7,7 +7,7 @@ ACK (signal-ack@1.0)
 
 Report (factory-report@1.0 or field-report@1.0)
 - Include `status`: `completed` once README is added.
-- In notes or artifacts, reference the path `planning/four_pivotal_fronts/README.md`.
+- In notes or artifacts, reference the path `planning/pivotal_fronts/README.md`.
 
 Validation
 - Run: `python tools/schema_validator.py <paths_to_json>`
@@ -24,12 +24,13 @@ Example ACK snippet (fields to fill):
   "status": "acknowledged",
   "notes": [
     "Roles/caps verified",
-    "Pointer README will be created at planning/four_pivotal_fronts/README.md"
+    "Pointer README will be created at planning/pivotal_fronts/README.md"
   ]
 }
 ```
 
 Example Report notes (as part of report JSON):
-- "Pointer README created at planning/four_pivotal_fronts/README.md"
+- "Pointer README created at planning/pivotal_fronts/README.md"
 - "Links validated against High Command doctrine"
+
 

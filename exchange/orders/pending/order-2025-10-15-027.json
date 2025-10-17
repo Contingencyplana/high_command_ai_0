@@ -7,7 +7,7 @@
   "timestamp_issued": "2025-10-15T09:35:00Z",
   "summary": "Add Four Pivotal Fronts pointer README linking to High Command canon with consumer responsibilities note.",
   "directives": [
-    { "step": 1, "action": "add_pointer_readme", "details": "Create planning/four_pivotal_fronts/README.md linking to canon and outlining consumer acceptance duties (schema/DQ/acceptance)." },
+    { "step": 1, "action": "add_pointer_readme", "details": "Create planning/pivotal_fronts/README.md linking to canon and outlining consumer acceptance duties (schema/DQ/acceptance)." },
     { "step": 2, "action": "submit_report", "details": "Confirm pointer added and link renders; submit to exchange/reports/inbox/order-2025-10-15-027-report.json." }
   ],
   "dependencies": ["order-2025-10-15-026"],
@@ -16,10 +16,11 @@
   "attachments": [
     {
       "type": "markdown",
-      "filename": "planning/four_pivotal_fronts/README.md",
+      "filename": "planning/pivotal_fronts/README.md",
       "title": "Four Pivotal Fronts — Pointers",
       "content": "# Four Pivotal Fronts — Pointers\n\nPurpose\n- This README points to High Command’s canonical doctrine so local repos stay synchronized.\n\nSee Also\n- War Office: Fronts Index (link if available)\n\nPointers\n- AI R&D Doctrine: planning/ai_research_and_development.md\n- AI Labscapes & Labs Guide: planning/ai_labscapes_and_ai_labs.md\n- Daylands & Nightlands: planning/daylands_and_nightlands.md\n- War-Rooms & War-Tables: planning/war_rooms_and_war_tables.md\n- Telemetry Export Schema: planning/toyfoundry/telemetry/export_schema.md\n\nQuickstart\n- Mint: python -m tools.forge.forge_mint_alfa\n- Rollups: python -m tools.telemetry.quilt_loom\n- Export: python -m tools.telemetry.quilt_loom --export\n- Exports: .toyfoundry/telemetry/quilt/exports/\n"
     }
   ]
 }
+
 

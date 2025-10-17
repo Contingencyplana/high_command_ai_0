@@ -20,3 +20,4 @@
     "rollback_plan": "Freeze reads; restore prior export set from snapshot/backups; repoint artifact paths; update build_info with rollback_reason; notify exchange"
   }
 }
+
