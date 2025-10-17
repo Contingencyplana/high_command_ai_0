@@ -153,37 +153,37 @@
     },
     "order-2025-10-15-020": {
       "status": "closed",
-      "order_path": "orders/pending/order-2025-10-15-020.json",
+      "order_path": "orders/completed/order-2025-10-15-020.json",
       "ack_path": "acknowledgements/logged/order-2025-10-15-020-ack.json",
       "report_path": "reports/archived/order-2025-10-15-020-report.json"
     },
     "order-2025-10-15-021": {
       "status": "closed",
-      "order_path": "orders/pending/order-2025-10-15-021.json",
+      "order_path": "orders/completed/order-2025-10-15-021.json",
       "ack_path": "acknowledgements/logged/order-2025-10-15-021-ack.json",
       "report_path": "reports/archived/order-2025-10-15-021-report.json"
     },
     "order-2025-10-15-024": {
       "status": "closed",
-      "order_path": "orders/pending/order-2025-10-15-024.json",
+      "order_path": "orders/completed/order-2025-10-15-024.json",
       "ack_path": "acknowledgements/logged/order-2025-10-15-024-ack.json",
       "report_path": "reports/archived/order-2025-10-15-024-report.json"
     },
     "order-2025-10-15-025-policy-update": {
-      "status": "pending",
-      "order_path": "orders/pending/order-2025-10-15-025-policy-update.json",
-      "ack_path": null,
-      "report_path": null
+      "status": "closed",
+      "order_path": "orders/completed/order-2025-10-15-025-policy-update.json",
+      "ack_path": "acknowledgements/logged/order-2025-10-15-025-policy-update-ack.json",
+      "report_path": "reports/archived/order-2025-10-15-025-policy-update-report.json"
     },
     "order-2025-10-15-026": {
       "status": "closed",
-      "order_path": "orders/pending/order-2025-10-15-026.json",
+      "order_path": "orders/completed/order-2025-10-15-026.json",
       "ack_path": "acknowledgements/logged/order-2025-10-15-026-ack.json",
       "report_path": "reports/archived/order-2025-10-15-026-report.json"
     },
     "order-2025-10-15-027": {
       "status": "closed",
-      "order_path": "orders/pending/order-2025-10-15-027.json",
+      "order_path": "orders/completed/order-2025-10-15-027.json",
       "ack_path": "acknowledgements/logged/order-2025-10-15-027-ack.json",
       "report_path": "reports/archived/order-2025-10-15-027-report.json"
     },
