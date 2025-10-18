@@ -1,16 +1,18 @@
-# High Command Exchange Repository
+# Field Operations Exchange Repository
 
-This directory mirrors the structure of the forthcoming `high_command_exchange` git repository. All workspaces mount this layout at `exchange/`.
+This directory manages the exchange of field operations data, tactical intelligence, and command protocols between High Command and the Field Operations Front. All field operations are coordinated through this exchange structure, powered by AI Labscapes integration.
 
-## Directory Map
+## Field Operations Directory Structure
 
-- `orders/pending/` — Fresh directives awaiting acknowledgement.
-- `orders/dispatched/` — Orders with acknowledgements on record.
-- `reports/inbox/` — Field submissions awaiting review.
-- `reports/archived/` — Closed reports retained for history.
-- `acknowledgements/pending/` — Signals not yet reconciled.
-- `acknowledgements/logged/` — Signals tied to ledger entries.
-- `ledger/` — Journal and machine index linking every payload.
+- `orders/pending/` — Incoming tactical directives for field execution
+- `orders/dispatched/` — Completed field operation orders with results
+- `reports/inbox/` — Field intelligence and operational reports
+- `reports/archived/` — Historical field operation records
+- `acknowledgements/pending/` — Field operation signals pending processing
+- `acknowledgements/logged/` — Processed field operation signals
+- `ledger/` — Complete field operations journal and index
+
+Each directory integrates with the AI Labscapes (ai_labscapes_0 through ai_labscapes_255) to ensure intelligent processing and tactical optimization of field operations.
 
 Populate this structure via Forge tooling or manual commits until the standalone exchange repository is provisioned.
 
