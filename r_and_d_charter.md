@@ -1,4 +1,4 @@
-# R&D Charter — AI Labscape Architecture
+ # R&D Charter — AI Labscape Architecture
 
 **High Command AI 0 · Updated 2025-10-18**
 
