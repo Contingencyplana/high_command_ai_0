@@ -45,4 +45,4 @@ Establishes how R&D operates across the lattice: how ideas are proposed, prototy
 ---
 ## 🌄 Field Maxim
 > R&D advances only as fast as safety, clarity, and provenance allow—measure twice, trial once, promote when rhythm holds.
-See Also\n- Safety Gate Template: planning/templates/safety_gate_template.md:1\n- AI Agents and Safety: planning/ai_agents_and_safety.md:1\n- Change-as-Order template: xchange/orders/templates/change-order.template.json:1\n\n*End of Scroll - i_research_and_development.md*\n
+See Also\n- Safety Gate Template: planning/templates/safety_gate_template.md:1\n- AI Agents and Safety: planning/ai_agents_and_safety.md:1\n- Change-as-Order template: exchange/orders/templates/change-order.template.json:1\n\n*End of Scroll - ai_research_and_development.md*\n

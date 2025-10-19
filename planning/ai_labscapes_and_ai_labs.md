@@ -26,7 +26,7 @@ Defines the AI Labscape and its Labs so squads share a clear model of how hypoth
 5. Deliberation: R&D war‑tables evaluate efficacy, tone, and safety.
 6. Decision: Promote, iterate, quarantine (Nightland), or archive with provenance.
 
-Required Metadata (Order 025)\n- owner (id, type=human|ai|service, workspace)\n- 	imestamp (ISO 8601 UTC)\n- pprovers for protected actions (dual‑key: VisionHolder + SafetyLead)\n- uild_info.json (commit, generated_at, params)\n- Checksums (SHA256) for published artifacts\n\n---
+Required Metadata (Order 025)\n- owner (id, type=human|ai|service, workspace)\n- timestamp (ISO 8601 UTC)\n- approvers for protected actions (dual‑key: VisionHolder + SafetyLead)\n- uild_info.json (commit, generated_at, params)\n- Checksums (SHA256) for published artifacts\n\n---
 ## 🧵 Interfaces & Telemetry
 - Manufacturing: Use Toyfoundry Forge to mint/upgrade Labs (see `planning/toyfoundry/` scrolls).
 - Telemetry: Emit Alfa reports and composite quilt exports (e.g., `.imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.csv`).
@@ -46,4 +46,4 @@ Required Metadata (Order 025)\n- owner (id, type=human|ai|service, workspace)\n-
 ---
 ## 🌄 Field Maxim
 > Keep the Labscape reproducible and the Labs speaking; emergence stays safe and legible across the lattice.
-See Also\n- Safety Gate Template: planning/templates/safety_gate_template.md:1\n- AI Agents and Safety: planning/ai_agents_and_safety.md:1\n- Change-as-Order template (for promotions): xchange/orders/templates/change-order.template.json:1\n\n*End of Scroll - i_labscapes_and_ai_labs.md*\n
+See Also\n- Safety Gate Template: planning/templates/safety_gate_template.md:1\n- AI Agents and Safety: planning/ai_agents_and_safety.md:1\n- Change-as-Order template (for promotions): exchange/orders/templates/change-order.template.json:1\n\n*End of Scroll - ai_labscapes_and_ai_labs.md*\n
