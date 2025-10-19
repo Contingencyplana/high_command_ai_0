@@ -1,0 +1,30 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-10-20-001",
+  "issued_by": "high_command_ai_0",
+  "target": "r_and_d_ai_0",
+  "priority": "normal",
+  "timestamp_issued": "2025-10-20T10:00:00Z",
+  "summary": "Test exchange system connectivity with simple labscape status check",
+  "directives": [
+    {
+      "step": 1,
+      "action": "verify_connectivity",
+      "details": "Confirm receipt of this order and exchange system connectivity"
+    },
+    {
+      "step": 2,
+      "action": "status_check",
+      "details": "Provide basic status report on ai_labscapes_0 readiness"
+    },
+    {
+      "step": 3,
+      "action": "submit_report",
+      "details": "Submit test report confirming exchange system functionality"
+    }
+  ],
+  "dependencies": [],
+  "requires_ack": true,
+  "expires_at": "2025-10-21T10:00:00Z",
+  "attachments": []
+}
