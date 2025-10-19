@@ -21,3 +21,7 @@ Acceptance Checks
 - No new critical exploits in last N canary releases.
 - Fun KPIs stable or improving in canary vs. control.
 - Rollback rehearsed within X minutes SLO.
+
+## Bottom Line
+
+If Nightlands multiplayer video game (Toysoldiers AI) is not TONS-of-FUN it will die stillborn in a Sea of Competition!
