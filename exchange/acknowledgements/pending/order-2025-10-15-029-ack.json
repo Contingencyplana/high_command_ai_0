@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-15-029-ack",
+  "referenced_id": "order-2025-10-15-029",
+  "sender": "toysoldiers_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-22T04:46:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Plan accepted: ingest Order 028 canary composite exports once delivered, verify SHA256 sidecars, and run Order 021 validator across JSON/CSV.",
+    "Acceptance gate will document Go/No-Go decision with any constraints; retention+rollback mirrored from Toyfoundry plan per Order 025 governance.",
+    "Dependencies: awaiting refreshed Order 028 export paths. Completion targeted within 4 hours of Toyfoundry delivery."
+  ]
+}

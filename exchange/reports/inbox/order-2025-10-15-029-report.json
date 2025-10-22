@@ -1,0 +1,38 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-029-report",
+  "order_id": "order-2025-10-15-029",
+  "reported_by": "toysoldiers_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-10-22T04:50:00Z",
+  "status": "completed",
+  "summary": "Ingested Toyfoundry order028_canary composite export, verified SHA256, confirmed Order 021 schema + DQ checks, and issued Go decision for downstream consumers.",
+  "ingestion": {
+    "source_export": ".toyfoundry/telemetry/quilt/exports/order028_canary/composite_export.json",
+    "records": 3,
+    "units_total": 3,
+    "sha256": {
+      "json": "7D693137A87AA7082990D7F931F8F90853539DB4581F3175FBBA1C07003745BB",
+      "csv": "7D4E44F153747D7DADD2919AC3400D92DBE39F0BC86847FD4F24EF95A5C785A4"
+    },
+  "sha256_verified": true,
+  "verification_command": "python -c \"import hashlib, pathlib; files=['.toyfoundry/telemetry/quilt/exports/order028_canary/composite_export.json','.toyfoundry/telemetry/quilt/exports/order028_canary/composite_export.csv'];\nfor path in files:\n    digest=hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest().upper();\n    print(f'{path}:{digest}')\""
+  },
+  "validation": {
+    "schema_version": "1.0",
+    "dq_checks": {
+      "non_empty": true,
+      "allowed_enums": true,
+      "units_positive": true,
+      "duration_range": true
+    },
+    "validator_command": "python tools/validate_order_021.py .toyfoundry/telemetry/quilt/exports/order028_canary/composite_export.json --csv .toyfoundry/telemetry/quilt/exports/order028_canary/composite_export.csv",
+    "records_validated": 3,
+    "result": "pass"
+  },
+  "acceptance": {
+    "decision": "go",
+    "constraints": [],
+    "notes": "Canary composite aligned with Order 036 remediation. No blockers for canary consumption."
+  }
+}

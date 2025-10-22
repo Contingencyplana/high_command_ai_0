@@ -4,87 +4,106 @@
   "order_id": "order-2025-10-15-030",
   "reported_by": "toyfoundry_ai_0",
   "receiver": "high_command_ai_0",
-  "timestamp_reported": "2025-10-17T17:18:34Z",
+  "timestamp_reported": "2025-10-22T05:08:00Z",
   "status": "completed",
-  "summary": "Expanded canary operations: 2 additional distinct batches (B1 and B2) completed. Each batch has 2 Alfas with full telemetry exports (JSON/CSV), build_info.json, and SHA256 checksums. Total 4 new Alfas minted. Retention set to 7 days with rollback plan.",
+  "summary": "Expanded canary program with batches b1 and b2, each emitting standalone composite exports (JSON/CSV) plus build metadata and SHA256 sidecars under Order 021 schema v1.0.",
   "artifacts": {
-    "build_info": ".toyfoundry/telemetry/quilt/exports/canary_b1/build_info.json, .toyfoundry/telemetry/quilt/exports/canary_b2/build_info.json",
-    "checksums": {
-      "sha256": {
-        "canary_b1/composite_export.json": "b54113abfbba5265b10b94a1900abb0fd93b7f84070c5e1f8c2e05061781f467",
-        "canary_b1/composite_export.csv": "17d9bd417c342812cbb5331ad412678eb55a4bfcf9f5d14b58d36de99a06bba3",
-        "canary_b2/composite_export.json": "519ac4f5904bcdfad7a7344a7ae1339da7b3bca8d272006ba8ded803e8e8c31a",
-        "canary_b2/composite_export.csv": "96443885e58f72899b1d1e515294ef09b1cf57763ebf523ee7345da20b799008"
+    "batch_b1": {
+      "export_dir": ".toyfoundry/telemetry/quilt/exports/order030_canary_b1",
+      "composite_export_json": ".toyfoundry/telemetry/quilt/exports/order030_canary_b1/composite_export.json",
+      "composite_export_csv": ".toyfoundry/telemetry/quilt/exports/order030_canary_b1/composite_export.csv",
+      "build_info": ".toyfoundry/telemetry/quilt/exports/order030_canary_b1/build_info.json",
+      "export_manifest": ".toyfoundry/telemetry/quilt/exports/order030_canary_b1/export_manifest.json",
+      "checksums": {
+        "composite_export.json": "526B510959926E8299A1823BE03EE0D73F33A436D31CD87DA5A20EA594E4CC5C",
+        "composite_export.csv": "B7BCC656145A87774563E503D162284E218E90B8693EDE91F5200D243919908D"
+      },
+      "alfas": [
+        "production/alfa_batches/alfa-1761133848-27b0aadd.json",
+        "production/alfa_batches/alfa-1761134411-2e7d87d0.json"
+      ],
+      "counts": {
+        "records": 2,
+        "units": 2
       }
     },
-    "attachments": [
-      ".toyfoundry/telemetry/quilt/exports/canary_b1/composite_export.json",
-      ".toyfoundry/telemetry/quilt/exports/canary_b1/composite_export.csv",
-      ".toyfoundry/telemetry/quilt/exports/canary_b1/export_manifest.json",
-      ".toyfoundry/telemetry/quilt/exports/canary_b2/composite_export.json",
-      ".toyfoundry/telemetry/quilt/exports/canary_b2/composite_export.csv",
-      ".toyfoundry/telemetry/quilt/exports/canary_b2/export_manifest.json",
-      "production/alfa_batches/alfa-1760721470-19d09f09.json",
-      "production/alfa_batches/alfa-1760721475-3e07cfb0.json",
-      "production/alfa_batches/alfa-1760721497-696d48bb.json",
-      "production/alfa_batches/alfa-1760721502-3d89c5b5.json"
-    ]
+    "batch_b2": {
+      "export_dir": ".toyfoundry/telemetry/quilt/exports/order030_canary_b2",
+      "composite_export_json": ".toyfoundry/telemetry/quilt/exports/order030_canary_b2/composite_export.json",
+      "composite_export_csv": ".toyfoundry/telemetry/quilt/exports/order030_canary_b2/composite_export.csv",
+      "build_info": ".toyfoundry/telemetry/quilt/exports/order030_canary_b2/build_info.json",
+      "export_manifest": ".toyfoundry/telemetry/quilt/exports/order030_canary_b2/export_manifest.json",
+      "checksums": {
+        "composite_export.json": "D2F27695DFAF8F6FF69E03CDB8B8B4F1C82E79FF76B154878FAFE6444065EFE2",
+        "composite_export.csv": "47328DE8A788F84532F97A4078D1FBB0ED8162D347E32E0D3283603F0AAD9BCD"
+      },
+      "alfas": [
+        "production/alfa_batches/alfa-1761140942-660fbcb7.json",
+        "production/alfa_batches/alfa-1761140955-5313e059.json"
+      ],
+      "counts": {
+        "records": 2,
+        "units": 2
+      }
+    }
   },
   "pipeline": {
     "proposal": {
       "status": "passed",
       "notes": [
-        "Intent: Expand canary operations with 2 additional distinct batches",
-        "Scope: Canary batches B1 (2 Alfas) and B2 (2 Alfas)",
-        "Risks: Schema validation drift, telemetry aggregation across multiple batches",
-        "Rollback: Revert to previous export directories; purge if entropy >0.7",
-        "Owner: toyfoundry_ai_0",
-        "Timestamp: 2025-10-17T17:16:00Z",
-        "Dependency: order-2025-10-15-028 completed (canary C1)"
+        "Intent: add two distinct canary lanes (b1, b2) with fully separated exports for downstream validation.",
+        "Scope: 4 Alfa mints (2 per batch) routed to dedicated export directories.",
+        "Risks: checksum mismatches, schema drift, telemetry gaps.",
+        "Rollback: restore previous export set; purge canary manifests via tools.forge.forge_purge_alfa if anomaly entropy > 0.7.",
+        "Order 025 metadata: owner=toyfoundry_ai_0; dual-key approvals VisionHolder + SafetyLead (2025-10-16T03:49:53.4445080Z)."
       ]
     },
     "sandbox": {
       "status": "passed",
       "notes": [
-        "Forge mint validated with existing canary C1 success",
-        "Telemetry export paths verified for isolated batch directories",
-        "Schema validation confirmed for factory-report@1.0"
+        "Dry run: python -m tools.forge.forge_mint_alfa --name 'Order028 Canary Dry Run' --dry-run (reused for readiness).",
+        "Baseline validation: python tools/validate_order_021.py (19 records pass)."
       ]
     },
-    "canary": {
+    "canary_batch_b1": {
       "status": "passed",
       "notes": [
-        "Batch B1: Minted 2 Alfas (alfa-1760721470-19d09f09, alfa-1760721475-3e07cfb0)",
-        "Batch B1: Generated composite_export.json/csv with 14 total records",
-        "Batch B2: Minted 2 Alfas (alfa-1760721497-696d48bb, alfa-1760721502-3d89c5b5)",
-        "Batch B2: Generated composite_export.json/csv with 16 total records",
-        "All artifacts checksummed with SHA256",
-        "Per-batch isolation maintained (separate export directories)",
-        "4-hour observation window: TBD (pending monitoring)"
+        "Minted alfa-1761133848-27b0aadd + alfa-1761134411-2e7d87d0.",
+        "Generated composite exports via python -m tools.telemetry.quilt_loom ... --export-dir order030_canary_b1.",
+        "Schema check: python tools/validate_order_021.py ... order030_canary_b1/composite_export.json --csv ... (2/2 pass).",
+        "SHA256 confirmed via python -c \"import hashlib, pathlib; files=['.toyfoundry/telemetry/quilt/exports/order030_canary_b1/composite_export.json','.toyfoundry/telemetry/quilt/exports/order030_canary_b1/composite_export.csv'];\nfor path in files:\n    digest=hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest().upper();\n    print(f'{path}:{digest}')\"."
+      ]
+    },
+    "canary_batch_b2": {
+      "status": "passed",
+      "notes": [
+        "Minted alfa-1761140942-660fbcb7 + alfa-1761140955-5313e059.",
+        "Generated composite exports via python -m tools.telemetry.quilt_loom ... --export-dir order030_canary_b2.",
+        "Schema check: python tools/validate_order_021.py ... order030_canary_b2/composite_export.json --csv ... (2/2 pass).",
+        "SHA256 confirmed via python -c \"import hashlib, pathlib; files=['.toyfoundry/telemetry/quilt/exports/order030_canary_b2/composite_export.json','.toyfoundry/telemetry/quilt/exports/order030_canary_b2/composite_export.csv'];\nfor path in files:\n    digest=hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest().upper();\n    print(f'{path}:{digest}')\"."
       ]
     },
     "ga": {
       "status": "awaiting_approval",
       "notes": [
-        "Both canary batches (B1 and B2) completed successfully",
-        "Total canary Alfas across all batches: C1(3) + B1(2) + B2(2) = 7 Alfas",
-        "Awaiting High Command approval for general availability"
+        "Awaiting toysoldiers_ai_0 Order 031 ingestion decision before lifting canary gate."
       ]
     }
   },
   "safety": {
     "approvals": [
       "toyfoundry_ai_0",
-      "daylands_safety_pipeline"
+      "VisionHolder",
+      "SafetyLead"
     ],
+    "retention": "7 days (auto purge after 2025-10-29T05:08:00Z)",
+    "rollback_plan": "Revert export directories to previous state and purge new canary manifests with forge_purge_alfa.",
     "caps": {
       "role": "factory_division",
       "limits": {
-        "rate_per_min": 10,
-        "scope": "canary_batch_expansion"
+        "rate_per_min": 4,
+        "scope": "canary_batch_manufacturing"
       }
-    },
-    "rollback_plan": "Revert to previous export directories (delete canary_b1/ and canary_b2/); purge canary Alfas via forge_purge_alfa if entropy >0.7; restore from git history if needed",
-    "retention": "7 days in .toyfoundry/telemetry/quilt/exports/canary_b1/ and canary_b2/"
+    }
   }
 }

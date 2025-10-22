@@ -1,0 +1,44 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-031-report",
+  "order_id": "order-2025-10-15-031",
+  "reported_by": "toysoldiers_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-10-22T05:10:00Z",
+  "status": "completed",
+  "summary": "Ingested Toyfoundry canary batches b1 and b2, verified SHA256 per export, validated Order 021 schema + DQ checks, and issued Go decision for consumer rollout.",
+  "batches": {
+    "b1": {
+      "json_path": ".toyfoundry/telemetry/quilt/exports/order030_canary_b1/composite_export.json",
+      "csv_path": ".toyfoundry/telemetry/quilt/exports/order030_canary_b1/composite_export.csv",
+      "records": 2,
+      "units_total": 2,
+      "sha256": {
+        "json": "526B510959926E8299A1823BE03EE0D73F33A436D31CD87DA5A20EA594E4CC5C",
+        "csv": "B7BCC656145A87774563E503D162284E218E90B8693EDE91F5200D243919908D"
+      },
+      "sha256_verified": true,
+      "validator_command": "python tools/validate_order_021.py .toyfoundry/telemetry/quilt/exports/order030_canary_b1/composite_export.json --csv .toyfoundry/telemetry/quilt/exports/order030_canary_b1/composite_export.csv",
+      "validation_result": "pass"
+    },
+    "b2": {
+      "json_path": ".toyfoundry/telemetry/quilt/exports/order030_canary_b2/composite_export.json",
+      "csv_path": ".toyfoundry/telemetry/quilt/exports/order030_canary_b2/composite_export.csv",
+      "records": 2,
+      "units_total": 2,
+      "sha256": {
+        "json": "D2F27695DFAF8F6FF69E03CDB8B8B4F1C82E79FF76B154878FAFE6444065EFE2",
+        "csv": "47328DE8A788F84532F97A4078D1FBB0ED8162D347E32E0D3283603F0AAD9BCD"
+      },
+      "sha256_verified": true,
+      "validator_command": "python tools/validate_order_021.py .toyfoundry/telemetry/quilt/exports/order030_canary_b2/composite_export.json --csv .toyfoundry/telemetry/quilt/exports/order030_canary_b2/composite_export.csv",
+      "validation_result": "pass"
+    }
+  },
+  "verification_command": "python -c \"import hashlib, pathlib; files=['.toyfoundry/telemetry/quilt/exports/order030_canary_b1/composite_export.json','.toyfoundry/telemetry/quilt/exports/order030_canary_b1/composite_export.csv','.toyfoundry/telemetry/quilt/exports/order030_canary_b2/composite_export.json','.toyfoundry/telemetry/quilt/exports/order030_canary_b2/composite_export.csv'];\nfor path in files:\n    digest=hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest().upper();\n    print(f'{path}:{digest}')\"",
+  "acceptance": {
+    "decision": "go",
+    "constraints": [],
+    "notes": "Order 036 schema remediation holds across new canary batches. No blockers observed; recommend observation window and downstream mirroring."
+  }
+}

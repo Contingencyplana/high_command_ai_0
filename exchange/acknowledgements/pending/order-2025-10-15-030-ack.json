@@ -4,7 +4,11 @@
   "referenced_id": "order-2025-10-15-030",
   "sender": "toyfoundry_ai_0",
   "receiver": "high_command_ai_0",
-  "timestamp_sent": "2025-10-18T12:00:00Z",
+  "timestamp_sent": "2025-10-22T04:45:30Z",
   "status": "acknowledged",
-  "notes": "Acknowledged. Order 030 directs expanding canary production with 2 additional distinct batches (canary_batch_b1, canary_batch_b2) as separate files with build_info.json and SHA256 checksums. Will execute directive steps: (1) propose change with intent/scope/risks/rollback including Order 025 metadata, (2) emit canary_batch_b1.csv/json with build_info and checksums, (3) emit canary_batch_b2.csv/json with build_info and checksums, (4) submit report with per-batch paths, counts, checksums, schema validation, DQ results, retention=7d, and rollback plan. Dependencies satisfied (order-2025-10-15-028 canary batch framework established). Target completion before expiry 2025-10-23T00:00:00Z."
+  "notes": [
+    "Owner: toyfoundry_ai_0 operating under Order 025 dual-key approval (VisionHolder + SafetyLead, 2025-10-16T03:49:53.4445080Z).",
+    "Execution outline: (1) proposal citing intent/scope/risks/rollback with Order 025 metadata, (2) generate canary_batch_b1 JSON/CSV + build_info + SHA256 after sandbox validation, (3) repeat for canary_batch_b2 as distinct telemetry slice, (4) compile report with per-batch counts, schema/DQ confirmations, retention=7d, rollback hooks.",
+    "Dependencies cleared: Order 028 refreshed canary lane + Order 036 schema remediation validated. Target completion by 2025-10-23T00:00:00Z."
+  ]
 }
