@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-10-18-036-ack",
+  "referenced_id": "order-2025-10-18-036",
+  "sender": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-23T05:35:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Corrective Order 036 accepted. Scope: re-align quilt exports with Order 021 contract across standard and canary lanes.",
+    "Execution path: (1) confirm schema fields/enums, (2) inspect telemetry loom mappings, (3) regenerate standard + canary exports, (4) refresh manifests/build-info/checksums, (5) rerun validator suite, (6) file completion report with new hashes and logs.",
+    "Dual-key approvals already recorded under Order 025; Toysoldiers notified once report updated with fresh telemetry and ready_for_revalidation=true."
+  ]
+}

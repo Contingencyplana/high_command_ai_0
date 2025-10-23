@@ -4,9 +4,9 @@
   "order_id": "order-2025-10-18-036",
   "reported_by": "toyfoundry_ai_0",
   "receiver": "high_command_ai_0",
-  "timestamp_reported": "2025-10-22T05:05:00Z",
+  "timestamp_reported": "2025-10-23T05:36:00Z",
   "status": "completed",
-  "summary": "Order 036 corrective action completed. All Toyfoundry exports now emit Order 021 schema v1.0 and pass validator checks. Fresh checksums published for standard and canary batches; ready_for_revalidation set to true.",
+  "summary": "Order 036 corrective action completed. All Toyfoundry exports now emit Order 021 schema v1.0 and pass validator checks. Regenerated standard + canary artefacts have fresh SHA256 digests and are ready_for_revalidation.",
   "details": {
     "schema_alignment": {
       "before_fields": [
@@ -28,32 +28,78 @@
     },
     "checksums": {
       "standard": {
-        "composite_export.json": "844B7F8D6867F346DA0050B4202482C72EE40370B360635C814A27AAD7644441",
-        "composite_export.csv": "9F87FE126A8A6CC90CAE18C0AE298070C560D70D9C83ABE922EED5F1FD62EA61"
+        "composite_export.json": "65363CD019869DA93E381505083C39FDFDD8A05871D0DF9556A611C438863F6D",
+        "composite_export.csv": "22F76BC8A1951BFB7BACB017F0105587395EA8D12CDA413062CFB63DFF749FC2"
+      },
+      "order028_canary": {
+        "composite_export.json": "7D693137A87AA7082990D7F931F8F90853539DB4581F3175FBBA1C07003745BB",
+        "composite_export.csv": "7D4E44F153747D7DADD2919AC3400D92DBE39F0BC86847FD4F24EF95A5C785A4"
       },
       "canary_b1": {
-        "composite_export.json": "844B7F8D6867F346DA0050B4202482C72EE40370B360635C814A27AAD7644441",
-        "composite_export.csv": "9F87FE126A8A6CC90CAE18C0AE298070C560D70D9C83ABE922EED5F1FD62EA61"
+        "composite_export.json": "526B510959926E8299A1823BE03EE0D73F33A436D31CD87DA5A20EA594E4CC5C",
+        "composite_export.csv": "B7BCC656145A87774563E503D162284E218E90B8693EDE91F5200D243919908D"
       },
       "canary_b2": {
-        "composite_export.json": "844B7F8D6867F346DA0050B4202482C72EE40370B360635C814A27AAD7644441",
-        "composite_export.csv": "9F87FE126A8A6CC90CAE18C0AE298070C560D70D9C83ABE922EED5F1FD62EA61"
+        "composite_export.json": "D2F27695DFAF8F6FF69E03CDB8B8B4F1C82E79FF76B154878FAFE6444065EFE2",
+        "composite_export.csv": "47328DE8A788F84532F97A4078D1FBB0ED8162D347E32E0D3283603F0AAD9BCD"
       },
       "canary_c1": {
         "composite_export.json": "844B7F8D6867F346DA0050B4202482C72EE40370B360635C814A27AAD7644441",
         "composite_export.csv": "9F87FE126A8A6CC90CAE18C0AE298070C560D70D9C83ABE922EED5F1FD62EA61"
       }
     },
-    "validator_run": {
-      "tool": "tools.validate_order_021",
-      "command": "python -m tools.validate_order_021 .toyfoundry/telemetry/quilt/exports/composite_export.json --csv .toyfoundry/telemetry/quilt/exports/composite_export.csv",
-      "result": "passed",
-      "records_validated": 19,
-      "log_excerpt": [
-        "Order 021 validation PASSED: 19 records validated.",
-        "CSV header validation passed."
-      ]
-    },
+    "validator_runs": [
+      {
+        "target": "standard",
+        "command": "python tools/validate_order_021.py .toyfoundry/telemetry/quilt/exports/composite_export.json --csv .toyfoundry/telemetry/quilt/exports/composite_export.csv",
+        "result": "passed",
+        "records_validated": 29,
+        "log_excerpt": [
+          "Order 021 validation PASSED: 29 records validated.",
+          "CSV header validation passed."
+        ]
+      },
+      {
+        "target": "order028_canary",
+        "command": "python tools/validate_order_021.py .toyfoundry/telemetry/quilt/exports/order028_canary/composite_export.json --csv .toyfoundry/telemetry/quilt/exports/order028_canary/composite_export.csv",
+        "result": "passed",
+        "records_validated": 3,
+        "log_excerpt": [
+          "Order 021 validation PASSED: 3 records validated.",
+          "CSV header validation passed."
+        ]
+      },
+      {
+        "target": "order030_canary_b1",
+        "command": "python tools/validate_order_021.py .toyfoundry/telemetry/quilt/exports/order030_canary_b1/composite_export.json --csv .toyfoundry/telemetry/quilt/exports/order030_canary_b1/composite_export.csv",
+        "result": "passed",
+        "records_validated": 2,
+        "log_excerpt": [
+          "Order 021 validation PASSED: 2 records validated.",
+          "CSV header validation passed."
+        ]
+      },
+      {
+        "target": "order030_canary_b2",
+        "command": "python tools/validate_order_021.py .toyfoundry/telemetry/quilt/exports/order030_canary_b2/composite_export.json --csv .toyfoundry/telemetry/quilt/exports/order030_canary_b2/composite_export.csv",
+        "result": "passed",
+        "records_validated": 2,
+        "log_excerpt": [
+          "Order 021 validation PASSED: 2 records validated.",
+          "CSV header validation passed."
+        ]
+      },
+      {
+        "target": "canary_c1",
+        "command": "python tools/validate_order_021.py .toyfoundry/telemetry/quilt/exports/canary_c1/composite_export.json --csv .toyfoundry/telemetry/quilt/exports/canary_c1/composite_export.csv",
+        "result": "passed",
+        "records_validated": 19,
+        "log_excerpt": [
+          "Order 021 validation PASSED: 19 records validated.",
+          "CSV header validation passed."
+        ]
+      }
+    ],
     "ready_for_revalidation": true
   },
   "attachments": [
