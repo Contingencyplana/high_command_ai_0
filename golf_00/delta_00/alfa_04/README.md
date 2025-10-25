@@ -1,0 +1,31 @@
+# Alfa 04 — Emoji Composer Prototype
+
+**Status:** Prototype scaffolding  
+**Purpose:** Host the Level-0 emoji composer, narration pack, and runtime adapter tests for Major Pivot Five.
+
+---
+
+## Layout
+
+| File | Role |
+|------|------|
+| `emoji_translator.py` | Converts glyph chains into Toyfoundry-ready JSON payloads |
+| `sample_chains.json` | Playground chains used by the dispatch harness |
+| `dispatch_sample_chains.py` | Lightweight harness that writes translator output to the exchange outbox |
+| `README.md` | This brief |
+
+---
+
+## Usage Expectations
+
+1. Accept emoji chains from the grid overlay (`Noun → Verb → Target → Outcome` and variants).
+2. Translate chains via `emoji_translator.py` and save payloads to the exchange outbox.
+3. Use `dispatch_sample_chains.py` to validate round-trips before the overlay is connected.
+4. Round-trip telemetry back into glyph narration for toddlers and AI co-players.
+
+### Quick Harness Check
+
+- Run `python dispatch_sample_chains.py` to drop translator payloads into `exchange/orders/outbox/emoji_runtime`.
+- Inspect the emitted timestamped JSON files to confirm the glyph IDs and trait metadata look correct before integrating a live caller.
+
+Future milestones will wire this Alfa to the playable overlay so each click enqueues a glyph chain for translation.
