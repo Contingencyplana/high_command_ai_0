@@ -9,15 +9,21 @@
 
 **High Command is transforming into a playable workflow overlay.**
 
-**Four Major Pivots:**
+**Five Major Pivots:**
+
 - **[Pivot One](new_major_pivots/new_major_pivot_1.md)** — 70% Play / 30% Dev-Ops Ratio
 - **[Pivot Two](new_major_pivots/new_major_pivot_2.md)** — Playable Workflow Overlay (16×16 Emoji Battlegrids)
 - **[Pivot Three](new_major_pivots/new_major_pivot_3.md)** — Maintain Big Ideas Families & SHAGI Vision
 - **[Pivot Four](new_major_pivots/new_major_pivot_4.md)** — Fractal Folder Structure (golf_00–15 for 4,096 Alfas)
+- **[Pivot Five](new_major_pivots/new_major_pivot_5.md)** — Emoji-First Computing Language
 
 **See:** `new_major_pivots/README.md` for full pivot documentation.
 
-**Current focus:** Building **Alfa Zero** — first playable 16×16 battleground that translates grid clicks into High Command orders. See `docs/alfa_zero_spec.md` for prototype specification.
+**Current focus:**
+
+- Building **Alfa Zero** — first playable 16×16 battleground translating grid clicks into High Command orders (see `docs/alfa_zero_spec.md`).
+- Shipping **Alfa 04 (Emoji Composer Harness)** — Level-0 glyph translator dispatching Toyfoundry-ready payloads (see `golf_00/delta_00/alfa_04/`).
+- Prototyping **Alfa 00 overlay harness & CLI** — simulated grid clicks and an interactive controller piping into the emoji runtime (see `golf_00/delta_00/alfa_00/`).
 
 ---
 

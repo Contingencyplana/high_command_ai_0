@@ -14,8 +14,6 @@
 | `dispatch_sample_chains.py` | Lightweight harness that writes translator output to the exchange outbox |
 | `README.md` | This brief |
 
----
-
 ## Usage Expectations
 
 1. Accept emoji chains from the grid overlay (`Noun → Verb → Target → Outcome` and variants).
@@ -27,5 +25,11 @@
 
 - Run `python dispatch_sample_chains.py` to drop translator payloads into `exchange/orders/outbox/emoji_runtime`.
 - Inspect the emitted timestamped JSON files to confirm the glyph IDs and trait metadata look correct before integrating a live caller.
+
+### Overlay Bridge
+
+- `golf_00/delta_00/alfa_00/overlay_test_harness.py` simulates grid clicks and funnels the mapped cells into the same translator path.
+- `golf_00/delta_00/alfa_00/alfa_zero_controller.py` offers an interactive CLI so operators can drive the translator with live grid selections.
+- Keep `sample_chains.json` in sync so both harnesses emit the canonical Level-0 payloads.
 
 Future milestones will wire this Alfa to the playable overlay so each click enqueues a glyph chain for translation.
