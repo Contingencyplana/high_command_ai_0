@@ -1,6 +1,10 @@
 {
   "basic_ritual_forge": "🛠️ ⚒️ 🤖 ✅",
+  "rapid_ore_pulse": "🤖 ⚒️ ⏱️ 🌾 ✅",
   "guarded_delivery_wall": "🤖 📦 🔒 🧱 ✅",
+  "harvest_guarded_wall": "🌾 🌿 🔒 🧱 ✅",
   "signal_loop_dream": "🌌 🛰️ 🔄 📈",
+  "dream_transmute_bless": "🌌 🪄 🌱 🌈",
+  "river_signal_loop": "🌊 🛰️ 🔄 📈",
   "conditional_repeat_seed": "🌱 🌿 ✅ 🔁"
 }
