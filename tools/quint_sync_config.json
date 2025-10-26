@@ -1,0 +1,25 @@
+{
+  "workspaces": [
+    {
+      "name": "high_command_ai_0",
+      "path": "C:/Users/Admin/high_command_ai_0"
+    },
+    {
+      "name": "toyfoundry_ai_0",
+      "path": "C:/Users/Admin/toyfoundry_ai_0"
+    },
+    {
+      "name": "toysoldiers_ai_0",
+      "path": "C:/Users/Admin/toysoldiers_ai_0"
+    },
+    {
+      "name": "valiant_citadel_ai_0",
+      "path": "C:/Users/Admin/valiant_citadel_ai_0"
+    },
+    {
+      "name": "r_and_d_ai_0",
+      "path": "C:/Users/Admin/r_and_d_ai_0"
+    }
+  ],
+  "log_file": "C:/Users/Admin/high_command_ai_0/quint_synced/sync_log.md"
+}
