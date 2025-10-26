@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import shutil
 import sys
@@ -141,9 +142,18 @@ def check_existing_todos(log_path: Path) -> None:
     if not log_path.exists():
         return
 
-    if "TODO" in log_path.read_text(encoding="utf-8").upper():
+    offenders: List[str] = []
+    for idx, line in enumerate(log_path.read_text(encoding="utf-8").splitlines(), start=1):
+        if "ACK/TODO" in line:
+            continue
+        if re.search(r"\bTODO\b", line, flags=re.IGNORECASE):
+            offenders.append(f"line {idx}: {line.strip()}")
+
+    if offenders:
+        details = "\n".join(offenders)
         raise RuntimeError(
-            "Outstanding TODO entries detected in sync log. Resolve them before running quint_sync."
+            "Outstanding TODO entries detected in sync log. Resolve them before running quint_sync.\n"
+            + details
         )
 
 
