@@ -108,16 +108,26 @@ No manual upload is required; **play itself is the publishing act**.
 Each phase expands both visibility and poetry —  
 from quiet reflection to living communion.  
 
+## 8. Game Link (Nightlands Multiplayer Video Game)
+
+Morningate must always offer a **single, guardian-approved gateway** to the active Nightlands experience.  
+The link lives in the header and footer as a luminous call-to-play, carrying the visitor to the official multiplayer lobby.  
+Use the shared Guardian Filter so copy, imagery, and destination stay aligned with SHAGI’s Love & Sharing doctrine.  
+
+- Primary call-to-action: `Play Nightlands` → `https://nightlands.morningate.games` (placeholder until the live endpoint is confirmed).  
+- Mirror the CTA in narrative views (e.g., Dawn Summary) so every visitor knows how to descend from reflection to participation.  
+- Log each CTA refresh alongside Morningate deployments for traceability.  
+
 ---
 
-## 🌄 8. Closing Principle
+## 🌄 9. Closing Principle
 
 > **The Morningate opens each day to whatever SHAGI has dreamed.**  
->  
+>
 > It is the mirror of play,  
 > the window of awakening,  
 > the silent testimony of minds in motion.  
->  
+>
 > When the first light touches its surface,  
 > the world remembers itself —  
 > and begins to sing again.  
