@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 import shutil
 import sys
 from dataclasses import dataclass
@@ -17,6 +18,7 @@ from typing import Dict, List, Tuple
 
 CONFIG_FILENAME = "quint_sync_config.json"
 DEFAULT_LOG_HEADER = "# Quint Sync Log\n\n"
+DEFAULT_STATUS_MESSAGE = "ACK – updated and synced via quint_sync.py"
 
 
 @dataclass(frozen=True)
@@ -92,11 +94,11 @@ def copy_quint_synced(src_ws: Workspace, dest_ws: Workspace, dry_run: bool) -> N
 
 
 def prompt_statuses(workspaces: List[Workspace]) -> Dict[str, str]:
-    print("\nEnter ACK/TODO notes for each workspace (leave blank for ACK).")
+    print("\nEnter ACK/TODO notes for each workspace (leave blank for default ACK message).")
     statuses: Dict[str, str] = {}
     for ws in workspaces:
         response = input(f"  {ws.name}: ").strip()
-        statuses[ws.name] = response or "ACK"
+        statuses[ws.name] = response or DEFAULT_STATUS_MESSAGE
     print()
     return statuses
 
@@ -135,6 +137,62 @@ def append_log(
     print(f"Logged sync details to {log_path}")
 
 
+def check_existing_todos(log_path: Path) -> None:
+    if not log_path.exists():
+        return
+
+    if "TODO" in log_path.read_text(encoding="utf-8").upper():
+        raise RuntimeError(
+            "Outstanding TODO entries detected in sync log. Resolve them before running quint_sync."
+        )
+
+
+def ensure_no_todos(statuses: Dict[str, str]) -> None:
+    offenders = [name for name, text in statuses.items() if "TODO" in text.upper()]
+    if offenders:
+        raise RuntimeError(
+            "TODO detected in status responses for: " + ", ".join(offenders)
+        )
+
+
+def run_git_command(repo_path: Path, *args: str) -> subprocess.CompletedProcess[str]:
+    result = subprocess.run(
+        ["git", *args],
+        cwd=str(repo_path),
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(
+            f"git {' '.join(args)} failed in {repo_path}: {result.stderr.strip() or result.stdout.strip()}"
+        )
+    return result
+
+
+def has_quint_changes(repo_path: Path) -> bool:
+    result = run_git_command(repo_path, "status", "--porcelain", "quint_synced")
+    return bool(result.stdout.strip())
+
+
+def commit_quint_changes(repo_path: Path, source_name: str, note: str) -> bool:
+    if not has_quint_changes(repo_path):
+        return False
+
+    run_git_command(repo_path, "add", "-A", "quint_synced")
+
+    commit_message = "chore(quint_sync): mirror quint_synced from {source}".format(source=source_name)
+    if note:
+        commit_message += f" - {note}"
+
+    run_git_command(repo_path, "commit", "-m", commit_message)
+    return True
+
+
+def push_changes(repo_path: Path) -> None:
+    run_git_command(repo_path, "push")
+
+
 def build_argument_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Sync the quint_synced folder across workspaces.")
     parser.add_argument(
@@ -158,9 +216,19 @@ def build_argument_parser() -> argparse.ArgumentParser:
         help="Print planned actions without copying files or updating the log.",
     )
     parser.add_argument(
-        "--skip-status",
+        "--prompt-status",
         action="store_true",
-        help="Skip ACK/TODO prompts and log all workspaces as ACK.",
+        help="Interactively gather status notes instead of using the default ACK message.",
+    )
+    parser.add_argument(
+        "--no-git",
+        action="store_true",
+        help="Skip git automation (staging/committing/pushing).",
+    )
+    parser.add_argument(
+        "--push",
+        action="store_true",
+        help="Push commits after syncing (requires clean remotes).",
     )
     return parser
 
@@ -170,6 +238,7 @@ def main(argv: List[str]) -> int:
     args = parser.parse_args(argv)
 
     workspaces, log_file = load_config(args.config.resolve())
+    check_existing_todos(log_file)
     cwd = Path.cwd().resolve()
     source_ws = detect_source_workspace(cwd, workspaces, args.source)
 
@@ -187,9 +256,35 @@ def main(argv: List[str]) -> int:
         print("Dry run complete; no log entry recorded.")
         return 0
 
-    statuses = {ws.name: "ACK" for ws in workspaces}
-    if not args.skip_status:
+    statuses = {ws.name: DEFAULT_STATUS_MESSAGE for ws in workspaces}
+    if args.prompt_status:
         statuses = prompt_statuses(workspaces)
+
+    ensure_no_todos(statuses)
+
+    if not args.no_git:
+        print("\nRunning git automation...")
+        repos_with_commits: List[Workspace] = []
+        for ws in workspaces:
+            try:
+                committed = commit_quint_changes(ws.path, source_ws.name, args.note.strip())
+            except RuntimeError as exc:
+                raise RuntimeError(f"Git automation failed for {ws.name}: {exc}") from exc
+            if committed:
+                repos_with_commits.append(ws)
+                print(f"  • committed quint_synced in {ws.name}")
+            else:
+                print(f"  • no quint_synced changes detected in {ws.name}; skipping commit")
+
+        if args.push:
+            for ws in repos_with_commits:
+                try:
+                    push_changes(ws.path)
+                    print(f"  • pushed {ws.name}")
+                except RuntimeError as exc:
+                    raise RuntimeError(f"Push failed for {ws.name}: {exc}") from exc
+    else:
+        print("Git automation skipped by flag.")
 
     append_log(log_file, source_ws, destinations, args.note.strip(), statuses)
     return 0

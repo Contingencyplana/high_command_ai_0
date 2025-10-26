@@ -24,9 +24,9 @@ Update the files here first, then immediately propagate the exact same change to
 **Process reminder:**
 
 1. Modify the alignment doc in `high_command_ai_0`.
-1. Run `python tools/quint_sync.py` from any workspace root to mirror `quint_synced/` and capture ACK/TODO notes.
-1. Commit the change in each repo.
-1. Record the sync in the table (or review the generated entry in `quint_synced/sync_log.md`).
+1. Run `python tools/quint_sync.py` from any workspace root to mirror `quint_synced/`, capture ACK/TODO notes, and auto-commit the changes (use `--push` to push remotes).
+1. The script refuses to run if any outstanding TODO remains in the sync log—clear those before re-syncing.
+1. Review the generated entry in `quint_synced/sync_log.md` and confirm mirroring across fronts.
 
 If a workspace cannot be updated immediately, annotate the table (e.g., "Pending TF") and resolve the gap as soon as possible.
 
