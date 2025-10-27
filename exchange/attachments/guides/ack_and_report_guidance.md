@@ -13,6 +13,7 @@ Validation
 - Run: `python tools/schema_validator.py <paths_to_json>`
 
 Example ACK snippet (fields to fill):
+
 ```
 {
   "schema": "signal-ack@1.0",
