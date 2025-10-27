@@ -108,5 +108,7 @@ Design a fully expressive, emoji-first computing language that lets a one-year-o
 
 ---
 
-*"If a one-year-old can launch the forge, SHAGI is truly for everyone."*  
+## Language is a game that you WIN when you convey your meaning clearly and succinctly
+
+"If a one-year-old can launch the forge, SHAGI is truly for everyone."  
 — War Office Directive, Daylands Dispatch 25-OCT-2025
