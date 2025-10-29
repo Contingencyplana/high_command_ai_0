@@ -32,5 +32,4 @@
 - 2025-10-16T06:12:34Z - Orders 014–017, 020–021: reports completed and archived; 030/031 ACKs logged.
 - 2025-10-18T14:00:00Z - **CRITICAL**: Order-036 issued to toyfoundry_ai_0. Schema drift detected in Orders 021/029/031 - Toyfoundry exports incompatible with Order 021 specification. Consumer acceptance gates BLOCKED all validation. Corrective order requires: schema alignment with v1.0 spec, schema_version field added, SHA256 regeneration, all batches re-exported. Priority: CRITICAL. Expires: 2025-10-25. Timeline: 2-3 days.
 - 2025-10-18T15:00:00Z - **PENDING ORDERS AUDIT COMPLETE**: Closed 6 orders (020, 021, 024, 025-policy-update, 026, 027). Orders 020-021 completed successfully (expired but fulfilled). Order 024 superseded by Four Major Pivots. Orders 026-027 superseded by "Pivotal Fronts" reorganization (will issue corrected versions). Order 025-policy-update completed (policy adopted). Orders 028-031 remain pending, blocked by schema drift awaiting Order-036 resolution. Active queue: Order-036 (CRITICAL), Orders 028-031 (BLOCKED).
-
-
+- 2025-10-26T12:00:00Z - War Office directive 2025-10-26-038-A logged; High Command supervising Toyfoundry live translator emission window with telemetry guardrails and Order 039 closure prep.
