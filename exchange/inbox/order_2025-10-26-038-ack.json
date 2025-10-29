@@ -1,0 +1,24 @@
+{
+  "order_id": "order_2025-10-26-038",
+  "acknowledged_at": "2025-10-29T08:43:15Z",
+  "status": "monitoring-ready",
+  "notes": "Monitoring hooks active; emitter queued pending War Office fire-window.",
+  "monitoring": {
+    "script": "tools/alfa_two_monitor.py",
+    "telemetry_dir": "telemetry/alfa_two/live",
+    "processed_orders": ["TF-ALFA2-MONITOR-01"],
+    "narrator_metrics_log": "monitoring/logs/narrator_metrics.json",
+    "glyph_vo_log": "monitoring/logs/glyph_vo_discrepancies.log"
+  },
+  "emitter": {
+    "script": "tools/alfa_two_emit.py",
+    "staged": true,
+    "run_id_ready": "TF-ALFA2-PROD",
+    "awaiting_clearance": true
+  },
+  "validation": {
+    "pytest_suite": "pytest tests/alfa_two/test_factory_payloads.py",
+    "factory_order_emitter_dry_run": "python tools/factory_order_emitter.py tests/alfa_two/sample_translator_payload.json NUL --order-id TF-ALFA2-CHECK --dry-run",
+    "last_validated_at": "2025-10-29T08:42:40Z"
+  }
+}

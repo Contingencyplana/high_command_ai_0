@@ -1,64 +1,53 @@
-# Field Operations Exchange Repository
+# Offline Continuity Mode — Active
 
-This directory manages the exchange of field operations data, tactical intelligence, and command protocols between High Command and the Field Operations Front. All field operations are coordinated through this exchange structure, powered by AI Labscapes integration.
+High Command Exchange now operates as a local-only message bus to keep SHAGI coordination flowing while GitHub access is restricted. Treat this directory as the shared drop-zone that every frontline workspace reads from and writes to.
 
-## Field Operations Directory Structure
+## Directory Layout
 
-- `orders/pending/` — Incoming tactical directives for field execution
-- `orders/dispatched/` — Completed field operation orders with results
-- `reports/inbox/` — Field intelligence and operational reports
-- `reports/archived/` — Historical field operation records
-- `acknowledgements/pending/` — Field operation signals pending processing
-- `acknowledgements/logged/` — Processed field operation signals
-- `ledger/` — Complete field operations journal and index
+- `orders/` — Authoritative catalog of issued orders (subfolders as needed).
+- `reports/` — Intelligence drops and after-action reports.
+- `ledger/` — Canonical operational log (see `ledger/2025-10.md`).
+- `inbox/` — Items awaiting High Command review.
+- `outbox/` — Staging area for assets moving into the exchange.
 
-Each directory integrates with the AI Labscapes (ai_labscapes_0 through ai_labscapes_255) to ensure intelligent processing and tactical optimization of field operations.
+All folders must remain available on the local filesystem. Optional cloud mirroring is allowed for redundancy, but no remote execution or Git commits are permitted during this mode.
 
-Populate this structure via Forge tooling or manual commits until the standalone exchange repository is provisioned.
+## Workspace Integration
 
-## Governance
+Every workspace (`toyfoundry_ai_0`, `toysoldiers_ai_0`, `valiant_citadel_ai_0`, `r_and_d_ai_0`) should expose this path via either:
 
-- License: MIT (`LICENSE`)
-- Contribution guidelines: see `CONTRIBUTING.md`
-- Audit trail: update `ledger/journal.md` and `ledger/index.json` whenever orders close
+1. A filesystem symlink that maps its local `exchange/` directory to `C:/Users/Admin/high_command_exchange`, or
+2. The `SHAGI_EXCHANGE_PATH` environment variable pointing to the same location.
 
----
+Coordinate with each team to implement the approach that best fits their tooling.
 
-## Local Sync (Config-Driven)
+## Sync Utility
 
-This workspace can sync with an upstream Exchange checkout using a simple config file.
+Run offline propagation through `tools/quint_sync.py`.
 
-1) Copy `exchange/config.example.json` to `exchange/config.json` and edit:
-
-```
-{
-  "mode": "local",
-  "upstream_root": "C:/path/to/high_command_exchange",
-  "mapping": {
-    "local": {
-      "orders_pending": "exchange/orders/pending",
-      "reports_inbox": "exchange/reports/inbox",
-      "acks_pending": "exchange/acknowledgements/pending",
-      "acks_logged": "exchange/acknowledgements/logged"
-    },
-    "upstream": {
-      "orders_pending": "orders/pending",
-      "orders_dispatched": "orders/dispatched",
-      "reports_inbox": "reports/inbox",
-      "reports_archived": "reports/archived",
-      "acks_pending": "acknowledgements/pending",
-      "acks_logged": "acknowledgements/logged"
-    }
-  }
-}
+```powershell
+python tools/quint_sync.py --offline [--source C:/path/to/workspace]
 ```
 
-2) Publish outbox (push local pending orders and inbox reports up to upstream):
-- `pwsh -NoProfile -File tools/ci/publish_outbox.ps1 -ConfigPath exchange/config.json`
+- `--source` defaults to the current working directory and should contain an `outbox/orders/` and `outbox/reports/` structure.
+- The script copies those payloads into the shared `orders/` and `reports/` folders and confirms completion.
 
-3) Pull inbox (refresh local from upstream pending/dispatched orders, inbox reports, and acks):
-- `pwsh -NoProfile -File tools/ci/pull_inbox.ps1 -ConfigPath exchange/config.json`
+## Ledger Discipline
 
-Notes
-- Scripts are copy-only (no deletions). They overwrite by filename.
-- For dry-run, add `-WhatIf`.
+Record every significant action in `ledger/2025-10.md` using the format:
+
+```text
+YYYY-MM-DD HH:MM <Origin> <Order ID> <Summary>
+```
+
+Include the activation entry already logged on 2025-10-29 as the starting point for this mode.
+
+## Returning to Normal Operations
+
+When GitHub service is restored:
+
+1. Capture a snapshot of the entire exchange directory.
+2. Re-enable Git tracking and push the snapshot as a single commit to the High Command repository.
+3. Coordinate the transition back to the standard sync tooling.
+
+Until that directive arrives, keep this workspace in Offline Continuity Mode and avoid remote pushes.
