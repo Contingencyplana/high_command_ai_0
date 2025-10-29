@@ -1,33 +1,30 @@
-# offline_sync_exchange.py — High Command offline sync bridge
-# Mirrors outbox/orders and outbox/reports into the shared high_command_exchange hub.
-
-import os
-import shutil
+# offline_sync_exchange.py  —  auto-detects deep exchange tree
 from pathlib import Path
+import os, shutil
 
 EXCHANGE = Path(os.getenv("SHAGI_EXCHANGE_PATH", "C:/Users/Admin/high_command_exchange"))
 
-def sync_local(src_workspace: str):
-    """
-    Copy any files from <workspace>/outbox/orders and /outbox/reports
-    into the shared high_command_exchange/ directory.
-    """
+def sync_local(workspace_root: str):
+    ws = Path(workspace_root)
+    # Candidate source roots in order of preference
+    roots = [
+        ws / "exchange" / "orders" / "outbox",
+        ws / "exchange" / "outbox",
+    ]
+    src_root = next((r for r in roots if r.exists()), None)
+    if not src_root:
+        print(f"[WARN] No outbox found under {ws}")
+        return
+
     for folder in ["orders", "reports"]:
-        src = Path(src_workspace) / "outbox" / folder
+        src = src_root if folder == "orders" else ws / "exchange" / "reports"
         dst = EXCHANGE / folder
-        if not src.exists():
-            print(f"[WARN] No {folder} folder found in outbox: {src}")
-            continue
-
         dst.mkdir(parents=True, exist_ok=True)
-        for f in src.glob("*"):
+        if not src.exists():
+            print(f"[WARN] {src} missing; skipping")
+            continue
+        for f in src.glob("**/*.*"):
             if f.is_file():
-                shutil.copy2(f, dst)
-                print(f"Copied {f.name} -> {dst}")
+                rel = f.relative_to(src)
+                shutil.copy2(f, dst / rel)
     print("✅ Local exchange sync complete.")
-
-
-if __name__ == "__main__":
-    here = Path(__file__).resolve().parent
-    workspace_root = here.parent
-    sync_local(str(workspace_root))
