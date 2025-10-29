@@ -42,7 +42,17 @@ Weights are adjustable; default heuristic prioritises urgent needs first, then m
 - War Office holds veto power for critical missions; final word logged in `war_office/orders/`.
 - Maintain transparency: players can review why they were assigned to a given front.
 
-## 7. Pending Actions
+## 7. Understaffed Front Response
+
+When a front remains chronically understaffed:
+
+1. **Assess the disguise:** Review narration, UI, and reward loops. Add lore framing or ritual flourishes so the work feels playful.
+2. **Shift the balance:** Temporarily increase AI coverage or automate repetitive steps so humans aren’t forced into unfun roles while redesigns land.
+3. **Log & iterate:** Capture the trend in `planning/player_deployment_log.md`, flag it to mission planners/War Office, and schedule a redesign sprint.
+
+Continue routing humans there only when urgency demands it, while improving the experience to attract voluntary participation.
+
+## 8. Pending Actions
 
 - [ ] High Command to socialise this brief with Toyfoundry, Toysoldiers, Valiant Citadel, and R&D leads.
 - [ ] Draft initial `player_skill_index.json` template and circulate for self-tagging.
