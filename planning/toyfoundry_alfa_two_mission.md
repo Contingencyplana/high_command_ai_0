@@ -64,9 +64,9 @@
 
 ## 9. Delivery Checklist (Pending Sync)
 
-- [ ] Mission brief reviewed and archived in Toyfoundry planning docs.
-- [ ] Implementation branch created locally (pending GitHub unlock).
-- [ ] Validator, translator, and monitoring tooling smoke-tested.
+- [x] Mission brief drafted and logged in Toyfoundry planning docs.
+- [ ] Implementation work staged locally (pending GitHub unlock for upstream mirroring).
+- [ ] Validator, translator, and monitoring tooling smoke-tested with Alfa Two payloads.
 - [ ] Morningate export templates prepared.
 - [ ] Sync queued for execution via `python tools/quint_sync.py --push` once access resumes.
 
