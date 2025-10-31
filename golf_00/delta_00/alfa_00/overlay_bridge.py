@@ -19,8 +19,12 @@ CELL_MAPPINGS: Dict[Cell, Tuple[str, str]] = {
     (4, 12): ("guarded_delivery_wall", "Secure delivery to fortress wall"),
     (5, 8): ("harvest_guarded_wall", "Harvest and reinforce the garden wall"),
     (8, 10): ("signal_loop_dream", "Signal the dream relay for telemetry"),
+    (8, 11): ("signal_loop_coordination", "Align targeting array for allied volleys"),
     (8, 8): ("dream_transmute_bless", "Transmute dream residue into a blessing"),
     (9, 11): ("signal_loop_focus", "Tighten the targeting relay for precision guidance"),
+    (9, 10): ("signal_loop_command", "Channel command signals across the targeting relay"),
+    (10, 10): ("signal_loop_analysis", "Analyze targeting data for actionable patterns"),
+    (10, 11): ("signal_loop_cover", "Maintain targeting cover for the logistics wing"),
     (10, 1): ("river_signal_loop", "Loop river telemetry and flag risks"),
     (12, 0): ("conditional_repeat_seed", "Seed repeatable growth cadence"),
 }
