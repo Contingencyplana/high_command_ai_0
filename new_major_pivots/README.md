@@ -3,6 +3,8 @@
 **Date:** 2025-10-17  
 **Authorizing Body:** War Office + High Command  
 **Status:** Approved & Active  
+**Last Updated:** 2025-10-31  
+**Offline Continuity Mode:** Active  
 
 ---
 
@@ -74,19 +76,35 @@ The **Five Major Pivots** represent a fundamental shift in how we build **Nightl
 - ✅ **Exchange protocol operational** — High Command ↔ Toyfoundry ↔ Toysoldiers coordination proven
 - ✅ **Telemetry quilt functional** — Aggregates factory-reports into composite rollups
 - ✅ **Emoji pivot proposal** — Pivot Five charter drafted (`new_major_pivot_5.md`)
+- ✅ **Emoji Level-0 grammar baseline** — 32-glyph lexicon, narration guide, and compiler mapping established (`planning/emoji_language/level_0.md`)
 
 ### In Progress
 
 - 🔄 **Alfa Zero prototype** — Spec drafted (`docs/alfa_zero_spec.md`), implementation pending
 - 🔄 **Pre-pivot orders cleanup** — Order-031 awaiting Toysoldiers report
-- 🔄 **Emoji Level-0 grammar** — Draft lexicon and compiler bridge (`planning/emoji_language/level_0.md`)
+- 🔄 **Emoji runtime adapter** — Route Level-0 grammar into `golf_00/delta_00/alfa_04/` composer harness
+- 🔄 **Offline continuity cadence** — Maintain ledger + sync discipline after every pivot-stage update (`exchange/ledger/2025-10.md`)
 
 ### Upcoming
 
 - 📋 **Alfa Zero Phase 1** — Build static 16×16 grid renderer
 - 📋 **Alfa Zero Phase 2** — Wire grid to exchange protocol (clicks → orders → telemetry → grid updates)
-- 📋 **Emoji runtime adapter** — Compile glyph chains → Toyfoundry orders
+- 📋 **Emoji runtime validation** — Compile glyph chains → Toyfoundry orders with round-trip tests
 - 📋 **Golf_00 population** — Create first 256 Alfas (validate fractal architecture)
+
+---
+
+## Alfa Staging Checklist (Golf_00 / Delta_00)
+
+| Alfa | Focus | Status | Offline Cadence |
+|:-----|:------|:-------|:----------------|
+| `alfa_00` | Playable overlay harness & CLI | In progress — CLI shell framed; grid renderer underway | Log harness iterations in ledger; sync after prototype commits |
+| `alfa_01` | Toyfoundry runtime bridge | Planned — waits on CLI handshake | Mirror interface contracts through exchange `orders/` before activation |
+| `alfa_02` | Toysoldiers narrator harness | Planned — narration hooks in outline | Stage guardian-cleared copy in exchange `reports/` for review |
+| `alfa_03` | Telemetry shell | Planned — ties into standardized quilt | Pull sanitized feeds from exchange `exports/` for dry runs |
+| `alfa_04` | Emoji composer harness | Active — Level-0 grammar embedded, composer prototype in motion | Record glyph updates in ledger prior to running sync |
+
+*Track this checklist as the first wave of 16 Alfas comes online. Update status immediately after each heartbeat → ledger → sync cycle so satellites stay aligned.*
 
 ---
 
@@ -178,7 +196,7 @@ The **Five Major Pivots** represent a fundamental shift in how we build **Nightl
 
 1. **Build Alfa Zero Phase 1** — Static 16×16 grid renderer (terminal-based) in `golf_00/delta_00/alfa_00/`
 2. **Close Order-031** — Archive after Toysoldiers report (pre-pivot cleanup)
-3. **Update documentation** — Cascade pivots into README.md, war_office.md ✅ **Done**
+3. **Embed Level-0 grammar** — Route glyph chains from `planning/emoji_language/level_0.md` into `alfa_04` composer prototype
 
 ### Short-Term (Next 2-4 Weeks)
 
@@ -232,7 +250,7 @@ The **Five Major Pivots** represent a fundamental shift in how we build **Nightl
 - `../docs/alfa_zero_spec.md` — First playable Alfa prototype specification
 - `../war_office.md` — War Office charter & strategic briefings
 - `../docs/big_ideas_families.md` — Long-term vision framework
-- `../exchange/ledger/journal.md` — Historical order log
+- `../exchange/ledger/2025-10.md` — Current offline ledger (roll to `2025-11.md` after month-end)
 
 ---
 

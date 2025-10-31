@@ -1,5 +1,8 @@
 # 🌅 morningate_reflection_layer.md (morningate.games website) — The Open Window of SHAGI
 
+**Last Updated:** 2025-10-31  
+**Offline Continuity Mode:** Active
+
 ## 1. Purpose
 
 The **Morningate Reflection Layer** defines how the SHAGI ecosystem speaks to the outside world.  
@@ -51,7 +54,7 @@ Each feed may be viewed individually or blended into narrative views:
 Before any artifact becomes visible, it passes through the **Guardian Filter** —  
 a layer of moderation, ethics, and tone alignment.  
 
-**Rules of the Guardian Filter**
+### Rules of the Guardian Filter
 
 1. **No coercion, no cruelty.**  
    All outputs must conform to SHAGI’s Love & Sharing doctrine.  
@@ -96,7 +99,18 @@ No manual upload is required; **play itself is the publishing act**.
 
 ---
 
-## 7. Phased Growth Path
+## 7. Offline Continuity Mode Publishing
+
+High Command currently operates on the local exchange mesh (`C:/Users/Admin/high_command_exchange/`). Morningate builds must respect this path until GitHub unlocks.
+
+- **Source feeds:** pull sanitized exports from `high_command_exchange/exports/` and CTA copy from `high_command_exchange/orders/` or `reports/` as directed by War Office.
+- **Heartbeat + sync:** before and after Morningate updates, run `python tools/exchange_heartbeat.py` then `python tools/offline_sync_exchange.py` in each workspace to copy new feeds and narration into the shared bus.
+- **Ledger discipline:** log every rebuild or CTA refresh in `high_command_exchange/ledger/2025-10.md` (roll to `2025-11.md` after month-end) so satellites know the public window changed.
+- **Guardrails:** no remote deploys without War Office approval; package site snapshots locally and await the unlock directive before mirroring to Git.
+
+---
+
+## 8. Phased Growth Path
 
 | Phase | Scope | Goal |
 |:--|:--|:--|
@@ -108,7 +122,7 @@ No manual upload is required; **play itself is the publishing act**.
 Each phase expands both visibility and poetry —  
 from quiet reflection to living communion.  
 
-## 8. Game Link (Nightlands Multiplayer Video Game)
+## 9. Game Link (Nightlands Multiplayer Video Game)
 
 Morningate must always offer a **single, guardian-approved gateway** to the active Nightlands experience.  
 The link lives in the header and footer as a luminous call-to-play, carrying the visitor to the official multiplayer lobby.  
@@ -120,7 +134,7 @@ Use the shared Guardian Filter so copy, imagery, and destination stay aligned wi
 
 ---
 
-## 🌄 9. Closing Principle
+## 🌄 10. Closing Principle
 
 > **The Morningate opens each day to whatever SHAGI has dreamed.**  
 >

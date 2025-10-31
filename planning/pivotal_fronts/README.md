@@ -1,6 +1,6 @@
 # Pivotal Fronts (Canon)
 
-**Last Updated:** 2025-10-18  
+**Last Updated:** 2025-10-31  
 **Authorizing Body:** War Office + High Command  
 
 This index orients work across all pivotal fronts and links to canon documents. Keep this as the single source of truth in High Command.
@@ -68,9 +68,15 @@ This index orients work across all pivotal fronts and links to canon documents. 
 - **Fractal Structure:** `golf_00/` through `golf_15/` (4,096 Alfas)
 
 ### Core Infrastructure
-- **Exchange Protocol:** `exchange/README.md`
-- **Schema Validator:** `tools/schema_validator.py`
-- **Forge Automation:** Planning scroll reference
+
+### Offline Continuity Mode Guardrails
+
+
+### Offline Continuity Mode (Active)
+- **Shared bus:** `C:/Users/Admin/high_command_exchange/` (set via `SHAGI_EXCHANGE_PATH` in every workspace).
+- **Heartbeat + sync:** `python tools/exchange_heartbeat.py` then `python tools/offline_sync_exchange.py` keeps orders/reports mirrored across fronts.
+- **Ledger discipline:** Append actions immediately (`exchange/ledger/2025-10.md` → `2025-11.md` on rollover) before or right after syncing.
+- **Guardrails:** No Git pushes until War Office lift; escalate heartbeat 🟠/🔴 events with a report drop in `exchange/reports/inbox/`.
 
 ---
 
@@ -98,6 +104,7 @@ This index orients work across all pivotal fronts and links to canon documents. 
 | **Operations** | 🟢 Active | 2025-10-18 | Critical |
 
 **Legend:**
+
 - 🟢 Active — Front operational with current doctrine
 - 🟡 Needs Update — Requires revision to reflect pivots
 - 🔴 Blocked — Waiting on dependencies
@@ -107,6 +114,7 @@ This index orients work across all pivotal fronts and links to canon documents. 
 ## Version History
 
 **v2.0 (2025-10-18):**
+
 - Renamed from "Four Pivotal Fronts" to "Pivotal Fronts"
 - Acknowledged all 7 fronts (was 4)
 - Added Front 1 (Tons of Fun), Front 3 (Documentation), Enabler (Operations)
@@ -114,6 +122,7 @@ This index orients work across all pivotal fronts and links to canon documents. 
 - Added cross-cutting concerns section (telemetry, playable overlay)
 
 **v1.0 (pre-2025-10-17):**
+
 - Original four-front structure
 - Safety, R&D, Manufacturing, Field Ops only
 

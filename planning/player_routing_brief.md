@@ -1,5 +1,8 @@
 # Player Routing Brief — Nightlands Deployment Guidance (Pending GitHub Sync)
 
+**Last Updated:** 2025-10-31  
+**Offline Continuity Mode:** Active
+
 ## 1. Purpose
 
 Provide a unified checklist for directing human players (and co-play partners) to the Alfa or theatre where they add the most value. This script is invoked by High Command during pre-session briefings, Morningate observatory prompts, or in-client summoning.
@@ -30,19 +33,29 @@ Weights are adjustable; default heuristic prioritises urgent needs first, then m
 4. **Confirm Assignment:** Player accepts, negotiates, or requests alternate route; log decision in `planning/player_deployment_log.md`.
 5. **Notify Workspace Lead:** Brief the receiving team and update Morningate “active fronts” display.
 
-## 5. Automation Hooks
+## 5. Offline Continuity Mode Operations
+
+Player routing now rides on the shared exchange mesh (`C:/Users/Admin/high_command_exchange/`) while GitHub access remains sealed. Keep the following cadence whenever adjusting assignments or publishing updated briefs:
+
+1. **Pre-flight heartbeat:** Run `python tools/exchange_heartbeat.py` in each active workspace to advertise that a routing update is in motion.
+2. **Source alignment:** Pull backlog, skill, and preference inputs from the exchange mirrors (`exports/`, `orders/`, `reports/`) so satellites operate on the same data.
+3. **Ledger record:** Log every routing adjustment or doctrine tweak in `high_command_exchange/ledger/2025-10.md` (advance to the next ledger file at month turnover) for downstream verification.
+4. **Sync broadcast:** After edits or new assignments, execute `python tools/offline_sync_exchange.py` to push updated briefs, deployment logs, and supporting artifacts across the bus.
+5. **Guardian check:** Before sharing outbound prompts, run them through the Guardian filter to confirm tone and consent alignment, then file the approved copy back into the exchange `orders/` directory.
+
+## 6. Automation Hooks
 
 - Extend Morningate Reflection Layer to display “Call to Dawn” cards highlighting priority deployments.
 - Embed a `python tools/player_router.py` (future) that reads the above data sources and prints the recommendation.
 - Optionally integrate with safety watchers to nudge when a front stays under-staffed for >12 hours.
 
-## 6. Guardian & War Office Alignment
+## 7. Guardian & War Office Alignment
 
 - Guardian filter must approve language used in routing prompts (avoid coercion).
 - War Office holds veto power for critical missions; final word logged in `war_office/orders/`.
 - Maintain transparency: players can review why they were assigned to a given front.
 
-## 7. Understaffed Front Response
+## 8. Understaffed Front Response
 
 When a front remains chronically understaffed:
 
@@ -52,11 +65,11 @@ When a front remains chronically understaffed:
 
 Continue routing humans there only when urgency demands it, while improving the experience to attract voluntary participation.
 
-## 8. Pending Actions
+## 9. Pending Actions
 
 - [ ] High Command to socialise this brief with Toyfoundry, Toysoldiers, Valiant Citadel, and R&D leads.
 - [ ] Draft initial `player_skill_index.json` template and circulate for self-tagging.
 - [ ] Define urgency scoring rubric (e.g., P0-P3) shared across workspaces.
 - [ ] Plan Morningate UI card mockups for Call to Dawn feature.
 
-*Status: Drafted locally; awaiting multi-front feedback and GitHub sync once access returns.*
+*Status: Draft maintained via offline mesh; awaiting multi-front feedback and GitHub unlock for upstream sync.*
