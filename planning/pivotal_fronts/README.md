@@ -77,6 +77,10 @@ This index orients work across all pivotal fronts and links to canon documents. 
 - **Heartbeat + sync:** `python tools/exchange_heartbeat.py` then `python tools/offline_sync_exchange.py` keeps orders/reports mirrored across fronts.
 - **Ledger discipline:** Append actions immediately (`exchange/ledger/2025-10.md` → `2025-11.md` on rollover) before or right after syncing.
 - **Guardrails:** No Git pushes until War Office lift; escalate heartbeat 🟠/🔴 events with a report drop in `exchange/reports/inbox/`.
+- **Monitoring hook milestones:**
+	- `M0 — same shift:` Document refresh logged in ledger and heartbeat + sync pair executed.
+	- `M1 — within 12h:` Dispatch `tools/quilt_loom.py --snapshot` to confirm report ingestion across pivots.
+	- `M2 — within 24h:` Run `tools/ci/safety_watcher.ps1` for drift scan and file findings under `exchange/reports/inbox/`.
 
 ---
 
