@@ -3,25 +3,26 @@
 This CLI is a stopgap until the graphical overlay lands. It renders the
 16×16 grid from the Alfa Zero spec, allows operators (or scripted callers)
 to select cells using hexadecimal coordinates, and dispatches the mapped
-emoji chains through the Level-0 translator living in Alfa 04.
+emoji chains through the Level-0 translator living in Alfa 04. By default it
+also appends ledger entries and runs the heartbeat → sync loop so every
+dispatch propagates across the offline mesh. Event streams (JSON lines) from
+`alfa_zero_ui.py --emit-events` can be piped in via ``--event-stream`` to share
+the same operational cadence.
 """
 
 from __future__ import annotations
 
 import argparse
+import json
+import os
+import subprocess
+import sys
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import List, Optional, Tuple, TextIO
 
-from overlay_test_harness import (
-    CELL_MAPPINGS,
-    cell_label,
-    dispatch_cell,
-    find_repo_root,
-    load_sample_chains,
-    load_translator,
-    resolve_outbox,
-)
+from overlay_bridge import CELL_MAPPINGS, OverlayBridge, build_bridge, cell_label
 
 Cell = Tuple[int, int]
 
@@ -51,9 +52,8 @@ GRID_LAYOUT: List[List[str]] = [
 @dataclass
 class ControllerContext:
     repo_root: Path
-    translator: object
-    sample_chains: Dict[str, str]
-    outbox: Path
+    bridge: OverlayBridge
+    auto_sync: bool
 
 
 def render_grid(highlight: Optional[Cell] = None) -> None:
@@ -104,15 +104,135 @@ def parse_cell_token(token: str) -> Cell:
     return row, col
 
 
-def dispatch(cell: Cell, ctx: ControllerContext) -> str:
-    """Invoke the translator for the chosen cell and return the relative payload path."""
+def dispatch(cell: Cell, ctx: ControllerContext) -> Tuple[str, str]:
+    """Invoke the translator for the chosen cell and return payload path and chain."""
 
-    path = dispatch_cell(cell, ctx.translator, ctx.sample_chains, ctx.outbox)
+    path = ctx.bridge.dispatch_cell(cell)
+    chain_name, _ = CELL_MAPPINGS[cell]
     try:
         relative = path.relative_to(ctx.repo_root)
     except ValueError:
         relative = path
-    return str(relative)
+    return str(relative), chain_name
+
+
+def append_ledger_entry(repo_root: Path, cell: Cell, chain_name: str, *, note: Optional[str] = None) -> Path:
+    """Append a ledger entry noting the dispatched cell."""
+
+    now = datetime.now(timezone.utc)
+    ledger_dir = repo_root / "exchange" / "ledger"
+    ledger_dir.mkdir(parents=True, exist_ok=True)
+    ledger_path = ledger_dir / f"{now:%Y-%m}.md"
+    timestamp = now.strftime("%Y-%m-%d %H:%M")
+    summary = f"Alfa Zero controller dispatched {cell_label(cell)} ({chain_name})"
+    if note:
+        summary = f"{summary} — {note}"
+    entry = f"{timestamp} HighCommand OFFLINE-PLAY {summary}\n"
+    with ledger_path.open("a", encoding="utf-8") as handle:
+        handle.write(entry)
+    return ledger_path
+
+
+def run_sync_commands(repo_root: Path) -> None:
+    """Execute heartbeat and sync scripts so payloads reach the exchange."""
+
+    python = Path(sys.executable)
+    commands = [
+        [python, "tools/exchange_heartbeat.py"],
+        [python, "tools/offline_sync_exchange.py"],
+    ]
+    env = os.environ.copy()
+    env.setdefault("PYTHONIOENCODING", "utf-8")
+    errors = []
+    for command in commands:
+        result = subprocess.run(
+            command,
+            cwd=repo_root,
+            check=False,
+            text=True,
+            capture_output=True,
+            env=env,
+        )
+        label = command[-1]
+        if result.stdout:
+            print(result.stdout.rstrip())
+        if result.stderr:
+            print(result.stderr.rstrip())
+        if result.returncode != 0:
+            errors.append(f"{label} exited with code {result.returncode}")
+    if errors:
+        raise RuntimeError("; ".join(errors))
+
+
+def post_dispatch(
+    cell: Cell,
+    chain_name: str,
+    ctx: ControllerContext,
+    *,
+    sync_override: Optional[bool] = None,
+    note: Optional[str] = None,
+) -> None:
+    """Handle ledger logging and sync discipline after dispatch."""
+
+    auto_sync = ctx.auto_sync if sync_override is None else bool(sync_override)
+    if not auto_sync:
+        return
+    ledger_path = append_ledger_entry(ctx.repo_root, cell, chain_name, note=note)
+    try:
+        relative_ledger = ledger_path.relative_to(ctx.repo_root)
+    except ValueError:
+        relative_ledger = ledger_path
+    print(f"🗒️  Logged dispatch to {relative_ledger}")
+    try:
+        run_sync_commands(ctx.repo_root)
+    except RuntimeError as exc:
+        print(f"⚠️  {exc}")
+
+
+def process_event_stream(ctx: ControllerContext, stream: TextIO) -> None:
+    """Consume JSONL events that specify overlay dispatches."""
+
+    print("Listening for overlay events...")
+    for index, raw_line in enumerate(stream, start=1):
+        line = raw_line.strip()
+        if not line:
+            continue
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError as exc:
+            print(f"⚠️  Event {index}: invalid JSON — {exc}")
+            continue
+        if not isinstance(event, dict):
+            print(f"⚠️  Event {index}: expected JSON object, received {type(event).__name__}")
+            continue
+
+        cell_token = event.get("cell")
+        if not cell_token:
+            print(f"⚠️  Event {index}: missing 'cell' field")
+            continue
+        try:
+            cell = parse_cell_token(str(cell_token))
+        except ValueError as exc:
+            print(f"⚠️  Event {index}: {exc}")
+            continue
+
+        sync_override = event.get("auto_sync")
+        ledger_note_raw = event.get("ledger_note")
+        if ledger_note_raw is None and "source" in event:
+            ledger_note_raw = event.get("source")
+        ledger_note = str(ledger_note_raw) if ledger_note_raw is not None else None
+
+        try:
+            payload_path, chain_name = dispatch(cell, ctx)
+        except KeyError as exc:
+            print(f"⚠️  Event {index}: {exc}")
+            continue
+        except Exception as exc:  # pragma: no cover - surfaced to operator
+            print(f"⚠️  Event {index}: dispatch failed — {exc}")
+            continue
+
+    print(f"✅ Event {index}: {cell_label(cell)} → {payload_path}")
+    post_dispatch(cell, chain_name, ctx, sync_override=sync_override, note=ledger_note)
 
 
 def interactive_session(ctx: ControllerContext) -> None:
@@ -154,7 +274,7 @@ def interactive_session(ctx: ControllerContext) -> None:
             continue
 
         try:
-            payload_path = dispatch(cell, ctx)
+            payload_path, chain_name = dispatch(cell, ctx)
         except KeyError as exc:
             print(f"⚠️  {exc}")
             continue
@@ -166,23 +286,19 @@ def interactive_session(ctx: ControllerContext) -> None:
         render_grid(highlight=cell)
         print(
             f"✅ Dispatched {cell_label(cell)} → {payload_path}\n"
-            "   (inspect under exchange/orders/outbox/emoji_runtime/)"
+            "   (inspect under outbox/orders/emoji_runtime/)"
         )
+        post_dispatch(cell, chain_name, ctx)
 
 
-def bootstrap_context(outbox_override: Optional[str]) -> ControllerContext:
+def bootstrap_context(outbox_override: Optional[str], auto_sync: bool) -> ControllerContext:
     """Load translator dependencies and return a controller context."""
 
-    script_dir = Path(__file__).resolve().parent
-    repo_root = find_repo_root(script_dir)
-    translator = load_translator(repo_root)
-    sample_chains = load_sample_chains(repo_root)
-    outbox = resolve_outbox(repo_root, outbox_override)
+    bridge = build_bridge(outbox_override)
     return ControllerContext(
-        repo_root=repo_root,
-        translator=translator,
-        sample_chains=sample_chains,
-        outbox=outbox,
+        repo_root=bridge.repo_root,
+        bridge=bridge,
+        auto_sync=auto_sync,
     )
 
 
@@ -202,18 +318,41 @@ def main() -> None:
         default=None,
         help="Override the emoji runtime outbox path.",
     )
+    parser.add_argument(
+        "--event-stream",
+        default=None,
+        help="Read JSONL dispatch events from a file or '-' for stdin.",
+    )
+    parser.add_argument(
+        "--no-auto-sync",
+        action="store_true",
+        help="Skip heartbeat, ledger, and sync steps after dispatch.",
+    )
     args = parser.parse_args()
 
-    ctx = bootstrap_context(args.outbox)
+    ctx = bootstrap_context(args.outbox, auto_sync=not args.no_auto_sync)
 
     if args.list:
         list_mapped_cells()
         return
 
+    if args.event_stream:
+        if args.event_stream == "-":
+            stream: TextIO = sys.stdin
+        else:
+            stream = open(args.event_stream, "r", encoding="utf-8")
+        try:
+            process_event_stream(ctx, stream)
+        finally:
+            if stream is not sys.stdin:
+                stream.close()
+        return
+
     if args.cell:
         cell = parse_cell_token(args.cell)
-        payload_path = dispatch(cell, ctx)
+        payload_path, chain_name = dispatch(cell, ctx)
         print(f"✅ Dispatched {cell_label(cell)} → {payload_path}")
+        post_dispatch(cell, chain_name, ctx)
         return
 
     interactive_session(ctx)

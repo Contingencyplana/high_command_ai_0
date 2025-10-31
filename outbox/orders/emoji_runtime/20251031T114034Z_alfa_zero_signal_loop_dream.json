@@ -1,0 +1,33 @@
+{
+  "template": "signal_loop",
+  "actor": "actor.dream",
+  "verb": "verb.loop",
+  "target": null,
+  "qualifiers": [
+    "qualifier.signal"
+  ],
+  "outcomes": [
+    "outcome.gain"
+  ],
+  "spoken": [
+    "dream",
+    "signal",
+    "loop",
+    "rise"
+  ],
+  "raw": [
+    "🌌",
+    "🛰️",
+    "🔄",
+    "📈"
+  ],
+  "created_at": "2025-10-31T11:40:34.273445Z",
+  "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+  "chain_name": "signal_loop_dream",
+  "overlay_description": "Signal the dream relay for telemetry",
+  "overlay_cell": {
+    "row": 8,
+    "col": 10,
+    "label": "8A"
+  }
+}

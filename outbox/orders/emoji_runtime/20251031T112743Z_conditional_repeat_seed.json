@@ -1,0 +1,26 @@
+{
+  "template": "conditional_repeat",
+  "actor": "actor.seed",
+  "verb": "verb.grow",
+  "target": null,
+  "qualifiers": [],
+  "outcomes": [
+    "outcome.success",
+    "outcome.repeat"
+  ],
+  "spoken": [
+    "seed",
+    "grow",
+    "victory",
+    "again"
+  ],
+  "raw": [
+    "🌱",
+    "🌿",
+    "✅",
+    "🔁"
+  ],
+  "chain_name": "conditional_repeat_seed",
+  "created_at": "2025-10-31T11:27:43.937301Z",
+  "source": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
+}

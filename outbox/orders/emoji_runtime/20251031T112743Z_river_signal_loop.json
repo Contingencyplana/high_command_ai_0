@@ -1,0 +1,27 @@
+{
+  "template": "signal_loop",
+  "actor": "actor.river",
+  "verb": "verb.loop",
+  "target": null,
+  "qualifiers": [
+    "qualifier.signal"
+  ],
+  "outcomes": [
+    "outcome.gain"
+  ],
+  "spoken": [
+    "river",
+    "signal",
+    "loop",
+    "rise"
+  ],
+  "raw": [
+    "🌊",
+    "🛰️",
+    "🔄",
+    "📈"
+  ],
+  "chain_name": "river_signal_loop",
+  "created_at": "2025-10-31T11:27:43.937301Z",
+  "source": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
+}

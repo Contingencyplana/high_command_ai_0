@@ -11,9 +11,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, TextIO
 
 from overlay_bridge import CELL_MAPPINGS, OverlayBridge, build_bridge, cell_label
 
@@ -54,6 +55,9 @@ class PayloadSummary:
 class UIContext:
     bridge: OverlayBridge
     telemetry_path: Optional[Path]
+    emit_events: bool
+    event_stream: Optional[TextIO]
+    output_stream: TextIO
     selected: Cell = (0, 4)
 
     @property
@@ -83,9 +87,9 @@ def parse_cell_token(token: str) -> Cell:
     return row, col
 
 
-def render_grid(highlight: Optional[Cell] = None) -> None:
+def render_grid(highlight: Optional[Cell] = None, *, stream: TextIO = sys.stdout) -> None:
     header = "    " + " ".join(HEX_DIGITS)
-    print(header)
+    print(header, file=stream)
     for row_index, row in enumerate(GRID_LAYOUT):
         rendered: List[str] = []
         for col_index, glyph in enumerate(row):
@@ -96,13 +100,13 @@ def render_grid(highlight: Optional[Cell] = None) -> None:
             if highlight == cell:
                 mark = f"[{mark}]"
             rendered.append(mark)
-        print(f"{HEX_DIGITS[row_index]}   " + " ".join(rendered))
+        print(f"{HEX_DIGITS[row_index]}   " + " ".join(rendered), file=stream)
 
 
-def list_mapped_cells() -> None:
-    print("Mapped overlay cells:")
+def list_mapped_cells(stream: TextIO = sys.stdout) -> None:
+    print("Mapped overlay cells:", file=stream)
     for cell, (chain, description) in sorted(CELL_MAPPINGS.items()):
-        print(f"  - {cell_label(cell)}: {chain} — {description}")
+        print(f"  - {cell_label(cell)}: {chain} — {description}", file=stream)
 
 
 def summarize_payload(path: Path) -> PayloadSummary:
@@ -128,19 +132,19 @@ def emit_telemetry(summary: PayloadSummary, telemetry_path: Path) -> None:
         handle.write("\n")
 
 
-def display_summary(summary: PayloadSummary, repo_root: Path) -> None:
+def display_summary(summary: PayloadSummary, repo_root: Path, *, stream: TextIO = sys.stdout) -> None:
     try:
         relative_path = summary.path.relative_to(repo_root)
     except ValueError:
         relative_path = summary.path
 
-    print(f"✅ Dispatched {summary.chain_name or 'unknown chain'}")
-    print(f"   Template: {summary.template or 'unknown template'}")
+    print(f"✅ Dispatched {summary.chain_name or 'unknown chain'}", file=stream)
+    print(f"   Template: {summary.template or 'unknown template'}", file=stream)
     if summary.outcomes:
-        print(f"   Outcomes: {', '.join(summary.outcomes)}")
+        print(f"   Outcomes: {', '.join(summary.outcomes)}", file=stream)
     if summary.description:
-        print(f"   Description: {summary.description}")
-    print(f"   Payload: {relative_path}")
+        print(f"   Description: {summary.description}", file=stream)
+    print(f"   Payload: {relative_path}", file=stream)
 
 
 def move_selection(context: UIContext, delta_row: int, delta_col: int) -> None:
@@ -155,28 +159,44 @@ def select_cell(context: UIContext, cell: Cell) -> None:
 
 def dispatch_selected(context: UIContext) -> None:
     cell = context.selected
+
+    if context.emit_events:
+        if context.event_stream is None:
+            print("⚠️  Event stream not configured; cannot emit dispatch.", file=context.output_stream)
+            return
+        event = {
+            "cell": cell_label(cell),
+            "source": "alfa_zero_ui",
+            "ledger_note": "alfa_zero_ui",
+        }
+        context.event_stream.write(json.dumps(event, ensure_ascii=False))
+        context.event_stream.write("\n")
+        context.event_stream.flush()
+        print(f"🚀 Emitted overlay event for {event['cell']}", file=context.output_stream)
+        return
+
     try:
         destination = context.bridge.dispatch_cell(cell)
     except KeyError as exc:
-        print(f"⚠️  {exc}")
+        print(f"⚠️  {exc}", file=context.output_stream)
         return
     except Exception as exc:  # pragma: no cover - surfaced to operator
-        print(f"⚠️  Dispatch failed: {exc}")
+        print(f"⚠️  Dispatch failed: {exc}", file=context.output_stream)
         return
 
     summary = summarize_payload(destination)
-    display_summary(summary, context.repo_root)
+    display_summary(summary, context.repo_root, stream=context.output_stream)
     if context.telemetry_path:
         emit_telemetry(summary, context.telemetry_path)
 
 
-def show_cell_info(cell: Cell) -> None:
+def show_cell_info(cell: Cell, stream: TextIO = sys.stdout) -> None:
     label = cell_label(cell)
     if cell in CELL_MAPPINGS:
         chain, description = CELL_MAPPINGS[cell]
-        print(f"{label}: {chain} — {description}")
+        print(f"{label}: {chain} — {description}", file=stream)
     else:
-        print(f"{label}: unmapped cell")
+        print(f"{label}: unmapped cell", file=stream)
 
 
 HELP_TEXT = """Commands:
@@ -195,66 +215,66 @@ HELP_TEXT = """Commands:
 
 
 def interactive_loop(context: UIContext) -> None:
-    print("Alfa Zero Overlay UI — navigate the grid and dispatch mapped chains.")
-    print("Type 'help' for command reference.\n")
-    render_grid(context.selected)
+    print("Alfa Zero Overlay UI — navigate the grid and dispatch mapped chains.", file=context.output_stream)
+    print("Type 'help' for command reference.\n", file=context.output_stream)
+    render_grid(context.selected, stream=context.output_stream)
 
     while True:
         try:
             raw = input("command> ").strip()
         except (EOFError, KeyboardInterrupt):  # pragma: no cover - interactive exit
-            print()
+            print(file=context.output_stream)
             break
 
         if not raw:
             dispatch_selected(context)
-            render_grid(context.selected)
+            render_grid(context.selected, stream=context.output_stream)
             continue
 
         command = raw.lower()
         if command in {"quit", "q", "exit"}:
             break
         if command in {"help", "?"}:
-            print(HELP_TEXT)
+            print(HELP_TEXT, file=context.output_stream)
             continue
         if command in {"show", "grid"}:
-            render_grid(context.selected)
+            render_grid(context.selected, stream=context.output_stream)
             continue
         if command in {"map"}:
-            list_mapped_cells()
+            list_mapped_cells(context.output_stream)
             continue
         if command in {"info"}:
-            show_cell_info(context.selected)
+            show_cell_info(context.selected, context.output_stream)
             continue
         if command in {"w", "up"}:
             move_selection(context, -1, 0)
-            render_grid(context.selected)
+            render_grid(context.selected, stream=context.output_stream)
             continue
         if command in {"s", "down"}:
             move_selection(context, 1, 0)
-            render_grid(context.selected)
+            render_grid(context.selected, stream=context.output_stream)
             continue
         if command in {"a", "left"}:
             move_selection(context, 0, -1)
-            render_grid(context.selected)
+            render_grid(context.selected, stream=context.output_stream)
             continue
         if command in {"d", "right"}:
             move_selection(context, 0, 1)
-            render_grid(context.selected)
+            render_grid(context.selected, stream=context.output_stream)
             continue
         if command in {"dispatch", "fire", "send"}:
             dispatch_selected(context)
-            render_grid(context.selected)
+            render_grid(context.selected, stream=context.output_stream)
             continue
 
         try:
             cell = parse_cell_token(raw)
         except ValueError as exc:
-            print(f"⚠️  {exc}")
+            print(f"⚠️  {exc}", file=context.output_stream)
             continue
 
         select_cell(context, cell)
-        render_grid(context.selected)
+        render_grid(context.selected, stream=context.output_stream)
 
 
 def run_single_dispatch(context: UIContext, cell: Cell) -> None:
@@ -262,10 +282,23 @@ def run_single_dispatch(context: UIContext, cell: Cell) -> None:
     dispatch_selected(context)
 
 
-def build_context(outbox_override: Optional[str], telemetry: Optional[str]) -> UIContext:
+def build_context(
+    outbox_override: Optional[str],
+    telemetry: Optional[str],
+    *,
+    emit_events: bool,
+    event_stream: Optional[TextIO],
+) -> UIContext:
     bridge = build_bridge(outbox_override)
     telemetry_path = Path(telemetry).expanduser().resolve() if telemetry else None
-    return UIContext(bridge=bridge, telemetry_path=telemetry_path)
+    output_stream = sys.stderr if emit_events and event_stream is sys.stdout else sys.stdout
+    return UIContext(
+        bridge=bridge,
+        telemetry_path=telemetry_path,
+        emit_events=emit_events,
+        event_stream=event_stream,
+        output_stream=output_stream,
+    )
 
 
 def main() -> None:
@@ -284,16 +317,49 @@ def main() -> None:
         default=None,
         help="Optional path to append JSONL telemetry records for each dispatch.",
     )
+    parser.add_argument(
+        "--emit-events",
+        action="store_true",
+        help="Emit JSON event lines instead of dispatching directly (pipe into alfa_zero_controller).",
+    )
+    parser.add_argument(
+        "--event-file",
+        default=None,
+        help="When emitting events, write them to this file instead of stdout.",
+    )
     args = parser.parse_args()
 
-    context = build_context(args.outbox, args.telemetry)
+    if args.event_file and not args.emit_events:
+        parser.error("--event-file requires --emit-events")
 
-    if args.cell:
-        cell = parse_cell_token(args.cell)
-        run_single_dispatch(context, cell)
-        return
+    event_stream: Optional[TextIO] = None
+    close_stream = False
+    if args.emit_events:
+        if args.event_file:
+            event_path = Path(args.event_file).expanduser().resolve()
+            event_path.parent.mkdir(parents=True, exist_ok=True)
+            event_stream = event_path.open("a", encoding="utf-8")
+            close_stream = True
+        else:
+            event_stream = sys.stdout
 
-    interactive_loop(context)
+    context = build_context(
+        args.outbox,
+        args.telemetry,
+        emit_events=args.emit_events,
+        event_stream=event_stream,
+    )
+
+    try:
+        if args.cell:
+            cell = parse_cell_token(args.cell)
+            run_single_dispatch(context, cell)
+            return
+
+        interactive_loop(context)
+    finally:
+        if close_stream and event_stream is not None:
+            event_stream.close()
 
 
 if __name__ == "__main__":  # pragma: no cover - manual entry point

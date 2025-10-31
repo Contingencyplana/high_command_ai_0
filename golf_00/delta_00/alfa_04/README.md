@@ -23,8 +23,9 @@
 
 ### Quick Harness Check
 
-- Run `python dispatch_sample_chains.py` to drop translator payloads into `exchange/orders/outbox/emoji_runtime`.
+- Run `python dispatch_sample_chains.py` to drop translator payloads into `outbox/orders/emoji_runtime` (the folder synced by Offline Continuity Mode).
 - Inspect the emitted timestamped JSON files to confirm the glyph IDs and trait metadata look correct before integrating a live caller.
+- After dispatching, follow the heartbeat → ledger → `python tools/offline_sync_exchange.py` loop so satellites receive the orders.
 
 ### Overlay Bridge
 

@@ -1,0 +1,35 @@
+{
+  "template": "guarded_delivery",
+  "actor": "actor.field",
+  "verb": "verb.grow",
+  "target": "actor.wall",
+  "qualifiers": [
+    "qualifier.safe"
+  ],
+  "outcomes": [
+    "outcome.success"
+  ],
+  "spoken": [
+    "field",
+    "grow",
+    "safe",
+    "wall",
+    "victory"
+  ],
+  "raw": [
+    "🌾",
+    "🌿",
+    "🔒",
+    "🧱",
+    "✅"
+  ],
+  "created_at": "2025-10-31T11:31:36.736056Z",
+  "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+  "chain_name": "harvest_guarded_wall",
+  "overlay_description": "Harvest and reinforce the garden wall",
+  "overlay_cell": {
+    "row": 5,
+    "col": 8,
+    "label": "58"
+  }
+}

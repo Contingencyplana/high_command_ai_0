@@ -43,7 +43,13 @@ def sanitize_name(name: str) -> str:
 
 
 def write_payload(outbox: Path, name: str, payload: Dict[str, object]) -> Path:
-    """Write a payload JSON file to the emoji runtime outbox."""
+    """Write a payload JSON file to the emoji runtime outbox.
+
+    The default outbox mirrors Offline Continuity Mode expectations by writing
+    to ``outbox/orders/emoji_runtime`` within the repository. This ensures the
+    standard heartbeat → ledger → sync loop can pick up the files before they
+    travel across the shared mesh.
+    """
 
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     filename = f"{timestamp}_{sanitize_name(name)}.json"
@@ -82,7 +88,7 @@ def main() -> None:
         if not outbox_dir.is_absolute():
             outbox_dir = repo_root / outbox_dir
     else:
-        outbox_dir = repo_root / "exchange" / "orders" / "outbox" / "emoji_runtime"
+        outbox_dir = repo_root / "outbox" / "orders" / "emoji_runtime"
 
     chains = load_sample_chains(sample_path)
 

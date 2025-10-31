@@ -73,7 +73,7 @@ def resolve_outbox(repo_root: Path, override: str | None) -> Path:
         if not outbox.is_absolute():
             outbox = repo_root / outbox
     else:
-        outbox = repo_root / "exchange" / "orders" / "outbox" / "emoji_runtime"
+        outbox = repo_root / "outbox" / "orders" / "emoji_runtime"
     return outbox
 
 
