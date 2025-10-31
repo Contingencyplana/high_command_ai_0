@@ -56,7 +56,7 @@
       "description": "Original order containing schema v1.0 specification"
     },
     {
-      "type": "reference", 
+      "type": "reference",
       "path": "exchange/reports/archived/order-2025-10-15-021-report.json",
       "description": "Field report documenting schema drift with detailed diff"
     },

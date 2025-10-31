@@ -1,0 +1,79 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "order-2025-11-01-040",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-11-01T10:05:00Z",
+  "summary": "Implement emoji-runtime adapter to promote Level-0 payloads into factory-order@1.0 with validation and monitoring hooks.",
+  "context": "High Command now emits emoji-runtime@1.0 payloads from the Alfa 04 composer. Toyfoundry must bridge these into factory-order@1.0 so downstream consumers continue receiving validated orders while we preserve the lore-aligned emoji surface.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "review_payload_contracts",
+      "details": "Pull the updated payload brief (quint_synced/payload_alignment.md) and golf_00/delta_00/alfa_04/emoji_translator.py to understand emoji-runtime@1.0 fields, intent extraction, and telemetry stub expectations. Confirm bridge responsibilities with Toysoldiers and War Office leads."
+    },
+    {
+      "step": 2,
+      "action": "implement_adapter",
+      "details": "Add an adapter module that ingests emoji-runtime@1.0 payloads from High Command, maps fields into factory-order@1.0 directives/summary/telemetry, and persists provenance for audit. Ensure glyph_chain and spoken prompts remain available for narration hand-off."
+    },
+    {
+      "step": 3,
+      "action": "extend_validation_suite",
+      "details": "Update factory-order validators/tests to assert the adapter emits schema-compliant payloads (schema field, directives array, summary length, telemetry annotations). Include fixture coverage for conditional_repeat and multi-outcome chains even if adapter currently stores secondary outcomes as metadata."
+    },
+    {
+      "step": 4,
+      "action": "integration_dry_run",
+      "details": "Run the adapter against sample chains (dispatch_sample_chains.py outputs) and archive resulting factory-order payloads in a scratch area. Capture before/after diffs and confirm tools/schema_validator.py passes."
+    },
+    {
+      "step": 5,
+      "action": "coordinate_handshake",
+      "details": "Share sample payloads with toysoldiers_ai_0 and r_and_d_ai_0 so they can prepare monitoring hooks. Document any follow-up items or taxonomy gaps and attach to completion report."
+    },
+    {
+      "step": 6,
+      "action": "submit_completion_report",
+      "details": "Drop report at exchange/reports/inbox/order-2025-11-01-040-report.json capturing adapter implementation notes, validator evidence, sample payloads, and any open risks/next actions."
+    }
+  ],
+  "success_criteria": [
+    "emoji-runtime@1.0 payloads automatically promoted to factory-order@1.0 with preserved summary, directives, and telemetry",
+    "Updated validation suite passes locally and on shared tooling",
+    "Sample payload pack reviewed by Toysoldiers with no blocking issues",
+    "Completion report filed with evidence and follow-up checklist"
+  ],
+  "dependencies": [],
+  "requires_ack": true,
+  "expires_at": "2025-11-07T23:59:59Z",
+  "attachments": [
+    {
+      "type": "reference",
+      "path": "quint_synced/payload_alignment.md",
+      "description": "Emoji-runtime@1.0 schema brief"
+    },
+    {
+      "type": "reference",
+      "path": "golf_00/delta_00/alfa_04/emoji_translator.py",
+      "description": "Composer translator emitting emoji-runtime@1.0"
+    },
+    {
+      "type": "reference",
+      "path": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py",
+      "description": "Sample payload generator for integration dry run"
+    }
+  ],
+  "safety_notes": [
+    "Coordinate adapter deployment with Toysoldiers before promoting to production",
+    "Retain original emoji-runtime payloads for audit and replay",
+    "Verify telemetry_stub mapping preserves monitoring semantics"
+  ],
+  "metadata": {
+    "owner": "high_command_ai_0",
+    "timestamp": "2025-11-01T10:05:00Z",
+    "approvers": ["high_command", "war_office"],
+    "classification": "pivot_five_rollout"
+  }
+}

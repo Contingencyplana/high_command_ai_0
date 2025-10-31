@@ -1,0 +1,6 @@
+{
+  "order_id": "order-2025-10-18-036",
+  "workspace": "toyfoundry_ai_0",
+  "acknowledged_at_utc": "2025-11-01T09:46:00Z",
+  "remarks": "Corrective schema alignment completed; see exchange/reports/inbox/order-2025-10-18-036-report.json for full remediation summary."
+}
