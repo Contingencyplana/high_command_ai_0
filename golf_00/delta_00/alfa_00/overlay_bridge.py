@@ -5,10 +5,11 @@ from __future__ import annotations
 import importlib.util
 import json
 import sys
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Iterable, Tuple
+from typing import Dict, Tuple
 
 Cell = Tuple[int, int]
 
@@ -141,13 +142,26 @@ class OverlayBridge:
         cell: Cell | None = None,
         description: str | None = None,
     ) -> Path:
-        payload = self.translator.translate_chain(chain)
-        payload.update(
-            {
-                "created_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
-                "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
-            }
-        )
+        payload = dict(self.translator.translate_chain(chain))
+        if "created_at" not in payload:
+            created_at = datetime.now(timezone.utc)
+            payload["created_at"] = created_at.isoformat().replace("+00:00", "Z")
+            stub = payload.get("telemetry_stub")
+            if isinstance(stub, dict):
+                intent = payload.get("intent") if isinstance(payload.get("intent"), dict) else {}
+                actor = str(intent.get("actor", "unbound"))
+                action = str(intent.get("action", "command"))
+                stamp = created_at.strftime("%Y%m%dT%H%M%S%f")[:-3] + "Z"
+                stub.setdefault("batch_id", f"{actor}-{action}-{stamp}")
+                stub.setdefault("ritual", actor)
+                glyph_chain = payload.get("glyph_chain")
+                if isinstance(glyph_chain, Sequence):
+                    stub.setdefault("units_processed", len(glyph_chain))
+                else:
+                    stub.setdefault("units_processed", len(payload.get("raw", [])))
+                stub.setdefault("status", "success")
+                stub.setdefault("duration_ms", 0)
+        payload["source"] = "golf_00/delta_00/alfa_00/overlay_bridge.py"
         if chain_name:
             payload["chain_name"] = chain_name
         if description:

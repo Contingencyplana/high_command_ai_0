@@ -1,9 +1,9 @@
-# Payload Alignment: `factory-order@1.0`
+# Payload Alignment: `emoji-runtime@1.0`
 
 ## Action Required — 2025-10-26
 
 - Review this payload brief together with `quint_synced/narration_alignment.md` in your workspace.
-- Confirm the `factory-order@1.0` schema behaves in your local runtime; note any integration gaps immediately.
+- Confirm the `emoji-runtime@1.0` schema behaves in your local runtime; note any integration gaps immediately.
 - Keep `quint_synced/` copies identical across all five workspaces—propagate any edits back to High Command and the remaining fronts as soon as they land.
 - Reply with a quick ACK (or an annotated TODO) so the sync log can capture your status.
 - Maintain lore alignment: the payload `summary` line must stay in lockstep with the narration guidance; flag War Office if you need extra VO, localization, or schema support.
@@ -25,23 +25,25 @@
 
 ## Schema Overview
 
-The translator currently emits payloads under the `factory-order@1.0` schema. Formalizing this contract allows the War Office to validate downstream integrations and approve telemetry capture.
+The High Command translator currently emits payloads under the `emoji-runtime@1.0` schema as an intermediate representation. Formalizing this contract allows the War Office to validate downstream integrations while we add the adapter that promotes these payloads into `factory-order@1.0` for Toyfoundry.
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `schema` | string | yes | Literal identifier; locked to `factory-order@1.0`. |
+| `schema` | string | yes | Literal identifier; locked to `emoji-runtime@1.0`. |
 | `summary` | string | yes | Lore-facing sentence (see narration brief). Should remain <120 chars. |
 | `glyph_chain` | array[string] | yes | Ordered glyph sequence representing the command path. Must mirror input emoji chain. |
+| `spoken` | array[string] | yes | Narration prompts aligned with toddler co-play. |
 | `intent` | object | yes | Canonical intent extraction (see breakdown below). |
 | `telemetry_stub` | object | yes | Minimal operations telemetry for validator and dashboards. |
+| `created_at` | string | yes | UTC timestamp (ISO-8601, suffixed with `Z`). |
 
 ### `intent` object
 
-- `actor` (string, required): Entity initiating the action. Enumerated during spike: `forge`, `barracks`, `arsenal`, `relay` (extendable with War Office approval).
-- `action` (string, required): Verb in snake-case; examples: `craft`, `deploy`, `reinforce`.
-- `target` (string, required): Primary object of the action (`ally`, `garrison`, etc.).
-- `qualifiers` (array[string], optional): Ordered modifiers; default empty.
-- `outcome` (string, required): Outcome taxonomy drawn from `victory`, `stalemate`, `retreat`, `catastrophic`, pending War Office confirmation.
+- `actor` (string, required): Entity initiating the action. Derived from the first glyph token (e.g., `dream`, `forge`).
+- `action` (string, required): Verb extracted from the chain (e.g., `loop`, `craft`).
+- `target` (string, required): Primary object of the action (`ally`, `dream`, etc.); defaults to actor when the template omits an explicit target.
+- `qualifiers` (array[string], optional): Ordered modifiers (e.g., `tempo`, `idea`); default empty.
+- `outcome` (string, required): Outcome taxonomy, drawn from glyph payload (`victory`, `gain`, `repeat`, etc.).
 
 ### `telemetry_stub` object
 

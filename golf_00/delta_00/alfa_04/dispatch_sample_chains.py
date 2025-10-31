@@ -98,13 +98,8 @@ def main() -> None:
     for name, chain in chains.items():
         try:
             payload = translate_chain(chain)
-            payload.update(
-                {
-                    "chain_name": name,
-                    "created_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
-                    "source": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py",
-                }
-            )
+            payload["chain_name"] = name
+            payload["source"] = "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
             destination = write_payload(outbox_dir, name, payload)
             successes.append((name, destination))
         except (TranslationError, ValueError) as exc:

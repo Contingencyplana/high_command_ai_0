@@ -9,7 +9,7 @@
 
 | File | Role |
 |------|------|
-| `emoji_translator.py` | Converts glyph chains into Toyfoundry-ready JSON payloads |
+| `emoji_translator.py` | Converts glyph chains into Toyfoundry-ready JSON payloads (schema `emoji-runtime@1.0`) |
 | `sample_chains.json` | Playground chains used by the dispatch harness |
 | `dispatch_sample_chains.py` | Lightweight harness that writes translator output to the exchange outbox |
 | `README.md` | This brief |
@@ -24,7 +24,7 @@
 ### Quick Harness Check
 
 - Run `python dispatch_sample_chains.py` to drop translator payloads into `outbox/orders/emoji_runtime` (the folder synced by Offline Continuity Mode).
-- Inspect the emitted timestamped JSON files to confirm the glyph IDs and trait metadata look correct before integrating a live caller.
+- Inspect the emitted timestamped JSON files to confirm the glyph IDs, summary line, intent block, and telemetry stub look correct before integrating a live caller.
 - After dispatching, follow the heartbeat → ledger → `python tools/offline_sync_exchange.py` loop so satellites receive the orders.
 
 ### Overlay Bridge

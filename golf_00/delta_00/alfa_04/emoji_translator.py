@@ -8,8 +8,10 @@ composer can provide instant feedback.
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Dict, List, Sequence
+from datetime import datetime, timezone
+from typing import Dict, List
 
 
 @dataclass(frozen=True)
@@ -106,12 +108,66 @@ def match_template(glyphs: Sequence[Glyph]) -> Template:
     raise TranslationError(f"no Level-0 template matches {categories}")
 
 
+def _strip_prefix(value: str | None) -> str | None:
+    if value is None:
+        return None
+    return value.split(".", 1)[-1]
+
+
+def _build_summary(spoken: Sequence[str]) -> str:
+    if not spoken:
+        return "Emoji command dispatched"
+    if len(spoken) == 1:
+        return spoken[0].capitalize()
+    lead = " ".join(spoken[:-1]).capitalize()
+    return f"{lead} -> {spoken[-1]}"
+
+
+def _build_intent(payload: Dict[str, object]) -> Dict[str, object]:
+    actor = _strip_prefix(payload.get("actor"))  # type: ignore[arg-type]
+    action = _strip_prefix(payload.get("verb"))  # type: ignore[arg-type]
+    raw_target = payload.get("target")  # type: ignore[arg-type]
+    target = _strip_prefix(raw_target) if isinstance(raw_target, str) else None
+    if target is None:
+        target = actor or "self"
+    raw_outcomes = payload.get("outcomes", [])  # type: ignore[arg-type]
+    if not isinstance(raw_outcomes, Sequence):
+        raw_outcomes = []
+    outcomes = [_strip_prefix(outcome) for outcome in raw_outcomes if isinstance(outcome, str)]
+    outcome = next((item for item in outcomes if item), "pending")
+    raw_qualifiers = payload.get("qualifiers", [])  # type: ignore[arg-type]
+    if not isinstance(raw_qualifiers, Sequence):
+        raw_qualifiers = []
+    qualifiers = [stripped for stripped in (_strip_prefix(q) for q in raw_qualifiers if isinstance(q, str)) if stripped]
+    return {
+        "actor": actor or "unbound",
+        "action": action or "command",
+        "target": target,
+        "qualifiers": qualifiers,
+        "outcome": outcome,
+    }
+
+
+def _build_telemetry(timestamp: datetime, glyph_count: int, intent: Dict[str, object]) -> Dict[str, object]:
+    actor = str(intent.get("actor") or "unbound")
+    action = str(intent.get("action") or "command")
+    ts_key = timestamp.strftime("%Y%m%dT%H%M%S%f")[:-3] + "Z"
+    return {
+        "batch_id": f"{actor}-{action}-{ts_key}",
+        "ritual": actor,
+        "units_processed": glyph_count,
+        "status": "success",
+        "duration_ms": 0,
+    }
+
+
 def translate_chain(chain: Sequence[str] | str) -> Dict[str, object]:
     """Translate a Level-0 emoji chain into a structured payload."""
 
     tokens = split_chain(chain)
     glyphs = lookup_glyphs(tokens)
     template = match_template(glyphs)
+    dispatched_at = datetime.now(timezone.utc)
 
     payload: Dict[str, object] = {
         "template": template.name,
@@ -146,6 +202,22 @@ def translate_chain(chain: Sequence[str] | str) -> Dict[str, object]:
         payload["outcomes"] = [glyphs[2].token, glyphs[3].token]
     else:
         raise TranslationError(f"template handler missing: {template.name}")
+
+    spoken = payload["spoken"]  # type: ignore[assignment]
+    summary = _build_summary(spoken)
+    intent = _build_intent(payload)
+    telemetry = _build_telemetry(dispatched_at, len(tokens), intent)
+
+    payload.update(
+        {
+            "schema": "emoji-runtime@1.0",
+            "glyph_chain": tokens,
+            "summary": summary,
+            "intent": intent,
+            "telemetry_stub": telemetry,
+            "created_at": dispatched_at.isoformat().replace("+00:00", "Z"),
+        }
+    )
 
     return payload
 

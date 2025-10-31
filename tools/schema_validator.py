@@ -60,6 +60,17 @@ SCHEMAS["factory-report@1.0"] = {
     "status": str,
 }
 
+SCHEMAS["emoji-runtime@1.0"] = {
+    "schema": str,
+    "summary": str,
+    "glyph_chain": list,
+    "spoken": list,
+    "raw": list,
+    "intent": dict,
+    "telemetry_stub": dict,
+    "created_at": str,
+}
+
 
 class SchemaValidationError(RuntimeError):
     """Raised when a payload fails schema validation."""
