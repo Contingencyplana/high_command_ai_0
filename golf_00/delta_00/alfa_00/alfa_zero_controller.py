@@ -194,6 +194,8 @@ def process_event_stream(ctx: ControllerContext, stream: TextIO) -> None:
 
     print("Listening for overlay events...")
     for index, raw_line in enumerate(stream, start=1):
+        cell: Optional[Cell] = None
+        payload_path: Optional[str] = None
         line = raw_line.strip()
         if not line:
             continue
@@ -231,8 +233,8 @@ def process_event_stream(ctx: ControllerContext, stream: TextIO) -> None:
             print(f"⚠️  Event {index}: dispatch failed — {exc}")
             continue
 
-    print(f"✅ Event {index}: {cell_label(cell)} → {payload_path}")
-    post_dispatch(cell, chain_name, ctx, sync_override=sync_override, note=ledger_note)
+        print(f"✅ Event {index}: {cell_label(cell)} → {payload_path}")
+        post_dispatch(cell, chain_name, ctx, sync_override=sync_override, note=ledger_note)
 
 
 def interactive_session(ctx: ControllerContext) -> None:

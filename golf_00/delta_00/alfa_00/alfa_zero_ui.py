@@ -221,7 +221,16 @@ def interactive_loop(context: UIContext) -> None:
 
     while True:
         try:
-            raw = input("command> ").strip()
+            if context.emit_events:
+                if context.output_stream is not sys.stdout:
+                    print("command> ", end="", file=context.output_stream, flush=True)
+                raw_line = sys.stdin.readline()
+                if raw_line == "":
+                    print(file=context.output_stream)
+                    break
+                raw = raw_line.strip()
+            else:
+                raw = input("command> ").strip()
         except (EOFError, KeyboardInterrupt):  # pragma: no cover - interactive exit
             print(file=context.output_stream)
             break
