@@ -283,6 +283,6 @@
     "order-2025-10-15-029-ack": "acknowledgements/logged/order-2025-10-15-029-ack.json",
     "order-2025-10-15-030-ack": "acknowledgements/logged/order-2025-10-15-030-ack.json",
     "order-2025-10-15-031-ack": "acknowledgements/logged/order-2025-10-15-031-ack.json",
-    "order-2025-10-18-036": "orders/pending/order-2025-10-18-036.json"
+  "order-2025-10-18-036": "acknowledgements/logged/order-2025-10-18-036-ack.json"
   }
 }
