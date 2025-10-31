@@ -135,17 +135,21 @@ def _build_intent(payload: Dict[str, object]) -> Dict[str, object]:
         raw_outcomes = []
     outcomes = [_strip_prefix(outcome) for outcome in raw_outcomes if isinstance(outcome, str)]
     outcome = next((item for item in outcomes if item), "pending")
+    secondary_outcome = next((item for item in outcomes[1:] if item), None) if len(outcomes) > 1 else None
     raw_qualifiers = payload.get("qualifiers", [])  # type: ignore[arg-type]
     if not isinstance(raw_qualifiers, Sequence):
         raw_qualifiers = []
     qualifiers = [stripped for stripped in (_strip_prefix(q) for q in raw_qualifiers if isinstance(q, str)) if stripped]
-    return {
+    intent: Dict[str, object] = {
         "actor": actor or "unbound",
         "action": action or "command",
         "target": target,
         "qualifiers": qualifiers,
         "outcome": outcome,
     }
+    if secondary_outcome:
+        intent["secondary_outcome"] = secondary_outcome
+    return intent
 
 
 def _build_telemetry(timestamp: datetime, glyph_count: int, intent: Dict[str, object]) -> Dict[str, object]:

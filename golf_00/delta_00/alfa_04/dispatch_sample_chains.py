@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Dict
 
 from emoji_translator import TranslationError, translate_chain
+from factory_adapter import derive_order_id, emoji_runtime_to_factory_order
 
 
 def find_repo_root(start: Path) -> Path:
@@ -74,6 +75,36 @@ def main() -> None:
         default=None,
         help="Optional override for the emoji runtime outbox directory.",
     )
+    parser.add_argument(
+        "--emit-factory-orders",
+        action="store_true",
+        help="Also promote emoji-runtime payloads to factory-order@1.0 and write them to the factory outbox.",
+    )
+    parser.add_argument(
+        "--factory-outbox",
+        default=None,
+        help="Override directory for generated factory orders (default: outbox/orders/factory_orders).",
+    )
+    parser.add_argument(
+        "--factory-issued-by",
+        default="high_command_ai_0",
+        help="Value for the issued_by field in factory orders (default: high_command_ai_0).",
+    )
+    parser.add_argument(
+        "--factory-target",
+        default="toyfoundry_ai_0",
+        help="Value for the target field in factory orders (default: toyfoundry_ai_0).",
+    )
+    parser.add_argument(
+        "--factory-priority",
+        default="medium",
+        help="Priority to set on emitted factory orders (default: medium).",
+    )
+    parser.add_argument(
+        "--factory-requires-ack",
+        action="store_true",
+        help="Set requires_ack=true on emitted factory orders.",
+    )
     args = parser.parse_args()
 
     script_dir = Path(__file__).resolve().parent
@@ -90,6 +121,16 @@ def main() -> None:
     else:
         outbox_dir = repo_root / "outbox" / "orders" / "emoji_runtime"
 
+    if args.emit_factory_orders:
+        if args.factory_outbox:
+            factory_outbox = Path(args.factory_outbox)
+            if not factory_outbox.is_absolute():
+                factory_outbox = repo_root / factory_outbox
+        else:
+            factory_outbox = repo_root / "outbox" / "orders" / "factory_orders"
+    else:
+        factory_outbox = None
+
     chains = load_sample_chains(sample_path)
 
     successes = []
@@ -102,6 +143,19 @@ def main() -> None:
             payload["source"] = "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
             destination = write_payload(outbox_dir, name, payload)
             successes.append((name, destination))
+
+            if factory_outbox is not None:
+                order_id = derive_order_id(name, payload.get("created_at"))
+                factory_order = emoji_runtime_to_factory_order(
+                    payload,
+                    order_id=order_id,
+                    issued_by=args.factory_issued_by,
+                    target=args.factory_target,
+                    priority=args.factory_priority,
+                    requires_ack=args.factory_requires_ack,
+                )
+                factory_path = write_payload(factory_outbox, order_id, factory_order)
+                successes.append((f"{name} [factory-order]", factory_path))
         except (TranslationError, ValueError) as exc:
             failures.append((name, str(exc)))
 

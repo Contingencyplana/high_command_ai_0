@@ -25,7 +25,7 @@
 
 ## Schema Overview
 
-The High Command translator currently emits payloads under the `emoji-runtime@1.0` schema as an intermediate representation. Formalizing this contract allows the War Office to validate downstream integrations while we add the adapter that promotes these payloads into `factory-order@1.0` for Toyfoundry.
+The High Command translator currently emits payloads under the `emoji-runtime@1.0` schema as an intermediate representation. Formalizing this contract allows the War Office to validate downstream integrations while we add the adapter that promotes these payloads into `factory-order@1.0` for Toyfoundry. The initial adapter lives at `golf_00/delta_00/alfa_04/factory_adapter.py` and can be reused by the satellite workspaces.
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
