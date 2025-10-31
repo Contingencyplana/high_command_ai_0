@@ -4,30 +4,30 @@
   "verb": "verb.loop",
   "target": null,
   "qualifiers": [
-    "qualifier.direction"
+    "qualifier.safe"
   ],
   "outcomes": [
-    "outcome.gain"
+    "outcome.success"
   ],
   "spoken": [
     "dream",
-    "north",
+    "safe",
     "loop",
-    "rise"
+    "victory"
   ],
   "raw": [
     "🌌",
-    "🧭",
+    "🔒",
     "🔄",
-    "📈"
+    "✅"
   ],
-  "created_at": "2025-10-31T14:34:05.722158Z",
+  "created_at": "2025-10-31T15:11:59.765782Z",
   "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
-  "chain_name": "signal_loop_command",
-  "overlay_description": "Channel command signals across the targeting relay",
+  "chain_name": "signal_loop_shield",
+  "overlay_description": "Reinforce targeting shield for the logistics advance",
   "overlay_cell": {
-    "row": 9,
-    "col": 10,
-    "label": "9A"
+    "row": 10,
+    "col": 12,
+    "label": "AC"
   }
 }

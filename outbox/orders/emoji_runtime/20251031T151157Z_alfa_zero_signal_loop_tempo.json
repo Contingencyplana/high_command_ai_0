@@ -1,0 +1,33 @@
+{
+  "template": "signal_loop",
+  "actor": "actor.dream",
+  "verb": "verb.loop",
+  "target": null,
+  "qualifiers": [
+    "qualifier.tempo"
+  ],
+  "outcomes": [
+    "outcome.gain"
+  ],
+  "spoken": [
+    "dream",
+    "quick",
+    "loop",
+    "rise"
+  ],
+  "raw": [
+    "🌌",
+    "⏱️",
+    "🔄",
+    "📈"
+  ],
+  "created_at": "2025-10-31T15:11:57.732039Z",
+  "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+  "chain_name": "signal_loop_tempo",
+  "overlay_description": "Stabilize tempo along the targeting corridor",
+  "overlay_cell": {
+    "row": 9,
+    "col": 12,
+    "label": "9C"
+  }
+}

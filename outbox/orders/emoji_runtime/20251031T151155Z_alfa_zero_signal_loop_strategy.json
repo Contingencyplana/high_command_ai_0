@@ -4,30 +4,30 @@
   "verb": "verb.loop",
   "target": null,
   "qualifiers": [
-    "qualifier.direction"
+    "qualifier.idea"
   ],
   "outcomes": [
     "outcome.gain"
   ],
   "spoken": [
     "dream",
-    "north",
+    "bright",
     "loop",
     "rise"
   ],
   "raw": [
     "🌌",
-    "🧭",
+    "💡",
     "🔄",
     "📈"
   ],
-  "created_at": "2025-10-31T14:34:07.784769Z",
+  "created_at": "2025-10-31T15:11:55.682574Z",
   "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
-  "chain_name": "signal_loop_command",
-  "overlay_description": "Channel command signals across the targeting relay",
+  "chain_name": "signal_loop_strategy",
+  "overlay_description": "Project strategic directives through the targeting lattice",
   "overlay_cell": {
-    "row": 9,
-    "col": 10,
-    "label": "9A"
+    "row": 8,
+    "col": 12,
+    "label": "8C"
   }
 }
