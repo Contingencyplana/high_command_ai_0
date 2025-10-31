@@ -8,7 +8,7 @@
 |:--|:--|:--|:--|:--|:--|
 | P0 | `README.md` | Advertise offline mesh, Alfa staging map, pivot status | Done | High Command | ✅ Added metadata + ledger reminders; revisit Quickstart links once Alfa Zero prototype lands. |
 | P0 | `exchange/README.md` | Describe Offline Continuity Mode bus (`high_command_exchange/`) + heartbeat/sync flow | Done | High Command | ✅ Added heartbeat/sync guidance, env var instructions, guardrails. |
-| P1 | `planning/pivotal_fronts/README.md` | Confirm seven-front canon, add offline supervision guardrails | In progress | High Command | ✅ Added offline guardrails; next: integrate monitoring hook milestones. |
+| P1 | `planning/pivotal_fronts/README.md` | Confirm seven-front canon, add offline supervision guardrails | Done | High Command | ✅ Added offline guardrails + monitoring hook milestones; queue follow-up drift check after M2 reports. |
 | P1 | `planning/morningate_reflection_layer.md` | Capture CTA updates + offline publication path | Done | War Office Liaison | ✅ Added offline publishing guardrails, metadata, CTA notes. |
 | P2 | `planning/player_routing_brief.md` | Align with understaffed-front response + offline comms | Done | Toysoldiers Liaison | ✅ Added offline continuity cadence + metadata. |
 | P2 | `new_major_pivots/README.md` | Summarise post-pivot state incl. emoji language progress | Done | High Command | ✅ Added metadata, Level-0 baseline, and Alfa staging checklist. |
@@ -18,6 +18,10 @@
 1. Update scroll → log entry in `high_command_exchange/ledger/2025-10.md` (or `2025-11.md` after rollover).
 2. Run `python tools/exchange_heartbeat.py` + `python tools/offline_sync_exchange.py` after each batch so satellites see the new canon.
 3. Keep filesize diffs tight; we are deferring deep lore rewrites until Toyfoundry/Toysoldiers confirm live telemetry.
+
+## Next Target Candidate
+
+- 2025-11-02 — Audit `planning/pivotal_fronts/ops.md` to align exchange integrity scroll with new monitoring milestones.
 
 ## Recently Completed
 
