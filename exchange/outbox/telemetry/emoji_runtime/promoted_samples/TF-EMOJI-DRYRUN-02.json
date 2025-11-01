@@ -1,0 +1,60 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "TF-EMOJI-DRYRUN-02",
+  "issued_by": "toyfoundry_ai_0",
+  "target": "toysoldiers_ai_0",
+  "priority": "standard",
+  "timestamp_issued": "2025-11-01T15:17:36+00:00",
+  "summary": "Scout tests the barrier, then signals fallback support.",
+  "glyph_chain": [
+    "\ud83d\udef0\ufe0f",
+    "\ud83e\udded",
+    "\ud83d\udee1\ufe0f",
+    "\ud83d\udd01",
+    "\ud83c\udd98"
+  ],
+  "intent": {
+    "actor": "scout",
+    "action": "probe",
+    "target": "barrier",
+    "qualifiers": [
+      "cautious"
+    ],
+    "outcome": "victory"
+  },
+  "telemetry_stub": {
+    "batch_id": "scout-probe-20251101T100700Z",
+    "ritual": "scout",
+    "units_processed": 5,
+    "status": "warning",
+    "duration_ms": 1280
+  },
+  "narration": {
+    "line": "Scout tests the barrier, then signals fallback support.",
+    "beats": [
+      "scout",
+      "tests",
+      "barrier",
+      "repeat",
+      "fallback"
+    ]
+  },
+  "attachments": [],
+  "metadata": {
+    "translator_version": "unknown",
+    "quint_synced_payload_spec": "quint_synced\\payload_alignment.md",
+    "quint_synced_narration_spec": "quint_synced\\narration_alignment.md",
+    "generated_at": "2025-11-01T15:17:36.060785+00:00",
+    "emoji_runtime_schema": "emoji-runtime@1.0",
+    "emoji_runtime_timestamp": "2025-11-01T10:07:00Z",
+    "emoji_runtime_checksum_sha256": "c7f85c82fac13fa753fa0c97847fd618bde6cf9d6f29851ee5098e1da5e7e751",
+    "emoji_runtime_template": "conditional_repeat",
+    "emoji_runtime_outcomes": [
+      "victory",
+      "fallback_signal"
+    ]
+  },
+  "directives": [
+    "conditional_repeat"
+  ]
+}
