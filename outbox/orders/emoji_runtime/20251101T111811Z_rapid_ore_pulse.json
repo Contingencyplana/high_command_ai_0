@@ -1,0 +1,54 @@
+{
+  "template": "guarded_delivery",
+  "actor": "actor.ally",
+  "verb": "verb.craft",
+  "target": "actor.field",
+  "qualifiers": [
+    "qualifier.tempo"
+  ],
+  "outcomes": [
+    "outcome.success"
+  ],
+  "spoken": [
+    "ally",
+    "craft",
+    "quick",
+    "field",
+    "victory"
+  ],
+  "raw": [
+    "🤖",
+    "⚒️",
+    "⏱️",
+    "🌾",
+    "✅"
+  ],
+  "schema": "emoji-runtime@1.0",
+  "glyph_chain": [
+    "🤖",
+    "⚒️",
+    "⏱️",
+    "🌾",
+    "✅"
+  ],
+  "summary": "Ally craft quick field -> victory",
+  "intent": {
+    "actor": "ally",
+    "action": "craft",
+    "target": "field",
+    "qualifiers": [
+      "tempo"
+    ],
+    "outcome": "success"
+  },
+  "telemetry_stub": {
+    "batch_id": "ally-craft-20251101T111811028Z",
+    "ritual": "ally",
+    "units_processed": 5,
+    "status": "success",
+    "duration_ms": 0
+  },
+  "created_at": "2025-11-01T11:18:11.028364Z",
+  "chain_name": "rapid_ore_pulse",
+  "source": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
+}

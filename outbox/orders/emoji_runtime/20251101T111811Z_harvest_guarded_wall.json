@@ -1,0 +1,54 @@
+{
+  "template": "guarded_delivery",
+  "actor": "actor.field",
+  "verb": "verb.grow",
+  "target": "actor.wall",
+  "qualifiers": [
+    "qualifier.safe"
+  ],
+  "outcomes": [
+    "outcome.success"
+  ],
+  "spoken": [
+    "field",
+    "grow",
+    "safe",
+    "wall",
+    "victory"
+  ],
+  "raw": [
+    "🌾",
+    "🌿",
+    "🔒",
+    "🧱",
+    "✅"
+  ],
+  "schema": "emoji-runtime@1.0",
+  "glyph_chain": [
+    "🌾",
+    "🌿",
+    "🔒",
+    "🧱",
+    "✅"
+  ],
+  "summary": "Field grow safe wall -> victory",
+  "intent": {
+    "actor": "field",
+    "action": "grow",
+    "target": "wall",
+    "qualifiers": [
+      "safe"
+    ],
+    "outcome": "success"
+  },
+  "telemetry_stub": {
+    "batch_id": "field-grow-20251101T111811067Z",
+    "ritual": "field",
+    "units_processed": 5,
+    "status": "success",
+    "duration_ms": 0
+  },
+  "created_at": "2025-11-01T11:18:11.067106Z",
+  "chain_name": "harvest_guarded_wall",
+  "source": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
+}
