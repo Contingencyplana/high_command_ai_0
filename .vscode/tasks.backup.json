@@ -1,0 +1,9 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "Exchange: Heartbeat", "type": "shell", "command": "python", "args": ["tools/exchange_heartbeat.py"], "problemMatcher": [] },
+    { "label": "Exchange: Push (publish outbox)", "type": "shell", "command": "python", "args": ["tools/offline_bridge.py", "push"], "problemMatcher": [] },
+    { "label": "Exchange: Pull (ingest inbox)", "type": "shell", "command": "python", "args": ["tools/offline_bridge.py", "pull", "--move"], "problemMatcher": [] },
+    { "label": "Exchange: Sync (push+pull)", "type": "shell", "command": "python", "args": ["tools/offline_bridge.py", "sync", "--move"], "problemMatcher": [] }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "field-report@1.0",
+  "report_id": "order-2025-11-01-040-report",
+  "order_id": "order-2025-11-01-040",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-02T09:12:00Z",
+  "status": "completed",
+  "summary": "Emoji-runtime adapter promotes Level-0 payloads to factory-order@1.0, validation suite extended, and dry-run artifacts shared with downstream fronts.",
+  "details": {
+    "adapter_summary": {
+      "module": "tools/emoji_runtime_promoter.py",
+      "responsibilities": [
+        "Validate emoji-runtime@1.0 payloads (glyphs, intent, telemetry, narration)",
+        "Promote into factory-order@1.0 via existing emitter helpers",
+        "Preserve directives, narration, and checksum metadata for audit",
+        "Embed emoji-runtime provenance (schema, timestamp, template, checksum, outcomes)"
+      ]
+    },
+    "validation": {
+      "pytest": {
+        "command": "pytest tests/emoji_runtime/test_emoji_runtime_promoter.py",
+        "executed_at_utc": "2025-11-02T09:08:00Z",
+        "result": "4 passed"
+      },
+      "schema_validator": {
+        "command": "python tools/schema_validator.py telemetry/emoji_runtime/promoted_samples/TF-EMOJI-DRYRUN-01.json telemetry/emoji_runtime/promoted_samples/TF-EMOJI-DRYRUN-02.json",
+        "executed_at_utc": "2025-11-02T09:09:00Z",
+        "result": "Validation passed for promoted sample payloads"
+      }
+    },
+    "dry_run_outputs": [
+      {
+        "order_id": "TF-EMOJI-DRYRUN-01",
+        "path": "telemetry/emoji_runtime/promoted_samples/TF-EMOJI-DRYRUN-01.json",
+        "sha256": "305931F2C35B5406DEC578B2D19C1862CA96F93DA8C7F15222B2ECD1B192F7B2",
+        "notes": "Forge ritual walkthrough with narrator profile war-office-storyteller"
+      },
+      {
+        "order_id": "TF-EMOJI-DRYRUN-02",
+        "path": "telemetry/emoji_runtime/promoted_samples/TF-EMOJI-DRYRUN-02.json",
+        "sha256": "598352757450778AC9E41205B8E3FF0F88E6A62F1482747B9E9E03C2D2F9F752",
+        "notes": "Conditional repeat ritual capturing dual outcomes"
+      }
+    ],
+    "coordination": {
+      "shared_with": ["toysoldiers_ai_0", "r_and_d_ai_0"],
+      "handoff_path": "telemetry/emoji_runtime/promoted_samples/",
+      "follow_up": [
+        "Toysoldiers validating monitoring hooks against sample payloads",
+        "R&D reviewing outcome taxonomy expansion for analytics"
+      ]
+    }
+  }
+}

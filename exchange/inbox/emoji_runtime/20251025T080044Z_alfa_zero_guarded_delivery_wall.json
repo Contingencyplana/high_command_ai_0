@@ -1,0 +1,37 @@
+{
+  "template": "guarded_delivery",
+  "actor": "actor.ally",
+  "verb": "verb.deliver",
+  "target": "actor.wall",
+  "qualifiers": [
+    "qualifier.safe"
+  ],
+  "outcomes": [
+    "outcome.success"
+  ],
+  "spoken": [
+    "ally",
+    "deliver",
+    "safe",
+    "wall",
+    "victory"
+  ],
+  "raw": [
+    "🤖",
+    "📦",
+    "🔒",
+    "🧱",
+    "✅"
+  ],
+  "chain_name": "guarded_delivery_wall",
+  "created_at": "2025-10-25T08:00:44.637997Z",
+  "source": "golf_00/delta_00/alfa_00/overlay_test_harness.py",
+  "overlay_event": {
+    "cell": {
+      "row": 4,
+      "col": 12,
+      "label": "4C"
+    },
+    "description": "Secure delivery to fortress wall"
+  }
+}
