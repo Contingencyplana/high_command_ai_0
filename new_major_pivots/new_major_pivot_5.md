@@ -95,6 +95,22 @@ Design a fully expressive, emoji-first computing language that lets a one-year-o
 
 ---
 
+### Operational Readiness Signals
+
+- `emoji_translator.py` canary suite (256 canonical Level-0 chains) records **zero failures across 14 consecutive nightly runs**, with emoji ↔ JSON ↔ emoji deltas logged in `logs/canary/emoji_translator/` (schedule via `python tools/run_emoji_canary.py`).
+- **Alfa Zero Phase 2** metrics show the click → order → telemetry loop closing in ≤3 seconds at the 95th percentile over **10 consecutive mission replays**, with results captured in `logs/alfa_zero/phase_2_latencies.jsonl` (stamp each telemetry receipt via `record_phase_two_telemetry(batch_id, status="success")`).
+- `golf_00/delta_00/alfa_04/` composer telemetry exports document **three supervised toddler/AI co-play sessions** without manual text intervention, archived in `exchange/reports/emoji_level_0/` (log entries via `python tools/log_emoji_coplay.py --session-id …`).
+
+Meeting all three signals unlocks the review window for audio-layer experimentation (see Pivot Six).
+
+---
+
+### Future Expansion
+
+- Once the Level-0 emoji grammar, translator, and Alfa overlays are operational, evaluate **Major Pivot Six: Music-First Language** (`new_major_pivot_6.md`) as an audio-parallel command surface reusing the same noun/verb/outcome slots.
+
+---
+
 ## Approval Status
 
 **Conditionally approved** pending Level-0 grammar delivery. War Office authorizes immediate prototyping; High Command to schedule first toddler co-play trial after Order-037 closes.

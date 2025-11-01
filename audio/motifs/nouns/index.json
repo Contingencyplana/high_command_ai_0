@@ -1,0 +1,71 @@
+{
+  "schema": "emoji-level-0-tone-index@1.0",
+  "sample_rate": 44100,
+  "amplitude": 0.45,
+  "tones": {
+    "forge": {
+      "emoji": "🛠️",
+      "note": "C4",
+      "frequency_hz": 261.63,
+      "instrument": "warm-marimba",
+      "duration_seconds": 0.5,
+      "file": "audio/motifs/nouns/forge.wav"
+    },
+    "field": {
+      "emoji": "🌾",
+      "note": "D4",
+      "frequency_hz": 293.66,
+      "instrument": "warm-marimba",
+      "duration_seconds": 0.5,
+      "file": "audio/motifs/nouns/field.wav"
+    },
+    "dream": {
+      "emoji": "🌌",
+      "note": "E4",
+      "frequency_hz": 329.63,
+      "instrument": "celesta-pad",
+      "duration_seconds": 0.5,
+      "file": "audio/motifs/nouns/dream.wav"
+    },
+    "river": {
+      "emoji": "🌊",
+      "note": "F4",
+      "frequency_hz": 349.23,
+      "instrument": "glass-harmonics",
+      "duration_seconds": 0.5,
+      "file": "audio/motifs/nouns/river.wav"
+    },
+    "wall": {
+      "emoji": "🧱",
+      "note": "G4",
+      "frequency_hz": 392.0,
+      "instrument": "low-brass-mute",
+      "duration_seconds": 0.5,
+      "file": "audio/motifs/nouns/wall.wav"
+    },
+    "ember": {
+      "emoji": "🔥",
+      "note": "A4",
+      "frequency_hz": 440.0,
+      "instrument": "choir-aah",
+      "duration_seconds": 0.5,
+      "file": "audio/motifs/nouns/ember.wav"
+    },
+    "seed": {
+      "emoji": "🌱",
+      "note": "B4",
+      "frequency_hz": 493.88,
+      "instrument": "plucked-harp",
+      "duration_seconds": 0.5,
+      "file": "audio/motifs/nouns/seed.wav"
+    },
+    "ally": {
+      "emoji": "🤖",
+      "note": "C5",
+      "frequency_hz": 523.25,
+      "instrument": "synth-bell",
+      "duration_seconds": 0.5,
+      "file": "audio/motifs/nouns/ally.wav"
+    }
+  }
+}

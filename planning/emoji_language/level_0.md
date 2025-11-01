@@ -96,12 +96,45 @@ Every chain is capped at **five glyphs** in Level-0. Longer rituals are construc
 
 ---
 
+## Audio Motif Experiment (Draft)
+
+**Purpose:** Prototype a music-first parallel to the emoji grammar by assigning each Level-0 noun a canonical tone. Successful round-trips here become the seed for Major Pivot Six.
+
+### Canonical Tone Map (Nouns)
+
+| Emoji | Note | Frequency (Hz) | Instrument Patch | Duration |
+|:------|:-----|:---------------|:-----------------|:---------|
+| 🛠️ Forge | C4 | 261.63 | Warm marimba | 1 beat @ 120 BPM |
+| 🌾 Field | D4 | 293.66 | Warm marimba | 1 beat @ 120 BPM |
+| 🌌 Dream | E4 | 329.63 | Celesta pad | 1 beat @ 120 BPM |
+| 🌊 River | F4 | 349.23 | Glass harmonics | 1 beat @ 120 BPM |
+| 🧱 Wall | G4 | 392.00 | Low brass mute | 1 beat @ 120 BPM |
+| 🔥 Ember | A4 | 440.00 | Choir ahh | 1 beat @ 120 BPM |
+| 🌱 Seed | B4 | 493.88 | Plucked harp | 1 beat @ 120 BPM |
+| 🤖 Ally | C5 | 523.25 | Synth bell | 1 beat @ 120 BPM |
+
+> Keep timbres gentle so toddlers can replicate with humming or toy instruments. Record reference clips in `audio/motifs/nouns/`.
+
+### Experiment Steps
+
+1. **Palette Pack:** Generate `.wav` stems for each noun tone using 120 BPM quarter-note strikes; save metadata in `audio/motifs/nouns/index.json`.
+2. **Composer Patch:** Add a "Tone Pad" layer to `golf_00/delta_00/alfa_04/` where the noun slot can trigger audio playback while logging the corresponding emoji token.
+3. **Capture Loop:** Record three sample chains (e.g., `🛠️ ⚒️ 🤖 ✅`) by sequencing tones for noun slots and default narrator stings for non-noun glyphs; export MIDI + JSON in `experiments/motif_roundtrip/`.
+4. **Translation Check:** Extend `emoji_translator.py` canary tests to accept paired `tone_id` metadata and ensure audio-tagged payloads still pass validation.
+5. **Telemetry Replay:** Push motif-tagged orders through Toyfoundry sandbox and verify telemetry returns the same tone IDs; archive results in `logs/experiments/motif_roundtrip.jsonl`.
+
+Document outcomes and deltas so High Command can evaluate the lift required for a full music-first grammar.
+
+---
+
 ## Next Actions
 
 1. Record and package narration clips using spoken prompts listed above
 2. Prototype drag-and-drop composer inside `golf_00/delta_00/alfa_04/`
 3. Expand `emoji_translator.py` with Toyfoundry payload contracts and validation suite
 4. Draft toddler co-play test plan (audio narration + supervision prompts)
+5. Build noun tone palette per the **Audio Motif Experiment** (run `python tools/generate_tone_palette.py`) and log first round-trip attempt
+6. Schedule the nightly translator canary (`python golf_00/delta_00/alfa_04/dispatch_sample_chains.py`) so `logs/canary/emoji_translator/translation_events.jsonl` accrues the required 14 consecutive passes
 
 ---
 

@@ -31,6 +31,13 @@ Each run imports the Level-0 translator from `alfa_04`, resolves the same emoji 
 - Pipe those events into `alfa_zero_controller.py --event-stream -` to reuse the ledger + sync discipline for real overlay clicks.
 - Passing `--no-auto-sync` to the controller or `{"auto_sync": false}` in an event allows dry runs without touching the ledger.
 
+### Phase 2 Telemetry Logging
+
+- Every dispatch appends a stub entry to `logs/alfa_zero/phase_2_latencies.jsonl` and writes a per-batch JSON file under `logs/alfa_zero/phase_2/{batch_id}.json`.
+- When Toyfoundry telemetry lands, call `record_phase_two_telemetry(batch_id, status="success")` to stamp the receipt time and duration automatically.
+- The helper lives in `overlay_bridge.py` so UI or backend bridges can import it without reimplementing the logging semantics.
+- For manual updates or cron workflows, run `python tools/record_phase_two_telemetry.py --batch-id …`.
+
 ---
 
 ## Mapping Snapshot

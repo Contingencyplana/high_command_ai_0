@@ -8,9 +8,12 @@ composer can provide instant feedback.
 
 from __future__ import annotations
 
+import json
+import os
 from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Dict, List
 
 
@@ -165,6 +168,52 @@ def _build_telemetry(timestamp: datetime, glyph_count: int, intent: Dict[str, ob
     }
 
 
+_LOGGING_ENABLED = os.environ.get("EMOJI_TRANSLATOR_LOG", "1").lower() not in {"0", "false", "no"}
+
+
+def _find_repo_root(start: Path) -> Path:
+    for parent in [start] + list(start.parents):
+        if (parent / ".git").exists():
+            return parent
+    return start
+
+
+def _log_translation_event(payload: Dict[str, object], template_name: str) -> None:
+    if not _LOGGING_ENABLED:
+        return
+
+    repo_root = _find_repo_root(Path(__file__).resolve())
+
+    log_dir = repo_root / "logs" / "canary" / "emoji_translator"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_path = log_dir / "translation_events.jsonl"
+
+    glyph_chain = payload.get("glyph_chain")
+    if not isinstance(glyph_chain, Sequence) or isinstance(glyph_chain, str):
+        glyph_chain = payload.get("raw")
+    if isinstance(glyph_chain, str):
+        glyph_list = [glyph_chain]
+    elif isinstance(glyph_chain, Sequence):
+        glyph_list = [str(item) for item in glyph_chain]
+    else:
+        glyph_list = []
+
+    entry = {
+        "timestamp": payload.get("created_at") or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "template": template_name,
+        "glyph_chain": glyph_list,
+        "translation_status": "success",
+    }
+
+    try:
+        with log_path.open("a", encoding="utf-8") as handle:
+            json.dump(entry, handle, ensure_ascii=False)
+            handle.write("\n")
+    except OSError:
+        # Logging failures should never break translation flows.
+        pass
+
+
 def translate_chain(chain: Sequence[str] | str) -> Dict[str, object]:
     """Translate a Level-0 emoji chain into a structured payload."""
 
@@ -222,6 +271,8 @@ def translate_chain(chain: Sequence[str] | str) -> Dict[str, object]:
             "created_at": dispatched_at.isoformat().replace("+00:00", "Z"),
         }
     )
+
+    _log_translation_event(payload, template.name)
 
     return payload
 

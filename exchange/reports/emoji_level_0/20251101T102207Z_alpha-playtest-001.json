@@ -1,0 +1,16 @@
+{
+  "session_id": "alpha-playtest-001",
+  "recorded_at": "2025-11-01T10:22:07.471132Z",
+  "participants": [
+    "adult-alpha",
+    "toddler-bravo",
+    "shagi-agent-01"
+  ],
+  "glyph_chains": [
+    "🛠️ ⚒️ 🤖 ✅",
+    "🌱 🌿 ✅ 🔁"
+  ],
+  "notes": "Initial supervision drill; toddler tapped narrator prompts successfully.",
+  "outcome": "success",
+  "schema": "emoji-level-0-coplay@1.0"
+}

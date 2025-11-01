@@ -28,6 +28,12 @@ The **Five Major Pivots** represent a fundamental shift in how we build **Nightl
 
 ---
 
+## Future Pivot Candidates
+
+- **[Six — Music-First Language](new_major_pivot_6.md)** (Exploratory): adds an audio grammar that mirrors the emoji slots so humming, rhythm, or instrumentation can drive the same workflows once Pivot Five stabilizes. Treat as a Pivot Five expansion path until the Level-0 glyph runtime and Alfa Zero Phase 2 reach operational status.
+
+---
+
 ## How They Fit Together
 
 ```text

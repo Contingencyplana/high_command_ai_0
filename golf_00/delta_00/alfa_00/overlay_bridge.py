@@ -169,7 +169,108 @@ class OverlayBridge:
         if cell:
             payload["overlay_cell"] = {"row": cell[0], "col": cell[1], "label": cell_label(cell)}
         hint = chain_name or "custom_chain"
-        return _write_payload(self.outbox, f"alfa_zero_{hint}", payload)
+        destination = _write_payload(self.outbox, f"alfa_zero_{hint}", payload)
+        self._log_phase_two_dispatch(payload, destination)
+        return destination
+
+    def _log_phase_two_dispatch(self, payload: Dict[str, object], destination: Path) -> None:
+        """Append a Phase 2 latency stub entry for later reconciliation."""
+
+        log_dir = self.repo_root / "logs" / "alfa_zero"
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_path = log_dir / "phase_2_latencies.jsonl"
+
+        dispatched_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+
+        try:
+            relative_outbox = destination.relative_to(self.repo_root)
+        except ValueError:
+            relative_outbox = destination
+
+        telemetry_stub = payload.get("telemetry_stub") if isinstance(payload.get("telemetry_stub"), dict) else {}
+        batch_id = str(telemetry_stub.get("batch_id") or dispatched_at)
+        entry = {
+            "dispatched_at": dispatched_at,
+            "chain_name": payload.get("chain_name"),
+            "template": payload.get("template"),
+            "overlay_cell": payload.get("overlay_cell"),
+            "outbox_path": str(relative_outbox),
+            "batch_id": batch_id,
+            "telemetry_received_at": None,
+            "telemetry_duration_ms": None,
+            "telemetry_status": "pending",
+        }
+
+        try:
+            with log_path.open("a", encoding="utf-8") as handle:
+                json.dump(entry, handle, ensure_ascii=False)
+                handle.write("\n")
+        except OSError:
+            pass
+
+        phase_dir = log_dir / "phase_2"
+        phase_dir.mkdir(parents=True, exist_ok=True)
+        entry_path = phase_dir / f"{batch_id}.json"
+        try:
+            with entry_path.open("w", encoding="utf-8") as handle:
+                json.dump(entry, handle, ensure_ascii=False, indent=2)
+                handle.write("\n")
+        except OSError:
+            pass
+
+
+def record_phase_two_telemetry(
+    batch_id: str,
+    *,
+    received_at: datetime | None = None,
+    duration_ms: int | None = None,
+    status: str = "success",
+) -> None:
+    """Update a Phase 2 latency entry when telemetry arrives."""
+
+    script_dir = Path(__file__).resolve().parent
+    repo_root = find_repo_root(script_dir)
+    entry_path = repo_root / "logs" / "alfa_zero" / "phase_2" / f"{batch_id}.json"
+    if not entry_path.exists():
+        raise FileNotFoundError(f"Phase 2 entry for batch {batch_id!r} not found at {entry_path}")
+
+    with entry_path.open("r", encoding="utf-8") as handle:
+        entry = json.load(handle)
+    if not isinstance(entry, dict):
+        entry = {}
+
+    timestamp = received_at or datetime.now(timezone.utc)
+    entry["telemetry_received_at"] = timestamp.isoformat().replace("+00:00", "Z")
+    if duration_ms is not None:
+        entry["telemetry_duration_ms"] = duration_ms
+    elif isinstance(entry.get("dispatched_at"), str):
+        try:
+            dispatched_at = datetime.fromisoformat(entry["dispatched_at"].replace("Z", "+00:00"))
+            entry["telemetry_duration_ms"] = int(
+                (timestamp - dispatched_at).total_seconds() * 1000
+            )
+        except Exception:  # pragma: no cover - defensive parsing
+            entry.setdefault("telemetry_duration_ms", None)
+    entry["telemetry_status"] = status
+
+    with entry_path.open("w", encoding="utf-8") as handle:
+        json.dump(entry, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+
+    log_path = repo_root / "logs" / "alfa_zero" / "phase_2_latencies.jsonl"
+    update_record = {
+        "batch_id": batch_id,
+        "telemetry_received_at": entry["telemetry_received_at"],
+        "telemetry_duration_ms": entry.get("telemetry_duration_ms"),
+        "telemetry_status": status,
+        "event": "telemetry_update",
+    }
+    try:
+        with log_path.open("a", encoding="utf-8") as handle:
+            json.dump(update_record, handle, ensure_ascii=False)
+            handle.write("\n")
+    except OSError:
+        pass
 
 
 def build_bridge(outbox_override: str | None = None) -> OverlayBridge:
@@ -185,5 +286,6 @@ __all__ = [
     "CELL_MAPPINGS",
     "OverlayBridge",
     "build_bridge",
+    "record_phase_two_telemetry",
     "cell_label",
 ]
