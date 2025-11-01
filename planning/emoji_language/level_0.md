@@ -135,6 +135,8 @@ Document outcomes and deltas so High Command can evaluate the lift required for 
 4. Draft toddler co-play test plan (audio narration + supervision prompts)
 5. Build noun tone palette per the **Audio Motif Experiment** (run `python tools/generate_tone_palette.py`) and log first round-trip attempt
 6. Schedule the nightly translator canary (`python golf_00/delta_00/alfa_04/dispatch_sample_chains.py`) so `logs/canary/emoji_translator/translation_events.jsonl` accrues the required 14 consecutive passes
+   - Suggested cron entry (UTC): `0 3 * * * /usr/bin/env python3 /path/to/repo/tools/run_emoji_canary.py >> /path/to/repo/logs/canary/nightly.log 2>&1`
+7. Pipe Toyfoundry telemetry acknowledgements into `python tools/process_phase_two_telemetry.py` (or call `tools/record_phase_two_telemetry.py`) so Phase 2 latency metrics stay current
 
 ---
 

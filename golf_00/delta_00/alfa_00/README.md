@@ -37,6 +37,7 @@ Each run imports the Level-0 translator from `alfa_04`, resolves the same emoji 
 - When Toyfoundry telemetry lands, call `record_phase_two_telemetry(batch_id, status="success")` to stamp the receipt time and duration automatically.
 - The helper lives in `overlay_bridge.py` so UI or backend bridges can import it without reimplementing the logging semantics.
 - For manual updates or cron workflows, run `python tools/record_phase_two_telemetry.py --batch-id …`.
+- Streaming integrations can pipe JSON lines into `python tools/process_phase_two_telemetry.py --verbose` (accepts `batch_id`, optional `status`, `duration_ms`, and `timestamp` per line).
 
 ---
 
