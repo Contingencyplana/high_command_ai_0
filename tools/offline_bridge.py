@@ -37,7 +37,9 @@ import os
 import shutil
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Optional, Tuple
+from typing import Iterable, Optional, Tuple, List, Dict
+import json
+import fnmatch
 
 
 DEFAULT_HUB = Path("C:/Users/Admin/high_command_exchange")
@@ -50,17 +52,19 @@ class BridgeConfig:
     repo_root: Path
 
 
-def load_hub_from_config(repo_root: Path) -> Optional[Path]:
+def _load_config(repo_root: Path) -> Dict[str, object]:
     cfg_path = repo_root / "exchange" / "config.json"
     try:
-        import json
-
-        data = json.loads(cfg_path.read_text(encoding="utf-8"))
-        upstream = data.get("upstream_root")
-        if isinstance(upstream, str) and upstream.strip():
-            return Path(upstream)
+        return json.loads(cfg_path.read_text(encoding="utf-8"))
     except Exception:
-        pass
+        return {}
+
+
+def load_hub_from_config(repo_root: Path) -> Optional[Path]:
+    data = _load_config(repo_root)
+    upstream = data.get("upstream_root") if isinstance(data, dict) else None
+    if isinstance(upstream, str) and upstream.strip():
+        return Path(upstream)
     return None
 
 
@@ -68,7 +72,17 @@ def resolve_config() -> BridgeConfig:
     repo_root = Path(__file__).resolve().parents[1]
     env_hub = os.getenv("SHAGI_EXCHANGE_PATH")
     hub = Path(env_hub) if env_hub else (load_hub_from_config(repo_root) or DEFAULT_HUB)
-    front = os.getenv("SHAGI_FRONT") or repo_root.name
+    # SHAGI_FRONT precedence: env -> exchange/config.json.front -> repo folder name
+    cfg_front: Optional[str] = None
+    try:
+        data = _load_config(repo_root)
+        if isinstance(data, dict):
+            v = data.get("front")
+            if isinstance(v, str) and v.strip():
+                cfg_front = v.strip()
+    except Exception:
+        cfg_front = None
+    front = os.getenv("SHAGI_FRONT") or cfg_front or repo_root.name
     return BridgeConfig(hub=hub, front=front, repo_root=repo_root)
 
 
@@ -173,6 +187,30 @@ def pull(cfg: BridgeConfig, *, move: bool = False) -> int:
     try:
         inbox_root = cfg.repo_root / "exchange" / "inbox"
         promoted = 0
+        # Load optional router rules
+        def _load_rules() -> List[Dict[str, str]]:
+            rules: List[Dict[str, str]] = []
+            for candidate in [
+                cfg.repo_root / "exchange" / "router_rules.json",
+                cfg.repo_root / "tools" / "router_rules.json",
+            ]:
+                try:
+                    if candidate.exists():
+                        data = json.loads(candidate.read_text(encoding="utf-8"))
+                        if isinstance(data, list):
+                            for r in data:
+                                if (
+                                    isinstance(r, dict)
+                                    and isinstance(r.get("glob"), str)
+                                    and isinstance(r.get("dest"), str)
+                                ):
+                                    rules.append({"glob": r["glob"], "dest": r["dest"]})
+                except Exception:
+                    # Ignore malformed rules files
+                    pass
+            return rules
+
+        rules = _load_rules()
         if inbox_root.exists():
             for f in inbox_root.rglob("*"):
                 if not f.is_file():
@@ -189,6 +227,15 @@ def pull(cfg: BridgeConfig, *, move: bool = False) -> int:
                 # TF emoji dryrun samples
                 elif name.upper().startswith("TF-EMOJI-DRYRUN") and low.endswith(".json"):
                     dest = cfg.repo_root / "telemetry" / "emoji_runtime" / "promoted_samples" / name
+                # Externalizable rules (basename glob -> relative dest dir)
+                if dest is None and rules:
+                    for r in rules:
+                        try:
+                            if fnmatch.fnmatch(name, r["glob"]):
+                                dest = cfg.repo_root / Path(r["dest"]) / name
+                                break
+                        except Exception:
+                            continue
                 if dest is not None:
                     _move_file(f, dest)
                     print(f"SORT MOVE {f} -> {dest}")

@@ -43,7 +43,20 @@ class Ledger:
 
 def load_ledger(repo_root: Path) -> Ledger:
     ledger_path = repo_root / "exchange" / "ledger" / "index.json"
-    data = json.loads(ledger_path.read_text(encoding="utf-8"))
+    # Ensure parent exists and bootstrap an empty ledger if missing
+    ledger_path.parent.mkdir(parents=True, exist_ok=True)
+    if not ledger_path.exists():
+        data: Dict[str, dict] = {"orders": {}, "reports": {}, "acks": {}}
+        led = Ledger(path=ledger_path, data=data)
+        led.save()
+        return led
+    try:
+        data = json.loads(ledger_path.read_text(encoding="utf-8"))
+        if not isinstance(data, dict):
+            data = {"orders": {}, "reports": {}, "acks": {}}
+    except Exception:
+        # Corrupt or unreadable file: reset to empty structure (conservative)
+        data = {"orders": {}, "reports": {}, "acks": {}}
     return Ledger(path=ledger_path, data=data)
 
 
@@ -139,4 +152,3 @@ if __name__ == "__main__":
     root = Path(__file__).resolve().parents[1]
     n = update_ledger(root)
     print(f"[OK] Ledger updated, {n} change(s).")
-

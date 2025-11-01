@@ -1,16 +1,25 @@
 #!/usr/bin/env pwsh
 $ErrorActionPreference = 'SilentlyContinue'
 Write-Host "[pre-commit] Validating exchange JSON payloads..."
+$pythonCmd = Get-Command python -ErrorAction SilentlyContinue
+if (-not $pythonCmd) {
+  $pythonCmd = Get-Command python3 -ErrorAction SilentlyContinue
+}
+if (-not $pythonCmd) {
+  Write-Host "[pre-commit] No python executable found (python/python3)." -ForegroundColor Red
+  exit 1
+}
+$pythonPath = $pythonCmd.Source
 $jsons = git diff --cached --name-only | Where-Object { $_ -like 'exchange/*.json' -or $_ -like 'exchange/*/*.json' -or $_ -like 'exchange/*/*/*.json' }
 if ($jsons) {
-  python tools/schema_validator.py $jsons
+  & $pythonPath tools/schema_validator.py $jsons
   if ($LASTEXITCODE -ne 0) {
     Write-Host "[pre-commit] Validation failed. Aborting commit." -ForegroundColor Red
     exit 1
   }
 
   Write-Host "[pre-commit] Rebuilding ledger index..."
-  python tools/ledger_indexer.py --write
+  & $pythonPath tools/ledger_indexer.py --write
   if ($LASTEXITCODE -ne 0) {
     Write-Host "[pre-commit] Ledger indexer failed. Aborting commit." -ForegroundColor Red
     exit 1
