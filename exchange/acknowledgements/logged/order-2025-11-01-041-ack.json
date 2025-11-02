@@ -1,0 +1,6 @@
+{
+  "order_id": "order-2025-11-01-041",
+  "workspace": "toysoldiers_ai_0",
+  "acknowledged_at_utc": "2025-11-02T10:05:00Z",
+  "remarks": "Acknowledged dependency on Toyfoundry ORDER-040; ingestion and monitoring rollout underway per High Command directive."
+}
