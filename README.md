@@ -2,7 +2,7 @@
 
 *Workspace: `high_command_ai_0`*  
 *Doctrine Scroll — The Mind Above the Minds*  
-**Last Updated:** 2025-10-31  
+**Last Updated:** 2025-11-04  
 **Offline Continuity Mode:** Active  
 
 ---
@@ -23,10 +23,11 @@
 
 **Current focus:**
 
-- Maintaining **Offline Continuity Mode** — shared `C:\Users\Admin\high_command_exchange\` bus keeps orders flowing while GitHub access is locked; run `python tools/exchange_heartbeat.py` + `python tools/offline_sync_exchange.py` to sync and append the action to the ledger.
+- Maintaining **Offline Continuity Mode** — shared `C:\Users\Admin\high_command_exchange\` bus keeps orders flowing while GitHub access is locked; run `python tools/exchange_heartbeat.py`, `python tools/offline_sync_exchange.py`, and `python tools/offline_bridge.py pull --move` to sync each workspace, then append the action to the ledger.
 - Building **Alfa Zero** — first playable 16×16 battleground translating grid clicks into High Command orders (see `docs/alfa_zero_spec.md`).
 - Shipping **Alfa 04 (Emoji Composer Harness)** — Level-0 glyph translator dispatching Toyfoundry-ready payloads (see `golf_00/delta_00/alfa_04/`).
 - Prototyping **Alfa 00 overlay harness & CLI** — simulated grid clicks and an interactive controller piping into the emoji runtime (see `golf_00/delta_00/alfa_00/`).
+- Running the **Doc Refresh Queue** — staged updates keep top-level canon (README, pivot scrolls, alfa map) in sync with offline operations while deeper scrolls roll in per work block (see `planning/doc_refresh_queue.md`).
 
 **Alfa staging map (`golf_00/delta_00/`):** `alfa_00` Alfa Zero overlay • `alfa_01` Toyfoundry runtime bridge • `alfa_02` Toysoldiers narrator harness • `alfa_03` shared telemetry shell • `alfa_04` emoji composer.
 
@@ -84,9 +85,9 @@ For current coordination and safety procedures, consult the newly issued infrast
 GitHub lockout procedures routed all command traffic through a shared filesystem bus so five workspaces keep talking.
 
 - **Exchange root:** `C:\Users\Admin\high_command_exchange\` (set via `SHAGI_EXCHANGE_PATH`).
-- **Heartbeat & sync:** Run `python tools/exchange_heartbeat.py` followed by `python tools/offline_sync_exchange.py` in each workspace to verify connectivity and mirror `outbox/` traffic.
+- **Heartbeat & sync:** Run `python tools/exchange_heartbeat.py` followed by `python tools/offline_sync_exchange.py` in each workspace to verify connectivity and mirror `outbox/` traffic. High Command then runs `python tools/offline_bridge.py pull --move` to ingest the shared drop.
 - **Shared folders:** `orders/`, `reports/`, `ledger/`, `inbox/`, `outbox/` replace the old git-driven exchange checkout.
-- **Ledger discipline:** Append every action to `high_command_exchange/ledger/2025-10.md` (roll to `2025-11.md` on month change) before or immediately after syncing.
+- **Ledger discipline:** Append every action to `high_command_exchange/ledger/2025-11.md` before or immediately after syncing.
 - **Guardrails:** No remote pushes until War Office unlocks GitHub; log anomalies (heartbeat ⚠️/🔴) and escalate via `exchange/reports/inbox/`.
 
 When GitHub returns, snapshot the exchange folder and push as a single commit before re-enabling the previous quint-sync workflow.
