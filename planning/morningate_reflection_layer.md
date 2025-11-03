@@ -1,6 +1,6 @@
 # 🌅 morningate_reflection_layer.md (morningate.games website) — The Open Window of SHAGI
 
-**Last Updated:** 2025-10-31  
+**Last Updated:** 2025-11-04  
 **Offline Continuity Mode:** Active
 
 ## 1. Purpose
@@ -105,7 +105,9 @@ High Command currently operates on the local exchange mesh (`C:/Users/Admin/high
 
 - **Source feeds:** pull sanitized exports from `high_command_exchange/exports/` and CTA copy from `high_command_exchange/orders/` or `reports/` as directed by War Office.
 - **Heartbeat + sync:** before and after Morningate updates, run `python tools/exchange_heartbeat.py` then `python tools/offline_sync_exchange.py` in each workspace to copy new feeds and narration into the shared bus.
-- **Ledger discipline:** log every rebuild or CTA refresh in `high_command_exchange/ledger/2025-10.md` (roll to `2025-11.md` after month-end) so satellites know the public window changed.
+- **Bridge ingest:** High Command finishes the loop with `python tools/offline_bridge.py pull --move` so the hub ledger and inboxes reflect the new reflection layer artifacts.
+- **Ledger discipline:** log every rebuild or CTA refresh in `high_command_exchange/ledger/2025-11.md` so satellites know the public window changed; note the specific feed paths touched.
+- **Doc refresh queue:** record Morningate-facing changes in `planning/doc_refresh_queue.md` to coordinate follow-up edits across theatres.
 - **Guardrails:** no remote deploys without War Office approval; package site snapshots locally and await the unlock directive before mirroring to Git.
 
 ---

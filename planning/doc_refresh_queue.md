@@ -13,7 +13,7 @@
 - [x] Root `README.md` (Offline Continuity Mode, Alfa staging map, doc queue reference)
 - [x] `new_major_pivots/README.md` (status badges + completion notes)
 - [x] `planning/alfa_slot_map.md` (sync slot ownership + bridge hooks)
-- [ ] `docs/morningate_reflection_layer.md` (add offline pipeline chapter)
+- [x] `docs/morningate_reflection_layer.md` (add offline pipeline chapter)
 - [ ] `docs/player_routing_brief.md` (clarify battlegrid handoff cadence)
 - [ ] `new_major_pivots/new_major_pivot_5.md` (emoji-first rollout evidence)
 - [ ] `war_office/README.md` (embed doc refresh queue summary)
