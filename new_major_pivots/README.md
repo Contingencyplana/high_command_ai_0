@@ -3,14 +3,14 @@
 **Date:** 2025-10-17  
 **Authorizing Body:** War Office + High Command  
 **Status:** Approved & Active  
-**Last Updated:** 2025-10-31  
+**Last Updated:** 2025-11-04  
 **Offline Continuity Mode:** Active  
 
 ---
 
 ## Overview
 
-The **Five Major Pivots** represent a fundamental shift in how we build **Nightlands Multiplayer Game** and pursue the **SHAGI (Supersafe Hyperadvanced Artificial General Intelligence)** vision.
+The **Five Major Pivots** represent a fundamental shift in how we build **Nightlands Multiplayer Game** and pursue the **SHAGI (Supersafe Hyperadvanced Artificial General Intelligence)** vision. All five pivots are now operational; current focus shifts to scaling playable workflows while the offline bridge keeps every theatre synchronized.
 
 **Core insight:** The existing workflow (VSCode, PowerShell, GitHub, Azure) is soul-destroyingly boring for the human operator. To sustain this project long-term, we must transform development into gameplay—where tactical decisions on emoji battlegrids drive automation behind the scenes.
 
@@ -77,26 +77,25 @@ The **Five Major Pivots** represent a fundamental shift in how we build **Nightl
 
 ### Completed
 
-- ✅ **Pivot Four** — Fractal folder structure created (`golf_00` through `golf_15`)
-- ✅ **Pivot documentation (1-4)** — Foundational pivots formally specified
-- ✅ **Exchange protocol operational** — High Command ↔ Toyfoundry ↔ Toysoldiers coordination proven
-- ✅ **Telemetry quilt functional** — Aggregates factory-reports into composite rollups
-- ✅ **Emoji pivot proposal** — Pivot Five charter drafted (`new_major_pivot_5.md`)
-- ✅ **Emoji Level-0 grammar baseline** — 32-glyph lexicon, narration guide, and compiler mapping established (`planning/emoji_language/level_0.md`)
+- ✅ **Pivots One–Five activated** — Play ratio mandate, playable overlay charter, SHAGI vision guardrails, fractal lattice, and emoji runtime charter are all ratified and operational.
+- ✅ **Fractal infrastructure** — `golf_00` through `golf_15` established with telemetry quilt routing across Toyfoundry and Toysoldiers theatres.
+- ✅ **Offline continuity bridge** — Exchange heartbeat, offline sync, and offline bridge pull cycle validated; Orders 040/041 closed via shared bus.
+- ✅ **Emoji Level-0 grammar baseline** — 32-glyph lexicon, narration guide, and compiler mapping established (`planning/emoji_language/level_0.md`).
+- ✅ **Pivot scrolls refreshed** — Documentation for pivots 1–5 aligned with operational state.
 
 ### In Progress
 
-- 🔄 **Alfa Zero prototype** — Spec drafted (`docs/alfa_zero_spec.md`), implementation pending
-- 🔄 **Pre-pivot orders cleanup** — Order-031 awaiting Toysoldiers report
-- 🔄 **Emoji runtime adapter** — Route Level-0 grammar into `golf_00/delta_00/alfa_04/` composer harness
-- 🔄 **Offline continuity cadence** — Maintain ledger + sync discipline after every pivot-stage update (`exchange/ledger/2025-10.md`)
+- 🔄 **Alfa Zero prototype** — Spec drafted (`docs/alfa_zero_spec.md`); static grid renderer build underway.
+- 🔄 **Emoji runtime adapter** — Level-0 grammar flowing through `golf_00/delta_00/alfa_04/`; continue round-trip validation with Toyfoundry/Toysoldiers payloads.
+- 🔄 **Doc refresh queue** — Rolling updates tracked in `planning/doc_refresh_queue.md` keep canon aligned with offline continuity operations.
+- 🔄 **Offline continuity cadence** — Heartbeat → sync → bridge pull logged in `exchange/ledger/2025-11.md` after each exchange touchpoint.
 
 ### Upcoming
 
-- 📋 **Alfa Zero Phase 1** — Build static 16×16 grid renderer
-- 📋 **Alfa Zero Phase 2** — Wire grid to exchange protocol (clicks → orders → telemetry → grid updates)
-- 📋 **Emoji runtime validation** — Compile glyph chains → Toyfoundry orders with round-trip tests
-- 📋 **Golf_00 population** — Create first 256 Alfas (validate fractal architecture)
+- 📋 **Alfa Zero Phase 1** — Build static 16×16 grid renderer and land it in `golf_00/delta_00/alfa_00/`.
+- 📋 **Alfa Zero Phase 2** — Wire grid to exchange protocol (clicks → orders → telemetry → grid updates).
+- 📋 **Emoji runtime validation** — Expand dry-run suite beyond TF-EMOJI-DRYRUN payloads; capture lore alignment evidence.
+- 📋 **Golf_00 population** — Instantiate first 256 Alfas and document slot ownership in the refresh queue.
 
 ---
 
@@ -110,7 +109,7 @@ The **Five Major Pivots** represent a fundamental shift in how we build **Nightl
 | `alfa_03` | Telemetry shell | Planned — ties into standardized quilt | Pull sanitized feeds from exchange `exports/` for dry runs |
 | `alfa_04` | Emoji composer harness | Active — Level-0 grammar embedded, composer prototype in motion | Record glyph updates in ledger prior to running sync |
 
-*Track this checklist as the first wave of 16 Alfas comes online. Update status immediately after each heartbeat → ledger → sync cycle so satellites stay aligned.*
+*Track this checklist as the first wave of 16 Alfas comes online. Update status immediately after each heartbeat → ledger → sync → bridge cycle so satellites stay aligned.*
 
 ---
 
@@ -256,7 +255,7 @@ The **Five Major Pivots** represent a fundamental shift in how we build **Nightl
 - `../docs/alfa_zero_spec.md` — First playable Alfa prototype specification
 - `../war_office.md` — War Office charter & strategic briefings
 - `../docs/big_ideas_families.md` — Long-term vision framework
-- `../exchange/ledger/2025-10.md` — Current offline ledger (roll to `2025-11.md` after month-end)
+- `../exchange/ledger/2025-11.md` — Current offline ledger for continuity operations
 
 ---
 

@@ -11,7 +11,7 @@
 ## Checklist
 
 - [x] Root `README.md` (Offline Continuity Mode, Alfa staging map, doc queue reference)
-- [ ] `new_major_pivots/README.md` (status badges + completion notes)
+- [x] `new_major_pivots/README.md` (status badges + completion notes)
 - [ ] `planning/alfa_slot_map.md` (sync slot ownership + bridge hooks)
 - [ ] `docs/morningate_reflection_layer.md` (add offline pipeline chapter)
 - [ ] `docs/player_routing_brief.md` (clarify battlegrid handoff cadence)
