@@ -228,6 +228,12 @@
       "report_path": "reports/archived/order-2025-11-01-040-report.json",
       "order_path": "orders/completed/order-2025-11-01-040.json"
     },
+    "order-2025-11-02-043": {
+      "status": "closed",
+      "order_path": "orders/completed/order-2025-11-02-043.json",
+      "ack_path": "acknowledgements/logged/order-2025-11-02-043-ack.json",
+      "report_path": "reports/archived/order-2025-11-02-043-report.json"
+    },
     "order-2025-11-01-041": {
       "status": "closed",
       "ack_path": "acknowledgements/logged/order-2025-11-01-041-ack.json",
@@ -273,7 +279,8 @@
     "order-2025-10-18-036-report": "reports/archived/order-2025-10-18-036-report.json",
     "order-2025-10-15-025-policy-update-report": "reports/archived/order-2025-10-15-025-policy-update-report.json",
     "order-2025-11-01-040-report": "reports/archived/order-2025-11-01-040-report.json",
-    "order-2025-11-01-041-report": "reports/archived/order-2025-11-01-041-report.json"
+    "order-2025-11-01-041-report": "reports/archived/order-2025-11-01-041-report.json",
+    "order-2025-11-02-043-report": "reports/archived/order-2025-11-02-043-report.json"
   },
   "acks": {
     "order-2025-10-12-009-ack": "acknowledgements/logged/order-2025-10-12-009-ack.json",
@@ -315,6 +322,7 @@
     "order-2025-10-18-036-ack": "acknowledgements/logged/order-2025-10-18-036-ack.json",
     "order-2025-10-20-001-ack": "acknowledgements/logged/order-2025-10-20-001-ack.json",
     "order-2025-11-01-040-ack": "acknowledgements/logged/order-2025-11-01-040-ack.json",
-    "order-2025-11-01-041-ack": "acknowledgements/logged/order-2025-11-01-041-ack.json"
+    "order-2025-11-01-041-ack": "acknowledgements/logged/order-2025-11-01-041-ack.json",
+    "order-2025-11-02-043-ack": "acknowledgements/logged/order-2025-11-02-043-ack.json"
   }
 }

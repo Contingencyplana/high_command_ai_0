@@ -15,11 +15,11 @@
 - 2025-10-13T15:55:00Z - Order order-2025-10-12-007 acknowledged and reported by toyfoundry_ai_0; telemetry quilt loom operational, rollup archived, order closed.
 - 2025-10-13T16:10:00Z - Order order-2025-10-12-008 issued to integrate Forge, Parade, Purge, and Promote telemetry into the Toyfoundry quilt; awaiting acknowledgement.
 - 2025-10-14T09:30:00Z - Order order-2025-10-12-008 acknowledged and reported by toyfoundry_ai_0; composite quilt rollups archived and order closed.
-- 2025-10-14T02:35:55Z - Order order-2025-10-12-009 acknowledged and reported by toyfoundry_ai_0; exports published and order closed. 
-- 2025-10-14T05:34:25Z - Order order-2025-10-14-010 acknowledged and reported by toyfoundry_ai_0; provenance confirmed; order closed. 
-- 2025-10-15T00:31:00Z - Order order-2025-10-14-011 acknowledged and reported by toysoldiers_ai_0; consumer acceptance recorded; order closed. 
-- 2025-10-15T00:32:00Z - Order order-2025-10-14-012 issued to automate and version Toyfoundry telemetry exports; awaiting acknowledgement. 
-- 2025-10-15T00:33:00Z - Order order-2025-10-14-013 issued to ingest, validate, and monitor exports; awaiting acknowledgement. 
+- 2025-10-14T02:35:55Z - Order order-2025-10-12-009 acknowledged and reported by toyfoundry_ai_0; exports published and order closed.
+- 2025-10-14T05:34:25Z - Order order-2025-10-14-010 acknowledged and reported by toyfoundry_ai_0; provenance confirmed; order closed.
+- 2025-10-15T00:31:00Z - Order order-2025-10-14-011 acknowledged and reported by toysoldiers_ai_0; consumer acceptance recorded; order closed.
+- 2025-10-15T00:32:00Z - Order order-2025-10-14-012 issued to automate and version Toyfoundry telemetry exports; awaiting acknowledgement.
+- 2025-10-15T00:33:00Z - Order order-2025-10-14-013 issued to ingest, validate, and monitor exports; awaiting acknowledgement.
 - 2025-10-15T00:36:00Z - Nudges sent for Orders 012–013; ACKs pending.
 - 2025-10-15T06:28:05Z - Closed order-2025-10-15-018; report archived.
 - 2025-10-15: Order 025 approved (dual-key: VisionHolder + SafetyLead); grace window until 2025-10-23T00:00:00Z.
@@ -33,3 +33,4 @@
 - 2025-10-18T14:00:00Z - **CRITICAL**: Order-036 issued to toyfoundry_ai_0. Schema drift detected in Orders 021/029/031 - Toyfoundry exports incompatible with Order 021 specification. Consumer acceptance gates BLOCKED all validation. Corrective order requires: schema alignment with v1.0 spec, schema_version field added, SHA256 regeneration, all batches re-exported. Priority: CRITICAL. Expires: 2025-10-25. Timeline: 2-3 days.
 - 2025-10-18T15:00:00Z - **PENDING ORDERS AUDIT COMPLETE**: Closed 6 orders (020, 021, 024, 025-policy-update, 026, 027). Orders 020-021 completed successfully (expired but fulfilled). Order 024 superseded by Four Major Pivots. Orders 026-027 superseded by "Pivotal Fronts" reorganization (will issue corrected versions). Order 025-policy-update completed (policy adopted). Orders 028-031 remain pending, blocked by schema drift awaiting Order-036 resolution. Active queue: Order-036 (CRITICAL), Orders 028-031 (BLOCKED).
 - 2025-10-26T12:00:00Z - War Office directive 2025-10-26-038-A logged; High Command supervising Toyfoundry live translator emission window with telemetry guardrails and Order 039 closure prep.
+- 2025-11-02T11:15:24Z - Order order-2025-11-02-043 closed. Contract test runner, fixtures, and rollout guidance archived; guidance shared for Toyfoundry/Toysoldiers integration.

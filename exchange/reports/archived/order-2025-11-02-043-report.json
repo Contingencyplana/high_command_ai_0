@@ -1,0 +1,93 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-11-02-043-report",
+  "order_id": "order-2025-11-02-043",
+  "reported_by": "high_command_ai_0",
+  "receiver": "war_office",
+  "timestamp_reported": "2025-11-02T11:15:24.000Z",
+  "status": "completed",
+  "summary": "Contract suite established: curated emoji-runtime fixtures, automated runner, and pytest coverage keep Toyfoundry/Toysoldiers promotion flow in lockstep.",
+  "directives_status": [
+    {
+      "step": 1,
+      "directive": "inventory_contract_surface",
+      "status": "completed",
+      "notes": [
+        "Mapped Level-0 templates and translator intent fields against factory adapter directives to ensure test coverage spans action, qualifier, and multi-outcome paths."
+      ]
+    },
+    {
+      "step": 2,
+      "directive": "author_contract_samples",
+      "status": "completed",
+      "notes": [
+        "Published four fixture cases under contract_samples/cases/ capturing success, guarded delivery, signal loop, and conditional repeat scenarios." 
+      ]
+    },
+    {
+      "step": 3,
+      "directive": "implement_test_runner",
+      "status": "completed",
+      "notes": [
+        "tools/contract_test_runner.py exercises translator/adapter pair, compares results to fixture expectations, and provides CLI flags for listing, filtering, and fail-fast runs."
+      ]
+    },
+    {
+      "step": 4,
+      "directive": "wire_into_ci",
+      "status": "completed",
+      "notes": [
+        "Added tests/test_contract_test_runner.py to invoke the suite via pytest and documented the workflow in README utilities section."
+      ]
+    },
+    {
+      "step": 5,
+      "directive": "file_completion_report",
+      "status": "completed",
+      "notes": [
+        "This report archived after runner execution; evidence attached for fixtures and test output snippets."
+      ]
+    }
+  ],
+  "evidence": {
+    "fixtures": [
+      "contract_samples/cases/basic_ritual_victory.json",
+      "contract_samples/cases/guarded_delivery_warning.json",
+      "contract_samples/cases/signal_loop_gain.json",
+      "contract_samples/cases/conditional_repeat_again.json"
+    ],
+    "runner_output": [
+      "[PASS] basic_ritual_victory",
+      "[PASS] guarded_delivery_warning",
+      "[PASS] signal_loop_gain",
+      "[PASS] conditional_repeat_again"
+    ],
+    "command": "python -m tools.contract_test_runner"
+  },
+  "open_follow_ups": [
+    "Coordinate with Toyfoundry when introducing new glyph categories so fixtures expand alongside adapter updates.",
+    "Evaluate extending contract coverage to Level-1 rituals once Alfa 04 graduates."
+  ],
+  "attachments": [
+    {
+      "type": "fixture",
+      "path": "contract_samples/cases/basic_ritual_victory.json"
+    },
+    {
+      "type": "fixture",
+      "path": "contract_samples/cases/guarded_delivery_warning.json"
+    },
+    {
+      "type": "fixture",
+      "path": "contract_samples/cases/signal_loop_gain.json"
+    },
+    {
+      "type": "fixture",
+      "path": "contract_samples/cases/conditional_repeat_again.json"
+    },
+    {
+      "type": "log",
+      "path": "logs/contract_tests/order-2025-11-02-043.txt"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "signal_loop_gain",
+  "description": "Signal loop ritual reinforces the dream actor and secures a gain outcome.",
+  "emoji_chain": ["🌌", "🛰️", "🔄", "📈"],
+  "adapter": {
+    "order_id": "emoji-signal-loop-gain",
+    "issued_by": "high_command_ai_0",
+    "target": "toysoldiers_ai_0",
+    "priority": "standard",
+    "requires_ack": false
+  },
+  "expectations": {
+    "emoji_runtime": {
+      "summary": "Dream signal loop -> rise",
+      "intent": {
+        "actor": "dream",
+        "action": "loop",
+        "target": "dream",
+        "qualifiers": ["signal"],
+        "outcome": "gain"
+      },
+      "spoken": ["dream", "signal", "loop", "rise"]
+    },
+    "factory_order": {
+      "priority": "standard",
+      "summary": "Dream signal loop -> rise",
+      "target": "toysoldiers_ai_0",
+      "requires_ack": false,
+      "details_contains": [
+        "Actor dream executes loop targeting dream.",
+        "Qualifiers: signal. Outcome: gain.",
+        "Glyph chain: 🌌 🛰️ 🔄 📈."
+      ]
+    }
+  }
+}

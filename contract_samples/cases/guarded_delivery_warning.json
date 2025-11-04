@@ -1,0 +1,36 @@
+{
+  "name": "guarded_delivery_warning",
+  "description": "A guarded delivery raises a warning outcome with an inspection qualifier.",
+  "emoji_chain": ["🌾", "📦", "🔍", "🤖", "⚠️"],
+  "adapter": {
+    "order_id": "emoji-guarded-delivery-warning",
+    "issued_by": "high_command_ai_0",
+    "target": "toyfoundry_ai_0",
+    "priority": "standard",
+    "requires_ack": false
+  },
+  "expectations": {
+    "emoji_runtime": {
+      "summary": "Field deliver scan ally -> warning",
+      "intent": {
+        "actor": "field",
+        "action": "deliver",
+        "target": "ally",
+        "qualifiers": ["inspect"],
+        "outcome": "risk"
+      },
+      "spoken": ["field", "deliver", "scan", "ally", "warning"]
+    },
+    "factory_order": {
+      "priority": "standard",
+      "summary": "Field deliver scan ally -> warning",
+      "target": "toyfoundry_ai_0",
+      "requires_ack": false,
+      "details_contains": [
+        "Actor field executes deliver targeting ally.",
+        "Qualifiers: inspect. Outcome: risk.",
+        "Glyph chain: 🌾 📦 🔍 🤖 ⚠️."
+      ]
+    }
+  }
+}

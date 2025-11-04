@@ -1,0 +1,75 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-02-043",
+  "issued_by": "high_command_ai_0",
+  "target": "high_command_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-11-02T09:30:00Z",
+  "summary": "Stand up emoji-runtime ↔ factory-order contract suite and circulate canonical fixtures.",
+  "context": "High Command and Toyfoundry now exchange payloads through the emoji-runtime bridge. We require an automated contract harness that proves the translator and factory adapter stay in lockstep across Level-0 templates before propagating to Toysoldiers theatres.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "inventory_contract_surface",
+      "details": "Catalogue Level-0 glyph templates, translator intent fields, and factory-order adapter directives impacted by emoji-runtime promotions. Confirm coverage with Toyfoundry deployment owners."
+    },
+    {
+      "step": 2,
+      "action": "author_contract_samples",
+      "details": "Create curated emoji chains and expected outcomes capturing success, qualifier drift, signal loops, and multi-outcome rituals. Store fixtures under contract_samples/ with documentation for downstream reuse."
+    },
+    {
+      "step": 3,
+      "action": "implement_test_runner",
+      "details": "Publish tools/contract_test_runner.py that loads fixtures, exercises the translator/adapter pair, and reports mismatches against expectations. Provide CLI affordances for individual case runs and fail-fast operation."
+    },
+    {
+      "step": 4,
+      "action": "wire_into_ci",
+      "details": "Extend pytest coverage with a contract test module ensuring fixtures run during continuous verification. Document the workflow in README utilities section and brief Toysoldiers/Toyfoundry leads."
+    },
+    {
+      "step": 5,
+      "action": "file_completion_report",
+      "details": "Archive evidence in exchange/reports/inbox/order-2025-11-02-043-report.json covering fixtures, runner output, and coordination notes." 
+    }
+  ],
+  "success_criteria": [
+    "Translator outputs for curated chains remain stable across glyph templates",
+    "Factory adapter envelopes retain emoji payload provenance and directive telemetry",
+    "Contract suite runs via CLI and pytest with zero failures",
+    "Fixtures documented for Toyfoundry and Toysoldiers consumption",
+    "Completion report logged with evidence and next steps"
+  ],
+  "dependencies": ["order-2025-11-01-041"],
+  "requires_ack": true,
+  "expires_at": "2025-11-09T23:59:59Z",
+  "attachments": [
+    {
+      "type": "reference",
+      "path": "golf_00/delta_00/alfa_04/emoji_translator.py",
+      "description": "Emoji-runtime Level-0 translator"
+    },
+    {
+      "type": "reference",
+      "path": "golf_00/delta_00/alfa_04/factory_adapter.py",
+      "description": "Factory-order promotion adapter"
+    },
+    {
+      "type": "reference",
+      "path": "contract_samples/README.md",
+      "description": "Contract fixture authoring guide"
+    }
+  ],
+  "safety_notes": [
+    "Keep fixtures lean to minimize maintenance overhead as new glyphs land",
+    "If translator interface changes, update factory adapter expectations before promoting to other workspaces",
+    "Alert War Office if contract suite identifies regression risk prior to deployment"
+  ],
+  "metadata": {
+    "owner": "high_command_ai_0",
+    "timestamp": "2025-11-02T09:30:00Z",
+    "approvers": ["high_command", "war_office"],
+    "classification": "pivot_five_rollout"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "conditional_repeat_again",
+  "description": "Conditional repeat ritual blesses the field and schedules a repeat follow-up.",
+  "emoji_chain": ["🌱", "🧶", "🌈", "🔁"],
+  "adapter": {
+    "order_id": "emoji-conditional-repeat-again",
+    "issued_by": "high_command_ai_0",
+    "target": "war_office_ai_0",
+    "priority": "high",
+    "requires_ack": true
+  },
+  "expectations": {
+    "emoji_runtime": {
+      "summary": "Seed weave blessing -> again",
+      "intent": {
+        "actor": "seed",
+        "action": "weave",
+        "target": "seed",
+        "qualifiers": [],
+        "outcome": "bless",
+        "secondary_outcome": "repeat"
+      },
+      "spoken": ["seed", "weave", "blessing", "again"]
+    },
+    "factory_order": {
+      "priority": "high",
+      "summary": "Seed weave blessing -> again",
+      "target": "war_office_ai_0",
+      "requires_ack": true,
+      "details_contains": [
+        "Actor seed executes weave targeting seed.",
+        "Qualifiers: none. Outcome: bless / repeat.",
+        "Glyph chain: 🌱 🧶 🌈 🔁."
+      ]
+    }
+  }
+}

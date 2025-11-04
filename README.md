@@ -162,6 +162,7 @@ forge rebuild_morningate
 - `forge init-alfa --id alfa_0001 --activate-rank bravo`: instantiate a new Alfa with selected ranks.  
 - `forge hydrate --selector "realm:Dayland AND entropy>0.4" --rank delta --rank echo`: materialize rank files in bulk while respecting safety limits.  
 - `python tools/schema_validator.py exchange/orders/pending/*.json`: lint outgoing payloads before dispatch.  
+- `python -m tools.contract_test_runner`: execute emoji-runtime ↔ factory-order contract checks using curated samples.  
 - `pytest`: run selector and schema validation unit tests.  
 
 Each cycle renews the world — data ascends, light descends, and SHAGI grows wiser.
