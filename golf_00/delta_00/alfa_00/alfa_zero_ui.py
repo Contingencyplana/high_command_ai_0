@@ -49,6 +49,7 @@ class PayloadSummary:
     template: Optional[str]
     outcomes: List[str]
     description: Optional[str]
+    summary_text: Optional[str]
 
 
 @dataclass
@@ -115,17 +116,33 @@ def summarize_payload(path: Path) -> PayloadSummary:
     chain_name = payload.get("chain_name")
     template = payload.get("template")
     description = payload.get("overlay_description")
+    summary_text = payload.get("summary")
     outcomes = [str(value) for value in payload.get("outcomes", [])]
-    return PayloadSummary(path=path, chain_name=chain_name, template=template, outcomes=outcomes, description=description)
+    return PayloadSummary(
+        path=path,
+        chain_name=chain_name,
+        template=template,
+        outcomes=outcomes,
+        description=description,
+        summary_text=summary_text,
+    )
+
+
+def compute_sync_state(summary: PayloadSummary) -> str:
+    """Minimal narration sync indicator heuristic for demo use."""
+    return "green" if summary.outcomes else "amber"
 
 
 def emit_telemetry(summary: PayloadSummary, telemetry_path: Path) -> None:
+    sync_state = compute_sync_state(summary)
     record = {
         "path": str(summary.path),
         "chain_name": summary.chain_name,
         "template": summary.template,
         "outcomes": summary.outcomes,
         "description": summary.description,
+        "narration_text": summary.summary_text,
+        "sync_state": sync_state,
     }
     with telemetry_path.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(record, ensure_ascii=False))
@@ -144,6 +161,12 @@ def display_summary(summary: PayloadSummary, repo_root: Path, *, stream: TextIO 
         print(f"   Outcomes: {', '.join(summary.outcomes)}", file=stream)
     if summary.description:
         print(f"   Description: {summary.description}", file=stream)
+    # Minimal sync state indicator for demo runs
+    try:
+        sync_state = compute_sync_state(summary)
+        print(f"   Sync: {sync_state}", file=stream)
+    except Exception:
+        pass
     print(f"   Payload: {relative_path}", file=stream)
 
 

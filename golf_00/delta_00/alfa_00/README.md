@@ -53,3 +53,16 @@ The harness currently binds four representative cells to the sample glyph chains
 | `C0` | `conditional_repeat_seed` | Seed repeatable growth cadence |
 
 Extend `CELL_MAPPINGS` in the script as more grid interactions come online.
+
+---
+
+## ORDER-042 Demo
+
+- Single dispatch with telemetry JSONL and sync indicator:
+  - `python golf_00/delta_00/alfa_00/alfa_zero_ui.py --cell 0,4 --telemetry telemetry/emoji_runtime/demo_runs/ORDER-042-DEMO.jsonl`
+  - Output includes Template, Outcomes, Description, and `Sync: <state>` (green/amber heuristic).
+  - A JSONL record is appended with fields: `path, chain_name, template, outcomes, description, narration_text, sync_state`.
+
+- Close the loop after a demo run:
+  - `python tools/exchange_heartbeat.py`
+  - `python tools/offline_sync_exchange.py`
