@@ -56,7 +56,7 @@
     },
     {
       "type": "reference",
-      "path": "exchange/orders/pending/order-2025-11-01-040.json",
+      "path": "exchange/orders/completed/order-2025-11-01-040.json",
       "description": "Toyfoundry adapter order for coordinated rollout"
     }
   ],
