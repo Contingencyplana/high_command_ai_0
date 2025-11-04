@@ -21,7 +21,7 @@
 
 ## Next Target Candidate
 
-- 2025-11-02 — Audit `planning/pivotal_fronts/ops.md` to align exchange integrity scroll with new monitoring milestones.
+- 2025-11-06 — Refresh `planning/pivotal_fronts/ops.md` acceptance evidence after Toysoldiers contract adoption, or pull the next P2 scroll if Ops remains stable.
 
 ## Recently Completed
 
@@ -32,3 +32,4 @@
 - 2025-10-31 — Player routing brief updated with offline mesh cadence (Toysoldiers Liaison).
 - 2025-10-31 — README metadata + ledger reminders for offline ops (High Command).
 - 2025-10-31 — Major pivots overview refreshed with Level-0 baseline + staging checklist (High Command).
+- 2025-11-05 — Pivotal fronts ops scroll updated with Offline Continuity cadence and contract suite guardrails (High Command).
