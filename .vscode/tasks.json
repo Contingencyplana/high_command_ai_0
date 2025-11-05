@@ -4,6 +4,8 @@
     { "label": "Exchange: Heartbeat", "type": "shell", "command": "python", "args": ["tools/exchange_heartbeat.py"], "problemMatcher": [] },
     { "label": "Exchange: Push (publish outbox)", "type": "shell", "command": "python", "args": ["tools/offline_bridge.py", "push"], "problemMatcher": [] },
     { "label": "Exchange: Pull (ingest inbox)", "type": "shell", "command": "python", "args": ["tools/offline_bridge.py", "pull", "--move"], "problemMatcher": [] },
-    { "label": "Exchange: Sync (push+pull)", "type": "shell", "command": "python", "args": ["tools/offline_bridge.py", "sync", "--move"], "problemMatcher": [] }
+    { "label": "Exchange: Sync (push+pull)", "type": "shell", "command": "python", "args": ["tools/offline_bridge.py", "sync", "--move"], "problemMatcher": [] },
+    { "label": "Play: Alfa Zero Session", "type": "shell", "command": "python", "args": ["scripts/play_session.py"], "problemMatcher": [] },
+    { "label": "Canary: Emoji Translator (promote)", "type": "shell", "command": "python", "args": ["tools/run_emoji_canary.py", "--promote"], "problemMatcher": [] }
   ]
 }

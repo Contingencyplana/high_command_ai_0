@@ -13,8 +13,10 @@ import argparse
 import json
 import sys
 from dataclasses import dataclass
+from datetime import datetime, timezone
+import os
 from pathlib import Path
-from typing import List, Optional, Tuple, TextIO
+from typing import List, Optional, Tuple, TextIO, Dict
 
 from overlay_bridge import CELL_MAPPINGS, OverlayBridge, build_bridge, cell_label
 
@@ -59,6 +61,10 @@ class UIContext:
     emit_events: bool
     event_stream: Optional[TextIO]
     output_stream: TextIO
+    metrics_path: Optional[Path] = None
+    session_id: str = ""
+    session_start_ts: Optional[datetime] = None
+    dispatch_count: int = 0
     selected: Cell = (0, 4)
 
     @property
@@ -88,14 +94,14 @@ def parse_cell_token(token: str) -> Cell:
     return row, col
 
 
-def render_grid(highlight: Optional[Cell] = None, *, stream: TextIO = sys.stdout) -> None:
+def render_grid(highlight: Optional[Cell] = None, *, stream: TextIO = sys.stdout, overlay: Optional[Dict[Cell, str]] = None) -> None:
     header = "    " + " ".join(HEX_DIGITS)
     print(header, file=stream)
     for row_index, row in enumerate(GRID_LAYOUT):
         rendered: List[str] = []
         for col_index, glyph in enumerate(row):
             cell = (row_index, col_index)
-            mark = glyph
+            mark = overlay.get(cell, glyph) if overlay else glyph
             if cell in CELL_MAPPINGS:
                 mark = glyph if glyph else "·"
             if highlight == cell:
@@ -211,6 +217,7 @@ def dispatch_selected(context: UIContext) -> None:
     display_summary(summary, context.repo_root, stream=context.output_stream)
     if context.telemetry_path:
         emit_telemetry(summary, context.telemetry_path)
+    _log_session_event(context, event="dispatch")
 
 
 def show_cell_info(cell: Cell, stream: TextIO = sys.stdout) -> None:
@@ -240,7 +247,10 @@ HELP_TEXT = """Commands:
 def interactive_loop(context: UIContext) -> None:
     print("Alfa Zero Overlay UI — navigate the grid and dispatch mapped chains.", file=context.output_stream)
     print("Type 'help' for command reference.\n", file=context.output_stream)
-    render_grid(context.selected, stream=context.output_stream)
+    overlay = compute_quilt_overlay(context.repo_root)
+    render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+    render_footer(context, stream=context.output_stream)
+    _log_session_event(context, event="session_start")
 
     while True:
         try:
@@ -260,7 +270,9 @@ def interactive_loop(context: UIContext) -> None:
 
         if not raw:
             dispatch_selected(context)
-            render_grid(context.selected, stream=context.output_stream)
+            overlay = compute_quilt_overlay(context.repo_root)
+            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+            render_footer(context, stream=context.output_stream)
             continue
 
         command = raw.lower()
@@ -270,7 +282,9 @@ def interactive_loop(context: UIContext) -> None:
             print(HELP_TEXT, file=context.output_stream)
             continue
         if command in {"show", "grid"}:
-            render_grid(context.selected, stream=context.output_stream)
+            overlay = compute_quilt_overlay(context.repo_root)
+            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+            render_footer(context, stream=context.output_stream)
             continue
         if command in {"map"}:
             list_mapped_cells(context.output_stream)
@@ -280,23 +294,32 @@ def interactive_loop(context: UIContext) -> None:
             continue
         if command in {"w", "up"}:
             move_selection(context, -1, 0)
-            render_grid(context.selected, stream=context.output_stream)
+            overlay = compute_quilt_overlay(context.repo_root)
+            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+            render_footer(context, stream=context.output_stream)
             continue
         if command in {"s", "down"}:
             move_selection(context, 1, 0)
-            render_grid(context.selected, stream=context.output_stream)
+            overlay = compute_quilt_overlay(context.repo_root)
+            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+            render_footer(context, stream=context.output_stream)
             continue
         if command in {"a", "left"}:
             move_selection(context, 0, -1)
-            render_grid(context.selected, stream=context.output_stream)
+            overlay = compute_quilt_overlay(context.repo_root)
+            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+            render_footer(context, stream=context.output_stream)
             continue
         if command in {"d", "right"}:
             move_selection(context, 0, 1)
-            render_grid(context.selected, stream=context.output_stream)
+            overlay = compute_quilt_overlay(context.repo_root)
+            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+            render_footer(context, stream=context.output_stream)
             continue
         if command in {"dispatch", "fire", "send"}:
             dispatch_selected(context)
-            render_grid(context.selected, stream=context.output_stream)
+            overlay = compute_quilt_overlay(context.repo_root)
+            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
             continue
 
         try:
@@ -306,7 +329,9 @@ def interactive_loop(context: UIContext) -> None:
             continue
 
         select_cell(context, cell)
-        render_grid(context.selected, stream=context.output_stream)
+        overlay = compute_quilt_overlay(context.repo_root)
+        render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+        render_footer(context, stream=context.output_stream)
 
 
 def run_single_dispatch(context: UIContext, cell: Cell) -> None:
@@ -324,12 +349,24 @@ def build_context(
     bridge = build_bridge(outbox_override)
     telemetry_path = Path(telemetry).expanduser().resolve() if telemetry else None
     output_stream = sys.stderr if emit_events and event_stream is sys.stdout else sys.stdout
+    # Session metrics path (fixed location under repo logs)
+    metrics_dir = bridge.repo_root / "logs" / "alfa_zero"
+    metrics_dir.mkdir(parents=True, exist_ok=True)
+    metrics_path = metrics_dir / "session_metrics.jsonl"
+
+    # Lightweight session identifier
+    ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+    session_id = f"alfa_zero_ui-{os.getpid()}-{ts}"
+
     return UIContext(
         bridge=bridge,
         telemetry_path=telemetry_path,
         emit_events=emit_events,
         event_stream=event_stream,
         output_stream=output_stream,
+        metrics_path=metrics_path,
+        session_id=session_id,
+        session_start_ts=datetime.now(timezone.utc),
     )
 
 
@@ -390,9 +427,133 @@ def main() -> None:
 
         interactive_loop(context)
     finally:
+        # Record session end
+        _log_session_event(context, event="session_end")
         if close_stream and event_stream is not None:
             event_stream.close()
 
 
 if __name__ == "__main__":  # pragma: no cover - manual entry point
     main()
+
+
+def _log_session_event(context: UIContext, *, event: str) -> None:
+    """Append a simple JSONL record for session metrics.
+
+    Events: session_start, dispatch, session_end. We track elapsed overlay
+    time and dispatch count to support 70/30 analysis downstream.
+    """
+    if context.metrics_path is None:
+        return
+    now = datetime.now(timezone.utc)
+    if event == "dispatch":
+        context.dispatch_count += 1
+    elapsed_s = None
+    if context.session_start_ts is not None:
+        elapsed_s = (now - context.session_start_ts).total_seconds()
+    record = {
+        "session_id": context.session_id,
+        "event": event,
+        "timestamp": now.isoformat().replace("+00:00", "Z"),
+        "selected_cell": cell_label(context.selected),
+        "dispatch_count": context.dispatch_count,
+        "elapsed_s": elapsed_s,
+        "source": "alfa_zero_ui",
+    }
+    try:
+        with context.metrics_path.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(record, ensure_ascii=False))
+            handle.write("\n")
+    except Exception:
+        pass
+
+
+def compute_quilt_overlay(repo_root: Path) -> Dict[Cell, str]:
+    """Compute a minimal telemetry quilt overlay for rows C–F.
+
+    Sources: logs/alfa_zero/phase_2_latencies.jsonl
+    - Row C (index 12): 🔥 count for high latency (>5000 ms)
+    - Row D (13): ⚠️ count for pending/warning states
+    - Row E (14): 📉 count if recent latency trend is worsening
+    - Row F (15): ❌ count for failures
+    """
+    overlay: Dict[Cell, str] = {}
+    log_path = repo_root / "logs" / "alfa_zero" / "phase_2_latencies.jsonl"
+    durations: List[int] = []
+    status_counts = {"failure": 0, "warning": 0, "pending": 0}
+    high_latency = 0
+
+    try:
+        if log_path.exists():
+            with log_path.open("r", encoding="utf-8") as handle:
+                # Process last ~512 lines defensively
+                lines = handle.readlines()[-512:]
+            import json as _json
+            for line in lines:
+                try:
+                    rec = _json.loads(line)
+                except Exception:
+                    continue
+                d = rec.get("telemetry_duration_ms")
+                if isinstance(d, (int, float)):
+                    durations.append(int(d))
+                    if d > 5000:
+                        high_latency += 1
+                st = rec.get("telemetry_status")
+                if isinstance(st, str):
+                    s = st.lower()
+                    if s in status_counts:
+                        status_counts[s] += 1
+                    elif s == "success":
+                        pass
+                    else:
+                        status_counts["warning"] += 1
+    except Exception:
+        # On any error, return empty overlay
+        return overlay
+
+    # Trend calculation (very simple): compare last 8 vs previous 8
+    downtrend = 0
+    if len(durations) >= 16:
+        prev = durations[-16:-8]
+        last = durations[-8:]
+        try:
+            prev_avg = sum(prev) / max(1, len(prev))
+            last_avg = sum(last) / max(1, len(last))
+            if last_avg > prev_avg * 1.15:
+                # Scale to grid width
+                downtrend = min(16, int((last_avg - prev_avg) / 500) + 1)
+        except Exception:
+            downtrend = 0
+
+    # Map counts to grid rows
+    fire = min(16, int(high_latency))
+    warn = min(16, status_counts["pending"] + status_counts["warning"]) 
+    fail = min(16, status_counts["failure"]) 
+
+    for i in range(fire):
+        overlay[(12, i)] = "🔥"
+    for i in range(warn):
+        overlay[(13, i)] = "⚠️"
+    for i in range(downtrend):
+        overlay[(14, i)] = "📉"
+    for i in range(fail):
+        overlay[(15, i)] = "❌"
+
+    return overlay
+
+
+def render_footer(context: UIContext, *, stream: TextIO = sys.stdout) -> None:
+    """Render a one-line footer with session stats and auto-promotion state."""
+    now = datetime.now(timezone.utc)
+    elapsed_s = 0
+    if context.session_start_ts is not None:
+        elapsed_s = int((now - context.session_start_ts).total_seconds())
+    mm = elapsed_s // 60
+    ss = elapsed_s % 60
+    auto_env = os.getenv("OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS", "1").lower()
+    auto_on = auto_env not in {"0", "false", "no"}
+    print(
+        f"— Elapsed {mm:02d}:{ss:02d} | Dispatches {context.dispatch_count} | Auto-promote {'ON' if auto_on else 'OFF'} —",
+        file=stream,
+    )

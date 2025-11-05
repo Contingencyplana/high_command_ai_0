@@ -1,10 +1,16 @@
-"""Shared overlay bridge for Alfa Zero battlegrid interactions."""
+"""Shared overlay bridge for Alfa Zero battlegrid interactions.
+
+Adds optional (default-on) promotion of emoji-runtime payloads to
+factory-order envelopes to reduce manual dev-ops steps during play.
+Disable with env `OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS=0`.
+"""
 
 from __future__ import annotations
 
 import importlib.util
 import json
 import sys
+import os
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -67,6 +73,11 @@ def load_translator(repo_root: Path):
     return load_module_from_path("emoji_translator", translator_path)
 
 
+def load_factory_adapter(repo_root: Path):
+    adapter_path = repo_root / "golf_00" / "delta_00" / "alfa_04" / "factory_adapter.py"
+    return load_module_from_path("factory_adapter", adapter_path)
+
+
 def load_sample_chains(repo_root: Path) -> Dict[str, str]:
     sample_path = repo_root / "golf_00" / "delta_00" / "alfa_04" / "sample_chains.json"
     with sample_path.open("r", encoding="utf-8") as handle:
@@ -84,6 +95,11 @@ def resolve_outbox(repo_root: Path, override: str | None) -> Path:
     else:
         outbox = repo_root / "outbox" / "orders" / "emoji_runtime"
     return outbox
+
+
+def resolve_factory_outbox(repo_root: Path) -> Path:
+    """Return path where factory-order envelopes should be written."""
+    return repo_root / "outbox" / "orders" / "factory_orders"
 
 
 def _sanitize_hint(hint: str) -> str:
@@ -107,6 +123,7 @@ class OverlayBridge:
     translator: object
     sample_chains: Dict[str, str]
     outbox: Path
+    _factory_adapter: object | None = None
 
     def dispatch_cell(self, cell: Cell, *, description: str | None = None) -> Path:
         if cell not in CELL_MAPPINGS:
@@ -171,7 +188,56 @@ class OverlayBridge:
         hint = chain_name or "custom_chain"
         destination = _write_payload(self.outbox, f"alfa_zero_{hint}", payload)
         self._log_phase_two_dispatch(payload, destination)
+        # Auto-promote to factory-order unless disabled via env
+        auto = os.getenv("OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS", "1").lower() not in {"0", "false", "no"}
+        if auto:
+            try:
+                self._maybe_promote_factory_order(payload, chain_name)
+            except Exception:
+                # Non-fatal; operator can inspect emoji payload even if promotion fails
+                pass
         return destination
+
+    def _maybe_promote_factory_order(self, emoji_payload: Dict[str, object], chain_name: str | None) -> None:
+        """Promote an emoji-runtime payload to a factory-order envelope and save it.
+
+        Uses default metadata suitable for Alfa Zero. Safe to call multiple times.
+        """
+
+        # Lazy-load to avoid hard dependency at import time
+        if self._factory_adapter is None:
+            self._factory_adapter = load_factory_adapter(self.repo_root)
+
+        adapter = self._factory_adapter
+        if not adapter:
+            return
+
+        created_at = None
+        try:
+            created_at = str(emoji_payload.get("created_at"))  # type: ignore[arg-type]
+        except Exception:
+            created_at = None
+
+        safe_chain = chain_name or str(emoji_payload.get("chain_name") or "command")
+        order_id = adapter.derive_order_id(safe_chain, created_at)
+
+        # Defaults can be tuned later or read from config; keep deterministic now
+        issued_by = "high_command_alfa_zero"
+        target = "toyfoundry_ai_0"
+        priority = "realtime"
+        requires_ack = False
+
+        order = adapter.emoji_runtime_to_factory_order(
+            emoji_payload,
+            order_id=order_id,
+            issued_by=issued_by,
+            target=target,
+            priority=priority,
+            requires_ack=requires_ack,
+        )
+
+        dst_dir = resolve_factory_outbox(self.repo_root)
+        _ = _write_payload(dst_dir, order_id, order)
 
     def _log_phase_two_dispatch(self, payload: Dict[str, object], destination: Path) -> None:
         """Append a Phase 2 latency stub entry for later reconciliation."""
