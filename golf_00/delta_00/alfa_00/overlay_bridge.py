@@ -16,6 +16,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Tuple
+from fun_flags import load_fun_flags, FunFlags
 
 Cell = Tuple[int, int]
 
@@ -124,6 +125,7 @@ class OverlayBridge:
     sample_chains: Dict[str, str]
     outbox: Path
     _factory_adapter: object | None = None
+    fun_flags: FunFlags | None = None
 
     def dispatch_cell(self, cell: Cell, *, description: str | None = None) -> Path:
         if cell not in CELL_MAPPINGS:
@@ -185,6 +187,25 @@ class OverlayBridge:
             payload["overlay_description"] = description
         if cell:
             payload["overlay_cell"] = {"row": cell[0], "col": cell[1], "label": cell_label(cell)}
+        # tag active FUN flags for telemetry segmentation
+        try:
+            flags = self.fun_flags.as_dict() if self.fun_flags else load_fun_flags(self.repo_root).as_dict()
+            payload["fun_flags"] = flags
+        except Exception:
+            payload.setdefault("fun_flags", {})
+
+        # Evaluate guardrails in log-only mode (no enforcement)
+        try:
+            # Dynamically load evaluator to avoid hard import-time path dependence
+            eval_module = load_module_from_path(
+                "fun_guardrail_eval_module", self.repo_root / "tools" / "fun_guardrail_eval.py"
+            )
+            if hasattr(eval_module, "evaluate_payload"):
+                eval_module.evaluate_payload(self.repo_root, payload, payload.get("fun_flags", {}))  # type: ignore[attr-defined]
+        except Exception:
+            # Non-fatal: guardrail evaluation should never block dispatch
+            pass
+
         hint = chain_name or "custom_chain"
         destination = _write_payload(self.outbox, f"alfa_zero_{hint}", payload)
         self._log_phase_two_dispatch(payload, destination)
@@ -345,7 +366,8 @@ def build_bridge(outbox_override: str | None = None) -> OverlayBridge:
     translator = load_translator(repo_root)
     sample_chains = load_sample_chains(repo_root)
     outbox = resolve_outbox(repo_root, outbox_override)
-    return OverlayBridge(repo_root, translator, sample_chains, outbox)
+    flags = load_fun_flags(repo_root)
+    return OverlayBridge(repo_root, translator, sample_chains, outbox, _factory_adapter=None, fun_flags=flags)
 
 
 __all__ = [

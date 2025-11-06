@@ -23,6 +23,9 @@ from pathlib import Path
 from typing import List, Optional, Tuple, TextIO
 
 from overlay_bridge import CELL_MAPPINGS, OverlayBridge, build_bridge, cell_label
+from fun_flags import FunFlags
+from pathlib import Path as _PathForWarnings
+import json as _json_for_warnings
 
 Cell = Tuple[int, int]
 
@@ -171,6 +174,7 @@ def post_dispatch(
     *,
     sync_override: Optional[bool] = None,
     note: Optional[str] = None,
+    payload_path: Optional[str] = None,
 ) -> None:
     """Handle ledger logging and sync discipline after dispatch."""
 
@@ -188,6 +192,31 @@ def post_dispatch(
     except RuntimeError as exc:
         print(f"⚠️  {exc}")
 
+
+    # Non-enforcing warning: print would-clamp triggers if present for this dispatch
+    if payload_path:
+        try:
+            p = _PathForWarnings(payload_path)
+            if not p.is_absolute():
+                p = ctx.repo_root / p
+            data = _json_for_warnings.loads(p.read_text(encoding="utf-8"))
+            stub = data.get("telemetry_stub") if isinstance(data.get("telemetry_stub"), dict) else {}
+            batch_id = str(getattr(stub, "get", lambda k, d=None: None)("batch_id") or data.get("batch_id") or "")
+            if batch_id:
+                by_batch = ctx.repo_root / "logs" / "fun_guardrails" / "by_batch" / f"{batch_id}.json"
+                if by_batch.exists():
+                    evt = _json_for_warnings.loads(by_batch.read_text(encoding="utf-8"))
+                    triggers = evt.get("triggers") if isinstance(evt.get("triggers"), list) else []
+                    if triggers:
+                        parts = []
+                        for t in triggers:
+                            ttype = str(t.get("type"))
+                            obs = t.get("observed")
+                            thr = t.get("threshold")
+                            parts.append(f"{ttype} {obs}>{thr}")
+                        print(f"!! Guardrail would-clamp: {'; '.join(parts)}")
+        except Exception:
+            pass
 
 def process_event_stream(ctx: ControllerContext, stream: TextIO) -> None:
     """Consume JSONL events that specify overlay dispatches."""
@@ -234,14 +263,20 @@ def process_event_stream(ctx: ControllerContext, stream: TextIO) -> None:
             continue
 
         print(f"✅ Event {index}: {cell_label(cell)} → {payload_path}")
-        post_dispatch(cell, chain_name, ctx, sync_override=sync_override, note=ledger_note)
+post_dispatch(cell, chain_name, ctx, sync_override=sync_override, note=ledger_note, payload_path=payload_path)
 
 
 def interactive_session(ctx: ControllerContext) -> None:
     """Run the interactive controller loop."""
 
-    print("Alfa Zero Controller — select grid cells to dispatch emoji chains.")
+    print("Alfa Zero Controller - select grid cells to dispatch emoji chains.")
     print("Type '?' for help, 'map' to list wired cells, or 'quit' to exit.\n")
+    try:
+        if isinstance(ctx.bridge, OverlayBridge) and getattr(ctx.bridge, "fun_flags", None):
+            flags = ctx.bridge.fun_flags.as_dict()  # type: ignore[attr-defined]
+            print(f"Active FUN flags: {json.dumps(flags)}\n")
+    except Exception:
+        pass
     render_grid()
 
     last_cell: Optional[Cell] = None
@@ -290,7 +325,7 @@ def interactive_session(ctx: ControllerContext) -> None:
             f"✅ Dispatched {cell_label(cell)} → {payload_path}\n"
             "   (inspect under outbox/orders/emoji_runtime/)"
         )
-        post_dispatch(cell, chain_name, ctx)
+post_dispatch(cell, chain_name, ctx, payload_path=payload_path)
 
 
 def bootstrap_context(outbox_override: Optional[str], auto_sync: bool) -> ControllerContext:
@@ -354,7 +389,7 @@ def main() -> None:
         cell = parse_cell_token(args.cell)
         payload_path, chain_name = dispatch(cell, ctx)
         print(f"✅ Dispatched {cell_label(cell)} → {payload_path}")
-        post_dispatch(cell, chain_name, ctx)
+post_dispatch(cell, chain_name, ctx, payload_path=payload_path)
         return
 
     interactive_session(ctx)

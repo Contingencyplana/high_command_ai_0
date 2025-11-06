@@ -1,0 +1,33 @@
+name: Red-Team Dry Run
+
+on:
+  pull_request:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  red-team:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Red-Team Dry Run
+        shell: pwsh
+        run: |
+          pwsh tools/ci/red_team/simulate.ps1 -DryRun | tee red_team_summary.json
+
+      - name: Guardrails Summary (60m)
+        run: |
+          python tools/fun_guardrails_report.py --minutes 60 || true
+
+      - name: Upload Red-Team Summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: red-team-summary
+          path: red_team_summary.json

@@ -1,0 +1,28 @@
+name: Guardrails Daily Report
+
+on:
+  schedule:
+    - cron: '15 3 * * *' # Daily at 03:15 UTC
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate Guardrails Summary (24h)
+        run: |
+          python tools/fun_guardrails_report.py --minutes 1440 > guardrails_summary.txt || true
+
+      - name: Upload Summary Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: guardrails-summary-24h
+          path: guardrails_summary.txt
