@@ -23,7 +23,6 @@ from pathlib import Path
 from typing import List, Optional, Tuple, TextIO
 
 from overlay_bridge import CELL_MAPPINGS, OverlayBridge, build_bridge, cell_label
-from fun_flags import FunFlags
 from pathlib import Path as _PathForWarnings
 import json as _json_for_warnings
 
@@ -263,7 +262,14 @@ def process_event_stream(ctx: ControllerContext, stream: TextIO) -> None:
             continue
 
         print(f"✅ Event {index}: {cell_label(cell)} → {payload_path}")
-post_dispatch(cell, chain_name, ctx, sync_override=sync_override, note=ledger_note, payload_path=payload_path)
+        post_dispatch(
+            cell,
+            chain_name,
+            ctx,
+            sync_override=sync_override,
+            note=ledger_note,
+            payload_path=payload_path,
+        )
 
 
 def interactive_session(ctx: ControllerContext) -> None:
@@ -325,7 +331,7 @@ def interactive_session(ctx: ControllerContext) -> None:
             f"✅ Dispatched {cell_label(cell)} → {payload_path}\n"
             "   (inspect under outbox/orders/emoji_runtime/)"
         )
-post_dispatch(cell, chain_name, ctx, payload_path=payload_path)
+        post_dispatch(cell, chain_name, ctx, payload_path=payload_path)
 
 
 def bootstrap_context(outbox_override: Optional[str], auto_sync: bool) -> ControllerContext:
@@ -389,7 +395,7 @@ def main() -> None:
         cell = parse_cell_token(args.cell)
         payload_path, chain_name = dispatch(cell, ctx)
         print(f"✅ Dispatched {cell_label(cell)} → {payload_path}")
-post_dispatch(cell, chain_name, ctx, payload_path=payload_path)
+        post_dispatch(cell, chain_name, ctx, payload_path=payload_path)
         return
 
     interactive_session(ctx)
