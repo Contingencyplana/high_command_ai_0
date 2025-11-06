@@ -21,7 +21,7 @@
 
 ## Next Target Candidate
 
-- 2025-11-06 — Refresh `planning/pivotal_fronts/ops.md` acceptance evidence after Toysoldiers contract adoption, or pull the next P2 scroll if Ops remains stable.
+- 2025-11-08 — Sweep `new_major_pivots/pivot_two.md` for Toyfoundry telemetry hooks once monitoring confirms stable cadence.
 
 ## Recently Completed
 
@@ -33,3 +33,4 @@
 - 2025-10-31 — README metadata + ledger reminders for offline ops (High Command).
 - 2025-10-31 — Major pivots overview refreshed with Level-0 baseline + staging checklist (High Command).
 - 2025-11-05 — Pivotal fronts ops scroll updated with Offline Continuity cadence and contract suite guardrails (High Command).
+- 2025-11-07 — Ops scroll acceptance evidence updated with Toysoldiers ORDER-043 adoption log review (High Command).

@@ -24,5 +24,6 @@ Acceptance Checks
 - Watcher runs clean (no unexpected BLOCKED) on inbox/outbox.
 - No drift between YAML and JSON config; pre-push passes.
 - Ledger ACK/close-out is timely for active orders.
+- Toysoldiers adoption of ORDER-043 contract suite recorded in ledger (2025-11-06) and reviewed within 24h of dispatch.
 - Offline Continuity trio recorded in ledger within 24h of any exchange change.
 - Contract suite passes against curated fixtures before publishing promoted payloads.
