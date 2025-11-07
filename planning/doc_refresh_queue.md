@@ -15,7 +15,7 @@
 - [x] `planning/alfa_slot_map.md` (sync slot ownership + bridge hooks)
 - [x] `docs/morningate_reflection_layer.md` (add offline pipeline chapter)
 - [x] `docs/player_routing_brief.md` (clarify battlegrid handoff cadence)
-- [ ] `new_major_pivots/new_major_pivot_5.md` (emoji-first rollout evidence)
+- [x] `new_major_pivots/new_major_pivot_5.md` (2025-11-08: logged translator rollout evidence + progress tracker)
 - [ ] `war_office/README.md` (embed doc refresh queue summary)
 - [ ] `template.md` (refresh ledger logging instructions)
 - [ ] `golf_00/delta_00/README.md` (align alfa subcomponents with latest payload flow)
@@ -25,3 +25,4 @@
 - Treat the list as rolling; append new targets when pivots open.
 - Use smaller pull requests per work block to keep review pace manageable.
 - Coordinate with Toyfoundry/Toysoldiers when documentation impacts their operational runbooks.
+- Next target: refresh `war_office/README.md` with the doc queue summary and Pivot Five crosslinks.

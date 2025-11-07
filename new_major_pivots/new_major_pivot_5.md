@@ -1,6 +1,6 @@
 # Major Pivot Five: Emoji-First Computing Language ("Baby's First Compiler")
 
-**Status:** Proposed → Activate immediately  
+**Status:** Active — Level-0 translator online and dry-run orders issued (Nov 2025)  
 **Date Proposed:** 2025-10-25  
 **Authorizing Body:** War Office + High Command  
 **Impact:** High — unlocks pre-literate participation and universal SHAGI onboarding
@@ -56,6 +56,14 @@ Design a fully expressive, emoji-first computing language that lets a one-year-o
 
 ---
 
+## November 2025 Progress Snapshot
+
+- ✅ `golf_00/delta_00/alfa_04/emoji_translator.py` emits `emoji-runtime@1.0` payloads straight from the Level-0 glyph palette (ledger `2025-11-01 09:58`).
+- ✅ `golf_00/delta_00/alfa_04/factory_adapter.py` and ORDER-040/041 bridge emoji payloads into `factory-order@1.0`, clearing Toyfoundry/Toysoldiers dry-runs (`2025-11-01 10:12`, `2025-11-02 09:35`).
+- ✅ `golf_00/delta_00/alfa_04/dispatch_sample_chains.py` mirrors canonical spell chains to `outbox/orders/emoji_runtime/` so Offline Continuity Mode carries live glyph traffic.
+- 🟡 `tools/run_emoji_canary.py` stands ready for nightly rolls; full 14-pass streak is the next gating signal before toddler/AI co-play trials.
+- 🔁 Narration pack and co-play telemetry loops remain queued for the audio production sprint (ties into future Pivot Six).
+
 ## Success Criteria
 
 1. ✅ **Tier-0 command set** (forge, harvest, deliver, defend) expressible with ≤4 glyphs
@@ -87,11 +95,13 @@ Design a fully expressive, emoji-first computing language that lets a one-year-o
 
 ## Implementation Plan
 
-1. **Draft Level-0 Grammar** — Document grammar table, card layouts, pronunciation guide (`planning/emoji_language/level_0.md`)
-2. **Prototype Composer** — Build simple drag-and-drop UX inside `golf_00/delta_00/alfa_04/`
-3. **Runtime Adapter** — Extend Toyfoundry export pipeline with `emoji_translator.py`
-4. **Validator Suite** — Reuse `validate_order_021.py` scaffolding to lint emoji payloads
-5. **Lore Narration** — Connect to text-to-speech (storybook tone) so glyph chains speak aloud
+| Step | Status (Nov 2025) | Evidence & Next Move |
+|------|-------------------|-----------------------|
+| Draft Level-0 Grammar | ✅ Complete | `planning/emoji_language/level_0.md` tracks the 32-glyph lexicon and narration cues. |
+| Prototype Composer Harness | 🟡 In progress | Translator + dispatch harness live inside `golf_00/delta_00/alfa_04/`; overlay UI wiring continues via Alfa Zero controller. |
+| Runtime Adapter | ✅ Complete | `emoji_translator.py` + `factory_adapter.py` ship ORDER-040/041 dry-runs and preserve emoji provenance. |
+| Validator & Canary Suite | 🟡 In progress | `tools/run_emoji_canary.py` ready for nightly streak; extend coverage with failure replay set before broad launch. |
+| Lore Narration Pack | ◻️ Pending | Audio session and toddler co-play prompts scheduled post-canary stabilization. |
 
 ---
 

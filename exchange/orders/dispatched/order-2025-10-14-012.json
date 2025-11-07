@@ -5,8 +5,7 @@
   "target": "toyfoundry_ai_0",
   "priority": "high",
   "timestamp_issued": "2025-10-14T00:00:00Z",
-  "summary": "Automate and version telemetry quilt exports (JSON/CSV) with checksums and CI hooks.
-",
+  "summary": "Automate and version telemetry quilt exports (JSON/CSV) with checksums and CI hooks.",
   "directives": [
     {
       "step": 1,
