@@ -19,6 +19,10 @@
 2. Run `python tools/exchange_heartbeat.py` + `python tools/offline_sync_exchange.py` after each batch so satellites see the new canon.
 3. Keep filesize diffs tight; we are deferring deep lore rewrites until Toyfoundry/Toysoldiers confirm live telemetry.
 
+## UX Notes
+
+- 2025-11-08 — Alfa Zero play session background sync noise captured in `logs/alfa_zero/play_session_sync.log`; next slice is wiring dispatch-triggered contract tests or targeted sync.
+
 ## Next Target Candidate
 
 - 2025-11-08 — Sweep `new_major_pivots/pivot_two.md` for Toyfoundry telemetry hooks once monitoring confirms stable cadence.
