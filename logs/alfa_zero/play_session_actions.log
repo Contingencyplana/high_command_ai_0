@@ -1,0 +1,7 @@
+=== 2025-11-07T14:39:04.947162Z contract_tests exit=0 ===
+$ C:\Users\Admin\high_command_ai_0\.venv\Scripts\python.exe -m tools.contract_test_runner
+[PASS] basic_ritual_victory
+[PASS] conditional_repeat_again
+[PASS] guarded_delivery_warning
+[PASS] signal_loop_gain
+

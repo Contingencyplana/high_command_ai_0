@@ -16,7 +16,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 import os
 from pathlib import Path
-from typing import List, Optional, Tuple, TextIO, Dict
+import subprocess
+from typing import Dict, List, Optional, Sequence, TextIO, Tuple
 
 from overlay_bridge import CELL_MAPPINGS, OverlayBridge, build_bridge, cell_label
 
@@ -62,10 +63,12 @@ class UIContext:
     event_stream: Optional[TextIO]
     output_stream: TextIO
     metrics_path: Optional[Path] = None
+    action_log_path: Optional[Path] = None
     session_id: str = ""
     session_start_ts: Optional[datetime] = None
     dispatch_count: int = 0
     selected: Cell = (0, 4)
+    auto_contracts: bool = False
 
     @property
     def repo_root(self) -> Path:
@@ -176,6 +179,116 @@ def display_summary(summary: PayloadSummary, repo_root: Path, *, stream: TextIO 
     print(f"   Payload: {relative_path}", file=stream)
 
 
+def _ensure_action_log(context: UIContext) -> Path:
+    if context.action_log_path is None:
+        log_dir = context.repo_root / "logs" / "alfa_zero"
+        log_dir.mkdir(parents=True, exist_ok=True)
+        context.action_log_path = log_dir / "play_session_actions.log"
+    else:
+        context.action_log_path.parent.mkdir(parents=True, exist_ok=True)
+    return context.action_log_path
+
+
+def _append_action_log(
+    context: UIContext,
+    label: str,
+    result: subprocess.CompletedProcess[str],
+) -> Path:
+    log_path = _ensure_action_log(context)
+    timestamp = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    command_line = ""
+    if isinstance(result.args, Sequence):
+        command_line = " ".join(str(part) for part in result.args)
+    elif result.args:
+        command_line = str(result.args)
+
+    with log_path.open("a", encoding="utf-8") as handle:
+        handle.write(f"=== {timestamp} {label} exit={result.returncode} ===\n")
+        if command_line:
+            handle.write(f"$ {command_line}\n")
+        if result.stdout:
+            handle.write(result.stdout)
+            if not result.stdout.endswith("\n"):
+                handle.write("\n")
+        if result.stderr and result.stderr != result.stdout:
+            handle.write("--- stderr ---\n")
+            handle.write(result.stderr)
+            if not result.stderr.endswith("\n"):
+                handle.write("\n")
+        handle.write("\n")
+    return log_path
+
+
+def _render_command_result(
+    context: UIContext,
+    label: str,
+    result: subprocess.CompletedProcess[str],
+    *,
+    log_path: Optional[Path],
+    quiet: bool = False,
+) -> None:
+    status = "✅" if result.returncode == 0 else "⚠️"
+    if quiet:
+        detail = f" (details: {log_path.name})" if log_path else ""
+        print(f"{status} {label} — exit {result.returncode}{detail}", file=context.output_stream)
+        return
+
+    print(f"{status} {label} (exit {result.returncode})", file=context.output_stream)
+    lines: List[str] = []
+    if result.stdout:
+        lines = result.stdout.strip().splitlines()
+    trimmed = False
+    if len(lines) > 20:
+        trimmed = True
+        head = lines[:8]
+        tail = lines[-8:]
+        lines = head + ["⋯"] + tail
+    for line in lines:
+        print(f"   {line}", file=context.output_stream)
+    if not lines and result.returncode == 0:
+        print("   (no output)", file=context.output_stream)
+    if trimmed and log_path:
+        print(f"   ⋯ output truncated; see {log_path.name}", file=context.output_stream)
+    if result.stderr and result.stderr.strip() and result.stderr != result.stdout:
+        stderr_lines = result.stderr.strip().splitlines()
+        limit = min(8, len(stderr_lines))
+        print("   stderr:", file=context.output_stream)
+        for line in stderr_lines[:limit]:
+            print(f"     {line}", file=context.output_stream)
+        if len(stderr_lines) > limit and log_path:
+            print(f"     ⋯ (see {log_path.name})", file=context.output_stream)
+
+
+def run_contract_suite(
+    context: UIContext,
+    *,
+    cases: Optional[Sequence[str]] = None,
+    quiet: bool = False,
+) -> None:
+    message = "🧪 Auto-running contract test suite…" if quiet else "🧪 Running contract test suite…"
+    print(message, file=context.output_stream)
+    try:
+        result = context.bridge.run_contract_tests(cases=cases)
+    except FileNotFoundError as exc:
+        print(f"⚠️  {exc}", file=context.output_stream)
+        return
+    log_path = _append_action_log(context, "contract_tests", result)
+    _render_command_result(context, "Contract tests", result, log_path=log_path, quiet=quiet)
+    _log_session_event(context, event="contract_tests")
+
+
+def run_manual_sync(context: UIContext) -> None:
+    print("🔄 Running offline sync…", file=context.output_stream)
+    try:
+        result = context.bridge.run_offline_sync()
+    except FileNotFoundError as exc:
+        print(f"⚠️  {exc}", file=context.output_stream)
+        return
+    log_path = _append_action_log(context, "offline_sync", result)
+    _render_command_result(context, "Offline sync", result, log_path=log_path, quiet=False)
+    _log_session_event(context, event="offline_sync")
+
+
 def move_selection(context: UIContext, delta_row: int, delta_col: int) -> None:
     row = max(0, min(15, context.selected[0] + delta_row))
     col = max(0, min(15, context.selected[1] + delta_col))
@@ -218,6 +331,8 @@ def dispatch_selected(context: UIContext) -> None:
     if context.telemetry_path:
         emit_telemetry(summary, context.telemetry_path)
     _log_session_event(context, event="dispatch")
+    if context.auto_contracts:
+        run_contract_suite(context, quiet=True)
 
 
 def show_cell_info(cell: Cell, stream: TextIO = sys.stdout) -> None:
@@ -235,6 +350,8 @@ HELP_TEXT = """Commands:
   a / left     Move selection left
   d / right    Move selection right
   dispatch     Run the translator for the selected cell
+    contracts    Run the contract test suite
+    sync         Trigger the offline exchange sync
   info         Show mapping info for the selected cell
   map          List every mapped cell and chain
   <cell>       Jump to a cell (formats: 04, 0,4, 0 4)
@@ -288,6 +405,18 @@ def interactive_loop(context: UIContext) -> None:
             continue
         if command in {"map"}:
             list_mapped_cells(context.output_stream)
+            continue
+        if command in {"contracts", "contract", "tests"}:
+            run_contract_suite(context)
+            overlay = compute_quilt_overlay(context.repo_root)
+            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+            render_footer(context, stream=context.output_stream)
+            continue
+        if command in {"sync", "resync"}:
+            run_manual_sync(context)
+            overlay = compute_quilt_overlay(context.repo_root)
+            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+            render_footer(context, stream=context.output_stream)
             continue
         if command in {"info"}:
             show_cell_info(context.selected, context.output_stream)
@@ -345,6 +474,7 @@ def build_context(
     *,
     emit_events: bool,
     event_stream: Optional[TextIO],
+    auto_contracts: bool,
 ) -> UIContext:
     bridge = build_bridge(outbox_override)
     telemetry_path = Path(telemetry).expanduser().resolve() if telemetry else None
@@ -353,6 +483,7 @@ def build_context(
     metrics_dir = bridge.repo_root / "logs" / "alfa_zero"
     metrics_dir.mkdir(parents=True, exist_ok=True)
     metrics_path = metrics_dir / "session_metrics.jsonl"
+    action_log_path = metrics_dir / "play_session_actions.log"
 
     # Lightweight session identifier
     ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
@@ -365,8 +496,10 @@ def build_context(
         event_stream=event_stream,
         output_stream=output_stream,
         metrics_path=metrics_path,
+        action_log_path=action_log_path,
         session_id=session_id,
         session_start_ts=datetime.now(timezone.utc),
+        auto_contracts=auto_contracts,
     )
 
 
@@ -396,6 +529,11 @@ def main() -> None:
         default=None,
         help="When emitting events, write them to this file instead of stdout.",
     )
+    parser.add_argument(
+        "--auto-contracts",
+        action="store_true",
+        help="Automatically run the contract test suite after each dispatch.",
+    )
     args = parser.parse_args()
 
     if args.event_file and not args.emit_events:
@@ -417,6 +555,7 @@ def main() -> None:
         args.telemetry,
         emit_events=args.emit_events,
         event_stream=event_stream,
+        auto_contracts=args.auto_contracts,
     )
 
     try:
@@ -433,15 +572,12 @@ def main() -> None:
             event_stream.close()
 
 
-if __name__ == "__main__":  # pragma: no cover - manual entry point
-    main()
-
-
 def _log_session_event(context: UIContext, *, event: str) -> None:
     """Append a simple JSONL record for session metrics.
 
-    Events: session_start, dispatch, session_end. We track elapsed overlay
-    time and dispatch count to support 70/30 analysis downstream.
+    Events: session_start, dispatch, contract_tests, offline_sync, session_end.
+    We track elapsed overlay time and dispatch count to support 70/30 analysis
+    downstream.
     """
     if context.metrics_path is None:
         return
@@ -553,7 +689,12 @@ def render_footer(context: UIContext, *, stream: TextIO = sys.stdout) -> None:
     ss = elapsed_s % 60
     auto_env = os.getenv("OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS", "1").lower()
     auto_on = auto_env not in {"0", "false", "no"}
+    contracts_state = "ON" if context.auto_contracts else "OFF"
     print(
-        f"— Elapsed {mm:02d}:{ss:02d} | Dispatches {context.dispatch_count} | Auto-promote {'ON' if auto_on else 'OFF'} —",
+        f"— Elapsed {mm:02d}:{ss:02d} | Dispatches {context.dispatch_count} | Auto-promote {'ON' if auto_on else 'OFF'} | Auto-contracts {contracts_state} —",
         file=stream,
     )
+
+
+if __name__ == "__main__":  # pragma: no cover - manual entry point
+    main()

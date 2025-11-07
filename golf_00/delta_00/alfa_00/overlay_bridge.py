@@ -11,6 +11,7 @@ import importlib.util
 import json
 import sys
 import os
+import subprocess
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -140,6 +141,23 @@ class OverlayBridge:
             path = self.dispatch_cell(cell)
             results[cell_label(cell)] = path
         return results
+
+    def run_contract_tests(self, *, cases: Sequence[str] | None = None) -> subprocess.CompletedProcess[str]:
+        """Execute the contract test suite and return the completed process."""
+
+        cmd = [sys.executable, "-m", "tools.contract_test_runner"]
+        if cases:
+            for case in cases:
+                cmd.extend(["--case", case])
+        return subprocess.run(cmd, cwd=self.repo_root, capture_output=True, text=True)
+
+    def run_offline_sync(self) -> subprocess.CompletedProcess[str]:
+        """Run a one-shot offline exchange sync and capture output."""
+
+        script = self.repo_root / "tools" / "offline_sync_exchange.py"
+        if not script.exists():
+            raise FileNotFoundError(f"Offline sync script missing at {script}")
+        return subprocess.run([sys.executable, str(script)], cwd=self.repo_root, capture_output=True, text=True)
 
     def dispatch_chain_name(
         self,

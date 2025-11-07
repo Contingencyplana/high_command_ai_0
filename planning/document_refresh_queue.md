@@ -21,7 +21,7 @@
 
 ## UX Notes
 
-- 2025-11-08 — Alfa Zero play session background sync noise captured in `logs/alfa_zero/play_session_sync.log`; next slice is wiring dispatch-triggered contract tests or targeted sync.
+- 2025-11-08 — Alfa Zero overlay now fires contract tests automatically post-dispatch (see `logs/alfa_zero/play_session_actions.log`); next slice is adding an inline targeted sync trigger.
 
 ## Next Target Candidate
 
