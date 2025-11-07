@@ -1,0 +1,40 @@
+{
+  "name": "automation_path_happy_flow",
+  "description": "DRAFT TEMPLATE — Happy-path automation case exercising ACK/report comfort flow.",
+  "emoji_chain": [
+    "🛠️", "⚒️", "🤖", "✅"
+  ],
+  "adapter": {
+    "order_id": "order-2025-11-07-044",
+    "issued_by": "high_command_ai_0",
+    "target": "all_fronts",
+    "priority": "high",
+    "requires_ack": true
+  },
+  "expectations": {
+    "emoji_runtime": {
+      "summary": "Forge crafts the Ally → Victory",
+      "intent": {
+        "action": "forge.craft",
+        "target": "ally",
+        "qualifiers": []
+      },
+      "spoken": [
+        "Forge crafts the Ally",
+        "Victory"
+      ]
+    },
+    "factory_order": {
+      "summary": "Forge crafts the Ally → Victory",
+      "priority": "high",
+      "target": "all_fronts",
+      "requires_ack": true,
+      "details_contains": [
+        "emoji_runtime_payload",
+        "automation",
+        "comfort"
+      ]
+    }
+  }
+}
+

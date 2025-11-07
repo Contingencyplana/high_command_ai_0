@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-11-07-044-ack",
+  "referenced_id": "order-2025-11-07-044",
+  "sender": "<receiver_workspace>",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "<ISO8601>",
+  "status": "acknowledged",
+  "notes": [
+    "Acknowledged Order 044; roles/caps verified.",
+    "Will file completion report at exchange/reports/inbox/order-2025-11-07-044-report.json"
+  ]
+}
+

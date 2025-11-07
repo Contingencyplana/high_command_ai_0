@@ -239,6 +239,10 @@
       "ack_path": "acknowledgements/logged/order-2025-11-01-041-ack.json",
       "order_path": "orders/completed/order-2025-11-01-041.json",
       "report_path": "reports/archived/order-2025-11-01-041-report.json"
+    },
+    "order-2025-11-07-044": {
+      "status": "pending",
+      "order_path": "orders/pending/order-2025-11-07-044.json"
     }
   },
   "reports": {

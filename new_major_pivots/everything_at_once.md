@@ -326,4 +326,8 @@ This is the **hybrid** in "Spontaneous Hybrid Adventure Game Intelligence."
 
 ---
 
-*End of Meta-Pivot — `new_major_pivots/everything_at_once.md`*
+See also: `planning/campaigns_and_lulls.md` for the Campaign → Lull cadence.
+
+---
+
+*End of Meta-Pivot - `new_major_pivots/everything_at_once.md`*
