@@ -1,0 +1,42 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-031-report",
+  "order_id": "order-2025-10-15-031",
+  "reported_by": "toysoldiers_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-10-25T10:25:00Z",
+  "status": "completed",
+  "summary": "Re-ingested Toyfoundry canary batches b1 and b2 into consumer imports, confirmed SHA256s, reran Order 021 schema + DQ validations per batch, and affirmed Go readiness.",
+  "batches": {
+    "b1": {
+      "imports_dir": ".imports/toyfoundry/telemetry/quilt/exports/canary_b1",
+      "records": 4,
+      "units_total": 29,
+      "sha256": {
+        "json": "1DCFE5A8362F620A9E0512B6155E6EEC421E4D9D189D1E2A190F6DA485041757",
+        "csv": "1C4497C33C5D04F29581CC4CAADA8EDFF6C54FF850D6040048083995E2BEFB94"
+      },
+      "sha256_verified": true,
+      "validator_command": "python tools/validate_order_021.py --imports .imports/toyfoundry/telemetry/quilt/exports/canary_b1",
+      "validation_result": "pass"
+    },
+    "b2": {
+      "imports_dir": ".imports/toyfoundry/telemetry/quilt/exports/canary_b2",
+      "records": 4,
+      "units_total": 29,
+      "sha256": {
+        "json": "1DCFE5A8362F620A9E0512B6155E6EEC421E4D9D189D1E2A190F6DA485041757",
+        "csv": "1C4497C33C5D04F29581CC4CAADA8EDFF6C54FF850D6040048083995E2BEFB94"
+      },
+      "sha256_verified": true,
+      "validator_command": "python tools/validate_order_021.py --imports .imports/toyfoundry/telemetry/quilt/exports/canary_b2",
+      "validation_result": "pass"
+    }
+  },
+  "verification_command": "python tools/validate_order_021.py --imports .imports/toyfoundry/telemetry/quilt/exports/canary_b1 && python tools/validate_order_021.py --imports .imports/toyfoundry/telemetry/quilt/exports/canary_b2",
+  "acceptance": {
+    "decision": "go",
+    "constraints": [],
+    "notes": "Order 036 schema remediation holds across new canary batches. No blockers observed; recommend observation window and downstream mirroring."
+  }
+}

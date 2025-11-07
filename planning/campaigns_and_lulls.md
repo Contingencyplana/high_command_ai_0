@@ -30,7 +30,7 @@ Evidence: <key files/paths>
 
 ## Current State Snapshot
 - Orders queue: clear (`exchange/orders/pending` only `.gitkeep`).
-- Inbox: contains pending items (e.g., `exchange/reports/inbox/valiant-citadel-safety_readiness-20251016-035109-115.json`).
+- Inbox: cleared 2025-11-08; backlog archived to `exchange/reports/archived/inbox_backlog/`; follow-up needed for Order 035 monitoring result.
 - Recent completions: 040/041/043 closed; reports and acks archived (see `exchange/ledger/index.json`).
 
 ## Chronicle — Recent Campaigns
@@ -82,7 +82,8 @@ Evidence:
 ```
 
 ## Next
-- During the current lull: triage inbox items, confirm heartbeat/sync across workspaces, and scope Order 044 (automation/comfort focus) with success criteria and dependencies.
+
+- During the current lull: confirm heartbeat/sync across workspaces, follow up on Order 035 monitoring result, and scope Order 044 (automation/comfort focus) with success criteria and dependencies.
 
 ---
 
@@ -91,34 +92,40 @@ Evidence:
 - Type: Major (cross‑workspace automation + comfort improvements)
 - Objective: Reduce routine operational load on High Command while increasing playability and narrative coherence during everyday work.
 
-Success Criteria
+### Success Criteria
+
 - Inbox triage flow: repeatable checklist; target “inbox zero” after campaign close (all reports archived/linked in ledger).
 - Automation: reduce manual ack/report handling by a measurable percentage using existing exchange tools (no new infra if avoidable).
 - Runtime readiness: minimal narrator/telemetry shells available for `alfa_02`/`alfa_03` to support monitoring and VO alignment.
 - Contract coverage: extend contract tests to include at least one “automation path” case; all cases pass locally.
 - Comfort: document a 70/30 play/dev‑ops path (single “happy path” from overlay → logs → exchange sync).
 
-Dependencies
+### Dependencies
+
 - `quint_synced/` alignment docs adopted across fronts (payload + narration).
 - `golf_00/delta_00/alfa_02` and `alfa_03` scaffolds activated (even minimally) to host narrator/telemetry shells.
 - Exchange heartbeat reachable with correct `SHAGI_EXCHANGE_PATH` on all workspaces.
 - Inbox triage for outstanding safety/analytics reports.
 
-Deliverables
+### Deliverables
+
 - Updated guides: lull checklist and automation quick‑start in `exchange/attachments/guides/`.
 - Minimal narrator/telemetry shell entry points under `golf_00/delta_00/alfa_02` / `alfa_03` (even stubs with TODOs).
 - Extended contract samples exercising an automation path.
 - Final report and ACK for Order 044 archived in exchange.
 
-Evidence Hooks
+### Evidence Hooks
+
 - Ledger: `exchange/ledger/journal.md`
 - Reports: `exchange/reports/archived/order-2025-11-xx-044-report.json` (to be created)
 - Tools: `tools/exchange_heartbeat.py`, `tools/offline_sync_exchange.py`, `tools/contract_test_runner.py`
 
-Risks & Mitigations
+### Risks & Mitigations
+
 - Scope creep: keep “automation” to lightweight scripts and docs; avoid new infra.
 - Schema drift: validate with `tools/schema_validator.py` + contract tests before closing.
 - Partial runtime wiring: deliver minimal shells first, then iterate.
 
-Window
+### Window
+
 - Proposed: 3–5 days, with day 1 focused on inbox triage and runtime shell stubs.

@@ -29,4 +29,3 @@
   "recommendation": "pending",
   "notes": "Prefilled stub. At T+24h, run tools\\hc_alfa\\summarize_telemetry.ps1 to produce the final result."
 }
-
