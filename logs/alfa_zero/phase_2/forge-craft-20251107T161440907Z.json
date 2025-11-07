@@ -1,0 +1,15 @@
+{
+  "dispatched_at": "2025-11-07T16:14:40.907497Z",
+  "chain_name": "basic_ritual_forge",
+  "template": "basic_ritual",
+  "overlay_cell": {
+    "row": 0,
+    "col": 4,
+    "label": "04"
+  },
+  "outbox_path": "outbox\\orders\\emoji_runtime\\20251107T161440Z_alfa_zero_basic_ritual_forge.json",
+  "batch_id": "forge-craft-20251107T161440907Z",
+  "telemetry_received_at": null,
+  "telemetry_duration_ms": null,
+  "telemetry_status": "pending"
+}

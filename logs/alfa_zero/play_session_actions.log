@@ -5,3 +5,149 @@ $ C:\Users\Admin\high_command_ai_0\.venv\Scripts\python.exe -m tools.contract_te
 [PASS] guarded_delivery_warning
 [PASS] signal_loop_gain
 
+=== 2025-11-07T15:58:11.604400Z contract_tests exit=0 ===
+$ C:\Users\Admin\high_command_ai_0\.venv\Scripts\python.exe -m tools.contract_test_runner
+[PASS] basic_ritual_victory
+[PASS] conditional_repeat_again
+[PASS] guarded_delivery_warning
+[PASS] signal_loop_gain
+
+=== 2025-11-07T15:58:11.704138Z offline_sync exit=0 ===
+$ C:\Users\Admin\high_command_ai_0\.venv\Scripts\python.exe C:\Users\Admin\high_command_ai_0\tools\offline_sync_exchange.py
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\hc_test.json -> C:\Users\Admin\high_command_exchange\orders\hc_test.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\toyfoundry_test.json -> C:\Users\Admin\high_command_exchange\orders\toyfoundry_test.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T112743Z_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T112743Z_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T112743Z_conditional_repeat_seed.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T112743Z_conditional_repeat_seed.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T112743Z_dream_transmute_bless.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T112743Z_dream_transmute_bless.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T112743Z_guarded_delivery_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T112743Z_guarded_delivery_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T112743Z_harvest_guarded_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T112743Z_harvest_guarded_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T112743Z_rapid_ore_pulse.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T112743Z_rapid_ore_pulse.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T112743Z_river_signal_loop.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T112743Z_river_signal_loop.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T112743Z_signal_loop_dream.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T112743Z_signal_loop_dream.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T113136Z_alfa_zero_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T113136Z_alfa_zero_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T113136Z_alfa_zero_conditional_repeat_seed.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T113136Z_alfa_zero_conditional_repeat_seed.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T113136Z_alfa_zero_dream_transmute_bless.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T113136Z_alfa_zero_dream_transmute_bless.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T113136Z_alfa_zero_guarded_delivery_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T113136Z_alfa_zero_guarded_delivery_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T113136Z_alfa_zero_harvest_guarded_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T113136Z_alfa_zero_harvest_guarded_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T113136Z_alfa_zero_rapid_ore_pulse.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T113136Z_alfa_zero_rapid_ore_pulse.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T113136Z_alfa_zero_river_signal_loop.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T113136Z_alfa_zero_river_signal_loop.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T113136Z_alfa_zero_signal_loop_dream.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T113136Z_alfa_zero_signal_loop_dream.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T113934Z_alfa_zero_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T113934Z_alfa_zero_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T113948Z_alfa_zero_guarded_delivery_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T113948Z_alfa_zero_guarded_delivery_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T114034Z_alfa_zero_signal_loop_dream.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T114034Z_alfa_zero_signal_loop_dream.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T121044Z_alfa_zero_guarded_delivery_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T121044Z_alfa_zero_guarded_delivery_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T121143Z_alfa_zero_signal_loop_dream.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T121143Z_alfa_zero_signal_loop_dream.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T130928Z_alfa_zero_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T130928Z_alfa_zero_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T130930Z_alfa_zero_guarded_delivery_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T130930Z_alfa_zero_guarded_delivery_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T132547Z_alfa_zero_signal_loop_dream.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T132547Z_alfa_zero_signal_loop_dream.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T134241Z_alfa_zero_signal_loop_focus.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T134241Z_alfa_zero_signal_loop_focus.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T134601Z_alfa_zero_signal_loop_focus.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T134601Z_alfa_zero_signal_loop_focus.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T143401Z_alfa_zero_signal_loop_coordination.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T143401Z_alfa_zero_signal_loop_coordination.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T143403Z_alfa_zero_signal_loop_command.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T143403Z_alfa_zero_signal_loop_command.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T143518Z_alfa_zero_signal_loop_analysis.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T143518Z_alfa_zero_signal_loop_analysis.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T143536Z_alfa_zero_signal_loop_cover.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T143536Z_alfa_zero_signal_loop_cover.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T151155Z_alfa_zero_signal_loop_strategy.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T151155Z_alfa_zero_signal_loop_strategy.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T151157Z_alfa_zero_signal_loop_tempo.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T151157Z_alfa_zero_signal_loop_tempo.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251031T151159Z_alfa_zero_signal_loop_shield.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251031T151159Z_alfa_zero_signal_loop_shield.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_conditional_repeat_seed.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_conditional_repeat_seed.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_dream_transmute_bless.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_dream_transmute_bless.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_guarded_delivery_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_guarded_delivery_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_harvest_guarded_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_harvest_guarded_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_rapid_ore_pulse.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_rapid_ore_pulse.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_river_signal_loop.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_river_signal_loop.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_signal_loop_analysis.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_signal_loop_analysis.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_signal_loop_command.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_signal_loop_command.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_signal_loop_coordination.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_signal_loop_coordination.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_signal_loop_cover.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_signal_loop_cover.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_signal_loop_dream.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_signal_loop_dream.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_signal_loop_focus.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_signal_loop_focus.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_signal_loop_shield.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_signal_loop_shield.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_signal_loop_strategy.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_signal_loop_strategy.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102202Z_signal_loop_tempo.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102202Z_signal_loop_tempo.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T102228Z_alfa_zero_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T102228Z_alfa_zero_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_conditional_repeat_seed.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_conditional_repeat_seed.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_dream_transmute_bless.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_dream_transmute_bless.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_guarded_delivery_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_guarded_delivery_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_harvest_guarded_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_harvest_guarded_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_rapid_ore_pulse.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_rapid_ore_pulse.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_river_signal_loop.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_river_signal_loop.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_signal_loop_analysis.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_signal_loop_analysis.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_signal_loop_command.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_signal_loop_command.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_signal_loop_coordination.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_signal_loop_coordination.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_signal_loop_cover.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_signal_loop_cover.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_signal_loop_dream.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_signal_loop_dream.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_signal_loop_focus.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_signal_loop_focus.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_signal_loop_shield.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_signal_loop_shield.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_signal_loop_strategy.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_signal_loop_strategy.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T104452Z_signal_loop_tempo.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T104452Z_signal_loop_tempo.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_conditional_repeat_seed.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_conditional_repeat_seed.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_dream_transmute_bless.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_dream_transmute_bless.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_guarded_delivery_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_guarded_delivery_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_harvest_guarded_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_harvest_guarded_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_rapid_ore_pulse.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_rapid_ore_pulse.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_river_signal_loop.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_river_signal_loop.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_signal_loop_analysis.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_signal_loop_analysis.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_signal_loop_command.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_signal_loop_command.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_signal_loop_coordination.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_signal_loop_coordination.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_signal_loop_cover.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_signal_loop_cover.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_signal_loop_dream.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_signal_loop_dream.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_signal_loop_focus.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_signal_loop_focus.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_signal_loop_shield.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_signal_loop_shield.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_signal_loop_strategy.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_signal_loop_strategy.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T111811Z_signal_loop_tempo.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T111811Z_signal_loop_tempo.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_conditional_repeat_seed.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_conditional_repeat_seed.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_dream_transmute_bless.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_dream_transmute_bless.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_guarded_delivery_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_guarded_delivery_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_harvest_guarded_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_harvest_guarded_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_rapid_ore_pulse.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_rapid_ore_pulse.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_river_signal_loop.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_river_signal_loop.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_signal_loop_analysis.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_signal_loop_analysis.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_signal_loop_command.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_signal_loop_command.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_signal_loop_coordination.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_signal_loop_coordination.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_signal_loop_cover.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_signal_loop_cover.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_signal_loop_dream.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_signal_loop_dream.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_signal_loop_focus.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_signal_loop_focus.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_signal_loop_shield.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_signal_loop_shield.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_signal_loop_strategy.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_signal_loop_strategy.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112303Z_signal_loop_tempo.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112303Z_signal_loop_tempo.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_conditional_repeat_seed.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_conditional_repeat_seed.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_dream_transmute_bless.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_dream_transmute_bless.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_guarded_delivery_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_guarded_delivery_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_harvest_guarded_wall.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_harvest_guarded_wall.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_rapid_ore_pulse.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_rapid_ore_pulse.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_river_signal_loop.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_river_signal_loop.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_signal_loop_analysis.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_signal_loop_analysis.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_signal_loop_command.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_signal_loop_command.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_signal_loop_coordination.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_signal_loop_coordination.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_signal_loop_cover.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_signal_loop_cover.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_signal_loop_dream.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_signal_loop_dream.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_signal_loop_focus.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_signal_loop_focus.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_signal_loop_shield.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_signal_loop_shield.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_signal_loop_strategy.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_signal_loop_strategy.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251101T112646Z_signal_loop_tempo.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251101T112646Z_signal_loop_tempo.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251104T163455Z_alfa_zero_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251104T163455Z_alfa_zero_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251104T163936Z_alfa_zero_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251104T163936Z_alfa_zero_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251107T155811Z_alfa_zero_basic_ritual_forge.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251107T155811Z_alfa_zero_basic_ritual_forge.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\factory_orders\20251107T155811Z_emoji-basic-ritual-forge-20251107155811_512506.json -> C:\Users\Admin\high_command_exchange\orders\factory_orders\20251107T155811Z_emoji-basic-ritual-forge-20251107155811_512506.json
+[OK] Synced 120 orders file(s) to C:\Users\Admin\high_command_exchange\orders
+[INFO] No new reports files to sync from C:\Users\Admin\high_command_ai_0\outbox\reports
+ Local exchange sync complete.
+
+=== 2025-11-07T16:14:41.008666Z contract_tests exit=0 ===
+$ C:\Users\Admin\AppData\Local\Programs\Python\Python312\python.exe -m tools.contract_test_runner
+[PASS] basic_ritual_victory
+[PASS] conditional_repeat_again
+[PASS] guarded_delivery_warning
+[PASS] signal_loop_gain
+
+=== 2025-11-07T16:14:41.069895Z offline_sync_latest exit=0 ===
+$ C:\Users\Admin\AppData\Local\Programs\Python\Python312\python.exe C:\Users\Admin\high_command_ai_0\tools\offline_sync_exchange.py --category orders --latest 1 --quiet
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\factory_orders\20251107T161440Z_emoji-basic-ritual-forge-20251107161440_907497.json -> C:\Users\Admin\high_command_exchange\orders\factory_orders\20251107T161440Z_emoji-basic-ritual-forge-20251107161440_907497.json
+[OK] Synced 1 orders file(s) to C:\Users\Admin\high_command_exchange\orders
+ Local exchange sync complete.
+

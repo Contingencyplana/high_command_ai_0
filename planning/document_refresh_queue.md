@@ -22,6 +22,8 @@
 ## UX Notes
 
 - 2025-11-08 — Alfa Zero overlay now fires contract tests automatically post-dispatch (see `logs/alfa_zero/play_session_actions.log`); next slice is adding an inline targeted sync trigger.
+- 2025-11-07 — Scripted play session flow captured in `logs/alfa_zero/play_session_commands.txt` to keep dispatch/contract/sync loop inside High Command.
+- 2025-11-08 — Targeted `sync latest` / `sync orders` commands live with quiet-mode logging (see `planning/alfa_zero_targeted_sync_scope.md` for log rotation follow-up).
 
 ## Next Target Candidate
 

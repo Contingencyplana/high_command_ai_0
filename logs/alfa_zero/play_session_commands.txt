@@ -1,0 +1,4 @@
+dispatch
+contracts
+sync latest
+quit

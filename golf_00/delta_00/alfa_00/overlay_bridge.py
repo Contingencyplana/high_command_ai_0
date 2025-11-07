@@ -151,13 +151,32 @@ class OverlayBridge:
                 cmd.extend(["--case", case])
         return subprocess.run(cmd, cwd=self.repo_root, capture_output=True, text=True)
 
-    def run_offline_sync(self) -> subprocess.CompletedProcess[str]:
-        """Run a one-shot offline exchange sync and capture output."""
+    def run_offline_sync(
+        self,
+        *,
+        categories: Sequence[str] | None = None,
+        orders_subpath: str | None = None,
+        latest: int | None = None,
+        quiet: bool = False,
+    ) -> subprocess.CompletedProcess[str]:
+        """Run the offline exchange sync with optional filters."""
 
         script = self.repo_root / "tools" / "offline_sync_exchange.py"
         if not script.exists():
             raise FileNotFoundError(f"Offline sync script missing at {script}")
-        return subprocess.run([sys.executable, str(script)], cwd=self.repo_root, capture_output=True, text=True)
+
+        cmd = [sys.executable, str(script)]
+        if categories:
+            for category in categories:
+                cmd.extend(["--category", category])
+        if orders_subpath:
+            cmd.extend(["--orders-subpath", orders_subpath])
+        if latest is not None:
+            cmd.extend(["--latest", str(latest)])
+        if quiet:
+            cmd.append("--quiet")
+
+        return subprocess.run(cmd, cwd=self.repo_root, capture_output=True, text=True)
 
     def dispatch_chain_name(
         self,

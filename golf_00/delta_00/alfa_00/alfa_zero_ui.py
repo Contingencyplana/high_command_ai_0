@@ -277,16 +277,32 @@ def run_contract_suite(
     _log_session_event(context, event="contract_tests")
 
 
-def run_manual_sync(context: UIContext) -> None:
-    print("🔄 Running offline sync…", file=context.output_stream)
+def run_manual_sync(
+    context: UIContext,
+    *,
+    categories: Optional[Sequence[str]] = None,
+    orders_subpath: Optional[str] = None,
+    latest: Optional[int] = None,
+    quiet: bool = False,
+    label: str = "offline_sync",
+    event: str = "offline_sync",
+    announce: Optional[str] = None,
+) -> None:
+    message = announce or "🔄 Running offline sync…"
+    print(message, file=context.output_stream)
     try:
-        result = context.bridge.run_offline_sync()
+        result = context.bridge.run_offline_sync(
+            categories=categories,
+            orders_subpath=orders_subpath,
+            latest=latest,
+            quiet=quiet,
+        )
     except FileNotFoundError as exc:
         print(f"⚠️  {exc}", file=context.output_stream)
         return
-    log_path = _append_action_log(context, "offline_sync", result)
-    _render_command_result(context, "Offline sync", result, log_path=log_path, quiet=False)
-    _log_session_event(context, event="offline_sync")
+    log_path = _append_action_log(context, label, result)
+    _render_command_result(context, "Offline sync", result, log_path=log_path, quiet=quiet)
+    _log_session_event(context, event=event)
 
 
 def move_selection(context: UIContext, delta_row: int, delta_col: int) -> None:
@@ -345,19 +361,21 @@ def show_cell_info(cell: Cell, stream: TextIO = sys.stdout) -> None:
 
 
 HELP_TEXT = """Commands:
-  w / up       Move selection up
-  s / down     Move selection down
-  a / left     Move selection left
-  d / right    Move selection right
-  dispatch     Run the translator for the selected cell
-    contracts    Run the contract test suite
-    sync         Trigger the offline exchange sync
-  info         Show mapping info for the selected cell
-  map          List every mapped cell and chain
-  <cell>       Jump to a cell (formats: 04, 0,4, 0 4)
-  show         Re-render the grid
-  help         Show this help text
-  quit         Exit the controller
+    w / up         Move selection up
+    s / down       Move selection down
+    a / left       Move selection left
+    d / right      Move selection right
+    dispatch       Run the translator for the selected cell
+        contracts      Run the contract test suite
+        sync           Trigger a full offline exchange sync
+        sync latest    Sync the most recent orders payload (optional count)
+        sync orders X  Sync orders subdirectory X (for example emoji_runtime)
+    info           Show mapping info for the selected cell
+    map            List every mapped cell and chain
+    <cell>         Jump to a cell (formats: 04, 0,4, 0 4)
+    show           Re-render the grid
+    help           Show this help text
+    quit           Exit the controller
 """
 
 
@@ -392,7 +410,11 @@ def interactive_loop(context: UIContext) -> None:
             render_footer(context, stream=context.output_stream)
             continue
 
-        command = raw.lower()
+        tokens = raw.split()
+        if not tokens:
+            continue
+        command = tokens[0].lower()
+
         if command in {"quit", "q", "exit"}:
             break
         if command in {"help", "?"}:
@@ -413,7 +435,43 @@ def interactive_loop(context: UIContext) -> None:
             render_footer(context, stream=context.output_stream)
             continue
         if command in {"sync", "resync"}:
-            run_manual_sync(context)
+            if len(tokens) == 1:
+                run_manual_sync(context)
+            elif tokens[1].lower() == "latest":
+                count = 1
+                if len(tokens) >= 3:
+                    try:
+                        count = max(1, int(tokens[2]))
+                    except ValueError:
+                        print("⚠️  Provide a numeric count for 'sync latest'", file=context.output_stream)
+                        continue
+                run_manual_sync(
+                    context,
+                    categories=["orders"],
+                    latest=count,
+                    quiet=True,
+                    label="offline_sync_latest",
+                    event="offline_sync_latest",
+                    announce=f"🔄 Syncing latest {count} orders payload(s)…",
+                )
+            elif tokens[1].lower() == "orders":
+                if len(tokens) < 3:
+                    print("⚠️  Provide a subdirectory for 'sync orders' (for example emoji_runtime)", file=context.output_stream)
+                    continue
+                subpath = tokens[2]
+                safe_label = subpath.replace("/", "_")
+                run_manual_sync(
+                    context,
+                    categories=["orders"],
+                    orders_subpath=subpath,
+                    quiet=True,
+                    label=f"offline_sync_orders_{safe_label}",
+                    event="offline_sync_orders",
+                    announce=f"🔄 Syncing orders/{subpath}…",
+                )
+            else:
+                print("⚠️  Unknown sync option", file=context.output_stream)
+                continue
             overlay = compute_quilt_overlay(context.repo_root)
             render_grid(context.selected, stream=context.output_stream, overlay=overlay)
             render_footer(context, stream=context.output_stream)
@@ -575,7 +633,8 @@ def main() -> None:
 def _log_session_event(context: UIContext, *, event: str) -> None:
     """Append a simple JSONL record for session metrics.
 
-    Events: session_start, dispatch, contract_tests, offline_sync, session_end.
+    Events: session_start, dispatch, contract_tests, offline_sync, offline_sync_latest,
+    offline_sync_orders, session_end.
     We track elapsed overlay time and dispatch count to support 70/30 analysis
     downstream.
     """
