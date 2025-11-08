@@ -83,9 +83,12 @@ Evidence:
 
 ## Next
 
-- Return to lull checklist: review Order 044 evidence, surface lessons for comfort tooling, and scope the next campaign window.
+- Walk the lull checklist now: review Order 044 evidence, clear any straggling inbox artifacts, and log retrospective notes.
+- Draft candidate scope for the UI overlay push (targeted as Order 045) with runtime shell enhancements, narration hooks, and comfort loop validation baked in.
+- Confirm tooling readiness — contract suite, heartbeat scripts, and offline bridge — so the next campaign launches on a clean baseline.
 
 Related
+
 - Comfort path: `exchange/attachments/guides/comfort_happy_path.md`
 - From Pain to Play: `planning/pivotal_fronts/from_pain_to_play.md`
 
@@ -113,6 +116,12 @@ Related
 - Step 4 (2025-11-08T11:47Z) — Added `automation_path_happy_flow` contract case; contract runner passes focused sweep.
 - Step 5 (2025-11-08T11:50Z) — Published comfort happy path refresh and automation quick-start guide to anchor the 70/30 loop.
 - Step 6 (2025-11-08T11:55Z) — Completion report archived and ledger closed for Order 044.
+
+### Retrospective (2025-11-08)
+
+- **Wins** heartbeat discipline, refreshed guides, and the automation contract case kept comfort and tooling evidence aligned within a single campaign arc.
+- **Friction** acknowledgement timing drifted before we realigned it with the ledger, and runtime shells stayed minimal stubs that still need explicit follow-up.
+- **Action Items** capture lull lessons in planning docs, schedule shell enhancements for the UI order, and keep the comfort loop verified during every lull exit.
 
 ### Dependencies
 

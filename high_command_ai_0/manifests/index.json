@@ -1,0 +1,40 @@
+{
+  "generated_at": "2025-11-08T13:58:21Z",
+  "roots": [
+    "exchange\\orders\\completed",
+    "exchange\\reports\\archived",
+    "contract_samples\\cases"
+  ],
+  "ranks": {
+    "kilo": {
+      "identifiers": 0,
+      "total_count": 0,
+      "path": "kilo.json"
+    },
+    "lima": {
+      "identifiers": 0,
+      "total_count": 0,
+      "path": "lima.json"
+    },
+    "mike": {
+      "identifiers": 0,
+      "total_count": 0,
+      "path": "mike.json"
+    },
+    "november": {
+      "identifiers": 0,
+      "total_count": 0,
+      "path": "november.json"
+    },
+    "oscar": {
+      "identifiers": 0,
+      "total_count": 0,
+      "path": "oscar.json"
+    },
+    "papa": {
+      "identifiers": 0,
+      "total_count": 0,
+      "path": "papa.json"
+    }
+  }
+}

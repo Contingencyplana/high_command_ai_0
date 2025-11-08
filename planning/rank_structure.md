@@ -60,7 +60,7 @@ The same geometry governs both soldiers and strategists.
 
 ## 🧭 Metadata & Automation Rules
 
-Every **Alfa JSON file** (or equivalent unit) must include a full `rank_path` and coordinates.
+Payload and manifest JSONs SHOULD include a full `rank_path` and `coords` fields. Non‑payload assets (e.g., Python/Markdown) are not required to embed this metadata.
 
 ```json
 {
@@ -77,6 +77,13 @@ Every **Alfa JSON file** (or equivalent unit) must include a full `rank_path` an
   }
 }
 ```
+
+### ✅ Scope & Invariants
+
+- `coords` is a two‑element array of integers `[x, y]` (0‑indexed). Grids are left‑to‑right, top‑to‑bottom.
+- `rank_path` keys are drawn from: `alfa`, `bravo`, `charlie`, `delta`, `echo`, `foxtrot`, `golf`, `hotel`, `india`, `juliett`, plus higher: `kilo`, `lima`, `mike`, `november`, `oscar`, `papa`, and `workspace`.
+- Values are stable identifiers (e.g., `golf_00`, `delta_13`, `alfa_04`, `workspace: toyfoundry_ai_0`).
+- Keep identifiers consistent with repository paths where applicable (e.g., `golf_00/delta_00/alfa_04`).
 
 ### 🧠 High Command Script Functions
 
@@ -99,6 +106,17 @@ automatically generated and stored under:
 
 ```text
 high_command_ai_0/manifests/
+```
+
+### 🔍 Validation
+
+- Use `tools/rank_validator.py` to validate `rank_path` and `coords` fields in payload/manifest JSON files.
+
+Examples
+
+```bash
+python tools/rank_validator.py exchange/orders/completed/order-2025-11-02-043.json
+python tools/rank_validator.py contract_samples/cases/basic_ritual_victory.json
 ```
 
 ---
@@ -126,3 +144,9 @@ The same recursive law governs all creation within **SHAGI**:
 ---
 
 *End of Scroll — `rank_structure.md`*
+
+---
+
+Related
+- Cadence: `planning/campaigns_and_lulls.md`
+- From Pain to Play: `planning/pivotal_fronts/from_pain_to_play.md`
