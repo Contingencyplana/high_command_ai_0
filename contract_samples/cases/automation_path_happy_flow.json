@@ -1,7 +1,7 @@
 {
   "name": "automation_path_happy_flow",
-  "description": "Happy-path automation case verifying narration and telemetry baseline for Order 044.",
-  "emoji_chain": ["🛠️", "⚒️", "🤖", "✅"],
+  "description": "Automation-path happy flow verifying Order 044 comfort tooling stays in contract.",
+  "emoji_chain": ["🛠️", "📦", "🎯", "🤖", "✅"],
   "adapter": {
     "order_id": "order-2025-11-07-044",
     "issued_by": "high_command_ai_0",
@@ -11,26 +11,26 @@
   },
   "expectations": {
     "emoji_runtime": {
-      "summary": "Forge craft ally -> victory",
+      "summary": "Forge deliver focus ally -> victory",
       "intent": {
         "actor": "forge",
-        "action": "craft",
+        "action": "deliver",
         "target": "ally",
-        "qualifiers": [],
+        "qualifiers": ["target"],
         "outcome": "success"
       },
-      "spoken": ["forge", "craft", "ally", "victory"]
+      "spoken": ["forge", "deliver", "focus", "ally", "victory"]
     },
     "factory_order": {
-      "summary": "Forge craft ally -> victory",
+      "summary": "Forge deliver focus ally -> victory",
       "priority": "high",
       "target": "all_fronts",
       "requires_ack": true,
       "details_contains": [
-        "Actor forge executes craft targeting ally.",
-        "Qualifiers: none. Outcome: success.",
-        "Glyph chain: 🛠️ ⚒️ 🤖 ✅.",
-        "Telemetry batch"
+        "Actor forge executes deliver targeting ally.",
+        "Qualifiers: target. Outcome: success.",
+        "Glyph chain: 🛠️ 📦 🎯 🤖 ✅.",
+        "Telemetry batch forge-deliver-"
       ]
     }
   }

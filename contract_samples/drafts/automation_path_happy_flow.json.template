@@ -1,9 +1,7 @@
 {
   "name": "automation_path_happy_flow",
-  "description": "DRAFT TEMPLATE — Happy-path automation case exercising ACK/report comfort flow.",
-  "emoji_chain": [
-    "🛠️", "⚒️", "🤖", "✅"
-  ],
+  "description": "Happy-path automation case verifying narration and telemetry baseline for Order 044.",
+  "emoji_chain": ["???", "??", "??", "?"],
   "adapter": {
     "order_id": "order-2025-11-07-044",
     "issued_by": "high_command_ai_0",
@@ -13,26 +11,26 @@
   },
   "expectations": {
     "emoji_runtime": {
-      "summary": "Forge crafts the Ally → Victory",
+      "summary": "Forge craft ally -> victory",
       "intent": {
-        "action": "forge.craft",
+        "actor": "forge",
+        "action": "craft",
         "target": "ally",
-        "qualifiers": []
+        "qualifiers": [],
+        "outcome": "success"
       },
-      "spoken": [
-        "Forge crafts the Ally",
-        "Victory"
-      ]
+      "spoken": ["forge", "craft", "ally", "victory"]
     },
     "factory_order": {
-      "summary": "Forge crafts the Ally → Victory",
+      "summary": "Forge craft ally -> victory",
       "priority": "high",
       "target": "all_fronts",
       "requires_ack": true,
       "details_contains": [
-        "emoji_runtime_payload",
-        "automation",
-        "comfort"
+        "Actor forge executes craft targeting ally.",
+        "Qualifiers: none. Outcome: success.",
+        "Glyph chain: ??? ?? ?? ?.",
+        "Telemetry batch"
       ]
     }
   }

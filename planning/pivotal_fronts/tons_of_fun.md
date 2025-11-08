@@ -58,3 +58,5 @@ Environment Thresholds (Non-enforcing; guardrail telemetry)
 ## Bottom Line
 
 If Nightlands multiplayer video game (Toysoldiers AI) is not TONS-of-FUN it will die stillborn in a Sea of Competition!
+
+See also: `planning/pivotal_fronts/from_pain_to_play.md` for concrete conversions from toil to comfort.

@@ -83,13 +83,18 @@ Evidence:
 
 ## Next
 
-- During the current lull: confirm heartbeat/sync across workspaces, draft automation-path test coverage, and scope Order 044 (automation/comfort focus) with success criteria and dependencies.
+- Return to lull checklist: review Order 044 evidence, surface lessons for comfort tooling, and scope the next campaign window.
+
+Related
+- Comfort path: `exchange/attachments/guides/comfort_happy_path.md`
+- From Pain to Play: `planning/pivotal_fronts/from_pain_to_play.md`
 
 ---
 
-## Planning Stub — Order 044: Relieve the President’s Burden
+## Campaign Brief — Order 044: Relieve the President’s Burden
 
-- Type: Major (cross‑workspace automation + comfort improvements)
+- Status: **Completed 2025-11-08 (order-2025-11-07-044 closed)**
+- Type: Major (cross-workspace automation + comfort improvements)
 - Objective: Reduce routine operational load on High Command while increasing playability and narrative coherence during everyday work.
 
 ### Success Criteria
@@ -100,6 +105,15 @@ Evidence:
 - Contract coverage: extend contract tests to include at least one “automation path” case; all cases pass locally.
 - Comfort: document a 70/30 play/dev‑ops path (single “happy path” from overlay → logs → exchange sync).
 
+### Progress Log
+
+- Step 1 (2025-11-08T11:40Z) — Exchange inbox verified clear; ledger primed for Order 044 evidence.
+- Step 2 (2025-11-08T11:45Z) — Exchange heartbeat [OK], acknowledgement logged, and offline sync mirrored latest orders/reports ahead of runtime shell work.
+- Step 3 (2025-11-08T11:46Z) — Narrator/telemetry shells exercised; comfort guide updated with commands.
+- Step 4 (2025-11-08T11:47Z) — Added `automation_path_happy_flow` contract case; contract runner passes focused sweep.
+- Step 5 (2025-11-08T11:50Z) — Published comfort happy path refresh and automation quick-start guide to anchor the 70/30 loop.
+- Step 6 (2025-11-08T11:55Z) — Completion report archived and ledger closed for Order 044.
+
 ### Dependencies
 
 - `quint_synced/` alignment docs adopted across fronts (payload + narration).
@@ -109,7 +123,7 @@ Evidence:
 
 ### Deliverables
 
-- Updated guides: lull checklist and automation quick‑start in `exchange/attachments/guides/`.
+- Updated guides: lull checklist and automation quick-start in `exchange/attachments/guides/`.
 - Minimal narrator/telemetry shell entry points under `golf_00/delta_00/alfa_02` / `alfa_03` (even stubs with TODOs).
 - Extended contract samples exercising an automation path.
 - Final report and ACK for Order 044 archived in exchange.
@@ -117,7 +131,7 @@ Evidence:
 ### Evidence Hooks
 
 - Ledger: `exchange/ledger/journal.md`
-- Reports: `exchange/reports/archived/order-2025-11-xx-044-report.json` (to be created)
+- Reports: `exchange/reports/inbox/order-2025-11-07-044-report.json` (promote to archived on close)
 - Tools: `tools/exchange_heartbeat.py`, `tools/offline_sync_exchange.py`, `tools/contract_test_runner.py`
 
 ### Risks & Mitigations
@@ -128,4 +142,4 @@ Evidence:
 
 ### Window
 
-- Proposed: 3–5 days, with day 1 focused on inbox triage and runtime shell stubs.
+- 2025-11-08 → 2025-11-12 (day 1: inbox triage + runtime shell stubs; day 2+: automation coverage, comfort docs, validation).
