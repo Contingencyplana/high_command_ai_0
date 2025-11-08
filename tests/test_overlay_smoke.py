@@ -1,6 +1,5 @@
-import os
+import sys
 from pathlib import Path
-from tempfile import TemporaryDirectory
 
 
 def test_dispatch_all_mapped_cells(tmp_path: Path, monkeypatch):
@@ -25,7 +24,20 @@ def test_dispatch_all_mapped_cells(tmp_path: Path, monkeypatch):
     spec = importlib.util.spec_from_file_location("overlay_bridge", bridge_path)
     assert spec and spec.loader
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)  # type: ignore[attr-defined]
+    sys.modules[spec.name] = module
+
+    bridge_module_path = str(bridge_path.parent)
+    cleanup_path = False
+    if bridge_module_path not in sys.path:
+        sys.path.insert(0, bridge_module_path)
+        cleanup_path = True
+
+    try:
+        spec.loader.exec_module(module)  # type: ignore[attr-defined]
+    finally:
+        if cleanup_path:
+            sys.path.remove(bridge_module_path)
+        sys.modules.pop(spec.name, None)
 
     # Build bridge with a temp outbox directory
     outbox_dir = tmp_path / "emoji_runtime_outbox"
