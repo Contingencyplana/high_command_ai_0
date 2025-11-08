@@ -29,9 +29,29 @@ Evidence: <key files/paths>
 ```
 
 ## Current State Snapshot
-- Orders queue: clear (`exchange/orders/pending` only `.gitkeep`).
-- Inbox: cleared 2025-11-08; backlog archived to `exchange/reports/archived/inbox_backlog/`; Order 035 monitor result published (promote recommendation).
+
+- Orders queue: `order-2025-11-09-045` issued and staged in `exchange/orders/pending/`.
+- Inbox: cleared 2025-11-09; backlog archived to `exchange/reports/archived/inbox_backlog/`; Order 035 monitor result published (promote recommendation); Order 2025-10-20-001 report promoted to `exchange/reports/archived/`.
 - Recent completions: 040/041/043 closed; reports and acks archived (see `exchange/ledger/index.json`).
+
+## Foundation Campaign (Orders 001–039)
+
+```
+Name: Foundation Campaign (Orders 001–039)
+Window: 2025-10-12 → 2025-10-26
+Type: Major → infrastructure bring-up
+Objective: Stand up exchange hub, heartbeat/sync loop, ledger discipline, and telemetry quilt; enact safety policy and stabilize governance.
+Outcomes:
+- Offline continuity mode active; exchange/README + heartbeat/sync tools shipped.
+- Telemetry quilt loom stood up; composite exports aligned and versioned.
+- Safety Policy 025 enacted; fronts closed and audit logged (Oct 16).
+- Schema drift surfaced → corrective Order 036 scoped and tracked.
+Evidence:
+- exchange/ledger/2025-10.md, exchange/ledger/journal.md
+- exchange/README.md, tools/exchange_heartbeat.py, tools/offline_sync_exchange.py
+- exchange/reports/archived/all-fronts-closed-2025-10-16-report.json
+- planning/SCHEMA_DRIFT_SITREP_2025-10-18.md
+```
 
 ## Chronicle — Recent Campaigns
 
@@ -83,14 +103,52 @@ Evidence:
 
 ## Next
 
-- Walk the lull checklist now: review Order 044 evidence, clear any straggling inbox artifacts, and log retrospective notes.
-- Draft candidate scope for the UI overlay push (targeted as Order 045) with runtime shell enhancements, narration hooks, and comfort loop validation baked in.
-- Confirm tooling readiness — contract suite, heartbeat scripts, and offline bridge — so the next campaign launches on a clean baseline.
+- Execute Order 045 (UI overlay integration slice) focusing on runtime shell upgrades, overlay flow wiring, and validation runway.
+- Capture and file the baseline readiness sweep (heartbeat, offline sync, contract logs) as the opening artifact for Order 045.
+- Track stretch ideas (cross-workspace rollout, manifest automation) outside the core slice to preserve schedule focus.
 
 Related
 
 - Comfort path: `exchange/attachments/guides/comfort_happy_path.md`
 - From Pain to Play: `planning/pivotal_fronts/from_pain_to_play.md`
+
+---
+
+## Campaign Brief — Order 045: UI Overlay Integration Slice
+
+- Status: **Pending 2025-11-09 (order-2025-11-09-045 issued)**
+- Type: Minor (runtime shells and overlay integration)
+- Objective: Deliver a demonstrable UI overlay slice that exercises narration and telemetry pipelines while locking validation coverage before broader rollout.
+
+### Pillars
+
+- Runtime shells upgraded with overlay hooks, logging hygiene, and comfort toggles across `golf_00/delta_00/alfa_02` and `golf_00/delta_00/alfa_03`.
+- UI overlay proof path capturing one end-to-end interaction through the comfort loop with retained trace artifacts.
+- Validation runway extending the contract suite plus baseline heartbeat and offline sync sweep.
+
+### Milestones
+
+- Baseline readiness sweep captured and filed with evidence links.
+- Overlay instrumentation merged into runtime shells with documented entry points and toggles.
+- Contract suite passes with the new overlay regression case.
+- Comfort and planning docs updated with operator runbook and stretch backlog.
+
+### Evidence Hooks (045)
+
+- Order: `exchange/orders/pending/order-2025-11-09-045.json`
+- Ledger: `exchange/ledger/index.json`
+- Runtime shells: `golf_00/delta_00/alfa_02/`, `golf_00/delta_00/alfa_03/`
+- Contract suite: `tools/contract_test_runner.py`
+- Comfort guide: `exchange/attachments/guides/comfort_happy_path.md`
+
+### Stretch Considerations (045)
+
+- Cross-workspace overlay rollout once the slice stabilizes.
+- Expanded manifest automation for narrator and telemetry assets.
+
+### Window (045)
+
+- 2025-11-09 → 2025-11-16 (target seven-day minor campaign cadence).
 
 ---
 
@@ -140,7 +198,7 @@ Related
 ### Evidence Hooks
 
 - Ledger: `exchange/ledger/journal.md`
-- Reports: `exchange/reports/inbox/order-2025-11-07-044-report.json` (promote to archived on close)
+- Reports: `exchange/reports/archived/order-2025-11-07-044-report.json`
 - Tools: `tools/exchange_heartbeat.py`, `tools/offline_sync_exchange.py`, `tools/contract_test_runner.py`
 
 ### Risks & Mitigations
@@ -152,3 +210,4 @@ Related
 ### Window
 
 - 2025-11-08 → 2025-11-12 (day 1: inbox triage + runtime shell stubs; day 2+: automation coverage, comfort docs, validation).
+

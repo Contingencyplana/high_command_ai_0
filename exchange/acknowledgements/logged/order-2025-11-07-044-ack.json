@@ -1,6 +1,13 @@
 {
-  "order_id": "order-2025-11-07-044",
-  "workspace": "high_command_ai_0",
-  "acknowledged_at_utc": "2025-11-08T11:45:00Z",
-  "remarks": "Acknowledged automation and comfort directive; heartbeat verified and offline sync executed to confirm exchange reachability before runtime shell work."
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-11-07-044-ack",
+  "referenced_id": "order-2025-11-07-044",
+  "sender": "high_command_ai_0",
+  "receiver": "all_fronts",
+  "timestamp_sent": "2025-11-08T11:45:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Acknowledged automation and comfort directive.",
+    "Heartbeat verified; offline sync executed."
+  ]
 }

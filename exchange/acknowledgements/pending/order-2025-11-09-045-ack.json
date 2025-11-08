@@ -1,0 +1,13 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-11-09-045-ack",
+  "referenced_id": "order-2025-11-09-045",
+  "sender": "tbd",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-11-09T00:00:00Z",
+  "status": "pending",
+  "notes": [
+    "Placeholder ACK enqueued; recipient to replace with logged ACK upon acknowledgement."
+  ]
+}
+
