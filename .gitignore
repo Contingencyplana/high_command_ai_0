@@ -2,6 +2,11 @@ __pycache__/
 *.pyc
 logs/forge.log
 logs/exchange_watcher_state.json
+logs/alfa_zero/phase_2/
+logs/alfa_zero/phase_2_*.jsonl
+logs/alfa_zero/phase_2_latencies.jsonl
+logs/canary/emoji_translator/translation_events.jsonl
+logs/fun_guardrails/observations.jsonl
 archives/*
 exchange/CONTRIBUTING.md
 exchange/LICENSE
