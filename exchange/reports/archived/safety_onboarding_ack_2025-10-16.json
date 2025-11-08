@@ -1,0 +1,15 @@
+{
+  "type": "safety_onboarding_ack",
+  "id": "valiant-citadel-ack-20251016-001",
+  "timestamp": "2025-10-16T09:45:00Z",
+  "owner": "valiant_citadel_ai_0",
+  "ack": {
+    "message": "Safety workspace initialized and ready to receive orders.",
+    "links": [
+      "policies/policy_engine.md",
+      "policies/kill_switch.md",
+      "tools/runbooks/incident_freeze.md",
+      "tools/runbooks/incident_rollback.md"
+    ]
+  }
+}

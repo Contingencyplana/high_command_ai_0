@@ -65,6 +65,22 @@ A forthcoming manufacturing and automation pillar. Toyfoundry will likely orches
 
 The eight strategic lineages (see `planning/big_ideas_families.md`) that compose SHAGI’s multiverse. Each family maps to a set of workspaces and cognitive functions.
 
+### Comfort Path
+
+The “happy flow” experience High Command curates so operators can move from overlay → logs → exchange with minimal friction. Order 044 tracks comfort-path evidence (playable steps, narration hooks, sync cadence) to keep day-to-day work approachable.
+
+### Automation Path
+
+The contract-tested route that validates our automation commitments. Samples live under `contract_samples/cases/` (see `automation_path_happy_flow.json`) and are exercised during Order 044 to ensure tooling, schemas, and scripts stay aligned.
+
+### Inbox Backlog
+
+Archived reports and acknowledgements moved out of `exchange/reports/inbox` once triaged. Legacy payloads now sit in `exchange/reports/archived/inbox_backlog/` so fresh deliveries stay visible while prior evidence remains queryable.
+
+### Daily Doc Refresh
+
+A cadence guardrail: each lull or major push triggers a sweep of doctrine scrolls, ledgers, and guides to incorporate new vocabulary, links, and orders. Glossary updates should note when they were rolled into a Daily Doc Refresh for traceability.
+
 ---
 
 ## 🛠️ 3. Tools & Utilities
@@ -72,6 +88,7 @@ The eight strategic lineages (see `planning/big_ideas_families.md`) that compose
 - **Forge CLI (`python -m tools.forge.cli`)** — Manages Alfa initialization (`init-alfa`), hydration, and validation.
 - **Schema Validator (`python tools/schema_validator.py <path>`)** — Verifies order, acknowledgement, and report payloads against canonical schemas.
 - **Exchange Watcher (`python -m tools.exchange_watcher`)** — Polls the exchange for new artefacts; can run once or continuously.
+- **Telemetry Summarizer (`pwsh -File tools/hc_alfa/summarize_telemetry.ps1`)** — Condenses clerk monitor runs (e.g., Order 035) into `*_result.json` reports with caps adherence and recommendation fields.
 - **Pytest Suite (`pytest`)** — Runs automated tests covering selectors, schema validation, and exchange automation.
 
 ---

@@ -1,29 +1,76 @@
 {
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-10-15-028-report",
+  "order_id": "order-2025-10-15-028",
   "reported_by": "toyfoundry_ai_0",
-  "summary": "Canary Alfa batches generated and validated locally; composite exports ready for consumer ingestion.",
-  "policy": {
-    "owner": "toyfoundry_ai_0",
-    "timestamp": "2025-10-16T05:04:30Z",
-    "approvals": [
-      "SafetyLead",
-      "DutyCommander"
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-10-22T04:49:00Z",
+  "status": "completed",
+  "summary": "Minted 3 fresh canary Alfas and generated Order 021 composite exports (JSON/CSV) with build info, manifest, and SHA256 sidecars. Retention locked at 7 days with rollback hooks aligned to Order 025 governance.",
+  "artifacts": {
+    "export_dir": ".toyfoundry/telemetry/quilt/exports/order028_canary",
+    "composite_export_json": ".toyfoundry/telemetry/quilt/exports/order028_canary/composite_export.json",
+    "composite_export_csv": ".toyfoundry/telemetry/quilt/exports/order028_canary/composite_export.csv",
+    "build_info": ".toyfoundry/telemetry/quilt/exports/order028_canary/build_info.json",
+    "export_manifest": ".toyfoundry/telemetry/quilt/exports/order028_canary/export_manifest.json",
+    "checksums": {
+      "composite_export.json": "7D693137A87AA7082990D7F931F8F90853539DB4581F3175FBBA1C07003745BB",
+      "composite_export.csv": "7D4E44F153747D7DADD2919AC3400D92DBE39F0BC86847FD4F24EF95A5C785A4"
+    },
+    "alfas": [
+      "production/alfa_batches/alfa-1761133320-66974519.json",
+      "production/alfa_batches/alfa-1761133332-1e8cf793.json",
+      "production/alfa_batches/alfa-1761133344-328549e2.json"
     ]
   },
-  "schema": "factory-report@1.0",
-  "canary": {
-    "retention_days": 7,
-    "batches_planned": 2,
-    "rollback_ready": true,
-    "batches_emitted": 1
+  "pipeline": {
+    "proposal": {
+      "status": "passed",
+      "notes": [
+        "Intent: deliver limited run canary composite export for consumption testing.",
+        "Scope: 3 Alfa mints routed to dedicated order028_canary lane.",
+        "Risks: residual schema drift, checksum mismatch, telemetry gaps.",
+        "Rollback: restore prior composite export set and purge manifests via forge_purge_alfa if entropy > 0.7.",
+        "Order 025 metadata: owner=toyfoundry_ai_0; dual-key approvals VisionHolder + SafetyLead at 2025-10-16T03:49:53.4445080Z."
+      ]
+    },
+    "sandbox": {
+      "status": "passed",
+      "notes": [
+        "Ran python -m tools.forge.forge_mint_alfa --name 'Order028 Canary Dry Run' --dry-run (success).",
+        "Executed python tools/validate_order_021.py on reference export (19 records, pass)."
+      ]
+    },
+    "canary": {
+      "status": "passed",
+      "notes": [
+        "Minted: alfa-1761133320-66974519, alfa-1761133332-1e8cf793, alfa-1761133344-328549e2.",
+        "Generated composite_export JSON/CSV (3 records, schema_version=1.0) in order028_canary lane.",
+        "SHA256 verified (json=7D693137A87AA7082990D7F931F8F90853539DB4581F3175FBBA1C07003745BB, csv=7D4E44F153747D7DADD2919AC3400D92DBE39F0BC86847FD4F24EF95A5C785A4).",
+        "Validator: python tools/validate_order_021.py ... --csv ... (3/3 records pass; CSV header OK)."
+      ]
+    },
+    "ga": {
+      "status": "awaiting_approval",
+      "notes": [
+        "Awaiting Toysoldiers (Order 029) consumer acceptance and High Command sign-off."
+      ]
+    }
   },
-  "artifacts": {
-    "composite_csv_sha256": "1C4497C33C5D04F29581CC4CAADA8EDFF6C54FF850D6040048083995E2BEFB94",
-    "composite_csv_path": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.csv",
-    "composite_json_path": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.json",
-    "composite_json_sha256": "1DCFE5A8362F620A9E0512B6155E6EEC421E4D9D189D1E2A190F6DA485041757"
-  },
-  "status": "completed",
-  "order_id": "order-2025-10-15-028",
-  "timestamp_reported": "2025-10-16T05:04:30Z"
+  "safety": {
+    "approvals": [
+      "toyfoundry_ai_0",
+      "VisionHolder",
+      "SafetyLead"
+    ],
+    "retention": "7 days (auto-purge after 2025-10-29T04:49:00Z)",
+    "rollback_plan": "Revert to prior composite export set; purge canary manifests via tools/forge/forge_purge_alfa.py if anomaly detected; restore telemetry from git history if needed.",
+    "caps": {
+      "role": "factory_division",
+      "limits": {
+        "rate_per_min": 4,
+        "scope": "canary_batch_manufacturing"
+      }
+    }
+  }
 }
-

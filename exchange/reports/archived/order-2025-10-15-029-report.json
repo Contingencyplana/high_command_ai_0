@@ -1,21 +1,38 @@
 {
-  "schema": "field-report@1.0",
+  "schema": "factory-report@1.0",
   "report_id": "order-2025-10-15-029-report",
-  "origin": "toysoldiers_ai_0",
-  "relates_to": "order-2025-10-15-029",
-  "timestamp_submitted": "2025-10-18T13:00:00+00:00",
-  "status": "blocked",
-  "summary": "Order 029 canary C1 validation BLOCKED - same schema drift issue as Order 021.",
-  "details": {
-    "exports_location": ".imports/toyfoundry/telemetry/quilt/exports/canary_c1/",
-    "files_ingested": [
-      "composite_export.json",
-      "composite_export.csv",
-      "export_manifest.json",
-      "build_info.json"
-    ],
-    "schema_drift": "Canary exports use same schema as standard run - mismatch with Order 029 expectations",
-    "consumer_acceptance": "BLOCKED",
-    "blocker": "Awaiting schema alignment resolution from Order 021"
+  "order_id": "order-2025-10-15-029",
+  "reported_by": "toysoldiers_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-10-25T10:15:00Z",
+  "status": "completed",
+  "summary": "Pulled Toyfoundry canary batch b1 into consumer imports, verified SHA256s, re-ran Order 021 schema + DQ checks, and confirmed Go for downstream rollout.",
+  "ingestion": {
+    "source_export": ".imports/toyfoundry/telemetry/quilt/exports/canary_b1/composite_export.json",
+    "records": 4,
+    "units_total": 29,
+    "sha256": {
+      "json": "1DCFE5A8362F620A9E0512B6155E6EEC421E4D9D189D1E2A190F6DA485041757",
+      "csv": "1C4497C33C5D04F29581CC4CAADA8EDFF6C54FF850D6040048083995E2BEFB94"
+    },
+    "sha256_verified": true,
+    "verification_command": "python tools/validate_order_021.py --imports .imports/toyfoundry/telemetry/quilt/exports/canary_b1"
+  },
+  "validation": {
+    "schema_version": "1.0",
+    "dq_checks": {
+      "non_empty": true,
+      "allowed_enums": true,
+      "units_positive": true,
+      "duration_range": true
+    },
+    "validator_command": "python tools/validate_order_021.py --imports .imports/toyfoundry/telemetry/quilt/exports/canary_b1",
+    "records_validated": 4,
+    "result": "pass"
+  },
+  "acceptance": {
+    "decision": "go",
+    "constraints": [],
+    "notes": "Schema remediation from Order 036 holds under canary batch b1; no blockers detected."
   }
 }

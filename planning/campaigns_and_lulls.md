@@ -30,7 +30,7 @@ Evidence: <key files/paths>
 
 ## Current State Snapshot
 - Orders queue: clear (`exchange/orders/pending` only `.gitkeep`).
-- Inbox: cleared 2025-11-08; backlog archived to `exchange/reports/archived/inbox_backlog/`; follow-up needed for Order 035 monitoring result.
+- Inbox: cleared 2025-11-08; backlog archived to `exchange/reports/archived/inbox_backlog/`; Order 035 monitor result published (promote recommendation).
 - Recent completions: 040/041/043 closed; reports and acks archived (see `exchange/ledger/index.json`).
 
 ## Chronicle — Recent Campaigns
@@ -83,7 +83,7 @@ Evidence:
 
 ## Next
 
-- During the current lull: confirm heartbeat/sync across workspaces, follow up on Order 035 monitoring result, and scope Order 044 (automation/comfort focus) with success criteria and dependencies.
+- During the current lull: confirm heartbeat/sync across workspaces, draft automation-path test coverage, and scope Order 044 (automation/comfort focus) with success criteria and dependencies.
 
 ---
 

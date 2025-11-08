@@ -10,3 +10,7 @@ All notable updates to the High Command AI workspace are documented here. Entrie
 - **Exchange Watcher v1** — Introduced `tools/exchange_watcher.py` with tests to surface new orders/acks/reports automatically; recommended for deployment in all field theatres.
 - **Doctrine Glossary** — Added `planning/glossary.md` capturing shared acronyms, terminology, and tooling references for High Command and field theatres.
 - **Toyfoundry Charter Q4 2025** — Expanded `planning/toyfoundry/toyfoundry.md` with mission scope, interfaces, guardrails, and upcoming orders to prepare manufacturing rollout.
+
+## 2025-11-08
+
+- **Order 044 Comfort/Automation Vocabulary** — Refreshed `planning/glossary.md` with Comfort Path, Automation Path, Inbox Backlog, and Daily Doc Refresh definitions plus telemetry tooling references; aligns with ledger entry `2025-11-08 21:55` and promotes Toyfoundry/Toysoldiers evidence.

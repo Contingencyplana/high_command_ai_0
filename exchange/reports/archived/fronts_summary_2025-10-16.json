@@ -1,0 +1,31 @@
+{
+  "timestamp_submitted": "2025-10-16T03:42:58Z",
+  "status": "completed",
+  "report_id": "fronts_summary_2025-10-16",
+  "summary": "Pointer orders synchronized; consumer roll-in ready for review.",
+  "details": {
+    "o26": {
+      "ack": "logged",
+      "report": "archived",
+      "status": "closed"
+    },
+    "o27": {
+      "ack": "logged",
+      "report": "archived",
+      "status": "closed"
+    },
+    "o21": {
+      "schema_version": "v1.0",
+      "acceptance": "accepted",
+      "dq": "ok",
+      "status": "ready_for_review"
+    }
+  },
+  "schema": "factory-report@1.0",
+  "relates_to": [
+    "order-2025-10-15-026",
+    "order-2025-10-15-027",
+    "order-2025-10-15-021"
+  ],
+  "origin": "toysoldiers_ai_0"
+}
