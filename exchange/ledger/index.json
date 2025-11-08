@@ -243,12 +243,12 @@
     },
     "order-2025-11-07-044": {
       "status": "closed",
-      "order_path": "orders/completed/order-2025-11-07-044.json",
+      "order_path": "orders/dispatched/order-2025-11-07-044.json",
       "ack_path": "acknowledgements/logged/order-2025-11-07-044-ack.json",
       "report_path": "reports/archived/order-2025-11-07-044-report.json"
     },
     "order-2025-11-09-045": {
-      "status": "pending",
+      "status": "closed",
       "order_path": "orders/pending/order-2025-11-09-045.json",
       "ack_path": "acknowledgements/pending/order-2025-11-09-045-ack.json",
       "report_path": "reports/inbox/order-2025-11-09-045-report.json"
