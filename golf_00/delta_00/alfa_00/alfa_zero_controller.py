@@ -23,6 +23,7 @@ from pathlib import Path
 from typing import List, Optional, Tuple, TextIO
 
 from overlay_bridge import CELL_MAPPINGS, OverlayBridge, build_bridge, cell_label
+import overlay_flow
 from pathlib import Path as _PathForWarnings
 import json as _json_for_warnings
 
@@ -217,6 +218,26 @@ def post_dispatch(
         except Exception:
             pass
 
+def _orchestrate_first_click(ctx: ControllerContext, cell: Cell, *, say: str = "Overlay node ready") -> None:
+    """Emit correlated narration + telemetry traces for the first click."""
+    try:
+        label = cell_label(cell)
+        ts = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
+        trace_id = f"overlay-alpha-{label}-{ts}"
+        narration_trace = ctx.repo_root / "logs" / "alfa_02" / "narration_traces.jsonl"
+        telemetry_trace = ctx.repo_root / "logs" / "alfa_03" / "telemetry.jsonl"
+        overlay_flow.emit_overlay_click(
+            overlay="overlay-alpha",
+            trace_id=trace_id,
+            say=say,
+            comfort_level="gentle",
+            narration_trace=narration_trace,
+            telemetry_trace=telemetry_trace,
+        )
+        print(f"? Orchestrated first-click traces (trace_id={trace_id})")
+    except Exception as exc:
+        print(f"??  First-click orchestration skipped: {exc}")
+
 def process_event_stream(ctx: ControllerContext, stream: TextIO) -> None:
     """Consume JSONL events that specify overlay dispatches."""
 
@@ -325,6 +346,8 @@ def interactive_session(ctx: ControllerContext) -> None:
             print(f"⚠️  Dispatch failed: {exc}")
             continue
 
+        if last_cell is None:
+            _orchestrate_first_click(ctx, cell)
         last_cell = cell
         render_grid(highlight=cell)
         print(
@@ -374,6 +397,14 @@ def main() -> None:
     args = parser.parse_args()
 
     ctx = bootstrap_context(args.outbox, auto_sync=not args.no_auto_sync)
+
+    # If a single cell is requested, pre-emit correlated narration + telemetry
+    # so one-shot runs mirror the interactive first-click flow.
+    if args.cell:
+        try:
+            _orchestrate_first_click(ctx, parse_cell_token(args.cell))
+        except Exception:
+            pass
 
     if args.list:
         list_mapped_cells()

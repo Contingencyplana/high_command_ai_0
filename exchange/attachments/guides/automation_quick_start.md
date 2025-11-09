@@ -19,6 +19,11 @@ Use this checklist when spinning up the automation + comfort tooling introduced 
 - Telemetry stub: `python -m golf_00.delta_00.alfa_03.telemetry_shell --event forge.deliver --status success --details "automation quick-start" --out logs/alfa_03/telemetry.jsonl`
 - These stubs prove the runtime hook points without requiring the full overlay.
 
+### One-command overlay check (Order 045)
+
+- Orchestrate correlated narration + telemetry with comfort and overlay context:
+  - `python -m golf_00.delta_00.alfa_00.overlay_flow --overlay overlay-alpha --trace-id overlay-alpha-0001 --say "Overlay node ready" --comfort-level gentle --narration-trace logs/alfa_02/narration_traces.jsonl --telemetry-trace logs/alfa_03/telemetry.jsonl`
+
 ## 4. Heartbeat & Sync
 
 - `python tools/exchange_heartbeat.py`
@@ -32,5 +37,11 @@ Use this checklist when spinning up the automation + comfort tooling introduced 
 
 ## 6. Continue the Loop
 
-- Re-run Steps 2–5 whenever comfort tooling changes.
+- Re-run Steps 2-5 whenever comfort tooling changes.
 - Share highlights in the next lull recap so the 70/30 cadence stays healthy.
+
+## See Also — Pivot Seven (Outlands)
+
+- Outlands framework: `exchange/attachments/guides/outlands_framework.md`
+- Fun Guardian protocol: `exchange/attachments/guides/fun_guardian_protocol.md`
+- Pivot Seven spec: `new_major_pivots/new_major_pivot_7.md`

@@ -12,6 +12,7 @@
 | P1 | `planning/morningate_reflection_layer.md` | Capture CTA updates + offline publication path | Done | War Office Liaison | ✅ Added offline publishing guardrails, metadata, CTA notes. |
 | P2 | `planning/player_routing_brief.md` | Align with understaffed-front response + offline comms | Done | Toysoldiers Liaison | ✅ Added offline continuity cadence + metadata. |
 | P2 | `new_major_pivots/README.md` | Summarise post-pivot state incl. emoji language progress | Done | High Command | ✅ Added metadata, Level-0 baseline, and Alfa staging checklist. |
+| P2 | `new_major_pivots/new_major_pivot_2.md` | Capture overlay progress, telemetry hooks, and Order 045 plan | Done 2025-11-09 | High Command | ✅ Progress log aligned with Orders 044/045; revisit after overlay slice evidence lands. |
 
 ## Working Norms
 
@@ -27,7 +28,10 @@
 
 ## Next Target Candidate
 
-- 2025-11-08 — Sweep `new_major_pivots/pivot_two.md` for Toyfoundry telemetry hooks once monitoring confirms stable cadence.
+- 2025-11-09 - Refresh `ops.md` with second-pass offline cadence once Order 045 telemetry traces land.
+- 2025-11-10 - Add Pivot Seven (Outlands Onion) links to index and attach guide stubs (`outlands_framework.md`, `fun_guardian_protocol.md`); weave into comfort docs overview.
+- 2025-11-10 - Add overlay regression case `overlay_guarded_delivery` for qualifier coverage; update `contract_samples/README.md` and rerun contract suite.
+- 2025-11-10 - Evaluate propagating `trace_id` through `golf_00/delta_00/alfa_00/overlay_bridge.py` into payload extensions for cross-pipeline correlation; document toggle and evidence sinks.
 
 ## Recently Completed
 
@@ -40,3 +44,4 @@
 - 2025-10-31 — Major pivots overview refreshed with Level-0 baseline + staging checklist (High Command).
 - 2025-11-05 — Pivotal fronts ops scroll updated with Offline Continuity cadence and contract suite guardrails (High Command).
 - 2025-11-07 — Ops scroll acceptance evidence updated with Toysoldiers ORDER-043 adoption log review (High Command).
+- 2025-11-09 — new_major_pivot_2.md progress log aligned with Orders 044/045 overlay plan (High Command).

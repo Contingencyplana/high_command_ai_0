@@ -1,1 +1,2 @@
 {"ts": "2025-11-07T23:32:04Z", "event": "forge.craft", "status": "success", "details": "happy path", "source": "alfa_03:telemetry_shell"}
+{"ts": "2025-11-09T04:59:18Z", "event": "overlay.click", "status": "success", "details": "Operator selects forge ritual", "overlay": "overlay-alpha", "comfort": {"mode": "comfort", "level": "on:gentle"}, "trace_id": "overlay-alpha-0001", "source": "alfa_03:telemetry_shell"}

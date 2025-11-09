@@ -1,0 +1,36 @@
+{
+  "name": "overlay_first_click",
+  "description": "First overlay interaction mirrors basic ritual victory with comfort wiring.",
+  "emoji_chain": ["🛠️", "⚒️", "🤖", "✅"],
+  "adapter": {
+    "order_id": "emoji-overlay-first-click",
+    "issued_by": "high_command_ai_0",
+    "target": "toysoldiers_ai_0",
+    "priority": "high",
+    "requires_ack": true
+  },
+  "expectations": {
+    "emoji_runtime": {
+      "summary": "Forge craft ally -> victory",
+      "intent": {
+        "actor": "forge",
+        "action": "craft",
+        "target": "ally",
+        "qualifiers": [],
+        "outcome": "success"
+      },
+      "spoken": ["forge", "craft", "ally", "victory"]
+    },
+    "factory_order": {
+      "priority": "high",
+      "summary": "Forge craft ally -> victory",
+      "target": "toysoldiers_ai_0",
+      "requires_ack": true,
+      "details_contains": [
+        "Actor forge executes craft targeting ally.",
+        "Qualifiers: none. Outcome: success.",
+        "Glyph chain: 🛠️ ⚒️ 🤖 ✅."
+      ]
+    }
+  }
+}

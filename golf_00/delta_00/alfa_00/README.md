@@ -21,6 +21,8 @@
 - Smoke test every mapped cell: `python overlay_test_harness.py --all-cells`
 - Launch the interactive controller: `python alfa_zero_controller.py`
 - Stream overlay events from the UI: `python alfa_zero_ui.py --emit-events | python alfa_zero_controller.py --event-stream -`
+ - Orchestrate the first overlay click (narration + telemetry with comfort):
+   `python -m golf_00.delta_00.alfa_00.overlay_flow --overlay overlay-alpha --trace-id overlay-alpha-0001 --say "Overlay node ready" --comfort-level gentle --narration-trace logs/alfa_02/narration_traces.jsonl --telemetry-trace logs/alfa_03/telemetry.jsonl`
 
 Each run imports the Level-0 translator from `alfa_04`, resolves the same emoji runtime outbox as the emoji composer, and writes timestamped JSON payloads annotated with the triggering grid cell. The controller automatically logs ledger entries and fires the heartbeat → sync loop unless you pass `--no-auto-sync` (useful for dry runs).
 

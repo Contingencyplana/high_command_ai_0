@@ -18,7 +18,7 @@ Purpose: name the operating rhythm — Campaign → Lull → Next Campaign — s
 ## Chronicle Template
 Use this block per campaign:
 
-```
+```text
 Name: <Campaign Name>
 Window: <YYYY-MM-DD → YYYY-MM-DD>
 Type: Major|Minor
@@ -33,10 +33,11 @@ Evidence: <key files/paths>
 - Orders queue: `order-2025-11-09-045` issued and staged in `exchange/orders/pending/`.
 - Inbox: cleared 2025-11-09; backlog archived to `exchange/reports/archived/inbox_backlog/`; Order 035 monitor result published (promote recommendation); Order 2025-10-20-001 report promoted to `exchange/reports/archived/`.
 - Recent completions: 040/041/043 closed; reports and acks archived (see `exchange/ledger/index.json`).
+- Document refresh cadence: second-pass daily slices running from `planning/document_refresh_queue.md`; log updates to `exchange/ledger/2025-11.md` each block.
 
 ## Foundation Campaign (Orders 001–039)
 
-```
+```text
 Name: Foundation Campaign (Orders 001–039)
 Window: 2025-10-12 → 2025-10-26
 Type: Major → infrastructure bring-up
@@ -55,7 +56,7 @@ Evidence:
 
 ## Chronicle — Recent Campaigns
 
-```
+```text
 Name: Emoji → Factory Bridge
 Window: 2025-11-01 → 2025-11-01
 Type: Minor → enabling bridge
@@ -70,7 +71,7 @@ Evidence:
 - exchange/reports/archived/order-2025-11-01-040-report.json
 ```
 
-```
+```text
 Name: Cross‑Workspace Telemetry & Narration
 Window: 2025-11-01 → 2025-11-01
 Type: Minor → alignment/stubs
@@ -85,7 +86,7 @@ Evidence:
 - quint_synced/narration_alignment.md
 ```
 
-```
+```text
 Name: Contract Suite Rollout
 Window: 2025-11-02 → 2025-11-02
 Type: Minor → verification
@@ -103,7 +104,8 @@ Evidence:
 
 ## Next
 
-- Execute Order 045 (UI overlay integration slice) focusing on runtime shell upgrades, overlay flow wiring, and validation runway.
+- Run the Daily Doc Refresh slice: pull one high-signal scroll from `planning/document_refresh_queue.md`, update it, and log the change in `exchange/ledger/2025-11.md` before advancing the queue.
+- Execute Order 045 (UI overlay integration slice) focusing on runtime shell upgrades, overlay flow wiring, and validation runway (narrator + telemetry shells now instrumented with overlay hooks).
 - Capture and file the baseline readiness sweep (heartbeat, offline sync, contract logs) as the opening artifact for Order 045.
 - Track stretch ideas (cross-workspace rollout, manifest automation) outside the core slice to preserve schedule focus.
 
@@ -122,7 +124,7 @@ Related
 
 ### Pillars
 
-- Runtime shells upgraded with overlay hooks, logging hygiene, and comfort toggles across `golf_00/delta_00/alfa_02` and `golf_00/delta_00/alfa_03`.
+- Runtime shells upgraded with overlay hooks, logging hygiene, and comfort toggles across `golf_00/delta_00/alfa_02` and `golf_00/delta_00/alfa_03` (Order 045 Day 0 instrumentation).
 - UI overlay proof path capturing one end-to-end interaction through the comfort loop with retained trace artifacts.
 - Validation runway extending the contract suite plus baseline heartbeat and offline sync sweep.
 
@@ -140,6 +142,7 @@ Related
 - Runtime shells: `golf_00/delta_00/alfa_02/`, `golf_00/delta_00/alfa_03/`
 - Contract suite: `tools/contract_test_runner.py`
 - Comfort guide: `exchange/attachments/guides/comfort_happy_path.md`
+- Overlay traces: `logs/alfa_02/narration_traces.jsonl`, `logs/alfa_03/telemetry.jsonl`
 
 ### Stretch Considerations (045)
 

@@ -14,11 +14,12 @@ in lockstep on the payload contract.
 
 Current Level-0 coverage includes:
 
-- `basic_ritual_victory.json` — core forge craft success baseline.
-- `guarded_delivery_warning.json` — guarded delivery with qualifier emphasis.
-- `signal_loop_gain.json` — signal loop scenario with gain outcome.
-- `conditional_repeat_again.json` — conditional repeat with secondary outcome.
-- `automation_path_happy_flow.json` — Order 044 automation comfort flow (forge delivers ally with target qualifier).
+- `basic_ritual_victory.json` - core forge craft success baseline.
+- `guarded_delivery_warning.json` - guarded delivery with qualifier emphasis.
+- `signal_loop_gain.json` - signal loop scenario with gain outcome.
+- `conditional_repeat_again.json` - conditional repeat with secondary outcome.
+- `automation_path_happy_flow.json` - Order 044 automation comfort flow (forge delivers ally with target qualifier).
+ - `overlay_first_click.json` - Order 045 overlay “first click” regression anchored to the orchestrated flow.
 
 The fixtures intentionally capture only the stable fields that matter for the
 contract. Dynamic values (timestamps, telemetry batch identifiers) are asserted

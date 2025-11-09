@@ -111,6 +111,16 @@ Each **Alfa** is:
 
 ---
 
+## Progress Log — 2025-11-09
+
+- **2025-11-08 — Order 044:** Seeded narrator and telemetry shells in `golf_00/delta_00/alfa_02` and `alfa_03`, refreshed comfort-loop guidance, and validated automation-path contracts to back overlay traces.
+- **2025-11-09 — Order 045 Kickoff:** Issued the UI overlay integration slice with baseline readiness sweep (heartbeat, offline sync, contract suite) confirmed green; stretch backlog tracked separately to protect the core slice.
+- **2025-11-09 - Order 045 Day 0:** Upgraded narrator/telemetry shells with overlay context, comfort toggles, and JSONL trace capture sowing logs under `logs/alfa_02/narration_traces.jsonl` and `logs/alfa_03/telemetry.jsonl`.
+- **Telemetry Hooks:** Runtime shells now expose overlay hook points with trace capture earmarked as Order 045 milestone evidence.
+ - **2025-11-09 - Order 045 Day 1:** Wired the first overlay interaction end-to-end via `overlay_flow` (correlated narrator + telemetry with comfort and overlay context). Captured traces and added `overlay_first_click` to the contract suite; all contracts passing.
+
+---
+
 ## Risks
 
 | Risk | Mitigation |
@@ -147,6 +157,7 @@ Each **Alfa** is:
 ## Long-Term Vision
 
 **This overlay becomes the foundation for:**
+
 - **Nightlands Multiplayer Game** — workflow Alfas are tactical missions in larger campaign
 - **SHAGI Multiverse** — each Big Ideas Family has its own game overlay
 - **Human-AI collaboration at scale** — thousands of operators playing workflows across thousands of games

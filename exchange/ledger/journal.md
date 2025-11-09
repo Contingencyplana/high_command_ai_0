@@ -41,3 +41,5 @@
 - 2025-11-08T11:47:30Z - Order order-2025-11-07-044 Step 4 fulfilled: automation_path_happy_flow contract case promoted; contract runner clean on focused sweep.
 - 2025-11-08T11:50:00Z - Order order-2025-11-07-044 Step 5 fulfilled: automation quick-start and refreshed comfort happy path guides published to exchange attachments.
 - 2025-11-08T11:55:00Z - Order order-2025-11-07-044 Step 6 fulfilled: completion report archived, ledger closed, and lull retrospective queued.
+- 2025-11-09T13:35:00Z - Order order-2025-11-09-045: First overlay click wired end-to-end (overlay_flow). Narration + telemetry traces captured; new contract case overlay_first_click passing.
+- 2025-11-05T09:00:00Z - Pivot Seven activated (Outlands Onion): layered playability charter logged; stubs published for outlands framework and fun guardian protocol.

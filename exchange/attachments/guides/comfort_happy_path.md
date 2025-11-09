@@ -31,3 +31,14 @@ This loop keeps Order 044’s comfort mandate intact: spend ~70% of the cadence 
 - Automation case: `contract_samples/cases/automation_path_happy_flow.json`
   - Template seed for variants: `contract_samples/drafts/automation_path_happy_flow.json.template`
 - Automation quick-start: `exchange/attachments/guides/automation_quick_start.md`
+ - Outlands framework (Pivot Seven): `exchange/attachments/guides/outlands_framework.md`
+ - Fun Guardian protocol (Pivot Seven): `exchange/attachments/guides/fun_guardian_protocol.md`
+ 
+---
+
+## Order 045 — Overlay First Click
+
+- Emit correlated narration + telemetry with comfort and overlay context:
+  - `python -m golf_00.delta_00.alfa_00.overlay_flow --overlay overlay-alpha --trace-id overlay-alpha-0001 --say "Overlay node ready" --comfort-level gentle --narration-trace logs/alfa_02/narration_traces.jsonl --telemetry-trace logs/alfa_03/telemetry.jsonl`
+- Validate contracts including the overlay regression:
+  - `python -m tools.contract_test_runner --case overlay_first_click`

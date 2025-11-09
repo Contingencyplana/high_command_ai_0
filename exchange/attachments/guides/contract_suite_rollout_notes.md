@@ -25,3 +25,8 @@ High Command finished Order-2025-11-02-043, delivering curated emoji-runtime fix
 
 - Report pass/fail status and requested fixture additions back to High Command via the exchange reports channel.
 - Document any adapter divergences so the ledger captures agreed contract adjustments.
+
+## Planned Additions (Queued)
+
+- Overlay regression case for qualifier coverage: `overlay_guarded_delivery` (maps a guarded delivery chain; validates qualifier handling end-to-end).
+- Correlation threading: consider propagating a `trace_id` through `alfa_00/overlay_bridge.py` into downstream payload extensions for cross-pipeline joins (non-breaking, opt-in).
