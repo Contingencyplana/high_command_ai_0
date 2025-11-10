@@ -1,0 +1,63 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-10-046",
+  "issued_by": "high_command_ai_0",
+  "target": "outlands_activation_front",
+  "priority": "medium",
+  "timestamp_issued": "2025-11-10T14:30:00Z",
+  "summary": "Outlands Activation Slice — Lore layer pilot for Pivot Seven",
+  "context": "Order 045 established trace parity across the Alfa Zero overlay. Pivot Seven now requires a proof-of-life overlay layer so operators can activate Lore beats without risking the core runtime.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "extend_trace_payloads",
+      "details": "Thread overlay_id and layer_kind metadata through overlay_flow, overlay_bridge, and downstream payload traces. Maintain existing trace_id guarantees and document any new guardrails."
+    },
+    {
+      "step": 2,
+      "action": "add_ui_toggle",
+      "details": "Expose an opt-in Lore overlay toggle inside alfa_zero_ui. Default to off; require explicit operator acknowledgement before emitting overlay annotations."
+    },
+    {
+      "step": 3,
+      "action": "capture_activation_evidence",
+      "details": "Emit a lore-layer dispatch that records matching trace_id + overlay_id fields across narration, telemetry, payload exports, and ledger entries. Archive evidence alongside the new Outlands index stub."
+    },
+    {
+      "step": 4,
+      "action": "author_regression",
+      "details": "Add a lore overlay regression case to the contract/pytest suites demonstrating metadata preservation and guardrail compliance."
+    },
+    {
+      "step": 5,
+      "action": "refresh_guides",
+      "details": "Update comfort_happy_path, automation_quick_start, outlands_index, and inlands_and_outlands.md with operator instructions and consent flow notes for activating the Lore layer."
+    },
+    {
+      "step": 6,
+      "action": "report_completion",
+      "details": "File ledger updates and a completion report summarizing evidence, guardrails, and follow-on candidates (e.g., music/ritual overlays)."
+    }
+  ],
+  "success_criteria": [
+    "Overlay dispatch payloads, telemetry, and narration emit matching trace_id and overlay_id fields without breaking existing contracts.",
+    "Alfa Zero UI exposes an operator-controlled Lore overlay toggle with documented consent flow.",
+    "Lore overlay evidence (logs, payloads, ledger) captured and linked through outlands_index.md.",
+    "Regression coverage (contract and/or pytest) protects the overlay metadata pipeline.",
+    "Comfort and Outlands guides describe the activation protocol and cooldown expectations.",
+    "Completion report filed with next-slice recommendations for additional Outland layers."
+  ],
+  "dependencies": [
+    "order-2025-11-07-044",
+    "order-2025-11-09-045"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-11-17T23:59:59Z",
+  "attachments": [
+    { "type": "reference", "path": "planning/inlands_and_outlands.md" },
+    { "type": "reference", "path": "exchange/attachments/guides/comfort_happy_path.md" },
+    { "type": "reference", "path": "exchange/attachments/guides/outlands_index.md" },
+    { "type": "reference", "path": "golf_00/delta_00/alfa_00/alfa_zero_ui.py" },
+    { "type": "reference", "path": "golf_00/delta_00/alfa_00/overlay_bridge.py" }
+  ]
+}
