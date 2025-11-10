@@ -40,8 +40,10 @@ def _build_record(
     overlay: Optional[str],
     comfort_state: dict,
     trace_id: Optional[str],
+    overlay_id: Optional[str],
+    overlay_layer: Optional[str],
 ) -> dict:
-    return {
+    record = {
         "ts": _iso_now(),
         "event": event,
         "status": status,
@@ -51,6 +53,11 @@ def _build_record(
         "trace_id": trace_id,
         "source": "alfa_03:telemetry_shell",
     }
+    if overlay_id:
+        record["overlay_id"] = overlay_id
+    if overlay_layer:
+        record["overlay_layer"] = overlay_layer
+    return record
 
 
 def run(
@@ -61,8 +68,19 @@ def run(
     overlay: Optional[str],
     comfort: Optional[str],
     trace_id: Optional[str],
+    overlay_id: Optional[str],
+    overlay_layer: Optional[str],
 ) -> None:
-    record = _build_record(event, status, details, overlay, _comfort_state(comfort), trace_id)
+    record = _build_record(
+        event,
+        status,
+        details,
+        overlay,
+        _comfort_state(comfort),
+        trace_id,
+        overlay_id,
+        overlay_layer,
+    )
     print(json.dumps(record, ensure_ascii=False))
     if trace:
         trace.parent.mkdir(parents=True, exist_ok=True)
@@ -88,8 +106,27 @@ def main(argv: Optional[list[str]] = None) -> int:
         "--trace-id",
         help="Optional correlation identifier linking narrator + telemetry records",
     )
+    parser.add_argument(
+        "--overlay-id",
+        help="Optional Outland overlay identifier (e.g. outland-lore-v1)",
+    )
+    parser.add_argument(
+        "--overlay-layer",
+        choices=["lore", "music", "ritual", "emergent"],
+        help="Overlay layer kind when tagging Outlands metadata",
+    )
     args = parser.parse_args(argv)
-    run(args.event, args.status, args.details, args.trace, args.overlay, args.comfort_state, args.trace_id)
+    run(
+        args.event,
+        args.status,
+        args.details,
+        args.trace,
+        args.overlay,
+        args.comfort_state,
+        args.trace_id,
+        args.overlay_id,
+        args.overlay_layer,
+    )
     return 0
 
 

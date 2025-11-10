@@ -1,0 +1,45 @@
+{
+  "name": "overlay_lore_dispatch",
+  "description": "Lore layer pilot dispatch with overlay metadata threaded through payload and telemetry stub.",
+  "emoji_chain": ["🛠️", "⚒️", "🤖", "✅"],
+  "adapter": {
+    "order_id": "emoji-overlay-lore-0001",
+    "issued_by": "high_command_ai_0",
+    "target": "toyfoundry_ai_0",
+    "priority": "standard",
+    "requires_ack": false
+  },
+  "overlay": {
+    "overlay_id": "outland-lore-v1",
+    "layer_kind": "lore",
+    "trace_id": "lore-overlay-0001",
+    "description": "Lore overlay pilot dispatch"
+  },
+  "expectations": {
+    "emoji_runtime": {
+      "summary": "Forge craft ally -> victory",
+      "intent": {
+        "actor": "forge",
+        "action": "craft",
+        "target": "ally",
+        "qualifiers": [],
+        "outcome": "success"
+      },
+      "spoken": ["forge", "craft", "ally", "victory"],
+      "overlay_id": "outland-lore-v1",
+      "overlay_layer": "lore"
+    },
+    "factory_order": {
+      "summary": "Forge craft ally -> victory",
+      "priority": "standard",
+      "target": "toyfoundry_ai_0",
+      "requires_ack": false,
+      "details_contains": [
+        "Actor forge executes craft targeting ally.",
+        "Qualifiers: none. Outcome: success.",
+        "Glyph chain: 🛠️ ⚒️ 🤖 ✅.",
+        "Correlation trace_id: lore-overlay-0001."
+      ]
+    }
+  }
+}

@@ -24,6 +24,14 @@ Use this checklist when spinning up the automation + comfort tooling introduced 
 - Orchestrate correlated narration + telemetry with comfort and overlay context:
   - `python -m golf_00.delta_00.alfa_00.overlay_flow --overlay overlay-alpha --trace-id overlay-alpha-0001 --say "Overlay node ready" --comfort-level gentle --narration-trace logs/alfa_02/narration_traces.jsonl --telemetry-trace logs/alfa_03/telemetry.jsonl`
 
+### Lore layer pilot (Order 046)
+
+- Opt into the Lore overlay toggle (UI):
+  - `python -m golf_00.delta_00.alfa_00.alfa_zero_ui --enable-lore --cell 04`
+- Or trigger via the flow orchestrator:
+  - `python -m golf_00.delta_00.alfa_00.overlay_flow --overlay overlay-alpha --trace-id lore-overlay-0001 --say "Lore layer activated" --comfort-level gentle --overlay-id outland-lore-v1 --layer-kind lore --narration-trace logs/alfa_02/narration_traces.jsonl --telemetry-trace logs/alfa_03/telemetry.jsonl`
+- Contract coverage: `python -m tools.contract_test_runner --case overlay_lore_dispatch`
+
 ## 4. Heartbeat & Sync
 
 - `python tools/exchange_heartbeat.py`
@@ -46,3 +54,4 @@ Use this checklist when spinning up the automation + comfort tooling introduced 
 - Fun Guardian protocol: `exchange/attachments/guides/fun_guardian_protocol.md`
 - Pivot Seven spec: `new_major_pivots/new_major_pivot_7.md`
 - Outlands index: `exchange/attachments/guides/outlands_index.md`
+- Inlands/Outlands map: `planning/inlands_and_outlands.md`

@@ -17,9 +17,40 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Tuple
-from fun_flags import load_fun_flags, FunFlags
+import re
+
+try:
+    from fun_flags import load_fun_flags, FunFlags
+except ModuleNotFoundError:  # pragma: no cover - fallback for CLI runners
+    from golf_00.delta_00.alfa_00.fun_flags import load_fun_flags, FunFlags
 
 Cell = Tuple[int, int]
+
+_OVERLAY_ID_PATTERN = re.compile(r"^[a-z0-9._-]{1,64}$")
+VALID_LAYER_KINDS = {"lore", "music", "ritual", "emergent"}
+
+
+@dataclass(frozen=True)
+class OverlayMetadata:
+    overlay_id: str | None
+    layer_kind: str | None
+
+
+def _prepare_overlay_metadata(overlay_id: str | None, layer_kind: str | None) -> OverlayMetadata:
+    if overlay_id is None and layer_kind is None:
+        return OverlayMetadata(None, None)
+    if not overlay_id:
+        raise ValueError("overlay_id must be provided when layer_kind is set")
+    if layer_kind is None:
+        raise ValueError("layer_kind must accompany overlay_id")
+    normalized = overlay_id.strip().lower()
+    if not _OVERLAY_ID_PATTERN.match(normalized):
+        raise ValueError(
+            "overlay_id must be 1-64 chars using lowercase letters, digits, '.', '-', or '_'"
+        )
+    if layer_kind not in VALID_LAYER_KINDS:
+        raise ValueError(f"layer_kind must be one of {sorted(VALID_LAYER_KINDS)}")
+    return OverlayMetadata(normalized, layer_kind)
 
 # Centralized mapping between grid cells and Level-0 emoji chains.
 CELL_MAPPINGS: Dict[Cell, Tuple[str, str]] = {
@@ -134,6 +165,8 @@ class OverlayBridge:
         *,
         description: str | None = None,
         trace_id: str | None = None,
+        overlay_id: str | None = None,
+        layer_kind: str | None = None,
     ) -> Path:
         if cell not in CELL_MAPPINGS:
             raise KeyError(f"Cell {cell_label(cell)} is not mapped to a chain yet")
@@ -144,6 +177,8 @@ class OverlayBridge:
             cell=cell,
             description=description,
             trace_id=trace_id,
+            overlay_id=overlay_id,
+            layer_kind=layer_kind,
         )
 
     def dispatch_cells(self, cells: Iterable[Cell]) -> Dict[str, Path]:
@@ -196,6 +231,8 @@ class OverlayBridge:
         cell: Cell | None = None,
         description: str | None = None,
         trace_id: str | None = None,
+        overlay_id: str | None = None,
+        layer_kind: str | None = None,
     ) -> Path:
         if chain_name not in self.sample_chains:
             raise KeyError(f"Chain {chain_name} missing from sample_chains.json")
@@ -206,6 +243,8 @@ class OverlayBridge:
             cell=cell,
             description=description,
             trace_id=trace_id,
+            overlay_id=overlay_id,
+            layer_kind=layer_kind,
         )
 
     def dispatch_raw_chain(
@@ -216,7 +255,12 @@ class OverlayBridge:
         cell: Cell | None = None,
         description: str | None = None,
         trace_id: str | None = None,
+        overlay_id: str | None = None,
+        layer_kind: str | None = None,
     ) -> Path:
+        overlay_meta = _prepare_overlay_metadata(overlay_id, layer_kind)
+        overlay_id = overlay_meta.overlay_id
+        layer_kind = overlay_meta.layer_kind
         payload = dict(self.translator.translate_chain(chain))
         if "created_at" not in payload:
             created_at = datetime.now(timezone.utc)
@@ -256,6 +300,14 @@ class OverlayBridge:
             if isinstance(stub, dict):
                 stub["trace_id"] = trace_id
 
+        if overlay_id:
+            payload["overlay_id"] = overlay_id
+            payload["overlay_layer"] = layer_kind
+            stub = payload.get("telemetry_stub")
+            if isinstance(stub, dict):
+                stub["overlay_id"] = overlay_id
+                stub["overlay_layer"] = layer_kind
+
         # Evaluate guardrails in log-only mode (no enforcement)
         try:
             # Dynamically load evaluator to avoid hard import-time path dependence
@@ -270,7 +322,13 @@ class OverlayBridge:
 
         hint = chain_name or "custom_chain"
         destination = _write_payload(self.outbox, f"alfa_zero_{hint}", payload)
-        self._log_phase_two_dispatch(payload, destination, trace_id=trace_id)
+        self._log_phase_two_dispatch(
+            payload,
+            destination,
+            trace_id=trace_id,
+            overlay_id=overlay_id,
+            layer_kind=layer_kind,
+        )
         # Auto-promote to factory-order unless disabled via env
         auto = os.getenv("OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS", "1").lower() not in {"0", "false", "no"}
         if auto:
@@ -328,6 +386,8 @@ class OverlayBridge:
         destination: Path,
         *,
         trace_id: str | None = None,
+        overlay_id: str | None = None,
+        layer_kind: str | None = None,
     ) -> None:
         """Append a Phase 2 latency stub entry for later reconciliation."""
 
@@ -352,6 +412,8 @@ class OverlayBridge:
             "outbox_path": str(relative_outbox),
             "batch_id": batch_id,
             "trace_id": trace_id,
+            "overlay_id": overlay_id,
+            "overlay_layer": layer_kind,
             "telemetry_received_at": None,
             "telemetry_duration_ms": None,
             "telemetry_status": "pending",

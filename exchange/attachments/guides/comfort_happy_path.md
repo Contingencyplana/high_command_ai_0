@@ -6,6 +6,8 @@ This loop keeps Order 044’s comfort mandate intact: spend ~70% of the cadence 
 
 - **Overlay session (optional but encouraged)**  
   `python scripts/play_session.py` → captures `logs/alfa_zero/overlay_events.jsonl` for lore recap.
+- **Lore layer opt-in (Order 046)**  
+  `python -m golf_00.delta_00.alfa_00.alfa_zero_ui --enable-lore --cell 04` (or run the UI and use `lore enable` before dispatch) to record a single lore overlay dispatch with matching `trace_id` + `overlay_id`.
 - **Narration pulse**  
   `python -m golf_00.delta_00.alfa_02.narrator_shell --say "Forge delivers the Ally → Victory" --out logs/alfa_02/narration.jsonl`
 - **Telemetry pulse**  
@@ -34,6 +36,7 @@ This loop keeps Order 044’s comfort mandate intact: spend ~70% of the cadence 
 - Outlands framework (Pivot Seven): `exchange/attachments/guides/outlands_framework.md`
 - Fun Guardian protocol (Pivot Seven): `exchange/attachments/guides/fun_guardian_protocol.md`
 - Outlands directory index: `exchange/attachments/guides/outlands_index.md` (maps active Outland layers and guardian roles)
+- Lore activation guardrails: `planning/inlands_and_outlands.md` (activation protocol + evidence sinks)
  
 ---
 
@@ -43,3 +46,5 @@ This loop keeps Order 044’s comfort mandate intact: spend ~70% of the cadence 
   - `python -m golf_00.delta_00.alfa_00.overlay_flow --overlay overlay-alpha --trace-id overlay-alpha-0001 --say "Overlay node ready" --comfort-level gentle --narration-trace logs/alfa_02/narration_traces.jsonl --telemetry-trace logs/alfa_03/telemetry.jsonl`
 - Validate contracts including the overlay regression:
   - `python -m tools.contract_test_runner --case overlay_first_click`
+- Opt-in lore regression (Order 046):
+  - `python -m tools.contract_test_runner --case overlay_lore_dispatch`

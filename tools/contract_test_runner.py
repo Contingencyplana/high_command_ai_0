@@ -15,11 +15,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, List, Sequence
 
 from golf_00.delta_00.alfa_04 import emoji_translator, factory_adapter
+from golf_00.delta_00.alfa_00.overlay_bridge import build_bridge
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SAMPLES_ROOT = REPO_ROOT / "contract_samples"
@@ -38,6 +41,8 @@ class FactoryOrderExpectations:
     target: str
     requires_ack: bool
     details_contains: Sequence[str]
+    overlay_id: str | None = None
+    overlay_layer: str | None = None
 
 
 @dataclass
@@ -45,6 +50,8 @@ class EmojiRuntimeExpectations:
     summary: str
     intent: dict
     spoken: Sequence[str]
+    overlay_id: str | None = None
+    overlay_layer: str | None = None
 
 
 @dataclass
@@ -65,6 +72,7 @@ class ContractCase:
     expectations_runtime: EmojiRuntimeExpectations
     expectations_factory: FactoryOrderExpectations
     source_path: Path
+    overlay: "OverlayCaseConfig | None" = None
 
 
 @dataclass
@@ -72,6 +80,14 @@ class CaseResult:
     name: str
     passed: bool
     errors: List[str]
+
+
+@dataclass
+class OverlayCaseConfig:
+    overlay_id: str
+    layer_kind: str
+    trace_id: str
+    description: str | None = None
 
 
 def _as_list(value: Sequence[str] | Iterable[str]) -> List[str]:
@@ -88,10 +104,21 @@ def load_cases() -> List[ContractCase]:
         adapter = AdapterConfig(**raw["adapter"])
         runtime_raw = raw["expectations"]["emoji_runtime"]
         factory_raw = raw["expectations"]["factory_order"]
+        overlay_config = None
+        overlay_raw = raw.get("overlay")
+        if overlay_raw:
+            overlay_config = OverlayCaseConfig(
+                overlay_id=overlay_raw["overlay_id"],
+                layer_kind=overlay_raw["layer_kind"],
+                trace_id=overlay_raw.get("trace_id", "overlay-trace"),
+                description=overlay_raw.get("description"),
+            )
         runtime = EmojiRuntimeExpectations(
             summary=runtime_raw["summary"],
             intent=runtime_raw["intent"],
             spoken=tuple(runtime_raw.get("spoken", [])),
+            overlay_id=runtime_raw.get("overlay_id"),
+            overlay_layer=runtime_raw.get("overlay_layer"),
         )
         factory = FactoryOrderExpectations(
             summary=factory_raw["summary"],
@@ -99,6 +126,8 @@ def load_cases() -> List[ContractCase]:
             target=factory_raw["target"],
             requires_ack=factory_raw["requires_ack"],
             details_contains=tuple(factory_raw.get("details_contains", [])),
+            overlay_id=factory_raw.get("overlay_id"),
+            overlay_layer=factory_raw.get("overlay_layer"),
         )
         case = ContractCase(
             name=raw["name"],
@@ -108,6 +137,7 @@ def load_cases() -> List[ContractCase]:
             expectations_runtime=runtime,
             expectations_factory=factory,
             source_path=path,
+            overlay=overlay_config,
         )
         cases.append(case)
     if not cases:
@@ -149,6 +179,30 @@ def _validate_runtime(case: ContractCase, payload: dict) -> List[str]:
         errors.append("emoji_runtime.intent missing or not an object")
         return errors
     errors.extend(_compare_intent(case.expectations_runtime.intent, intent))
+    if case.expectations_runtime.overlay_id is not None:
+        actual_overlay_id = payload.get("overlay_id")
+        if actual_overlay_id != case.expectations_runtime.overlay_id:
+            errors.append(
+                f"overlay_id expected {case.expectations_runtime.overlay_id!r}, got {actual_overlay_id!r}"
+            )
+        stub = payload.get("telemetry_stub") if isinstance(payload.get("telemetry_stub"), dict) else {}
+        stub_overlay_id = stub.get("overlay_id") if isinstance(stub, dict) else None
+        if stub_overlay_id != case.expectations_runtime.overlay_id:
+            errors.append(
+                f"telemetry_stub.overlay_id expected {case.expectations_runtime.overlay_id!r}, got {stub_overlay_id!r}"
+            )
+    if case.expectations_runtime.overlay_layer is not None:
+        actual_layer = payload.get("overlay_layer")
+        if actual_layer != case.expectations_runtime.overlay_layer:
+            errors.append(
+                f"overlay_layer expected {case.expectations_runtime.overlay_layer!r}, got {actual_layer!r}"
+            )
+        stub = payload.get("telemetry_stub") if isinstance(payload.get("telemetry_stub"), dict) else {}
+        stub_layer = stub.get("overlay_layer") if isinstance(stub, dict) else None
+        if stub_layer != case.expectations_runtime.overlay_layer:
+            errors.append(
+                f"telemetry_stub.overlay_layer expected {case.expectations_runtime.overlay_layer!r}, got {stub_layer!r}"
+            )
     return errors
 
 
@@ -205,10 +259,35 @@ def _validate_factory_order(case: ContractCase, payload: dict, order: dict) -> L
 
 
 def run_case(case: ContractCase) -> CaseResult:
+    payload = None
+    cleanup_outbox: tempfile.TemporaryDirectory | None = None
+    original_auto_flag = os.environ.get("OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS")
     try:
-        payload = emoji_translator.translate_chain(case.emoji_chain)
+        if case.overlay:
+            os.environ["OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS"] = "0"
+            cleanup_outbox = tempfile.TemporaryDirectory()
+            bridge = build_bridge(cleanup_outbox.name)
+            destination = bridge.dispatch_raw_chain(
+                case.emoji_chain,
+                chain_name=case.name,
+                description=case.overlay.description,
+                trace_id=case.overlay.trace_id,
+                overlay_id=case.overlay.overlay_id,
+                layer_kind=case.overlay.layer_kind,
+            )
+            payload_path = Path(destination)
+            payload = json.loads(payload_path.read_text(encoding="utf-8"))
+        else:
+            payload = emoji_translator.translate_chain(case.emoji_chain)
     except Exception as exc:  # pragma: no cover - defensive guard
         return CaseResult(case.name, False, [f"translator error: {exc}"])
+    finally:
+        if cleanup_outbox is not None:
+            cleanup_outbox.cleanup()
+        if original_auto_flag is None:
+            os.environ.pop("OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS", None)
+        else:
+            os.environ["OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS"] = original_auto_flag
 
     errors = _validate_runtime(case, payload)
 

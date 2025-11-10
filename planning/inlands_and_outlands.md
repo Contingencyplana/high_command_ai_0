@@ -1,7 +1,7 @@
 # Inlands & Outlands — Layered Playability Map
 
-**Status:** Drafted 2025-11-10  
-**Authoring Body:** High Command (Order 046 planning lull)
+**Status:** Active pilot 2025-11-10  
+**Authoring Body:** High Command (Order 046 execution)
 
 ---
 
@@ -43,7 +43,7 @@ Outlands **must never** mutate the core emoji-runtime payloads in a way that bre
 1. **Sense** – Run the Fun Guardian protocol to analyze engagement signals (cadence, comfort telemetry, contract friction).
 2. **Select** – Choose an `overlay_id` and `layer_kind` from the Outlands index.
 3. **Consent** – Present the overlay suggestion to the operator; require a conscious opt-in.
-4. **Tag** – When activated, ensure narration traces, telemetry JSONL, and payload exports include both `trace_id` and `overlay_id`.
+4. **Tag** – When activated, ensure narration traces, telemetry JSONL, and payload exports include both `trace_id` and `overlay_id` (`outland-lore-v1` for the Lore pilot).
 5. **Log** – Record activation in the ledger (`Pivot Seven: <overlay_id> activated`) and append notes to `outlands_index.md` if new evidence sinks were added.
 
 ---
@@ -77,10 +77,17 @@ Routing decisions should be logged in `exchange/ledger/journal.md` so future cam
 
 ---
 
+## Execution Log (Order 046)
+
+- Overlay metadata threaded through overlay bridge, narrator shell, telemetry shell, and Alfa Zero UI (Lore toggle default off; enable via `lore enable`).
+- First Lore dispatch recorded (`overlay_id=outland-lore-v1`, `layer_kind=lore`) with matched trace IDs across payload, narration, telemetry, and phase two logs.
+- Contract regression added (`overlay_lore_dispatch`) and pytest coverage expanded for guardrails and trace metadata.
+- Comfort and automation guides refreshed with Lore opt-in instructions; Outlands index now captures activation history.
+
 ## Next Steps
 
-1. Thread `overlay_id` handling through Alfa Zero UI/controller (Order 046 candidate scope).
-2. Draft first Lore-layer overlay (e.g., forge saga narration) and capture evidence using the protocol above.
-3. Update `outlands_index.md` with activation history and guardian notes after each Outland deployment.
+1. Monitor lore activations for telemetry drift; adjust Fun Guardian prompts if comfort saturation drops.
+2. Scope Music/Ritual overlay IDs mirroring this guardrail pattern.
+3. Extend Alfa Zero controller to surface Outlands toggles if operators prefer the automation-centric interface.
 
 Keep this document in sync with live Outlands experiments so strategy, telemetry, and gameplay stay aligned.

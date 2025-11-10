@@ -1,0 +1,13 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-11-10-046-ack",
+  "referenced_id": "order-2025-11-10-046",
+  "sender": "high_command_ai_0",
+  "receiver": "outlands_activation_front",
+  "timestamp_sent": "2025-11-10T15:30:00Z",
+  "status": "pending",
+  "notes": [
+    "Lore layer pilot executed in workspace; awaiting outlands_activation_front confirmation once operators exercise the toggle.",
+    "Evidence bundle recorded in exchange/reports/inbox/order-2025-11-10-046-report.json and ledger entry logged at 2025-11-10 15:45." 
+  ]
+}

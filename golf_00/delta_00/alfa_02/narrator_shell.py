@@ -45,6 +45,9 @@ def _build_event(
     layer: str,
     context: Optional[str],
     comfort: ComfortSettings,
+    *,
+    overlay_id: Optional[str],
+    overlay_layer: Optional[str],
 ) -> dict:
     event = {
         "ts": _iso_now(),
@@ -55,6 +58,10 @@ def _build_event(
         "comfort": comfort.as_dict(),
         "source": "alfa_02:narrator_shell",
     }
+    if overlay_id:
+        event["overlay_id"] = overlay_id
+    if overlay_layer:
+        event["overlay_layer"] = overlay_layer
     return event
 
 
@@ -65,6 +72,8 @@ def run(
     trace: Optional[Path],
     comfort: ComfortSettings,
     trace_id: Optional[str] = None,
+    overlay_id: Optional[str] = None,
+    overlay_layer: Optional[str] = None,
 ) -> None:
     if comfort.enabled and comfort.level:
         print(f"[comfort:{comfort.level}] {say}")
@@ -72,7 +81,14 @@ def run(
         print(say)
     if trace:
         trace.parent.mkdir(parents=True, exist_ok=True)
-        event = _build_event(say, layer, context, comfort)
+        event = _build_event(
+            say,
+            layer,
+            context,
+            comfort,
+            overlay_id=overlay_id,
+            overlay_layer=overlay_layer,
+        )
         if trace_id:
             event["trace_id"] = trace_id
         with trace.open("a", encoding="utf-8") as handle:
@@ -111,9 +127,27 @@ def main(argv: Optional[list[str]] = None) -> int:
         "--trace-id",
         help="Optional correlation identifier to include in narration traces",
     )
+    parser.add_argument(
+        "--overlay-id",
+        help="Optional Outland overlay identifier (e.g. outland-lore-v1)",
+    )
+    parser.add_argument(
+        "--overlay-layer",
+        choices=["lore", "music", "ritual", "emergent"],
+        help="Overlay layer kind when tagging Outlands metadata",
+    )
     args = parser.parse_args(argv)
     comfort = ComfortSettings(args.comfort_on, args.comfort_level)
-    run(args.say, args.layer, args.context, args.trace, comfort, args.trace_id)
+    run(
+        args.say,
+        args.layer,
+        args.context,
+        args.trace,
+        comfort,
+        args.trace_id,
+        overlay_id=args.overlay_id,
+        overlay_layer=args.overlay_layer,
+    )
     return 0
 
 

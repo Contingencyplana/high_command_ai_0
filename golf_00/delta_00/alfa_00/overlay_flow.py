@@ -32,6 +32,8 @@ def emit_overlay_click(
     comfort_level: str = "standard",
     narration_trace: Optional[Path] = None,
     telemetry_trace: Optional[Path] = None,
+    overlay_id: Optional[str] = None,
+    layer_kind: Optional[str] = None,
 ) -> None:
     """Emit a single overlay click with correlated narration and telemetry.
 
@@ -48,6 +50,8 @@ def emit_overlay_click(
         trace=narration_trace,
         comfort=comfort,
         trace_id=trace_id,
+        overlay_id=overlay_id,
+        overlay_layer=layer_kind,
     )
 
     # Telemetry (mode:level format for comfort state)
@@ -59,6 +63,8 @@ def emit_overlay_click(
         overlay=overlay,
         comfort=f"comfort:{comfort_level}",
         trace_id=trace_id,
+        overlay_id=overlay_id,
+        overlay_layer=layer_kind,
     )
 
 
@@ -75,6 +81,15 @@ def main(argv: Optional[list[str]] = None) -> int:
     )
     parser.add_argument("--narration-trace", type=Path, help="JSONL for narration events")
     parser.add_argument("--telemetry-trace", type=Path, help="JSONL for telemetry events")
+    parser.add_argument(
+        "--overlay-id",
+        help="Optional Outland overlay identifier (e.g. outland-lore-v1)",
+    )
+    parser.add_argument(
+        "--layer-kind",
+        choices=["lore", "music", "ritual", "emergent"],
+        help="Overlay layer kind when tagging Outlands metadata",
+    )
     args = parser.parse_args(argv)
 
     emit_overlay_click(
@@ -84,6 +99,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         comfort_level=args.comfort_level,
         narration_trace=args.narration_trace,
         telemetry_trace=args.telemetry_trace,
+        overlay_id=args.overlay_id,
+        layer_kind=args.layer_kind,
     )
     return 0
 

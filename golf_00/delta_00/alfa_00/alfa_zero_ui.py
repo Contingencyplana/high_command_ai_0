@@ -25,6 +25,8 @@ from trace_utils import generate_trace_id
 Cell = Tuple[int, int]
 HEX_DIGITS = "0123456789ABCDEF"
 DEFAULT_OVERLAY = "overlay-alpha"
+LORE_OVERLAY_ID = "outland-lore-v1"
+LORE_LAYER_KIND = "lore"
 
 # 16x16 battlefield layout derived from docs/alfa_zero_spec.md
 GRID_LAYOUT: List[List[str]] = [
@@ -55,6 +57,8 @@ class PayloadSummary:
     outcomes: List[str]
     description: Optional[str]
     summary_text: Optional[str]
+    overlay_id: Optional[str]
+    overlay_layer: Optional[str]
 
 
 @dataclass
@@ -71,6 +75,7 @@ class UIContext:
     dispatch_count: int = 0
     selected: Cell = (0, 4)
     auto_contracts: bool = False
+    lore_layer_enabled: bool = False
 
     @property
     def repo_root(self) -> Path:
@@ -136,6 +141,8 @@ def summarize_payload(path: Path) -> PayloadSummary:
         outcomes=outcomes,
         description=description,
         summary_text=summary_text,
+        overlay_id=payload.get("overlay_id"),
+        overlay_layer=payload.get("overlay_layer"),
     )
 
 
@@ -144,7 +151,14 @@ def compute_sync_state(summary: PayloadSummary) -> str:
     return "green" if summary.outcomes else "amber"
 
 
-def emit_telemetry(summary: PayloadSummary, telemetry_path: Path, *, trace_id: Optional[str] = None) -> None:
+def emit_telemetry(
+    summary: PayloadSummary,
+    telemetry_path: Path,
+    *,
+    trace_id: Optional[str] = None,
+    overlay_id: Optional[str] = None,
+    overlay_layer: Optional[str] = None,
+) -> None:
     sync_state = compute_sync_state(summary)
     record = {
         "path": str(summary.path),
@@ -157,6 +171,9 @@ def emit_telemetry(summary: PayloadSummary, telemetry_path: Path, *, trace_id: O
     }
     if trace_id:
         record["trace_id"] = trace_id
+    if overlay_id:
+        record["overlay_id"] = overlay_id
+        record["overlay_layer"] = overlay_layer
     with telemetry_path.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(record, ensure_ascii=False))
         handle.write("\n")
@@ -174,6 +191,8 @@ def display_summary(summary: PayloadSummary, repo_root: Path, *, stream: TextIO 
         print(f"   Outcomes: {', '.join(summary.outcomes)}", file=stream)
     if summary.description:
         print(f"   Description: {summary.description}", file=stream)
+    if summary.overlay_id:
+        print(f"   Lore Layer: {summary.overlay_layer or 'unknown'} ({summary.overlay_id})", file=stream)
     # Minimal sync state indicator for demo runs
     try:
         sync_state = compute_sync_state(summary)
@@ -321,7 +340,9 @@ def select_cell(context: UIContext, cell: Cell) -> None:
 
 def dispatch_selected(context: UIContext) -> None:
     cell = context.selected
-    trace_id = generate_trace_id(cell_label(cell), DEFAULT_OVERLAY)
+    overlay_id = LORE_OVERLAY_ID if context.lore_layer_enabled else None
+    layer_kind = LORE_LAYER_KIND if context.lore_layer_enabled else None
+    trace_id = generate_trace_id(cell_label(cell), DEFAULT_OVERLAY, overlay_id=overlay_id)
 
     if context.emit_events:
         if context.event_stream is None:
@@ -334,6 +355,9 @@ def dispatch_selected(context: UIContext) -> None:
             "overlay": DEFAULT_OVERLAY,
             "trace_id": trace_id,
         }
+        if overlay_id:
+            event["overlay_id"] = overlay_id
+            event["overlay_layer"] = layer_kind
         context.event_stream.write(json.dumps(event, ensure_ascii=False))
         context.event_stream.write("\n")
         context.event_stream.flush()
@@ -341,7 +365,12 @@ def dispatch_selected(context: UIContext) -> None:
         return
 
     try:
-        destination = context.bridge.dispatch_cell(cell, trace_id=trace_id)
+        destination = context.bridge.dispatch_cell(
+            cell,
+            trace_id=trace_id,
+            overlay_id=overlay_id,
+            layer_kind=layer_kind,
+        )
     except KeyError as exc:
         print(f"⚠️  {exc}", file=context.output_stream)
         return
@@ -352,7 +381,13 @@ def dispatch_selected(context: UIContext) -> None:
     summary = summarize_payload(destination)
     display_summary(summary, context.repo_root, stream=context.output_stream)
     if context.telemetry_path:
-        emit_telemetry(summary, context.telemetry_path, trace_id=trace_id)
+        emit_telemetry(
+            summary,
+            context.telemetry_path,
+            trace_id=trace_id,
+            overlay_id=summary.overlay_id,
+            overlay_layer=summary.overlay_layer,
+        )
     _log_session_event(context, event="dispatch")
     if context.auto_contracts:
         run_contract_suite(context, quiet=True)
@@ -379,6 +414,7 @@ HELP_TEXT = """Commands:
         sync orders X  Sync orders subdirectory X (for example emoji_runtime)
     info           Show mapping info for the selected cell
     map            List every mapped cell and chain
+    lore           Lore overlay controls (lore status | lore enable | lore disable)
     <cell>         Jump to a cell (formats: 04, 0,4, 0 4)
     show           Re-render the grid
     help           Show this help text
@@ -431,6 +467,34 @@ def interactive_loop(context: UIContext) -> None:
             overlay = compute_quilt_overlay(context.repo_root)
             render_grid(context.selected, stream=context.output_stream, overlay=overlay)
             render_footer(context, stream=context.output_stream)
+            continue
+        if command == "lore":
+            if len(tokens) == 1 or tokens[1].lower() == "status":
+                state = "enabled" if context.lore_layer_enabled else "disabled"
+                print(
+                    f"Lore overlay is currently {state}. Use 'lore enable' to opt-in or 'lore disable' to exit.",
+                    file=context.output_stream,
+                )
+                continue
+            action = tokens[1].lower()
+            if action in {"enable", "on"}:
+                if context.lore_layer_enabled:
+                    print("Lore overlay already enabled.", file=context.output_stream)
+                else:
+                    context.lore_layer_enabled = True
+                    print(
+                        "Lore overlay enabled — overlay payloads will include outland-lore metadata after next dispatch.",
+                        file=context.output_stream,
+                    )
+                continue
+            if action in {"disable", "off"}:
+                if not context.lore_layer_enabled:
+                    print("Lore overlay already disabled.", file=context.output_stream)
+                else:
+                    context.lore_layer_enabled = False
+                    print("Lore overlay disabled — returning to inland-only dispatches.", file=context.output_stream)
+                continue
+            print("⚠️  Usage: lore status | lore enable | lore disable", file=context.output_stream)
             continue
         if command in {"map"}:
             list_mapped_cells(context.output_stream)
@@ -540,6 +604,7 @@ def build_context(
     emit_events: bool,
     event_stream: Optional[TextIO],
     auto_contracts: bool,
+    lore_enabled: bool = False,
 ) -> UIContext:
     bridge = build_bridge(outbox_override)
     telemetry_path = Path(telemetry).expanduser().resolve() if telemetry else None
@@ -565,6 +630,7 @@ def build_context(
         session_id=session_id,
         session_start_ts=datetime.now(timezone.utc),
         auto_contracts=auto_contracts,
+        lore_layer_enabled=lore_enabled,
     )
 
 
@@ -599,6 +665,11 @@ def main() -> None:
         action="store_true",
         help="Automatically run the contract test suite after each dispatch.",
     )
+    parser.add_argument(
+        "--enable-lore",
+        action="store_true",
+        help="Start with the Lore overlay toggle enabled (still requires operator consent when using the interactive loop).",
+    )
     args = parser.parse_args()
 
     if args.event_file and not args.emit_events:
@@ -621,6 +692,7 @@ def main() -> None:
         emit_events=args.emit_events,
         event_stream=event_stream,
         auto_contracts=args.auto_contracts,
+        lore_enabled=args.enable_lore,
     )
 
     try:
@@ -661,6 +733,7 @@ def _log_session_event(context: UIContext, *, event: str) -> None:
         "dispatch_count": context.dispatch_count,
         "elapsed_s": elapsed_s,
         "source": "alfa_zero_ui",
+        "lore_overlay_enabled": context.lore_layer_enabled,
     }
     try:
         with context.metrics_path.open("a", encoding="utf-8") as handle:
@@ -756,8 +829,9 @@ def render_footer(context: UIContext, *, stream: TextIO = sys.stdout) -> None:
     auto_env = os.getenv("OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS", "1").lower()
     auto_on = auto_env not in {"0", "false", "no"}
     contracts_state = "ON" if context.auto_contracts else "OFF"
+    lore_state = "ON" if context.lore_layer_enabled else "OFF"
     print(
-        f"— Elapsed {mm:02d}:{ss:02d} | Dispatches {context.dispatch_count} | Auto-promote {'ON' if auto_on else 'OFF'} | Auto-contracts {contracts_state} —",
+        f"— Elapsed {mm:02d}:{ss:02d} | Dispatches {context.dispatch_count} | Auto-promote {'ON' if auto_on else 'OFF'} | Auto-contracts {contracts_state} | Lore {lore_state} —",
         file=stream,
     )
 
