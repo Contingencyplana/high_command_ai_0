@@ -1,0 +1,63 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-09-045",
+  "issued_by": "high_command_ai_0",
+  "target": "ui_overlay_front",
+  "priority": "medium",
+  "timestamp_issued": "2025-11-09T12:00:00Z",
+  "summary": "UI Overlay Integration Slice - runtime shells, overlay loop, validation runway",
+  "context": "Post-order 044 lull complete, runtime shells seeded but still minimal. Objective is to deliver a coherent UI overlay slice that exercises narration and telemetry pipelines while locking in validation coverage before scaling wider.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "confirm_baseline",
+      "details": "Run tools/exchange_heartbeat.py, tools/offline_sync_exchange.py, and tools/contract_test_runner.py to capture a clean readiness snapshot. Log drift or failures before implementation moves forward."
+    },
+    {
+      "step": 2,
+      "action": "upgrade_runtime_shells",
+      "details": "Expand narration and telemetry shells in golf_00/delta_00/alfa_02 and alfa_03 with logging hygiene, comfort toggles, and hook points for overlay events. Document entry points and config knobs."
+    },
+    {
+      "step": 3,
+      "action": "wire_overlay_flow",
+      "details": "Implement a single end-to-end UI overlay interaction that flows through the comfort loop, emitting narrator cues and telemetry signals into existing pipelines. Capture traces for validation."
+    },
+    {
+      "step": 4,
+      "action": "extend_contract_suite",
+      "details": "Add a UI overlay to exchange regression case to the contract suite covering overlay trigger, log capture, narrator output, and exchange report generation. Ensure the full suite passes locally."
+    },
+    {
+      "step": 5,
+      "action": "document_operations",
+      "details": "Update comfort guides and planning chronicle with operator steps, overlay flow notes, and stretch backlog carve-outs. Flag stretch candidates such as cross-workspace rollout separately."
+    },
+    {
+      "step": 6,
+      "action": "file_completion_report",
+      "details": "Submit ledger updates plus a completion report under exchange/reports/inbox/order-2025-11-09-045-report.json summarizing evidence and open stretch items."
+    }
+  ],
+  "success_criteria": [
+    "Baseline readiness sweep captured with heartbeat, offline sync, and contract logs stored in evidence.",
+    "Runtime shells in alfa_02 and alfa_03 expose documented overlay hooks, toggles, and logging safeguards.",
+    "UI overlay slice demonstrably flows through narrator and telemetry pipelines with trace artifacts attached.",
+    "Contract suite includes and passes a UI overlay to exchange regression scenario.",
+    "Comfort and planning docs updated with runbook guidance and tracked stretch backlog."
+  ],
+  "dependencies": [
+    "order-2025-11-07-044",
+    "order-2025-11-01-041",
+    "order-2025-11-02-043"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-11-16T23:59:59Z",
+  "attachments": [
+    { "type": "reference", "path": "planning/campaigns_and_lulls.md" },
+    { "type": "reference", "path": "exchange/attachments/guides/comfort_happy_path.md" },
+    { "type": "reference", "path": "golf_00/delta_00/alfa_02/narrator_shell.py" },
+    { "type": "reference", "path": "golf_00/delta_00/alfa_03/telemetry_shell.py" },
+    { "type": "reference", "path": "tools/contract_test_runner.py" }
+  ]
+}
