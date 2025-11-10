@@ -5,7 +5,7 @@
   "target": "ui_overlay_front",
   "priority": "medium",
   "timestamp_issued": "2025-11-09T12:00:00Z",
-  "summary": "UI Overlay Integration Slice — runtime shells, overlay loop, validation runway",
+  "summary": "UI Overlay Integration Slice - runtime shells, overlay loop, validation runway",
   "context": "Post-order 044 lull complete, runtime shells seeded but still minimal. Objective is to deliver a coherent UI overlay slice that exercises narration and telemetry pipelines while locking in validation coverage before scaling wider.",
   "directives": [
     {
