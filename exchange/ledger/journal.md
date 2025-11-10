@@ -42,4 +42,8 @@
 - 2025-11-08T11:50:00Z - Order order-2025-11-07-044 Step 5 fulfilled: automation quick-start and refreshed comfort happy path guides published to exchange attachments.
 - 2025-11-08T11:55:00Z - Order order-2025-11-07-044 Step 6 fulfilled: completion report archived, ledger closed, and lull retrospective queued.
 - 2025-11-09T13:35:00Z - Order order-2025-11-09-045: First overlay click wired end-to-end (overlay_flow). Narration + telemetry traces captured; new contract case overlay_first_click passing.
+- 2025-11-10T08:25:00Z - Order order-2025-11-09-045: Added overlay_guarded_wall regression to contract suite; documented rollout notes update and ledger entry.
+- 2025-11-10T10:00:00Z - Order order-2025-11-09-045: Added overlay_guarded_warning regression; contract suite now covers warning outcome via overlay orchestration.
+- 2025-11-10T10:38:00Z - Order order-2025-11-09-045: Threaded trace_id through overlay dispatch payloads and factory-order promotions to preserve telemetry joins.
+- 2025-11-10T13:50:00Z - Order order-2025-11-09-045: Verified trace parity across UI dispatch paths; telemetry JSONL and payload exports now emit matching trace_id fields.
 - 2025-11-05T09:00:00Z - Pivot Seven activated (Outlands Onion): layered playability charter logged; stubs published for outlands framework and fun guardian protocol.

@@ -20,9 +20,11 @@ import subprocess
 from typing import Dict, List, Optional, Sequence, TextIO, Tuple
 
 from overlay_bridge import CELL_MAPPINGS, OverlayBridge, build_bridge, cell_label
+from trace_utils import generate_trace_id
 
 Cell = Tuple[int, int]
 HEX_DIGITS = "0123456789ABCDEF"
+DEFAULT_OVERLAY = "overlay-alpha"
 
 # 16x16 battlefield layout derived from docs/alfa_zero_spec.md
 GRID_LAYOUT: List[List[str]] = [
@@ -142,7 +144,7 @@ def compute_sync_state(summary: PayloadSummary) -> str:
     return "green" if summary.outcomes else "amber"
 
 
-def emit_telemetry(summary: PayloadSummary, telemetry_path: Path) -> None:
+def emit_telemetry(summary: PayloadSummary, telemetry_path: Path, *, trace_id: Optional[str] = None) -> None:
     sync_state = compute_sync_state(summary)
     record = {
         "path": str(summary.path),
@@ -153,6 +155,8 @@ def emit_telemetry(summary: PayloadSummary, telemetry_path: Path) -> None:
         "narration_text": summary.summary_text,
         "sync_state": sync_state,
     }
+    if trace_id:
+        record["trace_id"] = trace_id
     with telemetry_path.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(record, ensure_ascii=False))
         handle.write("\n")
@@ -317,6 +321,7 @@ def select_cell(context: UIContext, cell: Cell) -> None:
 
 def dispatch_selected(context: UIContext) -> None:
     cell = context.selected
+    trace_id = generate_trace_id(cell_label(cell), DEFAULT_OVERLAY)
 
     if context.emit_events:
         if context.event_stream is None:
@@ -326,15 +331,17 @@ def dispatch_selected(context: UIContext) -> None:
             "cell": cell_label(cell),
             "source": "alfa_zero_ui",
             "ledger_note": "alfa_zero_ui",
+            "overlay": DEFAULT_OVERLAY,
+            "trace_id": trace_id,
         }
         context.event_stream.write(json.dumps(event, ensure_ascii=False))
         context.event_stream.write("\n")
         context.event_stream.flush()
-        print(f"🚀 Emitted overlay event for {event['cell']}", file=context.output_stream)
+        print(f"🚀 Emitted overlay event for {event['cell']} (trace_id={trace_id})", file=context.output_stream)
         return
 
     try:
-        destination = context.bridge.dispatch_cell(cell)
+        destination = context.bridge.dispatch_cell(cell, trace_id=trace_id)
     except KeyError as exc:
         print(f"⚠️  {exc}", file=context.output_stream)
         return
@@ -345,7 +352,7 @@ def dispatch_selected(context: UIContext) -> None:
     summary = summarize_payload(destination)
     display_summary(summary, context.repo_root, stream=context.output_stream)
     if context.telemetry_path:
-        emit_telemetry(summary, context.telemetry_path)
+        emit_telemetry(summary, context.telemetry_path, trace_id=trace_id)
     _log_session_event(context, event="dispatch")
     if context.auto_contracts:
         run_contract_suite(context, quiet=True)

@@ -19,7 +19,9 @@ Current Level-0 coverage includes:
 - `signal_loop_gain.json` - signal loop scenario with gain outcome.
 - `conditional_repeat_again.json` - conditional repeat with secondary outcome.
 - `automation_path_happy_flow.json` - Order 044 automation comfort flow (forge delivers ally with target qualifier).
- - `overlay_first_click.json` - Order 045 overlay “first click” regression anchored to the orchestrated flow.
+- `overlay_first_click.json` - Order 045 overlay “first click” regression anchored to the orchestrated flow.
+- `overlay_guarded_wall.json` - Guarded delivery success path with safe qualifier promoted through overlay orchestration.
+- `overlay_guarded_warning.json` - Guarded delivery warning path with inspect qualifier validating risk outcomes via overlay orchestration.
 
 The fixtures intentionally capture only the stable fields that matter for the
 contract. Dynamic values (timestamps, telemetry batch identifiers) are asserted

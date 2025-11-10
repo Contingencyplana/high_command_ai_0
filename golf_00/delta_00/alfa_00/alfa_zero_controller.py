@@ -23,6 +23,7 @@ from pathlib import Path
 from typing import List, Optional, Tuple, TextIO
 
 from overlay_bridge import CELL_MAPPINGS, OverlayBridge, build_bridge, cell_label
+from trace_utils import generate_trace_id
 import overlay_flow
 from pathlib import Path as _PathForWarnings
 import json as _json_for_warnings
@@ -52,11 +53,15 @@ GRID_LAYOUT: List[List[str]] = [
 ]
 
 
+DEFAULT_OVERLAY = "overlay-alpha"
+
+
 @dataclass
 class ControllerContext:
     repo_root: Path
     bridge: OverlayBridge
     auto_sync: bool
+    pending_trace_id: Optional[str] = None
 
 
 def render_grid(highlight: Optional[Cell] = None) -> None:
@@ -110,7 +115,10 @@ def parse_cell_token(token: str) -> Cell:
 def dispatch(cell: Cell, ctx: ControllerContext) -> Tuple[str, str]:
     """Invoke the translator for the chosen cell and return payload path and chain."""
 
-    path = ctx.bridge.dispatch_cell(cell)
+    trace_id = getattr(ctx, "pending_trace_id", None)
+    path = ctx.bridge.dispatch_cell(cell, trace_id=trace_id)
+    if trace_id and ctx.pending_trace_id == trace_id:
+        ctx.pending_trace_id = None
     chain_name, _ = CELL_MAPPINGS[cell]
     try:
         relative = path.relative_to(ctx.repo_root)
@@ -221,13 +229,12 @@ def post_dispatch(
 def _orchestrate_first_click(ctx: ControllerContext, cell: Cell, *, say: str = "Overlay node ready") -> None:
     """Emit correlated narration + telemetry traces for the first click."""
     try:
-        label = cell_label(cell)
-        ts = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
-        trace_id = f"overlay-alpha-{label}-{ts}"
+        trace_id = generate_trace_id(cell_label(cell), DEFAULT_OVERLAY)
+        ctx.pending_trace_id = trace_id
         narration_trace = ctx.repo_root / "logs" / "alfa_02" / "narration_traces.jsonl"
         telemetry_trace = ctx.repo_root / "logs" / "alfa_03" / "telemetry.jsonl"
         overlay_flow.emit_overlay_click(
-            overlay="overlay-alpha",
+            overlay=DEFAULT_OVERLAY,
             trace_id=trace_id,
             say=say,
             comfort_level="gentle",
@@ -236,6 +243,7 @@ def _orchestrate_first_click(ctx: ControllerContext, cell: Cell, *, say: str = "
         )
         print(f"? Orchestrated first-click traces (trace_id={trace_id})")
     except Exception as exc:
+        ctx.pending_trace_id = None
         print(f"??  First-click orchestration skipped: {exc}")
 
 def process_event_stream(ctx: ControllerContext, stream: TextIO) -> None:
@@ -272,6 +280,12 @@ def process_event_stream(ctx: ControllerContext, stream: TextIO) -> None:
         if ledger_note_raw is None and "source" in event:
             ledger_note_raw = event.get("source")
         ledger_note = str(ledger_note_raw) if ledger_note_raw is not None else None
+        event_trace_id = event.get("trace_id")
+        if event_trace_id is not None:
+            if event_trace_id is not None:
+                ctx.pending_trace_id = str(event_trace_id)
+            else:
+                ctx.pending_trace_id = generate_trace_id(cell_label(cell), DEFAULT_OVERLAY)
 
         try:
             payload_path, chain_name = dispatch(cell, ctx)

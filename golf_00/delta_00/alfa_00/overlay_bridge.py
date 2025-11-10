@@ -128,12 +128,23 @@ class OverlayBridge:
     _factory_adapter: object | None = None
     fun_flags: FunFlags | None = None
 
-    def dispatch_cell(self, cell: Cell, *, description: str | None = None) -> Path:
+    def dispatch_cell(
+        self,
+        cell: Cell,
+        *,
+        description: str | None = None,
+        trace_id: str | None = None,
+    ) -> Path:
         if cell not in CELL_MAPPINGS:
             raise KeyError(f"Cell {cell_label(cell)} is not mapped to a chain yet")
         chain_name, default_description = CELL_MAPPINGS[cell]
         description = description or default_description
-        return self.dispatch_chain_name(chain_name, cell=cell, description=description)
+        return self.dispatch_chain_name(
+            chain_name,
+            cell=cell,
+            description=description,
+            trace_id=trace_id,
+        )
 
     def dispatch_cells(self, cells: Iterable[Cell]) -> Dict[str, Path]:
         results: Dict[str, Path] = {}
@@ -184,11 +195,18 @@ class OverlayBridge:
         *,
         cell: Cell | None = None,
         description: str | None = None,
+        trace_id: str | None = None,
     ) -> Path:
         if chain_name not in self.sample_chains:
             raise KeyError(f"Chain {chain_name} missing from sample_chains.json")
         chain = self.sample_chains[chain_name]
-        return self.dispatch_raw_chain(chain, chain_name=chain_name, cell=cell, description=description)
+        return self.dispatch_raw_chain(
+            chain,
+            chain_name=chain_name,
+            cell=cell,
+            description=description,
+            trace_id=trace_id,
+        )
 
     def dispatch_raw_chain(
         self,
@@ -197,6 +215,7 @@ class OverlayBridge:
         chain_name: str | None = None,
         cell: Cell | None = None,
         description: str | None = None,
+        trace_id: str | None = None,
     ) -> Path:
         payload = dict(self.translator.translate_chain(chain))
         if "created_at" not in payload:
@@ -231,6 +250,12 @@ class OverlayBridge:
         except Exception:
             payload.setdefault("fun_flags", {})
 
+        if trace_id:
+            payload["trace_id"] = trace_id
+            stub = payload.get("telemetry_stub")
+            if isinstance(stub, dict):
+                stub["trace_id"] = trace_id
+
         # Evaluate guardrails in log-only mode (no enforcement)
         try:
             # Dynamically load evaluator to avoid hard import-time path dependence
@@ -245,7 +270,7 @@ class OverlayBridge:
 
         hint = chain_name or "custom_chain"
         destination = _write_payload(self.outbox, f"alfa_zero_{hint}", payload)
-        self._log_phase_two_dispatch(payload, destination)
+        self._log_phase_two_dispatch(payload, destination, trace_id=trace_id)
         # Auto-promote to factory-order unless disabled via env
         auto = os.getenv("OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS", "1").lower() not in {"0", "false", "no"}
         if auto:
@@ -297,7 +322,13 @@ class OverlayBridge:
         dst_dir = resolve_factory_outbox(self.repo_root)
         _ = _write_payload(dst_dir, order_id, order)
 
-    def _log_phase_two_dispatch(self, payload: Dict[str, object], destination: Path) -> None:
+    def _log_phase_two_dispatch(
+        self,
+        payload: Dict[str, object],
+        destination: Path,
+        *,
+        trace_id: str | None = None,
+    ) -> None:
         """Append a Phase 2 latency stub entry for later reconciliation."""
 
         log_dir = self.repo_root / "logs" / "alfa_zero"
@@ -320,6 +351,7 @@ class OverlayBridge:
             "overlay_cell": payload.get("overlay_cell"),
             "outbox_path": str(relative_outbox),
             "batch_id": batch_id,
+            "trace_id": trace_id,
             "telemetry_received_at": None,
             "telemetry_duration_ms": None,
             "telemetry_status": "pending",
@@ -384,6 +416,7 @@ def record_phase_two_telemetry(
     log_path = repo_root / "logs" / "alfa_zero" / "phase_2_latencies.jsonl"
     update_record = {
         "batch_id": batch_id,
+        "trace_id": entry.get("trace_id"),
         "telemetry_received_at": entry["telemetry_received_at"],
         "telemetry_duration_ms": entry.get("telemetry_duration_ms"),
         "telemetry_status": status,

@@ -93,6 +93,9 @@ def emoji_runtime_to_factory_order(
         batch_id = telemetry.get("batch_id", "n/a")
         status = telemetry.get("status", "unknown")
         detail_lines.append(f"Telemetry batch {batch_id} status {status}.")
+    trace_id = payload.get("trace_id")
+    if trace_id:
+        detail_lines.append(f"Correlation trace_id: {trace_id}.")
 
     directive = {
         "step": 1,
@@ -114,6 +117,9 @@ def emoji_runtime_to_factory_order(
             "emoji_runtime_payload": payload,
         },
     }
+
+    if trace_id:
+        order["extensions"]["correlation_trace_id"] = trace_id
 
     return order
 

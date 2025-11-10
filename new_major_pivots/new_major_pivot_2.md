@@ -117,7 +117,9 @@ Each **Alfa** is:
 - **2025-11-09 — Order 045 Kickoff:** Issued the UI overlay integration slice with baseline readiness sweep (heartbeat, offline sync, contract suite) confirmed green; stretch backlog tracked separately to protect the core slice.
 - **2025-11-09 - Order 045 Day 0:** Upgraded narrator/telemetry shells with overlay context, comfort toggles, and JSONL trace capture sowing logs under `logs/alfa_02/narration_traces.jsonl` and `logs/alfa_03/telemetry.jsonl`.
 - **Telemetry Hooks:** Runtime shells now expose overlay hook points with trace capture earmarked as Order 045 milestone evidence.
- - **2025-11-09 - Order 045 Day 1:** Wired the first overlay interaction end-to-end via `overlay_flow` (correlated narrator + telemetry with comfort and overlay context). Captured traces and added `overlay_first_click` to the contract suite; all contracts passing.
+- **2025-11-09 - Order 045 Day 1:** Wired the first overlay interaction end-to-end via `overlay_flow` (correlated narrator + telemetry with comfort and overlay context). Captured traces and added `overlay_first_click` to the contract suite; all contracts passing.
+- **2025-11-10 - Order 045 Day 2:** Expanded overlay regression coverage with `overlay_guarded_wall` and `overlay_guarded_warning`; threaded `trace_id` correlation into overlay dispatch payloads and refreshed rollout notes/ledger entries to lock both success and risk paths.
+- **2025-11-10 - Order 045 Day 3:** Verified trace parity across direct Alfa Zero UI and event-stream paths so telemetry, payloads, and factory orders carry matching `trace_id` values.
 
 ---
 

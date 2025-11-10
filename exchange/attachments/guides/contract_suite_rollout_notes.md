@@ -13,6 +13,13 @@ High Command finished Order-2025-11-02-043, delivering curated emoji-runtime fix
 - Fixture catalog: `contract_samples/` (README plus cases under `contract_samples/cases/`)
 - Execution log: `logs/contract_tests/order-2025-11-02-043.txt`
 
+## Recent Updates
+
+- 2025-11-10 — Added overlay regression coverage for the guarded delivery success chain (`overlay_guarded_wall.json`) alongside Order 045 work.
+- 2025-11-10 — Added overlay regression coverage for the guarded delivery warning chain (`overlay_guarded_warning.json`) to lock risk outcomes.
+- 2025-11-10 — Threaded `trace_id` correlation through overlay dispatch payloads and factory-order promotions for telemetry joins.
+- 2025-11-10 — Aligned direct UI dispatch telemetry with event-stream parity so both paths stamp `trace_id` for downstream analysis.
+
 ## Integration Steps
 
 1. Pull the latest workspace sync (offline bridge already propagated Order-043 artifacts).
@@ -28,5 +35,4 @@ High Command finished Order-2025-11-02-043, delivering curated emoji-runtime fix
 
 ## Planned Additions (Queued)
 
-- Overlay regression case for qualifier coverage: `overlay_guarded_delivery` (maps a guarded delivery chain; validates qualifier handling end-to-end).
-- Correlation threading: consider propagating a `trace_id` through `alfa_00/overlay_bridge.py` into downstream payload extensions for cross-pipeline joins (non-breaking, opt-in).
+- None at this time; future additions will be queued after the next overlay slice checkpoints.

@@ -47,6 +47,7 @@ def emit_overlay_click(
         context=overlay,
         trace=narration_trace,
         comfort=comfort,
+        trace_id=trace_id,
     )
 
     # Telemetry (mode:level format for comfort state)

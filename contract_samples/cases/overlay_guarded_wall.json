@@ -1,0 +1,36 @@
+{
+  "name": "overlay_guarded_wall",
+  "description": "Guarded delivery success path exercised through the overlay orchestrator.",
+  "emoji_chain": ["🤖", "📦", "🔒", "🧱", "✅"],
+  "adapter": {
+    "order_id": "emoji-overlay-guarded-wall",
+    "issued_by": "high_command_ai_0",
+    "target": "toyfoundry_ai_0",
+    "priority": "standard",
+    "requires_ack": false
+  },
+  "expectations": {
+    "emoji_runtime": {
+      "summary": "Ally deliver safe wall -> victory",
+      "intent": {
+        "actor": "ally",
+        "action": "deliver",
+        "target": "wall",
+        "qualifiers": ["safe"],
+        "outcome": "success"
+      },
+      "spoken": ["ally", "deliver", "safe", "wall", "victory"]
+    },
+    "factory_order": {
+      "priority": "standard",
+      "summary": "Ally deliver safe wall -> victory",
+      "target": "toyfoundry_ai_0",
+      "requires_ack": false,
+      "details_contains": [
+        "Actor ally executes deliver targeting wall.",
+        "Qualifiers: safe. Outcome: success.",
+        "Glyph chain: 🤖 📦 🔒 🧱 ✅."
+      ]
+    }
+  }
+}
