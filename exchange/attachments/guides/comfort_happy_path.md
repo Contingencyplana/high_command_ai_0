@@ -31,8 +31,9 @@ This loop keeps Order 044’s comfort mandate intact: spend ~70% of the cadence 
 - Automation case: `contract_samples/cases/automation_path_happy_flow.json`
   - Template seed for variants: `contract_samples/drafts/automation_path_happy_flow.json.template`
 - Automation quick-start: `exchange/attachments/guides/automation_quick_start.md`
- - Outlands framework (Pivot Seven): `exchange/attachments/guides/outlands_framework.md`
- - Fun Guardian protocol (Pivot Seven): `exchange/attachments/guides/fun_guardian_protocol.md`
+- Outlands framework (Pivot Seven): `exchange/attachments/guides/outlands_framework.md`
+- Fun Guardian protocol (Pivot Seven): `exchange/attachments/guides/fun_guardian_protocol.md`
+- Outlands directory index: `exchange/attachments/guides/outlands_index.md` (maps active Outland layers and guardian roles)
  
 ---
 

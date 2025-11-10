@@ -45,3 +45,4 @@ Use this checklist when spinning up the automation + comfort tooling introduced 
 - Outlands framework: `exchange/attachments/guides/outlands_framework.md`
 - Fun Guardian protocol: `exchange/attachments/guides/fun_guardian_protocol.md`
 - Pivot Seven spec: `new_major_pivots/new_major_pivot_7.md`
+- Outlands index: `exchange/attachments/guides/outlands_index.md`

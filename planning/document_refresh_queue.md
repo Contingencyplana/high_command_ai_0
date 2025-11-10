@@ -14,6 +14,7 @@
 | P2 | `new_major_pivots/README.md` | Summarise post-pivot state incl. emoji language progress | Done | High Command | ✅ Added metadata, Level-0 baseline, and Alfa staging checklist. |
 | P2 | `new_major_pivots/new_major_pivot_2.md` | Capture overlay progress, telemetry hooks, and Order 045 plan | Done 2025-11-09 | High Command | ✅ Progress log aligned with Orders 044/045; revisit after overlay slice evidence lands. |
 | P2 | `planning/pivotal_fronts/ops.md` | Fold in Order 045 trace parity guardrails + offline cadence reminders | Done 2025-11-10 | High Command | ✅ Added trace parity guardrail, refreshed heartbeat/sync checklist, logged in ledger. |
+| P2 | `exchange/attachments/guides/comfort_happy_path.md` | Weave Pivot Seven Outlands links into comfort loop references | Done 2025-11-10 | High Command | ✅ Added Outlands index reference, linked framework + guardian protocol, created shared index stub. |
 
 ## Working Norms
 
@@ -29,7 +30,6 @@
 
 ## Next Target Candidate
 
-- 2025-11-10 - Add Pivot Seven (Outlands Onion) links to index and attach guide stubs (`outlands_framework.md`, `fun_guardian_protocol.md`); weave into comfort docs overview.
 - 2025-11-10 - Add overlay regression case `overlay_guarded_delivery` for qualifier coverage; update `contract_samples/README.md` and rerun contract suite.
 - 2025-11-10 - Evaluate propagating `trace_id` through `golf_00/delta_00/alfa_00/overlay_bridge.py` into payload extensions for cross-pipeline correlation; document toggle and evidence sinks. *(Completed 2025-11-10 via Order 045 trace parity refresh; future tweaks will spin as new entries as needed.)*
 
@@ -45,3 +45,4 @@
 - 2025-11-05 — Pivotal fronts ops scroll updated with Offline Continuity cadence and contract suite guardrails (High Command).
 - 2025-11-07 — Ops scroll acceptance evidence updated with Toysoldiers ORDER-043 adoption log review (High Command).
 - 2025-11-09 — new_major_pivot_2.md progress log aligned with Orders 044/045 overlay plan (High Command).
+- 2025-11-10 — Comfort Happy Path guide now links Outlands framework, Fun Guardian protocol, and Outlands index (High Command).

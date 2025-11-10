@@ -46,4 +46,5 @@
 - 2025-11-10T10:00:00Z - Order order-2025-11-09-045: Added overlay_guarded_warning regression; contract suite now covers warning outcome via overlay orchestration.
 - 2025-11-10T10:38:00Z - Order order-2025-11-09-045: Threaded trace_id through overlay dispatch payloads and factory-order promotions to preserve telemetry joins.
 - 2025-11-10T13:50:00Z - Order order-2025-11-09-045: Verified trace parity across UI dispatch paths; telemetry JSONL and payload exports now emit matching trace_id fields.
+- 2025-11-10T14:22:00Z - Doc Refresh: Comfort Happy Path updated with Pivot Seven Outlands references and new outlands_index guide stub.
 - 2025-11-05T09:00:00Z - Pivot Seven activated (Outlands Onion): layered playability charter logged; stubs published for outlands framework and fun guardian protocol.
