@@ -172,9 +172,15 @@ def test_dispatch_includes_lore_overlay_metadata(tmp_path: Path, monkeypatch):
     payload = json.loads(destination.read_text(encoding="utf-8"))
     assert payload.get("overlay_id") == "outland-lore-v1"
     assert payload.get("overlay_layer") == "lore"
+    overlays = payload.get("overlays")
+    assert isinstance(overlays, list)
+    assert overlays and overlays[0].get("overlay_id") == "outland-lore-v1"
+    assert overlays[0].get("layer_kind") == "lore"
     stub = payload.get("telemetry_stub") or {}
     assert stub.get("overlay_id") == "outland-lore-v1"
     assert stub.get("overlay_layer") == "lore"
+    assert isinstance(stub.get("overlays"), list)
+    assert stub["overlays"][0].get("overlay_id") == "outland-lore-v1"
 
 
 def test_dispatch_rejects_invalid_overlay_id(tmp_path: Path, monkeypatch):
@@ -212,6 +218,61 @@ def test_dispatch_rejects_invalid_overlay_id(tmp_path: Path, monkeypatch):
         bridge.dispatch_cell(cell, overlay_id="INVALID ID", layer_kind="lore")
 
 
+def test_dispatch_supports_overlay_stack(tmp_path: Path, monkeypatch):
+    import importlib.util
+    from pathlib import Path as _Path
+    import sys
+
+    monkeypatch.setenv("OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS", "0")
+
+    here = _Path(__file__).resolve()
+    root = next((p for p in [here.parent] + list(here.parents) if (p / ".git").exists()), here.parent)
+    bridge_path = root / "golf_00" / "delta_00" / "alfa_00" / "overlay_bridge.py"
+    spec = importlib.util.spec_from_file_location("overlay_bridge", bridge_path)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    bridge_module_path = str(bridge_path.parent)
+    cleanup_path = False
+    if bridge_module_path not in sys.path:
+        sys.path.insert(0, bridge_module_path)
+        cleanup_path = True
+    sys.modules[spec.name] = module
+    try:
+        spec.loader.exec_module(module)  # type: ignore[attr-defined]
+    finally:
+        if cleanup_path:
+            sys.path.remove(bridge_module_path)
+        sys.modules.pop(spec.name, None)
+
+    outbox_dir = tmp_path / "emoji_payloads"
+    outbox_dir.mkdir(parents=True, exist_ok=True)
+    bridge = module.build_bridge(str(outbox_dir))
+
+    cell = next(iter(module.CELL_MAPPINGS))
+    destination = bridge.dispatch_cell(
+        cell,
+        trace_id="trace-test-stack",
+        overlays=[
+            ("outland-lore-v1", "lore"),
+            ("outland-music-v1", "music"),
+        ],
+    )
+
+    payload = json.loads(destination.read_text(encoding="utf-8"))
+    overlays = payload.get("overlays")
+    assert isinstance(overlays, list) and len(overlays) == 2
+    assert overlays[0].get("overlay_id") == "outland-lore-v1"
+    assert overlays[0].get("layer_kind") == "lore"
+    assert overlays[1].get("overlay_id") == "outland-music-v1"
+    assert overlays[1].get("layer_kind") == "music"
+    assert payload.get("overlay_id") == "outland-lore-v1"
+    stub = payload.get("telemetry_stub") or {}
+    stub_overlays = stub.get("overlays")
+    assert isinstance(stub_overlays, list) and len(stub_overlays) == 2
+    assert stub_overlays[1].get("overlay_id") == "outland-music-v1"
+    assert stub_overlays[1].get("layer_kind") == "music"
+
+
 def test_factory_order_receives_trace_id():
     from golf_00.delta_00.alfa_04 import emoji_translator, factory_adapter
 
@@ -238,4 +299,18 @@ def test_factory_order_receives_trace_id():
     assert f"Correlation trace_id: {trace_id}." in details
     extensions = order.get("extensions") or {}
     assert extensions.get("correlation_trace_id") == trace_id
+
+
+def test_generate_trace_id_with_overlay_stack():
+    from golf_00.delta_00.alfa_00 import trace_utils
+
+    trace = trace_utils.generate_trace_id(
+        "04",
+        overlays=[
+            ("outland-lore-v1", "lore"),
+            ("outland-music-v1", "music"),
+        ],
+    )
+
+    assert trace.startswith("outland-lore-v1+outland-music-v1-04-")
 

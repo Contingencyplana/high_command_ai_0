@@ -17,9 +17,9 @@ import argparse
 import json
 import os
 import tempfile
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, List, Sequence
 
 from golf_00.delta_00.alfa_04 import emoji_translator, factory_adapter
 from golf_00.delta_00.alfa_00.overlay_bridge import build_bridge
@@ -34,13 +34,19 @@ def _load_json(path: Path) -> dict:
         return json.load(handle)
 
 
+@dataclass(frozen=True)
+class OverlayExpectation:
+    overlay_id: str
+    layer_kind: str
+
+
 @dataclass
 class FactoryOrderExpectations:
     summary: str
     priority: str
     target: str
     requires_ack: bool
-    details_contains: Sequence[str]
+    details_contains: tuple[str, ...]
     overlay_id: str | None = None
     overlay_layer: str | None = None
 
@@ -49,9 +55,10 @@ class FactoryOrderExpectations:
 class EmojiRuntimeExpectations:
     summary: str
     intent: dict
-    spoken: Sequence[str]
+    spoken: tuple[str, ...]
     overlay_id: str | None = None
     overlay_layer: str | None = None
+    overlays: tuple[OverlayExpectation, ...] | None = None
 
 
 @dataclass
@@ -67,7 +74,7 @@ class AdapterConfig:
 class ContractCase:
     name: str
     description: str
-    emoji_chain: Sequence[str]
+    emoji_chain: tuple[str, ...]
     adapter: AdapterConfig
     expectations_runtime: EmojiRuntimeExpectations
     expectations_factory: FactoryOrderExpectations
@@ -79,7 +86,7 @@ class ContractCase:
 class CaseResult:
     name: str
     passed: bool
-    errors: List[str]
+    errors: list[str]
 
 
 @dataclass
@@ -88,51 +95,102 @@ class OverlayCaseConfig:
     layer_kind: str
     trace_id: str
     description: str | None = None
+    overlays: tuple[tuple[str, str], ...] | None = None
 
 
-def _as_list(value: Sequence[str] | Iterable[str]) -> List[str]:
+def _as_list(value: Sequence[str] | Iterable[str]) -> list[str]:
     return [str(item) for item in value]
 
 
-def load_cases() -> List[ContractCase]:
+def _parse_overlay_stack(raw: object) -> tuple[tuple[str, str], ...]:
+    if not isinstance(raw, Sequence) or isinstance(raw, (str, bytes)):
+        return tuple()
+    stack: list[tuple[str, str]] = []
+    for entry in raw:
+        overlay_id: str | None = None
+        layer_kind: str | None = None
+        if isinstance(entry, dict):
+            overlay_id = entry.get("overlay_id")  # type: ignore[assignment]
+            layer_kind = entry.get("layer_kind")  # type: ignore[assignment]
+        elif isinstance(entry, (tuple, list)) and len(entry) == 2:
+            overlay_id = entry[0]
+            layer_kind = entry[1]
+        if overlay_id and layer_kind:
+            stack.append((str(overlay_id), str(layer_kind)))
+    return tuple(stack)
+
+
+def _build_overlay_expectations(raw: object) -> tuple[OverlayExpectation, ...] | None:
+    stack = _parse_overlay_stack(raw)
+    if not stack:
+        return None
+    return tuple(OverlayExpectation(overlay_id=spec[0], layer_kind=spec[1]) for spec in stack)
+
+
+def _extract_overlay_pairs(payload_value: object) -> tuple[tuple[str, str], ...]:
+    return _parse_overlay_stack(payload_value)
+
+
+def _format_overlay_stack(stack: tuple[tuple[str, str], ...]) -> str:
+    if not stack:
+        return "[]"
+    return "[" + ", ".join(f"({overlay_id}, {layer_kind})" for overlay_id, layer_kind in stack) + "]"
+
+
+def load_cases() -> list[ContractCase]:
     if not CASES_DIR.exists():
         raise FileNotFoundError(f"Contract case directory missing: {CASES_DIR}")
 
-    cases: List[ContractCase] = []
+    cases: list[ContractCase] = []
     for path in sorted(CASES_DIR.glob("*.json")):
         raw = _load_json(path)
         adapter = AdapterConfig(**raw["adapter"])
         runtime_raw = raw["expectations"]["emoji_runtime"]
         factory_raw = raw["expectations"]["factory_order"]
-        overlay_config = None
+
+        runtime_overlays = _build_overlay_expectations(runtime_raw.get("overlays"))
+
+        overlay_config: OverlayCaseConfig | None = None
         overlay_raw = raw.get("overlay")
         if overlay_raw:
+            primary = (str(overlay_raw["overlay_id"]), str(overlay_raw["layer_kind"]))
+            overlay_stack = list(_parse_overlay_stack(overlay_raw.get("overlays")))
+            ordered_stack: list[tuple[str, str]] = []
+            seen: set[tuple[str, str]] = set()
+            for entry in (primary, *overlay_stack):
+                if entry in seen:
+                    continue
+                ordered_stack.append(entry)
+                seen.add(entry)
             overlay_config = OverlayCaseConfig(
-                overlay_id=overlay_raw["overlay_id"],
-                layer_kind=overlay_raw["layer_kind"],
-                trace_id=overlay_raw.get("trace_id", "overlay-trace"),
+                overlay_id=primary[0],
+                layer_kind=primary[1],
+                trace_id=str(overlay_raw.get("trace_id", "overlay-trace")),
                 description=overlay_raw.get("description"),
+                overlays=tuple(ordered_stack) if ordered_stack else None,
             )
+
         runtime = EmojiRuntimeExpectations(
             summary=runtime_raw["summary"],
             intent=runtime_raw["intent"],
-            spoken=tuple(runtime_raw.get("spoken", [])),
+            spoken=tuple(str(item) for item in runtime_raw.get("spoken", [])),
             overlay_id=runtime_raw.get("overlay_id"),
             overlay_layer=runtime_raw.get("overlay_layer"),
+            overlays=runtime_overlays,
         )
         factory = FactoryOrderExpectations(
             summary=factory_raw["summary"],
             priority=factory_raw["priority"],
             target=factory_raw["target"],
             requires_ack=factory_raw["requires_ack"],
-            details_contains=tuple(factory_raw.get("details_contains", [])),
+            details_contains=tuple(str(item) for item in factory_raw.get("details_contains", [])),
             overlay_id=factory_raw.get("overlay_id"),
             overlay_layer=factory_raw.get("overlay_layer"),
         )
         case = ContractCase(
             name=raw["name"],
             description=raw.get("description", ""),
-            emoji_chain=tuple(raw["emoji_chain"]),
+            emoji_chain=tuple(str(item) for item in raw["emoji_chain"]),
             adapter=adapter,
             expectations_runtime=runtime,
             expectations_factory=factory,
@@ -145,8 +203,8 @@ def load_cases() -> List[ContractCase]:
     return cases
 
 
-def _compare_intent(expected: dict, actual: dict) -> List[str]:
-    errors: List[str] = []
+def _compare_intent(expected: dict, actual: dict) -> list[str]:
+    errors: list[str] = []
     for key, value in expected.items():
         actual_value = actual.get(key)
         if key == "qualifiers":
@@ -160,8 +218,8 @@ def _compare_intent(expected: dict, actual: dict) -> List[str]:
     return errors
 
 
-def _validate_runtime(case: ContractCase, payload: dict) -> List[str]:
-    errors: List[str] = []
+def _validate_runtime(case: ContractCase, payload: dict) -> list[str]:
+    errors: list[str] = []
     if payload.get("schema") != "emoji-runtime@1.0":
         errors.append("emoji_runtime.schema mismatch")
     if _as_list(payload.get("glyph_chain", [])) != list(case.emoji_chain):
@@ -179,17 +237,20 @@ def _validate_runtime(case: ContractCase, payload: dict) -> List[str]:
         errors.append("emoji_runtime.intent missing or not an object")
         return errors
     errors.extend(_compare_intent(case.expectations_runtime.intent, intent))
+    stub_raw = payload.get("telemetry_stub")
+    stub = stub_raw if isinstance(stub_raw, dict) else {}
+
     if case.expectations_runtime.overlay_id is not None:
         actual_overlay_id = payload.get("overlay_id")
         if actual_overlay_id != case.expectations_runtime.overlay_id:
             errors.append(
                 f"overlay_id expected {case.expectations_runtime.overlay_id!r}, got {actual_overlay_id!r}"
             )
-        stub = payload.get("telemetry_stub") if isinstance(payload.get("telemetry_stub"), dict) else {}
-        stub_overlay_id = stub.get("overlay_id") if isinstance(stub, dict) else None
+        stub_overlay_id = stub.get("overlay_id")
         if stub_overlay_id != case.expectations_runtime.overlay_id:
             errors.append(
-                f"telemetry_stub.overlay_id expected {case.expectations_runtime.overlay_id!r}, got {stub_overlay_id!r}"
+                "telemetry_stub.overlay_id expected "
+                f"{case.expectations_runtime.overlay_id!r}, got {stub_overlay_id!r}"
             )
     if case.expectations_runtime.overlay_layer is not None:
         actual_layer = payload.get("overlay_layer")
@@ -197,17 +258,33 @@ def _validate_runtime(case: ContractCase, payload: dict) -> List[str]:
             errors.append(
                 f"overlay_layer expected {case.expectations_runtime.overlay_layer!r}, got {actual_layer!r}"
             )
-        stub = payload.get("telemetry_stub") if isinstance(payload.get("telemetry_stub"), dict) else {}
-        stub_layer = stub.get("overlay_layer") if isinstance(stub, dict) else None
+        stub_layer = stub.get("overlay_layer")
         if stub_layer != case.expectations_runtime.overlay_layer:
             errors.append(
-                f"telemetry_stub.overlay_layer expected {case.expectations_runtime.overlay_layer!r}, got {stub_layer!r}"
+                "telemetry_stub.overlay_layer expected "
+                f"{case.expectations_runtime.overlay_layer!r}, got {stub_layer!r}"
+            )
+
+    expected_overlays = case.expectations_runtime.overlays
+    if expected_overlays is not None:
+        expected_stack = tuple((item.overlay_id, item.layer_kind) for item in expected_overlays)
+        actual_stack = _extract_overlay_pairs(payload.get("overlays"))
+        if actual_stack != expected_stack:
+            errors.append(
+                "overlays stack mismatch: expected "
+                f"{_format_overlay_stack(expected_stack)}, got {_format_overlay_stack(actual_stack)}"
+            )
+        stub_stack = _extract_overlay_pairs(stub.get("overlays"))
+        if stub_stack != expected_stack:
+            errors.append(
+                "telemetry_stub.overlays mismatch: expected "
+                f"{_format_overlay_stack(expected_stack)}, got {_format_overlay_stack(stub_stack)}"
             )
     return errors
 
 
-def _validate_factory_order(case: ContractCase, payload: dict, order: dict) -> List[str]:
-    errors: List[str] = []
+def _validate_factory_order(case: ContractCase, payload: dict, order: dict) -> list[str]:
+    errors: list[str] = []
     if order.get("schema") != "factory-order@1.0":
         errors.append("factory_order.schema mismatch")
     if order.get("order_id") != case.adapter.order_id:
@@ -259,7 +336,7 @@ def _validate_factory_order(case: ContractCase, payload: dict, order: dict) -> L
 
 
 def run_case(case: ContractCase) -> CaseResult:
-    payload = None
+    payload: dict | None = None
     cleanup_outbox: tempfile.TemporaryDirectory | None = None
     original_auto_flag = os.environ.get("OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS")
     try:
@@ -274,6 +351,7 @@ def run_case(case: ContractCase) -> CaseResult:
                 trace_id=case.overlay.trace_id,
                 overlay_id=case.overlay.overlay_id,
                 layer_kind=case.overlay.layer_kind,
+                overlays=case.overlay.overlays,
             )
             payload_path = Path(destination)
             payload = json.loads(payload_path.read_text(encoding="utf-8"))
@@ -305,7 +383,7 @@ def run_case(case: ContractCase) -> CaseResult:
     return CaseResult(case.name, not errors, errors)
 
 
-def run_contract_tests(selected: Sequence[str] | None = None, *, fail_fast: bool = False) -> List[CaseResult]:
+def run_contract_tests(selected: Sequence[str] | None = None, *, fail_fast: bool = False) -> list[CaseResult]:
     cases = load_cases()
     if selected:
         selected_set = {name.lower() for name in selected}
@@ -313,7 +391,7 @@ def run_contract_tests(selected: Sequence[str] | None = None, *, fail_fast: bool
         if not cases:
             raise ValueError(f"Requested cases not found: {', '.join(selected)}")
 
-    results: List[CaseResult] = []
+    results: list[CaseResult] = []
     for case in cases:
         result = run_case(case)
         results.append(result)

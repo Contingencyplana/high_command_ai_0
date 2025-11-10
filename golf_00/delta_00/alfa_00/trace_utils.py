@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from datetime import datetime, timezone
 
 def _segment(value: str) -> str:
@@ -15,6 +16,7 @@ def generate_trace_id(
     overlay: str = "overlay-alpha",
     *,
     overlay_id: str | None = None,
+    overlays: Sequence[tuple[str, str]] | None = None,
 ) -> str:
     """Return a deterministic correlation ID for an overlay dispatch.
 
@@ -24,5 +26,19 @@ def generate_trace_id(
     """
 
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
-    prefix = overlay_id or overlay
-    return f"{_segment(prefix)}-{cell_label}-{timestamp}"
+
+    segments: list[str] = []
+    if overlays:
+        for spec in overlays:
+            if not spec:
+                continue
+            overlay_spec_id = spec[0]
+            if overlay_spec_id:
+                segments.append(_segment(overlay_spec_id))
+    if not segments and overlay_id:
+        segments.append(_segment(overlay_id))
+    if not segments:
+        segments.append(_segment(overlay))
+
+    prefix = "+".join(segments)
+    return f"{prefix}-{cell_label}-{timestamp}"

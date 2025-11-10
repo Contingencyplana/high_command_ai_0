@@ -36,6 +36,15 @@ class OverlayMetadata:
     layer_kind: str | None
 
 
+@dataclass(frozen=True)
+class OverlaySpec:
+    overlay_id: str
+    layer_kind: str
+
+
+OverlayInput = OverlayMetadata | OverlaySpec | dict[str, str] | tuple[str, str]
+
+
 def _prepare_overlay_metadata(overlay_id: str | None, layer_kind: str | None) -> OverlayMetadata:
     if overlay_id is None and layer_kind is None:
         return OverlayMetadata(None, None)
@@ -51,6 +60,51 @@ def _prepare_overlay_metadata(overlay_id: str | None, layer_kind: str | None) ->
     if layer_kind not in VALID_LAYER_KINDS:
         raise ValueError(f"layer_kind must be one of {sorted(VALID_LAYER_KINDS)}")
     return OverlayMetadata(normalized, layer_kind)
+
+
+def _coerce_overlay_spec(overlay_id: str | None, layer_kind: str | None) -> OverlaySpec:
+    meta = _prepare_overlay_metadata(overlay_id, layer_kind)
+    if meta.overlay_id is None or meta.layer_kind is None:
+        raise ValueError("overlay specification requires both overlay_id and layer_kind")
+    return OverlaySpec(meta.overlay_id, meta.layer_kind)
+
+
+def _normalize_overlay_inputs(
+    overlay_id: str | None,
+    layer_kind: str | None,
+    overlays: Sequence[OverlayInput] | None,
+) -> tuple[OverlaySpec | None, list[OverlaySpec]]:
+    overlay_list: list[OverlaySpec] = []
+    if overlays:
+        for item in overlays:
+            if isinstance(item, OverlaySpec):
+                overlay_list.append(item)
+            elif isinstance(item, OverlayMetadata):
+                if item.overlay_id and item.layer_kind:
+                    overlay_list.append(OverlaySpec(item.overlay_id, item.layer_kind))
+                else:
+                    raise ValueError("overlay metadata entries must include overlay_id and layer_kind")
+            elif isinstance(item, dict):
+                overlay_list.append(_coerce_overlay_spec(item.get("overlay_id"), item.get("layer_kind")))
+            elif isinstance(item, tuple) and len(item) == 2:
+                overlay_list.append(_coerce_overlay_spec(item[0], item[1]))
+            else:
+                raise TypeError("overlay entries must be OverlaySpec, OverlayMetadata, dict, or (id, kind) tuple")
+
+    primary: OverlaySpec | None = None
+    if overlay_id is not None or layer_kind is not None:
+        primary = _coerce_overlay_spec(overlay_id, layer_kind)
+    elif overlay_list:
+        primary = overlay_list[0]
+
+    if primary:
+        combined: list[OverlaySpec] = [primary]
+        for spec in overlay_list:
+            if spec.overlay_id == primary.overlay_id and spec.layer_kind == primary.layer_kind:
+                continue
+            combined.append(spec)
+        overlay_list = combined
+    return primary, overlay_list
 
 # Centralized mapping between grid cells and Level-0 emoji chains.
 CELL_MAPPINGS: Dict[Cell, Tuple[str, str]] = {
@@ -167,6 +221,7 @@ class OverlayBridge:
         trace_id: str | None = None,
         overlay_id: str | None = None,
         layer_kind: str | None = None,
+        overlays: Sequence[OverlayInput] | None = None,
     ) -> Path:
         if cell not in CELL_MAPPINGS:
             raise KeyError(f"Cell {cell_label(cell)} is not mapped to a chain yet")
@@ -179,6 +234,7 @@ class OverlayBridge:
             trace_id=trace_id,
             overlay_id=overlay_id,
             layer_kind=layer_kind,
+            overlays=overlays,
         )
 
     def dispatch_cells(self, cells: Iterable[Cell]) -> Dict[str, Path]:
@@ -233,6 +289,7 @@ class OverlayBridge:
         trace_id: str | None = None,
         overlay_id: str | None = None,
         layer_kind: str | None = None,
+        overlays: Sequence[OverlayInput] | None = None,
     ) -> Path:
         if chain_name not in self.sample_chains:
             raise KeyError(f"Chain {chain_name} missing from sample_chains.json")
@@ -245,6 +302,7 @@ class OverlayBridge:
             trace_id=trace_id,
             overlay_id=overlay_id,
             layer_kind=layer_kind,
+            overlays=overlays,
         )
 
     def dispatch_raw_chain(
@@ -257,10 +315,11 @@ class OverlayBridge:
         trace_id: str | None = None,
         overlay_id: str | None = None,
         layer_kind: str | None = None,
+        overlays: Sequence[OverlayInput] | None = None,
     ) -> Path:
-        overlay_meta = _prepare_overlay_metadata(overlay_id, layer_kind)
-        overlay_id = overlay_meta.overlay_id
-        layer_kind = overlay_meta.layer_kind
+        primary_overlay, overlay_stack = _normalize_overlay_inputs(overlay_id, layer_kind, overlays)
+        overlay_id = primary_overlay.overlay_id if primary_overlay else None
+        layer_kind = primary_overlay.layer_kind if primary_overlay else None
         payload = dict(self.translator.translate_chain(chain))
         if "created_at" not in payload:
             created_at = datetime.now(timezone.utc)
@@ -300,6 +359,16 @@ class OverlayBridge:
             if isinstance(stub, dict):
                 stub["trace_id"] = trace_id
 
+        if overlay_stack:
+            payload["overlays"] = [
+                {"overlay_id": spec.overlay_id, "layer_kind": spec.layer_kind} for spec in overlay_stack
+            ]
+            stub = payload.get("telemetry_stub")
+            if isinstance(stub, dict):
+                stub["overlays"] = [
+                    {"overlay_id": spec.overlay_id, "layer_kind": spec.layer_kind} for spec in overlay_stack
+                ]
+
         if overlay_id:
             payload["overlay_id"] = overlay_id
             payload["overlay_layer"] = layer_kind
@@ -328,6 +397,7 @@ class OverlayBridge:
             trace_id=trace_id,
             overlay_id=overlay_id,
             layer_kind=layer_kind,
+            overlays=overlay_stack,
         )
         # Auto-promote to factory-order unless disabled via env
         auto = os.getenv("OVERLAY_AUTO_PROMOTE_FACTORY_ORDERS", "1").lower() not in {"0", "false", "no"}
@@ -388,6 +458,7 @@ class OverlayBridge:
         trace_id: str | None = None,
         overlay_id: str | None = None,
         layer_kind: str | None = None,
+        overlays: Sequence[OverlaySpec] | None = None,
     ) -> None:
         """Append a Phase 2 latency stub entry for later reconciliation."""
 
@@ -414,6 +485,11 @@ class OverlayBridge:
             "trace_id": trace_id,
             "overlay_id": overlay_id,
             "overlay_layer": layer_kind,
+            "overlays": [
+                {"overlay_id": spec.overlay_id, "layer_kind": spec.layer_kind} for spec in overlays or []
+            ]
+            if overlays
+            else None,
             "telemetry_received_at": None,
             "telemetry_duration_ms": None,
             "telemetry_status": "pending",
