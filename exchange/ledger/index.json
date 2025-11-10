@@ -248,15 +248,15 @@
       "report_path": "reports/archived/order-2025-11-07-044-report.json"
     },
     "order-2025-11-09-045": {
-      "status": "closed",
+      "status": "received",
       "order_path": "orders/pending/order-2025-11-09-045.json",
       "ack_path": "acknowledgements/pending/order-2025-11-09-045-ack.json",
       "report_path": "reports/inbox/order-2025-11-09-045-report.json"
     },
     "order-2025-11-10-046": {
-      "status": "closed",
+      "status": "received",
       "order_path": "orders/pending/order-2025-11-10-046.json",
-      "ack_path": "acknowledgements/pending/order-2025-11-10-046-ack.json",
+      "ack_path": "acknowledgements/logged/order-2025-11-10-046-ack.json",
       "report_path": "reports/inbox/order-2025-11-10-046-report.json"
     }
   },
@@ -349,6 +349,6 @@
     "order-2025-11-02-043-ack": "acknowledgements/logged/order-2025-11-02-043-ack.json",
     "order-2025-11-07-044-ack": "acknowledgements/logged/order-2025-11-07-044-ack.json",
     "order-2025-11-09-045-ack": "acknowledgements/pending/order-2025-11-09-045-ack.json",
-    "order-2025-11-10-046-ack": "acknowledgements/pending/order-2025-11-10-046-ack.json"
+    "order-2025-11-10-046-ack": "acknowledgements/logged/order-2025-11-10-046-ack.json"
   }
 }
