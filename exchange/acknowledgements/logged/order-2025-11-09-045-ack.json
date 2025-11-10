@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-11-09-045-ack",
+  "referenced_id": "order-2025-11-09-045",
+  "sender": "ui_overlay_front",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-11-11T14:15:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Baseline readiness sweep underway (heartbeat + offline sync complete).",
+    "Overlay slice wiring in progress; contract tests green for initial cases.",
+    "Proceeding to evidence capture for end-to-end overlay dispatch."
+  ]
+}

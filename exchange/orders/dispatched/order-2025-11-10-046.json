@@ -5,7 +5,7 @@
   "target": "outlands_activation_front",
   "priority": "medium",
   "timestamp_issued": "2025-11-10T14:30:00Z",
-  "summary": "Outlands Activation Slice — Lore layer pilot for Pivot Seven",
+  "summary": "Outlands Activation Slice - Lore layer pilot for Pivot Seven",
   "context": "Order 045 established trace parity across the Alfa Zero overlay. Pivot Seven now requires a proof-of-life overlay layer so operators can activate Lore beats without risking the core runtime.",
   "directives": [
     {
