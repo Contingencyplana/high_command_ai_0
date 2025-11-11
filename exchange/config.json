@@ -1,0 +1,37 @@
+{
+  "mode": "local",
+  "upstream_root": "C:/Users/Admin/high_command_exchange",
+  "mapping": {
+    "local": {
+      "orders_pending": "exchange/orders/pending",
+      "reports_inbox": "exchange/reports/inbox",
+      "acks_pending": "exchange/acknowledgements/pending",
+      "acks_logged": "exchange/acknowledgements/logged"
+    },
+    "upstream": {
+      "orders_pending": "orders/pending",
+      "orders_dispatched": "orders/dispatched",
+      "reports_inbox": "reports/inbox",
+      "reports_archived": "reports/archived",
+      "acks_pending": "acknowledgements/pending",
+      "acks_logged": "acknowledgements/logged"
+    }
+  },
+  "fun_flags": {
+    "fun_core": false,
+    "balance_toggles": false,
+    "xp_rate_limit": false,
+    "loot_governor": false
+  },
+  "fun_guardrails": {
+    "LOOT_MAX_UNITS_PER_PAYLOAD": 50,
+    "XP_MAX_ACTIONS_PER_MIN": 20,
+    "UNITS_PER_MIN_MAX": 200
+  },
+  "online": {
+    "enabled": false,
+    "channel": "git",
+    "retries": 0,
+    "timeout_ms": 2000
+  }
+}

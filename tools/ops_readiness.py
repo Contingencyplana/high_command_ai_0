@@ -4,7 +4,8 @@ Runs a lightweight preflight:
   1) Exchange heartbeat
   2) Contract tests (fail-fast)
   3) Offline sync (quiet, latest=1)
-  4) Schema sweep for frontline feedback inbox/outbox
+  4) Schema sweep across exchange payloads
+  5) Hybrid shadow check (no writes)
 
 Emits a labeled one-page summary and exits non-zero on failure.
 
@@ -150,6 +151,36 @@ def run_schema_sweep() -> StepResult:
     )
 
 
+def run_hybrid_shadow() -> StepResult:
+    """Exercise the hybrid comms adapter in shadow mode (dry run)."""
+    start = _now()
+    try:
+        import json as _json
+        from tools.comm_adapter import CommAdapter  # local import to avoid test coupling
+
+        adapter = CommAdapter()
+        payload = {"schema": "ops-hybrid-shadow@1.0", "generated_at": _now().strftime("%Y-%m-%dT%H:%M:%SZ")}
+        out = adapter.send(kind="report", payload=payload, trace_id="ops-readiness", dry_run=True)
+        stdout = _json.dumps(out, indent=2)
+        status = "OK"
+        rc = 0
+        stderr = ""
+    except Exception as exc:  # pragma: no cover - defensive
+        stdout = ""
+        stderr = str(exc)
+        status = "FAIL"
+        rc = 1
+    end = _now()
+    return StepResult(
+        name="Hybrid Shadow Check",
+        status=status,
+        returncode=rc,
+        duration_ms=int((end - start).total_seconds() * 1000),
+        stdout=stdout.strip(),
+        stderr=stderr.strip(),
+    )
+
+
 def _write_summary(steps: list[StepResult], destination: Path) -> None:
     lines: list[str] = []
     ts = _now().isoformat().replace("+00:00", "Z")
@@ -211,6 +242,12 @@ def main(argv: list[str] | None = None) -> int:
     sweep = run_schema_sweep()
     steps.append(sweep)
     if sweep.status == "FAIL":
+        exit_code = 1
+
+    # 5) Hybrid shadow check (no writes)
+    hybrid = run_hybrid_shadow()
+    steps.append(hybrid)
+    if hybrid.status == "FAIL":
         exit_code = 1
 
     # Write summary artifact
