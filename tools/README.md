@@ -10,6 +10,8 @@
 - Hybrid send (shadow): `python -m tools.comm_send --kind report --payload-file <path.json> [--validate] [--write]`
   - With staging enabled (config `online.enabled=true`, `online_write_kinds` includes kind), `--write` mirrors to `exchange/outbox/online_stage/`.
   - Defaults: reports and acks can write offline; reports and acks can stage online when enabled.
+- Stage retention: `python -m tools.stage_retention [--keep 200] [--write]`
+- Reflection stub: `python -m tools.morningate_reflection` → writes Markdown under `logs/reflection/`
 
 ## Ops Readiness
 
