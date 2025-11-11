@@ -25,6 +25,14 @@
   - python -m tools.ops_readiness
   - Expect: all sections [OK], summary artifact in logs/ops_readiness/.
 
+## Feature Flags & Gating
+
+- Enable multi-layer tooling only when `balance_toggles` is approved:
+  - Update `exchange/config.json` → `fun_flags.balance_toggles: true` (commit via exchange sync).
+  - Optional dev override: export `BALANCE_TOGGLES=1` (PowerShell `setx BALANCE_TOGGLES 1`).
+- Lore remains the default layer; Music requires explicit operator consent even when the flag is on.
+- After flag change, restart Alfa Zero UI (`python -m golf_00.delta_00.alfa_00.alfa_zero_ui --enable-lore`) to confirm toggles display.
+
 ## Guardrails & Cooldown (Pilot)
 
 - Generate weekly metrics with `python -m tools.cooldown_rollup` (report lands in `planning/`).
@@ -42,11 +50,14 @@
 - If issues persist, revert to single layer (lore only) to preserve compatibility fields.
 - File a note in exchange/ledger/journal.md with trace_id and symptoms.
 
-## Troubleshooting
+## Troubleshooting Appendix
 
-- Missing overlay fields: verify UI toggles and check payload overlays[] ordering.
-- Readiness failures: open latest logs/ops_readiness/summary-*.txt and fix the first failing step.
-- Trace mismatch: confirm trace_utils.generate_trace_id inputs (cell label + overlays).
+| Symptom | Checks | Fix |
+| -- | -- | -- |
+| Readiness pack fails | Inspect latest `logs/ops_readiness/summary-*.txt` for failing section | Resolve first failure, rerun `python -m tools.ops_readiness`, and document in ledger |
+| Missing overlay metadata | Confirm Lore/Music toggles were enabled; review payload `overlays[]` order | Re-dispatch with proper consent; Lore must be primary |
+| Cooldown spike alert | Review `planning/cooldown_rollup_*.md` totals for the front | Pause dual-layer runs for 24h or secure approval before retrying |
+| Music conflicts with ritual timing | Check frontline summary (`exchange/reports/outbox/frontline_feedback_summary_*.json`) for sentiment trend | Coordinate with Ritual lead, consider temporary Music disable |
 
 ## References
 

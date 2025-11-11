@@ -103,6 +103,7 @@ When GitHub returns, snapshot the exchange folder and push as a single commit be
 - Cooldown telemetry rollup: `python -m tools.cooldown_rollup` writes `planning/cooldown_rollup_YYYYMMDD.md`
 - Frontline feedback intake: `python -m tools.frontline_feedback --workspace <name> ...` then summarize via
   `python -m tools.frontline_feedback_summary`
+- Troubleshooting appendix lives in the playbook; review before escalating layered incidents.
 
 ---
 

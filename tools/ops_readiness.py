@@ -167,6 +167,7 @@ def main(argv: list[str] | None = None) -> int:
     print((REPO_ROOT / "logs" / "ops_readiness").as_posix())
     for step in steps:
         print(f"[{step.status}] {step.name} ({step.duration_ms} ms)")
+    print("Consult: exchange/attachments/guides/multi_layer_playbook.md for layering checklist")
 
     return exit_code
 

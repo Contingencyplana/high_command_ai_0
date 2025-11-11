@@ -35,9 +35,11 @@ Use this checklist when spinning up the automation + comfort tooling introduced 
 ### Multi-layer pilot (Lore + Music)
 
 - Preflight: `python -m tools.ops_readiness` (expect all sections [OK])
+- Enable flag: set `fun_flags.balance_toggles` to true in `exchange/config.json` (or export `BALANCE_TOGGLES=1` for a session).
 - Enable toggles in the UI: `python -m golf_00.delta_00.alfa_00.alfa_zero_ui --enable-lore --enable-music --cell 04`
 - Verify combined trace and ordered layers in the UI summary.
-- Reference playbook: `exchange/attachments/guides/multi_layer_playbook.md`
+- Guardrail: keep dual-layer activations ≤3 per 24h per front; review `planning/cooldown_rollup_*.md` if unsure.
+- Reference playbook (includes troubleshooting appendix): `exchange/attachments/guides/multi_layer_playbook.md`
 
 ## 4. Heartbeat & Sync
 
