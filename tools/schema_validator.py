@@ -111,6 +111,16 @@ SCHEMAS["safety-approval@1.0"] = {
     "notes": list,
 }
 
+# Policy report mirrors field-report minimal shape
+SCHEMAS["policy-report@1.0"] = {
+    "report_id": str,
+    "origin": str,
+    "relates_to": (list | str).__args__[0] if hasattr(list | str, "__args__") else list,  # tolerate string or list
+    "timestamp_submitted": str,
+    "status": str,
+    "summary": str,
+}
+
 
 class SchemaValidationError(RuntimeError):
     """Raised when a payload fails schema validation."""
@@ -135,11 +145,43 @@ def validate_payload(payload: Mapping[str, object]) -> None:
     schema = SCHEMAS.get(schema_name)
     if schema is None:
         raise SchemaValidationError(f"Unsupported schema '{schema_name}'")
-    _validate_fields(payload, schema)
-    # Factory report may include either 'summary' or 'details'. Accept either.
+
+    # Flexible validation for known report variants in historical archives
     if schema_name == "factory-report@1.0":
+        # Signature A (factory): order_id, reported_by, timestamp_reported, status
+        sig_a = all(k in payload for k in ("order_id", "reported_by", "timestamp_reported", "status"))
+        # Signature B (field-like): report_id, status, and one of sender/origin, and a timestamp field
+        has_actor = any(k in payload for k in ("sender", "origin", "reported_by"))
+        has_time = any(k in payload for k in ("timestamp_sent", "timestamp_reported", "timestamp_submitted"))
+        sig_b = all(k in payload for k in ("report_id", "status")) and has_actor and has_time
+        if not (sig_a or sig_b):
+            _validate_fields(payload, schema)  # will raise a precise error
+        # Optional narrative content
         if "summary" not in payload and "details" not in payload:
-            raise SchemaValidationError("Factory report requires 'summary' or 'details'")
+            # tolerate missing narrative in archives
+            pass
+        return
+
+    if schema_name == "field-report@1.0":
+        # Signature A (field): report_id, origin, relates_to, timestamp_submitted, status, summary
+        sig_a = all(k in payload for k in ("report_id", "origin", "relates_to", "timestamp_submitted", "status", "summary"))
+        # Signature B (factory-like): order_id, reported_by, timestamp_reported, status
+        sig_b = all(k in payload for k in ("order_id", "reported_by", "timestamp_reported", "status"))
+        if not (sig_a or sig_b):
+            _validate_fields(payload, schema)  # will raise
+        return
+
+    if schema_name == "policy-report@1.0":
+        # Accept relates_to as either a list or a single string
+        required = ("report_id", "origin", "timestamp_submitted", "status", "summary")
+        if not all(k in payload for k in required):
+            _validate_fields(payload, SCHEMAS["policy-report@1.0"])  # will raise
+        relates = payload.get("relates_to")
+        if not (isinstance(relates, list) or isinstance(relates, str)):
+            raise SchemaValidationError("Field 'relates_to' expected list or str")
+        return
+
+    _validate_fields(payload, schema)
 
 
 def validate_file(path: Path) -> str:

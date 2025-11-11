@@ -1,0 +1,7 @@
+Ops Readiness Summary — 2025-11-11T22:39:20.245794Z
+
+[OK] Config Mode (3 ms)
+  mode=hybrid, online.enabled=True, channel=git, offline_write_kinds=['report', 'ack'], online_write_kinds=['report'], stage_dir=exchange/outbox/online_stage
+
+[FAIL] Exchange Heartbeat (31 ms)
+  [ERROR] Exchange Offline - SHAGI_EXCHANGE_PATH missing or invalid

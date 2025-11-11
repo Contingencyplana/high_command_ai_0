@@ -1,0 +1,58 @@
+Ops Readiness Summary — 2025-11-11T22:34:50.476081Z
+
+[OK] Config Mode (2 ms)
+  mode=hybrid, online.enabled=True, channel=git, offline_write_kinds=['report', 'ack'], online_write_kinds=['report'], stage_dir=exchange/outbox/online_stage
+
+[OK] Exchange Heartbeat (39 ms)
+  [OK] Exchange Online - connected to C:\Users\Admin\high_command_exchange
+
+[OK] Contract Tests (113 ms)
+  [PASS] automation_path_happy_flow
+  [PASS] basic_ritual_victory
+  [PASS] conditional_repeat_again
+  [PASS] guarded_delivery_warning
+  [PASS] overlay_first_click
+  [PASS] overlay_guarded_wall
+  [PASS] overlay_guarded_warning
+  [PASS] overlay_lore_dispatch
+  [PASS] overlay_lore_music_stack
+  [PASS] overlay_music_dispatch
+  [PASS] signal_loop_gain
+
+[OK] Offline Sync (46 ms)
+  Copied C:\Users\Admin\high_command_ai_0\outbox\orders\order-2025-11-09-045.json -> C:\Users\Admin\high_command_exchange\orders\order-2025-11-09-045.json
+  [OK] Synced 1 orders file(s) to C:\Users\Admin\high_command_exchange\orders
+  Copied C:\Users\Admin\high_command_ai_0\outbox\reports\order-2025-11-07-044-report.json -> C:\Users\Admin\high_command_exchange\reports\order-2025-11-07-044-report.json
+  [OK] Synced 1 reports file(s) to C:\Users\Admin\high_command_exchange\reports
+   Local exchange sync complete.
+
+[FAIL] Schema Sweep (Exchange) (55 ms)
+  [schema] C:\Users\Admin\high_command_ai_0\exchange\orders\pending\order-2025-11-07-044.json valid
+  [schema] C:\Users\Admin\high_command_ai_0\exchange\orders\dispatched\order-2025-10-12-001.json valid
+  [schema] C:\Users\Admin\high_command_ai_0\exchange\orders\dispatched\order-2025-10-12-002.json valid
+  [schema] C:\Users\Admin\high_command_ai_0\exchange\orders\dispatched\order-2025-10-12-003.json valid
+  [schema] C:\Users\Admin\high_command_ai_0\exchange\orders\dispatched\order-2025-10-12-004.json valid
+  [schema] C:\Users\Admin\high_command_ai_0\exchange\orders\dispatched\order-2025-10-12-005.json valid
+  [schema] C:\Users\Admin\high_command_ai_0\exchange\orders\dispatched\order-2025-10-12-006.json valid
+  [schema] C:\Users\Admin\high_command_ai_0\exchange\orders\dispatched\order-2025-10-12-007.json valid
+  [schema] C:\Users\Admin\high_command_ai_0\exchange\orders\dispatched\order-2025-10-12-008.json valid
+  [schema] C:\Users\Admin\high_command_ai_0\exchange\orders\dispatched\order-2025-10-14-012.json valid
+  [schema] C:\Users\Admin\high_command_ai_0\exchange\orders\dispatched\order-2025-10-14-013.json valid
+  [schema] C:\Users\Admin\high_command_ai_0\exchange\orders\dispatched\order-2025-10-15-014.json valid
+
+[OK] Hybrid Shadow Check (29 ms)
+  {
+    "kind": "report",
+    "trace_id": "ops-readiness",
+    "offline": {
+      "planned": {
+        "dir": "C:\\Users\\Admin\\high_command_ai_0\\exchange\\reports\\outbox",
+        "file": "C:\\Users\\Admin\\high_command_ai_0\\exchange\\reports\\outbox\\hybrid_shadow_20251111T223450Z_ops-readiness_dad3bf69089e.json"
+      },
+      "wrote": false
+    },
+    "online": {
+      "planned": {
+
+[OK] Exchange Validator (36 ms)
+  [validator] Exchange looks consistent.
