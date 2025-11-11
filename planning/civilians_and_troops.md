@@ -58,3 +58,10 @@ Decision rule: when all gates above are green in hybrid shadow mode and runbooks
 - Examples:
   - `python -m tools.comm_send --kind report --payload-file exchange/reports/outbox/frontline_feedback_summary_20251111T072152Z.json --validate`
   - `python -m tools.comm_send --kind ack --payload-inline '{"schema":"signal-ack@1.0","ack_id":"x","referenced_id":"y","sender":"z","receiver":"hc","timestamp_sent":"2025-11-11T00:00:00Z","status":"acknowledged"}' --dry-run`
+
+## Hybrid Rollout Checklist
+- Shadow on: `mode=hybrid`, `online.enabled=false` (default), verify ops_readiness is green.
+- Dark‑launch acks (optional): keep `online.enabled=false`, set `offline_write_kinds` to include `"ack"`; use comm_send `--write` for offline writes only.
+- Stage reports “online”: set `online.enabled=true`, `online_write_kinds=["report"]`; verify staged files appear under `exchange/outbox/online_stage/`.
+- Do not add `"order"` to write lists; orders remain plan‑only.
+- Rollback: set `online.enabled=false` and remove staged kinds from `online_write_kinds`.

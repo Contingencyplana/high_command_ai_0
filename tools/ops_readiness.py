@@ -6,6 +6,7 @@ Runs a lightweight preflight:
   3) Offline sync (quiet, latest=1)
   4) Schema sweep across exchange payloads
   5) Hybrid shadow check (no writes)
+  6) Exchange validator (index/file consistency)
 
 Emits a labeled one-page summary and exits non-zero on failure.
 
@@ -302,6 +303,34 @@ def main(argv: list[str] | None = None) -> int:
     hybrid = run_hybrid_shadow()
     steps.append(hybrid)
     if hybrid.status == "FAIL":
+        exit_code = 1
+
+    # 6) Exchange validator
+    try:
+        start = _now()
+        proc = _run_cmd([sys.executable, "-m", "tools.exchange_validator"])  # returns 0/1
+        end = _now()
+        status = "OK" if proc.returncode == 0 else "FAIL"
+        validator = StepResult(
+            name="Exchange Validator",
+            status=status,
+            returncode=proc.returncode,
+            duration_ms=int((end - start).total_seconds() * 1000),
+            stdout=proc.stdout.strip(),
+            stderr=proc.stderr.strip(),
+        )
+    except Exception as exc:  # pragma: no cover - defensive
+        end = _now()
+        validator = StepResult(
+            name="Exchange Validator",
+            status="WARN",
+            returncode=0,
+            duration_ms=int((end - start).total_seconds() * 1000),
+            stdout="",
+            stderr=str(exc),
+        )
+    steps.append(validator)
+    if validator.status == "FAIL":
         exit_code = 1
 
     # Write summary artifact
