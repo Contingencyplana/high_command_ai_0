@@ -7,10 +7,11 @@
 - Cooldown rollup: `python -m tools.cooldown_rollup`
 - Frontline feedback intake: `python -m tools.frontline_feedback`
 - Frontline feedback summary: `python -m tools.frontline_feedback_summary`
+- Hybrid send (shadow): `python -m tools.comm_send --kind report --payload-file <path.json> [--validate] [--write]`
 
 ## Ops Readiness
 
- - Preflight before enabling overlays: `python -m tools.ops_readiness`
+- Preflight before enabling overlays: `python -m tools.ops_readiness`
 - Includes heartbeat, contract tests, offline sync, and a schema sweep across exchange payloads (orders/reports/acks).
- - Summary written to `logs/ops_readiness/`; exits non‑zero on failure.
- - See playbook: `exchange/attachments/guides/multi_layer_playbook.md`
+- Summary written to `logs/ops_readiness/`; exits non‑zero on failure.
+- See playbook: `exchange/attachments/guides/multi_layer_playbook.md`
