@@ -31,6 +31,11 @@
 - Track activation cadence in telemetry; avoid flapping.
 - Suggested guideline: no more than 3 dual-layer activations per 24h per front without approval.
 
+## Feedback Loop
+
+- Collect frontline notes with `python -m tools.frontline_feedback --workspace <name> --operator <id> ...`.
+- Summarize sentiment with `python -m tools.frontline_feedback_summary`; share the outbox note with prioritization.
+
 ## Rollback
 
 - Disable layer toggles in UI (lore disable, music disable).

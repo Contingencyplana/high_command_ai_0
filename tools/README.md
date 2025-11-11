@@ -4,6 +4,8 @@
 - Exchange heartbeat: `python -m tools.exchange_heartbeat`
 - Offline sync: `python -m tools.offline_sync_exchange`
 - Cooldown rollup: `python -m tools.cooldown_rollup`
+- Frontline feedback intake: `python -m tools.frontline_feedback`
+- Frontline feedback summary: `python -m tools.frontline_feedback_summary`
 
 ## Ops Readiness
 

@@ -1,0 +1,41 @@
+{
+  "schema": "frontline-feedback@1.0",
+  "description": "Micro-survey capturing frontline lore vs music rollout sentiment.",
+  "questions": [
+    {
+      "id": "layer_focus",
+      "prompt": "Which overlay layer were you evaluating?",
+      "type": "single-choice",
+      "options": ["lore", "music", "both"],
+      "required": true
+    },
+    {
+      "id": "experience_rating",
+      "prompt": "Overall experience rating (1=poor, 5=excellent)",
+      "type": "integer",
+      "range": [1, 5],
+      "required": true
+    },
+    {
+      "id": "music_support",
+      "prompt": "How does Music impact frontline flow?",
+      "type": "single-choice",
+      "options": ["boosts", "neutral", "conflicts"],
+      "required": true
+    },
+    {
+      "id": "ritual_dependency",
+      "prompt": "How dependent is this workflow on Ritual cadence?",
+      "type": "single-choice",
+      "options": ["critical", "supportive", "independent"],
+      "required": true
+    },
+    {
+      "id": "note",
+      "prompt": "Any short note or highlight?",
+      "type": "text",
+      "max_length": 280,
+      "required": false
+    }
+  ]
+}

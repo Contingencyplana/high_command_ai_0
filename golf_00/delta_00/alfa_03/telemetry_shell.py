@@ -42,9 +42,9 @@ def _build_record(
     trace_id: Optional[str],
     overlay_id: Optional[str],
     overlay_layer: Optional[str],
-    activation_count: Optional[int],
-    active_minutes: Optional[float],
-    unique_operators: Optional[int],
+    activation_count: Optional[int] = None,
+    active_minutes: Optional[float] = None,
+    unique_operators: Optional[int] = None,
 ) -> dict:
     record = {
         "ts": _iso_now(),
@@ -79,9 +79,9 @@ def run(
     trace_id: Optional[str],
     overlay_id: Optional[str],
     overlay_layer: Optional[str],
-    activation_count: Optional[int],
-    active_minutes: Optional[float],
-    unique_operators: Optional[int],
+    activation_count: Optional[int] = None,
+    active_minutes: Optional[float] = None,
+    unique_operators: Optional[int] = None,
 ) -> None:
     record = _build_record(
         event,

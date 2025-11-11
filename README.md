@@ -101,6 +101,8 @@ When GitHub returns, snapshot the exchange folder and push as a single commit be
 - Produces a summary in `logs/ops_readiness/` and exits non‑zero on failure.
 - Multi‑layer playbook: `exchange/attachments/guides/multi_layer_playbook.md`
 - Cooldown telemetry rollup: `python -m tools.cooldown_rollup` writes `planning/cooldown_rollup_YYYYMMDD.md`
+- Frontline feedback intake: `python -m tools.frontline_feedback --workspace <name> ...` then summarize via
+  `python -m tools.frontline_feedback_summary`
 
 ---
 
