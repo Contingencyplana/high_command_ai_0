@@ -72,6 +72,12 @@ class CommAdapter:
             self.offline_write_kinds = {str(k).lower() for k in kinds}
         except Exception:
             self.offline_write_kinds = {"report"}
+        # Select online channel implementation (stubbed)
+        chan_cfg = ChannelConfig(channel=self.online.channel, retries=self.online.retries, timeout_ms=self.online.timeout_ms)
+        if self.online.channel == "http":
+            self._online = HttpChannel(chan_cfg)
+        else:
+            self._online = GitChannel(chan_cfg)
 
     # Offline sink planning/writing
     def _offline_plan(self, kind: str, trace_id: str, payload: Dict[str, Any]) -> dict:
@@ -110,12 +116,9 @@ class CommAdapter:
 
     # Online sink (noop until enabled)
     def _online_plan(self, kind: str, trace_id: str, payload: Dict[str, Any]) -> dict:
-        return {
-            "enabled": self.online.enabled,
-            "channel": self.online.channel,
-            "retries": self.online.retries,
-            "timeout_ms": self.online.timeout_ms,
-        }
+        plan = self._online.plan(kind=kind, trace_id=trace_id, payload=payload)
+        plan["enabled"] = self.online.enabled
+        return plan
 
     def send(self, *, kind: str, payload: Dict[str, Any], trace_id: str, dry_run: bool = True) -> dict:
         kind = kind.lower()
@@ -128,10 +131,10 @@ class CommAdapter:
             wrote = self._offline_write(offline_plan, payload)
             result["offline"]["wrote"] = wrote
 
-        # Online (noop unless enabled)
+        # Online (noop unless enabled; no network writes implemented yet)
         online_plan = self._online_plan(kind, trace_id, payload)
         result["online"] = {"planned": online_plan, "wrote": False}
-        # Future: implement when enabled, honoring retries/timeout
+        # Future: when enabled and implemented, attempt write honoring retries/timeout
 
         return result
 
@@ -146,3 +149,4 @@ def main() -> int:  # pragma: no cover - simple manual check
 
 if __name__ == "__main__":
     raise SystemExit(main())
+from tools.online_channels import ChannelConfig, OnlineChannel, GitChannel, HttpChannel

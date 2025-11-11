@@ -144,6 +144,15 @@ def write_report(report: dict[str, Any], outbox: Path = DEFAULT_OUTBOX) -> Path:
     ts = report.get("generated_at", _iso_now()).replace(":", "").replace("-", "")
     destination = outbox / f"frontline_feedback_summary_{ts}.json"
     destination.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    # Hybrid shadow: plan dual-sink publish without writing online
+    try:
+        from tools.comm_adapter import CommAdapter
+
+        adapter = CommAdapter()
+        trace_id = f"frontline-feedback-summary-{ts}"
+        adapter.send(kind="report", payload=report, trace_id=trace_id, dry_run=True)
+    except Exception:
+        pass
     return destination
 
 

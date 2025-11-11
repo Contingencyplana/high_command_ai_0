@@ -117,6 +117,15 @@ def write_response(payload: dict[str, Any], output_dir: Path = DEFAULT_OUTPUT_DI
     filename = f"frontline_feedback_{ts}_{workspace}.json"
     destination = output_dir / filename
     destination.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    # Hybrid shadow: plan dual-sink publish without writing online
+    try:
+        from tools.comm_adapter import CommAdapter
+
+        adapter = CommAdapter()
+        trace_id = f"frontline-feedback-{ts}"
+        adapter.send(kind="report", payload=payload, trace_id=trace_id, dry_run=True)
+    except Exception:
+        pass  # shadow is best-effort and must not affect writing
     return destination
 
 
