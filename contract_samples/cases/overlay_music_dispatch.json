@@ -1,0 +1,45 @@
+{
+  "name": "overlay_music_dispatch",
+  "description": "Music layer pilot dispatch with overlay metadata threaded through payload and telemetry stub.",
+  "emoji_chain": ["\uD83D\uDEE0\uFE0F", "\u2692\uFE0F", "\uD83E\uDD16", "\u2705"],
+  "adapter": {
+    "order_id": "emoji-overlay-music-0001",
+    "issued_by": "high_command_ai_0",
+    "target": "toyfoundry_ai_0",
+    "priority": "standard",
+    "requires_ack": false
+  },
+  "overlay": {
+    "overlay_id": "outland-music-v1",
+    "layer_kind": "music",
+    "trace_id": "music-overlay-0001",
+    "description": "Music overlay pilot dispatch"
+  },
+  "expectations": {
+    "emoji_runtime": {
+      "summary": "Forge craft ally -> victory",
+      "intent": {
+        "actor": "forge",
+        "action": "craft",
+        "target": "ally",
+        "qualifiers": [],
+        "outcome": "success"
+      },
+      "spoken": ["forge", "craft", "ally", "victory"],
+      "overlay_id": "outland-music-v1",
+      "overlay_layer": "music"
+    },
+    "factory_order": {
+      "summary": "Forge craft ally -> victory",
+      "priority": "standard",
+      "target": "toyfoundry_ai_0",
+      "requires_ack": false,
+      "details_contains": [
+        "Actor forge executes craft targeting ally.",
+        "Qualifiers: none. Outcome: success.",
+        "Glyph chain: \uD83D\uDEE0\uFE0F \u2692\uFE0F \uD83E\uDD16 \u2705.",
+        "Correlation trace_id: music-overlay-0001."
+      ]
+    }
+  }
+}

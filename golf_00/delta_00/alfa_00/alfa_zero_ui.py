@@ -427,6 +427,9 @@ def dispatch_selected(context: UIContext) -> None:
 
     summary = summarize_payload(destination)
     display_summary(summary, context.repo_root, stream=context.output_stream)
+    # Show the correlation trace for operator visibility (non-event mode)
+    if trace_id:
+        print(f"   Trace: {trace_id}", file=context.output_stream)
     if context.telemetry_path:
         emit_telemetry(
             summary,

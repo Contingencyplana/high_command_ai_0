@@ -32,6 +32,13 @@ Use this checklist when spinning up the automation + comfort tooling introduced 
   - `python -m golf_00.delta_00.alfa_00.overlay_flow --overlay overlay-alpha --trace-id lore-overlay-0001 --say "Lore layer activated" --comfort-level gentle --overlay-id outland-lore-v1 --layer-kind lore --narration-trace logs/alfa_02/narration_traces.jsonl --telemetry-trace logs/alfa_03/telemetry.jsonl`
 - Contract coverage: `python -m tools.contract_test_runner --case overlay_lore_dispatch`
 
+### Multi-layer pilot (Lore + Music)
+
+- Preflight: `python -m tools.ops_readiness` (expect all sections [OK])
+- Enable toggles in the UI: `python -m golf_00.delta_00.alfa_00.alfa_zero_ui --enable-lore --enable-music --cell 04`
+- Verify combined trace and ordered layers in the UI summary.
+- Reference playbook: `exchange/attachments/guides/multi_layer_playbook.md`
+
 ## 4. Heartbeat & Sync
 
 - `python tools/exchange_heartbeat.py`

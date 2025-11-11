@@ -1,0 +1,52 @@
+{
+  "name": "overlay_lore_music_stack",
+  "description": "Stacked Lore+Music overlay dispatch validating ordered overlay stack in payload and stub.",
+  "emoji_chain": ["\uD83D\uDEE0\uFE0F", "\u2692\uFE0F", "\uD83E\uDD16", "\u2705"],
+  "adapter": {
+    "order_id": "emoji-overlay-lore-music-0001",
+    "issued_by": "high_command_ai_0",
+    "target": "toyfoundry_ai_0",
+    "priority": "standard",
+    "requires_ack": false
+  },
+  "overlay": {
+    "overlay_id": "outland-lore-v1",
+    "layer_kind": "lore",
+    "trace_id": "overlay-lore-music-0001",
+    "description": "Stacked Lore+Music overlay dispatch",
+    "overlays": [
+      {"overlay_id": "outland-music-v1", "layer_kind": "music"}
+    ]
+  },
+  "expectations": {
+    "emoji_runtime": {
+      "summary": "Forge craft ally -> victory",
+      "intent": {
+        "actor": "forge",
+        "action": "craft",
+        "target": "ally",
+        "qualifiers": [],
+        "outcome": "success"
+      },
+      "spoken": ["forge", "craft", "ally", "victory"],
+      "overlay_id": "outland-lore-v1",
+      "overlay_layer": "lore",
+      "overlays": [
+        {"overlay_id": "outland-lore-v1", "layer_kind": "lore"},
+        {"overlay_id": "outland-music-v1", "layer_kind": "music"}
+      ]
+    },
+    "factory_order": {
+      "summary": "Forge craft ally -> victory",
+      "priority": "standard",
+      "target": "toyfoundry_ai_0",
+      "requires_ack": false,
+      "details_contains": [
+        "Actor forge executes craft targeting ally.",
+        "Qualifiers: none. Outcome: success.",
+        "Glyph chain: \uD83D\uDEE0\uFE0F \u2692\uFE0F \uD83E\uDD16 \u2705.",
+        "Correlation trace_id: overlay-lore-music-0001."
+      ]
+    }
+  }
+}

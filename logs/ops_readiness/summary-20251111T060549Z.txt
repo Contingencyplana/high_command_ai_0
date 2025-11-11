@@ -1,0 +1,24 @@
+Ops Readiness Summary — 2025-11-11T06:05:49.234590Z
+
+[OK] Exchange Heartbeat (35 ms)
+  [OK] Exchange Online - connected to C:\Users\Admin\high_command_exchange
+
+[OK] Contract Tests (112 ms)
+  [PASS] automation_path_happy_flow
+  [PASS] basic_ritual_victory
+  [PASS] conditional_repeat_again
+  [PASS] guarded_delivery_warning
+  [PASS] overlay_first_click
+  [PASS] overlay_guarded_wall
+  [PASS] overlay_guarded_warning
+  [PASS] overlay_lore_dispatch
+  [PASS] overlay_lore_music_stack
+  [PASS] overlay_music_dispatch
+  [PASS] signal_loop_gain
+
+[OK] Offline Sync (54 ms)
+  Copied C:\Users\Admin\high_command_ai_0\outbox\orders\order-2025-11-09-045.json -> C:\Users\Admin\high_command_exchange\orders\order-2025-11-09-045.json
+  [OK] Synced 1 orders file(s) to C:\Users\Admin\high_command_exchange\orders
+  Copied C:\Users\Admin\high_command_ai_0\outbox\reports\order-2025-11-07-044-report.json -> C:\Users\Admin\high_command_exchange\reports\order-2025-11-07-044-report.json
+  [OK] Synced 1 reports file(s) to C:\Users\Admin\high_command_exchange\reports
+   Local exchange sync complete.

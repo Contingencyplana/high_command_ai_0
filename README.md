@@ -94,6 +94,16 @@ When GitHub returns, snapshot the exchange folder and push as a single commit be
 
 ---
 
+### Ops Readiness (Preflight)
+
+- Run a quick preflight before enabling new overlays:
+  - `python -m tools.ops_readiness`
+- Produces a summary in `logs/ops_readiness/` and exits non‑zero on failure.
+- Multi‑layer playbook: `exchange/attachments/guides/multi_layer_playbook.md`
+- Cooldown telemetry rollup: `python -m tools.cooldown_rollup` writes `planning/cooldown_rollup_YYYYMMDD.md`
+
+---
+
 ## 3. Relationship to the Theatres  
 
 | Domain | Description |

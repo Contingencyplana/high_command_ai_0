@@ -42,6 +42,9 @@ def _build_record(
     trace_id: Optional[str],
     overlay_id: Optional[str],
     overlay_layer: Optional[str],
+    activation_count: Optional[int],
+    active_minutes: Optional[float],
+    unique_operators: Optional[int],
 ) -> dict:
     record = {
         "ts": _iso_now(),
@@ -57,6 +60,12 @@ def _build_record(
         record["overlay_id"] = overlay_id
     if overlay_layer:
         record["overlay_layer"] = overlay_layer
+    if activation_count is not None:
+        record["activation_count"] = int(activation_count)
+    if active_minutes is not None:
+        record["active_minutes"] = float(active_minutes)
+    if unique_operators is not None:
+        record["unique_operators"] = int(unique_operators)
     return record
 
 
@@ -70,6 +79,9 @@ def run(
     trace_id: Optional[str],
     overlay_id: Optional[str],
     overlay_layer: Optional[str],
+    activation_count: Optional[int],
+    active_minutes: Optional[float],
+    unique_operators: Optional[int],
 ) -> None:
     record = _build_record(
         event,
@@ -80,6 +92,9 @@ def run(
         trace_id,
         overlay_id,
         overlay_layer,
+        activation_count,
+        active_minutes,
+        unique_operators,
     )
     print(json.dumps(record, ensure_ascii=False))
     if trace:
@@ -115,6 +130,21 @@ def main(argv: Optional[list[str]] = None) -> int:
         choices=["lore", "music", "ritual", "emergent"],
         help="Overlay layer kind when tagging Outlands metadata",
     )
+    parser.add_argument(
+        "--activation-count",
+        type=int,
+        help="Number of activations captured by this event",
+    )
+    parser.add_argument(
+        "--active-minutes",
+        type=float,
+        help="Active minutes represented by this event",
+    )
+    parser.add_argument(
+        "--unique-operators",
+        type=int,
+        help="Unique operators observed in this interval",
+    )
     args = parser.parse_args(argv)
     run(
         args.event,
@@ -126,6 +156,9 @@ def main(argv: Optional[list[str]] = None) -> int:
         args.trace_id,
         args.overlay_id,
         args.overlay_layer,
+        args.activation_count,
+        args.active_minutes,
+        args.unique_operators,
     )
     return 0
 
