@@ -35,6 +35,6 @@
     "timeout_ms": 2000,
     "stage_dir": "exchange/outbox/online_stage",
     "offline_write_kinds": ["report", "ack"],
-    "online_write_kinds": ["report"]
+    "online_write_kinds": ["report", "ack"]
   }
 }
