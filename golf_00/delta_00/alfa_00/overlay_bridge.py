@@ -1,3 +1,4 @@
+# pyright: reportMissingImports=false
 """Shared overlay bridge for Alfa Zero battlegrid interactions.
 
 Adds optional (default-on) promotion of emoji-runtime payloads to
@@ -277,6 +278,35 @@ class OverlayBridge:
             cmd.extend(["--latest", str(latest)])
         if quiet:
             cmd.append("--quiet")
+
+        return subprocess.run(cmd, cwd=self.repo_root, capture_output=True, text=True)
+
+    def run_targeted_sync(
+        self,
+        *,
+        categories: Sequence[str] | None = None,
+        orders_subpath: str | None = None,
+        latest: int | None = None,
+        quiet: bool = True,
+        dry_run: bool = False,
+        auto_confirm: bool = True,
+    ) -> subprocess.CompletedProcess[str]:
+        """Invoke the targeted sync helper with optional filtering."""
+
+        cmd = [sys.executable, "-m", "tools.targeted_sync"]
+        if categories:
+            for category in categories:
+                cmd.extend(["--category", category])
+        if orders_subpath:
+            cmd.extend(["--orders-subpath", orders_subpath])
+        if latest is not None:
+            cmd.extend(["--latest", str(latest)])
+        if not quiet:
+            cmd.append("--no-quiet")
+        if dry_run:
+            cmd.append("--dry-run")
+        if auto_confirm:
+            cmd.append("--yes")
 
         return subprocess.run(cmd, cwd=self.repo_root, capture_output=True, text=True)
 

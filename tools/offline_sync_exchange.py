@@ -70,6 +70,7 @@ def _log_copy(
     copied: list[tuple[Path, Path]],
     missing: bool,
     dst_root: Path,
+    dry_run: bool,
 ) -> None:
     if missing:
         print(f"[WARN] No {name} folder found in outbox")
@@ -79,18 +80,23 @@ def _log_copy(
         print(f"[INFO] No new {name} files to sync")
         return
 
+    verb = "Would copy" if dry_run else "Copied"
+
     entries = copied
     if quiet and len(entries) > QUIET_SAMPLE_LIMIT:
         sample = entries[:QUIET_SAMPLE_LIMIT]
         for src, dst in sample:
-            print(f"Copied {src} -> {dst}")
+            print(f"{verb} {src} -> {dst}")
         remaining = len(entries) - QUIET_SAMPLE_LIMIT
-        print(f"[QUIET] {remaining} additional {name} file(s) copied (see destination for full list)")
+        print(
+            f"[QUIET] {remaining} additional {name} file(s) {'planned' if dry_run else 'copied'} (see destination for full list)"
+        )
     else:
         for src, dst in entries:
-            print(f"Copied {src} -> {dst}")
+            print(f"{verb} {src} -> {dst}")
 
-    print(f"[OK] Synced {len(entries)} {name} file(s) to {dst_root}")
+    status = "Planned" if dry_run else "Synced"
+    print(f"[OK] {status} {len(entries)} {name} file(s) to {dst_root}")
 
 
 def sync_local(
@@ -100,6 +106,7 @@ def sync_local(
     orders_subpath: str | None = None,
     latest: int | None = None,
     quiet: bool = False,
+    dry_run: bool = False,
 ) -> None:
     """Synchronize outbox artifacts into the shared exchange hub."""
 
@@ -117,10 +124,18 @@ def sync_local(
 
         dst = EXCHANGE / name
         if not src.exists():
-            _log_copy(quiet=quiet, name=name, copied=[], missing=True, dst_root=dst)
+            _log_copy(
+                quiet=quiet,
+                name=name,
+                copied=[],
+                missing=True,
+                dst_root=dst,
+                dry_run=dry_run,
+            )
             continue
 
-        os.makedirs(dst, exist_ok=True)
+        if not dry_run:
+            os.makedirs(dst, exist_ok=True)
 
         subpath = orders_subpath if name == "orders" else None
         try:
@@ -134,11 +149,19 @@ def sync_local(
         for source_path in files:
             rel_path = source_path.relative_to(copy_root)
             dst_file = dst / rel_path
-            dst_file.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(source_path, dst_file)
+            if not dry_run:
+                dst_file.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(source_path, dst_file)
             copied.append((source_path, dst_file))
 
-        _log_copy(quiet=quiet, name=name, copied=copied, missing=False, dst_root=dst)
+        _log_copy(
+            quiet=quiet,
+            name=name,
+            copied=copied,
+            missing=False,
+            dst_root=dst,
+            dry_run=dry_run,
+        )
 
     _safe_print("✅ Local exchange sync complete.")
 
@@ -167,6 +190,11 @@ if __name__ == "__main__":
         action="store_true",
         help="Suppress detailed per-file logs after the first few entries",
     )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Preview the sync without copying files",
+    )
 
     args = parser.parse_args()
     sync_local(
@@ -175,4 +203,5 @@ if __name__ == "__main__":
         orders_subpath=args.orders_subpath,
         latest=args.latest,
         quiet=args.quiet,
+        dry_run=args.dry_run,
     )

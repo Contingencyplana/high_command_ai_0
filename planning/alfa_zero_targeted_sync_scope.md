@@ -26,17 +26,17 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 
 ### Scope Notes
 
-1. **Surface area**: extend `overlay_bridge.py` with a helper capable of calling a filtered sync routine (likely by passing flags to the sync script or importing it in-process).
-2. **Sync script changes**: teach `tools/offline_sync_exchange.py` to accept optional arguments such as `--category orders` or `--only-latest 1` while keeping the default behaviour unchanged.
-3. **UI wiring**: introduce a new command (draft name `sync latest` or `sync orders`) that calls the targeted helper and reports a concise summary back to the operator.
+1. **Surface area**: extend `overlay_bridge.py` with a helper capable of calling a filtered sync routine (likely by passing flags to the sync script or importing it in-process). ✅ `OverlayBridge.run_targeted_sync` shells the new CLI (2025-11-12).
+2. **Sync script changes**: teach `tools/offline_sync_exchange.py` to accept optional arguments such as `--category orders` or `--only-latest 1` while keeping the default behaviour unchanged. ✅ Implemented via new `--dry-run` and targeting options (2025-11-12).
+3. **UI wiring**: introduce a new command (draft name `sync latest` or `sync orders`) that calls the targeted helper and reports a concise summary back to the operator. ✅ Integrated into `alfa_zero_ui` with preview support (2025-11-12).
 4. **Play session script**: once the command exists, update `logs/alfa_zero/play_session_commands.txt` so automated runs exercise the new path.
 5. **Telemetry**: log targeted sync executions in both `logs/alfa_zero/session_metrics.jsonl` and `play_session_actions.log` with a distinctive label to keep metrics comparable.
 
 ### Open Questions
 
 - Should we infer the latest files by timestamp or track dispatch destinations during the session to sync only those paths?
-- Do we need a quiet mode for the sync script to avoid large per-file output once the target set is small?
-- How should the command behave if no new files are detected (silence vs explicit confirmation)?
+- Do we need a quiet mode for the sync script to avoid large per-file output once the target set is small? ✅ Quiet mode now defaults on for the targeted CLI and sync helper (2025-11-12).
+- How should the command behave if no new files are detected (silence vs explicit confirmation)? ✅ emits `[INFO] No new … files` messages to keep operators informed (2025-11-12).
 
 ## Exchange Log Trimming
 
@@ -53,9 +53,16 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 
 ### Proposed Direction
 
-- Implement option (1) alongside the targeted sync helper, giving both the overlay UI and the scripted play session a quiet flag for routine runs.
-- Preserve the ability to request full verbosity for debugging by exposing a `--verbose-sync` flag in the UI.
+- Implement option (1) alongside the targeted sync helper, giving both the overlay UI and the scripted play session a quiet flag for routine runs. ✅ Landed in `tools/offline_sync_exchange.py --quiet` and `tools.targeted_sync` default behaviour.
+- Preserve the ability to request full verbosity for debugging by exposing a `--verbose-sync` flag in the UI. → CLI exposes `--no-quiet`; UI toggle still pending.
 - Review rotation once the reduced-output path lands; postpone automated truncation until we observe long-term log growth.
+
+## 2025-11-12 Update
+
+- Introduced `python -m tools.targeted_sync` to wrap the offline sync helper with confirmation prompts, quiet mode, and optional dry-run previews.
+- `tools/offline_sync_exchange.py` now accepts `--dry-run`, `--latest`, and `--orders-subpath` for filtered runs. The helper preserves full sync defaults for existing automation.
+- Targeted CLI defaults to syncing orders only, latest files unlimited, and quiet mode on. Operators can pass `--yes` to skip prompts when running inside scripted flows. UI commands (`sync latest`, `sync orders`) now invoke the helper with auto-confirm and optional `preview` dry-run.
+- Next wiring step: automate metrics logging for targeted sync executions once play session tooling lands.
 
 ## Next Actions
 

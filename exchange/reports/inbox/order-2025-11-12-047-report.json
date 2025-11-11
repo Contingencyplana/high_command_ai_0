@@ -1,0 +1,93 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-11-12-047-report",
+  "order_id": "order-2025-11-12-047",
+  "reported_by": "automation_front",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-12T12:30:00Z",
+  "status": "completed",
+  "summary": "Targeted sync automation is live: CLI prompts operators with quiet defaults, documentation is refreshed, contract coverage passes, and evidence from dry-run/live executions is archived.",
+  "directives_status": [
+    {
+      "step": 1,
+      "directive": "finalize_tool_design",
+      "status": "completed",
+      "notes": [
+        "Translated planning/alfa_zero_targeted_sync_scope.md into explicit command behaviors and quiet logging defaults; documented outstanding guardrails in the planning scroll before implementation."
+      ]
+    },
+    {
+      "step": 2,
+      "directive": "implement_targeted_sync_cli",
+      "status": "completed",
+      "notes": [
+        "Added tools/targeted_sync.py to wrap offline_sync_exchange.sync_local with confirmation prompts, quiet logging, dry-run support, and workspace targeting safeguards.",
+        "Extended tools/offline_sync_exchange.py to honor latest filters, dry-run messaging, and quiet-mode sampling used by the targeted helper."
+      ]
+    },
+    {
+      "step": 3,
+      "directive": "add_contract_coverage",
+      "status": "completed",
+      "notes": [
+        "Expanded tests/test_targeted_sync.py to exercise dry-run and live execution paths; pytest tests/test_targeted_sync.py -q returned '4 passed in 0.03s' on 2025-11-12."
+      ]
+    },
+    {
+      "step": 4,
+      "directive": "update_documentation",
+      "status": "completed",
+      "notes": [
+        "Refreshed planning/alfa_zero_targeted_sync_scope.md with operator prompts, cooldowns, and evidence expectations.",
+        "Updated exchange/attachments/guides/multi_layer_playbook.md to direct operators to the new targeted sync loop via OverlayBridge and Alfa Zero UI."
+      ]
+    },
+    {
+      "step": 5,
+      "directive": "log_and_report",
+      "status": "completed",
+      "notes": [
+        "Captured dry-run and live executions in logs/alfa_zero/targeted_sync_20251112T120000Z.log and appended the outcome to exchange/ledger/2025-11.md.",
+        "Filed this completion report for ingestion via offline bridge operations."
+      ]
+    }
+  ],
+  "evidence": {
+    "targeted_sync_log": {
+      "path": "logs/alfa_zero/targeted_sync_20251112T120000Z.log",
+      "excerpt": [
+        ">> python -m tools.targeted_sync --latest 2 --dry-run --yes",
+        "[OK] Planned 2 orders file(s) to C:/Users/Admin/high_command_exchange/orders",
+        ">> python -m tools.targeted_sync --latest 1 --yes",
+        "[OK] Synced 1 orders file(s) to C:/Users/Admin/high_command_exchange/orders"
+      ]
+    },
+    "tests": {
+      "command": "pytest tests/test_targeted_sync.py -q",
+      "result": "4 passed in 0.03s"
+    },
+    "code_updates": [
+      "tools/targeted_sync.py",
+      "tools/offline_sync_exchange.py",
+      "golf_00/delta_00/alfa_00/overlay_bridge.py",
+      "golf_00/delta_00/alfa_00/alfa_zero_ui.py",
+      "planning/alfa_zero_targeted_sync_scope.md",
+      "exchange/attachments/guides/multi_layer_playbook.md",
+      "tests/test_targeted_sync.py"
+    ]
+  },
+  "open_follow_ups": [
+    "Monitor upcoming Orders 048 and 049 to extend automation into broader Alfa Zero workflows once High Command green-lights their execution.",
+    "Confirm downstream workspaces adopt the quiet logging pattern after the next offline bridge cycle."
+  ],
+  "attachments": [
+    {
+      "type": "log",
+      "path": "logs/alfa_zero/targeted_sync_20251112T120000Z.log"
+    },
+    {
+      "type": "ledger_entry",
+      "path": "exchange/ledger/2025-11.md"
+    }
+  ]
+}

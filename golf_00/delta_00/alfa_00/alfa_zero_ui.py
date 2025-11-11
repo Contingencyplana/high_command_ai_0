@@ -1,3 +1,4 @@
+# pyright: reportMissingImports=false
 """Terminal UI controller for the Alfa Zero overlay bridge.
 
 This module offers an interactive loop that mirrors the 16x16 Alfa Zero grid,
@@ -359,6 +360,37 @@ def run_manual_sync(
     _log_session_event(context, event=event)
 
 
+def run_targeted_sync(
+    context: UIContext,
+    *,
+    categories: Optional[Sequence[str]] = None,
+    orders_subpath: Optional[str] = None,
+    latest: Optional[int] = None,
+    quiet: bool = True,
+    dry_run: bool = False,
+    label: str = "targeted_sync",
+    event: str = "targeted_sync",
+    announce: Optional[str] = None,
+) -> None:
+    message = announce or "🔄 Running targeted sync…"
+    print(message, file=context.output_stream)
+    try:
+        result = context.bridge.run_targeted_sync(
+            categories=categories,
+            orders_subpath=orders_subpath,
+            latest=latest,
+            quiet=quiet,
+            dry_run=dry_run,
+            auto_confirm=True,
+        )
+    except FileNotFoundError as exc:
+        print(f"⚠️  {exc}", file=context.output_stream)
+        return
+    log_path = _append_action_log(context, label, result)
+    _render_command_result(context, "Targeted sync", result, log_path=log_path, quiet=quiet)
+    _log_session_event(context, event=event)
+
+
 def move_selection(context: UIContext, delta_row: int, delta_col: int) -> None:
     row = max(0, min(15, context.selected[0] + delta_row))
     col = max(0, min(15, context.selected[1] + delta_col))
@@ -460,9 +492,9 @@ HELP_TEXT = """Commands:
     d / right      Move selection right
     dispatch       Run the translator for the selected cell
         contracts      Run the contract test suite
-        sync           Trigger a full offline exchange sync
-        sync latest    Sync the most recent orders payload (optional count)
-        sync orders X  Sync orders subdirectory X (for example emoji_runtime)
+    sync           Trigger a full offline exchange sync
+    sync latest    Sync the most recent orders payload (optional count, add 'preview' for dry-run)
+    sync orders X  Sync orders subdirectory X (for example emoji_runtime; add 'preview' to dry-run)
     info           Show mapping info for the selected cell
     map            List every mapped cell and chain
     lore           Lore overlay controls (lore status | lore enable | lore disable)
@@ -590,36 +622,62 @@ def interactive_loop(context: UIContext) -> None:
                 run_manual_sync(context)
             elif tokens[1].lower() == "latest":
                 count = 1
-                if len(tokens) >= 3:
+                dry_run = False
+                for token in tokens[2:]:
+                    lowered = token.lower()
+                    if lowered in {"preview", "dry", "dry-run"}:
+                        dry_run = True
+                        continue
                     try:
-                        count = max(1, int(tokens[2]))
+                        count = max(1, int(token))
                     except ValueError:
                         print("⚠️  Provide a numeric count for 'sync latest'", file=context.output_stream)
-                        continue
-                run_manual_sync(
-                    context,
-                    categories=["orders"],
-                    latest=count,
-                    quiet=True,
-                    label="offline_sync_latest",
-                    event="offline_sync_latest",
-                    announce=f"🔄 Syncing latest {count} orders payload(s)…",
-                )
+                        break
+                else:  # only executes if loop didn't break
+                    label_suffix = "preview" if dry_run else "run"
+                    run_targeted_sync(
+                        context,
+                        categories=["orders"],
+                        latest=count,
+                        quiet=True,
+                        dry_run=dry_run,
+                        label=f"targeted_sync_latest_{label_suffix}",
+                        event=f"targeted_sync_latest_{label_suffix}",
+                        announce=(
+                            f"🔄 Previewing latest {count} orders payload(s)…" if dry_run
+                            else f"🔄 Syncing latest {count} orders payload(s)…"
+                        ),
+                    )
+                    overlay = compute_quilt_overlay(context.repo_root)
+                    render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+                    render_footer(context, stream=context.output_stream)
+                    continue
+                # If we hit the ValueError branch, skip the overlay refresh
+                continue
             elif tokens[1].lower() == "orders":
                 if len(tokens) < 3:
                     print("⚠️  Provide a subdirectory for 'sync orders' (for example emoji_runtime)", file=context.output_stream)
                     continue
                 subpath = tokens[2]
+                dry_run = any(token.lower() in {"preview", "dry", "dry-run"} for token in tokens[3:])
                 safe_label = subpath.replace("/", "_")
-                run_manual_sync(
+                label_suffix = "preview" if dry_run else "run"
+                run_targeted_sync(
                     context,
                     categories=["orders"],
                     orders_subpath=subpath,
                     quiet=True,
-                    label=f"offline_sync_orders_{safe_label}",
-                    event="offline_sync_orders",
-                    announce=f"🔄 Syncing orders/{subpath}…",
+                    dry_run=dry_run,
+                    label=f"targeted_sync_orders_{safe_label}_{label_suffix}",
+                    event=f"targeted_sync_orders_{label_suffix}",
+                    announce=(
+                        f"🔄 Previewing orders/{subpath}…" if dry_run else f"🔄 Syncing orders/{subpath}…"
+                    ),
                 )
+                overlay = compute_quilt_overlay(context.repo_root)
+                render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+                render_footer(context, stream=context.output_stream)
+                continue
             else:
                 print("⚠️  Unknown sync option", file=context.output_stream)
                 continue

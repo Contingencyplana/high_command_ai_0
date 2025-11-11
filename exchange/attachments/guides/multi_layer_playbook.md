@@ -46,6 +46,16 @@ See also: planning/civilians_and_troops.md — index of the civil layer and read
 - Collect frontline notes with `python -m tools.frontline_feedback --workspace <name> --operator <id> ...`.
 - Summarize sentiment with `python -m tools.frontline_feedback_summary`; share the outbox note with prioritization.
 
+## Targeted Sync Loop
+
+- Prefer the targeted helper before running a full offline sync:
+  - Preview: `python -m tools.targeted_sync --latest 5 --dry-run`
+  - Execute: `python -m tools.targeted_sync --latest 5 --yes`
+- In-grid commands mirror the helper: `sync latest [count] [preview]` or `sync orders <subdir> [preview]` inside Alfa Zero UI.
+- Defaults focus on orders-only, quiet output, and confirmation prompts. Pass `--orders-subpath <folder>` to mirror a specific contract set.
+- Full sync (`python -m tools.offline_sync_exchange --quiet`) remains the fallback when wide parity is required.
+- Operators should record targeted sync usage in the ledger when it accompanies a layered overlay dispatch.
+
 ## Rollback
 
 - Disable layer toggles in UI (lore disable, music disable).
