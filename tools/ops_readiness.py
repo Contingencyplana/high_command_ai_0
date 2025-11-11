@@ -73,6 +73,9 @@ def read_config_mode() -> StepResult:
     mode = "local"
     online_enabled = False
     offline_write_kinds: list[str] = ["report"]
+    online_write_kinds: list[str] = []
+    channel = "git"
+    stage_dir: str | None = None
     try:
         import json as _json
 
@@ -85,9 +88,18 @@ def read_config_mode() -> StepResult:
                 kinds = online.get("offline_write_kinds", offline_write_kinds)
                 if isinstance(kinds, list):
                     offline_write_kinds = [str(k).lower() for k in kinds]
+                kinds2 = online.get("online_write_kinds", online_write_kinds)
+                if isinstance(kinds2, list):
+                    online_write_kinds = [str(k).lower() for k in kinds2]
+                channel = str(online.get("channel", channel))
+                stage_dir = online.get("stage_dir") if isinstance(online.get("stage_dir"), str) else None
         status = "OK"
         rc = 0
-        stdout = f"mode={mode}, online.enabled={online_enabled}, offline_write_kinds={offline_write_kinds}"
+        stdout = (
+            f"mode={mode}, online.enabled={online_enabled}, channel={channel}, "
+            f"offline_write_kinds={offline_write_kinds}, online_write_kinds={online_write_kinds}, "
+            f"stage_dir={stage_dir or '(none)'}"
+        )
         stderr = ""
     except Exception as exc:  # pragma: no cover - defensive
         status = "WARN"

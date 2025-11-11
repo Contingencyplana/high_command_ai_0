@@ -73,11 +73,22 @@ class CommAdapter:
         except Exception:
             self.offline_write_kinds = {"report"}
         # Select online channel implementation (stubbed)
-        chan_cfg = ChannelConfig(channel=self.online.channel, retries=self.online.retries, timeout_ms=self.online.timeout_ms)
+        stage_dir = None
+        try:
+            stage_dir = str(online.get("stage_dir")) if online.get("stage_dir") else None
+        except Exception:
+            stage_dir = None
+        chan_cfg = ChannelConfig(channel=self.online.channel, retries=self.online.retries, timeout_ms=self.online.timeout_ms, stage_dir=stage_dir)
         if self.online.channel == "http":
             self._online = HttpChannel(chan_cfg)
         else:
             self._online = GitChannel(chan_cfg)
+        # Which kinds are permitted for online writes (remains empty by default)
+        kinds_online = online.get("online_write_kinds", []) if isinstance(online, dict) else []
+        try:
+            self.online_write_kinds = {str(k).lower() for k in kinds_online}
+        except Exception:
+            self.online_write_kinds = set()
 
     # Offline sink planning/writing
     def _offline_plan(self, kind: str, trace_id: str, payload: Dict[str, Any]) -> dict:
@@ -131,10 +142,12 @@ class CommAdapter:
             wrote = self._offline_write(offline_plan, payload)
             result["offline"]["wrote"] = wrote
 
-        # Online (noop unless enabled; no network writes implemented yet)
+        # Online (noop unless enabled; local stage write only)
         online_plan = self._online_plan(kind, trace_id, payload)
-        result["online"] = {"planned": online_plan, "wrote": False}
-        # Future: when enabled and implemented, attempt write honoring retries/timeout
+        wrote_online = False
+        if not dry_run and self.online.enabled and (kind in self.online_write_kinds):
+            wrote_online = self._online.write(online_plan, payload)
+        result["online"] = {"planned": online_plan, "wrote": wrote_online}
 
         return result
 

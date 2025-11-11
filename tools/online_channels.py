@@ -15,6 +15,7 @@ class ChannelConfig:
     channel: str = "git"  # or "http"
     retries: int = 0
     timeout_ms: int = 2000
+    stage_dir: str | None = None
 
 
 class OnlineChannel:
@@ -36,9 +37,32 @@ class OnlineChannel:
 
 
 class GitChannel(OnlineChannel):
-    pass  # Placeholder for future Git-based publishing
+    def write(self, plan: Dict[str, Any], payload: Dict[str, Any]) -> bool:
+        # Local stage write: mirror an online publish to a staging folder for inspection.
+        # This is safe and remains local-only; no git commands or pushes are executed here.
+        from pathlib import Path
+        import json
+        from datetime import datetime, timezone
+
+        if not self.config.stage_dir:
+            return False
+        try:
+            out_dir = Path(self.config.stage_dir)
+            if not out_dir.is_absolute():
+                # Interpret relative to repository root caller
+                from pathlib import Path as _P
+                root = _P(__file__).resolve().parents[1]
+                out_dir = root / out_dir
+            out_dir.mkdir(parents=True, exist_ok=True)
+            ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+            kind = str(plan.get("kind", "note"))
+            trace_id = str(plan.get("trace_id", "trace"))
+            dest = out_dir / f"online_{kind}_{trace_id}_{ts}.json"
+            dest.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            return True
+        except Exception:
+            return False
 
 
 class HttpChannel(OnlineChannel):
     pass  # Placeholder for future HTTP publishing
-

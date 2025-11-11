@@ -33,6 +33,8 @@
     "channel": "git",
     "retries": 0,
     "timeout_ms": 2000,
-    "offline_write_kinds": ["report", "ack"]
+    "stage_dir": "exchange/outbox/online_stage",
+    "offline_write_kinds": ["report", "ack"],
+    "online_write_kinds": []
   }
 }
