@@ -1,0 +1,13 @@
+{
+  "schema": "frontline-feedback@1.0",
+  "submitted_at": "2025-11-11T06:53:04Z",
+  "workspace": "genesis-beta",
+  "operator": "op-music-02",
+  "responses": {
+    "layer_focus": "music",
+    "experience_rating": 5,
+    "music_support": "boosts",
+    "ritual_dependency": "supportive",
+    "note": "Music overlay accelerates call-and-response."
+  }
+}

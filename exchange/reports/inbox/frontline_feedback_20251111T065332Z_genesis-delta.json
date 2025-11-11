@@ -1,0 +1,13 @@
+{
+  "schema": "frontline-feedback@1.0",
+  "submitted_at": "2025-11-11T06:53:32Z",
+  "workspace": "genesis-delta",
+  "operator": "op-combined-03",
+  "responses": {
+    "layer_focus": "both",
+    "experience_rating": 3,
+    "music_support": "neutral",
+    "ritual_dependency": "critical",
+    "note": "Dual layer useful but ritual cooldown spikes during night ops."
+  }
+}

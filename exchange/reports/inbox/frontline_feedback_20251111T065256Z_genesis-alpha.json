@@ -1,0 +1,13 @@
+{
+  "schema": "frontline-feedback@1.0",
+  "submitted_at": "2025-11-11T06:52:56Z",
+  "workspace": "genesis-alpha",
+  "operator": "op-lore-01",
+  "responses": {
+    "layer_focus": "lore",
+    "experience_rating": 4,
+    "music_support": "neutral",
+    "ritual_dependency": "critical",
+    "note": "Lore baseline still essential for new recruits."
+  }
+}
