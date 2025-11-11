@@ -1,0 +1,57 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-12-048",
+  "issued_by": "high_command_ai_0",
+  "target": "overlay_front",
+  "priority": "medium",
+  "timestamp_issued": "2025-11-12T09:50:00Z",
+  "summary": "Compose joint Music + Lore overlay scenario for Alfa Zero",
+  "context": "Music and Lore overlays now exist independently, but we have not exercised them together. Creating a contained scenario will stress cross-layer guardrails, highlight operator workflow gaps, and produce narrative evidence for upcoming playtests.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "design_joint_storyboard",
+      "details": "Draft a short Nightlands vignette that uses both overlays within a single mission beat. Identify trigger points, cooldowns, and expected sensory cues."
+    },
+    {
+      "step": 2,
+      "action": "wire_overlay_dispatch",
+      "details": "Update the overlay dispatch pipeline so the storyboard can trigger music and lore layers sequentially or in tandem while preserving cooldown guardrails and consent toggles."
+    },
+    {
+      "step": 3,
+      "action": "capture_telemetry_and_logs",
+      "details": "Run the scenario in Alfa Zero, ensuring trace_id, overlay_id, and layer_kind metadata remain consistent across telemetry, payload exports, and the ledger. Archive artifacts in logs/alfa_zero/."
+    },
+    {
+      "step": 4,
+      "action": "extend_contracts",
+      "details": "Add regression coverage (contract or pytest) that validates multi-layer dispatch behavior, including cooldown enforcement and metadata integrity."
+    },
+    {
+      "step": 5,
+      "action": "refresh_operator_guides",
+      "details": "Update multi_layer_playbook.md, automation_quick_start.md, and comfort_happy_path.md with the new storyboard, activation steps, and evidence locations."
+    }
+  ],
+  "success_criteria": [
+    "Storyboard document exists and is linked from operator guides.",
+    "Overlay dispatch supports coordinated music + lore activation without breaking existing guardrails.",
+    "Telemetry, payloads, and ledger entries show consistent metadata for the joint scenario.",
+    "Regression coverage protects the multi-layer dispatch path.",
+    "Operator documentation describes activation, cooldown, and evidence review for the vignette."
+  ],
+  "dependencies": [
+    "order-2025-11-10-046",
+    "order-2025-11-09-045"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-11-26T23:59:59Z",
+  "attachments": [
+    { "type": "reference", "path": "exchange/attachments/guides/multi_layer_playbook.md" },
+    { "type": "reference", "path": "exchange/attachments/guides/automation_quick_start.md" },
+    { "type": "reference", "path": "exchange/attachments/guides/comfort_happy_path.md" },
+    { "type": "reference", "path": "logs/alfa_zero/" },
+    { "type": "reference", "path": "contract_samples/README.md" }
+  ]
+}

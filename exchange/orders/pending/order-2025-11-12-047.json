@@ -1,0 +1,55 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-12-047",
+  "issued_by": "high_command_ai_0",
+  "target": "automation_front",
+  "priority": "high",
+  "timestamp_issued": "2025-11-12T09:45:00Z",
+  "summary": "Automate Alfa Zero targeted sync controls and quiet logging",
+  "context": "Operators still drive the targeted sync manually even though the scope is documented. We need repeatable tooling that enforces quiet-mode logging, validates guardrails, and updates the planning scroll so satellites can run the loop without paging High Command.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "finalize_tool_design",
+      "details": "Translate planning/alfa_zero_targeted_sync_scope.md into an executable plan: identify commands, inputs, and log rotation behaviors. Capture open questions in the scroll before coding."
+    },
+    {
+      "step": 2,
+      "action": "implement_targeted_sync_cli",
+      "details": "Add a tooling entry point (e.g., tools/targeted_sync.py) that wraps heartbeat + selective order sync with quiet logging defaults and safety prompts. Reuse existing exchange utils where possible."
+    },
+    {
+      "step": 3,
+      "action": "add_contract_coverage",
+      "details": "Author at least one regression case that exercises the new CLI in dry-run mode, verifying log suppression and guardrail enforcement."
+    },
+    {
+      "step": 4,
+      "action": "update_documentation",
+      "details": "Refresh planning/alfa_zero_targeted_sync_scope.md and multi_layer_playbook.md with operator instructions for the new tooling, including cooldown expectations and ledger steps."
+    },
+    {
+      "step": 5,
+      "action": "log_and_report",
+      "details": "Run the CLI in the Alfa Zero workspace, capture evidence in logs/, append outcomes to the November ledger, and file a completion report outlining lessons learned and next enhancements."
+    }
+  ],
+  "success_criteria": [
+    "Targeted sync CLI exists with quiet logging enabled by default and safety prompts prior to execution.",
+    "Dry-run / contract coverage passes, confirming guardrail enforcement and log rotation behavior.",
+    "Documentation (planning/alfa_zero_targeted_sync_scope.md, multi_layer_playbook.md) reflects the new workflow and cooldown cadence.",
+    "Operators can run the targeted sync loop without consulting High Command directly.",
+    "Ledger entry and completion report capture evidence and future follow-up candidates."
+  ],
+  "dependencies": [
+    "order-2025-11-09-045"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-11-19T23:59:59Z",
+  "attachments": [
+    { "type": "reference", "path": "planning/alfa_zero_targeted_sync_scope.md" },
+    { "type": "reference", "path": "tools/exchange_offline_utils.py" },
+    { "type": "reference", "path": "exchange/attachments/guides/multi_layer_playbook.md" },
+    { "type": "reference", "path": "logs/alfa_zero/" }
+  ]
+}

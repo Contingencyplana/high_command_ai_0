@@ -1,0 +1,56 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-12-049",
+  "issued_by": "high_command_ai_0",
+  "target": "playtest_front",
+  "priority": "medium",
+  "timestamp_issued": "2025-11-12T09:55:00Z",
+  "summary": "Stage Nightlands comfort-loop playtest using new multi-layer overlays",
+  "context": "With targeted sync automation in flight and a joint Music + Lore vignette defined, we need real player feedback to inform the next campaign arc. A focused comfort-loop playtest will validate ops readiness, gather qualitative observations, and surface any regression gaps before we scale.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "select_playtest_cohort",
+      "details": "Identify 2-3 operators or trusted testers and brief them on the joint overlay scenario, cooldown expectations, and targeted sync tooling. Capture their consent in the ledger."
+    },
+    {
+      "step": 2,
+      "action": "run_guided_session",
+      "details": "Facilitate a comfort-loop play session covering dispatch, overlays, targeted sync, and evidence review. Use the new tooling and storyboard end-to-end."
+    },
+    {
+      "step": 3,
+      "action": "collect_feedback_and_metrics",
+      "details": "Record qualitative feedback, session metrics (duration, number of overlay triggers, sync invocations), and any friction points. Archive session logs in logs/alfa_zero/play_session_feedback/."
+    },
+    {
+      "step": 4,
+      "action": "update_campaign_docs",
+      "details": "Summarize findings in planning/campaigns_and_lulls.md and planning/alfa_zero_targeted_sync_scope.md, highlighting readiness, blockers, and morale signals."
+    },
+    {
+      "step": 5,
+      "action": "propose_next_orders",
+      "details": "From the playtest insights, draft follow-on recommendations (orders or enhancements) and attach them to the completion report for review."
+    }
+  ],
+  "success_criteria": [
+    "Playtest cohort confirmed and briefed with ledger entries.",
+    "Joint overlay scenario executed end-to-end using the new tooling.",
+    "Feedback and metrics archived with clear references to logs and evidence.",
+    "Campaign documentation reflects readiness signals and identified gaps.",
+    "Completion report proposes concrete next orders or enhancements."
+  ],
+  "dependencies": [
+    "order-2025-11-12-047",
+    "order-2025-11-12-048"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-11-30T23:59:59Z",
+  "attachments": [
+    { "type": "reference", "path": "planning/campaigns_and_lulls.md" },
+    { "type": "reference", "path": "planning/alfa_zero_targeted_sync_scope.md" },
+    { "type": "reference", "path": "logs/alfa_zero/" },
+    { "type": "reference", "path": "exchange/attachments/guides/multi_layer_playbook.md" }
+  ]
+}
