@@ -30,7 +30,7 @@
 
 ## Next Target Candidate
 
-- 2025-11-10 - Add overlay regression case `overlay_guarded_delivery` for qualifier coverage; update `contract_samples/README.md` and rerun contract suite.
+- 2025-11-12 - Review `planning/alfa_zero_targeted_sync_scope.md` once targeted sync log rotation lands (pending tooling slice).
 - 2025-11-10 - Evaluate propagating `trace_id` through `golf_00/delta_00/alfa_00/overlay_bridge.py` into payload extensions for cross-pipeline correlation; document toggle and evidence sinks. *(Completed 2025-11-10 via Order 045 trace parity refresh; future tweaks will spin as new entries as needed.)*
 
 ## Recently Completed
@@ -46,3 +46,4 @@
 - 2025-11-07 — Ops scroll acceptance evidence updated with Toysoldiers ORDER-043 adoption log review (High Command).
 - 2025-11-09 — new_major_pivot_2.md progress log aligned with Orders 044/045 overlay plan (High Command).
 - 2025-11-10 — Comfort Happy Path guide now links Outlands framework, Fun Guardian protocol, and Outlands index (High Command).
+- 2025-11-12 — Contract samples README updated with Music Pilot overlay cases (High Command).

@@ -22,6 +22,8 @@ Current Level-0 coverage includes:
 - `overlay_first_click.json` - Order 045 overlay “first click” regression anchored to the orchestrated flow.
 - `overlay_guarded_wall.json` - Guarded delivery success path with safe qualifier promoted through overlay orchestration.
 - `overlay_guarded_warning.json` - Guarded delivery warning path with inspect qualifier validating risk outcomes via overlay orchestration.
+- `overlay_music_dispatch.json` - Music layer pilot baseline verifying single-layer metadata and telemetry overlays.
+- `overlay_lore_music_stack.json` - Dual-layer Lore+Music regression covering ordered overlay stacks and compatibility fields.
 
 The fixtures intentionally capture only the stable fields that matter for the
 contract. Dynamic values (timestamps, telemetry batch identifiers) are asserted
