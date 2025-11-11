@@ -33,6 +33,6 @@
     "channel": "git",
     "retries": 0,
     "timeout_ms": 2000,
-    "offline_write_kinds": ["report"]
+    "offline_write_kinds": ["report", "ack"]
   }
 }

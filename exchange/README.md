@@ -1,5 +1,7 @@
 # Offline Continuity Mode — Active
 
+See also: planning/civilians_and_troops.md (Comm Adapter section) for Hybrid shadow sends and safety flags.
+
 High Command Exchange now operates as a local-only message bus to keep SHAGI coordination flowing while GitHub access is restricted. Treat this directory as the shared drop-zone that every frontline workspace reads from and writes to.
 
 ## Directory Layout
