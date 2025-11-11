@@ -4,6 +4,7 @@ Runs a lightweight preflight:
   1) Exchange heartbeat
   2) Contract tests (fail-fast)
   3) Offline sync (quiet, latest=1)
+  4) Schema sweep for frontline feedback inbox/outbox
 
 Emits a labeled one-page summary and exits non-zero on failure.
 
@@ -101,6 +102,54 @@ def run_offline_sync(latest: int, quiet: bool) -> StepResult:
     )
 
 
+def run_schema_sweep() -> StepResult:
+    """Validate exchange payloads (orders/reports/acks) with schema validator.
+
+    Treat missing files as WARN (not a failure) to keep readiness permissive
+    when a given category has no artifacts yet.
+    """
+    start = _now()
+    roots = [
+        REPO_ROOT / "exchange" / "orders" / "pending",
+        REPO_ROOT / "exchange" / "orders" / "dispatched",
+        REPO_ROOT / "exchange" / "orders" / "completed",
+        REPO_ROOT / "exchange" / "reports" / "inbox",
+        REPO_ROOT / "exchange" / "reports" / "outbox",
+        REPO_ROOT / "exchange" / "reports" / "archived",
+        REPO_ROOT / "exchange" / "reports" / "archived" / "inbox_backlog",
+        REPO_ROOT / "exchange" / "acknowledgements" / "pending",
+        REPO_ROOT / "exchange" / "acknowledgements" / "logged",
+    ]
+
+    files: list[str] = []
+    for root in roots:
+        if root.exists():
+            files.extend(str(p) for p in sorted(root.glob("*.json")))
+
+    if not files:
+        end = _now()
+        return StepResult(
+            name="Schema Sweep (Exchange)",
+            status="WARN",
+            returncode=0,
+            duration_ms=int((end - start).total_seconds() * 1000),
+            stdout="No exchange payload files found; skipping validation",
+            stderr="",
+        )
+
+    proc = _run_cmd([sys.executable, "-m", "tools.schema_validator", *files])
+    end = _now()
+    status = "OK" if proc.returncode == 0 else "FAIL"
+    return StepResult(
+        name="Schema Sweep (Exchange)",
+        status=status,
+        returncode=proc.returncode,
+        duration_ms=int((end - start).total_seconds() * 1000),
+        stdout=proc.stdout.strip(),
+        stderr=proc.stderr.strip(),
+    )
+
+
 def _write_summary(steps: list[StepResult], destination: Path) -> None:
     lines: list[str] = []
     ts = _now().isoformat().replace("+00:00", "Z")
@@ -158,6 +207,12 @@ def main(argv: list[str] | None = None) -> int:
     if sync.returncode != 0:
         exit_code = 1
 
+    # 4) Schema sweep for frontline feedback
+    sweep = run_schema_sweep()
+    steps.append(sweep)
+    if sweep.status == "FAIL":
+        exit_code = 1
+
     # Write summary artifact
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     summary_path = REPO_ROOT / "logs" / "ops_readiness" / f"summary-{stamp}.txt"
@@ -174,4 +229,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":  # pragma: no cover - CLI
     raise SystemExit(main())
-

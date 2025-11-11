@@ -71,6 +71,46 @@ SCHEMAS["emoji-runtime@1.0"] = {
     "created_at": str,
 }
 
+# Frontline feedback payloads
+SCHEMAS["frontline-feedback@1.0"] = {
+    # top-level 'schema' is already required by validate_payload
+    "submitted_at": str,
+    "workspace": str,
+    "operator": str,
+    "responses": dict,
+}
+
+SCHEMAS["frontline-feedback-summary@1.0"] = {
+    # summary artifact generated from multiple frontline-feedback entries
+    "generated_at": str,
+    "responses": int,
+    "ranking": list,
+    "music_support": dict,
+    "ritual_dependency": dict,
+    "sample_notes": list,
+}
+
+# Factory acknowledgement for orders
+SCHEMAS["factory-ack@1.0"] = {
+    "order_id": str,
+    "workspace": str,
+    "acknowledged_by": str,
+    "owner": str,
+    "timestamp_ack": str,
+    "status": str,
+}
+
+# Safety multi-approver approval record
+SCHEMAS["safety-approval@1.0"] = {
+    "approval_id": str,
+    "referenced_id": str,
+    "sender": str,
+    "receiver": str,
+    "timestamp_sent": str,
+    "approvers": list,
+    "notes": list,
+}
+
 
 class SchemaValidationError(RuntimeError):
     """Raised when a payload fails schema validation."""

@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-11-12-048-ack",
+  "referenced_id": "order-2025-11-12-048",
+  "sender": "overlay_front",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-11-12T10:06:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Storyboard for the joint Music+Lore vignette will capture trigger cadence, cooldowns, and sensory cues before coding.",
+    "Overlay dispatch sequencing changes will reuse existing guardrails to keep consent toggles enforced.",
+    "Telemetry + contract updates planned alongside evidence archiving in logs/alfa_zero/."
+  ]
+}

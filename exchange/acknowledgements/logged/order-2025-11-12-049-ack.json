@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-11-12-049-ack",
+  "referenced_id": "order-2025-11-12-049",
+  "sender": "playtest_front",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-11-12T10:07:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Playtest cohort shortlist drafted; consent + briefing scripts will enter the ledger before sessions.",
+    "Guided comfort-loop run will exercise the new targeted sync tooling and Music+Lore vignette end-to-end.",
+    "Feedback synthesis will feed planning/campaigns_and_lulls.md with next-order recommendations."
+  ]
+}

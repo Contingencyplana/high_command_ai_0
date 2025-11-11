@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-11-12-047-ack",
+  "referenced_id": "order-2025-11-12-047",
+  "sender": "automation_front",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-11-12T10:05:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Scoping targeted sync CLI using planning/alfa_zero_targeted_sync_scope.md as the implementation blueprint.",
+    "Dry-run regression coverage will validate quiet logging and guardrail prompts before rollout.",
+    "Documentation + ledger updates scheduled immediately after the first operational run."
+  ]
+}
