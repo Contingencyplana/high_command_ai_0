@@ -8,6 +8,7 @@
 - Frontline feedback intake: `python -m tools.frontline_feedback`
 - Frontline feedback summary: `python -m tools.frontline_feedback_summary`
 - Hybrid send (shadow): `python -m tools.comm_send --kind report --payload-file <path.json> [--validate] [--write]`
+  - With staging enabled (config online.enabled=true, online_write_kinds includes "report"), `--write` mirrors to `exchange/outbox/online_stage/`.
 
 ## Ops Readiness
 

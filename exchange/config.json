@@ -29,12 +29,12 @@
     "UNITS_PER_MIN_MAX": 200
   },
   "online": {
-    "enabled": false,
+    "enabled": true,
     "channel": "git",
     "retries": 0,
     "timeout_ms": 2000,
     "stage_dir": "exchange/outbox/online_stage",
     "offline_write_kinds": ["report", "ack"],
-    "online_write_kinds": []
+    "online_write_kinds": ["report"]
   }
 }
