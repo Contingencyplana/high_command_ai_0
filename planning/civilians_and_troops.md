@@ -46,3 +46,15 @@ Purpose: align the metaphor to concrete artifacts, gates, and links so we can pi
 
 ---
 Decision rule: when all gates above are green in hybrid shadow mode and runbooks are current, pivot focus to mass Alfa production and spin up the remaining genesis workspaces.
+
+## Comm Adapter (Hybrid Shadow)
+- CLI: `python -m tools.comm_send --kind report --payload-file <path.json> [--validate] [--write]`
+- Defaults to shadow: `--dry-run` is default; prints planned offline/online actions without writing.
+- Safety guards:
+  - Orders are plan-only (never write).
+  - Offline writes allowed only when kind is listed in `exchange/config.json` → `online.offline_write_kinds` (default `["report"]`; add `"ack"` to enable acks).
+  - `online.enabled` remains `false`; online sink is a noop until dark‑launch.
+- Visibility: `python -m tools.ops_readiness` prints `mode`, `online.enabled`, `offline_write_kinds`, and runs the “Hybrid Shadow Check”.
+- Examples:
+  - `python -m tools.comm_send --kind report --payload-file exchange/reports/outbox/frontline_feedback_summary_20251111T072152Z.json --validate`
+  - `python -m tools.comm_send --kind ack --payload-inline '{"schema":"signal-ack@1.0","ack_id":"x","referenced_id":"y","sender":"z","receiver":"hc","timestamp_sent":"2025-11-11T00:00:00Z","status":"acknowledged"}' --dry-run`
