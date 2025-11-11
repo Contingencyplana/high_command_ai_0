@@ -1,0 +1,13 @@
+{
+  "schema": "frontline-feedback@1.0",
+  "submitted_at": "2025-11-11T07:20:23Z",
+  "workspace": "genesis-epsilon",
+  "operator": "op-lore-05",
+  "responses": {
+    "layer_focus": "lore",
+    "experience_rating": 4,
+    "music_support": "neutral",
+    "ritual_dependency": "critical",
+    "note": "Lore steady; music rollout not yet visible."
+  }
+}

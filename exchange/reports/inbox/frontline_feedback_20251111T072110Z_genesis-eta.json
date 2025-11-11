@@ -1,0 +1,13 @@
+{
+  "schema": "frontline-feedback@1.0",
+  "submitted_at": "2025-11-11T07:21:10Z",
+  "workspace": "genesis-eta",
+  "operator": "op-lore-08",
+  "responses": {
+    "layer_focus": "lore",
+    "experience_rating": 5,
+    "music_support": "neutral",
+    "ritual_dependency": "critical",
+    "note": "Lore-only mode remains our anchor for escalation briefings."
+  }
+}

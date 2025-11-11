@@ -1,0 +1,13 @@
+{
+  "schema": "frontline-feedback@1.0",
+  "submitted_at": "2025-11-11T07:21:02Z",
+  "workspace": "genesis-zeta",
+  "operator": "op-music-09",
+  "responses": {
+    "layer_focus": "music",
+    "experience_rating": 2,
+    "music_support": "conflicts",
+    "ritual_dependency": "supportive",
+    "note": "Music clashes with ritual timing during night drills."
+  }
+}

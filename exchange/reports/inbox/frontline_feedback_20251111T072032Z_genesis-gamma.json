@@ -1,0 +1,13 @@
+{
+  "schema": "frontline-feedback@1.0",
+  "submitted_at": "2025-11-11T07:20:32Z",
+  "workspace": "genesis-gamma",
+  "operator": "op-music-07",
+  "responses": {
+    "layer_focus": "music",
+    "experience_rating": 5,
+    "music_support": "boosts",
+    "ritual_dependency": "supportive",
+    "note": "Music cue keeps squads synchronized."
+  }
+}

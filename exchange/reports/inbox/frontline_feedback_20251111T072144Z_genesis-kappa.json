@@ -1,0 +1,13 @@
+{
+  "schema": "frontline-feedback@1.0",
+  "submitted_at": "2025-11-11T07:21:44Z",
+  "workspace": "genesis-kappa",
+  "operator": "op-field-06",
+  "responses": {
+    "layer_focus": "music",
+    "experience_rating": 4,
+    "music_support": "boosts",
+    "ritual_dependency": "independent",
+    "note": "Music overlay lets us run independent of ritual cadence during scouting."
+  }
+}
