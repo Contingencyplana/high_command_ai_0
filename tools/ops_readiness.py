@@ -67,6 +67,44 @@ def run_heartbeat() -> StepResult:
     )
 
 
+def read_config_mode() -> StepResult:
+    start = _now()
+    cfg_path = REPO_ROOT / "exchange" / "config.json"
+    mode = "local"
+    online_enabled = False
+    offline_write_kinds: list[str] = ["report"]
+    try:
+        import json as _json
+
+        raw = _json.loads(cfg_path.read_text(encoding="utf-8"))
+        if isinstance(raw, dict):
+            mode = str(raw.get("mode", mode))
+            online = raw.get("online", {})
+            if isinstance(online, dict):
+                online_enabled = bool(online.get("enabled", False))
+                kinds = online.get("offline_write_kinds", offline_write_kinds)
+                if isinstance(kinds, list):
+                    offline_write_kinds = [str(k).lower() for k in kinds]
+        status = "OK"
+        rc = 0
+        stdout = f"mode={mode}, online.enabled={online_enabled}, offline_write_kinds={offline_write_kinds}"
+        stderr = ""
+    except Exception as exc:  # pragma: no cover - defensive
+        status = "WARN"
+        rc = 0
+        stdout = ""
+        stderr = f"Could not read config: {exc}"
+    end = _now()
+    return StepResult(
+        name="Config Mode",
+        status=status,
+        returncode=rc,
+        duration_ms=int((end - start).total_seconds() * 1000),
+        stdout=stdout,
+        stderr=stderr,
+    )
+
+
 def run_contracts(fail_fast: bool) -> StepResult:
     start = _now()
     args = [sys.executable, "-m", "tools.contract_test_runner"]
@@ -209,6 +247,10 @@ def main(argv: list[str] | None = None) -> int:
 
     steps: list[StepResult] = []
     exit_code = 0
+
+    # 0) Config mode visibility
+    cfg = read_config_mode()
+    steps.append(cfg)
 
     # 1) Heartbeat
     hb = run_heartbeat()

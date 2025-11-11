@@ -66,18 +66,39 @@ class CommAdapter:
             retries=int(online.get("retries", 0)),
             timeout_ms=int(online.get("timeout_ms", 2000)),
         )
+        # Which kinds are allowed to be written offline (idempotent outbox writes)
+        kinds = online.get("offline_write_kinds", ["report"]) if isinstance(online, dict) else ["report"]
+        try:
+            self.offline_write_kinds = {str(k).lower() for k in kinds}
+        except Exception:
+            self.offline_write_kinds = {"report"}
 
     # Offline sink planning/writing
     def _offline_plan(self, kind: str, trace_id: str, payload: Dict[str, Any]) -> dict:
-        outbox = REPO_ROOT / "exchange" / ("reports" if kind == "report" else "outbox")
-        # Orders already have specific outboxes under outbox/orders; keep simple plan here
+        kind = kind.lower()
         if kind == "report":
             out_dir = REPO_ROOT / "exchange" / "reports" / "outbox"
             out_dir.mkdir(parents=True, exist_ok=True)
             h = _content_hash(payload)
             filename = f"hybrid_shadow_{_iso_now()}_{trace_id}_{h}.json"
             return {"dir": str(out_dir), "file": str(out_dir / filename)}
-        return {"dir": str(outbox), "file": None}
+        if kind == "ack":
+            out_dir = REPO_ROOT / "exchange" / "outbox" / "acknowledgements" / "logged"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            h = _content_hash(payload)
+            filename = f"hybrid_shadow_ack_{_iso_now()}_{trace_id}_{h}.json"
+            return {"dir": str(out_dir), "file": str(out_dir / filename)}
+        if kind == "order":
+            out_dir = REPO_ROOT / "exchange" / "outbox" / "orders"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            h = _content_hash(payload)
+            filename = f"hybrid_shadow_order_{_iso_now()}_{trace_id}_{h}.json"
+            # Intentionally planned; writes for orders remain disabled regardless of config (safety)
+            return {"dir": str(out_dir), "file": str(out_dir / filename)}
+        # Fallback generic outbox directory
+        out_dir = REPO_ROOT / "exchange" / "outbox"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        return {"dir": str(out_dir), "file": None}
 
     def _offline_write(self, planned: dict, payload: Dict[str, Any]) -> bool:
         path_str = planned.get("file")
@@ -97,12 +118,13 @@ class CommAdapter:
         }
 
     def send(self, *, kind: str, payload: Dict[str, Any], trace_id: str, dry_run: bool = True) -> dict:
+        kind = kind.lower()
         result: dict = {"kind": kind, "trace_id": trace_id}
 
         # Offline
         offline_plan = self._offline_plan(kind, trace_id, payload)
         result["offline"] = {"planned": offline_plan, "wrote": False}
-        if not dry_run and kind == "report":
+        if not dry_run and (kind in self.offline_write_kinds) and kind != "order":
             wrote = self._offline_write(offline_plan, payload)
             result["offline"]["wrote"] = wrote
 
@@ -124,4 +146,3 @@ def main() -> int:  # pragma: no cover - simple manual check
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

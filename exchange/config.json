@@ -32,6 +32,7 @@
     "enabled": false,
     "channel": "git",
     "retries": 0,
-    "timeout_ms": 2000
+    "timeout_ms": 2000,
+    "offline_write_kinds": ["report"]
   }
 }
