@@ -1,5 +1,7 @@
 # Multi-Layer Overlay Playbook (Pilot)
 
+See also: planning/civilians_and_troops.md — index of the civil layer and readiness gates.
+
 ## Scope
 
 - Covers Lore + Music pilots on Alfa Zero.
@@ -65,4 +67,3 @@
 - Bridge: golf_00/delta_00/alfa_00/overlay_bridge.py
 - Readiness: tools/ops_readiness.py
 - Samples: contract_samples/cases/overlay_lore_music_stack.json
-

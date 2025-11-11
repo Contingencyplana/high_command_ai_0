@@ -1,5 +1,7 @@
 # Pivotal Fronts (Canon)
 
+See also: planning/civilians_and_troops.md — concise index of the civil layer, gates, and pivot criteria.
+
 **Last Updated:** 2025-10-31  
 **Authorizing Body:** War Office + High Command  
 
