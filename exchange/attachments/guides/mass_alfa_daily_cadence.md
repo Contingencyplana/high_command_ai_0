@@ -31,3 +31,10 @@ References
 - Sync: `tools/exchange_all.py`
 - Alfa baseline: `template/forge/alfa/alfa.py.j2`
 
+Hello Report (fast path)
+- Tool (already synced via hub): `exchange/attachments/tools/hello_completion_report.py`
+- Example (run from Toyfoundry root):
+  - `python exchange/attachments/tools/hello_completion_report.py --instance-id Alfa-001 --baseline alfa-template@2025-11-13 --order-id order-2025-11-13-054 --readiness logs/ops_readiness.json --smoke logs/contract_tests/smoke_summary.txt`
+- Optional: copy into local tools for shorter command:
+  - `powershell Copy-Item exchange/attachments/tools/hello_completion_report.py tools/`
+  - Then: `python tools/hello_completion_report.py --instance-id Alfa-001 --baseline alfa-template@2025-11-13 --order-id order-2025-11-13-054`

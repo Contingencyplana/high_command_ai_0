@@ -31,7 +31,7 @@
   "expires_at": "2025-11-20T23:59:59Z",
   "attachments": [
     { "type": "reference", "path": "template/forge/alfa/alfa.py.j2" },
-    { "type": "guide", "path": "exchange/attachments/guides/mass_alfa_daily_cadence.md" }
+    { "type": "guide", "path": "exchange/attachments/guides/mass_alfa_daily_cadence.md" },
+    { "type": "tool", "path": "exchange/attachments/tools/hello_completion_report.py" }
   ]
 }
-
