@@ -3,8 +3,79 @@
   "report_id": "order-2025-11-09-045-report",
   "origin": "high_command_ai_0",
   "relates_to": "order-2025-11-09-045",
-  "timestamp_submitted": "2025-11-09T00:00:00Z",
-  "status": "draft",
-  "summary": "Draft report placeholder for Order 045 (UI overlay push) - will include shell enhancements, narration hooks, and comfort loop validation evidence."
+  "timestamp_submitted": "2025-11-12T17:25:00Z",
+  "status": "completed",
+  "summary": "Closed UI Overlay Integration slice: baseline sweep confirmed, shells upgraded, overlay flow wired end-to-end, contract coverage extended, and documentation refreshed. Evidence captured and linked.",
+  "evidence": {
+    "tests": {
+      "result": "passed",
+      "files": [
+        "tests/test_overlay_flow.py",
+        "tests/test_overlay_smoke.py"
+      ]
+    },
+    "overlay_trace": {
+      "narration_log": "logs/alfa_02/narration.jsonl",
+      "telemetry_log": "logs/alfa_03/telemetry.jsonl",
+      "closeout_trace_id": "ORDER-045-close-20251112T032916Z"
+    },
+    "runbooks": [
+      "exchange/attachments/guides/comfort_happy_path.md",
+      "planning/campaigns_and_lulls.md"
+    ]
+  },
+  "directives_status": [
+    {
+      "step": 1,
+      "directive": "confirm_baseline",
+      "status": "completed",
+      "notes": [
+        "exchange_heartbeat.py and offline_sync_exchange.py executed successfully; local exchange sync healthy."
+      ]
+    },
+    {
+      "step": 2,
+      "directive": "upgrade_runtime_shells",
+      "status": "completed",
+      "notes": [
+        "Narration and telemetry shells expose overlay hooks, comfort toggles, and logging hygiene in alfa_02/alfa_03."
+      ]
+    },
+    {
+      "step": 3,
+      "directive": "wire_overlay_flow",
+      "status": "completed",
+      "notes": [
+        "Overlay flow emits correlated narration + telemetry; evidence trace recorded with ID ORDER-045-close-20251112T032916Z."
+      ]
+    },
+    {
+      "step": 4,
+      "directive": "extend_contract_suite",
+      "status": "completed",
+      "notes": [
+        "Overlay regression coverage in test_overlay_flow and test_overlay_smoke passing (10/10 tests overall)."
+      ]
+    },
+    {
+      "step": 5,
+      "directive": "document_operations",
+      "status": "completed",
+      "notes": [
+        "Comfort guides and planning chronicle updated throughout campaign (see ledger references)."
+      ]
+    },
+    {
+      "step": 6,
+      "directive": "file_completion_report",
+      "status": "completed",
+      "notes": [
+        "This report closes Order 045 with artifacts linked and follow-ups enumerated."
+      ]
+    }
+  ],
+  "open_follow_ups": [
+    "Fold overlay traces into the primary dashboard once offline tooling returns (tracking outside Order 045).",
+    "Decide on targeted-sync log rotation after additional playtests (tracking outside Order 045)."
+  ]
 }
-
