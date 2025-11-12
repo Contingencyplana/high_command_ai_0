@@ -44,6 +44,7 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 
 - Full sync runs copy up to ~120 files and write a line per file into `play_session_actions.log`, causing the action log to balloon during repeated automated loops.
 - The command-loop output already compresses console display to the head and tail of the sync script logs, but the persisted file remains verbose.
+- Quiet-mode targeted sync runs now emit compact output; the new telemetry feed captures copy counts and destinations for post-run review without reading raw logs.
 
 ### Options
 
@@ -70,6 +71,7 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 - Session metrics append to `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl`, creating the combined storyboard + targeted sync feed requested in Order 051.
 - Feed manifest documents the schema for downstream dashboards and reporting.
 - Interim cadence panel captured in `docs/nightlands_duet_telemetry_panel.md` while the main dashboard tooling remains offline.
+- Quiet-mode log rotation decision deferred until the next cohort run; use telemetry feed totals plus `play_session_actions.log` size to judge whether archival is required.
 
 ## 2025-11-12 Playtest Feedback
 
@@ -80,6 +82,6 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 
 ## Next Actions
 
-1. Observe quiet-mode sync output over the next few playtest loops and decide whether log rotation or archival is still required.
+1. Observe quiet-mode sync output over the next few playtest loops (starting with the next Nightlands cohort) and decide whether log rotation or archival is still required.
 2. Promote the interim telemetry panel (`docs/nightlands_duet_telemetry_panel.md`) into the primary dashboard once the offline tooling is back.
 3. Coordinate with UI workstream on the cooldown banner request and link the outcome back to this scope.
