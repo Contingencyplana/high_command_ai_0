@@ -56,6 +56,14 @@ See also: planning/civilians_and_troops.md — index of the civil layer and read
 - Full sync (`python -m tools.offline_sync_exchange --quiet`) remains the fallback when wide parity is required.
 - Operators should record targeted sync usage in the ledger when it accompanies a layered overlay dispatch.
 
+## Nightlands Duet Storyboard
+
+- Use `storyboard status` to confirm Lore/Music toggles, last run timestamp, cooling period, and next eligible window. Only run with `force` when High Command pre-clears the override.
+- `storyboard preview` lists cues for both phases; run this before going live with external observers.
+- `storyboard run` executes the Lore-first, Lore+Music sequence, writes payload evidence, records a storyboard log under `logs/alfa_zero/storyboards/nightlands_duet_v1_runs.jsonl`, and appends an action log entry with trace/force metadata.
+- Session metrics (`logs/alfa_zero/session_metrics.jsonl`) capture each storyboard dispatch plus a `storyboard_run` aggregate for later analysis. Guardrail rejections appear as `storyboard_guardrail` events.
+- After a successful run, perform the targeted sync helper (preview + execution) to mirror the latest duet artifacts into the exchange hub.
+
 ## Rollback
 
 - Disable layer toggles in UI (lore disable, music disable).

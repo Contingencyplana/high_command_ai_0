@@ -223,6 +223,7 @@ class OverlayBridge:
         overlay_id: str | None = None,
         layer_kind: str | None = None,
         overlays: Sequence[OverlayInput] | None = None,
+        extra_payload: dict[str, object] | None = None,
     ) -> Path:
         if cell not in CELL_MAPPINGS:
             raise KeyError(f"Cell {cell_label(cell)} is not mapped to a chain yet")
@@ -236,6 +237,7 @@ class OverlayBridge:
             overlay_id=overlay_id,
             layer_kind=layer_kind,
             overlays=overlays,
+            extra_payload=extra_payload,
         )
 
     def dispatch_cells(self, cells: Iterable[Cell]) -> Dict[str, Path]:
@@ -320,6 +322,7 @@ class OverlayBridge:
         overlay_id: str | None = None,
         layer_kind: str | None = None,
         overlays: Sequence[OverlayInput] | None = None,
+        extra_payload: dict[str, object] | None = None,
     ) -> Path:
         if chain_name not in self.sample_chains:
             raise KeyError(f"Chain {chain_name} missing from sample_chains.json")
@@ -333,6 +336,7 @@ class OverlayBridge:
             overlay_id=overlay_id,
             layer_kind=layer_kind,
             overlays=overlays,
+            extra_payload=extra_payload,
         )
 
     def dispatch_raw_chain(
@@ -346,6 +350,7 @@ class OverlayBridge:
         overlay_id: str | None = None,
         layer_kind: str | None = None,
         overlays: Sequence[OverlayInput] | None = None,
+        extra_payload: dict[str, object] | None = None,
     ) -> Path:
         primary_overlay, overlay_stack = _normalize_overlay_inputs(overlay_id, layer_kind, overlays)
         overlay_id = primary_overlay.overlay_id if primary_overlay else None
@@ -406,6 +411,12 @@ class OverlayBridge:
             if isinstance(stub, dict):
                 stub["overlay_id"] = overlay_id
                 stub["overlay_layer"] = layer_kind
+
+        if extra_payload:
+            for key, value in extra_payload.items():
+                if value is None:
+                    continue
+                payload[key] = value
 
         # Evaluate guardrails in log-only mode (no enforcement)
         try:
@@ -520,6 +531,10 @@ class OverlayBridge:
             ]
             if overlays
             else None,
+            "storyboard_id": payload.get("storyboard_id"),
+            "storyboard_step": payload.get("storyboard_step"),
+            "storyboard_sequence": payload.get("storyboard_sequence"),
+            "storyboard_total_steps": payload.get("storyboard_total_steps"),
             "telemetry_received_at": None,
             "telemetry_duration_ms": None,
             "telemetry_status": "pending",

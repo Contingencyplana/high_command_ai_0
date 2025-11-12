@@ -1,0 +1,12 @@
+Targeted sync configuration:
+  Workspace: C:\Users\Admin\high_command_ai_0
+  Categories: orders
+  Orders subpath: (none)
+  Latest: 2
+  Quiet mode: on
+  Dry run: no
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\emoji_runtime\20251112T004957Z_alfa_zero_signal_loop_focus.json -> C:\Users\Admin\high_command_exchange\orders\emoji_runtime\20251112T004957Z_alfa_zero_signal_loop_focus.json
+Copied C:\Users\Admin\high_command_ai_0\outbox\orders\factory_orders\20251112T004957Z_emoji-signal-loop-focus-20251112004957_656564.json -> C:\Users\Admin\high_command_exchange\orders\factory_orders\20251112T004957Z_emoji-signal-loop-focus-20251112004957_656564.json
+[OK] Synced 2 orders file(s) to C:\Users\Admin\high_command_exchange\orders
+ Local exchange sync complete.
+Targeted sync complete.

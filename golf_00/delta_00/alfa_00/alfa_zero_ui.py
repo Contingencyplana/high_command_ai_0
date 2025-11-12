@@ -14,7 +14,7 @@ import argparse
 import json
 import sys
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import os
 from pathlib import Path
 import subprocess
@@ -22,6 +22,15 @@ from typing import Dict, List, Optional, Sequence, TextIO, Tuple
 
 from overlay_bridge import CELL_MAPPINGS, OverlayBridge, build_bridge, cell_label
 from trace_utils import generate_trace_id
+from storyboard_runner import (
+    NIGHTLANDS_DUET_STORYBOARD,
+    StoryboardGuardrailError,
+    cooldown_remaining,
+    format_storyboard_preview,
+    load_storyboard_status,
+    StoryboardRunResult,
+    run_storyboard as run_storyboard_sequence,
+)
 
 Cell = Tuple[int, int]
 HEX_DIGITS = "0123456789ABCDEF"
@@ -63,6 +72,11 @@ class PayloadSummary:
     overlay_id: Optional[str]
     overlay_layer: Optional[str]
     overlays: Optional[List[Dict[str, str]]]
+    trace_id: Optional[str]
+    storyboard_id: Optional[str]
+    storyboard_step: Optional[str]
+    storyboard_sequence: Optional[int]
+    storyboard_total_steps: Optional[int]
 
 
 @dataclass
@@ -156,6 +170,24 @@ def summarize_payload(path: Path) -> PayloadSummary:
             })
         if not overlay_stack:
             overlay_stack = None
+    trace_id_value = payload.get("trace_id")
+    trace_id = str(trace_id_value) if isinstance(trace_id_value, str) else None
+    storyboard_id_value = payload.get("storyboard_id")
+    storyboard_id = str(storyboard_id_value) if isinstance(storyboard_id_value, str) else None
+    storyboard_step_value = payload.get("storyboard_step")
+    storyboard_step = str(storyboard_step_value) if isinstance(storyboard_step_value, str) else None
+    storyboard_sequence_value = payload.get("storyboard_sequence")
+    storyboard_sequence = (
+        int(storyboard_sequence_value)
+        if isinstance(storyboard_sequence_value, int)
+        else None
+    )
+    storyboard_total_value = payload.get("storyboard_total_steps")
+    storyboard_total_steps = (
+        int(storyboard_total_value)
+        if isinstance(storyboard_total_value, int)
+        else None
+    )
     return PayloadSummary(
         path=path,
         chain_name=chain_name,
@@ -166,6 +198,11 @@ def summarize_payload(path: Path) -> PayloadSummary:
         overlay_id=payload.get("overlay_id"),
         overlay_layer=payload.get("overlay_layer"),
         overlays=overlay_stack,
+        trace_id=trace_id,
+        storyboard_id=storyboard_id,
+        storyboard_step=storyboard_step,
+        storyboard_sequence=storyboard_sequence,
+        storyboard_total_steps=storyboard_total_steps,
     )
 
 
@@ -225,6 +262,14 @@ def display_summary(summary: PayloadSummary, repo_root: Path, *, stream: TextIO 
             for item in summary.overlays
         )
         print(f"   Outlands Layers: {layer_text}", file=stream)
+    if summary.storyboard_id:
+        total = summary.storyboard_total_steps or "?"
+        sequence = summary.storyboard_sequence or "?"
+        step_label = summary.storyboard_step or "unknown"
+        print(
+            f"   Storyboard: {summary.storyboard_id} step {sequence}/{total} — {step_label}",
+            file=stream,
+        )
     # Minimal sync state indicator for demo runs
     try:
         sync_state = compute_sync_state(summary)
@@ -312,6 +357,159 @@ def _render_command_result(
             print(f"     {line}", file=context.output_stream)
         if len(stderr_lines) > limit and log_path:
             print(f"     ⋯ (see {log_path.name})", file=context.output_stream)
+
+
+def _relative_to_repo(repo_root: Path, path: Path) -> str:
+    try:
+        return str(path.relative_to(repo_root))
+    except ValueError:
+        return str(path)
+
+
+def _log_storyboard_result(context: UIContext, result: "StoryboardRunResult") -> Path:
+    log_path = _ensure_action_log(context)
+    timestamp = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    with log_path.open("a", encoding="utf-8") as handle:
+        handle.write(f"=== {timestamp} storyboard {result.storyboard_id} ===\n")
+        handle.write(f"trace_id: {result.trace_id}\n")
+        handle.write(f"force: {result.force}\n")
+        handle.write(f"payload_count: {len(result.payload_paths)}\n")
+        for payload in result.payload_paths:
+            handle.write(f"payload: {_relative_to_repo(context.repo_root, payload)}\n")
+        handle.write(f"storyboard_log: {_relative_to_repo(context.repo_root, result.log_path)}\n\n")
+    return log_path
+
+
+def render_storyboard_status(context: UIContext) -> None:
+    status = load_storyboard_status(context.repo_root, NIGHTLANDS_DUET_STORYBOARD)
+    last_run_display = "never"
+    eligible_display = "now"
+    now = datetime.now(timezone.utc)
+    if status.last_run_at is not None:
+        last_run_display = status.last_run_at.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+        eligible_at = status.last_run_at + timedelta(seconds=status.cooldown_seconds)
+        eligible_display = eligible_at.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+    remaining = cooldown_remaining(status, now=now)
+    print(
+        f"Storyboard {NIGHTLANDS_DUET_STORYBOARD.title} ({NIGHTLANDS_DUET_STORYBOARD.storyboard_id})",
+        file=context.output_stream,
+    )
+    print(f"   Cooldown: {NIGHTLANDS_DUET_STORYBOARD.cooldown_seconds // 60} minutes", file=context.output_stream)
+    print(f"   Last run: {last_run_display}", file=context.output_stream)
+    print(f"   Next eligible: {eligible_display}", file=context.output_stream)
+    if remaining is None or remaining == 0:
+        print("   Cooldown remaining: ready", file=context.output_stream)
+    else:
+        minutes, seconds = divmod(remaining, 60)
+        print(
+            f"   Cooldown remaining: {minutes}m {seconds}s (use 'storyboard run force' to override)",
+            file=context.output_stream,
+        )
+    print(
+        f"   Lore toggle: {'ON' if context.lore_layer_enabled else 'off — enable before run'}",
+        file=context.output_stream,
+    )
+    print(
+        f"   Music toggle: {'ON' if context.music_layer_enabled else 'off — enable before run'}",
+        file=context.output_stream,
+    )
+    print(f"   Log: {_relative_to_repo(context.repo_root, status.log_path)}", file=context.output_stream)
+
+
+def render_storyboard_preview(context: UIContext) -> None:
+    for line in format_storyboard_preview(NIGHTLANDS_DUET_STORYBOARD):
+        print(line, file=context.output_stream)
+
+
+def execute_storyboard_run(context: UIContext, *, force: bool = False) -> None:
+    print("🎭 Running Nightlands duet storyboard…", file=context.output_stream)
+    try:
+        result = run_storyboard_sequence(
+            context.bridge,
+            NIGHTLANDS_DUET_STORYBOARD,
+            lore_enabled=context.lore_layer_enabled,
+            music_enabled=context.music_layer_enabled,
+            force=force,
+        )
+    except StoryboardGuardrailError as exc:
+        print(f"⚠️  {exc}", file=context.output_stream)
+        _log_session_event(
+            context,
+            event="storyboard_guardrail",
+            extra={
+                "storyboard_id": NIGHTLANDS_DUET_STORYBOARD.storyboard_id,
+                "cooldown_seconds": NIGHTLANDS_DUET_STORYBOARD.cooldown_seconds,
+                "force": force,
+                "message": str(exc),
+            },
+        )
+        return
+    except Exception as exc:  # pragma: no cover - surfaced to operator
+        print(f"⚠️  Storyboard execution failed: {exc}", file=context.output_stream)
+        _log_session_event(
+            context,
+            event="storyboard_error",
+            extra={
+                "storyboard_id": NIGHTLANDS_DUET_STORYBOARD.storyboard_id,
+                "force": force,
+                "message": str(exc),
+            },
+        )
+        return
+
+    if NIGHTLANDS_DUET_STORYBOARD.steps:
+        context.selected = NIGHTLANDS_DUET_STORYBOARD.steps[-1].cell
+
+    for payload_path in result.payload_paths:
+        summary = summarize_payload(payload_path)
+        display_summary(summary, context.repo_root, stream=context.output_stream)
+        trace_output = summary.trace_id or result.trace_id
+        if trace_output:
+            print(f"   Trace: {trace_output}", file=context.output_stream)
+        if context.telemetry_path:
+            emit_telemetry(
+                summary,
+                context.telemetry_path,
+                trace_id=trace_output,
+                overlay_id=summary.overlay_id,
+                overlay_layer=summary.overlay_layer,
+                overlays=summary.overlays,
+            )
+        _log_session_event(
+            context,
+            event="dispatch",
+            extra={
+                "storyboard_id": summary.storyboard_id,
+                "storyboard_step": summary.storyboard_step,
+                "storyboard_sequence": summary.storyboard_sequence,
+                "storyboard_total_steps": summary.storyboard_total_steps,
+                "trace_id": trace_output,
+            },
+        )
+
+    story_log_path = _log_storyboard_result(context, result)
+    print(
+        f"   Storyboard log: {_relative_to_repo(context.repo_root, result.log_path)}",
+        file=context.output_stream,
+    )
+    print(
+        f"   Action log updated: {_relative_to_repo(context.repo_root, story_log_path)}",
+        file=context.output_stream,
+    )
+    relative_payloads = [_relative_to_repo(context.repo_root, path) for path in result.payload_paths]
+    _log_session_event(
+        context,
+        event="storyboard_run",
+        extra={
+            "storyboard_id": result.storyboard_id,
+            "trace_id": result.trace_id,
+            "payload_count": len(result.payload_paths),
+            "cooldown_seconds": NIGHTLANDS_DUET_STORYBOARD.cooldown_seconds,
+            "force": result.force,
+            "payloads": relative_payloads,
+            "storyboard_log": _relative_to_repo(context.repo_root, result.log_path),
+        },
+    )
 
 
 def run_contract_suite(
@@ -499,6 +697,7 @@ HELP_TEXT = """Commands:
     map            List every mapped cell and chain
     lore           Lore overlay controls (lore status | lore enable | lore disable)
     music          Music overlay controls (music status | music enable | music disable)
+    storyboard     Nightlands duet (storyboard status | storyboard preview | storyboard run [force])
     <cell>         Jump to a cell (formats: 04, 0,4, 0 4)
     show           Re-render the grid
     help           Show this help text
@@ -607,6 +806,26 @@ def interactive_loop(context: UIContext) -> None:
                     print("Music overlay disabled — returning to base cadence.", file=context.output_stream)
                 continue
             print("⚠️  Usage: music status | music enable | music disable", file=context.output_stream)
+            continue
+        if command == "storyboard":
+            option = tokens[1].lower() if len(tokens) > 1 else "status"
+            if option == "status":
+                render_storyboard_status(context)
+                continue
+            if option == "preview":
+                render_storyboard_preview(context)
+                continue
+            if option == "run":
+                force = any(token.lower() == "force" for token in tokens[2:])
+                execute_storyboard_run(context, force=force)
+                overlay = compute_quilt_overlay(context.repo_root)
+                render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+                render_footer(context, stream=context.output_stream)
+                continue
+            print(
+                "⚠️  Usage: storyboard status | storyboard preview | storyboard run [force]",
+                file=context.output_stream,
+            )
             continue
         if command in {"map"}:
             list_mapped_cells(context.output_stream)
@@ -855,11 +1074,12 @@ def main() -> None:
             event_stream.close()
 
 
-def _log_session_event(context: UIContext, *, event: str) -> None:
+def _log_session_event(context: UIContext, *, event: str, extra: Optional[Dict[str, object]] = None) -> None:
     """Append a simple JSONL record for session metrics.
 
     Events: session_start, dispatch, contract_tests, offline_sync, offline_sync_latest,
-    offline_sync_orders, session_end.
+    offline_sync_orders, targeted_sync, storyboard_run, storyboard_guardrail, storyboard_error,
+    session_end. Extend with caution to keep downstream parsing simple.
     We track elapsed overlay time and dispatch count to support 70/30 analysis
     downstream.
     """
@@ -882,6 +1102,11 @@ def _log_session_event(context: UIContext, *, event: str) -> None:
         "lore_overlay_enabled": context.lore_layer_enabled,
         "music_overlay_enabled": context.music_layer_enabled,
     }
+    if extra:
+        for key, value in extra.items():
+            if value is None:
+                continue
+            record[key] = value
     try:
         with context.metrics_path.open("a", encoding="utf-8") as handle:
             handle.write(json.dumps(record, ensure_ascii=False))
