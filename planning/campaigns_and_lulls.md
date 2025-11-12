@@ -30,11 +30,20 @@ Evidence: <key files/paths>
 
 ## Current State Snapshot
 
-- Orders queue: `order-2025-11-09-045` issued and staged in `exchange/orders/pending/`.
+- Orders queue: recent slice closed (045/047/048/049/050/051); queue clear for planning lull.
 - Inbox: cleared 2025-11-09; backlog archived to `exchange/reports/archived/inbox_backlog/`; Order 035 monitor result published (promote recommendation); Order 2025-10-20-001 report promoted to `exchange/reports/archived/`.
-- Recent completions: 040/041/043 closed; reports and acks archived (see `exchange/ledger/index.json`).
+- Recent completions: 040/041/043/045/047/048/049/050/051 closed; reports and acks archived (see `exchange/ledger/index.json`).
 - Document refresh cadence: second-pass daily slices running from `planning/document_refresh_queue.md`; log updates to `exchange/ledger/2025-11.md` each block.
 - Nightlands playtest: 2025-11-12 cohort (Vega, Lumen, Rook) ran the duet comfort loop; feedback archived in `logs/alfa_zero/play_session_feedback/` with follow-up work queued.
+
+### Lull — UI Overlay Slice
+
+- Status: Entered stabilization lull following Order 045 closure.
+- Closed anchors: 045 (UI overlay integration), 047 (targeted sync CLI), 048 (storyboard run), 049 (playtest), 050 (scoreboard imagery), 051 (telemetry feed panel).
+- Tracked follow-ups (not blocking lull):
+  - Integrate Nightlands feed into the primary dashboard once tooling returns.
+  - Decide targeted-sync log rotation after a few additional playtests.
+  - Continue appending storyboard/targeted-sync runs to the feed during future sessions.
 
 ## Foundation Campaign (Orders 001–039)
 
@@ -122,7 +131,7 @@ Evidence:
 
 ## Next
 
-- Run the Daily Doc Refresh slice: pull one high-signal scroll from `planning/document_refresh_queue.md`, update it, and log the change in `exchange/ledger/2025-11.md` before advancing the queue.
+- Daily Doc Refresh: ✅ 2025-11-12 slice updated `docs/nightlands_duet_telemetry_panel.md` and linked artifacts across the Nightlands docs; queue rolled forward in `planning/document_refresh_queue.md` with ledger log.
 - Nightlands scoreboard placeholder imagery embedded in `exchange/attachments/guides/nightlands_duet_playtest_packet.md`; future cohorts can reference metadata under `exchange/attachments/media/nightlands_duet/` while awaiting high-fidelity captures (Order 050 closed).
 - Nightlands duet telemetry feed published under `exchange/attachments/telemetry/nightlands_duet/`; integrate the feed into the shared dashboard next and keep `planning/alfa_zero_nightlands_duet_storyboard.md` aligned.
 - Evaluate targeted sync log rotation once additional playtests accumulate; record outcomes in `planning/alfa_zero_targeted_sync_scope.md`.
@@ -134,9 +143,9 @@ Related
 
 ---
 
-## Campaign Brief — Order 045: UI Overlay Integration Slice
+## Campaign Brief - Order 045: UI Overlay Integration Slice
 
-- Status: **Pending 2025-11-09 (order-2025-11-09-045 issued)**
+- Status: **Completed 2025-11-12 (order-2025-11-09-045 closed)**
 - Type: Minor (runtime shells and overlay integration)
 - Objective: Deliver a demonstrable UI overlay slice that exercises narration and telemetry pipelines while locking validation coverage before broader rollout.
 
@@ -155,12 +164,12 @@ Related
 
 ### Evidence Hooks (045)
 
-- Order: `exchange/orders/pending/order-2025-11-09-045.json`
+- Order: `exchange/orders/completed/order-2025-11-09-045.json`
 - Ledger: `exchange/ledger/index.json`
 - Runtime shells: `golf_00/delta_00/alfa_02/`, `golf_00/delta_00/alfa_03/`
 - Contract suite: `tools/contract_test_runner.py`
 - Comfort guide: `exchange/attachments/guides/comfort_happy_path.md`
-- Overlay traces: `logs/alfa_02/narration_traces.jsonl`, `logs/alfa_03/telemetry.jsonl`
+- Overlay traces: `logs/alfa_02/narration.jsonl`, `logs/alfa_03/telemetry.jsonl`
 
 ### Stretch Considerations (045)
 
@@ -231,4 +240,3 @@ Related
 ### Window
 
 - 2025-11-08 → 2025-11-12 (day 1: inbox triage + runtime shell stubs; day 2+: automation coverage, comfort docs, validation).
-
