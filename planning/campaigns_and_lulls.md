@@ -34,6 +34,7 @@ Evidence: <key files/paths>
 - Inbox: cleared 2025-11-09; backlog archived to `exchange/reports/archived/inbox_backlog/`; Order 035 monitor result published (promote recommendation); Order 2025-10-20-001 report promoted to `exchange/reports/archived/`.
 - Recent completions: 040/041/043 closed; reports and acks archived (see `exchange/ledger/index.json`).
 - Document refresh cadence: second-pass daily slices running from `planning/document_refresh_queue.md`; log updates to `exchange/ledger/2025-11.md` each block.
+- Nightlands playtest: 2025-11-12 cohort (Vega, Lumen, Rook) ran the duet comfort loop; feedback archived in `logs/alfa_zero/play_session_feedback/` with follow-up work queued.
 
 ## Foundation Campaign (Orders 001–039)
 
@@ -102,12 +103,29 @@ Evidence:
 - exchange/reports/archived/order-2025-11-02-043-report.json
 ```
 
+```text
+Name: Nightlands Comfort Loop Validation
+Window: 2025-11-12 → 2025-11-12
+Type: Minor → playtest validation
+Objective: Brief a three-operator cohort, run the Nightlands duet comfort loop with targeted sync, and harvest qualitative signal before broader rollout.
+Orders: order-2025-11-12-047, order-2025-11-12-048, order-2025-11-12-049
+Outcomes:
+- Cohort (Vega, Lumen, Rook) executed the duet storyboard; targeted sync quiet output confirmed.
+- Feedback/metrics archived; scoreboard + telemetry follow-ups queued in the refresh backlog.
+- Campaign docs updated with readiness signals and UI tweak recommendations (cooldown banner, dashboard panel).
+Evidence:
+- logs/alfa_zero/play_session_feedback/order-2025-11-12-049_session_20251112T143000Z.jsonl
+- exchange/ledger/2025-11.md (14:20 / 14:44 / 14:55 entries)
+- planning/document_refresh_queue.md (2025-11-12 additions)
+- exchange/reports/archived/order-2025-11-12-047-report.json, order-2025-11-12-048-report.json
+```
+
 ## Next
 
 - Run the Daily Doc Refresh slice: pull one high-signal scroll from `planning/document_refresh_queue.md`, update it, and log the change in `exchange/ledger/2025-11.md` before advancing the queue.
-- Execute Order 045 (UI overlay integration slice) focusing on runtime shell upgrades, overlay flow wiring, and validation runway (narrator + telemetry shells now instrumented with overlay hooks).
-- Capture and file the baseline readiness sweep (heartbeat, offline sync, contract logs) as the opening artifact for Order 045.
-- Track stretch ideas (cross-workspace rollout, manifest automation) outside the core slice to preserve schedule focus.
+- Capture Nightlands scoreboard imagery and fold it into `exchange/attachments/guides/nightlands_duet_playtest_packet.md` per cohort requests.
+- Expose duet session metrics on the telemetry dashboard and document the hook in `planning/alfa_zero_nightlands_duet_storyboard.md`.
+- Evaluate targeted sync log rotation once additional playtests accumulate; record outcomes in `planning/alfa_zero_targeted_sync_scope.md`.
 
 Related
 

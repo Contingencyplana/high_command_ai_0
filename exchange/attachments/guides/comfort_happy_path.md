@@ -6,6 +6,8 @@ This loop keeps Order 044’s comfort mandate intact: spend ~70% of the cadence 
 
 - **Overlay session (optional but encouraged)**  
   `python scripts/play_session.py` → captures `logs/alfa_zero/overlay_events.jsonl` for lore recap.
+- **Nightlands duet vignette (Order 048)**  
+  `python -m golf_00.delta_00.alfa_00.alfa_zero_ui --enable-lore --enable-music --cell 08` then inside the UI run `storyboard preview` followed by `storyboard run nightlands_duet_v1`; mirror fresh payloads with `python -m tools.targeted_sync --latest 2 --yes` and log the trace in `exchange/ledger/2025-11.md`.
 - **Lore layer opt-in (Order 046)**  
   `python -m golf_00.delta_00.alfa_00.alfa_zero_ui --enable-lore --cell 04` (or run the UI and use `lore enable` before dispatch) to record a single lore overlay dispatch with matching `trace_id` + `overlay_id`.
 - **Narration pulse**  

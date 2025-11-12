@@ -30,6 +30,8 @@
 
 ## Next Target Candidate
 
+- 2025-11-12 - Capture Nightlands duet scoreboard imagery for the playtest packet once art assets finalize; wire into `exchange/attachments/guides/nightlands_duet_playtest_packet.md`.
+- 2025-11-12 - Promote duet session metrics into the shared telemetry dashboard and document the dashboard hook in `planning/alfa_zero_nightlands_duet_storyboard.md`.
 - 2025-11-12 - Review `planning/alfa_zero_targeted_sync_scope.md` once targeted sync log rotation lands (pending tooling slice).
 - 2025-11-10 - Evaluate propagating `trace_id` through `golf_00/delta_00/alfa_00/overlay_bridge.py` into payload extensions for cross-pipeline correlation; document toggle and evidence sinks. *(Completed 2025-11-10 via Order 045 trace parity refresh; future tweaks will spin as new entries as needed.)*
 

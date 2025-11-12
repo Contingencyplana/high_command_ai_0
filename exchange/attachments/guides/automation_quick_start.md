@@ -41,6 +41,23 @@ Use this checklist when spinning up the automation + comfort tooling introduced 
 - Guardrail: keep dual-layer activations ≤3 per 24h per front; review `planning/cooldown_rollup_*.md` if unsure.
 - Reference playbook (includes troubleshooting appendix): `exchange/attachments/guides/multi_layer_playbook.md`
 
+### Targeted Sync Helper (Order 047)
+
+- Preview the mirror: `python -m tools.targeted_sync --latest 5 --dry-run` (quiet by default; confirm the payload list before proceeding).
+- Execute the mirror: `python -m tools.targeted_sync --latest 5 --yes`
+- Evidence lands in timestamped logs under `logs/alfa_zero/targeted_sync_*.log`; attach the latest file to the order package.
+- Ledger entry should capture the command variant used (dry-run + live) so follow-on operators can audit the flow.
+- See `exchange/reports/archived/order-2025-11-12-047-report.json` for the full test matrix and CLI options.
+
+### Nightlands Duet Storyboard (Order 048)
+
+- Readiness sweep: `python -m tools.ops_readiness` and ensure `fun_flags.balance_toggles` stays enabled.
+- Launch the Alfa Zero UI with Lore + Music toggles: `python -m golf_00.delta_00.alfa_00.alfa_zero_ui --enable-lore --enable-music --cell 08`
+- Inside the UI, run `storyboard preview` then `storyboard run nightlands_duet_v1` (use `storyboard run force` only if cooldown clearance is on record).
+- Collect payloads emitted to `outbox/orders/emoji_runtime/*nightlands_duet*` and log the trace in `logs/alfa_zero/storyboards/nightlands_duet_v1_runs.jsonl`.
+- Post-run, mirror the fresh payloads with `python -m tools.targeted_sync --latest 2 --yes` and clip metrics from `logs/alfa_zero/session_metrics.jsonl`.
+- Reference packet: `exchange/attachments/guides/nightlands_duet_playtest_packet.md` (includes verification steps and telemetry excerpts).
+
 ## 4. Heartbeat & Sync
 
 - `python tools/exchange_heartbeat.py`

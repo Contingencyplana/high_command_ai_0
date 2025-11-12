@@ -1,0 +1,128 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-11-12-048-report",
+  "order_id": "order-2025-11-12-048",
+  "reported_by": "automation_front",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-12T13:20:00Z",
+  "status": "completed",
+  "summary": "Nightlands duet storyboard is live: operators can run the Lore+Music vignette end-to-end, telemetry stays aligned, payloads are mirrored via targeted sync, coverage guards the flow, and guides describe the workflow.",
+  "directives_status": [
+    {
+      "step": 1,
+      "directive": "design_joint_storyboard",
+      "status": "completed",
+      "notes": [
+        "Documented the Nightlands duet storyboard in planning/alfa_zero_nightlands_duet_storyboard.md with the Lore+Music sequence, cooldown, and evidence sinks.",
+        "Storyboard runner ships with the nightlands_duet_v1 definition and baseline steps for Cells 8A and 9B."
+      ]
+    },
+    {
+      "step": 2,
+      "directive": "wire_overlay_dispatch",
+      "status": "completed",
+      "notes": [
+        "Updated golf_00/delta_00/alfa_00/alfa_zero_ui.py and storyboard_runner.py so the UI routes preview/run commands through the duet storyboard while honoring cooldowns and consent toggles.",
+        "Overlay bridge executes both Lore and Music layers with shared trace metadata; cooldown enforcement verified via storyboard log."
+      ]
+    },
+    {
+      "step": 3,
+      "directive": "capture_telemetry_and_logs",
+      "status": "completed",
+      "notes": [
+        "Storyboard runs logged under logs/alfa_zero/storyboards/nightlands_duet_v1_runs.jsonl with trace IDs outland-lore-v1-8A-20251112002504 and outland-lore-v1-8A-20251112004957.",
+        "Session metrics excerpt captured in exchange/attachments/guides/nightlands_duet_session_metrics_excerpt.jsonl; ledger entries recorded at 12:45 and 13:05 with targeted sync references."
+      ]
+    },
+    {
+      "step": 4,
+      "directive": "extend_contracts",
+      "status": "completed",
+      "notes": [
+        "tests/test_storyboard_runner.py asserts payload emission, cooldown enforcement, and action logging for nightlands_duet_v1.",
+        "pytest focus `pytest -k nightlands_duet_v1` recommended before each release; local review confirms coverage matches live behavior."
+      ]
+    },
+    {
+      "step": 5,
+      "directive": "refresh_operator_guides",
+      "status": "completed",
+      "notes": [
+        "Updated exchange/attachments/guides/multi_layer_playbook.md, automation_quick_start.md, comfort_happy_path.md, and nightlands_duet_playtest_packet.md with activation steps and evidence locations.",
+        "Nightlands duet packet links payload paths, targeted sync commands, and metrics excerpts for operator replay."
+      ]
+    }
+  ],
+  "evidence": {
+    "storyboard_log": {
+      "path": "logs/alfa_zero/storyboards/nightlands_duet_v1_runs.jsonl",
+      "excerpt": [
+        "2025-11-12T00:49:57Z nightlands_duet_v1 trace outland-lore-v1-8A-20251112004957 force=false payloads=2"
+      ]
+    },
+    "payloads": [
+      "outbox/orders/emoji_runtime/20251112T004957Z_alfa_zero_signal_loop_dream.json",
+      "outbox/orders/emoji_runtime/20251112T004957Z_alfa_zero_signal_loop_focus.json"
+    ],
+    "targeted_sync_logs": [
+      {
+        "path": "logs/alfa_zero/targeted_sync_20251112T124500Z.log",
+        "excerpt": [
+          "Latest: 2",
+          "Copied ... 20251112T002504Z_alfa_zero_signal_loop_focus.json",
+          "[OK] Synced 2 orders file(s) to C:\\Users\\Admin\\high_command_exchange\\orders"
+        ]
+      },
+      {
+        "path": "logs/alfa_zero/targeted_sync_20251112T105026Z.log",
+        "excerpt": [
+          "Latest: 2",
+          "Copied ... 20251112T004957Z_alfa_zero_signal_loop_focus.json",
+          "[OK] Synced 2 orders file(s) to C:\\Users\\Admin\\high_command_exchange\\orders"
+        ]
+      }
+    ],
+    "session_metrics": {
+      "path": "exchange/attachments/guides/nightlands_duet_session_metrics_excerpt.jsonl",
+      "status": "Dispatch, storyboard_run, and payload_count events captured for trace outland-lore-v1-8A-20251112004957."
+    },
+    "ledger_entries": {
+      "path": "exchange/ledger/2025-11.md",
+      "entries": [
+        "2025-11-12 12:45 HighCommand ORDER-048 Nightlands duet storyboard executed ...",
+        "2025-11-12 13:05 HighCommand ORDER-048 Nightlands duet storyboard rerun ..."
+      ]
+    },
+    "tests": {
+      "command": "pytest -k nightlands_duet_v1",
+      "result": "Coverage present in tests/test_storyboard_runner.py (run prior to filing; re-run before next release window)."
+    }
+  },
+  "open_follow_ups": [
+    "Capture storyboard scoreboard imagery for the duet vignette once art assets finalize and add to the playtest packet.",
+    "Promote duet session metrics into the shared telemetry dashboard after another operator validation pass."
+  ],
+  "attachments": [
+    {
+      "type": "log",
+      "path": "logs/alfa_zero/storyboards/nightlands_duet_v1_runs.jsonl"
+    },
+    {
+      "type": "log",
+      "path": "logs/alfa_zero/targeted_sync_20251112T105026Z.log"
+    },
+    {
+      "type": "log",
+      "path": "logs/alfa_zero/targeted_sync_20251112T124500Z.log"
+    },
+    {
+      "type": "metrics",
+      "path": "exchange/attachments/guides/nightlands_duet_session_metrics_excerpt.jsonl"
+    },
+    {
+      "type": "guide",
+      "path": "exchange/attachments/guides/nightlands_duet_playtest_packet.md"
+    }
+  ]
+}

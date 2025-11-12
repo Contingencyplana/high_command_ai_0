@@ -64,6 +64,15 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 - Targeted CLI defaults to syncing orders only, latest files unlimited, and quiet mode on. Operators can pass `--yes` to skip prompts when running inside scripted flows. UI commands (`sync latest`, `sync orders`) now invoke the helper with auto-confirm and optional `preview` dry-run.
 - Next wiring step: automate metrics logging for targeted sync executions once play session tooling lands.
 
+## 2025-11-12 Playtest Feedback
+
+- Nightlands cohort (Vega, Lumen, Rook) executed the duet storyboard and confirmed the targeted sync helper’s quiet output during a live comfort-loop session.
+- Operators appreciated the dry-run preview but requested a UI banner surfacing remaining cooldown time after each run.
+- Metrics excerpt was easy to retrieve; cohort asked for a dashboard panel that graphs targeted sync cadence alongside storyboard runs.
+- Follow-up actions are logged in `planning/document_refresh_queue.md` and the November ledger for tracking.
+
 ## Next Actions
 
 1. Observe quiet-mode sync output over the next few playtest loops and decide whether log rotation or archival is still required.
+2. Add explicit targeted sync telemetry events to `logs/alfa_zero/session_metrics.jsonl` so dashboards can visualize helper usage.
+3. Coordinate with UI workstream on the cooldown banner request and link the outcome back to this scope.

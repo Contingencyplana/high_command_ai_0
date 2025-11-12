@@ -1,0 +1,120 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-11-12-049-report",
+  "order_id": "order-2025-11-12-049",
+  "reported_by": "playtest_front",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-12T15:05:00Z",
+  "status": "completed",
+  "summary": "Nightlands comfort-loop playtest executed with three-operator cohort; targeted sync tooling validated in-session, feedback captured, documentation refreshed, and next-order recommendations proposed.",
+  "directives_status": [
+    {
+      "step": 1,
+      "directive": "select_playtest_cohort",
+      "status": "completed",
+      "notes": [
+        "Operators Vega, Lumen, and Rook briefed at 14:30Z with consent logged; see exchange/ledger/2025-11.md entry at 14:20.",
+        "Cohort agenda covered Nightlands duet storyboard, cooldown enforcement, and targeted sync helper usage."
+      ]
+    },
+    {
+      "step": 2,
+      "directive": "run_guided_session",
+      "status": "completed",
+      "notes": [
+        "Executed `storyboard run nightlands_duet_v1` via Alfa Zero UI with Lore+Music toggles; cooldown and trace captured in session metrics excerpt.",
+        "Operators rotated controls across Lore Invocation and Duet Crescendo steps; targeted sync helper run (`python -m tools.targeted_sync --latest 2 --yes`) immediately after payload review."
+      ]
+    },
+    {
+      "step": 3,
+      "directive": "collect_feedback_and_metrics",
+      "status": "completed",
+      "notes": [
+        "Feedback, reactions, and sync validation archived in logs/alfa_zero/play_session_feedback/order-2025-11-12-049_session_20251112T143000Z.jsonl.",
+        "Session metrics reference `exchange/attachments/guides/nightlands_duet_session_metrics_excerpt.jsonl`; ledger entry at 14:44 documents evidence sweep."
+      ]
+    },
+    {
+      "step": 4,
+      "directive": "update_campaign_docs",
+      "status": "completed",
+      "notes": [
+        "planning/campaigns_and_lulls.md now chronicles the Nightlands validation slice and updates next actions with scoreboard + telemetry follow-ups.",
+        "planning/alfa_zero_targeted_sync_scope.md captures cohort feedback and expands next actions; planning/document_refresh_queue.md queues scoreboard imagery and dashboard tasks."
+      ]
+    },
+    {
+      "step": 5,
+      "directive": "propose_next_orders",
+      "status": "completed",
+      "notes": [
+        "Recommended follow-on: scoreboard imagery capture + UI cooldown banner tweak → candidate order-2025-11-13-050.",
+        "Recommended follow-on: telemetry dashboard panel for targeted sync cadence → candidate order-2025-11-13-051.",
+        "Both recommendations logged in planning/document_refresh_queue.md and referenced in campaign brief."
+      ]
+    }
+  ],
+  "evidence": {
+    "ledger_entries": {
+      "path": "exchange/ledger/2025-11.md",
+      "entries": [
+        "2025-11-12 14:20 HighCommand ORDER-049 Playtest cohort briefed...",
+        "2025-11-12 14:44 HighCommand ORDER-049 Comfort-loop session executed...",
+        "2025-11-12 14:55 HighCommand ORDER-049 Feedback archived..."
+      ]
+    },
+    "play_session_feedback": {
+      "path": "logs/alfa_zero/play_session_feedback/order-2025-11-12-049_session_20251112T143000Z.jsonl",
+      "status": "Contains briefing, overlay dispatch reactions, targeted sync confirmation, and participant feedback."
+    },
+    "metrics": {
+      "path": "exchange/attachments/guides/nightlands_duet_session_metrics_excerpt.jsonl",
+      "status": "Trace outland-lore-v1-8A-20251112004957 reused for cohort run; metrics validated during session."
+    },
+    "documentation": [
+      "planning/campaigns_and_lulls.md",
+      "planning/alfa_zero_targeted_sync_scope.md",
+      "planning/document_refresh_queue.md"
+    ],
+    "tests": {
+      "command": "pytest tests/test_storyboard_runner.py",
+      "result": "3 passed in 0.09s"
+    }
+  },
+  "open_follow_ups": [
+    "Capture Nightlands scoreboard imagery for the playtest packet once art assets are approved.",
+    "Add a cooldown reminder/banner inside Alfa Zero UI per cohort request.",
+    "Expose targeted sync telemetry on the dashboard and document the hook in the storyboard brief."
+  ],
+  "proposed_orders": [
+    {
+      "id": "order-2025-11-13-050",
+      "title": "Nightlands Scoreboard Imagery",
+      "rationale": "Cohort wants visual parity between storyboard preview and playtest packet; adding imagery will unblock wider playtest kits."
+    },
+    {
+      "id": "order-2025-11-13-051",
+      "title": "Targeted Sync Telemetry Panel",
+      "rationale": "Dashboard view will help operators monitor sync cadence and detect regressions as cohort size expands."
+    }
+  ],
+  "attachments": [
+    {
+      "type": "log",
+      "path": "logs/alfa_zero/play_session_feedback/order-2025-11-12-049_session_20251112T143000Z.jsonl"
+    },
+    {
+      "type": "plan",
+      "path": "planning/campaigns_and_lulls.md"
+    },
+    {
+      "type": "plan",
+      "path": "planning/alfa_zero_targeted_sync_scope.md"
+    },
+    {
+      "type": "plan",
+      "path": "planning/document_refresh_queue.md"
+    }
+  ]
+}
