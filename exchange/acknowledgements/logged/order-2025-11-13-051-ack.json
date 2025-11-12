@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-11-13-051-ack",
+  "referenced_id": "order-2025-11-13-051",
+  "sender": "telemetry_front",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-11-12T16:40:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Accepted telemetry panel follow-up stemming from Nightlands cohort feedback.",
+    "Will extend targeted sync instrumentation, publish combined storyboard + sync feed, and surface visuals on the dashboard/notebook.",
+    "Documentation updates planned for planning/alfa_zero_nightlands_duet_storyboard.md and planning/alfa_zero_targeted_sync_scope.md."
+  ]
+}

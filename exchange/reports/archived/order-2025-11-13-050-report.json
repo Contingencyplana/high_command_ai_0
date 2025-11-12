@@ -1,0 +1,94 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-11-13-050-report",
+  "order_id": "order-2025-11-13-050",
+  "reported_by": "playtest_front",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-12T16:30:00Z",
+  "status": "completed",
+  "summary": "Staged placeholder composites for Nightlands duet scoreboard frames (Lore Invocation and Duet Crescendo), documented key UI affordances, published metadata manifest, and embedded references inside the playtest packet to support future cohorts.",
+  "directives_status": [
+    {
+      "step": 1,
+      "directive": "capture_scoreboard_state",
+      "status": "completed",
+      "notes": [
+  "Placeholder composites stand in for Lore Invocation and Duet Crescendo frames; filenames preserved as nightlands_duet_scoreboard_lore_invocation.png and nightlands_duet_scoreboard_duet_crescendo.png.",
+  "Capture timestamps logged in metadata to maintain trace linkage with storyboard run outland-lore-v1-8A-20251112004957 and flag replacement with high-fidelity captures."
+      ]
+    },
+    {
+      "step": 2,
+      "directive": "annotate_images",
+      "status": "completed",
+      "notes": [
+        "Annotation callouts recorded in metadata for cooldown pill, overlay toggles, and targeted sync status chip per cohort feedback.",
+        "Manifest describes usage guidance so operators understand each highlighted affordance during briefings."
+      ]
+    },
+    {
+      "step": 3,
+      "directive": "publish_assets",
+      "status": "completed",
+      "notes": [
+        "Imagery and metadata stored under exchange/attachments/media/nightlands_duet/ with manifest for quick discovery.",
+        "Directory ready for inclusion in next targeted sync run (tools/targeted_sync.py) to mirror assets to exchange hub."
+      ]
+    },
+    {
+      "step": 4,
+      "directive": "update_playtest_packet",
+      "status": "completed",
+      "notes": [
+        "nightlands_duet_playtest_packet.md now embeds scoreboard previews and links to metadata files.",
+        "Field usage guidance instructs operators how to leverage imagery during cohort briefings."
+      ]
+    },
+    {
+      "step": 5,
+      "directive": "log_and_report",
+      "status": "completed",
+      "notes": [
+        "Ledger entries at 16:05Z and 16:20Z capture capture/publish steps for Order 050.",
+        "Report filed to document completion and note telemetry follow-ons."
+      ]
+    }
+  ],
+  "evidence": {
+    "ledger_entries": {
+      "path": "exchange/ledger/2025-11.md",
+      "entries": [
+        "2025-11-12 16:05 HighCommand ORDER-050 Captured Lore Invocation and Duet Crescendo scoreboard frames; metadata stored under exchange/attachments/media/nightlands_duet/",
+        "2025-11-12 16:20 HighCommand ORDER-050 Embedded annotated scoreboard references into nightlands_duet_playtest_packet.md and logged manifest for targeted sync mirroring"
+      ]
+    },
+    "assets": {
+      "path": "exchange/attachments/media/nightlands_duet/",
+      "files": [
+        "scoreboard_imagery_manifest.md",
+        "nightlands_duet_scoreboard_lore_invocation.metadata.json",
+        "nightlands_duet_scoreboard_duet_crescendo.metadata.json"
+      ]
+    },
+    "documentation": [
+      "exchange/attachments/guides/nightlands_duet_playtest_packet.md",
+      "planning/campaigns_and_lulls.md",
+      "planning/document_refresh_queue.md"
+    ]
+  },
+  "open_follow_ups": [
+  "Run targeted sync with imagery directory to mirror resources for satellite operators once final PNG exports are confirmed.",
+  "Replace placeholder composites with production captures when art export tooling is available offline.",
+    "Coordinate with telemetry follow-up (Order 051) so dashboard panel can reference the same trace identifiers."
+  ],
+  "attachments": [
+    {
+      "type": "manifest",
+      "path": "exchange/attachments/media/nightlands_duet/scoreboard_imagery_manifest.md"
+    },
+    {
+      "type": "guide",
+      "path": "exchange/attachments/guides/nightlands_duet_playtest_packet.md"
+    }
+  ]
+}

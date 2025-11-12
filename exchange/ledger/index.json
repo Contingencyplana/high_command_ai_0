@@ -275,7 +275,19 @@
       "status": "closed",
       "order_path": "orders/completed/order-2025-11-12-049.json",
       "ack_path": "acknowledgements/logged/order-2025-11-12-049-ack.json",
-      "report_path": "reports/inbox/order-2025-11-12-049-report.json"
+      "report_path": "reports/archived/order-2025-11-12-049-report.json"
+    },
+    "order-2025-11-13-050": {
+      "status": "closed",
+      "order_path": "orders/completed/order-2025-11-13-050.json",
+      "ack_path": "acknowledgements/logged/order-2025-11-13-050-ack.json",
+      "report_path": "reports/archived/order-2025-11-13-050-report.json"
+    },
+    "order-2025-11-13-051": {
+      "status": "closed",
+      "order_path": "orders/completed/order-2025-11-13-051.json",
+      "ack_path": "acknowledgements/logged/order-2025-11-13-051-ack.json",
+      "report_path": "reports/archived/order-2025-11-13-051-report.json"
     }
   },
   "reports": {
@@ -323,8 +335,10 @@
     "order-2025-10-16-033-report": "reports/archived/order-2025-10-16-033-report.json",
     "order-2025-10-16-034-report": "reports/archived/order-2025-10-16-034-report.json",
     "order-2025-11-12-047-report": "reports/archived/order-2025-11-12-047-report.json",
-    "order-2025-11-12-049-report": "reports/inbox/order-2025-11-12-049-report.json",
-    "order-2025-11-12-048-report": "reports/archived/order-2025-11-12-048-report.json"
+    "order-2025-11-12-048-report": "reports/archived/order-2025-11-12-048-report.json",
+    "order-2025-11-12-049-report": "reports/archived/order-2025-11-12-049-report.json",
+    "order-2025-11-13-050-report": "reports/archived/order-2025-11-13-050-report.json",
+    "order-2025-11-13-051-report": "reports/archived/order-2025-11-13-051-report.json"
   },
   "acks": {
     "order-2025-10-12-009-ack": "acknowledgements/logged/order-2025-10-12-009-ack.json",
@@ -372,6 +386,8 @@
     "order-2025-10-16-034-ack": "acknowledgements/logged/order-2025-10-16-034-ack.json",
     "order-2025-11-12-047-ack": "acknowledgements/logged/order-2025-11-12-047-ack.json",
     "order-2025-11-12-048-ack": "acknowledgements/logged/order-2025-11-12-048-ack.json",
-    "order-2025-11-12-049-ack": "acknowledgements/logged/order-2025-11-12-049-ack.json"
+    "order-2025-11-12-049-ack": "acknowledgements/logged/order-2025-11-12-049-ack.json",
+    "order-2025-11-13-050-ack": "acknowledgements/logged/order-2025-11-13-050-ack.json",
+    "order-2025-11-13-051-ack": "acknowledgements/logged/order-2025-11-13-051-ack.json"
   }
 }

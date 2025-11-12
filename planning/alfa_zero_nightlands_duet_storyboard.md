@@ -34,6 +34,7 @@ Craft a contained Nightlands vignette that exercises the Lore and Music overlays
 - Phase 2 payload should include both overlays and retain Lore as the primary layer (`overlay_id`).
 - `logs/alfa_zero/session_metrics.jsonl` now records per-step `dispatch` entries with storyboard metadata plus a `storyboard_run` summary (payload count, trace, force flag).
 - Guardrail blocks are also logged to session metrics as `storyboard_guardrail` events for postmortem review.
+- Targeted sync executions now append structured telemetry (counts, destinations, copied paths) alongside storyboard runs into `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl`.
 
 ## Operator Checklist
 
@@ -41,8 +42,8 @@ Craft a contained Nightlands vignette that exercises the Lore and Music overlays
 2. Use `storyboard preview` for cues before dispatching.
 	- Status output now shows the remaining cooldown timer and the next eligible timestamp; only use `storyboard run force` if explicitly cleared.
 3. Execute `storyboard run` and monitor output summary plus telemetry log. The action log (`logs/alfa_zero/play_session_actions.log`) captures trace, force flag, and payload references automatically.
-	- Status output now shows the remaining cooldown timer and the next eligible timestamp; only use `storyboard run force` if explicitly cleared.
-4. Review `logs/alfa_zero/session_metrics.jsonl` to verify both dispatch steps and the `storyboard_run` aggregate were recorded.
+   - Status output now shows the remaining cooldown timer and the next eligible timestamp; only use `storyboard run force` if explicitly cleared.
+4. Review `logs/alfa_zero/session_metrics.jsonl` to verify both dispatch steps and the `storyboard_run` aggregate were recorded, then confirm the append-only feed at `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl` picked up the run and any follow-on targeted sync.
 5. Append ledger entry (`exchange/ledger/2025-11.md`) citing the duet run and evidence log path.
 6. File telemetry snippets or screenshots into the applicable report when closing the work order.
 

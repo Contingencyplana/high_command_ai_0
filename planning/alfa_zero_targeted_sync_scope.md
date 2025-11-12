@@ -30,7 +30,7 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 2. **Sync script changes**: teach `tools/offline_sync_exchange.py` to accept optional arguments such as `--category orders` or `--only-latest 1` while keeping the default behaviour unchanged. ✅ Implemented via new `--dry-run` and targeting options (2025-11-12).
 3. **UI wiring**: introduce a new command (draft name `sync latest` or `sync orders`) that calls the targeted helper and reports a concise summary back to the operator. ✅ Integrated into `alfa_zero_ui` with preview support (2025-11-12).
 4. **Play session script**: once the command exists, update `logs/alfa_zero/play_session_commands.txt` so automated runs exercise the new path.
-5. **Telemetry**: log targeted sync executions in both `logs/alfa_zero/session_metrics.jsonl` and `play_session_actions.log` with a distinctive label to keep metrics comparable.
+5. **Telemetry**: log targeted sync executions in both `logs/alfa_zero/session_metrics.jsonl` and `play_session_actions.log` with a distinctive label to keep metrics comparable. ✅ Order 051 instrumentation appends structured JSONL records and mirrors them into `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl` (2025-11-13).
 
 ### Open Questions
 
@@ -62,7 +62,14 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 - Introduced `python -m tools.targeted_sync` to wrap the offline sync helper with confirmation prompts, quiet mode, and optional dry-run previews.
 - `tools/offline_sync_exchange.py` now accepts `--dry-run`, `--latest`, and `--orders-subpath` for filtered runs. The helper preserves full sync defaults for existing automation.
 - Targeted CLI defaults to syncing orders only, latest files unlimited, and quiet mode on. Operators can pass `--yes` to skip prompts when running inside scripted flows. UI commands (`sync latest`, `sync orders`) now invoke the helper with auto-confirm and optional `preview` dry-run.
-- Next wiring step: automate metrics logging for targeted sync executions once play session tooling lands.
+- Targeted sync telemetry now lands in session metrics and powers the `nightlands_duet_storyboard_sync_feed.jsonl` attachment.
+
+## 2025-11-13 Update
+
+- `alfa_zero_ui` parses targeted sync output to capture counts, destinations, and relative paths for telemetry.
+- Session metrics append to `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl`, creating the combined storyboard + targeted sync feed requested in Order 051.
+- Feed manifest documents the schema for downstream dashboards and reporting.
+- Interim cadence panel captured in `docs/nightlands_duet_telemetry_panel.md` while the main dashboard tooling remains offline.
 
 ## 2025-11-12 Playtest Feedback
 
@@ -74,5 +81,5 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 ## Next Actions
 
 1. Observe quiet-mode sync output over the next few playtest loops and decide whether log rotation or archival is still required.
-2. Add explicit targeted sync telemetry events to `logs/alfa_zero/session_metrics.jsonl` so dashboards can visualize helper usage.
+2. Promote the interim telemetry panel (`docs/nightlands_duet_telemetry_panel.md`) into the primary dashboard once the offline tooling is back.
 3. Coordinate with UI workstream on the cooldown banner request and link the outcome back to this scope.

@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-11-13-050-ack",
+  "referenced_id": "order-2025-11-13-050",
+  "sender": "playtest_front",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-11-12T15:18:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Accepted scoreboard imagery follow-up stemming from Order 049 feedback.",
+    "Will capture Lore Invocation and Duet Crescendo frames, annotate cooldown and targeted sync indicators, and embed results into the playtest packet.",
+    "Manifest + targeted sync verification will be logged to the November ledger upon completion."
+  ]
+}

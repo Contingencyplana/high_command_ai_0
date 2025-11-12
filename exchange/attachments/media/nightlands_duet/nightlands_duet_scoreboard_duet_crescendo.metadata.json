@@ -1,0 +1,16 @@
+{
+  "image": "nightlands_duet_scoreboard_duet_crescendo.png",
+  "state": "Duet Crescendo",
+  "trace_id": "outland-lore-v1-8A-20251112004957",
+  "cooldown_remaining_seconds": 0,
+  "overlay_toggles": ["Lore", "Music"],
+  "annotations": [
+    "Mark cooldown reset indicator",
+    "Highlight Music overlay toggle activation",
+    "Label targeted sync dropdown with operator initials"
+  ],
+  "capture_method": "Placeholder composite referencing Alfa Zero UI live dispatch (nightlands_duet_v1 storyboard)",
+  "captured_by": "High Command",
+  "captured_at": "2025-11-12T15:36:00Z",
+  "notes": "Placeholder capture aligned to crescendo step to show dual overlay state and sync confirmation; replace with production screenshot when available."
+}

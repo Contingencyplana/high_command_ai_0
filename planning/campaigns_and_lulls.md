@@ -123,8 +123,8 @@ Evidence:
 ## Next
 
 - Run the Daily Doc Refresh slice: pull one high-signal scroll from `planning/document_refresh_queue.md`, update it, and log the change in `exchange/ledger/2025-11.md` before advancing the queue.
-- Capture Nightlands scoreboard imagery and fold it into `exchange/attachments/guides/nightlands_duet_playtest_packet.md` per cohort requests.
-- Expose duet session metrics on the telemetry dashboard and document the hook in `planning/alfa_zero_nightlands_duet_storyboard.md`.
+- Nightlands scoreboard placeholder imagery embedded in `exchange/attachments/guides/nightlands_duet_playtest_packet.md`; future cohorts can reference metadata under `exchange/attachments/media/nightlands_duet/` while awaiting high-fidelity captures (Order 050 closed).
+- Nightlands duet telemetry feed published under `exchange/attachments/telemetry/nightlands_duet/`; integrate the feed into the shared dashboard next and keep `planning/alfa_zero_nightlands_duet_storyboard.md` aligned.
 - Evaluate targeted sync log rotation once additional playtests accumulate; record outcomes in `planning/alfa_zero_targeted_sync_scope.md`.
 
 Related

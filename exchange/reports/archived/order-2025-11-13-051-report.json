@@ -1,0 +1,101 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "order-2025-11-13-051-report",
+  "order_id": "order-2025-11-13-051",
+  "reported_by": "telemetry_front",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-13T09:50:00Z",
+  "status": "completed",
+  "summary": "Extended Alfa Zero targeted sync telemetry, published a combined storyboard/sync feed, documented validation steps, and staged an interim cadence panel while the primary dashboard tooling remains offline.",
+  "directives_status": [
+    {
+      "step": 1,
+      "directive": "extend_metrics",
+      "status": "completed",
+      "notes": [
+        "`golf_00/delta_00/alfa_00/alfa_zero_ui.py` now parses targeted sync helper output (counts, destinations, copied paths) and appends structured telemetry via `_summarize_targeted_sync_output`.",
+        "Session metrics event logger `_log_session_event` writes enriched records and mirrors applicable events into the Nightlands feed helper `_maybe_record_nightlands_feed`."
+      ]
+    },
+    {
+      "step": 2,
+      "directive": "prepare_data_view",
+      "status": "completed",
+      "notes": [
+        "Created `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl` and backfilled the initial storyboard run entry.",
+        "Documented feed schema and usage guidance inside `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_telemetry_manifest.md`."
+      ]
+    },
+    {
+      "step": 3,
+      "directive": "update_dashboard",
+      "status": "completed",
+      "notes": [
+        "Published `docs/nightlands_duet_telemetry_panel.md` with an offline script that summarises cadence per hour for storyboard and targeted sync events.",
+        "Nightlands duet playtest packet now directs operators to capture panel output until the full dashboard stack returns."
+      ]
+    },
+    {
+      "step": 4,
+      "directive": "refresh_docs",
+      "status": "completed",
+      "notes": [
+        "Updated `planning/alfa_zero_targeted_sync_scope.md`, `planning/document_refresh_queue.md`, and `planning/alfa_zero_nightlands_duet_storyboard.md` with telemetry feed guidance.",
+        "Playtest packet follow-up notes reference the feed and interim panel to keep cohorts aligned."
+      ]
+    },
+    {
+      "step": 5,
+      "directive": "log_and_report",
+      "status": "completed",
+      "notes": [
+        "Ledger entry (2025-11-13 09:45) records telemetry instrumentation completion.",
+        "Completion report filed with evidence links and follow-up items for dashboard integration and high-fidelity assets."
+      ]
+    }
+  ],
+  "evidence": {
+    "ledger_entries": {
+      "path": "exchange/ledger/2025-11.md",
+      "entries": [
+        "2025-11-13 09:45 HighCommand ORDER-051 Targeted sync telemetry instrumentation complete; combined feed published at exchange/attachments/telemetry/nightlands_duet/"
+      ]
+    },
+    "telemetry_feed": {
+      "path": "exchange/attachments/telemetry/nightlands_duet/",
+      "files": [
+        "nightlands_duet_storyboard_sync_feed.jsonl",
+        "nightlands_duet_telemetry_manifest.md"
+      ]
+    },
+    "documentation": [
+      "planning/alfa_zero_targeted_sync_scope.md",
+      "planning/document_refresh_queue.md",
+      "planning/alfa_zero_nightlands_duet_storyboard.md",
+      "exchange/attachments/guides/nightlands_duet_playtest_packet.md",
+      "docs/nightlands_duet_telemetry_panel.md"
+    ],
+    "code_changes": [
+      "golf_00/delta_00/alfa_00/alfa_zero_ui.py"
+    ]
+  },
+  "open_follow_ups": [
+    "Integrate the Nightlands telemetry feed into the primary dashboard notebook once the offline tooling is restored.",
+    "Append new storyboard runs and targeted syncs to the feed after each playtest and refresh the cadence snapshot in debrief packets.",
+    "Replace placeholder scoreboard imagery (Order 050) when high-fidelity captures are available so the feed and visuals stay aligned."
+  ],
+  "attachments": [
+    {
+      "type": "feed",
+      "path": "exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl"
+    },
+    {
+      "type": "documentation",
+      "path": "exchange/attachments/telemetry/nightlands_duet/nightlands_duet_telemetry_manifest.md"
+    },
+    {
+      "type": "runbook",
+      "path": "docs/nightlands_duet_telemetry_panel.md"
+    }
+  ]
+}

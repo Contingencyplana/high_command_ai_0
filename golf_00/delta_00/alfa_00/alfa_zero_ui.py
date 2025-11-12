@@ -18,7 +18,7 @@ from datetime import datetime, timedelta, timezone
 import os
 from pathlib import Path
 import subprocess
-from typing import Dict, List, Optional, Sequence, TextIO, Tuple
+from typing import Any, Dict, List, Optional, Sequence, TextIO, Tuple
 
 from overlay_bridge import CELL_MAPPINGS, OverlayBridge, build_bridge, cell_label
 from trace_utils import generate_trace_id
@@ -586,7 +586,18 @@ def run_targeted_sync(
         return
     log_path = _append_action_log(context, label, result)
     _render_command_result(context, "Targeted sync", result, log_path=log_path, quiet=quiet)
-    _log_session_event(context, event=event)
+    extra: Dict[str, Any] = {
+        "categories": list(categories) if categories else None,
+        "orders_subpath": orders_subpath,
+        "latest": latest,
+        "dry_run": dry_run,
+        "quiet": quiet,
+        "returncode": result.returncode,
+        "action_log": _relative_to_repo(context.repo_root, log_path),
+    }
+    summary = _summarize_targeted_sync_output(result.stdout, repo_root=context.repo_root)
+    extra.update(summary)
+    _log_session_event(context, event=event, extra=extra)
 
 
 def move_selection(context: UIContext, delta_row: int, delta_col: int) -> None:
@@ -1110,6 +1121,139 @@ def _log_session_event(context: UIContext, *, event: str, extra: Optional[Dict[s
     try:
         with context.metrics_path.open("a", encoding="utf-8") as handle:
             handle.write(json.dumps(record, ensure_ascii=False))
+            handle.write("\n")
+    except Exception:
+        pass
+    _maybe_record_nightlands_feed(context, record)
+
+
+def _summarize_targeted_sync_output(
+    stdout: Optional[str],
+    *,
+    repo_root: Path,
+) -> Dict[str, Any]:
+    summary: Dict[str, Any] = {}
+    if not stdout:
+        return summary
+
+    copied_paths: List[str] = []
+    destination: Optional[str] = None
+    summary_line: Optional[str] = None
+    no_changes = False
+
+    for raw_line in stdout.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if line.startswith("Copied "):
+            parts = line.split(" -> ", 1)
+            if len(parts) == 2:
+                dest = parts[1].strip()
+                dest_path = Path(dest)
+                dest_text = dest.replace("\\", "/")
+                try:
+                    rel = dest_path.relative_to(repo_root)
+                    dest_text = str(rel).replace("\\", "/")
+                except ValueError:
+                    pass
+                copied_paths.append(dest_text)
+            continue
+        if line.startswith("[OK] Synced"):
+            summary_line = line
+            tokens = line.split()
+            for token in tokens:
+                if token.isdigit():
+                    summary.setdefault("copied_count", int(token))
+                    break
+            if " to " in line:
+                dest_segment = line.split(" to ", 1)[1].strip()
+                dest_path = Path(dest_segment)
+                if dest_path.is_absolute():
+                    try:
+                        dest_segment = str(dest_path.relative_to(repo_root)).replace("\\", "/")
+                    except ValueError:
+                        dest_segment = dest_segment.replace("\\", "/")
+                else:
+                    dest_segment = dest_segment.replace("\\", "/")
+                destination = dest_segment
+            continue
+        if line.startswith("[INFO] No new"):
+            summary_line = line
+            no_changes = True
+
+    if copied_paths:
+        summary["copied_paths"] = copied_paths
+        summary.setdefault("copied_count", len(copied_paths))
+    if destination:
+        summary["destination"] = destination
+    if summary_line:
+        summary["summary_line"] = summary_line
+    summary["no_changes"] = no_changes
+    return summary
+
+
+def _maybe_record_nightlands_feed(context: UIContext, record: Dict[str, Any]) -> None:
+    event = record.get("event")
+    if event not in {"storyboard_run", "targeted_sync"}:
+        return
+
+    if event == "storyboard_run":
+        storyboard_id = record.get("storyboard_id")
+        if storyboard_id != NIGHTLANDS_DUET_STORYBOARD.storyboard_id:
+            return
+
+    repo_root = context.repo_root
+    feed_dir = repo_root / "exchange" / "attachments" / "telemetry" / "nightlands_duet"
+    try:
+        feed_dir.mkdir(parents=True, exist_ok=True)
+    except Exception:
+        return
+
+    feed_path = feed_dir / "nightlands_duet_storyboard_sync_feed.jsonl"
+    payload: Dict[str, Any] = {
+        "timestamp": record.get("timestamp"),
+        "event": event,
+        "session_id": record.get("session_id"),
+        "source": record.get("source"),
+    }
+
+    if event == "storyboard_run":
+        for key in (
+            "storyboard_id",
+            "trace_id",
+            "payload_count",
+            "force",
+            "storyboard_log",
+            "cooldown_seconds",
+        ):
+            value = record.get(key)
+            if value is not None:
+                payload[key] = value
+        payloads = record.get("payloads")
+        if isinstance(payloads, list):
+            payload["payloads"] = payloads
+    else:
+        for key in (
+            "categories",
+            "orders_subpath",
+            "latest",
+            "dry_run",
+            "quiet",
+            "returncode",
+            "summary_line",
+            "destination",
+            "copied_count",
+            "copied_paths",
+            "no_changes",
+            "action_log",
+        ):
+            value = record.get(key)
+            if value is not None:
+                payload[key] = value
+
+    try:
+        with feed_path.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(payload, ensure_ascii=False))
             handle.write("\n")
     except Exception:
         pass

@@ -1,0 +1,56 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-13-050",
+  "issued_by": "high_command_ai_0",
+  "target": "playtest_front",
+  "priority": "medium",
+  "timestamp_issued": "2025-11-12T15:15:00Z",
+  "summary": "Capture Nightlands duet scoreboard imagery and integrate with playtest packet",
+  "context": "Nightlands comfort-loop cohort requested visual parity between the Alfa Zero storyboard preview and the operator playtest packet. Capturing the scoreboard state and embedding annotated imagery will improve onboarding for the next wave of testers.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "capture_scoreboard_state",
+      "details": "Run the nightlands_duet_v1 storyboard in preview mode and during a live dispatch to capture scoreboard frames (Lore Invocation, Duet Crescendo)."
+    },
+    {
+      "step": 2,
+      "action": "annotate_images",
+      "details": "Highlight cooldown timers, overlay toggles, and trace identifiers on each frame so operators can quickly align UI state with evidence logs."
+    },
+    {
+      "step": 3,
+      "action": "publish_assets",
+      "details": "Store the imagery under exchange/attachments/media/nightlands_duet/ with clear filenames and metadata. Mirror the assets via targeted sync and confirm availability in the exchange hub."
+    },
+    {
+      "step": 4,
+      "action": "update_playtest_packet",
+      "details": "Embed the imagery (with captions) into exchange/attachments/guides/nightlands_duet_playtest_packet.md and reference the directory in campaigns_and_lulls.md."
+    },
+    {
+      "step": 5,
+      "action": "log_and_report",
+      "details": "Append ledger entries describing the capture and publication steps, then file a completion report with imagery references and operator feedback."
+    }
+  ],
+  "success_criteria": [
+    "Storyboard scoreboard imagery captured for both Lore Invocation and Duet Crescendo states.",
+    "Annotated assets stored under exchange/attachments/media/nightlands_duet/ and mirrored via targeted sync.",
+    "Playtest packet references the new imagery with guidance for operators.",
+    "Ledger entries and completion report document evidence and follow-on recommendations."
+  ],
+  "dependencies": [
+    "order-2025-11-12-048",
+    "order-2025-11-12-049"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-11-20T23:59:59Z",
+  "attachments": [
+  { "type": "reference", "path": "exchange/attachments/guides/nightlands_duet_playtest_packet.md" },
+  { "type": "reference", "path": "planning/campaigns_and_lulls.md" },
+    { "type": "reference", "path": "logs/alfa_zero/storyboards/nightlands_duet_v1_runs.jsonl" },
+    { "type": "reference", "path": "logs/alfa_zero/play_session_feedback/" },
+    { "type": "reference", "path": "tools/targeted_sync.py" }
+  ]
+}
