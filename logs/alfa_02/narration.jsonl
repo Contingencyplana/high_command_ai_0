@@ -1,1 +1,2 @@
 {"ts": "2025-11-07T23:30:52Z", "type": "narration", "line": "Forge crafts the Ally → Victory", "source": "alfa_02:narrator_shell"}
+{"ts": "2025-11-12T03:29:16Z", "type": "narration", "line": "Order 045 close evidence", "layer": "comfort", "context": "overlay-close", "comfort": {"enabled": true, "level": "gentle"}, "source": "alfa_02:narrator_shell", "overlay_id": "outland-lore-v1", "overlay_layer": "lore", "trace_id": "ORDER-045-close-20251112T032916Z"}
