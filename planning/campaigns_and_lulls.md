@@ -89,7 +89,7 @@ Objective: Align narration/telemetry stubs and monitoring across workspaces.
 Orders: order-2025-11-01-041
 Outcomes:
 - Narration + payload alignment briefs published under `quint_synced/`.
-- Monitoring/ingestion guidance documented; runtime shells pending in alfa_02/alfa_03.
+- Monitoring/ingestion guidance documented; runtime shells available in alfa_02/alfa_03.
 Evidence:
 - exchange/reports/archived/order-2025-11-01-041-report.json
 - quint_synced/payload_alignment.md
