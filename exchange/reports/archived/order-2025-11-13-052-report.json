@@ -1,0 +1,10 @@
+{
+  "schema": "field-report@1.0",
+  "report_id": "order-2025-11-13-052-report",
+  "origin": "high_command_ai_0",
+  "relates_to": "order-2025-11-13-052",
+  "timestamp_submitted": "2025-11-13T17:50:00Z",
+  "status": "draft",
+  "summary": "Placeholder report for Genesis Spin-Up: tons_of_fun_ai_0. Will include heartbeat/sync evidence, smoke results, RUNBOOK KPIs, and ledger entries."
+}
+

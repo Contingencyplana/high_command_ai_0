@@ -54,6 +54,18 @@ As the project matures, two additional workspaces will emerge:
    - Initially part of High Command
    - Splits when documentation volume grows
 
+## Activation Notes (November 2025)
+
+- `tons_of_fun_ai_0` (6th workspace) — ACTIVATED
+  - Purpose: fun-first playtest lab for Nightlands; rapid iteration on core feel/loops
+  - Initial KPIs: Time-to-Fun (TtF), Repeat-plays per session, “One more run?” yes/no
+  - Spin-up order: `order-2025-11-13-052` (Genesis Spin-Up: tons_of_fun_ai_0)
+
+- `archivist_ai_0` (7th workspace) — ACTIVATED
+  - Purpose: docs/standards/runbooks hub; single-source-of-truth for operators
+  - Initial outputs: standards index, docs publishing plan, runbook consolidation
+  - Spin-up order: `order-2025-11-13-053` (Genesis Spin-Up: archivist_ai_0)
+
 ## Implementation Rationale
 
 ### Why Start with Five?

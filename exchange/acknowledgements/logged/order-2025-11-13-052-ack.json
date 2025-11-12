@@ -1,0 +1,14 @@
+{
+  "schema": "signal-ack@1.0",
+  "ack_id": "order-2025-11-13-052-ack",
+  "referenced_id": "order-2025-11-13-052",
+  "sender": "tons_of_fun_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-11-13T17:50:00Z",
+  "status": "acknowledged",
+  "notes": [
+    "Spin-up accepted. Scaffold + readiness sweep scheduled.",
+    "RUNBOOK KPIs (TtF, repeat-plays, one-more-run) baseline planned."
+  ]
+}
+
