@@ -291,17 +291,21 @@
     },
     "order-2025-11-13-052": {
       "status": "closed",
-      "order_path": "orders/dispatched/order-2025-11-13-052.json",
+      "order_path": "orders/completed/order-2025-11-13-052.json",
       "ack_path": "acknowledgements/logged/order-2025-11-13-052-ack.json",
       "report_path": "reports/archived/order-2025-11-13-052-report.json"
     },
-    "order-2025-11-13-053": {
-      "status": "closed",
-      "order_path": "orders/dispatched/order-2025-11-13-053.json",
-      "ack_path": "acknowledgements/logged/order-2025-11-13-053-ack.json",
-      "report_path": "reports/archived/order-2025-11-13-053-report.json"
-    }
-  },
+        "order-2025-11-13-053": {
+          "status": "closed",
+          "order_path": "orders/completed/order-2025-11-13-053.json",
+          "ack_path": "acknowledgements/logged/order-2025-11-13-053-ack.json",
+          "report_path": "reports/archived/order-2025-11-13-053-report.json"
+        },
+        "order-2025-11-13-054": {
+          "status": "dispatched",
+          "order_path": "orders/dispatched/order-2025-11-13-054.json"
+        }
+      },
   "reports": {
     "order-2025-10-12-009-report": "reports/archived/order-2025-10-12-009-report.json",
     "order-2025-10-14-010-report": "reports/archived/order-2025-10-14-010-report.json",

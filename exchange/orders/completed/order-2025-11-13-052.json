@@ -1,0 +1,38 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-13-052",
+  "issued_by": "high_command_ai_0",
+  "target": "tons_of_fun_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-11-13T17:45:00Z",
+  "summary": "Genesis Spin-Up: tons_of_fun_ai_0 (Nightlands fun-first playtest lab)",
+  "context": "Hybrid shadow mode gates are green and runbooks are current. We will activate the sixth genesis workspace focused on moment-to-moment fun, rapid playtests, and core loop iteration for Nightlands.",
+  "directives": [
+    { "step": 1, "action": "scaffold_workspace", "details": "Create workspace skeleton from Alfa baseline: AGENTS.md, tools/, tests/, .gitignore, README.md." },
+    { "step": 2, "action": "configure_exchange", "details": "Set SHAGI_EXCHANGE_PATH to exchange hub; verify heartbeat and offline sync connectivity." },
+    { "step": 3, "action": "readiness_sweep", "details": "Run tools/exchange_heartbeat.py and tools/offline_sync_exchange.py; record results under logs/ops_readiness.txt." },
+    { "step": 4, "action": "smoke_tests", "details": "Run minimal overlay smoke and contract runner subset; archive outputs in logs/contract_tests/." },
+    { "step": 5, "action": "define_fun_kpis", "details": "Add RUNBOOK.md with KPIs: Time-to-Fun (TtF), Repeat-plays/session, and `One more run?' yes/no. Include playtest loop checklist." },
+    { "step": 6, "action": "file_completion_report", "details": "Submit a completion report with evidence paths and ledger entry references." }
+  ],
+  "success_criteria": [
+    "Heartbeat and offline sync OK; readiness evidence archived",
+    "Smoke tests executed with passing or documented outcomes",
+    "RUNBOOK.md published with KPIs and operator steps",
+    "Ledger updated with activation and readiness notes",
+    "Completion report filed under exchange/reports/inbox/"
+  ],
+  "dependencies": [
+    "order-2025-11-09-045",
+    "order-2025-11-12-047",
+    "order-2025-11-12-049"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-11-20T23:59:59Z",
+  "attachments": [
+    { "type": "reference", "path": "planning/pivotal_fronts/tons_of_fun.md" },
+    { "type": "reference", "path": "exchange/attachments/guides/comfort_happy_path.md" },
+    { "type": "reference", "path": "tools/contract_test_runner.py" }
+  ]
+}
+

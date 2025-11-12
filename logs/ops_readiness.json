@@ -1,11 +1,13 @@
 {
-  "timestamp_utc": "2025-11-12T08:58:44.291089+00:00",
+  "timestamp_utc": "2025-11-12T09:43:58.480009+00:00",
   "workspace": "high_command_ai_0",
   "python": "3.12.6",
   "hub_path": "C:\\Users\\Admin\\high_command_exchange",
   "hub_exists": true,
   "docs_present": {
-    "C:\\Users\\Admin\\high_command_ai_0\\RUNBOOK.md": false
+    "C:\\Users\\Admin\\high_command_ai_0\\RUNBOOK.md": false,
+    "C:\\Users\\Admin\\high_command_ai_0\\runbook.md": false,
+    "C:\\Users\\Admin\\high_command_ai_0\\planning\\workspaces\\high_command_ai_0\\RUNBOOK.md": false
   },
   "staged_checks": [
     {

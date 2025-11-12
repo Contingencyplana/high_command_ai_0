@@ -1,10 +1,84 @@
 {
-  "schema": "field-report@1.0",
+  "schema": "factory-report@1.0",
   "report_id": "order-2025-11-13-052-report",
-  "origin": "high_command_ai_0",
-  "relates_to": "order-2025-11-13-052",
-  "timestamp_submitted": "2025-11-13T17:50:00Z",
-  "status": "draft",
-  "summary": "Placeholder report for Genesis Spin-Up: tons_of_fun_ai_0. Will include heartbeat/sync evidence, smoke results, RUNBOOK KPIs, and ledger entries."
+  "order_id": "order-2025-11-13-052",
+  "reported_by": "high_command_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-13T17:55:00Z",
+  "status": "completed",
+  "summary": "Genesis spin-up completed for tons_of_fun_ai_0: workspace scaffolded, exchange wired to hub, readiness/heartbeat green, smoke subset exercised, KPIs documented in RUNBOOK, ack and ledger entries recorded.",
+  "directives_status": [
+    {
+      "step": 1,
+      "directive": "scaffold_workspace",
+      "status": "completed",
+      "notes": [
+        "Baseline structure created; AGENTS.md, tools/, tests/, .gitignore, and README.md present.",
+        "Local wrappers added: tools/readiness.ps1, tools/heartbeat.ps1, tools/sync.ps1."
+      ]
+    },
+    {
+      "step": 2,
+      "directive": "configure_exchange",
+      "status": "completed",
+      "notes": [
+        "Exchange hub configured to C:/Users/Admin/high_command_exchange via workspace wrappers and env.",
+        "High Command tools now workspace-agnostic (ops_readiness, exchange_all)."
+      ]
+    },
+    {
+      "step": 3,
+      "directive": "readiness_sweep",
+      "status": "completed",
+      "notes": [
+        "Readiness run wrote logs/ops_readiness.json with exit 0.",
+        "Heartbeat and offline sync checks executed successfully."
+      ]
+    },
+    {
+      "step": 4,
+      "directive": "smoke_tests",
+      "status": "completed",
+      "notes": [
+        "Minimal overlay smoke and contract subset executed; outputs archived under logs/contract_tests/."
+      ]
+    },
+    {
+      "step": 5,
+      "directive": "define_fun_kpis",
+      "status": "completed",
+      "notes": [
+        "RUNBOOK includes KPIs: Time-to-Fun (TtF), Repeat-plays/session, 'One more run?' yes/no.",
+        "Playtest loop checklist added to support rapid iteration."
+      ]
+    },
+    {
+      "step": 6,
+      "directive": "file_completion_report",
+      "status": "completed",
+      "notes": [
+        "Hello completion report staged and synced from workspace; this archived report closes the order at High Command."
+      ]
+    }
+  ],
+  "evidence": {
+    "acknowledgement": {
+      "path": "exchange/acknowledgements/logged/order-2025-11-13-052-ack.json"
+    },
+    "ledger_entries": {
+      "path": "exchange/ledger/2025-11.md",
+      "entries": [
+        "2025-11-13 17:50 HighCommand ORDER-052 Genesis spin-up completed: tons_of_fun_ai_0; readiness OK; hello report synced"
+      ]
+    },
+    "documentation": [
+      "planning/pivotal_fronts/tons_of_fun.md",
+      "exchange/attachments/guides/comfort_happy_path.md"
+    ],
+    "order": "exchange/orders/completed/order-2025-11-13-052.json"
+  },
+  "open_follow_ups": [
+    "Publish first-week baseline for fun KPIs after initial cohort playtests.",
+    "Automate snapshotting of TtF and repeat-plays into exchange attachments for debriefs."
+  ]
 }
-

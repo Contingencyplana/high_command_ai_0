@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 
 import os as _os
 WORKSPACE = _os.environ.get("WORKSPACE_NAME") or Path(__file__).resolve().parents[1].name
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(_os.environ.get("WORKSPACE_ROOT") or Path(__file__).resolve().parents[1])
 LOGS = ROOT / "logs"
 
 def iso_now():

@@ -1,0 +1,36 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-13-053",
+  "issued_by": "high_command_ai_0",
+  "target": "archivist_ai_0",
+  "priority": "medium",
+  "timestamp_issued": "2025-11-13T17:47:00Z",
+  "summary": "Genesis Spin-Up: archivist_ai_0 (Docs/standards/runbooks hub)",
+  "context": "Mass Alfa production increases documentation volume and cross-workspace coordination needs. We will activate the seventh genesis workspace to consolidate standards and runbooks and to own docs publishing.",
+  "directives": [
+    { "step": 1, "action": "create_standards_index", "details": "Draft a Standards Index covering naming/versioning, schema anchors, logs structure, and exchange paths." },
+    { "step": 2, "action": "consolidate_runbooks", "details": "Gather operator runbooks into a single index; link to authoritative copies in High Command exchange." },
+    { "step": 3, "action": "docs_publish_plan", "details": "Outline offline-friendly docs CI/publish steps (even if manual), including targets and cadence." },
+    { "step": 4, "action": "publish_doc_map", "details": "Produce a clickable map of canonical docs with stable paths; add it to the Standards Index." },
+    { "step": 5, "action": "file_completion_report", "details": "Submit a completion report with artifacts and follow-up items (e.g., search, linting)." }
+  ],
+  "success_criteria": [
+    "Standards Index exists with initial sections and links",
+    "Runbook Index links to operator guides and comfort path",
+    "Docs publish plan recorded (manual or scripted)",
+    "Ledger updated with activation entry",
+    "Completion report filed under exchange/reports/inbox/"
+  ],
+  "dependencies": [
+    "order-2025-11-07-044",
+    "order-2025-11-01-041"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-11-21T23:59:59Z",
+  "attachments": [
+    { "type": "reference", "path": "planning/pivotal_fronts/docs.md" },
+    { "type": "reference", "path": "planning/pivotal_fronts/README.md" },
+    { "type": "reference", "path": "exchange/README.md" }
+  ]
+}
+

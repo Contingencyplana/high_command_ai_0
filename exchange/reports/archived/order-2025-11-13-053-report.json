@@ -1,10 +1,73 @@
 {
-  "schema": "field-report@1.0",
+  "schema": "factory-report@1.0",
   "report_id": "order-2025-11-13-053-report",
-  "origin": "high_command_ai_0",
-  "relates_to": "order-2025-11-13-053",
-  "timestamp_submitted": "2025-11-13T17:52:00Z",
-  "status": "draft",
-  "summary": "Placeholder report for Genesis Spin-Up: archivist_ai_0. Will include Standards Index, Runbook Index, publish plan, and ledger references."
+  "order_id": "order-2025-11-13-053",
+  "reported_by": "high_command_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-13T17:56:00Z",
+  "status": "completed",
+  "summary": "Genesis spin-up completed for archivist_ai_0: standards and runbook indices created, docs publish plan recorded, exchange wiring validated, ack and ledger entries recorded.",
+  "directives_status": [
+    {
+      "step": 1,
+      "directive": "create_standards_index",
+      "status": "completed",
+      "notes": [
+        "Standards Index drafted covering naming/versioning, schema anchors, logs structure, and exchange paths."
+      ]
+    },
+    {
+      "step": 2,
+      "directive": "consolidate_runbooks",
+      "status": "completed",
+      "notes": [
+        "Runbook Index compiled; links point to authoritative High Command copies and comfort path."
+      ]
+    },
+    {
+      "step": 3,
+      "directive": "docs_publish_plan",
+      "status": "completed",
+      "notes": [
+        "Offline-friendly publish plan outlined (manual today, CI-ready structure for later)."
+      ]
+    },
+    {
+      "step": 4,
+      "directive": "publish_doc_map",
+      "status": "completed",
+      "notes": [
+        "Clickable map of canonical docs produced and linked from Standards Index."
+      ]
+    },
+    {
+      "step": 5,
+      "directive": "file_completion_report",
+      "status": "completed",
+      "notes": [
+        "Hello completion report staged and synced from workspace; this archived report closes the order at High Command."
+      ]
+    }
+  ],
+  "evidence": {
+    "acknowledgement": {
+      "path": "exchange/acknowledgements/logged/order-2025-11-13-053-ack.json"
+    },
+    "ledger_entries": {
+      "path": "exchange/ledger/2025-11.md",
+      "entries": [
+        "2025-11-13 17:52 HighCommand ORDER-053 Genesis spin-up completed: archivist_ai_0; readiness OK; hello report synced"
+      ]
+    },
+    "documentation": [
+      "planning/pivotal_fronts/docs.md",
+      "planning/pivotal_fronts/README.md",
+      "exchange/README.md"
+    ],
+    "order": "exchange/orders/completed/order-2025-11-13-053.json"
+  },
+  "open_follow_ups": [
+    "Prototype a lightweight offline docs publish step (zip or local site) and document operator flow.",
+    "Draft lint/search hooks for standards compliance across workspaces."
+  ]
 }
-

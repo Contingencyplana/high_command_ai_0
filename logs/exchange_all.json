@@ -1,8 +1,8 @@
 {
-  "timestamp_utc": "2025-11-12T08:59:09.139119+00:00",
+  "timestamp_utc": "2025-11-12T09:44:09.222155+00:00",
   "workspace": "high_command_ai_0",
   "hub_path": "C:\\Users\\Admin\\high_command_exchange",
-  "validated_ok": false,
+  "validated_ok": true,
   "validation_errors": [
     {
       "kind": "orders",
@@ -14,28 +14,6 @@
         "status",
         "created_at",
         "attachments"
-      ]
-    },
-    {
-      "kind": "orders",
-      "file": "order-2025-11-07-044.json",
-      "missing": [
-        "id",
-        "workspace",
-        "title",
-        "status",
-        "created_at"
-      ]
-    },
-    {
-      "kind": "orders",
-      "file": "order-2025-11-09-045.json",
-      "missing": [
-        "id",
-        "workspace",
-        "title",
-        "status",
-        "created_at"
       ]
     },
     {
@@ -75,8 +53,17 @@
     }
   ],
   "copied": {
-    "orders": [],
-    "reports": [],
-    "acks": []
-  }
+    "orders": [
+      "order-2025-11-07-044.json",
+      "order-2025-11-09-045.json",
+      "order-2025-11-13-905.json"
+    ],
+    "reports": [
+      "order-2025-11-13-905-report.json"
+    ],
+    "acks": [
+      "order-2025-11-13-905-ack.json"
+    ]
+  },
+  "note": "Some staged files failed validation and were skipped."
 }

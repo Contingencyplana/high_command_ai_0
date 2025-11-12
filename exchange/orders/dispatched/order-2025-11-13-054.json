@@ -1,0 +1,37 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-13-054",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-11-13T18:05:00Z",
+  "summary": "Mass Alfa Seeding — Batch 1 (N=5)",
+  "context": "Gates are green and runbooks are current. Proceed to mass Alfa production with an initial seed batch to establish daily cadence and throughput baselines.",
+  "directives": [
+    { "step": 1, "action": "prepare_baseline", "details": "Freeze current Alfa templates/runbooks as baseline for this batch (record template/version in report)." },
+    { "step": 2, "action": "seed_instances", "details": "Create 5 Alfa instances from baseline. Assign stable IDs and record mapping (ID → path)." },
+    { "step": 3, "action": "configure_exchange", "details": "Wire each instance to the shared exchange hub; verify wrappers (readiness/heartbeat/sync) present." },
+    { "step": 4, "action": "readiness_and_smoke", "details": "Run readiness + minimal smoke for each instance; capture logs under each instance’s logs/ and summarise results." },
+    { "step": 5, "action": "stage_hello_reports", "details": "For each instance, stage a short ‘hello’ completion report to outbox/reports with evidence paths." },
+    { "step": 6, "action": "sync_and_ledger", "details": "Sync staged artifacts to hub and append a ledger note summarising Batch 1 seeding (IDs, count, any exceptions)." },
+    { "step": 7, "action": "file_factory_report", "details": "Return a factory-report summarising the batch (throughput, issues, follow-ups) with links to instance reports." }
+  ],
+  "success_criteria": [
+    "5 instances created from the frozen baseline with recorded IDs",
+    "Readiness + minimal smoke executed and summarised per instance",
+    "Hello reports staged and synced to hub",
+    "Ledger entry recorded for Batch 1 seeding",
+    "Factory completion report filed with evidence"
+  ],
+  "dependencies": [
+    "order-2025-11-13-052",
+    "order-2025-11-13-053"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-11-20T23:59:59Z",
+  "attachments": [
+    { "type": "reference", "path": "template/forge/alfa/alfa.py.j2" },
+    { "type": "guide", "path": "exchange/attachments/guides/mass_alfa_daily_cadence.md" }
+  ]
+}
+
