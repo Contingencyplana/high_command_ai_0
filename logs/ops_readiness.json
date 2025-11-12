@@ -1,0 +1,97 @@
+{
+  "timestamp_utc": "2025-11-12T08:58:44.291089+00:00",
+  "workspace": "high_command_ai_0",
+  "python": "3.12.6",
+  "hub_path": "C:\\Users\\Admin\\high_command_exchange",
+  "hub_exists": true,
+  "docs_present": {
+    "C:\\Users\\Admin\\high_command_ai_0\\RUNBOOK.md": false
+  },
+  "staged_checks": [
+    {
+      "kind": "order",
+      "file": "hc_test.json",
+      "missing": [
+        "id",
+        "workspace",
+        "title",
+        "status",
+        "created_at",
+        "attachments"
+      ]
+    },
+    {
+      "kind": "order",
+      "file": "order-2025-11-07-044.json",
+      "missing": [
+        "id",
+        "workspace",
+        "title",
+        "status",
+        "created_at"
+      ]
+    },
+    {
+      "kind": "order",
+      "file": "order-2025-11-09-045.json",
+      "missing": [
+        "id",
+        "workspace",
+        "title",
+        "status",
+        "created_at"
+      ]
+    },
+    {
+      "kind": "order",
+      "file": "order-2025-11-13-905.json",
+      "missing": []
+    },
+    {
+      "kind": "order",
+      "file": "toyfoundry_test.json",
+      "missing": [
+        "id",
+        "workspace",
+        "title",
+        "status",
+        "created_at",
+        "attachments"
+      ]
+    },
+    {
+      "kind": "ack",
+      "file": "order-2025-11-13-905-ack.json",
+      "missing": []
+    },
+    {
+      "kind": "report",
+      "file": "order-2025-10-16-035-result.json",
+      "missing": [
+        "report_id",
+        "workspace",
+        "summary",
+        "created_at",
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "report",
+      "file": "order-2025-11-07-044-report.json",
+      "missing": [
+        "order_id",
+        "report_id",
+        "workspace",
+        "summary",
+        "created_at",
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "report",
+      "file": "order-2025-11-13-905-report.json",
+      "missing": []
+    }
+  ],
+  "ok": false
+}

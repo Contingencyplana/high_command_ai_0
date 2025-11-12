@@ -1,0 +1,82 @@
+{
+  "timestamp_utc": "2025-11-12T08:59:09.139119+00:00",
+  "workspace": "high_command_ai_0",
+  "hub_path": "C:\\Users\\Admin\\high_command_exchange",
+  "validated_ok": false,
+  "validation_errors": [
+    {
+      "kind": "orders",
+      "file": "hc_test.json",
+      "missing": [
+        "id",
+        "workspace",
+        "title",
+        "status",
+        "created_at",
+        "attachments"
+      ]
+    },
+    {
+      "kind": "orders",
+      "file": "order-2025-11-07-044.json",
+      "missing": [
+        "id",
+        "workspace",
+        "title",
+        "status",
+        "created_at"
+      ]
+    },
+    {
+      "kind": "orders",
+      "file": "order-2025-11-09-045.json",
+      "missing": [
+        "id",
+        "workspace",
+        "title",
+        "status",
+        "created_at"
+      ]
+    },
+    {
+      "kind": "orders",
+      "file": "toyfoundry_test.json",
+      "missing": [
+        "id",
+        "workspace",
+        "title",
+        "status",
+        "created_at",
+        "attachments"
+      ]
+    },
+    {
+      "kind": "reports",
+      "file": "order-2025-10-16-035-result.json",
+      "missing": [
+        "report_id",
+        "workspace",
+        "summary",
+        "created_at",
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "reports",
+      "file": "order-2025-11-07-044-report.json",
+      "missing": [
+        "order_id",
+        "report_id",
+        "workspace",
+        "summary",
+        "created_at",
+        "artifacts"
+      ]
+    }
+  ],
+  "copied": {
+    "orders": [],
+    "reports": [],
+    "acks": []
+  }
+}

@@ -1,123 +1,100 @@
-"""
-exchange_all.py — One smart command to tidy the exchange after a work block.
-
-Workflow (auto):
-- Heartbeat (detect hub path and write test)
-- Push (only if exchange/outbox has files)
-- Pull with --move (ingest peers; clean hub copies)
-- Ledger update
-- Validator (if available)
-
-Flags:
-- --no-move           Disable hub cleanup on pull
-- --skip-validator    Skip validator run
-- --push-only         Only push (skip pull/update/validate)
-- --pull-only         Only pull/update/validate (skip push)
-"""
-
-from __future__ import annotations
-
-import argparse
+import json, os, sys, shutil
 from pathlib import Path
-from typing import Optional
-import importlib.util
-import sys
+from datetime import datetime, timezone
 
+WORKSPACE = "high_command_ai_0"
+ROOT = Path(__file__).resolve().parents[1]
+LOGS = ROOT / "logs"
 
-def _has_files(p: Path) -> bool:
-    return p.exists() and any(child.is_file() for child in p.rglob("*"))
+ORDERS_SUB = Path("exchange/orders/dispatched")
+REPORTS_SUB = Path("exchange/reports/archived")
+ACKS_SUB = Path("exchange/acknowledgements/logged")
 
+def iso_now():
+    return datetime.now(timezone.utc).isoformat()
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description="Smart exchange tidy: heartbeat → push → pull → update → validate")
-    parser.add_argument("--no-move", action="store_true", help="Do not remove files from hub after pull")
-    parser.add_argument("--skip-validator", action="store_true", help="Skip validator run")
-    parser.add_argument("--push-only", action="store_true", help="Only push local outbox to hub")
-    parser.add_argument("--pull-only", action="store_true", help="Only pull from hub and validate")
-    args = parser.parse_args()
-
-    repo_root = Path(__file__).resolve().parents[1]
-    def _load_module(mod_name: str, file: Path):
-        try:
-            spec = importlib.util.spec_from_file_location(mod_name, str(file))
-            if not spec or not spec.loader:
-                return None
-            mod = importlib.util.module_from_spec(spec)
-            sys.modules[mod_name] = mod
-            spec.loader.exec_module(mod)
-            return mod
-        except Exception:
-            return None
-
-    # Try heartbeat
-    hb = 0
-    hb_mod = _load_module("exchange_heartbeat", repo_root / "tools" / "exchange_heartbeat.py")
-    if hb_mod and hasattr(hb_mod, "heartbeat"):
-        try:
-            hb = hb_mod.heartbeat()
-        except Exception:
-            print("[WARN] Heartbeat failed; continuing")
-    else:
-        print("[WARN] Heartbeat module not available; continuing")
-
-    # Resolve bridge config and helpers
-    bridge_mod = _load_module("offline_bridge", repo_root / "tools" / "offline_bridge.py")
-    if not bridge_mod or not hasattr(bridge_mod, "resolve_config"):
-        print("[ERROR] Bridge not available")
-        return 2
-    cfg = bridge_mod.resolve_config()
-
-    outbox = repo_root / "exchange" / "outbox"
-
-    # Push phase (unless explicitly pull-only)
-    if not args.pull_only:
-        if _has_files(outbox):
-            try:
-                pushed = bridge_mod.push(cfg)
-                print(f"[all] Pushed {pushed} file(s)")
-            except Exception as e:
-                print(f"[WARN] Push failed: {e}")
-        else:
-            print("[all] No local outbox files to push")
-        if args.push_only:
-            # Optionally return non-zero on failed heartbeat
-            return 0 if hb == 0 else 1
-
-    # Pull phase
+def read_hub_path():
+    env = os.environ.get("SHAGI_EXCHANGE_PATH")
+    if env:
+        return Path(env)
+    cfg = ROOT / "exchange" / "config.json"
     try:
-        pulled = bridge_mod.pull(cfg, move=not args.no_move)
-        print(f"[all] Pulled {pulled} file(s)")
-    except Exception as e:
-        print(f"[WARN] Pull failed: {e}")
+        if cfg.exists():
+            obj = json.loads(cfg.read_text(encoding="utf-8"))
+            hp = obj.get("hub_path")
+            if hp:
+                return Path(hp)
+    except Exception:
+        pass
+    return None
 
-    # Ledger update
-    led_mod = _load_module("ledger_update", repo_root / "tools" / "ledger_update.py")
-    if led_mod and hasattr(led_mod, "update_ledger"):
-        try:
-            changed = led_mod.update_ledger(repo_root)
-            print(f"[all] Ledger updated, {changed} change(s)")
-        except Exception as e:
-            print(f"[WARN] Ledger update failed: {e}")
-    else:
-        print("[INFO] Ledger updater not available; skipping")
+def collect_staged():
+    return {
+        "orders": list((ROOT/"outbox"/"orders").glob("*.json")),
+        "reports": list((ROOT/"outbox"/"reports").glob("*.json")),
+        "acks": list((ROOT/"outbox"/"acks").glob("*.json")),
+    }
 
-    # Validator (optional)
-    if not args.skip_validator:
-        val_mod = _load_module("exchange_validator", repo_root / "tools" / "exchange_validator.py")
-        if val_mod and hasattr(val_mod, "main"):
+def validate(files_by_kind):
+    missing = []
+    def fields_for(kind):
+        return {
+            "orders": ["id","workspace","title","status","created_at","attachments"],
+            "acks": ["order_id","ack_id","workspace","ack_timestamp","notes"],
+            "reports": ["order_id","report_id","workspace","summary","created_at","artifacts"],
+        }[kind]
+    for kind, files in files_by_kind.items():
+        req = fields_for(kind)
+        for f in files:
             try:
-                code = val_mod.main()
-                if code == 0:
-                    print("[all] Validator OK")
-                else:
-                    print("[all] Validator reported inconsistencies")
+                obj = json.loads(f.read_text(encoding="utf-8"))
             except Exception:
-                print("[WARN] Validator failed")
-        else:
-            print("[INFO] Validator not available; skipping")
+                missing.append({"kind": kind, "file": f.name, "missing": ["invalid_json"]})
+                continue
+            miss = [k for k in req if obj.get(k) is None]
+            if miss:
+                missing.append({"kind": kind, "file": f.name, "missing": miss})
+    return missing
 
-    return 0
+def main():
+    hub = read_hub_path()
+    if not hub:
+        print("No hub path. Set SHAGI_EXCHANGE_PATH or edit exchange/config.json.", file=sys.stderr)
+        sys.exit(2)
+    files = collect_staged()
+    missing = validate(files)
+    ok = len(missing) == 0
 
+    summary = {
+        "timestamp_utc": iso_now(),
+        "workspace": WORKSPACE,
+        "hub_path": str(hub),
+        "validated_ok": ok,
+        "validation_errors": missing,
+        "copied": {"orders": [], "reports": [], "acks": []},
+    }
+
+    LOGS.mkdir(parents=True, exist_ok=True)
+    out = LOGS/"exchange_all.json"
+
+    if not ok:
+        out.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+        print(f"Validation failed. See {out}")
+        sys.exit(1)
+
+    (hub/ORDERS_SUB).mkdir(parents=True, exist_ok=True)
+    (hub/REPORTS_SUB).mkdir(parents=True, exist_ok=True)
+    (hub/ACKS_SUB).mkdir(parents=True, exist_ok=True)
+
+    for kind, dest_sub in (("orders", ORDERS_SUB), ("reports", REPORTS_SUB), ("acks", ACKS_SUB)):
+        for f in files[kind]:
+            dest = hub/dest_sub/f.name
+            shutil.copy2(f, dest)
+            summary["copied"][kind].append(f.name)
+
+    out.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    print(f"exchange_all complete. See {out}")
+    sys.exit(0)
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()

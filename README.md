@@ -106,6 +106,11 @@ When GitHub returns, snapshot the exchange folder and push as a single commit be
 - Troubleshooting appendix lives in the playbook; review before escalating layered incidents.
 
 ---
+## Python commands (standard across Genesis workspaces)
+- Readiness: `python -m tools.ops_readiness`
+- Exchange (validate + sync): `python tools/exchange_all.py`
+
+---
 
 ## 3. Relationship to the Theatres  
 
