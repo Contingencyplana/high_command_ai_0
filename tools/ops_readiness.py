@@ -2,7 +2,8 @@ import json, os, sys
 from pathlib import Path
 from datetime import datetime, timezone
 
-WORKSPACE = "high_command_ai_0"
+import os as _os
+WORKSPACE = _os.environ.get("WORKSPACE_NAME") or Path(__file__).resolve().parents[1].name
 ROOT = Path(__file__).resolve().parents[1]
 LOGS = ROOT / "logs"
 
@@ -46,10 +47,25 @@ def staged_missing_fields(root: Path):
             checks.append({"kind": kind, "file": f.name, "missing": missing})
     return checks
 
+def _find_runbook(root: Path, workspace: str) -> dict:
+    candidates = [
+        root / "RUNBOOK.md",
+        root / "runbook.md",
+        # High Command alt location for workspace-specific runbooks
+        root / "planning" / "workspaces" / workspace / "RUNBOOK.md",
+    ]
+    present = {}
+    for p in candidates:
+        present[str(p)] = p.exists()
+        if p.exists():
+            # Stop at first hit
+            break
+    return present
+
+
 def main():
     hub = read_hub_path()
-    files_expect = [ROOT/"RUNBOOK.md"]
-    docs_present = {str(p): p.exists() for p in files_expect}
+    docs_present = _find_runbook(ROOT, WORKSPACE)
     staged_checks = staged_missing_fields(ROOT)
     has_missing = any(c["missing"] for c in staged_checks)
     hub_ok = bool(hub and hub.exists())
@@ -61,7 +77,9 @@ def main():
         "hub_exists": hub_ok,
         "docs_present": docs_present,
         "staged_checks": staged_checks,
-        "ok": hub_ok and all(docs_present.values()) and not has_missing,
+        # Consider OK if hub exists, at least one runbook location is present
+        # (or explicitly skipped), and there are no staged missing fields.
+        "ok": bool(hub_ok and any(docs_present.values()) and not has_missing),
     }
     LOGS.mkdir(parents=True, exist_ok=True)
     out = LOGS/"ops_readiness.json"
