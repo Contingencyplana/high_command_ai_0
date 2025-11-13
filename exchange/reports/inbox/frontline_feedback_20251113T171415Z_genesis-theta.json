@@ -1,0 +1,13 @@
+{
+  "schema": "frontline-feedback@1.0",
+  "submitted_at": "2025-11-13T17:14:15Z",
+  "workspace": "genesis-theta",
+  "operator": "op-ritual-03",
+  "responses": {
+    "layer_focus": "both",
+    "experience_rating": 5,
+    "music_support": "boosts",
+    "ritual_dependency": "supportive",
+    "note": "Staggered entry plus delta parallelization removed the cooldown wall; queue never backed up past 40%."
+  }
+}

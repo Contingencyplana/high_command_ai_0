@@ -1,0 +1,13 @@
+{
+  "schema": "frontline-feedback@1.0",
+  "submitted_at": "2025-11-13T17:14:02Z",
+  "workspace": "genesis-delta",
+  "operator": "op-combined-03",
+  "responses": {
+    "layer_focus": "both",
+    "experience_rating": 5,
+    "music_support": "boosts",
+    "ritual_dependency": "supportive",
+    "note": "Parallel ritual lanes cleared the night cooldown spike; throughput steady even at +20% load."
+  }
+}

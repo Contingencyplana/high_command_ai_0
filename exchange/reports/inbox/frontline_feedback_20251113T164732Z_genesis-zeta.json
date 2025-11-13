@@ -1,0 +1,13 @@
+{
+  "schema": "frontline-feedback@1.0",
+  "submitted_at": "2025-11-13T16:47:32Z",
+  "workspace": "genesis-zeta",
+  "operator": "op-music-09",
+  "responses": {
+    "layer_focus": "music",
+    "experience_rating": 4,
+    "music_support": "boosts",
+    "ritual_dependency": "supportive",
+    "note": "Night-drill preset patched; fallback mix keeps ritual cues in sync; no clashes after retune."
+  }
+}
