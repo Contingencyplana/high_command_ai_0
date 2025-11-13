@@ -1,69 +1,24 @@
 {
-  "timestamp_utc": "2025-11-13T08:03:49.663216+00:00",
+  "timestamp_utc": "2025-11-13T16:23:20.532230+00:00",
   "workspace": "high_command_ai_0",
   "hub_path": "C:\\Users\\Admin\\high_command_exchange",
   "validated_ok": true,
-  "validation_errors": [
-    {
-      "kind": "orders",
-      "file": "hc_test.json",
-      "missing": [
-        "id",
-        "workspace",
-        "title",
-        "status",
-        "created_at",
-        "attachments"
-      ]
-    },
-    {
-      "kind": "orders",
-      "file": "toyfoundry_test.json",
-      "missing": [
-        "id",
-        "workspace",
-        "title",
-        "status",
-        "created_at",
-        "attachments"
-      ]
-    },
-    {
-      "kind": "reports",
-      "file": "order-2025-10-16-035-result.json",
-      "missing": [
-        "report_id",
-        "workspace",
-        "summary",
-        "created_at",
-        "artifacts"
-      ]
-    },
-    {
-      "kind": "reports",
-      "file": "order-2025-11-07-044-report.json",
-      "missing": [
-        "order_id",
-        "report_id",
-        "workspace",
-        "summary",
-        "created_at",
-        "artifacts"
-      ]
-    }
-  ],
+  "validation_errors": [],
   "copied": {
     "orders": [
+      "hc_test.json",
       "order-2025-11-07-044.json",
       "order-2025-11-09-045.json",
-      "order-2025-11-13-905.json"
+      "order-2025-11-13-905.json",
+      "toyfoundry_test.json"
     ],
     "reports": [
+      "order-2025-10-16-035-result.json",
+      "order-2025-11-07-044-report.json",
       "order-2025-11-13-905-report.json"
     ],
     "acks": [
       "order-2025-11-13-905-ack.json"
     ]
-  },
-  "note": "Some staged files failed validation and were skipped."
+  }
 }

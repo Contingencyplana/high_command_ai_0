@@ -1,48 +1,27 @@
 {
-  "timestamp_utc": "2025-11-13T08:04:18.909725+00:00",
+  "timestamp_utc": "2025-11-13T16:23:11.950539+00:00",
   "workspace": "high_command_ai_0",
   "python": "3.12.6",
   "hub_path": "C:\\Users\\Admin\\high_command_exchange",
   "hub_exists": true,
   "docs_present": {
-    "C:\\Users\\Admin\\high_command_ai_0\\RUNBOOK.md": false,
-    "C:\\Users\\Admin\\high_command_ai_0\\runbook.md": false,
-    "C:\\Users\\Admin\\high_command_ai_0\\planning\\workspaces\\high_command_ai_0\\RUNBOOK.md": false
+    "C:\\Users\\Admin\\high_command_ai_0\\RUNBOOK.md": true
   },
   "staged_checks": [
     {
       "kind": "order",
       "file": "hc_test.json",
-      "missing": [
-        "id",
-        "workspace",
-        "title",
-        "status",
-        "created_at",
-        "attachments"
-      ]
+      "missing": []
     },
     {
       "kind": "order",
       "file": "order-2025-11-07-044.json",
-      "missing": [
-        "id",
-        "workspace",
-        "title",
-        "status",
-        "created_at"
-      ]
+      "missing": []
     },
     {
       "kind": "order",
       "file": "order-2025-11-09-045.json",
-      "missing": [
-        "id",
-        "workspace",
-        "title",
-        "status",
-        "created_at"
-      ]
+      "missing": []
     },
     {
       "kind": "order",
@@ -52,14 +31,7 @@
     {
       "kind": "order",
       "file": "toyfoundry_test.json",
-      "missing": [
-        "id",
-        "workspace",
-        "title",
-        "status",
-        "created_at",
-        "attachments"
-      ]
+      "missing": []
     },
     {
       "kind": "ack",
@@ -69,25 +41,12 @@
     {
       "kind": "report",
       "file": "order-2025-10-16-035-result.json",
-      "missing": [
-        "report_id",
-        "workspace",
-        "summary",
-        "created_at",
-        "artifacts"
-      ]
+      "missing": []
     },
     {
       "kind": "report",
       "file": "order-2025-11-07-044-report.json",
-      "missing": [
-        "order_id",
-        "report_id",
-        "workspace",
-        "summary",
-        "created_at",
-        "artifacts"
-      ]
+      "missing": []
     },
     {
       "kind": "report",
@@ -95,5 +54,5 @@
       "missing": []
     }
   ],
-  "ok": false
+  "ok": true
 }

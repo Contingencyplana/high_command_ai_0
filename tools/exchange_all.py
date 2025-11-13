@@ -2,8 +2,9 @@ import json, os, sys, shutil
 from pathlib import Path
 from datetime import datetime, timezone
 
-WORKSPACE = os.environ.get("WORKSPACE_NAME") or Path(__file__).resolve().parents[1].name
-ROOT = Path(__file__).resolve().parents[1]
+_DEFAULT_ROOT = Path(__file__).resolve().parents[1]
+WORKSPACE = os.environ.get("WORKSPACE_NAME") or _DEFAULT_ROOT.name
+ROOT = Path(os.environ.get("WORKSPACE_ROOT") or _DEFAULT_ROOT)
 LOGS = ROOT / "logs"
 
 ORDERS_SUB = Path("exchange/orders/dispatched")

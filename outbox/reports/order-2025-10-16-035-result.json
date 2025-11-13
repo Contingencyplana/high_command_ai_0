@@ -1,5 +1,10 @@
 {
-  "order_id": "035",
+  "order_id": "order-2025-10-16-035",
+  "report_id": "order-2025-10-16-035-result",
+  "workspace": "high_command_ai_0",
+  "summary": "Dry-run telemetry sample validated watcher caps; archived for provenance.",
+  "created_at": "2025-10-16T15:20:00Z",
+  "artifacts": [],
   "started_at": "",
   "expected_end_at": "",
   "status": "success",

@@ -1,0 +1,89 @@
+{
+  "schema": "field-report@1.0",
+  "report_id": "order-2025-11-10-046-report",
+  "origin": "high_command_ai_0",
+  "relates_to": "order-2025-11-10-046",
+  "timestamp_submitted": "2025-11-10T15:50:00Z",
+  "status": "completed",
+  "summary": "Order 046 closed: Lore layer metadata threads are live end-to-end, Alfa Zero exposes an operator-controlled toggle, evidence captured via contracts/tests, and comfort/outlands guides refreshed with consent notes.",
+  "operations": [
+    {
+      "step": 1,
+      "directive": "extend_trace_payloads",
+      "status": "completed",
+      "notes": [
+        "overlay_flow.py, overlay_bridge.py, trace_utils.py, and telemetry/narrator shells now accept overlay_id + layer_kind; payload telemetry stubs include matched metadata.",
+        "Validated dispatch path through python -m tools.contract_test_runner --case overlay_lore_dispatch."
+      ]
+    },
+    {
+      "step": 2,
+      "directive": "add_ui_toggle",
+      "status": "completed",
+      "notes": [
+        "alfa_zero_ui.py exposes a Lore overlay toggle with explicit consent gating and session telemetry stitches."
+      ]
+    },
+    {
+      "step": 3,
+      "directive": "capture_activation_evidence",
+      "status": "completed",
+      "notes": [
+        "Lore dispatch proof captured via overlay_lore_dispatch contract sample; payload extensions carry overlay metadata and matching trace_id."
+      ]
+    },
+    {
+      "step": 4,
+      "directive": "author_regression",
+      "status": "completed",
+      "notes": [
+        "Added overlay lore coverage to tests/test_overlay_flow.py and refreshed contract runner suite; full python -m tools.contract_test_runner run passes."
+      ]
+    },
+    {
+      "step": 5,
+      "directive": "refresh_guides",
+      "status": "completed",
+      "notes": [
+        "comfort_happy_path.md, automation_quick_start.md, outlands_index.md, and planning/inlands_and_outlands.md describe the Lore activation protocol and cooldown notes."
+      ]
+    },
+    {
+      "step": 6,
+      "directive": "report_completion",
+      "status": "completed",
+      "notes": [
+        "Ledger updated (exchange/ledger/2025-11.md) and this report filed for War Office review."
+      ]
+    }
+  ],
+  "artifacts": {
+    "contracts": [
+      "contract_samples/cases/overlay_lore_dispatch.json"
+    ],
+    "tests": [
+      "python -m pytest tests/test_overlay_flow.py",
+      "python -m tools.contract_test_runner --case overlay_lore_dispatch",
+      "python -m tools.contract_test_runner"
+    ],
+    "code": [
+      "golf_00/delta_00/alfa_00/overlay_bridge.py",
+      "golf_00/delta_00/alfa_00/overlay_flow.py",
+      "golf_00/delta_00/alfa_00/alfa_zero_ui.py",
+      "golf_00/delta_00/alfa_00/trace_utils.py",
+      "golf_00/delta_00/alfa_02/narrator_shell.py",
+      "golf_00/delta_00/alfa_03/telemetry_shell.py",
+      "tools/contract_test_runner.py"
+    ],
+    "documentation": [
+      "exchange/attachments/guides/comfort_happy_path.md",
+      "exchange/attachments/guides/automation_quick_start.md",
+      "exchange/attachments/guides/outlands_index.md",
+      "planning/inlands_and_outlands.md"
+    ]
+  },
+  "follow_ups": [
+    "Scope music and ritual layer pilots using the Lore toggle scaffolding once operator feedback lands.",
+    "Coordinate with War Office on ack for order-2025-11-09-045 to retire interim draft report." 
+  ]
+}
