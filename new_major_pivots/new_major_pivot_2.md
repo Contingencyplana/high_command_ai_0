@@ -34,10 +34,10 @@ Each **Alfa** is:
 
 1. **Spawn:** Operator enters Alfa battleground (grid displays current state via emoji)
 2. **Play:** Operator clicks grid cells to issue tactical commands
-3. **Execute:** High Command translates clicks → factory-orders → Toyfoundry/Toysoldiers execute
+3. **Execute:** High Command translates clicks -> factory-orders -> Toyfoundry/Toysoldiers execute
 4. **Resolve:** Telemetry feeds back as grid updates (success = ✅, failure = ❌)
-5. **Victory:** Task completes (tests pass, deployment succeeds) → route to next critical Alfa
-6. **Defeat:** Task fails → respawn with adjusted strategy (debug mode, retry with different parameters)
+5. **Victory:** Task completes (tests pass, deployment succeeds) -> route to next critical Alfa
+6. **Defeat:** Task fails -> respawn with adjusted strategy (debug mode, retry with different parameters)
 
 ### Routing & Progression
 
@@ -53,15 +53,15 @@ Each **Alfa** is:
 
 ```
 ┌──────────────────────────────────────┐
-│  Game Client (16×16 Emoji Grids)    │  ← Human operator plays here
+│  Game Client (16×16 Emoji Grids)    │  <- Human operator plays here
 ├──────────────────────────────────────┤
-│  Grid Controller (Python/TypeScript)│  ← Translates clicks → orders
+│  Grid Controller (Python/TypeScript)│  <- Translates clicks -> orders
 ├──────────────────────────────────────┤
-│  High Command Exchange Protocol      │  ← Issues factory-orders
+│  High Command Exchange Protocol      │  <- Issues factory-orders
 ├──────────────────────────────────────┤
-│  AI Agents (Toyfoundry, Toysoldiers)│  ← Execute VSCode/PowerShell/git/Azure ops
+│  AI Agents (Toyfoundry, Toysoldiers)│  <- Execute VSCode/PowerShell/git/Azure ops
 ├──────────────────────────────────────┤
-│  Telemetry Quilt Loom                │  ← Aggregates outcomes → grid state
+│  Telemetry Quilt Loom                │  <- Aggregates outcomes -> grid state
 └──────────────────────────────────────┘
 ```
 
@@ -83,9 +83,9 @@ Each **Alfa** is:
 - **Rows C-F:** Danger zones (🔥 errors, ⚠️ warnings, ❌ failures)
 
 **Player Actions:**
-- Click `[0][0]` (🏔️) → "Extract ore" → High Command issues `extract_ore` order
-- Click `[4][4]` (🔨) → "Forge batch" → Toyfoundry executes Forge ritual
-- Click `[8][8]` (🚢) → "Ship units" → If 10 units ready, **victory**
+- Click `[0][0]` (🏔️) -> "Extract ore" -> High Command issues `extract_ore` order
+- Click `[4][4]` (🔨) -> "Forge batch" -> Toyfoundry executes Forge ritual
+- Click `[8][8]` (🚢) -> "Ship units" -> If 10 units ready, **victory**
 
 **Victory Condition:** Ship 10 ⚔️ swords within 20 turns  
 **Defeat Condition:** Timeout, 3 failed quality checks, or resource depletion
@@ -104,10 +104,12 @@ Each **Alfa** is:
 
 ## Dependencies
 
-- **Major Pivot One** — requires 70/30 ratio to justify game layer investment
-- **Major Pivot Four** — requires fractal folder structure (golf_00–15) for 4,096 Alfas
-- **Exchange Protocol** — must support real-time order issuance from game client
-- **Telemetry Quilt** — must feed grid state updates at <1s latency
+- **Major Pivot One** - requires 70/30 ratio to justify game layer investment
+- **Major Pivot Four** - requires fractal folder structure (golf_00-15) for 4,096 Alfas
+- **Exchange Protocol** - must support real-time order issuance from game client
+- **Telemetry Quilt** - must feed grid state updates at <1s latency
+
+**Scope reminder:** The 70/30 cadence only governs the Vision Holder, contracted contributors, and AI agents; public Nightlands players stay 100% in the game layer with no exposure to code or tooling.
 
 ---
 
@@ -139,13 +141,13 @@ Each **Alfa** is:
 ### Phase 1: Alfa Zero Prototype (1 week)
 
 - Build one playable 16×16 grid (static first, then live) in `golf_00/delta_00/alfa_00/`
-- Wire to exchange protocol (clicks → orders → reports → grid updates)
+- Wire to exchange protocol (clicks -> orders -> reports -> grid updates)
 - Validate victory/defeat conditions
 
 ### Phase 2: Fractal Expansion (2-4 weeks)
 
-- Clone Alfa Zero → 16 variants (populate full `golf_00/delta_00/` sector)
-- Implement routing algorithm (victory → next priority Alfa)
+- Clone Alfa Zero -> 16 variants (populate full `golf_00/delta_00/` sector)
+- Implement routing algorithm (victory -> next priority Alfa)
 - Add save/load game state
 
 ### Phase 3: Full Deployment (2-3 months)
@@ -176,3 +178,4 @@ Each **Alfa** is:
 
 *"The best interface is the one you never have to think about—unless it's fun."*  
 — High Command Strategic Doctrine, Volume III
+

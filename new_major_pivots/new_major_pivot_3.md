@@ -100,9 +100,11 @@ The Four Major Pivots represent a **methodology change**, not a vision abandonme
 
 ## Dependencies
 
-- **Major Pivot One** — need 70/30 ratio to sustain long-term engagement
-- **Major Pivot Two** — playable overlay is delivery mechanism for Big Ideas content
-- **Major Pivot Four** — fractal structure organizes multiverse at scale
+- **Major Pivot One** - need 70/30 ratio to sustain long-term engagement
+- **Major Pivot Two** - playable overlay is delivery mechanism for Big Ideas content
+- **Major Pivot Four** - fractal structure organizes multiverse at scale
+
+**Scope reminder:** The 70/30 cadence only governs the Vision Holder, contracted contributors, and AI agents; public Nightlands players stay 100% in the game layer with no exposure to code or tooling.
 
 ---
 

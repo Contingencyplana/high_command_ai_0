@@ -26,8 +26,10 @@ Current workflow requires extensive interaction with:
 ## Pivot Description
 
 **Invert the ratio to:**
-- **70% play time** — interacting with game-like interfaces, making tactical decisions on battlegrids
-- **30% dev-ops time** — residual monitoring, strategic planning, high-level architecture
+- **70% play time** - interacting with game-like interfaces, making tactical decisions on battlegrids
+- **30% dev-ops time** - residual monitoring, strategic planning, high-level architecture
+
+**Scope:** This cadence governs the Vision Holder, any contracted contributors supporting the workflow, and AI players/agents responsible for development; public Nightlands players stay 100% inside the game layer with no exposure to code or tooling.
 
 **Mechanism:**
 - AI agents (High Command, Toyfoundry, Toysoldiers) handle VSCode/PowerShell/GitHub/Azure operations autonomously
@@ -38,9 +40,9 @@ Current workflow requires extensive interaction with:
 
 ## Success Criteria
 
-1. ✅ **Human operator spends ≥70% of session time** in game interface (battlegrids, tactical decisions)
-2. ✅ **Dev-ops tasks automated** — commits, deployments, telemetry monitoring handled by AI agents
-3. ✅ **Manual coding interventions ≤30%** of total time
+1. ✅ **Human operator spends >=70% of session time** in game interface (battlegrids, tactical decisions; metric applies only to the Vision Holder, contracted contributors, and AI agents)
+2. ✅ **Dev-ops tasks automated** - commits, deployments, telemetry monitoring handled by AI agents
+3. ✅ **Manual coding interventions <=30%** of total time
 4. ✅ **Workflow efficiency maintained or improved** (throughput, quality metrics remain green)
 
 ---
