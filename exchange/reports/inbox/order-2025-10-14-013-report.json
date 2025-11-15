@@ -1,0 +1,83 @@
+{
+  "schema": "field-report@1.0",
+  "report_id": "order-2025-10-14-013-report",
+  "relates_to": "order-2025-10-14-013",
+  "origin": "toysoldiers_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_sent": "2025-10-15T00:44:00Z",
+  "status": "ready_for_review",
+  "summary": "Ingestion, validation, and monitoring readiness report for Toyfoundry composite exports.",
+  "sources": {
+    "sample_json": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.json",
+    "sample_csv": ".imports/toyfoundry/telemetry/quilt/exports/samples/composite_export.sample.csv",
+    "export_schema_path": ".imports/toyfoundry/telemetry/quilt/exports/export_schema.md"
+  },
+  "ingestion_log": {
+    "records_total": 8,
+    "parse_errors": [],
+    "notes": [],
+    "json": {
+      "path": ".imports\\toyfoundry\\telemetry\\quilt\\exports\\samples\\composite_export.sample.json",
+      "records": 4,
+      "fields": [
+        "batch_id",
+        "duration_ms",
+        "ritual",
+        "status",
+        "units_processed"
+      ],
+      "sha256": "1dcfe5a8362f620a9e0512b6155e6eec421e4d9d189d1e2a190f6da485041757"
+    },
+    "csv": {
+      "path": ".imports\\toyfoundry\\telemetry\\quilt\\exports\\samples\\composite_export.sample.csv",
+      "records": 4,
+      "fields": [
+        "batch_id",
+        "duration_ms",
+        "ritual",
+        "status",
+        "units_processed"
+      ],
+      "sha256": "1c4497c33c5d04f29581cc4caada8edff6c54ff850d6040048083995e2befb94"
+    }
+  },
+  "schema_validation": {
+    "expected_version": "v1.0",
+    "confirmed_version": "v1.0",
+    "field_mismatches": [],
+    "unexpected_fields": []
+  },
+  "monitoring": {
+    "notes": [
+      "Run tools/validate_exports.ps1 to ingest Toyfoundry samples and update this report.",
+      "Alert on ingestion or validation failures reported in exchange/logs once automation is wired."
+    ]
+  },
+  "acceptance": {
+    "status": "accepted",
+    "constraints": [],
+    "blockers": []
+  },
+  "dq_checks": {
+    "non_empty": {
+      "passed": true,
+      "details": []
+    },
+    "allowed_rituals": {
+      "passed": true,
+      "details": []
+    },
+    "units_positive": {
+      "passed": true,
+      "details": []
+    },
+    "duration_ms_range": {
+      "passed": true,
+      "details": []
+    },
+    "allowed_status": {
+      "passed": true,
+      "details": []
+    }
+  }
+}
