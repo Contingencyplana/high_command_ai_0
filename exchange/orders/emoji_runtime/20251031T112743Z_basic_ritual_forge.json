@@ -1,0 +1,25 @@
+{
+  "template": "basic_ritual",
+  "actor": "actor.forge",
+  "verb": "verb.craft",
+  "target": "actor.ally",
+  "qualifiers": [],
+  "outcomes": [
+    "outcome.success"
+  ],
+  "spoken": [
+    "forge",
+    "craft",
+    "ally",
+    "victory"
+  ],
+  "raw": [
+    "🛠️",
+    "⚒️",
+    "🤖",
+    "✅"
+  ],
+  "chain_name": "basic_ritual_forge",
+  "created_at": "2025-10-31T11:27:43.937301Z",
+  "source": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
+}

@@ -1,0 +1,33 @@
+{
+  "template": "signal_loop",
+  "actor": "actor.dream",
+  "verb": "verb.loop",
+  "target": null,
+  "qualifiers": [
+    "qualifier.idea"
+  ],
+  "outcomes": [
+    "outcome.gain"
+  ],
+  "spoken": [
+    "dream",
+    "bright",
+    "loop",
+    "rise"
+  ],
+  "raw": [
+    "🌌",
+    "💡",
+    "🔄",
+    "📈"
+  ],
+  "created_at": "2025-10-31T15:11:55.682574Z",
+  "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+  "chain_name": "signal_loop_strategy",
+  "overlay_description": "Project strategic directives through the targeting lattice",
+  "overlay_cell": {
+    "row": 8,
+    "col": 12,
+    "label": "8C"
+  }
+}

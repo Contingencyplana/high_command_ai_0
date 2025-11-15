@@ -1,0 +1,51 @@
+{
+  "template": "signal_loop",
+  "actor": "actor.dream",
+  "verb": "verb.loop",
+  "target": null,
+  "qualifiers": [
+    "qualifier.target"
+  ],
+  "outcomes": [
+    "outcome.success"
+  ],
+  "spoken": [
+    "dream",
+    "focus",
+    "loop",
+    "victory"
+  ],
+  "raw": [
+    "🌌",
+    "🎯",
+    "🔄",
+    "✅"
+  ],
+  "schema": "emoji-runtime@1.0",
+  "glyph_chain": [
+    "🌌",
+    "🎯",
+    "🔄",
+    "✅"
+  ],
+  "summary": "Dream focus loop -> victory",
+  "intent": {
+    "actor": "dream",
+    "action": "loop",
+    "target": "dream",
+    "qualifiers": [
+      "target"
+    ],
+    "outcome": "success"
+  },
+  "telemetry_stub": {
+    "batch_id": "dream-loop-20251101T112303160Z",
+    "ritual": "dream",
+    "units_processed": 4,
+    "status": "success",
+    "duration_ms": 0
+  },
+  "created_at": "2025-11-01T11:23:03.160702Z",
+  "chain_name": "signal_loop_coordination",
+  "source": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
+}

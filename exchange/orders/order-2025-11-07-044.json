@@ -1,0 +1,63 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-07-044",
+  "issued_by": "high_command_ai_0",
+  "target": "all_fronts",
+  "priority": "high",
+  "timestamp_issued": "2025-11-07T12:00:00Z",
+  "summary": "Relieve the President’s Burden — automation, comfort, playability",
+  "context": "Post‑Foundation lull: recent campaigns (040/041/043) closed core dependencies. Next, reduce routine operational load on High Command while improving everyday playability and narration coherence across workspaces.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "triage_inbox",
+      "details": "Clear exchange/reports/inbox by reviewing, archiving, and linking evidence in the ledger. Record outcomes and open questions in the campaign chronicle."
+    },
+    {
+      "step": 2,
+      "action": "verify_heartbeat_and_sync",
+      "details": "Run tools/exchange_heartbeat.py and tools/offline_sync_exchange.py in each workspace to confirm reachability and parity. Capture any drift and remediate."
+    },
+    {
+      "step": 3,
+      "action": "seed_runtime_shells",
+      "details": "Activate minimal narrator/telemetry shells in golf_00/delta_00/alfa_02 and alfa_03 to support monitoring and narration alignment (even as stubs)."
+    },
+    {
+      "step": 4,
+      "action": "extend_contract_coverage",
+      "details": "Add at least one contract case covering an automation path (ack/report flow, provenance retention). Ensure tools/contract_test_runner.py passes all cases."
+    },
+    {
+      "step": 5,
+      "action": "document_comfort_path",
+      "details": "Publish a 70/30 play/dev‑ops ‘happy path’ from overlay → logs → exchange sync. Cross‑link in planning/campaigns_and_lulls.md and exchange/attachments/guides/."
+    },
+    {
+      "step": 6,
+      "action": "file_completion_report",
+      "details": "Archive a completion report at exchange/reports/inbox/order-2025-11-07-044-report.json with evidence, test output, and next actions."
+    }
+  ],
+  "success_criteria": [
+    "Inbox triaged to zero pending items; ledger entries added",
+    "Heartbeat + sync verified across all workspaces; drift resolved",
+    "Minimal narrator/telemetry shells present in alfa_02/alfa_03",
+    "Contract suite passes including an automation-path case",
+    "Comfort doc published with clear operator steps"
+  ],
+  "dependencies": [
+    "order-2025-11-01-041",
+    "order-2025-11-02-043"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-11-14T23:59:59Z",
+  "attachments": [
+    { "type": "reference", "path": "planning/campaigns_and_lulls.md" },
+    { "type": "reference", "path": "tools/exchange_heartbeat.py" },
+    { "type": "reference", "path": "tools/offline_sync_exchange.py" },
+    { "type": "reference", "path": "tools/contract_test_runner.py" },
+    { "type": "reference", "path": "contract_samples/cases/basic_ritual_victory.json" }
+  ]
+}
+

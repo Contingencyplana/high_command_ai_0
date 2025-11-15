@@ -1,0 +1,47 @@
+{
+  "template": "basic_ritual",
+  "actor": "actor.forge",
+  "verb": "verb.craft",
+  "target": "actor.ally",
+  "qualifiers": [],
+  "outcomes": [
+    "outcome.success"
+  ],
+  "spoken": [
+    "forge",
+    "craft",
+    "ally",
+    "victory"
+  ],
+  "raw": [
+    "🛠️",
+    "⚒️",
+    "🤖",
+    "✅"
+  ],
+  "schema": "emoji-runtime@1.0",
+  "glyph_chain": [
+    "🛠️",
+    "⚒️",
+    "🤖",
+    "✅"
+  ],
+  "summary": "Forge craft ally -> victory",
+  "intent": {
+    "actor": "forge",
+    "action": "craft",
+    "target": "ally",
+    "qualifiers": [],
+    "outcome": "success"
+  },
+  "telemetry_stub": {
+    "batch_id": "forge-craft-20251101T112646000Z",
+    "ritual": "forge",
+    "units_processed": 4,
+    "status": "success",
+    "duration_ms": 0
+  },
+  "created_at": "2025-11-01T11:26:46.000985Z",
+  "chain_name": "basic_ritual_forge",
+  "source": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
+}

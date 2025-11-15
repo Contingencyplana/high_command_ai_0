@@ -1,0 +1,29 @@
+{
+  "template": "guarded_delivery",
+  "actor": "actor.field",
+  "verb": "verb.grow",
+  "target": "actor.wall",
+  "qualifiers": [
+    "qualifier.safe"
+  ],
+  "outcomes": [
+    "outcome.success"
+  ],
+  "spoken": [
+    "field",
+    "grow",
+    "safe",
+    "wall",
+    "victory"
+  ],
+  "raw": [
+    "🌾",
+    "🌿",
+    "🔒",
+    "🧱",
+    "✅"
+  ],
+  "chain_name": "harvest_guarded_wall",
+  "created_at": "2025-10-31T11:27:43.937301Z",
+  "source": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
+}

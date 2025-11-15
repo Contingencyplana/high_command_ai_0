@@ -36,6 +36,18 @@ Craft a contained Nightlands vignette that exercises the Lore and Music overlays
 - Guardrail blocks are also logged to session metrics as `storyboard_guardrail` events for postmortem review.
 - Targeted sync executions now append structured telemetry (counts, destinations, copied paths) alongside storyboard runs into `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl`.
 
+## Scoreboard & Cadence Artifacts
+
+- Placeholder scoreboard composites with annotation metadata now live under `exchange/attachments/media/nightlands_duet/` (`nightlands_duet_scoreboard_lore_invocation.png` / `.metadata.json` and `nightlands_duet_scoreboard_duet_crescendo.png` / `.metadata.json`). Use the manifest (`scoreboard_imagery_manifest.md`) to keep filenames and overlays aligned when swapping in higher-fidelity exports.
+- `exchange/attachments/guides/nightlands_duet_playtest_packet.md` embeds both scoreboard frames plus sync evidence so cohorts can rehearse briefing points without re-running the storyboard.
+- Cadence snapshots for storyboard runs + targeted sync executions live in `docs/nightlands_duet_telemetry_panel.md`; run the included script against `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl` during debriefs until the full dashboard returns.
+
+## Telemetry Dashboard Hook
+
+- `logs/alfa_zero/session_metrics.jsonl` remains the canonical local source for duet dispatch + targeted sync events; every storyboard run must ensure the append-only feed at `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl` is updated via the Alfa Zero UI instrumentation.
+- The interim dashboard documented in `docs/nightlands_duet_telemetry_panel.md` reads directly from that feed. After each run, execute the snapshot helpers in that scroll and drop the rendered table into `exchange/attachments/guides/nightlands_duet_session_metrics_excerpt.jsonl` so the broader telemetry notebook can ingest it.
+- When the shared telemetry dashboard tooling returns, publish the latest excerpt plus script output alongside the duet scoreboard imagery; this keeps the Operator Brief and Nightlands campaign summaries aligned without parsing raw logs.
+
 ## Operator Checklist
 
 1. Run `storyboard status` to confirm cooldown, last run, and toggle requirements.
@@ -44,6 +56,7 @@ Craft a contained Nightlands vignette that exercises the Lore and Music overlays
 3. Execute `storyboard run` and monitor output summary plus telemetry log. The action log (`logs/alfa_zero/play_session_actions.log`) captures trace, force flag, and payload references automatically.
    - Status output now shows the remaining cooldown timer and the next eligible timestamp; only use `storyboard run force` if explicitly cleared.
 4. Review `logs/alfa_zero/session_metrics.jsonl` to verify both dispatch steps and the `storyboard_run` aggregate were recorded, then confirm the append-only feed at `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl` picked up the run and any follow-on targeted sync.
+   - Capture updated scoreboard snapshots or reuse the staged composites from `exchange/attachments/media/nightlands_duet/` for briefings; keep `exchange/attachments/guides/nightlands_duet_playtest_packet.md` in sync.
 5. Append ledger entry (`exchange/ledger/2025-11.md`) citing the duet run and evidence log path.
 6. File telemetry snippets or screenshots into the applicable report when closing the work order.
 

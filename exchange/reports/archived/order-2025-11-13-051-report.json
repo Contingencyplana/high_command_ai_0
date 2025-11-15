@@ -40,7 +40,7 @@
       "directive": "refresh_docs",
       "status": "completed",
       "notes": [
-        "Updated `planning/alfa_zero_targeted_sync_scope.md`, `planning/document_refresh_queue.md`, and `planning/alfa_zero_nightlands_duet_storyboard.md` with telemetry feed guidance.",
+        "Updated `planning/alfa_zero_targeted_sync_scope.md`, `planning/commonwealth_loop/doc_refresh_queue.md`, and `planning/alfa_zero_nightlands_duet_storyboard.md` with telemetry feed guidance.",
         "Playtest packet follow-up notes reference the feed and interim panel to keep cohorts aligned."
       ]
     },
@@ -70,7 +70,7 @@
     },
     "documentation": [
       "planning/alfa_zero_targeted_sync_scope.md",
-      "planning/document_refresh_queue.md",
+      "planning/commonwealth_loop/doc_refresh_queue.md",
       "planning/alfa_zero_nightlands_duet_storyboard.md",
       "exchange/attachments/guides/nightlands_duet_playtest_packet.md",
       "docs/nightlands_duet_telemetry_panel.md"
@@ -99,3 +99,4 @@
     }
   ]
 }
+

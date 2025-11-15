@@ -1,0 +1,14 @@
+{
+  "schema": "field-report@1.0",
+  "report_id": "order-2025-11-13-053-report",
+  "order_id": "order-2025-11-13-053",
+  "workspace": "archivist_ai_0",
+  "status": "completed",
+  "timestamp_submitted": "2025-11-12T09:14:04.667422+00:00",
+  "created_at": "2025-11-12T09:14:04.667422+00:00",
+  "summary": "Genesis spin-up completed (hello report).",
+  "artifacts": {
+    "standards_index": "docs/standards_index.md",
+    "readiness_log": "logs/ops_readiness.json"
+  }
+}

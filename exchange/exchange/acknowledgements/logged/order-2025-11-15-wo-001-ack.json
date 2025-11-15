@@ -1,0 +1,7 @@
+{
+  "order_id": "order-2025-11-15-wo-001",
+  "ack_id": "order-2025-11-15-wo-001-ack",
+  "workspace": "war_office_ai_0",
+  "ack_timestamp": "2025-11-15T13:32:00Z",
+  "notes": "War Office Order-01 accepted; offline loop wiring verified via heartbeat and readiness artifacts."
+}

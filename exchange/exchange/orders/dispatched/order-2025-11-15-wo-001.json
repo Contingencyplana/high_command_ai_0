@@ -1,0 +1,16 @@
+{
+  "id": "order-2025-11-15-wo-001",
+  "workspace": "war_office_ai_0",
+  "title": "Order-01: Activate the Commonwealth Loop",
+  "status": "closed",
+  "created_at": "2025-11-15T00:00:00Z",
+  "attachments": [
+    "dispatches/dispatch-20251115-order-01.md",
+    "logs/2025-11-15-order-01.md",
+    "logs/ops_readiness.json",
+    "logs/civic_slot_summary.json"
+  ],
+  "issued_by": "war_office_ai_0",
+  "summary": "Wire War Office into the offline exchange loop, run ops readiness, capture civic slot baseline.",
+  "closed_at": "2025-11-15T13:25:00Z"
+}

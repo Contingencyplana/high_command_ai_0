@@ -1,0 +1,33 @@
+{
+  "template": "signal_loop",
+  "actor": "actor.dream",
+  "verb": "verb.loop",
+  "target": null,
+  "qualifiers": [
+    "qualifier.cloud"
+  ],
+  "outcomes": [
+    "outcome.success"
+  ],
+  "spoken": [
+    "dream",
+    "cloud",
+    "loop",
+    "victory"
+  ],
+  "raw": [
+    "🌌",
+    "☁️",
+    "🔄",
+    "✅"
+  ],
+  "created_at": "2025-10-31T14:35:36.679675Z",
+  "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+  "chain_name": "signal_loop_cover",
+  "overlay_description": "Maintain targeting cover for the logistics wing",
+  "overlay_cell": {
+    "row": 10,
+    "col": 11,
+    "label": "AB"
+  }
+}

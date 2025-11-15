@@ -1,0 +1,31 @@
+{
+  "template": "basic_ritual",
+  "actor": "actor.dream",
+  "verb": "verb.transmute",
+  "target": "actor.seed",
+  "qualifiers": [],
+  "outcomes": [
+    "outcome.bless"
+  ],
+  "spoken": [
+    "dream",
+    "transmute",
+    "seed",
+    "blessing"
+  ],
+  "raw": [
+    "🌌",
+    "🪄",
+    "🌱",
+    "🌈"
+  ],
+  "created_at": "2025-10-31T11:31:36.736056Z",
+  "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+  "chain_name": "dream_transmute_bless",
+  "overlay_description": "Transmute dream residue into a blessing",
+  "overlay_cell": {
+    "row": 8,
+    "col": 8,
+    "label": "88"
+  }
+}

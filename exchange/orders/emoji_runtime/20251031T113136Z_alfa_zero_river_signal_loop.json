@@ -1,0 +1,33 @@
+{
+  "template": "signal_loop",
+  "actor": "actor.river",
+  "verb": "verb.loop",
+  "target": null,
+  "qualifiers": [
+    "qualifier.signal"
+  ],
+  "outcomes": [
+    "outcome.gain"
+  ],
+  "spoken": [
+    "river",
+    "signal",
+    "loop",
+    "rise"
+  ],
+  "raw": [
+    "🌊",
+    "🛰️",
+    "🔄",
+    "📈"
+  ],
+  "created_at": "2025-10-31T11:31:36.736056Z",
+  "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+  "chain_name": "river_signal_loop",
+  "overlay_description": "Loop river telemetry and flag risks",
+  "overlay_cell": {
+    "row": 10,
+    "col": 1,
+    "label": "A1"
+  }
+}

@@ -73,7 +73,7 @@
     "documentation": [
       "exchange/attachments/guides/nightlands_duet_playtest_packet.md",
       "planning/campaigns_and_lulls.md",
-      "planning/document_refresh_queue.md"
+      "planning/commonwealth_loop/doc_refresh_queue.md"
     ]
   },
   "open_follow_ups": [
@@ -92,3 +92,4 @@
     }
   ]
 }
+

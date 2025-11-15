@@ -1,0 +1,47 @@
+{
+  "template": "basic_ritual",
+  "actor": "actor.dream",
+  "verb": "verb.transmute",
+  "target": "actor.seed",
+  "qualifiers": [],
+  "outcomes": [
+    "outcome.bless"
+  ],
+  "spoken": [
+    "dream",
+    "transmute",
+    "seed",
+    "blessing"
+  ],
+  "raw": [
+    "🌌",
+    "🪄",
+    "🌱",
+    "🌈"
+  ],
+  "schema": "emoji-runtime@1.0",
+  "glyph_chain": [
+    "🌌",
+    "🪄",
+    "🌱",
+    "🌈"
+  ],
+  "summary": "Dream transmute seed -> blessing",
+  "intent": {
+    "actor": "dream",
+    "action": "transmute",
+    "target": "seed",
+    "qualifiers": [],
+    "outcome": "bless"
+  },
+  "telemetry_stub": {
+    "batch_id": "dream-transmute-20251101T102202948Z",
+    "ritual": "dream",
+    "units_processed": 4,
+    "status": "success",
+    "duration_ms": 0
+  },
+  "created_at": "2025-11-01T10:22:02.948257Z",
+  "chain_name": "dream_transmute_bless",
+  "source": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
+}

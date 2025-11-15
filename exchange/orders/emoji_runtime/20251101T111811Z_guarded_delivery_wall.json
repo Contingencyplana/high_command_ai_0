@@ -1,0 +1,54 @@
+{
+  "template": "guarded_delivery",
+  "actor": "actor.ally",
+  "verb": "verb.deliver",
+  "target": "actor.wall",
+  "qualifiers": [
+    "qualifier.safe"
+  ],
+  "outcomes": [
+    "outcome.success"
+  ],
+  "spoken": [
+    "ally",
+    "deliver",
+    "safe",
+    "wall",
+    "victory"
+  ],
+  "raw": [
+    "🤖",
+    "📦",
+    "🔒",
+    "🧱",
+    "✅"
+  ],
+  "schema": "emoji-runtime@1.0",
+  "glyph_chain": [
+    "🤖",
+    "📦",
+    "🔒",
+    "🧱",
+    "✅"
+  ],
+  "summary": "Ally deliver safe wall -> victory",
+  "intent": {
+    "actor": "ally",
+    "action": "deliver",
+    "target": "wall",
+    "qualifiers": [
+      "safe"
+    ],
+    "outcome": "success"
+  },
+  "telemetry_stub": {
+    "batch_id": "ally-deliver-20251101T111811050Z",
+    "ritual": "ally",
+    "units_processed": 5,
+    "status": "success",
+    "duration_ms": 0
+  },
+  "created_at": "2025-11-01T11:18:11.050411Z",
+  "chain_name": "guarded_delivery_wall",
+  "source": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
+}

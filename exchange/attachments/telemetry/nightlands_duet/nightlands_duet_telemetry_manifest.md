@@ -36,3 +36,5 @@ All records emit the following shared fields:
 - Alfa Zero now emits enriched targeted sync telemetry and automatically appends new records to this feed via `alfa_zero_ui._maybe_record_nightlands_feed`.
 - The feed is designed for downstream dashboards in `docs/` and upcoming telemetry notebooks.
 - Interim cadence script documented at `docs/nightlands_duet_telemetry_panel.md` converts the feed into an hourly storyboard/sync summary while offline tooling persists.
+- Any schema change must update this manifest first, then refresh `docs/nightlands_duet_telemetry_panel.md` so snapshot helpers parse the new fields correctly.
+- `planning/alfa_zero_nightlands_duet_storyboard.md` references this feed for operator guardrails; keep that scroll aligned whenever event fields or destinations change.

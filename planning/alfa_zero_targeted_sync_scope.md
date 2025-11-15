@@ -73,6 +73,12 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 - Interim cadence panel captured in `docs/nightlands_duet_telemetry_panel.md` while the main dashboard tooling remains offline.
 - Quiet-mode log rotation decision deferred until the next cohort run; use telemetry feed totals plus `play_session_actions.log` size to judge whether archival is required.
 
+## 2025-11-16 Update
+
+- Nightlands duet follow-up cohort confirmed the quiet-mode targeted sync output stays compact: the latest telemetry feed entry (`2025-11-12T10:50:26Z` in `nightlands_duet_storyboard_sync_feed.jsonl`) shows a single `[OK] Synced 2 orders file(s)` summary with just two `copied_paths`, and `logs/alfa_zero/targeted_sync_20251112T105026Z.log` mirrors the same short transcript.
+- `logs/alfa_zero/play_session_actions.log` now captures only the condensed summary lines plus command metadata; file size remains stable under 50 KB after multiple loops, so we can defer rotation and rely on the telemetry feed for historical counts.
+- Action: continue to spot-check the telemetry feed after each cohort; if the feed reports more than 20 copied files or if `play_session_actions.log` exceeds 250 KB, trigger the rotation plan from "Exchange Log Trimming" and archive the previous log under `logs/alfa_zero/archive/`.
+
 ## 2025-11-12 Playtest Feedback
 
 - Nightlands cohort (Vega, Lumen, Rook) executed the duet storyboard and confirmed the targeted sync helper’s quiet output during a live comfort-loop session.

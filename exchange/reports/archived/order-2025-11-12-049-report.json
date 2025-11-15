@@ -41,7 +41,7 @@
       "status": "completed",
       "notes": [
         "planning/campaigns_and_lulls.md now chronicles the Nightlands validation slice and updates next actions with scoreboard + telemetry follow-ups.",
-        "planning/alfa_zero_targeted_sync_scope.md captures cohort feedback and expands next actions; planning/document_refresh_queue.md queues scoreboard imagery and dashboard tasks."
+        "planning/alfa_zero_targeted_sync_scope.md captures cohort feedback and expands next actions; planning/commonwealth_loop/doc_refresh_queue.md queues scoreboard imagery and dashboard tasks."
       ]
     },
     {
@@ -51,7 +51,7 @@
       "notes": [
         "Recommended follow-on: scoreboard imagery capture + UI cooldown banner tweak → candidate order-2025-11-13-050.",
         "Recommended follow-on: telemetry dashboard panel for targeted sync cadence → candidate order-2025-11-13-051.",
-        "Both recommendations logged in planning/document_refresh_queue.md and referenced in campaign brief."
+        "Both recommendations logged in planning/commonwealth_loop/doc_refresh_queue.md and referenced in campaign brief."
       ]
     }
   ],
@@ -75,7 +75,7 @@
     "documentation": [
       "planning/campaigns_and_lulls.md",
       "planning/alfa_zero_targeted_sync_scope.md",
-      "planning/document_refresh_queue.md"
+      "planning/commonwealth_loop/doc_refresh_queue.md"
     ],
     "tests": {
       "command": "pytest tests/test_storyboard_runner.py",
@@ -114,7 +114,8 @@
     },
     {
       "type": "plan",
-      "path": "planning/document_refresh_queue.md"
+      "path": "planning/commonwealth_loop/doc_refresh_queue.md"
     }
   ]
 }
+

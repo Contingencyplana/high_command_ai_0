@@ -1,0 +1,78 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "emoji-basic-ritual-forge-20251107141710.676580",
+  "issued_by": "high_command_alfa_zero",
+  "target": "toyfoundry_ai_0",
+  "priority": "realtime",
+  "timestamp_issued": "2025-11-07T14:17:10.676580Z",
+  "summary": "Forge craft ally -> victory",
+  "directives": [
+    {
+      "step": 1,
+      "action": "craft",
+      "details": "Actor forge executes craft targeting ally. Qualifiers: none. Outcome: success. Glyph chain: 🛠️ ⚒️ 🤖 ✅. Telemetry batch forge-craft-20251107T141710676Z status success."
+    }
+  ],
+  "requires_ack": false,
+  "extensions": {
+    "emoji_runtime_payload": {
+      "template": "basic_ritual",
+      "actor": "actor.forge",
+      "verb": "verb.craft",
+      "target": "actor.ally",
+      "qualifiers": [],
+      "outcomes": [
+        "outcome.success"
+      ],
+      "spoken": [
+        "forge",
+        "craft",
+        "ally",
+        "victory"
+      ],
+      "raw": [
+        "🛠️",
+        "⚒️",
+        "🤖",
+        "✅"
+      ],
+      "schema": "emoji-runtime@1.0",
+      "glyph_chain": [
+        "🛠️",
+        "⚒️",
+        "🤖",
+        "✅"
+      ],
+      "summary": "Forge craft ally -> victory",
+      "intent": {
+        "actor": "forge",
+        "action": "craft",
+        "target": "ally",
+        "qualifiers": [],
+        "outcome": "success"
+      },
+      "telemetry_stub": {
+        "batch_id": "forge-craft-20251107T141710676Z",
+        "ritual": "forge",
+        "units_processed": 4,
+        "status": "success",
+        "duration_ms": 0
+      },
+      "created_at": "2025-11-07T14:17:10.676580Z",
+      "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+      "chain_name": "basic_ritual_forge",
+      "overlay_description": "Forge ritual from mountain supply line",
+      "overlay_cell": {
+        "row": 0,
+        "col": 4,
+        "label": "04"
+      },
+      "fun_flags": {
+        "fun_core": false,
+        "balance_toggles": false,
+        "xp_rate_limit": false,
+        "loot_governor": false
+      }
+    }
+  }
+}

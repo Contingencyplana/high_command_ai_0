@@ -1,0 +1,51 @@
+{
+  "template": "signal_loop",
+  "actor": "actor.river",
+  "verb": "verb.loop",
+  "target": null,
+  "qualifiers": [
+    "qualifier.signal"
+  ],
+  "outcomes": [
+    "outcome.gain"
+  ],
+  "spoken": [
+    "river",
+    "signal",
+    "loop",
+    "rise"
+  ],
+  "raw": [
+    "🌊",
+    "🛰️",
+    "🔄",
+    "📈"
+  ],
+  "schema": "emoji-runtime@1.0",
+  "glyph_chain": [
+    "🌊",
+    "🛰️",
+    "🔄",
+    "📈"
+  ],
+  "summary": "River signal loop -> rise",
+  "intent": {
+    "actor": "river",
+    "action": "loop",
+    "target": "river",
+    "qualifiers": [
+      "signal"
+    ],
+    "outcome": "gain"
+  },
+  "telemetry_stub": {
+    "batch_id": "river-loop-20251101T112646283Z",
+    "ritual": "river",
+    "units_processed": 4,
+    "status": "success",
+    "duration_ms": 0
+  },
+  "created_at": "2025-11-01T11:26:46.283000Z",
+  "chain_name": "river_signal_loop",
+  "source": "golf_00/delta_00/alfa_04/dispatch_sample_chains.py"
+}
