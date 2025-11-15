@@ -1,0 +1,12 @@
+schema: civilian-ledger@1.0
+civ_id: civ-05050a
+guild: guild_05
+house: house_05
+cell: cell_2
+status: resting
+aspect: love
+paired_workspace: R&D
+slots_total: 4096
+slots_filled: 0
+missions: []
+ledger_trace: pending

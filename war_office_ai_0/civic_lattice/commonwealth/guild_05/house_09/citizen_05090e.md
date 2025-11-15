@@ -1,0 +1,12 @@
+schema: civilian-ledger@1.0
+civ_id: civ-05090e
+guild: guild_05
+house: house_09
+cell: cell_3
+status: resting
+aspect: sanity
+paired_workspace: R&D
+slots_total: 4096
+slots_filled: 0
+missions: []
+ledger_trace: pending

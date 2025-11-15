@@ -1,0 +1,12 @@
+schema: civilian-ledger@1.0
+civ_id: civ-030600
+guild: guild_03
+house: house_06
+cell: cell_0
+status: resting
+aspect: play
+paired_workspace: Toysoldiers
+slots_total: 4096
+slots_filled: 0
+missions: []
+ledger_trace: pending

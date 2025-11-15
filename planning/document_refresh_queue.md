@@ -50,3 +50,4 @@
 - 2025-11-09 — new_major_pivot_2.md progress log aligned with Orders 044/045 overlay plan (High Command).
 - 2025-11-10 — Comfort Happy Path guide now links Outlands framework, Fun Guardian protocol, and Outlands index (High Command).
 - 2025-11-12 — Contract samples README updated with Music Pilot overlay cases (High Command).
+- 2025-11-14 — War Office Tenfold genesis bundle (war_office_ai_0 runbook + genesis table refresh).

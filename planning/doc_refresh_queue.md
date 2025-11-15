@@ -16,6 +16,7 @@
 - [x] `docs/morningate_reflection_layer.md` (add offline pipeline chapter)
 - [x] `docs/player_routing_brief.md` (clarify battlegrid handoff cadence)
 - [x] `new_major_pivots/new_major_pivot_5.md` (2025-11-08: logged translator rollout evidence + progress tracker)
+- [x] War Office Tenfold Genesis bundle (2025-11-14: `planning/workspaces/war_office_ai_0/` runbook + `planning/pivotal_fronts/genesis_workspaces.md`)
 - [ ] `war_office/README.md` (embed doc refresh queue summary)
 - [ ] `template.md` (refresh ledger logging instructions)
 - [ ] `golf_00/delta_00/README.md` (align alfa subcomponents with latest payload flow)

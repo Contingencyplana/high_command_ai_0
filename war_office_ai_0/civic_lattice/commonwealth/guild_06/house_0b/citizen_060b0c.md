@@ -1,0 +1,12 @@
+schema: civilian-ledger@1.0
+civ_id: civ-060b0c
+guild: guild_06
+house: house_0b
+cell: cell_3
+status: resting
+aspect: play
+paired_workspace: TONS-of-FUN
+slots_total: 4096
+slots_filled: 0
+missions: []
+ledger_trace: pending

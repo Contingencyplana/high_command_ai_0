@@ -1,0 +1,12 @@
+schema: civilian-ledger@1.0
+civ_id: civ-07070c
+guild: guild_07
+house: house_07
+cell: cell_3
+status: resting
+aspect: light
+paired_workspace: Archivist
+slots_total: 4096
+slots_filled: 0
+missions: []
+ledger_trace: pending

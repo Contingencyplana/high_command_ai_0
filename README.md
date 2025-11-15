@@ -28,6 +28,7 @@
 - Shipping **Alfa 04 (Emoji Composer Harness)** — Level-0 glyph translator dispatching Toyfoundry-ready payloads (see `golf_00/delta_00/alfa_04/`).
 - Prototyping **Alfa 00 overlay harness & CLI** — simulated grid clicks and an interactive controller piping into the emoji runtime (see `golf_00/delta_00/alfa_00/`).
 - Running the **Doc Refresh Queue** — staged updates keep top-level canon (README, pivot scrolls, alfa map) in sync with offline operations while deeper scrolls roll in per work block (see `planning/doc_refresh_queue.md`).
+- Crowning **War Office (war_office_ai_0)** — tenth genesis workspace anchoring 4,096 Civilians, the Director's Compass, and the Tenfold genesis table (see `war_office.md` and `planning/pivotal_fronts/genesis_workspaces.md`).
 
 **Alfa staging map (`golf_00/delta_00/`):** `alfa_00` Alfa Zero overlay • `alfa_01` Toyfoundry runtime bridge • `alfa_02` Toysoldiers narrator harness • `alfa_03` shared telemetry shell • `alfa_04` emoji composer.
 
