@@ -54,6 +54,7 @@ This index orients work across all pivotal fronts and links to canon documents. 
 2. **Changes travel via Exchange** — Orders/acknowledgements/reports for all changes
 3. **Safety gates guard promotions** — Proposal → sandbox → canary → GA
 4. **Fronts coordinate, don't compete** — Shared telemetry, unified doctrine
+5. **Mission restatement precedes recursion** — War Office (war_office_ai_0) restates *front / milestone / goal* with Love / Light / Safety / Sanity / Play emphasis before Codex advances.
 
 ---
 
@@ -83,6 +84,13 @@ This index orients work across all pivotal fronts and links to canon documents. 
 	- `M0 — same shift:` Document refresh logged in ledger and heartbeat + sync pair executed.
 	- `M1 — within 12h:` Dispatch `tools/quilt_loom.py --snapshot` to confirm report ingestion across pivots.
 	- `M2 — within 24h:` Run `tools/ci/safety_watcher.ps1` for drift scan and file findings under `exchange/reports/inbox/`.
+
+---
+
+## Tenfold Genesis Alignment
+- **Full table:** planning/pivotal_fronts/genesis_workspaces.md lists all ten genesis workspaces (War Office crown through Morningate studio) with capacity, status, and paired responsibilities; review it before opening a new theatre or reallocating people.
+- **War Office crown:** The civilian workspace (war_office_ai_0, see war_office.md and the dedicated repo) owns the Director's Compass ritual plus the 4,096-slot civic lattice. Log the relevant guild/house/citizen IDs when requesting War Office action or logging ledger entries.
+- **Dispatch pairing:** Any directive that touches Tenfold structure must cite the War Office dispatch/ledger trace so the crown ↔ brain handshake is auditable across repos.
 
 ---
 

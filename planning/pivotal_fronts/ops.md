@@ -11,6 +11,7 @@ Practices
 - Offline Continuity cadence: run `python tools/exchange_heartbeat.py` → `python tools/offline_sync_exchange.py` → `python tools/offline_bridge.py push|pull --move` every time the exchange changes, and log the trio in the ledger within 24 hours.
 - Contract suite guardrail: run `python -m tools.contract_test_runner` whenever emoji/factory schemas change and before publishing exchange artifacts.
 - Trace parity guardrail: overlay dispatches (UI and event stream) must emit matching `trace_id` values through payloads, factory orders, and telemetry logs; confirm whenever overlay slices ship.
+- Tenfold sync discipline: include `war_office_ai_0` in every heartbeat/sync chain and attach the War Office dispatch ID plus civic lattice guild/house/citizen references to ledger entries whenever Ops actions touch Tenfold structure.
 
 Runbooks & Links
 
@@ -19,6 +20,7 @@ Runbooks & Links
 - Watcher: tools/ci/safety_watcher.ps1; Validator: tools/ci/validate_safety_repo.ps1
 - Offline Continuity: tools/exchange_heartbeat.py, tools/offline_sync_exchange.py, tools/offline_bridge.py
 - Contract tests: tools/contract_test_runner.py, contract_samples/README.md
+- War Office: `war_office.md`, `war_office_ai_0/README.md`, `war_office_ai_0/civics/ledgers/`
 
 Acceptance Checks
 
@@ -29,3 +31,4 @@ Acceptance Checks
 - Offline Continuity trio recorded in ledger within 24h of any exchange change, including daily doc refresh pushes.
 - Contract suite passes against curated fixtures before publishing promoted payloads.
 - Overlay Order 045 trace evidence captured: `logs/alfa_02/narration_traces.jsonl`, `logs/alfa_03/telemetry.jsonl`, and payload exports all share the same `trace_id` when parity is verified.
+- War Office sync logs appear alongside other genesis workspaces, and ledger entries referencing Tenfold structure cite the paired War Office dispatch ID plus civic lattice identifiers.

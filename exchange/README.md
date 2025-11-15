@@ -16,10 +16,11 @@ All folders must remain available on the local filesystem. Optional cloud mirror
 
 ## Workspace Integration
 
-Every workspace (`toyfoundry_ai_0`, `toysoldiers_ai_0`, `valiant_citadel_ai_0`, `r_and_d_ai_0`, `high_command_ai_0`) sets `SHAGI_EXCHANGE_PATH` to `C:/Users/Admin/high_command_exchange`. Symlinks are optional but not required so long as tools resolve the environment variable.
+Every genesis workspace (`war_office_ai_0`, `high_command_ai_0`, `toyfoundry_ai_0`, `toysoldiers_ai_0`, `valiant_citadel_ai_0`, `r_and_d_ai_0`, etc.) sets `SHAGI_EXCHANGE_PATH` to `C:/Users/Admin/high_command_exchange`. Symlinks are optional but not required so long as tools resolve the environment variable.
 
 - Confirm the env var with `echo $env:SHAGI_EXCHANGE_PATH` (PowerShell) and fix any drift before running sync tools.
 - Ensure `outbox/orders/` and `outbox/reports/` exist in each workspace; create empty folders if needed so sync logs stay clean.
+- War Office (`war_office_ai_0`) participates in the same heartbeat/sync cadence; when dispatching Tenfold directives, include the War Office dispatch ID and civic lattice slot references in ledger entries.
 
 ## Sync Utility
 
