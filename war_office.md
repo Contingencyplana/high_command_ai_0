@@ -7,16 +7,23 @@ Defence Minister (OpenAI GPT-5)
 
 ---
 
-## 🎮 Major Strategic Pivots (2025-10-17)
+## 🎮 Major Strategic Pivots (2025-10-17 – 2025-10-25)
 
-**War Office Approval Status:** ✅ **All Four Major Pivots Approved**
+**War Office Approval Status:** ✅ **All Five Major Pivots Approved**
 
-The War Office has reviewed and endorsed the Four Major Pivots transforming High Command operations:
+The War Office has reviewed and endorsed the Five Major Pivots transforming High Command operations:
 
 1. **[70% Play / 30% Dev-Ops Ratio](new_major_pivots/new_major_pivot_1.md)** — Prioritizes human operator well-being and sustainable engagement
 2. **[Playable Workflow Overlay](new_major_pivots/new_major_pivot_2.md)** — Shields human operators from VSCode/PowerShell/GitHub/Azure via 16×16 emoji battlegrids
 3. **[Maintain Big Ideas & SHAGI Vision](new_major_pivots/new_major_pivot_3.md)** — Reaffirms long-term vision; playable workflows are SHAGI training infrastructure
 4. **[Fractal Folder Structure](new_major_pivots/new_major_pivot_4.md)** — Organizes 4,096 Alfas via golf_00–15 for scalable multiverse architecture
+5. **[Emoji-First Computing Language](new_major_pivots/new_major_pivot_5.md)** — Extends civilian oversight to the Level-0 translator and toddler/AI co-play harness so every directive can be issued as emoji chains.
+
+**Pivot Five Crosslinks**
+
+- `new_major_pivots/new_major_pivot_5.md` – canonical spec for the emoji-first language, progress snapshots, and approval gates.
+- `golf_00/delta_00/alfa_04/emoji_translator.py` + `factory_adapter.py` – translator/factory bridge reported in the pivot snapshot; War Office audits their ledger entries before toddler or AI co-play trials.
+- `tools/run_emoji_canary.py` – nightly validation that keeps glyph -> JSON -> glyph parity; fourteen consecutive passes are the readiness bar before War Office authorizes broader deployment.
 
 **Civilian Oversight Rationale:**  
 These pivots align with War Office core principles—ensuring operations serve human flourishing (Love, Light, Safety, Sanity) rather than causing burnout. The playable overlay transforms soul-destroying dev-ops work into engaging gameplay, increasing project sustainability and alignment.
@@ -74,6 +81,20 @@ The War Office is the heart and conscience.
 - **Four Major Pivots:** `new_major_pivots/README.md`
 - **Alfa Zero Spec:** `docs/alfa_zero_spec.md`
 - **Pivotal Fronts Index:** `planning/pivotal_fronts/README.md`
+
+---
+
+## Doc Refresh Queue Alignment (November 2025)
+
+The War Office shepherds the high-signal documentation list tracked in `planning/doc_refresh_queue.md` so Offline Continuity Mode and canon scrolls stay synchronized.
+
+**Active queue scope (2025-11-18):**
+
+- `war_office.md` - embed the queue summary plus Pivot Five crosslinks so civilians can trace Level-0 translator readiness back to War Office approvals.
+- `template.md` - refresh ledger logging instructions so each session captures heartbeat and sync proof inside `exchange/ledger/2025-11.md`.
+- `golf_00/delta_00/README.md` - align Alfa subcomponent descriptions with the current emoji payload flow (Alfa Zero overlay, translator, telemetry shell, composer).
+
+Operators log each refresh outcome in `exchange/ledger/2025-11.md` (date, scope, actor) and run the exchange heartbeat before promoting related gameplay tooling.
 
 ---
 

@@ -17,14 +17,14 @@
 - [x] `docs/player_routing_brief.md` (clarify battlegrid handoff cadence)
 - [x] `new_major_pivots/new_major_pivot_5.md` (2025-11-08: logged translator rollout evidence + progress tracker)
 - [x] War Office Tenfold Genesis bundle (2025-11-14: `planning/workspaces/war_office_ai_0/` runbook + `planning/pivotal_fronts/genesis_workspaces.md`)
-- [ ] `war_office/README.md` (embed doc refresh queue summary)
-- [ ] `template.md` (refresh ledger logging instructions)
-- [ ] `golf_00/delta_00/README.md` (align alfa subcomponents with latest payload flow)
+- [x] `war_office.md` (embed doc refresh queue summary + Pivot Five crosslinks — 2025-11-18)
+- [x] `template.md` (2025-11-18: refreshed ledger logging checklist + heartbeat/sync reminder)
+- [x] `golf_00/delta_00/README.md` (2025-11-18: Alfa Zero component map + payload flow alignment)
 
 ## Notes
 
 - Treat the list as rolling; append new targets when pivots open.
 - Use smaller pull requests per work block to keep review pace manageable.
 - Coordinate with Toyfoundry/Toysoldiers when documentation impacts their operational runbooks.
-- Next target: refresh `war_office/README.md` with the doc queue summary and Pivot Five crosslinks.
+- Next target: scope the next doc slice once Batch 2 planning lull objectives are locked (open slot).
 - 2025-11-17: Daily Doc Refresh (High Command) captured the mass Alfa Batch 1 hydration status—Valiant Citadel (Delta) returned green while Theta/Zeta/Gamma/Alpha remain pending; cross-reference Orders 055-059 before closing Batch 1.
