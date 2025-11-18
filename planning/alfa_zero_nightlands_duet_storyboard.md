@@ -34,7 +34,7 @@ Craft a contained Nightlands vignette that exercises the Lore and Music overlays
 - Phase 2 payload should include both overlays and retain Lore as the primary layer (`overlay_id`).
 - `logs/alfa_zero/session_metrics.jsonl` now records per-step `dispatch` entries with storyboard metadata plus a `storyboard_run` summary (payload count, trace, force flag).
 - Guardrail blocks are also logged to session metrics as `storyboard_guardrail` events for postmortem review.
-- Targeted sync executions now append structured telemetry (counts, destinations, copied paths) alongside storyboard runs into `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl`.
+- Targeted sync executions now append structured telemetry (trace IDs, operator IDs, counts, destinations, copied paths) alongside storyboard runs into `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl`.
 
 ## Scoreboard & Cadence Artifacts
 
@@ -46,6 +46,7 @@ Craft a contained Nightlands vignette that exercises the Lore and Music overlays
 
 - `logs/alfa_zero/session_metrics.jsonl` remains the canonical local source for duet dispatch + targeted sync events; every storyboard run must ensure the append-only feed at `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl` is updated via the Alfa Zero UI instrumentation.
 - The interim dashboard documented in `docs/nightlands_duet_telemetry_panel.md` reads directly from that feed. After each run, execute the snapshot helpers in that scroll and drop the rendered table into `exchange/attachments/guides/nightlands_duet_session_metrics_excerpt.jsonl` so the broader telemetry notebook can ingest it.
+- `python tools/export_nightlands_duet_panel.py` now emits `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_panel.json`, a lightweight JSON panel mirroring the latest storyboard and targeted sync telemetry (trace IDs, operator IDs, files copied). Regenerate it after every session so Tons-of-Fun and Morningate can consume a stable artifact while the full dashboard remains offline.
 - When the shared telemetry dashboard tooling returns, publish the latest excerpt plus script output alongside the duet scoreboard imagery; this keeps the Operator Brief and Nightlands campaign summaries aligned without parsing raw logs.
 
 ## Operator Checklist

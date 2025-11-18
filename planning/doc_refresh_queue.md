@@ -20,11 +20,12 @@
 - [x] `war_office.md` (embed doc refresh queue summary + Pivot Five crosslinks — 2025-11-18)
 - [x] `template.md` (2025-11-18: refreshed ledger logging checklist + heartbeat/sync reminder)
 - [x] `golf_00/delta_00/README.md` (2025-11-18: Alfa Zero component map + payload flow alignment)
+- [x] Nightlands telemetry bundle (2025-11-18: `planning/alfa_zero_nightlands_duet_storyboard.md`, `planning/alfa_zero_targeted_sync_scope.md`, `exchange/attachments/guides/comfort_happy_path.md`, `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_telemetry_manifest.md`, `tools/export_nightlands_duet_panel.py`)
 
 ## Notes
 
 - Treat the list as rolling; append new targets when pivots open.
 - Use smaller pull requests per work block to keep review pace manageable.
 - Coordinate with Toyfoundry/Toysoldiers when documentation impacts their operational runbooks.
-- Next target: scope the next doc slice once Batch 2 planning lull objectives are locked (open slot).
+- Next target: scope the Batch 2 lull/Game Engine doc pack once War Office locks the objectives (slot now reserved for Pivot 08 activation scrolls + doc queue pointer).
 - 2025-11-17: Daily Doc Refresh (High Command) captured the mass Alfa Batch 1 hydration status—Valiant Citadel (Delta) returned green while Theta/Zeta/Gamma/Alpha remain pending; cross-reference Orders 055-059 before closing Batch 1.

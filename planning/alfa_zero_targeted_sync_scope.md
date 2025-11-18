@@ -79,6 +79,13 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 - `logs/alfa_zero/play_session_actions.log` now captures only the condensed summary lines plus command metadata; file size remains stable under 50 KB after multiple loops, so we can defer rotation and rely on the telemetry feed for historical counts.
 - Action: continue to spot-check the telemetry feed after each cohort; if the feed reports more than 20 copied files or if `play_session_actions.log` exceeds 250 KB, trigger the rotation plan from "Exchange Log Trimming" and archive the previous log under `logs/alfa_zero/archive/`.
 
+## 2025-11-18 Update
+
+- Alfa Zero UI now captures `operator_id` (CLI flag `--operator` or env `SHAGI_OPERATOR`) and threads it through every session metric, providing per-run attribution for storyboard and targeted sync telemetry.
+- Targeted sync commands emit deterministic `trace_id` values plus `files_copied` counts inside `logs/alfa_zero/session_metrics.jsonl`; feed entries inherit the same fields so downstream dashboards can correlate sync bursts to storyboard traces.
+- Added `tools/export_nightlands_duet_panel.py`, which compiles the append-only feed into `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_panel.json`. Run it after each lull block to publish a lightweight panel for Tons-of-Fun/Morningate until the shared dashboard returns.
+- `exchange/attachments/guides/comfort_happy_path.md` now instructs operators to verify the targeted sync telemetry hook (and contract case `automation_comfort_sync.json`) during every 70/30 loop.
+
 ## 2025-11-12 Playtest Feedback
 
 - Nightlands cohort (Vega, Lumen, Rook) executed the duet storyboard and confirmed the targeted sync helper’s quiet output during a live comfort-loop session.

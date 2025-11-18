@@ -14,11 +14,14 @@ This loop keeps Order 044’s comfort mandate intact: spend ~70% of the cadence 
   `python -m golf_00.delta_00.alfa_02.narrator_shell --say "Forge delivers the Ally → Victory" --out logs/alfa_02/narration.jsonl`
 - **Telemetry pulse**  
   `python -m golf_00.delta_00.alfa_03.telemetry_shell --event forge.deliver --status success --details "comfort happy flow" --out logs/alfa_03/telemetry.jsonl`
+- **Targeted sync telemetry check (Order 051 alignment)**  
+  From the Alfa Zero UI, run `targeted sync latest 2` or `targeted sync orders pending`. Confirm the resulting `targeted_sync` event includes `trace_id`, `copied_count`, and `operator_id` inside `logs/alfa_zero/session_metrics.jsonl`, then append the same payload to `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl` for dashboard correlation and note the ledger tag `pivot_08_game_engine_layer`.
 
 ## 30% — Automation & Sync
 
 - **Contract sweep (automation-path focus)**  
-  `python -m tools.contract_test_runner --case automation_path_happy_flow`
+  `python -m tools.contract_test_runner --case automation_path_happy_flow`  
+  `python -m tools.contract_test_runner --case automation_comfort_sync`
 - **Heartbeat + Sync**  
   `python tools/exchange_heartbeat.py`  
   `python tools/offline_sync_exchange.py --latest 5 --quiet`
@@ -32,7 +35,7 @@ This loop keeps Order 044’s comfort mandate intact: spend ~70% of the cadence 
 - `tools/contract_test_runner.py`
 - `tools/exchange_heartbeat.py`
 - `tools/offline_sync_exchange.py`
-- Automation case: `contract_samples/cases/automation_path_happy_flow.json`
+- Automation cases: `contract_samples/cases/automation_path_happy_flow.json`, `contract_samples/cases/automation_comfort_sync.json`
   - Template seed for variants: `contract_samples/drafts/automation_path_happy_flow.json.template`
 - Automation quick-start: `exchange/attachments/guides/automation_quick_start.md`
 - Outlands framework (Pivot Seven): `exchange/attachments/guides/outlands_framework.md`

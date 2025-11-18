@@ -95,6 +95,7 @@ class UIContext:
     auto_contracts: bool = False
     lore_layer_enabled: bool = False
     music_layer_enabled: bool = False
+    operator_id: str = "operator-unknown"
 
     @property
     def repo_root(self) -> Path:
@@ -572,6 +573,7 @@ def run_targeted_sync(
 ) -> None:
     message = announce or "🔄 Running targeted sync…"
     print(message, file=context.output_stream)
+    trace_id = generate_trace_id(label, "overlay-targeted-sync")
     try:
         result = context.bridge.run_targeted_sync(
             categories=categories,
@@ -594,9 +596,16 @@ def run_targeted_sync(
         "quiet": quiet,
         "returncode": result.returncode,
         "action_log": _relative_to_repo(context.repo_root, log_path),
+        "trace_id": trace_id,
     }
     summary = _summarize_targeted_sync_output(result.stdout, repo_root=context.repo_root)
     extra.update(summary)
+    if "copied_count" in summary:
+        extra.setdefault("files_copied", summary["copied_count"])
+    elif summary.get("no_changes"):
+        extra.setdefault("files_copied", 0)
+    else:
+        extra.setdefault("files_copied", 0)
     _log_session_event(context, event=event, extra=extra)
 
 
@@ -974,6 +983,7 @@ def build_context(
     auto_contracts: bool,
     lore_enabled: bool = False,
     music_enabled: bool = False,
+    operator_id: str = "operator-unknown",
 ) -> UIContext:
     bridge = build_bridge(outbox_override)
     telemetry_path = Path(telemetry).expanduser().resolve() if telemetry else None
@@ -1001,6 +1011,7 @@ def build_context(
         auto_contracts=auto_contracts,
         lore_layer_enabled=lore_enabled,
         music_layer_enabled=music_enabled,
+        operator_id=operator_id,
     )
 
 
@@ -1019,6 +1030,12 @@ def main() -> None:
         "--telemetry",
         default=None,
         help="Optional path to append JSONL telemetry records for each dispatch.",
+    )
+    parser.add_argument(
+        "--operator",
+        dest="operator_id",
+        default=None,
+        help="Operator identifier to embed in telemetry (defaults to SHAGI_OPERATOR/USERNAME).",
     )
     parser.add_argument(
         "--emit-events",
@@ -1061,6 +1078,15 @@ def main() -> None:
         else:
             event_stream = sys.stdout
 
+    operator_id = (
+        args.operator_id
+        or os.getenv("SHAGI_OPERATOR")
+        or os.getenv("USERNAME")
+        or os.getenv("USER")
+        or "operator-unknown"
+    )
+    operator_id = operator_id.strip() or "operator-unknown"
+
     context = build_context(
         args.outbox,
         args.telemetry,
@@ -1069,6 +1095,7 @@ def main() -> None:
         auto_contracts=args.auto_contracts,
         lore_enabled=args.enable_lore,
         music_enabled=args.enable_music,
+        operator_id=operator_id,
     )
 
     try:
@@ -1112,6 +1139,7 @@ def _log_session_event(context: UIContext, *, event: str, extra: Optional[Dict[s
         "source": "alfa_zero_ui",
         "lore_overlay_enabled": context.lore_layer_enabled,
         "music_overlay_enabled": context.music_layer_enabled,
+        "operator_id": context.operator_id,
     }
     if extra:
         for key, value in extra.items():
@@ -1194,7 +1222,8 @@ def _summarize_targeted_sync_output(
 
 def _maybe_record_nightlands_feed(context: UIContext, record: Dict[str, Any]) -> None:
     event = record.get("event")
-    if event not in {"storyboard_run", "targeted_sync"}:
+    is_targeted_sync = isinstance(event, str) and event.startswith("targeted_sync")
+    if event != "storyboard_run" and not is_targeted_sync:
         return
 
     if event == "storyboard_run":
@@ -1216,6 +1245,9 @@ def _maybe_record_nightlands_feed(context: UIContext, record: Dict[str, Any]) ->
         "session_id": record.get("session_id"),
         "source": record.get("source"),
     }
+    operator_id = record.get("operator_id")
+    if operator_id:
+        payload["operator_id"] = operator_id
 
     if event == "storyboard_run":
         for key in (
@@ -1246,6 +1278,8 @@ def _maybe_record_nightlands_feed(context: UIContext, record: Dict[str, Any]) ->
             "copied_paths",
             "no_changes",
             "action_log",
+            "trace_id",
+            "files_copied",
         ):
             value = record.get(key)
             if value is not None:

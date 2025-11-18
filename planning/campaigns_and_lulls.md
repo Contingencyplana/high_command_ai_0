@@ -137,11 +137,11 @@ Evidence:
 - Evaluate targeted sync log rotation once additional playtests accumulate; record outcomes in `planning/alfa_zero_targeted_sync_scope.md`.
 
 Related
-
-- Comfort path: `exchange/attachments/guides/comfort_happy_path.md`
-- From Pain to Play: `planning/pivotal_fronts/from_pain_to_play.md`
-
----
+  
+  - Comfort path: `exchange/attachments/guides/comfort_happy_path.md` (includes targeted sync telemetry check + automation_comfort_sync contract loop)
+  - From Pain to Play: `planning/pivotal_fronts/from_pain_to_play.md`
+  
+  ---
 
 ## Campaign Brief - Order 045: UI Overlay Integration Slice
 

@@ -14,7 +14,8 @@
       "status": "completed",
       "notes": [
         "`golf_00/delta_00/alfa_00/alfa_zero_ui.py` now parses targeted sync helper output (counts, destinations, copied paths) and appends structured telemetry via `_summarize_targeted_sync_output`.",
-        "Session metrics event logger `_log_session_event` writes enriched records and mirrors applicable events into the Nightlands feed helper `_maybe_record_nightlands_feed`."
+        "Session metrics event logger `_log_session_event` writes enriched records and mirrors applicable events into the Nightlands feed helper `_maybe_record_nightlands_feed`.",
+        "2025-11-18 follow-up: targeted sync commands emit deterministic `trace_id` values, capture `files_copied`, and tag each record with `operator_id` so downstream dashboards can attribute sync bursts."
       ]
     },
     {
@@ -23,7 +24,8 @@
       "status": "completed",
       "notes": [
         "Created `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl` and backfilled the initial storyboard run entry.",
-        "Documented feed schema and usage guidance inside `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_telemetry_manifest.md`."
+        "Documented feed schema and usage guidance inside `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_telemetry_manifest.md`.",
+        "Published `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_panel.json` (generated via `tools/export_nightlands_duet_panel.py`) so offline dashboards can ingest a compact JSON payload."
       ]
     },
     {
@@ -32,7 +34,8 @@
       "status": "completed",
       "notes": [
         "Published `docs/nightlands_duet_telemetry_panel.md` with an offline script that summarises cadence per hour for storyboard and targeted sync events.",
-        "Nightlands duet playtest packet now directs operators to capture panel output until the full dashboard stack returns."
+        "Nightlands duet playtest packet now directs operators to capture panel output until the full dashboard stack returns.",
+        "2025-11-18 follow-up: `tools/export_nightlands_duet_panel.py` provides a reproducible CLI for regenerating the interim panel consumed by Tons-of-Fun and Morningate."
       ]
     },
     {
@@ -41,7 +44,8 @@
       "status": "completed",
       "notes": [
         "Updated `planning/alfa_zero_targeted_sync_scope.md`, `planning/commonwealth_loop/doc_refresh_queue.md`, and `planning/alfa_zero_nightlands_duet_storyboard.md` with telemetry feed guidance.",
-        "Playtest packet follow-up notes reference the feed and interim panel to keep cohorts aligned."
+        "Playtest packet follow-up notes reference the feed and interim panel to keep cohorts aligned.",
+        "2025-11-18 refresh captured the operator-facing comfort loop (comfort_happy_path.md) plus telemetry manifest/panel instructions so the Batch 2 lull has a concrete doc target."
       ]
     },
     {
@@ -58,25 +62,29 @@
     "ledger_entries": {
       "path": "exchange/ledger/2025-11.md",
       "entries": [
-        "2025-11-13 09:45 HighCommand ORDER-051 Targeted sync telemetry instrumentation complete; combined feed published at exchange/attachments/telemetry/nightlands_duet/"
+        "2025-11-13 09:45 HighCommand ORDER-051 Targeted sync telemetry instrumentation complete; combined feed published at exchange/attachments/telemetry/nightlands_duet/",
+        "2025-11-18 20:30 HighCommand ORDER-051 Targeted sync trace/operator capture plus panel export script (tools/export_nightlands_duet_panel.py) published; docs + manifest refreshed"
       ]
     },
     "telemetry_feed": {
       "path": "exchange/attachments/telemetry/nightlands_duet/",
       "files": [
         "nightlands_duet_storyboard_sync_feed.jsonl",
-        "nightlands_duet_telemetry_manifest.md"
+        "nightlands_duet_telemetry_manifest.md",
+        "nightlands_duet_storyboard_sync_panel.json"
       ]
     },
     "documentation": [
       "planning/alfa_zero_targeted_sync_scope.md",
-      "planning/commonwealth_loop/doc_refresh_queue.md",
+      "planning/doc_refresh_queue.md",
       "planning/alfa_zero_nightlands_duet_storyboard.md",
+      "exchange/attachments/guides/comfort_happy_path.md",
       "exchange/attachments/guides/nightlands_duet_playtest_packet.md",
       "docs/nightlands_duet_telemetry_panel.md"
     ],
     "code_changes": [
-      "golf_00/delta_00/alfa_00/alfa_zero_ui.py"
+      "golf_00/delta_00/alfa_00/alfa_zero_ui.py",
+      "tools/export_nightlands_duet_panel.py"
     ]
   },
   "open_follow_ups": [

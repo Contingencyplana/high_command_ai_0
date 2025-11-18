@@ -1,0 +1,49 @@
+{
+  "name": "automation_comfort_sync",
+  "description": "Automation-path comfort loop verifying ledger + report provenance for Order 044.",
+  "emoji_chain": [
+    "🛠️",
+    "📦",
+    "🛰️",
+    "🤖",
+    "✅"
+  ],
+  "adapter": {
+    "order_id": "order-2025-11-07-044",
+    "issued_by": "high_command_ai_0",
+    "target": "all_fronts",
+    "priority": "high",
+    "requires_ack": true
+  },
+  "expectations": {
+    "emoji_runtime": {
+      "summary": "Forge deliver signal ally -> victory",
+      "intent": {
+        "actor": "forge",
+        "action": "deliver",
+        "target": "ally",
+        "qualifiers": [
+          "signal"
+        ],
+        "outcome": "success"
+      },
+      "spoken": [
+        "forge",
+        "deliver",
+        "signal",
+        "ally",
+        "victory"
+      ]
+    },
+    "factory_order": {
+      "summary": "Forge deliver signal ally -> victory",
+      "priority": "high",
+      "target": "all_fronts",
+      "requires_ack": true,
+      "details_contains": [
+        "Actor forge executes deliver targeting ally.",
+        "Qualifiers: signal. Outcome: success."
+      ]
+    }
+  }
+}
