@@ -1,0 +1,4 @@
+Smoke run: `python tools/exchange_all.py`
+- Timestamp (UTC): 2025-11-18T03:40:19Z
+- Result: validated_ok true (see `logs/mass_alfa_batch1/Alfa-M05/exchange_all.json`)
+- Copied artifacts: hc_test.json, order-2025-11-07-044.json, order-2025-11-09-045.json, order-2025-11-13-905.json, toyfoundry_test.json, order-2025-10-16-035-result.json, order-2025-11-07-044-report.json, order-2025-11-13-905-report.json, order-2025-11-13-905-ack.json

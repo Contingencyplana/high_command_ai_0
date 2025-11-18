@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2025-11-18T03:54:59.871199+00:00",
+  "timestamp_utc": "2025-11-18T03:40:10.090775+00:00",
   "workspace": "high_command_ai_0",
   "python": "3.12.6",
   "hub_path": "C:\\Users\\Admin\\high_command_exchange",
@@ -39,16 +39,6 @@
       "missing": []
     },
     {
-      "kind": "ack",
-      "file": "order-2025-11-14-059-ack.json",
-      "missing": []
-    },
-    {
-      "kind": "report",
-      "file": "hello-Alfa-M05-20251118T034100Z.json",
-      "missing": []
-    },
-    {
       "kind": "report",
       "file": "order-2025-10-16-035-result.json",
       "missing": []
@@ -61,11 +51,6 @@
     {
       "kind": "report",
       "file": "order-2025-11-13-905-report.json",
-      "missing": []
-    },
-    {
-      "kind": "report",
-      "file": "order-2025-11-14-059-report.json",
       "missing": []
     }
   ],

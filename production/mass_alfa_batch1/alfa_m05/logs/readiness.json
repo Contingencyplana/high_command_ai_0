@@ -1,0 +1,9 @@
+{
+  "instance_id": "Alfa-M05",
+  "order_id": "order-2025-11-14-059",
+  "baseline_tag": "forge-alfa@2025-11-13-054",
+  "readiness_log": "logs/mass_alfa_batch1/Alfa-M05/ops_readiness.json",
+  "timestamp_utc": "2025-11-18T03:40:10.090775+00:00",
+  "status": "ok",
+  "notes": "High Command reran ops_readiness for Alfa-M05 hydration; see log for hub/doc coverage."
+}

@@ -1,0 +1,8 @@
+{
+  "alfa_id": "Alfa-M05",
+  "workspace": "high_command_ai_0",
+  "slot": "golf_00/delta_00/alfa_m05",
+  "doc_refresh_queue_ref": "planning/doc_refresh_queue.md",
+  "ledger_ref": "exchange/ledger/2025-11.md",
+  "status": "hydrated"
+}

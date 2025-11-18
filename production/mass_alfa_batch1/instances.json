@@ -1,0 +1,56 @@
+{
+  "order_id": "order-2025-11-13-054",
+  "baseline_tag": "forge-alfa@2025-11-13-054",
+  "instances": [
+    {
+      "id": "Alfa-M01",
+      "path": "production/mass_alfa_batch1/alfa_m01",
+      "exchange_slot": "genesis-delta",
+      "focus": "Frontline factory twin / Delta",
+      "status": "seeded",
+      "readiness_log": "production/mass_alfa_batch1/alfa_m01/logs/readiness.json",
+      "smoke_log": "production/mass_alfa_batch1/alfa_m01/logs/smoke.txt",
+      "hello_report": "outbox/reports/hello-Alfa-M01-20251113T182415Z.json"
+    },
+    {
+      "id": "Alfa-M02",
+      "path": "production/mass_alfa_batch1/alfa_m02",
+      "exchange_slot": "genesis-theta",
+      "focus": "Telemetry + contract bridge / Theta",
+      "status": "seeded",
+      "readiness_log": "production/mass_alfa_batch1/alfa_m02/logs/readiness.json",
+      "smoke_log": "production/mass_alfa_batch1/alfa_m02/logs/smoke.txt",
+      "hello_report": "outbox/reports/hello-Alfa-M02-20251113T182415Z.json"
+    },
+    {
+      "id": "Alfa-M03",
+      "path": "production/mass_alfa_batch1/alfa_m03",
+      "exchange_slot": "genesis-zeta",
+      "focus": "Lore + morale stitches / Zeta",
+      "status": "seeded",
+      "readiness_log": "production/mass_alfa_batch1/alfa_m03/logs/readiness.json",
+      "smoke_log": "production/mass_alfa_batch1/alfa_m03/logs/smoke.txt",
+      "hello_report": "outbox/reports/hello-Alfa-M03-20251113T182415Z.json"
+    },
+    {
+      "id": "Alfa-M04",
+      "path": "production/mass_alfa_batch1/alfa_m04",
+      "exchange_slot": "genesis-kappa",
+      "focus": "Comfort + UI overlay instrumentation",
+      "status": "seeded",
+      "readiness_log": "production/mass_alfa_batch1/alfa_m04/logs/readiness.json",
+      "smoke_log": "production/mass_alfa_batch1/alfa_m04/logs/smoke.txt",
+      "hello_report": "outbox/reports/hello-Alfa-M04-20251113T182415Z.json"
+    },
+    {
+      "id": "Alfa-M05",
+      "path": "golf_00/delta_00/alfa_m05",
+      "exchange_slot": "genesis-alpha",
+      "focus": "Doc refresh + ledger automation twin (Alpha)",
+      "status": "hydrated",
+      "readiness_log": "logs/mass_alfa_batch1/Alfa-M05/ops_readiness.json",
+      "smoke_log": "logs/mass_alfa_batch1/Alfa-M05/exchange_all.json",
+      "hello_report": "outbox/reports/hello-Alfa-M05-20251118T034100Z.json"
+    }
+  ]
+}

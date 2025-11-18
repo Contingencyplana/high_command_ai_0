@@ -1,0 +1,9 @@
+{
+  "instance_id": "Alfa-M01",
+  "order_id": "order-2025-11-13-054",
+  "baseline_tag": "forge-alfa@2025-11-13-054",
+  "readiness_log": "logs/ops_readiness.json",
+  "timestamp_utc": "2025-11-13T18:23:23.402821+00:00",
+  "status": "ok",
+  "notes": "Shared Toyfoundry readiness run reused for Batch 1 seeding; instance will rerun once hydrated."
+}
