@@ -7,7 +7,7 @@
 **Impact:** Engagement architecture — layered playability across overlays  
 **Type:** pivot_spec  
 **Preceded By:** Major Pivot Six — Music-First Language  
-**Succeeded By:** Major Pivot Eight — Synergy-First Language (Dormant Horizon)
+**Succeeded By:** Major Pivot Eight — Game Engine Layer
 
 ---
 
@@ -137,4 +137,3 @@ Evaluate every 16 Alfas or when engagement dips below threshold. Add new Outland
 **Approved by:** War Office (civilian oversight) + High Command (military execution)  
 **Effective Date:** 2025-11-05  
 **Review Cycle:** Upon completion of each Outland expansion phase
-

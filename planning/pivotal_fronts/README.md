@@ -9,7 +9,7 @@ This index orients work across all pivotal fronts and links to canon documents. 
 
 ---
 
-## The Seven Pivotal Fronts
+## The Eight Pivotal Fronts
 
 ### Front 1: Tons of Fun (Game Design & Balance)
 **File:** `planning/pivotal_fronts/tons_of_fun.md`  
@@ -40,6 +40,11 @@ This index orients work across all pivotal fronts and links to canon documents. 
 **File:** `planning/pivotal_fronts/field_ops.md`  
 **Purpose:** Deploy and operate units in field theaters  
 **Focus:** Deployment, monitoring, battlefield intelligence
+
+### Front 7: Game Engine (Outlands Layer)
+**File:** `planning/pivotal_fronts/game_engine.md`  
+**Purpose:** Maintain the rendering/sensory pipeline that wraps Inlands for the Outlands Onion  
+**Focus:** Visual/audio overlays, automation of Outlands builds, accessibility toggles, change-control for sensory assets
 
 ### Enabler: Operations (Exchange Integrity)
 **File:** `planning/pivotal_fronts/ops.md`  

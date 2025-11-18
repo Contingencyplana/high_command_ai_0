@@ -95,6 +95,15 @@ When gameplay focus and documentation load spiked, two additional workspaces spl
   - Initial outputs: standards index, docs publishing plan, runbook consolidation
   - Spin-up order: `order-2025-11-13-053` (Genesis Spin-Up: archivist_ai_0)
 
+### Upcoming Activation Candidate — `game_engine_ai_0`
+
+- **Pivot Link:** Major Pivot Eight — Game Engine Layer
+- **Working Title:** Adventures in Gamengineering
+- **Mission:** Maintain rendering + sensory pipelines for the Outlands Onion while preserving docs-first Inlands.
+- **Activation Gate:** First production-quality overlay ships with telemetry proof and automation scripts so Toyfoundry/Toysoldiers can promote engine builds; ledger tag `pivot_08_game_engine_layer` references the evidence.
+- **Prep Work:** Draft runbook, pivotal front spec (`planning/pivotal_fronts/game_engine.md`), and change-control charter while incubating prototypes inside `high_command_ai_0`.
+- **Interfaces:** Once activated, it will sit between Tons-of-Fun (demand signals), Toyfoundry/Toysoldiers (build/deploy), and Morningate (civilian demos).
+
 ## Implementation Rationale
 
 ### Why Start with Five?

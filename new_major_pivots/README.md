@@ -3,7 +3,7 @@
 **Date:** 2025-10-17  
 **Authorizing Body:** War Office + High Command  
 **Status:** Approved & Active  
-**Last Updated:** 2025-11-04  
+**Last Updated:** 2025-11-18  
 **Offline Continuity Mode:** Active  
 
 ---
@@ -28,10 +28,12 @@ The **Five Major Pivots** represent a fundamental shift in how we build **Nightl
 
 ---
 
-## Future Pivot Candidates
+## Future Pivot Cadence
 
 - **[Six - Music-First Language](new_major_pivot_6.md)** (Exploratory): adds an audio grammar that mirrors the emoji slots so humming, rhythm, or instrumentation can drive the same workflows once Pivot Five stabilizes. Treat as a Pivot Five expansion path until the Level-0 glyph runtime and Alfa Zero Phase 2 reach operational status.
 - **[Seven - Outlands Onion](new_major_pivot_7.md)** (Approved & Active): engagement architecture via layered playability — add Lore/Music/Ritual overlays without touching the core emoji runtime or exchange protocol.
+- **[Eight - Game Engine Layer](new_major_pivot_8.md)** (Approved & Preparing): dedicates a sensory/rendering pipeline plus the future `game_engine_ai_0` front so Outlands can grow richer without rewriting Inlands code or schemas.
+- **Nine - Synergy-First Language (Dormant Horizon):** formerly Pivot Eight, now renumbered so the Game Engine Layer can follow the Outlands Onion directly. Remains the crown jewel that unifies emoji, music, lore, and graphics grammars once the engine proves stable.
 
 ---
 
