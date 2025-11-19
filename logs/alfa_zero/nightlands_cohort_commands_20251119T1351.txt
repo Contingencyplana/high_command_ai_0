@@ -1,0 +1,7 @@
+lore enable
+music enable
+storyboard status
+storyboard preview
+storyboard run
+sync latest 2
+quit

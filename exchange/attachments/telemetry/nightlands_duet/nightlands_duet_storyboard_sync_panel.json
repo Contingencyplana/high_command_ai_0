@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-18T20:30:29.861510Z",
+  "generated_at": "2025-11-19T03:59:59.718364Z",
   "source_feed": "exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl",
   "entries": [
     {
@@ -41,6 +41,46 @@
       "files_copied": 0,
       "destination": null,
       "summary_line": null
+    },
+    {
+      "timestamp": "2025-11-19T03:43:35.413707Z",
+      "event": "storyboard_run",
+      "session_id": "alfa_zero_ui-16364-20251119T034335365384Z",
+      "operator_id": "codex-nightlands",
+      "trace_id": "outland-lore-v1-8A-20251119034335",
+      "storyboard_id": "nightlands_duet_v1",
+      "payload_count": 2,
+      "cooldown_seconds": 900
+    },
+    {
+      "timestamp": "2025-11-19T03:43:35.516000Z",
+      "event": "targeted_sync_latest_run",
+      "session_id": "alfa_zero_ui-16364-20251119T034335365384Z",
+      "operator_id": "codex-nightlands",
+      "trace_id": "overlay-targeted-sync-targeted_sync_latest_run-20251119034335",
+      "files_copied": 2,
+      "destination": "C:/Users/Admin/high_command_exchange/orders",
+      "summary_line": "[OK] Synced 2 orders file(s) to C:\\Users\\Admin\\high_command_exchange\\orders"
+    },
+    {
+      "timestamp": "2025-11-19T03:59:24.291719Z",
+      "event": "storyboard_run",
+      "session_id": "alfa_zero_ui-19624-20251119T035924272459Z",
+      "operator_id": "codex-nightlands",
+      "trace_id": "outland-lore-v1-8A-20251119035924",
+      "storyboard_id": "nightlands_duet_v1",
+      "payload_count": 2,
+      "cooldown_seconds": 900
+    },
+    {
+      "timestamp": "2025-11-19T03:59:24.376137Z",
+      "event": "targeted_sync_latest_run",
+      "session_id": "alfa_zero_ui-19624-20251119T035924272459Z",
+      "operator_id": "codex-nightlands",
+      "trace_id": "overlay-targeted-sync-targeted_sync_latest_run-20251119035924",
+      "files_copied": 2,
+      "destination": "C:/Users/Admin/high_command_exchange/orders",
+      "summary_line": "[OK] Synced 2 orders file(s) to C:\\Users\\Admin\\high_command_exchange\\orders"
     }
   ]
 }

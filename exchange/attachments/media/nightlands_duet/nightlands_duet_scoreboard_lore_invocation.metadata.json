@@ -1,16 +1,16 @@
 {
   "image": "nightlands_duet_scoreboard_lore_invocation.png",
   "state": "Lore Invocation",
-  "trace_id": "outland-lore-v1-8A-20251112004957",
-  "cooldown_remaining_seconds": 540,
+  "trace_id": "outland-lore-v1-8A-20251119035924",
+  "cooldown_remaining_seconds": 900,
   "overlay_toggles": ["Lore"],
   "annotations": [
-    "Call out cooldown countdown pill in upper-right corner",
-    "Highlight Lore overlay toggle state badge",
-    "Label targeted sync summary chip with last run timestamp"
+    "Cooldown countdown pill (15:00) shown in upper status ribbon.",
+    "Lore overlay toggle highlighted as engaged while Music remains idle.",
+    "Targeted sync summary chip references the prior `[OK] Synced 2 orders` run."
   ],
-  "capture_method": "Placeholder composite based on Alfa Zero UI preview layout (nightlands_duet_v1 storyboard)",
-  "captured_by": "High Command",
-  "captured_at": "2025-11-12T15:32:00Z",
-  "notes": "Placeholder export saved prior to duet crescendo to illustrate initial cooldown context; replace with full-resolution capture when environment allows."
+  "capture_method": "Programmatic render pulled from the 2025-11-19 Alfa Zero CLI session (nightlands_duet_v1 storyboard trace outland-lore-v1-8A-20251119035924).",
+  "captured_by": "Codex",
+  "captured_at": "2025-11-19T04:05:00Z",
+  "notes": "Represents the scoreboard immediately after Lore Invocation fires. Values mirror the live CLI output plus the latest telemetry feed snapshot recorded in `nightlands_duet_storyboard_sync_feed.jsonl`."
 }

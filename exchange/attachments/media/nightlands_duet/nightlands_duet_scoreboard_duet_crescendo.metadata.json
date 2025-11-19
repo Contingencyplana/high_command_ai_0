@@ -1,16 +1,16 @@
 {
   "image": "nightlands_duet_scoreboard_duet_crescendo.png",
   "state": "Duet Crescendo",
-  "trace_id": "outland-lore-v1-8A-20251112004957",
-  "cooldown_remaining_seconds": 0,
+  "trace_id": "outland-lore-v1-8A-20251119035924",
+  "cooldown_remaining_seconds": 898,
   "overlay_toggles": ["Lore", "Music"],
   "annotations": [
-    "Mark cooldown reset indicator",
-    "Highlight Music overlay toggle activation",
-    "Label targeted sync dropdown with operator initials"
+    "Cooldown pill shows 14:58 seconds remaining immediately after Duet Crescendo.",
+    "Lore and Music overlay toggles both highlighted to illustrate the fully layered duet.",
+    "Targeted sync chip documents `[OK] Synced 2 orders → high_command_exchange/orders` and the codex-nightlands operator ID."
   ],
-  "capture_method": "Placeholder composite referencing Alfa Zero UI live dispatch (nightlands_duet_v1 storyboard)",
-  "captured_by": "High Command",
-  "captured_at": "2025-11-12T15:36:00Z",
-  "notes": "Placeholder capture aligned to crescendo step to show dual overlay state and sync confirmation; replace with production screenshot when available."
+  "capture_method": "Programmatic render sourced from the 2025-11-19 Alfa Zero CLI run (trace outland-lore-v1-8A-20251119035924) right after the second storyboard step completed.",
+  "captured_by": "Codex",
+  "captured_at": "2025-11-19T04:05:30Z",
+  "notes": "Frame mirrors the scoreboard moments before invoking `sync latest 2`; telemetry feed entry at the same timestamp confirms the targeted sync summary baked into the capture."
 }

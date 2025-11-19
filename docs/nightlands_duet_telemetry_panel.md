@@ -41,9 +41,13 @@ PY
 ### Example Output
 
 ```text
-Hour               Event            Count
-------------------------------------------
-2025-11-12T00      storyboard_run   1
+Hour               Event                    Count
+----------------------------------------------------
+2025-11-12T00      storyboard_run           1
+2025-11-12T10      targeted_sync            1
+2025-11-18T20      targeted_sync_lull       2
+2025-11-19T03      storyboard_run           2
+2025-11-19T03      targeted_sync_latest_run 2
 ```
 
 ### Latest Pair Sanity Check

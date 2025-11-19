@@ -8,7 +8,7 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 
 - [x] Added filtered sync arguments and quiet mode to `tools/offline_sync_exchange.py`.
 - [x] Wired new `sync latest` / `sync orders` commands into `alfa_zero_ui.py` and updated the play session script.
-- [ ] Evaluate long-term log rotation needs after observing quiet-mode output.
+- [ ] Evaluate long-term log rotation needs after observing quiet-mode output. Latest Nightlands cohort (2025-11-19T03:59Z) still copied only two files in quiet mode and kept `logs/alfa_zero/play_session_actions.log` at 33 KB, so rotation stays deferred while monitoring continues.
 
 ## Targeted Sync Trigger
 
@@ -86,6 +86,13 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 - Added `tools/export_nightlands_duet_panel.py`, which compiles the append-only feed into `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_panel.json`. Run it after each lull block to publish a lightweight panel for Tons-of-Fun/Morningate until the shared dashboard returns.
 - `exchange/attachments/guides/comfort_happy_path.md` now instructs operators to verify the targeted sync telemetry hook (and contract case `automation_comfort_sync.json`) during every 70/30 loop.
 
+## 2025-11-19 Update
+
+- Ran another Nightlands duet cohort at `2025-11-19T03:59:24Z` (trace `outland-lore-v1-8A-20251119035924`) using the recorded command script `logs/alfa_zero/nightlands_cohort_commands_20251119T1351.txt`; the paired targeted sync (`sync latest 2`) copied two payloads into `high_command_exchange/orders` and emitted the usual `[OK] Synced 2 orders file(s)` summary.
+- Feed `nightlands_duet_storyboard_sync_feed.jsonl` now holds eight records covering two storyboard + targeted-sync pairs on 2025-11-19; `tools/export_nightlands_duet_panel.py` was rerun so downstream dashboards inherit the refreshed cadence.
+- Quiet-mode output remains compact: `logs/alfa_zero/play_session_actions.log` grew to just 33 KB and shows a four-line targeted-sync transcript, so the log-rotation trigger (`>250 KB` or `>20` copies) remains unmet.
+- Quiet-mode observation for this cohort satisfies the "observe quiet-mode sync output" action; keep the guard in place for upcoming cohorts but no archival work is required yet.
+
 ## 2025-11-12 Playtest Feedback
 
 - Nightlands cohort (Vega, Lumen, Rook) executed the duet storyboard and confirmed the targeted sync helper’s quiet output during a live comfort-loop session.
@@ -95,6 +102,6 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 
 ## Next Actions
 
-1. Observe quiet-mode sync output over the next few playtest loops (starting with the next Nightlands cohort) and decide whether log rotation or archival is still required.
+1. Continue observing quiet-mode sync output after each Nightlands cohort (2025-11-19 remained at two copied files and 33 KB action log) to decide whether log rotation or archival is still required.
 2. Promote the interim telemetry panel (`docs/nightlands_duet_telemetry_panel.md`) into the primary dashboard once the offline tooling is back.
 3. Coordinate with UI workstream on the cooldown banner request and link the outcome back to this scope.
