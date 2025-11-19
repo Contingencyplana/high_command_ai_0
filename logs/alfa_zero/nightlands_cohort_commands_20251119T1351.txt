@@ -1,7 +1,11 @@
 lore enable
 music enable
+coop set chorus-automation
+versus set siege-automation
 storyboard status
 storyboard preview
 storyboard run
 sync latest 2
+coop clear
+versus clear
 quit

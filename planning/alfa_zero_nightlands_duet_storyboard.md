@@ -10,15 +10,18 @@ Craft a contained Nightlands vignette that exercises the Lore and Music overlays
 
 | Phase | Cell | Chain | Active Layers | Cue & Sensory Notes |
 | --- | --- | --- | --- | --- |
-| 1 — Lore Invocation | `8A` (signal_loop_dream) | "Signal the dream relay for telemetry" | Lore only (`outland-lore-v1`) | Whispered Nightlands courier recounts the path through the dream relay; describe moonlit embers & hushed footsteps. |
-| 2 — Duet Crescendo | `9B` (signal_loop_focus) | "Tighten the targeting relay for precision guidance" | Lore + Music stack (`outland-lore-v1`, `outland-music-v1`) | Music layer swells with low strings while storytellers chant the rallying cry. Mix should favor Lore narration; Music underpins tempo shifts. |
+| 1 - Lore Invocation | `8A` (signal_loop_dream) | "Signal the dream relay for telemetry" | Lore only (`outland-lore-v1`) | Whispered Nightlands courier recounts the path through the dream relay; describe moonlit embers & hushed footsteps. |
+| 2 - Duet Crescendo | `9B` (signal_loop_focus) | "Tighten the targeting relay for precision guidance" | Lore + Music stack (`outland-lore-v1`, `outland-music-v1`) | Music layer swells with low strings while storytellers chant the rallying cry. Mix should favor Lore narration; Music underpins tempo shifts. |
+| 3 - Twilight Strategy (Co-op) | `8C` (signal_loop_strategy) | "Project strategic directives through the targeting lattice" | Lore + Music; second operator mirrors moves via `coop span` | Cooperative pairs keep cadence to trigger the Dual-State Chorus bonus. Describe both operators echoing verses while telemetry paints a twilight grid. |
+| 4 - Counter Pulse (Versus / Optional) | `9C` (signal_loop_tempo) | "Stabilize tempo along the targeting corridor" | Lore-only defense or Music-only counter depending on span | If a Nightland rival interrupts (tracked via `versus span`), respond with a Lore-only chant that clamps entropy spikes. Otherwise, use this phase to seed the next branch (cells `7A` or `9C`) with co-op data. |
 
 ## Trigger Flow
 
 1. **Readiness** — Confirm `fun_flags.balance_toggles` is active and run `python -m tools.ops_readiness`.
 2. **Consent** — Enable Lore and Music toggles inside Alfa Zero UI (`lore enable`, `music enable`).
-3. **Storyboard Run** — From Alfa Zero UI, use `storyboard preview` to review steps, then `storyboard run` to execute both phases.
-4. **Evidence Sweep** — Collect payloads under `outbox/orders/emoji_runtime/` and telemetry in `logs/alfa_zero/`. The run also logs to `logs/alfa_zero/storyboards/nightlands_duet_runs.jsonl`.
+3. **Span Tagging** — Before running the storyboard, set cooperative and/or versus spans as needed (`coop set chorus-<id>`, `versus set siege-<id>`). Use `coop status` / `versus status` to confirm instrumentation or `... clear` to reset.
+4. **Storyboard Run** — From Alfa Zero UI, use `storyboard preview` to review steps, then `storyboard run` to execute the four phases.
+5. **Evidence Sweep** — Collect payloads under `outbox/orders/emoji_runtime/` and telemetry in `logs/alfa_zero/`. The run also logs to `logs/alfa_zero/storyboards/nightlands_duet_runs.jsonl`.
 
 ## Cooldown & Guardrails
 
@@ -35,6 +38,7 @@ Craft a contained Nightlands vignette that exercises the Lore and Music overlays
 - `logs/alfa_zero/session_metrics.jsonl` now records per-step `dispatch` entries with storyboard metadata plus a `storyboard_run` summary (payload count, trace, force flag).
 - Guardrail blocks are also logged to session metrics as `storyboard_guardrail` events for postmortem review.
 - Targeted sync executions now append structured telemetry (trace IDs, operator IDs, counts, destinations, copied paths) alongside storyboard runs into `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl`.
+- Cooperative/versus instrumentation: when operators set spans via `coop set …` or `versus set …`, Alfa Zero UI threads `coop_span_id` and/or `versus_span_id` through every session metric, storyboard log, and Nightlands telemetry feed entry so dashboards can correlate entropy pushes.
 
 ## Scoreboard & Cadence Artifacts
 
@@ -52,14 +56,22 @@ Craft a contained Nightlands vignette that exercises the Lore and Music overlays
 ## Operator Checklist
 
 1. Run `storyboard status` to confirm cooldown, last run, and toggle requirements.
-2. Use `storyboard preview` for cues before dispatching.
+2. Manage spans: `coop status | coop set <id> | coop clear` for cooperative arcs, `versus status | versus set <id> | versus clear` for contested runs. Leave them `none` for solo missions.
+3. Use `storyboard preview` for cues before dispatching.
 	- Status output now shows the remaining cooldown timer and the next eligible timestamp; only use `storyboard run force` if explicitly cleared.
-3. Execute `storyboard run` and monitor output summary plus telemetry log. The action log (`logs/alfa_zero/play_session_actions.log`) captures trace, force flag, and payload references automatically.
+4. Execute `storyboard run` and monitor output summary plus telemetry log. The action log (`logs/alfa_zero/play_session_actions.log`) captures trace, force flag, and payload references automatically.
    - Status output now shows the remaining cooldown timer and the next eligible timestamp; only use `storyboard run force` if explicitly cleared.
-4. Review `logs/alfa_zero/session_metrics.jsonl` to verify both dispatch steps and the `storyboard_run` aggregate were recorded, then confirm the append-only feed at `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl` picked up the run and any follow-on targeted sync.
+5. Review `logs/alfa_zero/session_metrics.jsonl` to verify both dispatch steps and the `storyboard_run` aggregate were recorded, then confirm the append-only feed at `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl` picked up the run and any follow-on targeted sync.
    - Capture updated scoreboard snapshots or reuse the staged composites from `exchange/attachments/media/nightlands_duet/` for briefings; keep `exchange/attachments/guides/nightlands_duet_playtest_packet.md` in sync.
-5. Append ledger entry (`exchange/ledger/2025-11.md`) citing the duet run and evidence log path.
-6. File telemetry snippets or screenshots into the applicable report when closing the work order.
+6. Append ledger entry (`exchange/ledger/2025-11.md`) citing the duet run and evidence log path.
+7. File telemetry snippets or screenshots into the applicable report when closing the work order.
+
+## Cooperative / Versus Hooks
+
+- **Cooperative lock:** When two operators run the duet together, alternate who triggers Lore vs Music. Log both `operator_id` values plus a shared `coop_span_id` so the Daylands/Nightlands scroll (Section 8) can credit the Dual-State Chorus bonus.  
+- **Versus trigger:** If a Nightland-aligned rival interrupts between steps (Music-only injection), capture it as a `versus_span_id` and append the resulting entropy delta to the ledger. Cooperative crews can counter with an immediate Lore-only dispatch; record both moves for later analysis.  
+- **Cooldown siege defense:** When an opposing operator extends your cooldown, sacrifice the next targeted sync to create a shared buffer and log `cooldown_shield:true` inside `session_metrics.jsonl`. This corresponds to the “Cooldown Siege” hook in `planning/daylands_and_nightlands.md`.  
+- Branch planning: The next storyboard revision should expand beyond cells `8A/9B` (e.g., add `7A` reconnaissance or `9C` defense) and label each new step as cooperative-only, versus-optional, or solo. Cross-link the chosen axes (Joy/Misery, Resonance/Dissonance, etc.) to keep the cosmology scroll and storyboard in sync.
 
 ## Follow-Up Hooks
 

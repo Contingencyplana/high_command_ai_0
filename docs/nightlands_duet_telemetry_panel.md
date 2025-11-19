@@ -14,6 +14,7 @@ Provide a lightweight offline panel that correlates Nightlands duet storyboard r
 - Schema and field notes live in `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_telemetry_manifest.md`; consult it before extending the feed or when onboarding new dashboards.
 - `planning/alfa_zero_nightlands_duet_storyboard.md` records how crews should reference the feed, scoreboard composites, and targeted sync cadence inside the duet playbook.
 - For imagery/context, mirror `exchange/attachments/guides/nightlands_duet_playtest_packet.md` so cohorts have the scoreboard excerpts that pair with this telemetry.
+- Cooperative / Versus spans: when operators set `coop set <id>` or `versus set <id>` inside Alfa Zero UI, those identifiers now flow through `nightlands_duet_storyboard_sync_feed.jsonl` so dashboards can highlight Dual-State Chorus or siege events. The panel exporter (`tools/export_nightlands_duet_panel.py`) includes these fields per entry.
 
 ## Quick Cadence Snapshot
 
@@ -68,7 +69,7 @@ PY
 ## Manual Checklist for Cohorts
 
 1. After running the duet storyboard, execute the targeted sync helper (`sync latest` inside Alfa Zero UI).
-2. Re-run the snapshot command (or the pair sanity check) above to confirm the feed reflects both the storyboard and the sync.
+2. Re-run the snapshot command (or the pair sanity check) above to confirm the feed reflects both the storyboard and the sync. When running a cooperative or versus arc, verify the `coop_span_id` / `versus_span_id` values show up in the feed output.
 3. If data looks off, inspect the manifest (`nightlands_duet_telemetry_manifest.md`) to ensure new fields were added correctly before re-running the helper.
 4. Capture the ASCII snapshot and include it in the session log or debrief packet if new cadence data surfaces.
 
@@ -76,3 +77,4 @@ PY
 
 - When the offline dashboard toolkit comes back online, swap this quick script into the telemetry notebook to render a proper cadence chart.
 - Extend the parser to show cooldown deltas once additional runs populate the feed.
+- Add grouped aggregation by `coop_span_id` / `versus_span_id` so dashboards can graph cooperative pushes versus sieges over time.

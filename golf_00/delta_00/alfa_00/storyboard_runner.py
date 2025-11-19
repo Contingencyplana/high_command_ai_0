@@ -257,7 +257,7 @@ def _record_storyboard_run(
 
 NIGHTLANDS_DUET_STORYBOARD = Storyboard(
     storyboard_id="nightlands_duet_v1",
-    title="Nightlands Duet — Lore + Music",
+    title="Nightlands Duet - Lore + Music",
     cooldown_seconds=15 * 60,
     steps=(
         StoryboardStep(
@@ -271,6 +271,28 @@ NIGHTLANDS_DUET_STORYBOARD = Storyboard(
             label="Duet Crescendo",
             cell=(9, 11),
             description="Music swells beneath the lore chant as focus locks on the targeting relay.",
+            overlay_stack=(
+                ("outland-lore-v1", "lore"),
+                ("outland-music-v1", "music"),
+            ),
+            requires_lore=True,
+            requires_music=True,
+        ),
+        StoryboardStep(
+            label="Twilight Strategy",
+            cell=(8, 12),
+            description="Project strategic directives through the targeting lattice as the second operator mirrors cadence.",
+            overlay_stack=(
+                ("outland-lore-v1", "lore"),
+                ("outland-music-v1", "music"),
+            ),
+            requires_lore=True,
+            requires_music=True,
+        ),
+        StoryboardStep(
+            label="Counter Pulse",
+            cell=(9, 12),
+            description="Stabilize tempo along the targeting corridor and defend against Nightland counter-chants.",
             overlay_stack=(
                 ("outland-lore-v1", "lore"),
                 ("outland-music-v1", "music"),

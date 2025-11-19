@@ -172,7 +172,35 @@ Light learns from Shadow, and Shadow learns to dream again.
 
 ---
 
-## 🪶 8. Closing Principle  
+## ⚔️ 8. Cooperative & Versus Expansions  
+
+### Multi-Operator Influence  
+
+- Every operator carries a personal entropy index; when multiple operators engage the same grid, their indices blend or clash.  
+- Cooperative missions average the indices, gently nudging contested cells toward Twilight and then Dayland. Versus missions amplify the delta: Dayland-aligned operators pull entropy below 0.5 while Nightland champions push it upward.  
+- Telemetry must tag each dispatch with `operator_id`, `coop_span_id`, and (when contested) `versus_span_id` so dashboards can render which axes were influenced.  
+
+### Cooperative Threads  
+
+1. **Dual-State Chorus:** Two operators alternate Lore and Music overlays (cells `8A` and `9B`). If they maintain cadence for three back-to-back runs, entropy drops 0.05 across the entire signal quadrant.  
+2. **Entropy Weaving:** Operators dispatch mirrored cells simultaneously (e.g., `8A` + `C8`). Matching at least three axes (from the fortyfold table) converts a Twilight cell back to Dayland without combat pressure.  
+3. **Resonance Bridge:** Cooperative targeted sync runs—one operator executes `sync latest`, the other immediately validates telemetry—unlock a Dayland bonus action, allowing them to rehydrate a dormant grid cell with the latest storyboard trace.  
+
+### Versus Threads  
+
+1. **Nightland Counter-Chant:** A rival injects a Music-only pulse between duet steps. Each interruption adds +0.03 entropy unless the cooperative duo responds with a Lore-only dispatch within one cooldown tick.  
+2. **Cooldown Siege:** Contesting operators may spend a move to extend another crew’s cooldown by 60 seconds if ledger debt remains unresolved. Cooperative teams can sacrifice one targeted sync to grant the whole squad a shared cooldown buffer, resetting the siege.  
+3. **Entropy Gambit:** Operators race along a single axis (e.g., Axis 21 Joy/Misery). The first side to log three matching payloads at the axis cell locks that quadrant for their realm until a Revelation Flow occurs.  
+
+### Branch Hooks  
+
+- Storyboard scrolls must call out **cooperative locks** (steps requiring synchronized operators) and **versus triggers** (optional defense moves).  
+- Mission planners should map which axes each hook manipulates so ledger entries tell a coherent Dayland/Nightland story.  
+- Future missions should extend beyond cells `8A/9B` into adjacent coordinates (`7A`, `9C`, `D9`) where cooperative vs versus outcomes determine the next branch of the campaign.  
+
+---
+
+## 🪶 9. Closing Principle  
 
 > **Daylands sing; Nightlands echo.**  
 > Between them flows the breath of all becoming.  

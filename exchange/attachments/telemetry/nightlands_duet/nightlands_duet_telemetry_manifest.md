@@ -13,27 +13,31 @@ All records emit the following shared fields:
 
 - `timestamp` — UTC timestamp recorded by the Alfa Zero UI session metrics pipeline.
 - `event` — Either `storyboard_run` or a `targeted_sync*` variant (custom suffixes allowed).
-- `session_id` — Session identifier emitted by Alfa Zero UI.
-- `source` — Always `alfa_zero_ui` for the current instrumentation pass.
-- `operator_id` — Operator identifier captured via `--operator` or `SHAGI_OPERATOR`.
-- `trace_id` — Correlation identifier for the storyboard or targeted sync run.
+- `session_id` - Session identifier emitted by Alfa Zero UI.
+- `source` - Always `alfa_zero_ui` for the current instrumentation pass.
+- `operator_id` - Operator identifier captured via `--operator` or `SHAGI_OPERATOR`.
+- `trace_id` - Correlation identifier for the storyboard or targeted sync run.
+- `coop_span_id` - Optional cooperative span identifier set via `coop set <id>` inside Alfa Zero UI. Present whenever operators tag a Dual-State Chorus run.
+- `versus_span_id` - Optional versus span identifier set via `versus set <id>` for contested runs or cooldown sieges.
 
 `storyboard_run` records add:
 
 - `storyboard_id`, `trace_id`, `payload_count`, `cooldown_seconds`, `force` flag.
 - `storyboard_log` — Relative path to the storyboard run log file.
-- `payloads` — Relative paths to payloads emitted during the run.
+- `payloads` - Relative paths to payloads emitted during the run.
+- `coop_span_id` / `versus_span_id` are repeated here for emphasis; dashboards correlate them with targeted sync events to show multi-operator pushes.
 
 `targeted_sync*` records add:
 
 - `categories`, `orders_subpath`, `latest`, `dry_run`, `quiet` — Parameters used for the helper invocation.
-- `returncode` — Process exit status.
-- `summary_line` — Final status line from the helper (`[OK]` or `[INFO]` declarations).
-- `destination` — Reported sync destination when available.
-- `copied_count`, `copied_paths` — Parsed counts and relative output paths.
-- `files_copied` — Convenience field mirroring `copied_count` (defaults to `0` when quiet runs report no changes).
-- `no_changes` — Boolean indicating whether the helper reported that no files were copied.
-- `action_log` — Relative path to the appended action log entry.
+- `returncode` - Process exit status.
+- `summary_line` - Final status line from the helper (`[OK]` or `[INFO]` declarations).
+- `destination` - Reported sync destination when available.
+- `copied_count`, `copied_paths` - Parsed counts and relative output paths.
+- `files_copied` - Convenience field mirroring `copied_count` (defaults to `0` when quiet runs report no changes).
+- `no_changes` - Boolean indicating whether the helper reported that no files were copied.
+- `action_log` - Relative path to the appended action log entry.
+- `coop_span_id`, `versus_span_id` - When spans are active, these mirror the values attached to the corresponding storyboard run so dashboards can trace sync evidence to the same cooperative or contested arc.
 
 ## Update Notes
 

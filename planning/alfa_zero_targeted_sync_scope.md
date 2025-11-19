@@ -8,7 +8,7 @@ The scripted `python scripts/play_session.py` loop now drives dispatch, contract
 
 - [x] Added filtered sync arguments and quiet mode to `tools/offline_sync_exchange.py`.
 - [x] Wired new `sync latest` / `sync orders` commands into `alfa_zero_ui.py` and updated the play session script.
-- [ ] Evaluate long-term log rotation needs after observing quiet-mode output. Latest Nightlands cohort (2025-11-19T03:59Z) still copied only two files in quiet mode and kept `logs/alfa_zero/play_session_actions.log` at 33 KB, so rotation stays deferred while monitoring continues.
+- [x] Evaluate long-term log rotation needs after observing quiet-mode output. Overlay UI now auto-rotates `logs/alfa_zero/play_session_actions.log` into `logs/alfa_zero/archive/` once it exceeds ~250 KB and announces the archive name to the operator.
 
 ## Targeted Sync Trigger
 

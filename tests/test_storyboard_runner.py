@@ -84,7 +84,7 @@ def test_run_storyboard_writes_metadata(tmp_path: Path):
     extra_payload = first_call["kwargs"].get("extra_payload")  # type: ignore[index]
     assert isinstance(extra_payload, dict)
     assert extra_payload["storyboard_sequence"] == 1
-    assert extra_payload["storyboard_total_steps"] == 2
+    assert extra_payload["storyboard_total_steps"] == len(NIGHTLANDS_DUET_STORYBOARD.steps)
 
     log_path = tmp_path / "logs" / "alfa_zero" / "storyboards" / "nightlands_duet_v1_runs.jsonl"
     assert log_path.exists()
@@ -128,46 +128,62 @@ def test_run_storyboard_enforces_cooldown(tmp_path: Path):
 def test_execute_storyboard_run_appends_metrics(tmp_path: Path, monkeypatch):
     payload_dir = tmp_path / "outbox" / "orders" / "emoji_runtime"
     payload_dir.mkdir(parents=True, exist_ok=True)
-    payload_one = payload_dir / "payload_1.json"
-    payload_two = payload_dir / "payload_2.json"
     common_fields = {
         "chain_name": "nightlands_step",
         "template": "nightlands_duet",
         "outcomes": ["ok"],
         "storyboard_id": NIGHTLANDS_DUET_STORYBOARD.storyboard_id,
-        "storyboard_total_steps": 2,
+        "storyboard_total_steps": len(NIGHTLANDS_DUET_STORYBOARD.steps),
     }
-    payload_one.write_text(
-        json.dumps(
-            {
-                **common_fields,
-                "storyboard_step": "Lore Invocation",
-                "storyboard_sequence": 1,
-                "overlay_id": "outland-lore-v1",
-                "overlay_layer": "lore",
-                "overlays": [{"overlay_id": "outland-lore-v1", "layer_kind": "lore"}],
-                "trace_id": "trace-nightlands",
-            }
-        ),
-        encoding="utf-8",
-    )
-    payload_two.write_text(
-        json.dumps(
-            {
-                **common_fields,
-                "storyboard_step": "Duet Crescendo",
-                "storyboard_sequence": 2,
-                "overlay_id": "outland-lore-v1",
-                "overlay_layer": "lore",
-                "overlays": [
-                    {"overlay_id": "outland-lore-v1", "layer_kind": "lore"},
-                    {"overlay_id": "outland-music-v1", "layer_kind": "music"},
-                ],
-                "trace_id": "trace-nightlands",
-            }
-        ),
-        encoding="utf-8",
-    )
+    payload_specs = [
+        {
+            "storyboard_step": "Lore Invocation",
+            "storyboard_sequence": 1,
+            "overlays": [{"overlay_id": "outland-lore-v1", "layer_kind": "lore"}],
+        },
+        {
+            "storyboard_step": "Duet Crescendo",
+            "storyboard_sequence": 2,
+            "overlays": [
+                {"overlay_id": "outland-lore-v1", "layer_kind": "lore"},
+                {"overlay_id": "outland-music-v1", "layer_kind": "music"},
+            ],
+        },
+        {
+            "storyboard_step": "Twilight Strategy",
+            "storyboard_sequence": 3,
+            "overlays": [
+                {"overlay_id": "outland-lore-v1", "layer_kind": "lore"},
+                {"overlay_id": "outland-music-v1", "layer_kind": "music"},
+            ],
+        },
+        {
+            "storyboard_step": "Counter Pulse",
+            "storyboard_sequence": 4,
+            "overlays": [
+                {"overlay_id": "outland-lore-v1", "layer_kind": "lore"},
+                {"overlay_id": "outland-music-v1", "layer_kind": "music"},
+            ],
+        },
+    ]
+    payload_paths: list[Path] = []
+    for index, spec in enumerate(payload_specs, start=1):
+        payload_path = payload_dir / f"payload_{index}.json"
+        payload_path.write_text(
+            json.dumps(
+                {
+                    **common_fields,
+                    "storyboard_step": spec["storyboard_step"],
+                    "storyboard_sequence": spec["storyboard_sequence"],
+                    "overlay_id": "outland-lore-v1",
+                    "overlay_layer": "lore",
+                    "overlays": spec["overlays"],
+                    "trace_id": "trace-nightlands",
+                }
+            ),
+            encoding="utf-8",
+        )
+        payload_paths.append(payload_path)
 
     log_path = tmp_path / "logs" / "alfa_zero" / "storyboards" / "nightlands_duet_v1_runs.jsonl"
     log_path.parent.mkdir(parents=True, exist_ok=True)
@@ -176,7 +192,7 @@ def test_execute_storyboard_run_appends_metrics(tmp_path: Path, monkeypatch):
     result = StoryboardRunResult(
         storyboard_id=NIGHTLANDS_DUET_STORYBOARD.storyboard_id,
         trace_id="trace-nightlands",
-        payload_paths=[payload_one, payload_two],
+        payload_paths=payload_paths,
         log_path=log_path,
         recorded_at=datetime.now(timezone.utc),
         force=False,
@@ -208,7 +224,7 @@ def test_execute_storyboard_run_appends_metrics(tmp_path: Path, monkeypatch):
 
     execute_storyboard_run(context)
 
-    assert context.dispatch_count == 2
+    assert context.dispatch_count == len(payload_paths)
     assert context.selected == NIGHTLANDS_DUET_STORYBOARD.steps[-1].cell
     assert metrics_path.exists()
 
@@ -216,13 +232,14 @@ def test_execute_storyboard_run_appends_metrics(tmp_path: Path, monkeypatch):
     events = {record["event"] for record in records}
     assert "storyboard_run" in events
     dispatch_records = [record for record in records if record["event"] == "dispatch"]
-    assert len(dispatch_records) == 2
+    assert len(dispatch_records) == len(payload_paths)
+    expected_sequences = set(range(1, len(payload_paths) + 1))
     for dispatch_record in dispatch_records:
         assert dispatch_record["storyboard_id"] == NIGHTLANDS_DUET_STORYBOARD.storyboard_id
-        assert dispatch_record["storyboard_sequence"] in {1, 2}
+        assert dispatch_record["storyboard_sequence"] in expected_sequences
 
     storyboard_record = next(record for record in records if record["event"] == "storyboard_run")
-    assert storyboard_record["payload_count"] == 2
+    assert storyboard_record["payload_count"] == len(payload_paths)
     assert storyboard_record["force"] is False
 
     action_log_contents = action_log_path.read_text(encoding="utf-8")

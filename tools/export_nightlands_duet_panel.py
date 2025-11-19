@@ -49,6 +49,10 @@ def build_panel(records: List[Dict[str, Any]]) -> Dict[str, Any]:
             "operator_id": record.get("operator_id"),
             "trace_id": record.get("trace_id"),
         }
+        if record.get("coop_span_id"):
+            entry["coop_span_id"] = record["coop_span_id"]
+        if record.get("versus_span_id"):
+            entry["versus_span_id"] = record["versus_span_id"]
         if event == "storyboard_run":
             entry["storyboard_id"] = record.get("storyboard_id")
             entry["payload_count"] = record.get("payload_count")

@@ -20,6 +20,8 @@ from pathlib import Path
 import subprocess
 from typing import Any, Dict, List, Optional, Sequence, TextIO, Tuple
 
+ACTION_LOG_MAX_BYTES = int(os.getenv("ALFA_ZERO_ACTION_LOG_MAX_BYTES", str(250 * 1024)))
+
 from overlay_bridge import CELL_MAPPINGS, OverlayBridge, build_bridge, cell_label
 from trace_utils import generate_trace_id
 from storyboard_runner import (
@@ -96,6 +98,8 @@ class UIContext:
     lore_layer_enabled: bool = False
     music_layer_enabled: bool = False
     operator_id: str = "operator-unknown"
+    coop_span_id: Optional[str] = None
+    versus_span_id: Optional[str] = None
 
     @property
     def repo_root(self) -> Path:
@@ -138,6 +142,19 @@ def render_grid(highlight: Optional[Cell] = None, *, stream: TextIO = sys.stdout
                 mark = f"[{mark}]"
             rendered.append(mark)
         print(f"{HEX_DIGITS[row_index]}   " + " ".join(rendered), file=stream)
+
+
+def _render_span_banner(context: UIContext, *, stream: TextIO = sys.stdout) -> None:
+    coop = context.coop_span_id or "none"
+    versus = context.versus_span_id or "none"
+    print(f"📡 Spans — Coop: {coop} | Versus: {versus}", file=stream)
+
+
+def _render_overlay_state(context: UIContext, *, overlay: Optional[Dict[Cell, str]] = None) -> None:
+    overlay = overlay or compute_quilt_overlay(context.repo_root)
+    render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+    _render_span_banner(context, stream=context.output_stream)
+    render_footer(context, stream=context.output_stream)
 
 
 def list_mapped_cells(stream: TextIO = sys.stdout) -> None:
@@ -280,6 +297,77 @@ def display_summary(summary: PayloadSummary, repo_root: Path, *, stream: TextIO 
     print(f"   Payload: {relative_path}", file=stream)
 
 
+def _handle_span_command(context: UIContext, *, attr: str, label: str, tokens: List[str]) -> None:
+    current = getattr(context, attr)
+    if len(tokens) == 1 or tokens[1].lower() == "status":
+        value = current or "none"
+        print(f"{label} span: {value}", file=context.output_stream)
+        return
+    action = tokens[1].lower()
+    if action in {"set", "assign"}:
+        if len(tokens) < 3:
+            print(f"⚠️  Usage: {label.lower()} set <id>", file=context.output_stream)
+            return
+        span_id = tokens[2]
+        setattr(context, attr, span_id)
+        print(f"{label} span set to {span_id}.", file=context.output_stream)
+        return
+    if action in {"clear", "reset"}:
+        if current is None:
+            print(f"{label} span already cleared.", file=context.output_stream)
+        else:
+            setattr(context, attr, None)
+            print(f"{label} span cleared.", file=context.output_stream)
+        return
+    print(f"⚠️  Usage: {label.lower()} status | {label.lower()} set <id> | {label.lower()} clear", file=context.output_stream)
+
+
+def _maybe_prompt_span(context: UIContext) -> None:
+    if context.coop_span_id is None:
+        print(
+            "ℹ️  Cooperative span is unset — use 'coop set <id>' to tag Dual-State Chorus runs or ignore for solo play.",
+            file=context.output_stream,
+        )
+    if context.versus_span_id is None:
+        print(
+            "ℹ️  Versus span is unset — use 'versus set <id>' when defending against Nightland sieges.",
+            file=context.output_stream,
+        )
+
+
+def _rotate_action_log_if_needed(context: UIContext, log_path: Path) -> None:
+    limit = max(0, ACTION_LOG_MAX_BYTES)
+    if limit == 0 or not log_path.exists():
+        return
+    try:
+        size = log_path.stat().st_size
+    except OSError:
+        return
+    if size < limit:
+        return
+    archive_dir = log_path.parent / "archive"
+    try:
+        archive_dir.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        archive_dir = log_path.parent
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    rotated_path = archive_dir / f"{log_path.stem}_{timestamp}{log_path.suffix}"
+    try:
+        log_path.rename(rotated_path)
+    except OSError as exc:
+        print(f"⚠️  Unable to rotate play session log: {exc}", file=context.output_stream)
+        return
+    relative = rotated_path
+    try:
+        relative = rotated_path.relative_to(context.repo_root)
+    except ValueError:
+        pass
+    print(
+        f"📦 Rotated play session log to {relative} after exceeding {limit} bytes.",
+        file=context.output_stream,
+    )
+
+
 def _ensure_action_log(context: UIContext) -> Path:
     if context.action_log_path is None:
         log_dir = context.repo_root / "logs" / "alfa_zero"
@@ -287,6 +375,7 @@ def _ensure_action_log(context: UIContext) -> Path:
         context.action_log_path = log_dir / "play_session_actions.log"
     else:
         context.action_log_path.parent.mkdir(parents=True, exist_ok=True)
+    _rotate_action_log_if_needed(context, context.action_log_path)
     return context.action_log_path
 
 
@@ -381,6 +470,26 @@ def _log_storyboard_result(context: UIContext, result: "StoryboardRunResult") ->
     return log_path
 
 
+def _render_cooldown_banner(context: UIContext, *, recorded_at: datetime, force: bool) -> None:
+    cooldown = NIGHTLANDS_DUET_STORYBOARD.cooldown_seconds
+    eligible_at = recorded_at + timedelta(seconds=cooldown)
+    eligible_text = eligible_at.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+    remaining = max(0, int((eligible_at - datetime.now(timezone.utc)).total_seconds()))
+    if remaining == 0:
+        print(
+            f"🕒 Nightlands cooldown satisfied — next run eligible immediately (guard resets at {eligible_text}).",
+            file=context.output_stream,
+        )
+    else:
+        minutes, seconds = divmod(remaining, 60)
+        print(
+            f"🕒 Nightlands cooldown active — next eligible run at {eligible_text} ({minutes}m {seconds:02d}s remaining).",
+            file=context.output_stream,
+        )
+    if force:
+        print("   ⚠️ Force override used; confirm ledger approval before rerunning.", file=context.output_stream)
+
+
 def render_storyboard_status(context: UIContext) -> None:
     status = load_storyboard_status(context.repo_root, NIGHTLANDS_DUET_STORYBOARD)
     last_run_display = "never"
@@ -414,6 +523,8 @@ def render_storyboard_status(context: UIContext) -> None:
         f"   Music toggle: {'ON' if context.music_layer_enabled else 'off — enable before run'}",
         file=context.output_stream,
     )
+    print(f"   Cooperative span: {context.coop_span_id or 'none'}", file=context.output_stream)
+    print(f"   Versus span: {context.versus_span_id or 'none'}", file=context.output_stream)
     print(f"   Log: {_relative_to_repo(context.repo_root, status.log_path)}", file=context.output_stream)
 
 
@@ -423,6 +534,7 @@ def render_storyboard_preview(context: UIContext) -> None:
 
 
 def execute_storyboard_run(context: UIContext, *, force: bool = False) -> None:
+    _maybe_prompt_span(context)
     print("🎭 Running Nightlands duet storyboard…", file=context.output_stream)
     try:
         result = run_storyboard_sequence(
@@ -511,6 +623,7 @@ def execute_storyboard_run(context: UIContext, *, force: bool = False) -> None:
             "storyboard_log": _relative_to_repo(context.repo_root, result.log_path),
         },
     )
+    _render_cooldown_banner(context, recorded_at=result.recorded_at, force=result.force)
 
 
 def run_contract_suite(
@@ -717,6 +830,8 @@ HELP_TEXT = """Commands:
     map            List every mapped cell and chain
     lore           Lore overlay controls (lore status | lore enable | lore disable)
     music          Music overlay controls (music status | music enable | music disable)
+    coop           Cooperative span controls (coop status | coop set <id> | coop clear)
+    versus         Versus span controls (versus status | versus set <id> | versus clear)
     storyboard     Nightlands duet (storyboard status | storyboard preview | storyboard run [force])
     <cell>         Jump to a cell (formats: 04, 0,4, 0 4)
     show           Re-render the grid
@@ -728,9 +843,7 @@ HELP_TEXT = """Commands:
 def interactive_loop(context: UIContext) -> None:
     print("Alfa Zero Overlay UI — navigate the grid and dispatch mapped chains.", file=context.output_stream)
     print("Type 'help' for command reference.\n", file=context.output_stream)
-    overlay = compute_quilt_overlay(context.repo_root)
-    render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-    render_footer(context, stream=context.output_stream)
+    _render_overlay_state(context)
     _log_session_event(context, event="session_start")
 
     while True:
@@ -751,9 +864,7 @@ def interactive_loop(context: UIContext) -> None:
 
         if not raw:
             dispatch_selected(context)
-            overlay = compute_quilt_overlay(context.repo_root)
-            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-            render_footer(context, stream=context.output_stream)
+            _render_overlay_state(context)
             continue
 
         tokens = raw.split()
@@ -767,9 +878,7 @@ def interactive_loop(context: UIContext) -> None:
             print(HELP_TEXT, file=context.output_stream)
             continue
         if command in {"show", "grid"}:
-            overlay = compute_quilt_overlay(context.repo_root)
-            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-            render_footer(context, stream=context.output_stream)
+            _render_overlay_state(context)
             continue
         if command == "lore":
             if len(tokens) == 1 or tokens[1].lower() == "status":
@@ -827,6 +936,12 @@ def interactive_loop(context: UIContext) -> None:
                 continue
             print("⚠️  Usage: music status | music enable | music disable", file=context.output_stream)
             continue
+        if command == "coop":
+            _handle_span_command(context, attr="coop_span_id", label="Cooperative", tokens=tokens)
+            continue
+        if command == "versus":
+            _handle_span_command(context, attr="versus_span_id", label="Versus", tokens=tokens)
+            continue
         if command == "storyboard":
             option = tokens[1].lower() if len(tokens) > 1 else "status"
             if option == "status":
@@ -838,9 +953,7 @@ def interactive_loop(context: UIContext) -> None:
             if option == "run":
                 force = any(token.lower() == "force" for token in tokens[2:])
                 execute_storyboard_run(context, force=force)
-                overlay = compute_quilt_overlay(context.repo_root)
-                render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-                render_footer(context, stream=context.output_stream)
+                _render_overlay_state(context)
                 continue
             print(
                 "⚠️  Usage: storyboard status | storyboard preview | storyboard run [force]",
@@ -852,9 +965,7 @@ def interactive_loop(context: UIContext) -> None:
             continue
         if command in {"contracts", "contract", "tests"}:
             run_contract_suite(context)
-            overlay = compute_quilt_overlay(context.repo_root)
-            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-            render_footer(context, stream=context.output_stream)
+            _render_overlay_state(context)
             continue
         if command in {"sync", "resync"}:
             if len(tokens) == 1:
@@ -887,9 +998,7 @@ def interactive_loop(context: UIContext) -> None:
                             else f"🔄 Syncing latest {count} orders payload(s)…"
                         ),
                     )
-                    overlay = compute_quilt_overlay(context.repo_root)
-                    render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-                    render_footer(context, stream=context.output_stream)
+                    _render_overlay_state(context)
                     continue
                 # If we hit the ValueError branch, skip the overlay refresh
                 continue
@@ -913,48 +1022,35 @@ def interactive_loop(context: UIContext) -> None:
                         f"🔄 Previewing orders/{subpath}…" if dry_run else f"🔄 Syncing orders/{subpath}…"
                     ),
                 )
-                overlay = compute_quilt_overlay(context.repo_root)
-                render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-                render_footer(context, stream=context.output_stream)
+                _render_overlay_state(context)
                 continue
             else:
                 print("⚠️  Unknown sync option", file=context.output_stream)
                 continue
-            overlay = compute_quilt_overlay(context.repo_root)
-            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-            render_footer(context, stream=context.output_stream)
+            _render_overlay_state(context)
             continue
         if command in {"info"}:
             show_cell_info(context.selected, context.output_stream)
             continue
         if command in {"w", "up"}:
             move_selection(context, -1, 0)
-            overlay = compute_quilt_overlay(context.repo_root)
-            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-            render_footer(context, stream=context.output_stream)
+            _render_overlay_state(context)
             continue
         if command in {"s", "down"}:
             move_selection(context, 1, 0)
-            overlay = compute_quilt_overlay(context.repo_root)
-            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-            render_footer(context, stream=context.output_stream)
+            _render_overlay_state(context)
             continue
         if command in {"a", "left"}:
             move_selection(context, 0, -1)
-            overlay = compute_quilt_overlay(context.repo_root)
-            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-            render_footer(context, stream=context.output_stream)
+            _render_overlay_state(context)
             continue
         if command in {"d", "right"}:
             move_selection(context, 0, 1)
-            overlay = compute_quilt_overlay(context.repo_root)
-            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-            render_footer(context, stream=context.output_stream)
+            _render_overlay_state(context)
             continue
         if command in {"dispatch", "fire", "send"}:
             dispatch_selected(context)
-            overlay = compute_quilt_overlay(context.repo_root)
-            render_grid(context.selected, stream=context.output_stream, overlay=overlay)
+            _render_overlay_state(context)
             continue
 
         try:
@@ -964,9 +1060,7 @@ def interactive_loop(context: UIContext) -> None:
             continue
 
         select_cell(context, cell)
-        overlay = compute_quilt_overlay(context.repo_root)
-        render_grid(context.selected, stream=context.output_stream, overlay=overlay)
-        render_footer(context, stream=context.output_stream)
+        _render_overlay_state(context)
 
 
 def run_single_dispatch(context: UIContext, cell: Cell) -> None:
@@ -1146,6 +1240,10 @@ def _log_session_event(context: UIContext, *, event: str, extra: Optional[Dict[s
             if value is None:
                 continue
             record[key] = value
+    if context.coop_span_id:
+        record["coop_span_id"] = context.coop_span_id
+    if context.versus_span_id:
+        record["versus_span_id"] = context.versus_span_id
     try:
         with context.metrics_path.open("a", encoding="utf-8") as handle:
             handle.write(json.dumps(record, ensure_ascii=False))
@@ -1381,8 +1479,10 @@ def render_footer(context: UIContext, *, stream: TextIO = sys.stdout) -> None:
     contracts_state = "ON" if context.auto_contracts else "OFF"
     lore_state = "ON" if context.lore_layer_enabled else "OFF"
     music_state = "ON" if context.music_layer_enabled else "OFF"
+    coop_state = context.coop_span_id or "none"
+    versus_state = context.versus_span_id or "none"
     print(
-        f"— Elapsed {mm:02d}:{ss:02d} | Dispatches {context.dispatch_count} | Auto-promote {'ON' if auto_on else 'OFF'} | Auto-contracts {contracts_state} | Lore {lore_state} | Music {music_state} —",
+        f"— Elapsed {mm:02d}:{ss:02d} | Dispatches {context.dispatch_count} | Auto-promote {'ON' if auto_on else 'OFF'} | Auto-contracts {contracts_state} | Lore {lore_state} | Music {music_state} | Coop {coop_state} | Versus {versus_state} —",
         file=stream,
     )
 
