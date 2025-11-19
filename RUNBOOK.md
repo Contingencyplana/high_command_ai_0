@@ -29,6 +29,18 @@ References
 - `planning/workspaces/*/RUNBOOK.md` (peer patterns)
 - `exchange/ledger/index.json`
 
+### Nightlands Log & Telemetry Guards
+
+**Cooldown/Log Rotation**
+1. Alfa Zero UI auto-rotates `logs/alfa_zero/play_session_actions.log` when the file exceeds ~250 KB and prints `📦 Rotated play session log …` in the console. After each duet cohort, glance at the banner to confirm rotation hasn’t been suppressed.
+2. When rotation triggers, archive files land under `logs/alfa_zero/archive/`. Include the archive path in the session ledger entry so downstream reviewers can reconstruct the transcript if needed.
+3. Spot-check size with `Get-Item logs/alfa_zero/play_session_actions.log | Select Length`. If the file ever exceeds the 250 KB envelope without auto-rotation (for example due to manual edits), delete the offending lines from the end only after capturing the log in `exchange/attachments/logs/` for forensic review, then rerun the cohort so the telemetry feed reflects the corrective run.
+
+**Telemetry / Span Guardians**
+1. Before running the Nightlands duet, set spans via `coop set <id>` and `versus set <id>` (leave as `none` only for pure solo runs). The UI banner (`📡 Spans — …`) must display non-`none` values for multi-operator missions.
+2. After the storyboard + targeted sync, tail `exchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl` to confirm both entries carry the same `coop_span_id` / `versus_span_id`. If spans are missing, rerun the cohort immediately; dashboards depend on those IDs for Dual-State Chorus metrics.
+3. Regenerate the panel via `python tools/export_nightlands_duet_panel.py` once the spans look correct. Drop the JSON artifact into the ops evidence bundle so War Office can inspect the co-op trace without replaying the feed.
+
 ## Active Mitigation Playbooks
 
 ### Dual-Layer Cooldown Blitz (genesis-delta + genesis-theta)
