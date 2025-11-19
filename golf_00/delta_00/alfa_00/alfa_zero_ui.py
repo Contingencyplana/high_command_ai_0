@@ -1346,6 +1346,12 @@ def _maybe_record_nightlands_feed(context: UIContext, record: Dict[str, Any]) ->
     operator_id = record.get("operator_id")
     if operator_id:
         payload["operator_id"] = operator_id
+    coop_span = record.get("coop_span_id")
+    if coop_span:
+        payload["coop_span_id"] = coop_span
+    versus_span = record.get("versus_span_id")
+    if versus_span:
+        payload["versus_span_id"] = versus_span
 
     if event == "storyboard_run":
         for key in (
