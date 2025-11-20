@@ -1,0 +1,30 @@
+{
+  "schema": "frontline-feedback-summary@1.0",
+  "generated_at": "2025-11-11T07:21:52Z",
+  "responses": 10,
+  "ranking": [
+    {
+      "layer": "music",
+      "score": 4.75
+    },
+    {
+      "layer": "ritual",
+      "score": 4.75
+    }
+  ],
+  "music_support": {
+    "neutral": 5,
+    "boosts": 4,
+    "conflicts": 1
+  },
+  "ritual_dependency": {
+    "critical": 5,
+    "supportive": 4,
+    "independent": 1
+  },
+  "sample_notes": [
+    "Lore baseline still essential for new recruits.",
+    "Music overlay accelerates call-and-response.",
+    "Dual layer useful but ritual cooldown spikes during night ops."
+  ]
+}

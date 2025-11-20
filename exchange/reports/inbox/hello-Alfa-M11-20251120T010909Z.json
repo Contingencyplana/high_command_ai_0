@@ -1,0 +1,35 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "hello-Alfa-M11-20251120T010909Z",
+  "order_id": "order-2025-11-19-060",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-20T01:09:09Z",
+  "status": "completed",
+  "summary": "Hello from Alfa-M11 after hydrating forge-alfa@2025-11-19-060 into the genesis-iota layered cadence rail with cooldown telemetry.",
+  "instance": {
+    "id": "Alfa-M11",
+    "baseline": "forge-alfa@2025-11-19-060",
+    "slot": "genesis-iota"
+  },
+  "evidence": {
+    "readiness": "production/mass_alfa_batch2/alfa_m11/logs/readiness.json",
+    "smoke": [
+      "production/mass_alfa_batch2/alfa_m11/logs/smoke.txt"
+    ],
+    "hydration_logs": [
+      "golf_07/iota_05/alfa_m11/logs/readiness.json",
+      "golf_07/iota_05/alfa_m11/logs/smoke.txt"
+    ]
+  },
+  "notes": [
+    "Hydration path: golf_07/iota_05/alfa_m11 with cooldown telemetry hooks wired in.",
+    "Ops readiness rerun at 2025-11-20T01:09:09Z; smoke captured via python ../../../tools/factory_order_emitter.py --help."
+  ],
+  "workspace": "toyfoundry_ai_0",
+  "created_at": "2025-11-20T01:09:09Z",
+  "artifacts": [
+    "production/mass_alfa_batch2/alfa_m11/logs/readiness.json",
+    "production/mass_alfa_batch2/alfa_m11/logs/smoke.txt"
+  ]
+}

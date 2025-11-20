@@ -1,0 +1,30 @@
+{
+  "schema": "frontline-feedback-summary@1.0",
+  "generated_at": "2025-11-13T17:15:00Z",
+  "responses": 13,
+  "ranking": [
+    {
+      "layer": "music",
+      "score": 4.90
+    },
+    {
+      "layer": "ritual",
+      "score": 4.82
+    }
+  ],
+  "music_support": {
+    "neutral": 5,
+    "boosts": 7,
+    "conflicts": 1
+  },
+  "ritual_dependency": {
+    "critical": 5,
+    "supportive": 7,
+    "independent": 1
+  },
+  "sample_notes": [
+    "Parallel ritual lanes cleared the night cooldown spike for Delta.",
+    "Theta queue never backed up after staggered rollout; no cooldown wall.",
+    "Fallback night-drill mix keeps ritual cues in sync for Zeta."
+  ]
+}

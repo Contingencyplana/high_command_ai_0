@@ -1,0 +1,30 @@
+{
+  "schema": "frontline-feedback-summary@1.0",
+  "generated_at": "2025-11-13T16:47:36Z",
+  "responses": 11,
+  "ranking": [
+    {
+      "layer": "music",
+      "score": 4.863636363636363
+    },
+    {
+      "layer": "ritual",
+      "score": 4.681818181818182
+    }
+  ],
+  "music_support": {
+    "neutral": 5,
+    "boosts": 5,
+    "conflicts": 1
+  },
+  "ritual_dependency": {
+    "critical": 5,
+    "supportive": 5,
+    "independent": 1
+  },
+  "sample_notes": [
+    "Lore baseline still essential for new recruits.",
+    "Music overlay accelerates call-and-response.",
+    "Night-drill preset patched; fallback mix keeps ritual cues in sync for Zeta."
+  ]
+}

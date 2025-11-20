@@ -1,0 +1,35 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "hello-Alfa-M08-20251120T010439Z",
+  "order_id": "order-2025-11-19-060",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-20T01:04:39Z",
+  "status": "completed",
+  "summary": "Hello from Alfa-M08 after hydrating forge-alfa@2025-11-19-060 into the genesis-gamma squad-sync music rail.",
+  "instance": {
+    "id": "Alfa-M08",
+    "baseline": "forge-alfa@2025-11-19-060",
+    "slot": "genesis-gamma"
+  },
+  "evidence": {
+    "readiness": "production/mass_alfa_batch2/alfa_m08/logs/readiness.json",
+    "smoke": [
+      "production/mass_alfa_batch2/alfa_m08/logs/smoke.txt"
+    ],
+    "hydration_logs": [
+      "golf_05/gamma_06/alfa_m08/logs/readiness.json",
+      "golf_05/gamma_06/alfa_m08/logs/smoke.txt"
+    ]
+  },
+  "notes": [
+    "Hydration path: golf_05/gamma_06/alfa_m08 tuned for squad-sync cues.",
+    "Ops readiness rerun at 2025-11-20T01:04:39Z; smoke captured from python ../../../tools/factory_order_emitter.py --help."
+  ],
+  "workspace": "toyfoundry_ai_0",
+  "created_at": "2025-11-20T01:04:39Z",
+  "artifacts": [
+    "production/mass_alfa_batch2/alfa_m08/logs/readiness.json",
+    "production/mass_alfa_batch2/alfa_m08/logs/smoke.txt"
+  ]
+}
