@@ -11,6 +11,7 @@ archives/*
 exchange/CONTRIBUTING.md
 exchange/LICENSE
 exchange/config.json
+.pytest_cache/
 
 !archives/.gitkeep
 alfas/*
