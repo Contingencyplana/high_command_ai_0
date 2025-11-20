@@ -1,0 +1,68 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-19-060",
+  "issued_by": "high_command_ai_0",
+  "target": "toyfoundry_ai_0",
+  "priority": "high",
+  "timestamp_issued": "2025-11-19T23:30:00Z",
+  "summary": "Mass Alfa Seeding - Batch 2 (N=6)",
+  "context": "War Office CIV-210 cleared the Genesis Batch 2 hydration window. Freeze a refreshed baseline (forge-alfa@2025-11-19-060), publish the Alfa map, and stage hello evidence so squads can hydrate Alpha–Iota frontlines.",
+  "directives": [
+    {
+      "step": 1,
+      "details": "Freeze forge-alfa@2025-11-19-060 with readiness + telemetry references (Nightlands duet spans, CIV-210 approval).",
+      "action": "prepare_baseline"
+    },
+    {
+      "step": 2,
+      "details": "Create 6 Alfa shells (Alfa-M06...Alfa-M11) mapped to Genesis Alpha–Iota slots under production/mass_alfa_batch2/.",
+      "action": "seed_instances"
+    },
+    {
+      "step": 3,
+      "details": "Update production/mass_alfa_batch2/instances.json with ID->path, slot, and focus notes sourced from frontline feedback.",
+      "action": "manifest"
+    },
+    {
+      "step": 4,
+      "details": "Attach shared readiness log + minimal smoke under each instance logs/ folder; plan to rerun post-hydration.",
+      "action": "readiness_and_smoke"
+    },
+    {
+      "step": 5,
+      "details": "Generate hello reports for Alfa-M06...Alfa-M11 citing readiness, smoke, and focus statements.",
+      "action": "stage_hello_reports"
+    },
+    {
+      "step": 6,
+      "details": "Append ledger note for Batch 2 baseline and notify hydrators (Delta/Theta/etc.) once manifest is published.",
+      "action": "sync_and_ledger"
+    }
+  ],
+  "success_criteria": [
+    "forge-alfa@2025-11-19-060 documented with readiness evidence",
+    "Alfa-M06...Alfa-M11 directories + manifest present under production/mass_alfa_batch2/",
+    "Hello reports + logs staged for each Alfa",
+    "Ledger entry summarizing Batch 2 baseline publication"
+  ],
+  "dependencies": [
+    "order-2025-11-13-054",
+    "CIV-210"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-11-25T23:59:59Z",
+  "attachments": [
+    {
+      "path": "production/mass_alfa_batch2/baseline.md",
+      "type": "reference"
+    },
+    {
+      "path": "production/mass_alfa_batch2/instances.json",
+      "type": "reference"
+    },
+    {
+      "path": "exchange/attachments/guides/batch2_approval_packet.md",
+      "type": "reference"
+    }
+  ]
+}
