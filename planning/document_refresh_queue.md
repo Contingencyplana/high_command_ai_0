@@ -30,9 +30,10 @@
 
 ## Next Target Candidate
 
-- 2025-11-12 - ✅ Staged Nightlands duet scoreboard placeholder composites and wired into xchange/attachments/guides/nightlands_duet_playtest_packet.md; metadata lives in xchange/attachments/media/nightlands_duet/, and planning/alfa_zero_nightlands_duet_storyboard.md now captures scoreboard + cadence guidance (Order 050).
-- 2025-11-13 - ✅ Promoted Nightlands duet telemetry into xchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl, refreshed docs/nightlands_duet_telemetry_panel.md scripts, and synced the telemetry manifest/scope docs (Order 051).
-- 2025-11-12 - ✅ Promoted duet session metrics into the shared telemetry dashboard by wiring the docs/nightlands_duet_telemetry_panel.md snapshot + excerpt workflow into planning/alfa_zero_nightlands_duet_storyboard.md. 
+- 2025-11-20 - ✅ Recorded Batch 2 intake after Toyfoundry bundle pull: added High Command intake block to `planning/alfa_batch2_hydration_checklist.md`, logged ORDER-060 import in `exchange/ledger/2025-11.md`, and queued cross-front pulls in the checklist.
+- 2025-11-12 - ✅ Staged Nightlands duet scoreboard placeholder composites and wired into ￼xchange/attachments/guides/nightlands_duet_playtest_packet.md; metadata lives in ￼xchange/attachments/media/nightlands_duet/, and planning/alfa_zero_nightlands_duet_storyboard.md now captures scoreboard + cadence guidance (Order 050).
+- 2025-11-13 - ✅ Promoted Nightlands duet telemetry into ￼xchange/attachments/telemetry/nightlands_duet/nightlands_duet_storyboard_sync_feed.jsonl, refreshed docs/nightlands_duet_telemetry_panel.md scripts, and synced the telemetry manifest/scope docs (Order 051).
+- 2025-11-12 - ✅ Promoted duet session metrics into the shared telemetry dashboard by wiring the docs/nightlands_duet_telemetry_panel.md snapshot + excerpt workflow into planning/alfa_zero_nightlands_duet_storyboard.md.
 - 2025-11-13 - ✅ Targeted sync quiet-mode monitoring logged in planning/alfa_zero_targeted_sync_scope.md; rotation trigger documented after reviewing telemetry feed signals.
 - 2025-11-10 - Evaluate propagating `trace_id` through `golf_00/delta_00/alfa_00/overlay_bridge.py` into payload extensions for cross-pipeline correlation; document toggle and evidence sinks. *(Completed 2025-11-10 via Order 045 trace parity refresh; future tweaks will spin as new entries as needed.)*
 

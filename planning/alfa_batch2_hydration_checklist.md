@@ -27,3 +27,9 @@ Purpose: capture the prerequisites High Command must clear before hydrating Alfa
 - [x] War Office briefed on the readiness state and granted hydration approval for Batch 2.
 
 *Update this checklist whenever new prerequisites emerge. Once every box is checked with evidence, Batch 2 hydration can begin.*
+
+## 5. High Command Intake (2025-11-20)
+
+- [x] Pulled Toyfoundry Batch 2 bundle via `python tools/offline_bridge.py pull --move`; hello packets now live in `exchange/reports/inbox/hello-Alfa-M06-20251120T005726Z.json` through `hello-Alfa-M11-20251120T010909Z.json`.
+- [x] Ran `python tools/ledger_update.py` and logged the ORDER-060 import in `exchange/ledger/2025-11.md` so downstream fronts can trace the evidence path.
+- [ ] Coordinate trooptrain pulls across Gamma/Delta/Theta/Zeta (and others) plus archive the hello packets once acknowledgements land.
