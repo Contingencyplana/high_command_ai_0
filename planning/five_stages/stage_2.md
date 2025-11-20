@@ -1,138 +1,149 @@
 # **Stage 2 — Azure Cloud Readiness**
 
-**Four Stages Doctrine · High Command**
+**Five Stages Doctrine · High Command**
 
 **Status:** Draft Active
-**Purpose:** Define the safety threshold and operational gates for migrating Nightlands systems to Azure Cloud.
+**Purpose:** Define the safety threshold and operational gates for preparing Nightlands systems for Azure Cloud deployment.
 **Scope:** All ten genesis workspaces.
 
 ---
 
 ## **1. Mission**
 
-Stage 2 authorizes the first controlled move of the system into **Azure Cloud**, but only after each genesis workspace achieves:
+Stage 2 establishes **readiness for cloud deployment**, *but does not yet permit migration*.
+The system remains **local-only**, but all supporting structures, contracts, and telemetry must be prepared for a future move to Azure Cloud.
 
-### **Two Deltas (32 Alfas)**
+Workspaces enter Stage 2 only after each one achieves:
 
-This stage shifts the system from:
+### **✔ One Delta (16 Alfas)**
 
-* local-only operations
-  → **hybrid local/cloud execution**,
-  while preserving strict control over embodiment and battlegrid access.
+This stage focuses on:
 
-Azure Cloud is *infrastructure*, not *gameplay* — no embodied Alfas are permitted yet.
+* validating cloud-readiness
+* preparing infrastructure
+* stabilizing early emergence
+* hardening contracts
+* aligning telemetry
+
+**Azure Cloud is NOT yet permitted.**
+This stage is preparation only.
 
 ---
 
-## **2. Why Two Deltas?**
+## **2. Why One Delta?**
 
-A single Delta (16 Alfas) gives:
+A Delta (16 Alfas) provides:
 
-* redundancy
-* consistency
-* fault detection
-* basic behavior stability
+* minimal redundancy
+* basic error detection
+* stable contract boundaries
+* early pattern recognition
+* non-chaotic execution
 
-But **cloud execution introduces new risks**, including:
+At this level the system is mature enough to:
 
-* cross-workspace latency races
-* network partitions
-* distributed state disagreement
-* deployment drift
-* parallel update cascades
+* map cloud resources safely
+* simulate cloud workflows
+* test cloud telemetry mirroring
+* prepare synchronization pipelines
+* run pre-cloud safety audits
 
-Two Deltas (32 Alfas) per workspace provide:
+But **not mature enough to run in the cloud**.
 
-### **1. Independent cross-checking clusters**
+Cloud execution amplifies:
 
-Two clusters can verify each other’s outputs and behaviors.
+* network races
+* latency-based cascades
+* distributed drift
+* parallel-update failures
+* schema disagreement
 
-### **2. Small-scale emergence detection**
-
-Cloud environments amplify subtle patterns — this catches them early.
-
-### **3. Stable telemetry for cloud workloads**
-
-Patterns become statistically meaningful instead of noisy.
-
-### **4. Multi-path resilience**
-
-If one Delta drifts or malfunctions, its sibling can quarantine, flag, or halt operations.
-
-This is the minimum safe threshold before cloud operations.
+For that, **two Deltas (Stage 3) are required.**
 
 ---
 
 ## **3. What Changes in Stage 2?**
 
-### **Allowed**
+### **Allowed (Readiness Work Only)**
 
-* Deployment of Nightlands infrastructure to Azure Cloud
-* Running core workflows in hybrid local/cloud
-* Enabling telemetry export to Azure storage
-* Beginning resource scaling models
-* Using cloud compute for Codex hydration (non-embodied)
+* Prepare Azure resource groups
+* Prepare schema mirrors for cloud compatibility
+* Document deployment runbooks
+* Dry-run Toyfoundry contracts for cloud routing
+* Validate cloud telemetry mapping
+* Extend Offline Sync toward future Cloud Sync
+* Build cloud CI/CD pipelines (disabled)
 
 ### **Not Allowed**
 
-* No battlegrid embodiment
-* No UI-level play
-* No rituals triggered by cloud-executing Alfas
+* No cloud execution
+* No cloud deployment
+* No embodiment
+* No battlegrid interactions
+* No rituals
+* No multiplayer actions
 * No distributed simulations
-* No Outlands Onion overlays tied to cloud compute
-* No multiplayer interactions
+* No remote-triggered Alfas
+* No Outlands overlays running in cloud render loops
 
 ### **Summary:**
 
-**Cloud is permitted. Gameplay is not.**
+**Stage 2 is preparation.
+Stage 3 is cloud deployment.**
+The line must remain sharp.
 
 ---
 
 ## **4. Mandatory Requirements for Stage 2 Activation**
 
-Before the system may begin cloud deployment:
+Before entering Stage 2:
 
 ### **Per Workspace Requirements**
 
-* **✔ Two Deltas (32 Alfas)**
-* **✔ All 32 Alfas documented in Toyfoundry metadata**
-* **✔ Toysoldiers run ops checks**
-* **✔ Valiant Citadel certification of cloud safety plan**
-* **✔ High Command ledger entries completed and verified**
+* **✔ One Delta (16 Alfas)**
+* **✔ All 16 Alfas documented in Toyfoundry metadata**
+* **✔ Toysoldiers complete ops-readiness scans**
+* **✔ Valiant Citadel signs off on Delta-tier safety**
+* **✔ High Command ledger entries verified**
 
 ### **Infrastructure Requirements**
 
-* **✔ Azure resource groups pre-configured**
-* **✔ Telemetry Quilt ready to extend to cloud logs**
-* **✔ Offline Sync + Cloud Sync fully reconciled**
-* **✔ No drift between local and cloud runtime schemas**
+* **✔ Azure infrastructure mapped but not enabled**
+* **✔ Telemetry Quilt updated for dual-environment routing**
+* **✔ Offline Sync ready for cloud extension**
+* **✔ Contract schemas checked for cloud compatibility**
+* **✔ No unresolved drift in local runtimes**
 
 ### **Codex Requirements**
 
-* **✔ Codex-only generation still in effect**
-* Embodiment remains forbidden.
+* **✔ Codex-only generation continues**
+* No embodiment allowed in readiness phase.
+* No cloud-based Alfawork allowed.
 
 ---
 
 ## **5. Stage 2 Rules of Operation**
 
-1. **Codex Generation Only**
-   No Alfa may be created or executed natively in cloud runtime environments.
+1. **Local-Only Execution**
+   Cloud deployment remains prohibited.
 
-2. **Mirrored Runtime**
-   Cloud code must always mirror local code; local is the source of truth.
+2. **Codex-Only Hydration**
+   All Alfas must still be generated within Codex.
 
-3. **No Autonomous Execution**
-   Cloud Alfas cannot trigger self-initiation loops.
+3. **Cloud-Ready, Not Cloud-Active**
+   Scripts may be prepared, not executed.
 
-4. **Telemetry Enforcement**
-   Every cloud action must produce logs consumable by the Telemetry Quilt.
+4. **Contracts Over Assumptions**
+   All readiness checks pass through Toyfoundry.
 
-5. **Deployment Discipline**
-   All cloud deployments must pass Toyfoundry contract validation.
+5. **Telemetry Simulation Only**
+   Cloud telemetry may be mocked, not live.
 
-6. **Manual Override Always Available**
-   Cloud operations must remain interruptible by a human operator.
+6. **Human Override Must Be Immediate**
+   Nothing in Stage 2 may require cloud dependencies.
+
+7. **Mirroring Required**
+   Local schemas must be cloud-compatible, but local remains source of truth.
 
 ---
 
@@ -140,32 +151,37 @@ Before the system may begin cloud deployment:
 
 Stage 2 concludes when:
 
-* cloud execution is stable
-* drift is under control
-* cloud telemetry matches local telemetry
-* two Deltas per workspace show consistent behavior
-* operators report no unexpected emergent properties
-* Codex hydration pipelines work reliably in cloud compute
+* cloud infrastructure is prepared
+* deployment pipelines are documented
+* dual-environment telemetry has been validated
+* Toyfoundry confirms cloud contract readiness
+* Valiant Citadel approves Stage 3 safety
+* Drift across all 10 workspaces is stable
+* codex hydration pipelines function cleanly
+* cloud simulation tests show no emergent risks
 
-Only then may High Command authorize Stage 3:
+Only then may High Command authorize:
 
-### **Stage 3 — Internal Testers**
+### **Stage 3 — Azure Cloud Deployment**
 
-(Requires one Echo per workspace = 64 Alfas.)
+**(Requires Two Deltas per workspace = 32 Alfas)**
 
 ---
 
 ## **7. Summary**
 
-Stage 2 introduces Nightlands to Azure Cloud safely by requiring:
+Stage 2 ensures Nightlands is **ready** for cloud migration, but does not migrate yet.
 
-* **Two Deltas per workspace (32 Alfas)**
+It requires:
+
+* **One Delta per workspace (16 Alfas)**
+* **Strict readiness checklists**
 * **No embodiment**
-* **Strict contract verification**
-* **Telemetric proof**
-* **Human override**
+* **No cloud-active systems**
+* **Tooling, telemetry, and contracts cloud-aligned**
+* **Full operator control**
 
-This is the cloud-readiness threshold.
-It ensures the system is distributed, stable, and verifiable — before any human testers enter the picture.
+Stage 2 is the preparing phase.
+Stage 3 is the actual cloud deployment phase.
 
 ---

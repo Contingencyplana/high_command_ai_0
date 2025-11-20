@@ -1,254 +1,294 @@
-# **Stage 4 — Public-Facing Stability**
+# **Stage 5 — Public-Facing Stability**
 
-**Four Stages Doctrine · High Command**
+**Five Stages Doctrine · High Command**
 
 **Status:** Draft Active
-**Purpose:** Define the safety, readiness, and engineering requirements for exposing Nightlands to *the real public* — players, strangers, unknown inputs, unpredictable behavior.
-**Scope:** All ten genesis workspaces + public-facing infrastructure.
+**Purpose:** Define the safety, readiness, and engineering requirements for exposing Nightlands to the *true public*: strangers, unknown players, unpredictable behaviors, and highly diverse systems.
+**Scope:** All ten genesis workspaces + public-facing runtime + cloud infrastructure.
 
 ---
 
 ## **1. Mission**
 
-Stage 4 is the moment Nightlands steps beyond controlled environments, beyond safe allies, and into contact with the general public.
+Stage 5 is the moment Nightlands steps beyond:
 
-This stage must not induce:
+* internal allies
+* controlled testers
+* known conditions
+* predictable player behavior
 
-* system instability
-* uncontrolled emergent behavior
+…and enters contact with **the real outside world**.
+
+The goal of Stage 5 is to ensure that public play does **not** trigger:
+
+* runtime instability
+* anomalous emergent cascades
 * safety violations
-* performance collapse
-* telemetry blackouts
-* “heart attack” conditions for the operators
+* cloud resource collapse
+* telemetry loss
+* operator panic (“heart attack conditions”)
 
-To prevent this, each genesis workspace must achieve:
+To prevent this, each genesis workspace must reach:
 
-### **At least Foxtrot-tier readiness**
+### **Foxtrot-tier readiness**
 
 **1 Foxtrot = 128 Alfas = 8 Deltas = 2 Echoes**
 
-This level provides:
+This is the first tier designed for **public unpredictability**.
 
-* robust error correction
-* large-scale redundancy
+Foxtrot provides:
+
+* robust redundancy
 * stable emergent behavior
 * predictable runtime dynamics
-* resilient telemetry flow
-* contraction mechanisms for anomalies
+* telemetry resilience
+* anomaly contraction mechanisms
+* enough “surface area” for chaotic inputs
 
-Foxtrot is the minimum threshold at which a live public audience becomes safe.
+Foxtrot is the minimum safe rank for public exposure.
 
 ---
 
 ## **2. Why Foxtrot? (128 Alfas)**
 
-Echo (64 Alfas) is safe for internal testers, but:
+### Internal testers (Echo, 64 Alfas) produce:
+
+* small-group chaos
+* limited concurrency
+* predictable patterns
 
 ### Public players produce:
 
-* chaotic concurrency
-* stress-testing behaviors
+* unbounded diversity
 * rage-clicking
-* out-of-order rituals
-* mass exploration of loopholes
-* extremely diverse hardware contexts
-* unexpected multi-user dynamics
+* loophole hunting
+* chaotic concurrency
+* massive variance in hardware
+* unexpected multi-user interactions
+* destructive curiosity
+* large-scale ritual abuse
+* load patterns no simulation can model
 
-### Foxtrot (128 Alfas) adds:
+Foxtrot adds:
 
-* stronger telemetry baselines
-* deeper redundancy
-* pattern stability under chaotic load
-* autonomous error correction capacity
-* better anomaly detection
-* more reliable recovery loops
-* enough surface area to absorb public-scale variance
+### **1. Higher-order redundancy**
 
-Foxtrot is the first **“public-hardening” rank**.
+128 Alfas = enough distributed checks to prevent cascades.
 
-Anything less risks cascades.
+### **2. Stable telemetry under chaos**
+
+Signals remain analyzable despite public noise.
+
+### **3. Stronger anomaly detection**
+
+Foxtrot detects drift earlier and more reliably.
+
+### **4. Resilient recovery loops**
+
+Errors trigger contraction behaviors instead of spreading.
+
+### **5. Emergent predictability**
+
+Foxtrot stabilizes emergent behavior at population scale.
+
+Foxtrot is the first **public-hardening tier**.
+Anything smaller is too fragile.
 
 ---
 
-## **3. Public-Facing Scope Allowed in Stage 4**
+## **3. Public-Facing Scope Allowed in Stage 5**
 
 ### ✔ **Public UI**
 
-Clean, safe, documented UI suitable for any user.
+Safe, polished, accessible interface compatible with diverse devices.
 
 ### ✔ **Public Cloud Infrastructure**
 
-Azure services running at scalable, production-grade configuration.
+Azure services at production-grade stability and scalability.
 
-### ✔ **Non-secret Nightlands environments**
+### ✔ **Public Gameplay Zones**
 
-Public zones, demo regions, tutorial islands.
+Tutorial islands, low-risk regions, beginner-friendly areas.
 
-### ✔ **Full ritual engine (supervised)**
+### ✔ **Ritual Engine (supervised mode)**
 
-All spells and interactions available to public players **within safe bounds**.
+Full spell/interaction engine with:
 
-### ✔ **Embodied Alfas (restricted mode)**
-
-Alfas may act publicly but must follow:
-
-* contract enforcement
-* telemetry gating
-* rate limits
 * safety rails
-* fallback rules
+* rate limits
 * rollback triggers
+* contract enforcement
 
-### ✔ **The Outlands Onion (controlled layers)**
+### ✔ **Embodied Alfas in Restricted Mode**
 
-Higher-latency overlays, spectacle layers, and atmospheric effects may be enabled.
+Allowed only with:
 
-### ✔ **Community-facing systems**
+* contract gating
+* telemetry fencing
+* anomaly rollback
+* no autonomous mutation
+* strict rate caps
 
-Forums, bug-report channels, telemetry dashboards (non-sensitive).
+### ✔ **Controlled Outlands Onion Layers**
+
+Performance-tested overlays, atmospherics, and visual/aural effects.
+
+### ✔ **Community-Facing Systems**
+
+Bug reporting, support channels, advisory dashboards (non-sensitive).
 
 ---
 
-## **4. What Is *Not* Allowed in Stage 4**
+## **4. What Is *Not* Allowed in Stage 5**
 
-### ✘ No unsupervised autonomous agents
+### ✘ **No unsupervised autonomy**
 
 Alfas may not:
 
 * self-replicate
-* generate uncontrolled rituals
-* mutate behaviors
+* mutate
 * bypass contracts
-* access out-of-scope resources
+* expand rituals beyond permission
+* access forbidden artifacts
 
-### ✘ No unrestricted multiplayer
+### ✘ **No large-scale open-world MMO behavior**
 
-Large-scale MMO-style behavior is forbidden until Golf-tier.
+Full-scale multiplayer requires **Golf-tier (256 Alfas)**.
 
-### ✘ No experimental overlays
+### ✘ **No experimental Outlands layers**
 
-Only tested, safe, performance-verified layers may go public.
+Only validated overlays are permitted.
 
-### ✘ No public-facing dev tools
+### ✘ **No public access to internal tools**
 
-Nothing unsafe reaches the public.
+Dev panels, rituals, schematics, and sacred logs remain hidden.
 
-### ✘ No exposing internal lore, sacred logs, or development artifacts
+### ✘ **No exposure of internal lore or sensitive information**
 
-Public releases must be curated.
+Public storylines must be curated.
 
 ---
 
-## **5. Requirements for Stage 4 Activation**
+## **5. Requirements for Stage 5 Activation**
 
 ### **Per Workspace Requirements**
 
-* ✔ One Foxtrot (128 Alfas, 8 Deltas, 2 Echoes
-* ✔ All Alfas reviewed + approved by Toyfoundry
-* ✔ All workflows tested by Toysoldiers under chaotic inputs
-* ✔ Echo + Foxtrot telemetry stability confirmed
-* ✔ Clear behavior logs over large sample sizes
-* ✔ Safety checks passed repeatedly under stress conditions
+* ✔ One Foxtrot (128 Alfas)
+* ✔ Full Toyfoundry contract checks
+* ✔ Toysoldiers chaos testing
+* ✔ Telemetry stability across Echo + Foxtrot layers
+* ✔ Consistent behavior across millions of synthetic events
+* ✔ Drift-free logs under sustained chaos
 
 ### **System-Wide Requirements**
 
-* ✔ Azure Cloud fully hardened
-* ✔ Logging + telemetry routing stable at high volume
-* ✔ Load-testing demonstrates handling of public unpredictability
-* ✔ Outlands Onion layers optimized for performance
-* ✔ UI tested on various devices / OS / resolutions
-* ✔ Error-handling paths tested via synthetic chaos
+* ✔ Azure hardened for public load
+* ✔ Telemetry Quilt stable at high ingestion rates
+* ✔ Cloud logging real-time and lossless
+* ✔ Outlands Onion optimized for performance
+* ✔ UI validated across OS, devices, accessibility standards
+* ✔ Chaos-tested error-recovery paths
 
 ### **Safety Requirements**
 
-* ✔ Valiant Citadel signs off Public Safety Doctrine
-* ✔ Recovery options documented and tested
-* ✔ Kill-switch mechanisms confirmed functional
-* ✔ Accessibility standards fully implemented
-* ✔ Clear terms-of-service and consent pathways
+* ✔ Valiant Citadel approves Public Safety Doctrine
+* ✔ Kill-switches tested and documented
+* ✔ Full accessibility compliance
+* ✔ Clear terms-of-service and consent mechanisms
+* ✔ Privacy and data-handling review
 
-This is the most rigorous gate of the four.
+This is the most intensive gate in the five-stage system.
 
 ---
 
 ## **6. Comfort Guild Requirements (Public UX)**
 
-Before public exposure, Nightlands must pass:
+Public users must experience **comfort-first design**:
 
-### **Comfort pathways**
+### **Comfort Pathways**
 
-* zero eye-strain regressions
-* zero photosensitivity triggers
-* safe color palettes
-* toggled HUD modes
+* no eye-strain issues
+* no photosensitivity triggers
+* safe color schemes
+* adjustable HUD
 
-### **Clarity pathways**
+### **Clarity Pathways**
 
-* readable text
-* intuitive controls
-* panic-back and escape routes
+* readable text sizes
+* intuitive flows
+* immediate escape/panic-out gestures
 
-### **Warmth pathways**
+### **Warmth Pathways**
 
-* no fear-based or stress-gated flow
-* coherent narrative tone
-* safe pacing
+* no disorientation
+* unthreatening early-game experiences
+* coherent emotional tone
 
-The public must feel welcomed, not overwhelmed.
+Public players include children, neurodiverse users, and people with varied sensitivities — Stage 5 demands universal safety.
 
 ---
 
 ## **7. Telemetry Requirements**
 
-Stage 4 requires the **Telemetry Quilt** to operate at:
+Stage 5 requires the Telemetry Quilt to support:
 
-* stable ingestion rates
 * real-time anomaly detection
-* lag-free runtime observation
-* scalable dashboards
-* intelligent fallback decisioning
+* high-volume ingestion
+* lag-free dashboards
 * cross-workspace correlation
-* environment replay
+* fallback decisioning
+* replayable environments
+* automatic noise filtering
 
-The public will produce **orders of magnitude more noise**, so telemetry must be “public-grade.”
+Public users generate **orders of magnitude** more chaotic data than testers.
+
+Telemetry must therefore be **public-grade** and hyper-resilient.
 
 ---
 
-## **8. Transition From Stage 4 to Open Beta**
+## **8. Transition From Stage 5 to Open Beta**
 
-Once Stage 4 stabilizes, High Command may consider opening:
+Once Stage 5 stabilizes, High Command may evaluate **Golf-tier readiness**:
 
-### **Golf-tier (256 Alfas) ← Open Beta Readiness**
+### **Golf (256 Alfas) → Open Beta**
 
 Golf is required because:
 
-* hundreds of simultaneous user actions occur
-* public unpredictability grows exponentially
-* overlays need higher stability
-* rituals scale in number and variety
-* micro-emergence can spiral without redundancy
+* public concurrency scales massively
+* emergent systems compound rapidly
+* overlays require higher resilience
+* rituals increase in number, power, and combinatorial complexity
+* MMO-class behaviors begin emerging
 
-Stage 4 is the gate to *public Alpha*, not *open Beta*.
+Stage 5 is the gateway to **safe public Alpha**, not full-scale Beta.
+
+Golf is the next frontier.
 
 ---
 
 ## **9. Summary**
 
-Stage 4 marks the point where Nightlands can **face the outside world without giving us heart attacks**.
+Stage 5 marks the threshold where Nightlands can meet the public without endangering:
+
+* players
+* infrastructure
+* safety protocols
+* operators
+* emergent agent dynamics
 
 It requires:
 
 * Foxtrot-tier stability
-* hardened public infrastructure
-* controlled embodiment
-* safe rituals
+* hardened cloud systems
+* safe embodied agents
+* controlled rituals
 * robust telemetry
-* comfortable UX
+* comfort-first UI
 * complete safety sign-offs
 
-Foxtrot is the first real public-ready tier.
-It cannot be skipped, deferred, or weakened.
+Foxtrot is the first **public-ready** tier.
+It is non-negotiable.
 
-**Only after Stage 4 can Nightlands be shown to the true public.**
+**Only after Stage 5 may Nightlands be exposed to the true outside world.**
 
 ---

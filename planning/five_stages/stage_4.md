@@ -1,204 +1,210 @@
-# **Stage 3 — Internal Testers**
+# **Stage 4 — Internal Testers**
 
-**Four Stages Doctrine · High Command**
+**Five Stages Doctrine · High Command**
 
 **Status:** Draft Active
-**Purpose:** Define the safety threshold and operational rules for exposing Nightlands to a *small, hand-picked group of internal testers*.
+**Purpose:** Establish the safety threshold and operational rules for exposing Nightlands to a *small, trusted cohort* of internal testers.
 **Scope:** All ten genesis workspaces.
 
 ---
 
 ## **1. Mission**
 
-Stage 3 authorizes the first **human-facing** interactions with the Nightlands system — but only in a **controlled, private, invitation-only environment**.
+Stage 4 authorizes the first **human-facing interactions** with Nightlands.
+This includes:
 
-To ensure stability, every genesis workspace must reach:
+* the first playable UI
+* early gameplay loops
+* controlled testing of embodied Alfas
+* human-driven chaos input
+
+To qualify for Stage 4, **every genesis workspace must reach**:
 
 ### **One Echo (64 Alfas)**
 
-= **4 Deltas**, operating in a unified cluster.
+= **4 Deltas operating in a cohesive cluster**
 
-Only after Echo-tier maturity is it safe to involve real human testers, who bring:
-
-* unpredictable inputs
-* chaotic playstyles
-* emotional responses
-* non-linear behavior
-* rapid repeated actions
-* out-of-spec experimentation
-
-Echo-level redundancy is the minimum safe architecture for this volatility.
+This is the minimum redundancy required to safely withstand unpredictable human behavior.
 
 ---
 
 ## **2. Why One Echo?**
 
-An **Echo cluster (8×8 = 64 Alfas)** provides:
+Human testers introduce:
 
-### **1. Cross-checking across four independent Deltas**
+* nonlinear behavior
+* button-mashing
+* emotional responses
+* unexpected sequences
+* out-of-order interactions
+* ambiguous or contradictory intentions
 
-Emergent errors are caught before they propagate.
+These stress systems in ways simulations cannot.
 
-### **2. Stable telemetry patterns**
+An **Echo cluster (64 Alfas)** provides:
 
-Human behavior produces noisy inputs — Echo gives enough signal to detect drift.
+### **1. Four independent Deltas for cross-verification**
 
-### **3. Behavioral predictability**
+Emergent misbehaviors are detected and corrected early.
 
-64 Alfas are enough to demonstrate bounded, reproducible system behavior under stress.
+### **2. Stable baseline telemetry**
 
-### **4. Error absorption**
+Echo size allows pattern recognition despite human noise.
 
-Even if several Alfas malfunction, the cluster remains coherent.
+### **3. Predictable system behavior**
 
-### **5. Testability under real-world randomness**
+Non-deterministic play is absorbed without cascade.
 
-Early testers often perform actions that no simulation would ever produce.
+### **4. Error and surprise absorption**
 
-Echo is the first tier capable of surviving this safely.
+If multiple Alfas misbehave, the cluster remains coherent.
+
+### **5. Safe first human exposure**
+
+Echo is the first tier hardened enough for real human input.
 
 ---
 
 ## **3. Who Counts as Internal Testers?**
 
-Stage 3 allows **only**:
+Stage 4 testers must be:
 
 * trusted collaborators
-* hand-picked friends or family
-* internal allies
-* people under NDA (if applicable)
-* testers physically or digitally close to the project
+* close allies
+* hand-picked friends/family
+* NDA-bound individuals
+* people directly involved in the project
 
-This is *not* the general public.
+They must be:
 
-Testers must be:
+* mature
+* reliable reporters
+* comfortable with buggy systems
+* unlikely to leak previews
+* willing to provide structured feedback
 
-* responsible
-* able to report issues
-* comfortable with prototype roughness
-* trustworthy with pre-release information
+### **Not included at this stage:**
 
-They are “friendly fire” in the best sense.
-
----
-
-## **4. What Is Allowed in Stage 3**
-
-### ✔ **Human-facing UI**
-
-Early versions of the Nightlands interface, even if crude.
-
-### ✔ **Core gameplay loops**
-
-Simple interactions, rituals, clicks, glyph sequences, early spells.
-
-### ✔ **Embodied Alfas (limited)**
-
-Embodiment is allowed but only within:
-
-* safe sandboxes
-* tester-only servers
-* controlled Nightlands nodes
-
-### ✔ **Basic Outlands Onion layers**
-
-Light overlays and cosmetic UI enhancements.
-
-### ✔ **Cloud execution + human interaction**
-
-Azure Cloud + testers is permitted **only** if telemetry gating is active.
+* random players
+* the general public
+* influencer or media testers
+* anyone unknown to High Command
 
 ---
 
-## **5. What Is *Not* Allowed in Stage 3**
+## **4. What Is Allowed in Stage 4**
 
-### ✘ No public servers
+### ✔ **Human-Facing UI**
 
-Testing is strictly private.
+Nightlands interface (even crude versions) may be used by testers.
 
-### ✘ No large-scale multiplayer
+### ✔ **Core Gameplay**
 
-Internal-only means *small groups*.
+Simple interactions, glyphs, rituals, prototype spells, movement loops.
 
-### ✘ No autonomous embodiment
+### ✔ **Embodied Alfas (strictly controlled)**
 
-Embodied Alfas must stay:
+Embodiment is permitted **only** inside:
 
-* contract-bound
-* supervised
-* telemetry-logged
+* sandboxed instances
+* staging servers
+* internal cluster nodes
+* non-public cloud environments
 
-### ✘ No marketing or public footage
+### ✔ **Basic Outlands Onion Layers**
 
-Nothing is shown outside the trusted group.
+Light overlays, FX, atmospherics tied to gameplay events.
 
-### ✘ No un-gated rituals or mutation paths
+### ✔ **Cloud + Human Interaction**
 
-All actions must have predictable consequences.
+Azure Cloud runtimes may be used under strict telemetry supervision.
 
 ---
 
-## **6. Requirements for Stage 3 Activation**
+## **5. What Is *Not* Allowed in Stage 4**
 
-Before internal testers are invited:
+### ✘ **No public servers**
 
-### **Per Workspace Requirements**
+Testing is private and invitation-only.
+
+### ✘ **No large-scale multiplayer**
+
+Only small, coordinated groups.
+
+### ✘ **No autonomous embodiment**
+
+Embodied Alfas must remain contract-bound and supervised.
+
+### ✘ **No marketing, screenshots, recordings, or public leaks**
+
+### ✘ **No unreviewed rituals or mutation pathways**
+
+Every user-visible action must have predictable outcomes.
+
+---
+
+## **6. Requirements for Stage 4 Activation**
+
+Stage 4 may begin only when the following are true:
+
+### **Per Workspace**
 
 * ✔ One Echo (64 Alfas, 4 Deltas)
-* ✔ All Alfas reviewed by Toyfoundry for contract consistency
-* ✔ All Alfas tested by Toysoldiers for operational stability
-* ✔ Echo telemetry verified for drift, error patterns, and baseline behavior
-* ✔ Documentation for all 64 Alfas in all ten workspaces available to internal testers (read-only)
+* ✔ All 64 documented in Toyfoundry metadata
+* ✔ Toysoldiers validate operational stability
+* ✔ Telemetry Quilt shows no drift
+* ✔ Emergent behavior remains bounded
 
-### **Game Infrastructure Requirements**
+### **Infrastructure**
 
-* ✔ Azure Cloud stable
-* ✔ UI elements functional for testers
-* ✔ DevTools locked from tester access
+* ✔ Azure Cloud stable under load
+* ✔ UI functional for real humans
 * ✔ Embodied Alfa sandbox validated
-* ✔ Error reporting pipeline active (logs → Telemetry Quilt → High Command)
+* ✔ Error → Telemetry → High Command reporting pipeline active
 
-### **Safety Requirements**
+### **Safety + Governance**
 
-* ✔ Valiant Citadel reviews human-safety guardrails
-* ✔ Accessibility passes basic thresholds
+* ✔ Valiant Citadel approves human-safety guardrails
+* ✔ Accessibility checks pass minimum thresholds
 * ✔ All testers vetted and approved
 
-Only after these gates are met may Stage 3 proceed.
+No exceptions.
 
 ---
 
 ## **7. Rules of Engagement for Testers**
 
-Internal testers must:
+Testers must agree to:
 
-* follow structured testing plans
-* report bugs, anomalies, or discomfort
-* avoid “stress testing” unsafe features
-* avoid modifying files or artifacts
-* avoid attempting to break systems
-* respect confidential material
-* provide immediate feedback on emergent behavior
+* report all anomalies or discomfort
+* follow structured or semi-structured test flows
+* avoid deliberate system-breaking attempts
+* avoid modifying game files
+* avoid unauthorized logs or runtime access
+* respect confidentiality
+* immediately report emergent behavior
 
-This is not a “fun-first” build — testers are partners in development.
+This is not yet “fun-first.”
+Testers act as **development partners**, not players.
 
 ---
 
-## **8. Transition Criteria to Stage 4**
+## **8. Transition Criteria to Stage 5**
 
-Stage 3 ends when:
+Stage 4 ends when:
 
-* Echo clusters remain stable under human chaos
+* Echo clusters stay stable under human chaos
 * No uncontained emergent behavior occurs
 * Embodied Alfas behave predictably
-* UI holds up under real interaction
-* Testers report comfort and clarity
-* Telemetry confirms safety of player-facing systems
-* High Command, Toyfoundry, Toysoldiers, and Valiant Citadel jointly approve
+* Testers report clarity, comfort, and playability
+* UI withstands repeated human interactions
+* Cloud logs show matching patterns across workspaces
+* Error rates fall within acceptable bounds
+* High Command, Toyfoundry, Toysoldiers, and Valiant Citadel all approve
 
-Only then does High Command authorize:
+Only then is the system safe to expose to the outside world:
 
-### **Stage 4 — Public-Facing Stability**
+### **Stage 5 — Public-Facing Stability**
 
 (“Can face the outside world without giving us heart attacks.”)
 
@@ -206,17 +212,17 @@ Only then does High Command authorize:
 
 ## **9. Summary**
 
-Stage 3 introduces human testers — but only after Echo-level reinforcement.
-It provides:
+Stage 4 is the **first human contact point** in Nightlands development.
+It requires **Echo-tier discipline** — 64 Alfas per workspace — to guarantee:
 
-* controlled human exposure
-* stable telemetry under chaos
-* safe embodied agent behavior
-* initial UX and UI verification
-* bounded emergent dynamics
-* preparation for public play
+* stable behavior under human chaos
+* safe embodied agent interactions
+* telemetry-driven insight
+* bounded emergence
+* resilient UI + cloud interplay
+* early UX validation
 
-**Echo is the first truly human-ready tier.**
-This stage must not be skipped.
+Stage 4 bridges the gap between **internal AI systems** and **real players**.
+It must not be rushed and must not be skipped.
 
 ---
