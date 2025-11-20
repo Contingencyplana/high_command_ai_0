@@ -72,7 +72,7 @@ All Alfas must be:
 Each workspace must accumulate **16 safe Codex-generated Alfas** before Stage 2 becomes available.
 
 ---
-
+ 
 ## **4. Transition Criteria to Stage 2**
 
 High Command may authorize Stage 2 once:
