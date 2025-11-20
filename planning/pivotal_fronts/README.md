@@ -74,7 +74,6 @@ This index orients work across all pivotal fronts and links to canon documents. 
 - **Four Major Pivots:** `new_major_pivots/README.md`
 - **Alfa Zero Spec:** `docs/alfa_zero_spec.md`
 - **Fractal Structure:** `golf_00/` through `golf_15/` (4,096 Alfas)
-- **Hope Scroll:** `planning/pivotal_fronts/light_at_the_end_of_the_tunnel.md` keeps the play/dev-ops trajectory visible for Vision Holders and reviewers.
 
 ### Core Infrastructure
 
