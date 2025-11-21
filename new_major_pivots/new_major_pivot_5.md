@@ -1,6 +1,6 @@
 # Major Pivot Five: Emoji-First Computing Language ("Baby's First Compiler")
 
-See also: `planning/campaigns_and_lulls.md` (operational cadence) and `planning/pivotal_fronts/from_pain_to_play.md` (anti‑pain conversions protecting the compiler ritual).
+See also: `planning/campaigns_and_lulls.md` (operational cadence), `planning/pivotal_fronts/from_pain_to_play.md` (anti-pain conversions protecting the compiler ritual), and `docs/dsls_vs_gpls.md` (DSL-to-GPL guardrails).
 
 **Status:** Active — Level-0 translator online and dry-run orders issued (Nov 2025)  
 **Date Proposed:** 2025-10-25  

@@ -1,0 +1,35 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "hello-Alfa-M04-20251121T054012Z",
+  "order_id": "order-2025-11-19-060",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-21T05:40:12Z",
+  "status": "completed",
+  "summary": "Hello from Alfa-M04 after hydrating forge-alfa@2025-11-19-060 into golf_03/kappa_04/alfa_m04 for the genesis-kappa comfort + music independence rail.",
+  "instance": {
+    "id": "Alfa-M04",
+    "baseline": "forge-alfa@2025-11-19-060",
+    "slot": "genesis-kappa"
+  },
+  "evidence": {
+    "readiness": "production/mass_alfa_batch2/alfa_m04/logs/readiness.json",
+    "smoke": [
+      "production/mass_alfa_batch2/alfa_m04/logs/smoke.txt"
+    ],
+    "hydration_logs": [
+      "golf_03/kappa_04/alfa_m04/logs/readiness.json",
+      "golf_03/kappa_04/alfa_m04/logs/smoke.txt"
+    ]
+  },
+  "notes": [
+    "Hydration path: golf_03/kappa_04/alfa_m04 with comfort instrumentation knobs exposed for scouting teams.",
+    "Ops readiness rerun at 2025-11-21T05:32:18Z; smoke captured from python ../../../tools/factory_order_emitter.py --help before exporting the hello."
+  ],
+  "workspace": "toyfoundry_ai_0",
+  "created_at": "2025-11-21T05:40:12Z",
+  "artifacts": [
+    "production/mass_alfa_batch2/alfa_m04/logs/readiness.json",
+    "production/mass_alfa_batch2/alfa_m04/logs/smoke.txt"
+  ]
+}

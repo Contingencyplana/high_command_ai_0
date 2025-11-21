@@ -19,7 +19,7 @@
 - **[Pivot Four](new_major_pivots/new_major_pivot_4.md)** — Fractal Folder Structure (golf_00–15 for 4,096 Alfas)
 - **[Pivot Five](new_major_pivots/new_major_pivot_5.md)** — Emoji-First Computing Language
 
-**See:** `new_major_pivots/README.md` for full pivot documentation.
+**See:** `new_major_pivots/README.md` for full pivot documentation; `docs/dsls_vs_gpls.md` for DSL-to-GPL guardrails across emoji/music/synergy languages.
 
 **Current focus:**
 
