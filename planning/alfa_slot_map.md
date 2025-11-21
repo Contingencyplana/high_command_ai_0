@@ -8,6 +8,18 @@
 - Link each slot to its coordinating workspace and exchange touchpoints.
 - Surface readiness and next actions so the doc refresh queue can assign follow-up work quickly.
 
+## Genesis squad callsigns (workspace home)
+
+| Callsign | Workspace | Scope |
+|:---------|:----------|:------|
+| Alpha | `high_command_ai_0` | Orchestration and exchange stewardship |
+| Beta | `toyfoundry_ai_0` | Manufacturing and Alfa seeding |
+| Gamma | `toysoldiers_ai_0` | Field deployment and telemetry |
+| Delta | `valiant_citadel_ai_0` | Safety and compliance guard |
+| Theta | `r_and_d_ai_0` | Innovation lab and prototypes |
+| Zeta | `tons_of_fun_ai_0` | Playtest loop and feel tuning |
+| Eta | `archivist_ai_0` | Documentation and standards |
+
 ## Slot Ownership Table
 
 | Slot | Focus | Primary Workspace | Status | Offline Hooks |
