@@ -345,7 +345,7 @@
       "status": "closed",
       "order_path": "orders/order-2025-11-14-055.json",
       "ack_path": "acknowledgements/logged/order-2025-11-14-055-ack.json",
-      "report_path": "reports/inbox/order-2025-11-14-055-report.json"
+      "report_path": "reports/archived/order-2025-11-14-055-report.json"
     },
     "order-2025-11-15-wo-001": {
       "status": "closed",
@@ -356,7 +356,7 @@
     "order-2025-11-19-060": {
       "status": "closed",
       "ack_path": "acknowledgements/logged/order-2025-11-19-060-ack.json",
-      "report_path": "reports/inbox/order-2025-11-19-060-report.json",
+      "report_path": "reports/archived/order-2025-11-19-060-report.json",
       "order_path": "orders/dispatched/order-2025-11-19-060.json"
     }
   },
@@ -364,8 +364,8 @@
     "order-2025-11-01-041-report": "reports/archived/order-2025-11-01-041-report.json",
     "order-2025-11-10-046-report": "reports/archived/order-2025-11-10-046-report.json",
     "order-2025-11-13-904-report": "reports/archived/order-2025-11-13-904-report.json",
-    "order-2025-11-14-055-report": "reports/inbox/order-2025-11-14-055-report.json",
-    "order-2025-11-19-060-report": "reports/inbox/order-2025-11-19-060-report.json",
+    "order-2025-11-14-055-report": "reports/archived/order-2025-11-14-055-report.json",
+    "order-2025-11-19-060-report": "reports/archived/order-2025-11-19-060-report.json",
     "order-2025-10-12-001-report": "reports/archived/order-2025-10-12-001-report.json",
     "order-2025-10-12-002-report": "reports/archived/order-2025-10-12-002-report.json",
     "order-2025-10-12-003-report": "reports/archived/order-2025-10-12-003-report.json",
