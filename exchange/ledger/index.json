@@ -349,8 +349,16 @@
       "order_path": "orders/dispatched/order-2025-11-15-wo-001.json"
     },
     "order-2025-11-19-060": {
+      "status": "closed",
+      "order_path": "orders/dispatched/order-2025-11-19-060.json",
+      "ack_path": "acknowledgements/logged/order-2025-11-19-060-ack.json",
+      "report_path": "reports/inbox/order-2025-11-19-060-report.json"
+    },
+    "order-2025-11-14-055": {
       "status": "received",
-      "order_path": "orders/dispatched/order-2025-11-19-060.json"
+      "order_path": "orders/order-2025-11-14-055.json",
+      "ack_path": "acknowledgements/logged/order-2025-11-14-055-ack.json",
+      "report_path": "reports/inbox/order-2025-11-14-055-report.json"
     }
   },
   "reports": {
@@ -410,7 +418,9 @@
     "order-2025-11-13-903-report": "reports/archived/order-2025-11-13-903-report.json",
     "order-2025-11-13-904-report": "reports/archived/order-2025-11-13-904-report.json",
     "order-2025-11-13-905-report": "reports/archived/order-2025-11-13-905-report.json",
-    "order-2025-11-15-wo-001-report": "reports/archived/order-2025-11-15-wo-001-report.json"
+    "order-2025-11-15-wo-001-report": "reports/archived/order-2025-11-15-wo-001-report.json",
+    "order-2025-11-14-055-report": "reports/inbox/order-2025-11-14-055-report.json",
+    "order-2025-11-19-060-report": "reports/inbox/order-2025-11-19-060-report.json"
   },
   "acks": {
     "order-2025-10-12-009-ack": "acknowledgements/logged/order-2025-10-12-009-ack.json",
@@ -470,6 +480,8 @@
     "order-2025-11-13-903-ack": "acknowledgements/logged/order-2025-11-13-903-ack.json",
     "order-2025-11-13-904-ack": "acknowledgements/logged/order-2025-11-13-904-ack.json",
     "order-2025-11-13-905-ack": "acknowledgements/logged/order-2025-11-13-905-ack.json",
-    "order-2025-11-15-wo-001-ack": "acknowledgements/logged/order-2025-11-15-wo-001-ack.json"
+    "order-2025-11-15-wo-001-ack": "acknowledgements/logged/order-2025-11-15-wo-001-ack.json",
+    "order-2025-11-14-055-ack": "acknowledgements/logged/order-2025-11-14-055-ack.json",
+    "order-2025-11-19-060-ack": "acknowledgements/logged/order-2025-11-19-060-ack.json"
   }
 }

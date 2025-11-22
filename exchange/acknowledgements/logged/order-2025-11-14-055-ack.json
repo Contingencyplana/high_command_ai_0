@@ -1,0 +1,17 @@
+{
+  "order_id": "order-2025-11-14-055",
+  "ack_id": "order-2025-11-14-055-ack",
+  "workspace": "valiant_citadel_ai_0",
+  "ack_timestamp": "2025-11-17T15:58:59Z",
+  "notes": "Hydrating Alfa M01 (Delta) from Toyfoundry's Batch 1 baseline; baseline mirrored and readiness gates re-run.",
+  "artifacts": [
+    {
+      "name": "batch_overview",
+      "path": "production/mass_alfa_batch1/README.md"
+    },
+    {
+      "name": "instance_log",
+      "path": "production/mass_alfa_batch1/alfa_m01/README.md"
+    }
+  ]
+}

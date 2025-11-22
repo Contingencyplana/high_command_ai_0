@@ -1,0 +1,17 @@
+{
+  "order_id": "order-2025-11-14-055",
+  "report_id": "hello-Alfa-M01-20251117T155859Z",
+  "workspace": "valiant_citadel_ai_0",
+  "summary": "Hello from Alfa M01 – baseline hydrated, readiness/smoke green, awaiting deployment slot confirmation.",
+  "created_at": "2025-11-17T15:58:59Z",
+  "artifacts": [
+    {
+      "name": "telemetry",
+      "path": "production/mass_alfa_batch1/alfa_m01/telemetry.json"
+    },
+    {
+      "name": "kill_switch_reference",
+      "path": "golf_00/delta_00/README.md"
+    }
+  ]
+}

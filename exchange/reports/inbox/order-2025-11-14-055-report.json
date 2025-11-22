@@ -1,0 +1,25 @@
+{
+  "order_id": "order-2025-11-14-055",
+  "report_id": "order-2025-11-14-055-report",
+  "workspace": "valiant_citadel_ai_0",
+  "summary": "Hydrated Alfa M01 from Toyfoundry's Batch 1 freeze, reran readiness/smoke, and staged hello report + telemetry.",
+  "created_at": "2025-11-17T15:58:59Z",
+  "artifacts": [
+    {
+      "name": "batch_readme",
+      "path": "production/mass_alfa_batch1/README.md"
+    },
+    {
+      "name": "alfa_m01_log",
+      "path": "production/mass_alfa_batch1/alfa_m01/README.md"
+    },
+    {
+      "name": "telemetry",
+      "path": "production/mass_alfa_batch1/alfa_m01/telemetry.json"
+    },
+    {
+      "name": "ledger_entry",
+      "path": "exchange/ledger/index.json"
+    }
+  ]
+}
