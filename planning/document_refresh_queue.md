@@ -30,6 +30,7 @@
 
 ## Next Target Candidate
 
+- 2025-11-22 - Daily Doc Refresh: ORDER-060 archived (hellos/ack/report moved to `exchange/reports/archived/`), `exchange/ledger/index.json` updated; smoke gap noted (factory_order_emitter.py missing, using `exchange_all` until block lifts); monitoring downstream ACKs via hub.
 - 2025-11-21 - ✅ Daily Doc Refresh (00:27 AEST): reaffirmed Batch 2 trooptrain plan, noted that hello packets stay parked in `exchange/reports/inbox/` until Gamma/Delta/Theta/Zeta pulls land, and queued cross-front coordination in `planning/alfa_batch2_hydration_checklist.md` before traveling.
 - 2025-11-20 - ✅ Recorded Batch 2 intake after Toyfoundry bundle pull: added High Command intake block to `planning/alfa_batch2_hydration_checklist.md`, logged ORDER-060 import in `exchange/ledger/2025-11.md`, and queued cross-front pulls in the checklist.
 - 2025-11-12 - ✅ Staged Nightlands duet scoreboard placeholder composites and wired into ￼xchange/attachments/guides/nightlands_duet_playtest_packet.md; metadata lives in ￼xchange/attachments/media/nightlands_duet/, and planning/alfa_zero_nightlands_duet_storyboard.md now captures scoreboard + cadence guidance (Order 050).
