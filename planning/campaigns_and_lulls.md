@@ -246,3 +246,6 @@ Related
 - Batch 2 Closeout (ORDER-060): see planning/batch2_closeout.md
 - Open gap: factory_order_emitter.py unavailable (War Office block); smoke uses `python tools/exchange_all.py` until restored.
 - Cadence: continue exchange_heartbeat + offline_sync_exchange + exchange_validator during lull.
+
+### Upcoming Mini-Campaign - Hybrid Communications Restore
+- See planning/hybrid_comms_restore.md for objectives, steps, and exit criteria (restore hybrid channel, emitter smoke parity, doc/ledger updates).
