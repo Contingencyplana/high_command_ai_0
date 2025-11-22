@@ -23,3 +23,6 @@ High Command hydration (2025-11-22)
 - Logs: logs/readiness.json, logs/smoke.txt, logs\mass_alfa_batch2\Alfa-M04\ops_readiness.json
 - Hello: outbox/reports/hello-Alfa-M04-20251122T034500Z.json
 - Notes: Reran ops_readiness; factory_order_emitter.py missing here so smoke uses exchange_all; mirrored to hub for downstream pulls.
+
+- Smoke restored: using `python tools/factory_order_emitter.py --help` as of 2025-11-22; prior `exchange_all` smoke deprecated.
+

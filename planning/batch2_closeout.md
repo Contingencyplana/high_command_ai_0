@@ -14,4 +14,4 @@
 ## Status
 - ORDER-060 closed; Campaign Planning Lull entered (2025-11-22).
 - Downstream ACKs present (Toyfoundry, Toysoldiers, Valiant); High Command pull/validator clean.
-- Pending unblocker: restore `tools/factory_order_emitter.py` once War Office lifts block; swap smoke back from `exchange_all`.
+- Smoke restored: `tools/factory_order_emitter.py` delivered by War Office (2025-11-22) and verified (`python tools/factory_order_emitter.py --help`); prior `exchange_all` smoke deprecated.
