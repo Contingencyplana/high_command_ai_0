@@ -1,0 +1,3 @@
+NOTE TO WAR OFFICE:
+- ORDER-060 closed in High Command; Batch 2 hellos/ack/report archived to exchange/reports/archived/ and ledger/index updated.
+- Smoke gap: tools/factory_order_emitter.py missing under current block. Request unblock or provide the file so we can restore emitter-based smoke. Using `python tools/exchange_all.py` as smoke until then.

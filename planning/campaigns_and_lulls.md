@@ -240,3 +240,9 @@ Related
 ### Window
 
 - 2025-11-08 → 2025-11-12 (day 1: inbox triage + runtime shell stubs; day 2+: automation coverage, comfort docs, validation).
+
+
+### Lull - Post-Batch-2 Planning
+- Batch 2 Closeout (ORDER-060): see planning/batch2_closeout.md
+- Open gap: factory_order_emitter.py unavailable (War Office block); smoke uses `python tools/exchange_all.py` until restored.
+- Cadence: continue exchange_heartbeat + offline_sync_exchange + exchange_validator during lull.
