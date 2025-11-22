@@ -1,0 +1,11 @@
+{
+  "alfa_id": "Alfa-M11",
+  "workspace": "high_command_ai_0",
+  "slot": "production/mass_alfa_batch2/alfa_m11",
+  "exchange_slot": "genesis-iota",
+  "focus": "Layer-stacked cadence once cooldown is under control",
+  "doc_refresh_queue_ref": "planning/doc_refresh_queue.md",
+  "ledger_ref": "exchange/ledger/2025-11.md",
+  "status": "hydrated",
+  "notes": "High Command hydration run with readiness/smoke captured in logs/mass_alfa_batch2."
+}

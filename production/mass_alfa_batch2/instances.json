@@ -1,0 +1,126 @@
+{
+  "order_id": "order-2025-11-19-060",
+  "baseline_tag": "forge-alfa@2025-11-19-060",
+  "rank_set": "Genesis Alpha\u00e2\u20ac\u201cIota (Batch 2)",
+  "instances": [
+    {
+      "id": "Alfa-M04",
+      "path": "production/mass_alfa_batch2/alfa_m04",
+      "exchange_slot": "genesis-kappa",
+      "focus": "Comfort overlay instrumentation with independent music rails",
+      "status": "hydrated",
+      "readiness_log": "production/mass_alfa_batch2/alfa_m04/logs/readiness.json",
+      "smoke_log": "production/mass_alfa_batch2/alfa_m04/logs/smoke.txt",
+      "hello_report": "outbox/reports/hello-Alfa-M04-20251122T034500Z.json",
+      "hydration": {
+        "status": "completed",
+        "workspace": "toyfoundry_ai_0",
+        "order_id": "order-2025-11-19-060",
+        "timestamp_utc": "2025-11-21T05:32:18Z",
+        "notes": "Hydrated into golf_03/kappa_04/alfa_m04 with comfort overlay toggles and music independence hooks."
+      }
+    },
+    {
+      "id": "Alfa-M06",
+      "path": "production/mass_alfa_batch2/alfa_m06",
+      "exchange_slot": "genesis-alpha",
+      "focus": "Lore-first intake rail for new recruits",
+      "status": "hydrated",
+      "readiness_log": "production/mass_alfa_batch2/alfa_m06/logs/readiness.json",
+      "smoke_log": "production/mass_alfa_batch2/alfa_m06/logs/smoke.txt",
+      "hello_report": "outbox/reports/hello-Alfa-M06-20251122T034501Z.json",
+      "hydration": {
+        "status": "completed",
+        "workspace": "toyfoundry_ai_0",
+        "order_id": "order-2025-11-19-060",
+        "timestamp_utc": "2025-11-20T00:57:26Z",
+        "notes": "Hydrated in golf_04/alpha_04/alfa_m06; readiness + smoke rerun before hello export."
+      }
+    },
+    {
+      "id": "Alfa-M07",
+      "path": "production/mass_alfa_batch2/alfa_m07",
+      "exchange_slot": "genesis-beta",
+      "focus": "Music overlay for call-and-response acceleration",
+      "status": "hydrated",
+      "readiness_log": "production/mass_alfa_batch2/alfa_m07/logs/readiness.json",
+      "smoke_log": "production/mass_alfa_batch2/alfa_m07/logs/smoke.txt",
+      "hello_report": "outbox/reports/hello-Alfa-M07-20251122T034502Z.json",
+      "hydration": {
+        "status": "completed",
+        "workspace": "toyfoundry_ai_0",
+        "order_id": "order-2025-11-19-060",
+        "timestamp_utc": "2025-11-20T01:00:17Z",
+        "notes": "Hydrated under golf_05/beta_02/alfa_m07 with call-and-response overlay capture."
+      }
+    },
+    {
+      "id": "Alfa-M08",
+      "path": "production/mass_alfa_batch2/alfa_m08",
+      "exchange_slot": "genesis-gamma",
+      "focus": "Music cue for squad synchronization",
+      "status": "hydrated",
+      "readiness_log": "production/mass_alfa_batch2/alfa_m08/logs/readiness.json",
+      "smoke_log": "production/mass_alfa_batch2/alfa_m08/logs/smoke.txt",
+      "hello_report": "outbox/reports/hello-Alfa-M08-20251122T034503Z.json",
+      "hydration": {
+        "status": "completed",
+        "workspace": "toyfoundry_ai_0",
+        "order_id": "order-2025-11-19-060",
+        "timestamp_utc": "2025-11-20T01:04:39Z",
+        "notes": "Hydrated under golf_05/gamma_06/alfa_m08 with squad-sync cues captured."
+      }
+    },
+    {
+      "id": "Alfa-M09",
+      "path": "production/mass_alfa_batch2/alfa_m09",
+      "exchange_slot": "genesis-epsilon",
+      "focus": "Lore steady-state while music layer spins up",
+      "status": "hydrated",
+      "readiness_log": "production/mass_alfa_batch2/alfa_m09/logs/readiness.json",
+      "smoke_log": "production/mass_alfa_batch2/alfa_m09/logs/smoke.txt",
+      "hello_report": "outbox/reports/hello-Alfa-M09-20251122T034504Z.json",
+      "hydration": {
+        "status": "completed",
+        "workspace": "toyfoundry_ai_0",
+        "order_id": "order-2025-11-19-060",
+        "timestamp_utc": "2025-11-20T01:05:57Z",
+        "notes": "Hydrated at golf_06/epsilon_01/alfa_m09 keeping lore deck primary."
+      }
+    },
+    {
+      "id": "Alfa-M10",
+      "path": "production/mass_alfa_batch2/alfa_m10",
+      "exchange_slot": "genesis-eta",
+      "focus": "Lore-only anchor for escalation briefings",
+      "status": "hydrated",
+      "readiness_log": "production/mass_alfa_batch2/alfa_m10/logs/readiness.json",
+      "smoke_log": "production/mass_alfa_batch2/alfa_m10/logs/smoke.txt",
+      "hello_report": "outbox/reports/hello-Alfa-M10-20251122T034505Z.json",
+      "hydration": {
+        "status": "completed",
+        "workspace": "toyfoundry_ai_0",
+        "order_id": "order-2025-11-19-060",
+        "timestamp_utc": "2025-11-20T01:07:41Z",
+        "notes": "Hydrated at golf_06/eta_07/alfa_m10 capturing escalation briefing notes."
+      }
+    },
+    {
+      "id": "Alfa-M11",
+      "path": "production/mass_alfa_batch2/alfa_m11",
+      "exchange_slot": "genesis-iota",
+      "focus": "Layer-stacked cadence once cooldown is under control",
+      "status": "hydrated",
+      "readiness_log": "production/mass_alfa_batch2/alfa_m11/logs/readiness.json",
+      "smoke_log": "production/mass_alfa_batch2/alfa_m11/logs/smoke.txt",
+      "hello_report": "outbox/reports/hello-Alfa-M11-20251122T034506Z.json",
+      "hydration": {
+        "status": "completed",
+        "workspace": "toyfoundry_ai_0",
+        "order_id": "order-2025-11-19-060",
+        "timestamp_utc": "2025-11-20T01:09:09Z",
+        "notes": "Hydrated at golf_07/iota_05/alfa_m11 with layered telemetry guards."
+      }
+    }
+  ]
+}

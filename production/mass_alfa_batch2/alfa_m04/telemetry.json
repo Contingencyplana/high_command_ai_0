@@ -1,0 +1,11 @@
+{
+  "alfa_id": "Alfa-M04",
+  "workspace": "high_command_ai_0",
+  "slot": "production/mass_alfa_batch2/alfa_m04",
+  "exchange_slot": "genesis-kappa",
+  "focus": "Comfort overlay instrumentation with independent music rails",
+  "doc_refresh_queue_ref": "planning/doc_refresh_queue.md",
+  "ledger_ref": "exchange/ledger/2025-11.md",
+  "status": "hydrated",
+  "notes": "High Command hydration run with readiness/smoke captured in logs/mass_alfa_batch2."
+}

@@ -1,0 +1,5 @@
+Smoke check for Alfa-M09 (High Command hydration)
+- Timestamp (UTC): 2025-11-22T03:43:18.411314+00:00
+- Intended: python tools/factory_order_emitter.py --help (missing in workspace; tracking via smoke notes)
+- Executed: python tools/exchange_all.py (orders 5, reports 5, acks 2)
+- Logs: exchange_all.json and ops_readiness.json co-located in logs/mass_alfa_batch2

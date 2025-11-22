@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2025-11-22T04:11:31.962486+00:00",
+  "timestamp_utc": "2025-11-22T03:41:40.805174+00:00",
   "workspace": "high_command_ai_0",
   "python": "3.12.6",
   "hub_path": "C:\\Users\\Admin\\high_command_exchange",
@@ -44,48 +44,8 @@
       "missing": []
     },
     {
-      "kind": "ack",
-      "file": "order-2025-11-19-060-ack.json",
-      "missing": []
-    },
-    {
-      "kind": "report",
-      "file": "hello-Alfa-M04-20251122T034500Z.json",
-      "missing": []
-    },
-    {
       "kind": "report",
       "file": "hello-Alfa-M05-20251118T034100Z.json",
-      "missing": []
-    },
-    {
-      "kind": "report",
-      "file": "hello-Alfa-M06-20251122T034501Z.json",
-      "missing": []
-    },
-    {
-      "kind": "report",
-      "file": "hello-Alfa-M07-20251122T034502Z.json",
-      "missing": []
-    },
-    {
-      "kind": "report",
-      "file": "hello-Alfa-M08-20251122T034503Z.json",
-      "missing": []
-    },
-    {
-      "kind": "report",
-      "file": "hello-Alfa-M09-20251122T034504Z.json",
-      "missing": []
-    },
-    {
-      "kind": "report",
-      "file": "hello-Alfa-M10-20251122T034505Z.json",
-      "missing": []
-    },
-    {
-      "kind": "report",
-      "file": "hello-Alfa-M11-20251122T034506Z.json",
       "missing": []
     },
     {
@@ -106,11 +66,6 @@
     {
       "kind": "report",
       "file": "order-2025-11-14-059-report.json",
-      "missing": []
-    },
-    {
-      "kind": "report",
-      "file": "order-2025-11-19-060-report.json",
       "missing": []
     }
   ],

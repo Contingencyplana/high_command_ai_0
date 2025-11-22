@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2025-11-22T04:11:39.673497+00:00",
+  "timestamp_utc": "2025-11-22T03:43:18.411314+00:00",
   "workspace": "high_command_ai_0",
   "hub_path": "C:\\Users\\Admin\\high_command_exchange",
   "validated_ok": true,
@@ -13,24 +13,15 @@
       "toyfoundry_test.json"
     ],
     "reports": [
-      "hello-Alfa-M04-20251122T034500Z.json",
       "hello-Alfa-M05-20251118T034100Z.json",
-      "hello-Alfa-M06-20251122T034501Z.json",
-      "hello-Alfa-M07-20251122T034502Z.json",
-      "hello-Alfa-M08-20251122T034503Z.json",
-      "hello-Alfa-M09-20251122T034504Z.json",
-      "hello-Alfa-M10-20251122T034505Z.json",
-      "hello-Alfa-M11-20251122T034506Z.json",
       "order-2025-10-16-035-result.json",
       "order-2025-11-07-044-report.json",
       "order-2025-11-13-905-report.json",
-      "order-2025-11-14-059-report.json",
-      "order-2025-11-19-060-report.json"
+      "order-2025-11-14-059-report.json"
     ],
     "acks": [
       "order-2025-11-13-905-ack.json",
-      "order-2025-11-14-059-ack.json",
-      "order-2025-11-19-060-ack.json"
+      "order-2025-11-14-059-ack.json"
     ]
   }
 }

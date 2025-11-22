@@ -1,0 +1,15 @@
+{
+  "instance_id": "Alfa-M08",
+  "order_id": "order-2025-11-19-060",
+  "baseline_tag": "forge-alfa@2025-11-19-060",
+  "hydration_path": "golf_05/gamma_06/alfa_m08",
+  "readiness_log": "logs\\mass_alfa_batch2\\Alfa-M08\\ops_readiness.json",
+  "timestamp_utc": "2025-11-22T03:41:40.982828+00:00",
+  "status": "ok",
+  "notes": "High Command reran ops_readiness after local hydration; CLI smoke log stored alongside readiness evidence.",
+  "evidence": {
+    "ops_readiness_script": "python tools/ops_readiness.py",
+    "smoke_command": "python tools/factory_order_emitter.py --help",
+    "smoke_log": "logs/mass_alfa_batch2/Alfa-M08/smoke.txt"
+  }
+}
