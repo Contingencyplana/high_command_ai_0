@@ -342,7 +342,7 @@
       "order_path": "orders/dispatched/order-2025-11-13-905.json"
     },
     "order-2025-11-14-055": {
-      "status": "received",
+      "status": "closed",
       "order_path": "orders/order-2025-11-14-055.json",
       "ack_path": "acknowledgements/logged/order-2025-11-14-055-ack.json",
       "report_path": "reports/inbox/order-2025-11-14-055-report.json"
@@ -354,7 +354,7 @@
       "order_path": "orders/dispatched/order-2025-11-15-wo-001.json"
     },
     "order-2025-11-19-060": {
-      "status": "received",
+      "status": "closed",
       "ack_path": "acknowledgements/logged/order-2025-11-19-060-ack.json",
       "report_path": "reports/inbox/order-2025-11-19-060-report.json",
       "order_path": "orders/dispatched/order-2025-11-19-060.json"
