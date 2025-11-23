@@ -1,0 +1,34 @@
+{
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-23-060",
+  "issued_by": "high_command_ai_0",
+  "target": "all_fronts",
+  "priority": "high",
+  "timestamp_issued": "2025-11-23T17:00:00Z",
+  "summary": "Campaign 1 Kickoff: Core loop + thin UI (Nightlands co-op)",
+  "context": "Launch Campaign 1 from the agreed stack: a 10-15 minute Nightlands co-op loop with a thin battlegrid/observer UI. Inputs must stay under existing guardrails and telemetry/ledger discipline.",
+  "directives": [
+    { "step": 1, "action": "align_plan", "details": "Adopt the Campaign 1 plan in planning/campaigns_and_lulls.md; confirm owners and milestone dates per workspace." },
+    { "step": 2, "action": "prototype_loop", "details": "Build M1 core loop prototype with quick role select, 1-2 enemy archetypes, and one signature ability per role routed through emoji DSL/guardrails." },
+    { "step": 3, "action": "deliver_thin_ui", "details": "Ship minimal battlegrid/observer view + HUD tied to the emoji DSL; instrument Time-to-Fun, revive cadence, and 'one more run?' prompts." },
+    { "step": 4, "action": "playtest_slice", "details": "Produce a playtestable slice (M3) with rollback toggles, cadence smoke (heartbeat -> offline_sync_exchange -> ops_readiness -> exchange_all), emitter smoke, and logs under logs/." },
+    { "step": 5, "action": "ledger_updates", "details": "File ACK/report per workspace; log cadence runs and milestone completions to exchange/ledger/2025-11.md (or current) with evidence hooks." }
+  ],
+  "success_criteria": [
+    "Campaign 1 plan adopted with named owners and milestone dates",
+    "Core loop prototype playable with guardrails intact (emoji DSL routing enforced)",
+    "Thin UI/HUD shipped with telemetry for TTF, revive cadence, 'one more run?'",
+    "Playtestable slice delivered with rollback switch and cadence/emitter smoke logs archived",
+    "Ledger entries recorded for ACK + completion with evidence paths"
+  ],
+  "dependencies": [
+    "planning/campaigns_and_lulls.md",
+    "planning/alfa_zero_nightlands_duet_storyboard.md"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-12-05T23:59:59Z",
+  "attachments": [
+    { "type": "reference", "path": "planning/campaigns_and_lulls.md" },
+    { "type": "reference", "path": "planning/alfa_zero_nightlands_duet_storyboard.md" }
+  ]
+}
