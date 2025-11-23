@@ -1,0 +1,25 @@
+{
+  "order_id": "order-2025-11-19-060",
+  "report_id": "hello-Alfa-M07-20251122T034502Z",
+  "workspace": "high_command_ai_0",
+  "summary": "Hello from Alfa-M07 \u2014 High Command hydration staged at golf_05/beta_02/alfa_m07 with readiness/smoke evidence captured.",
+  "created_at": "2025-11-22T03:45:02.035167Z",
+  "artifacts": [
+    {
+      "name": "readiness_log",
+      "path": "logs/mass_alfa_batch2/Alfa-M07/ops_readiness.json"
+    },
+    {
+      "name": "smoke_log",
+      "path": "logs/mass_alfa_batch2/Alfa-M07/smoke.txt"
+    },
+    {
+      "name": "exchange_log",
+      "path": "logs/mass_alfa_batch2/Alfa-M07/exchange_all.json"
+    },
+    {
+      "name": "telemetry",
+      "path": "production/mass_alfa_batch2/alfa_m07/telemetry.json"
+    }
+  ]
+}

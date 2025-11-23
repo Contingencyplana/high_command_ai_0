@@ -1,0 +1,70 @@
+{
+  "schema": "factory-ack@1.0",
+  "order_id": "order-2025-11-23-060",
+  "ack_id": "order-2025-11-23-060-ack",
+  "workspace": "toyfoundry_ai_0",
+  "acknowledged_by": "toyfoundry_ai_0",
+  "owner": "toyfoundry_ai_0",
+  "timestamp_ack": "2025-11-23T12:21:03Z",
+  "status": "accepted",
+  "milestones": [
+    {
+      "name": "Campaign 1 plan + owner lock",
+      "owner": "toyfoundry_ai_0",
+      "target_date": "2025-11-24",
+      "notes": "Adopt Campaign 1 plan (planning/campaigns_and_lulls.md) and confirm guardrails/emoji DSL constraints."
+    },
+    {
+      "name": "M1 core loop prototype (roles + 1-2 enemies)",
+      "owner": "toyfoundry_ai_0",
+      "target_date": "2025-11-27",
+      "notes": "Quick role select, 1-2 enemy archetypes, signature ability per role, routed through emoji DSL/guardrails."
+    },
+    {
+      "name": "Thin UI/HUD with telemetry hooks",
+      "owner": "toyfoundry_ai_0",
+      "target_date": "2025-11-30",
+      "notes": "Minimal battlegrid/observer HUD with Time-to-Fun, revive cadence, and one-more-run prompt instrumentation."
+    },
+    {
+      "name": "Playtestable slice (M3) + rollback + cadence/emitter smoke",
+      "owner": "toyfoundry_ai_0",
+      "target_date": "2025-12-03",
+      "notes": "Include rollback toggle, cadence (heartbeat -> offline_sync_exchange -> ops_readiness -> exchange_all) and emitter smoke logs under logs/."
+    },
+    {
+      "name": "Reporting + ledger closure",
+      "owner": "toyfoundry_ai_0",
+      "target_date": "2025-12-04",
+      "notes": "Submit completion report, archive cadence/emitter evidence, and ledger updates before expiry."
+    }
+  ],
+  "initial_approach": {
+    "references": [
+      "planning/campaigns_and_lulls.md",
+      "planning/alfa_zero_nightlands_duet_storyboard.md"
+    ],
+    "guardrails": "All inputs remain under emoji DSL/guardrails; thin UI respects existing safety filters.",
+    "core_loop_plan": "Nightlands co-op loop with role select, 1-2 enemy archetypes, and one signature ability per role routed through emoji DSL.",
+    "ui_plan": "Minimal battlegrid/observer HUD with Time-to-Fun, revive cadence, and one-more-run prompt instrumentation.",
+    "validation": {
+      "cadence": "heartbeat -> offline_sync_exchange -> ops_readiness -> exchange_all",
+      "smoke": "factory_order_emitter.py --help",
+      "logs_root": "logs/",
+      "pending_artifacts": [
+        "logs/order-2025-11-23-060-end_of_block.log",
+        "logs/order-2025-11-23-060-emitter-help.log"
+      ]
+    }
+  },
+  "risks": [
+    "Referenced planning scrolls (campaigns_and_lulls.md, alfa_zero_nightlands_duet_storyboard.md) not present locally; need hub copy or guidance.",
+    "Guardrail regressions if thin UI bypasses emoji DSL; will gate inputs through existing guardrails tooling."
+  ],
+  "next_events": [
+    "Run cadence via python tools/end_of_block.py and archive output under logs/.",
+    "Run factory_order_emitter.py --help to confirm emitter smoke and log output.",
+    "Publish ACK to exchange/outbox and sync hub via offline_bridge.",
+    "Backfill planning references once provided and align owners/milestones across fronts."
+  ]
+}

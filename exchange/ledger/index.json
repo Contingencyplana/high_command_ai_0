@@ -358,6 +358,10 @@
       "ack_path": "acknowledgements/logged/order-2025-11-19-060-ack.json",
       "report_path": "reports/archived/order-2025-11-19-060-report.json",
       "order_path": "orders/dispatched/order-2025-11-19-060.json"
+    },
+    "order-2025-11-23-060": {
+      "status": "received",
+      "order_path": "orders/dispatched/order-2025-11-23-060.json"
     }
   },
   "reports": {
