@@ -1,0 +1,73 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "TF-EMOJI-DRYRUN-01",
+  "issued_by": "toyfoundry_ai_0",
+  "target": "toysoldiers_ai_0",
+  "priority": "standard",
+  "timestamp_issued": "2025-11-01T15:17:24+00:00",
+  "summary": "Forge crafts a steadfast ally to hold the line.",
+  "glyph_chain": [
+    "\ud83d\udee0\ufe0f",
+    "\u2692\ufe0f",
+    "\ud83d\udee1\ufe0f",
+    "\ud83e\udd16"
+  ],
+  "intent": {
+    "actor": "forge",
+    "action": "craft",
+    "target": "ally",
+    "qualifiers": [
+      "steadfast"
+    ],
+    "outcome": "victory"
+  },
+  "telemetry_stub": {
+    "batch_id": "forge-craft-20251101T100500Z",
+    "ritual": "forge",
+    "units_processed": 4,
+    "status": "success",
+    "duration_ms": 930
+  },
+  "narration": {
+    "line": "Forge crafts a steadfast ally to hold the line.",
+    "beats": [
+      "Forge",
+      "crafts",
+      "steadfast ally",
+      "hold the line"
+    ]
+  },
+  "attachments": [],
+  "metadata": {
+    "translator_version": "unknown",
+    "quint_synced_payload_spec": "quint_synced\\payload_alignment.md",
+    "quint_synced_narration_spec": "quint_synced\\narration_alignment.md",
+    "generated_at": "2025-11-01T15:17:24.009512+00:00",
+    "narrator_profile": "war-office-storyteller",
+    "emoji_runtime_schema": "emoji-runtime@1.0",
+    "emoji_runtime_timestamp": "2025-11-01T10:05:00Z",
+    "emoji_runtime_checksum_sha256": "ac47e77609f7c79074e170330ce258dfd7d6217d73426b8814027df4707beda4",
+    "emoji_runtime_template": "basic_ritual_forge",
+    "emoji_runtime_outcomes": [
+      "victory"
+    ]
+  },
+  "directives": [
+    {
+      "type": "glyph",
+      "value": "\ud83d\udee0\ufe0f"
+    },
+    {
+      "type": "glyph",
+      "value": "\u2692\ufe0f"
+    },
+    {
+      "type": "glyph",
+      "value": "\ud83d\udee1\ufe0f"
+    },
+    {
+      "type": "glyph",
+      "value": "\ud83e\udd16"
+    }
+  ]
+}

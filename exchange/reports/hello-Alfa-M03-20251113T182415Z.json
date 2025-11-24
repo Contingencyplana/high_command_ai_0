@@ -1,0 +1,29 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "hello-Alfa-M03-20251113T182415Z",
+  "order_id": "order-2025-11-13-054",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-13T18:24:15Z",
+  "status": "completed",
+  "summary": "Hello from Alfa-M03 seeded from forge-alfa@2025-11-13-054 \u2014 readiness and smoke attached where available.",
+  "instance": {
+    "id": "Alfa-M03",
+    "baseline": "forge-alfa@2025-11-13-054"
+  },
+  "evidence": {
+    "readiness": "production/mass_alfa_batch1/alfa_m03/logs/readiness.json",
+    "smoke": [
+      "production/mass_alfa_batch1/alfa_m03/logs/smoke.txt"
+    ]
+  },
+  "notes": [
+    "Focus: genesis-zeta morale threads; lore attachments queued after hello."
+  ],
+  "workspace": "toyfoundry_ai_0",
+  "created_at": "2025-11-13T18:24:15Z",
+  "artifacts": [
+    "production/mass_alfa_batch1/alfa_m03/logs/readiness.json",
+    "production/mass_alfa_batch1/alfa_m03/logs/smoke.txt"
+  ]
+}

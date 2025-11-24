@@ -1,0 +1,114 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "emoji-signal-loop-tempo-20251119083358.465801",
+  "issued_by": "high_command_alfa_zero",
+  "target": "toyfoundry_ai_0",
+  "priority": "realtime",
+  "timestamp_issued": "2025-11-19T08:33:58.465801Z",
+  "summary": "Dream quick loop -> rise",
+  "directives": [
+    {
+      "step": 1,
+      "action": "loop",
+      "details": "Actor dream executes loop targeting dream. Qualifiers: tempo. Outcome: gain. Glyph chain: 🌌 ⏱️ 🔄 📈. Telemetry batch dream-loop-20251119T083358465Z status success. Correlation trace_id: outland-lore-v1-8A-20251119083358."
+    }
+  ],
+  "requires_ack": false,
+  "extensions": {
+    "emoji_runtime_payload": {
+      "template": "signal_loop",
+      "actor": "actor.dream",
+      "verb": "verb.loop",
+      "target": null,
+      "qualifiers": [
+        "qualifier.tempo"
+      ],
+      "outcomes": [
+        "outcome.gain"
+      ],
+      "spoken": [
+        "dream",
+        "quick",
+        "loop",
+        "rise"
+      ],
+      "raw": [
+        "🌌",
+        "⏱️",
+        "🔄",
+        "📈"
+      ],
+      "schema": "emoji-runtime@1.0",
+      "glyph_chain": [
+        "🌌",
+        "⏱️",
+        "🔄",
+        "📈"
+      ],
+      "summary": "Dream quick loop -> rise",
+      "intent": {
+        "actor": "dream",
+        "action": "loop",
+        "target": "dream",
+        "qualifiers": [
+          "tempo"
+        ],
+        "outcome": "gain"
+      },
+      "telemetry_stub": {
+        "batch_id": "dream-loop-20251119T083358465Z",
+        "ritual": "dream",
+        "units_processed": 4,
+        "status": "success",
+        "duration_ms": 0,
+        "trace_id": "outland-lore-v1-8A-20251119083358",
+        "overlays": [
+          {
+            "overlay_id": "outland-lore-v1",
+            "layer_kind": "lore"
+          },
+          {
+            "overlay_id": "outland-music-v1",
+            "layer_kind": "music"
+          }
+        ],
+        "overlay_id": "outland-lore-v1",
+        "overlay_layer": "lore"
+      },
+      "created_at": "2025-11-19T08:33:58.465801Z",
+      "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+      "chain_name": "signal_loop_tempo",
+      "overlay_description": "Stabilize tempo along the targeting corridor and defend against Nightland counter-chants.",
+      "overlay_cell": {
+        "row": 9,
+        "col": 12,
+        "label": "9C"
+      },
+      "fun_flags": {
+        "fun_core": false,
+        "balance_toggles": false,
+        "xp_rate_limit": false,
+        "loot_governor": false
+      },
+      "trace_id": "outland-lore-v1-8A-20251119083358",
+      "overlays": [
+        {
+          "overlay_id": "outland-lore-v1",
+          "layer_kind": "lore"
+        },
+        {
+          "overlay_id": "outland-music-v1",
+          "layer_kind": "music"
+        }
+      ],
+      "overlay_id": "outland-lore-v1",
+      "overlay_layer": "lore",
+      "storyboard_id": "nightlands_duet_v1",
+      "storyboard_title": "Nightlands Duet - Lore + Music",
+      "storyboard_step": "Counter Pulse",
+      "storyboard_sequence": 4,
+      "storyboard_total_steps": 4
+    },
+    "correlation_trace_id": "outland-lore-v1-8A-20251119083358"
+  }
+}

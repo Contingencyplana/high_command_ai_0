@@ -1,0 +1,35 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "hello-Alfa-M09-20251120T010557Z",
+  "order_id": "order-2025-11-19-060",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-20T01:05:57Z",
+  "status": "completed",
+  "summary": "Hello from Alfa-M09 after hydrating forge-alfa@2025-11-19-060 into the genesis-epsilon steady-state lore rail.",
+  "instance": {
+    "id": "Alfa-M09",
+    "baseline": "forge-alfa@2025-11-19-060",
+    "slot": "genesis-epsilon"
+  },
+  "evidence": {
+    "readiness": "production/mass_alfa_batch2/alfa_m09/logs/readiness.json",
+    "smoke": [
+      "production/mass_alfa_batch2/alfa_m09/logs/smoke.txt"
+    ],
+    "hydration_logs": [
+      "golf_06/epsilon_01/alfa_m09/logs/readiness.json",
+      "golf_06/epsilon_01/alfa_m09/logs/smoke.txt"
+    ]
+  },
+  "notes": [
+    "Hydration path: golf_06/epsilon_01/alfa_m09 with lore-first steady-state kept primary as music spins up.",
+    "Ops readiness rerun at 2025-11-20T01:05:57Z; smoke captured via python ../../../tools/factory_order_emitter.py --help."
+  ],
+  "workspace": "toyfoundry_ai_0",
+  "created_at": "2025-11-20T01:05:57Z",
+  "artifacts": [
+    "production/mass_alfa_batch2/alfa_m09/logs/readiness.json",
+    "production/mass_alfa_batch2/alfa_m09/logs/smoke.txt"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "hello-Alfa-M10-20251120T010741Z",
+  "order_id": "order-2025-11-19-060",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-20T01:07:41Z",
+  "status": "completed",
+  "summary": "Hello from Alfa-M10 after hydrating forge-alfa@2025-11-19-060 into the genesis-eta escalation briefing anchor.",
+  "instance": {
+    "id": "Alfa-M10",
+    "baseline": "forge-alfa@2025-11-19-060",
+    "slot": "genesis-eta"
+  },
+  "evidence": {
+    "readiness": "production/mass_alfa_batch2/alfa_m10/logs/readiness.json",
+    "smoke": [
+      "production/mass_alfa_batch2/alfa_m10/logs/smoke.txt"
+    ],
+    "hydration_logs": [
+      "golf_06/eta_07/alfa_m10/logs/readiness.json",
+      "golf_06/eta_07/alfa_m10/logs/smoke.txt"
+    ]
+  },
+  "notes": [
+    "Hydration path: golf_06/eta_07/alfa_m10 anchoring escalation briefings.",
+    "Ops readiness rerun at 2025-11-20T01:07:41Z; smoke captured via python ../../../tools/factory_order_emitter.py --help."
+  ],
+  "workspace": "toyfoundry_ai_0",
+  "created_at": "2025-11-20T01:07:41Z",
+  "artifacts": [
+    "production/mass_alfa_batch2/alfa_m10/logs/readiness.json",
+    "production/mass_alfa_batch2/alfa_m10/logs/smoke.txt"
+  ]
+}

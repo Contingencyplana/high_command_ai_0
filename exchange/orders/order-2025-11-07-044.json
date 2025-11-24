@@ -1,4 +1,9 @@
 {
+  "id": "order-2025-11-07-044",
+  "workspace": "high_command_ai_0",
+  "title": "Relieve the President's Burden",
+  "status": "open",
+  "created_at": "2025-11-07T12:00:00Z",
   "schema": "high-command-order@1.0",
   "order_id": "order-2025-11-07-044",
   "issued_by": "high_command_ai_0",
@@ -60,4 +65,3 @@
     { "type": "reference", "path": "contract_samples/cases/basic_ritual_victory.json" }
   ]
 }
-

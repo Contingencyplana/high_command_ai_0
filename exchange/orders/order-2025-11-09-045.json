@@ -1,4 +1,9 @@
 {
+  "id": "order-2025-11-09-045",
+  "workspace": "high_command_ai_0",
+  "title": "UI Overlay Integration Slice",
+  "status": "open",
+  "created_at": "2025-11-09T12:00:00Z",
   "schema": "high-command-order@1.0",
   "order_id": "order-2025-11-09-045",
   "issued_by": "high_command_ai_0",

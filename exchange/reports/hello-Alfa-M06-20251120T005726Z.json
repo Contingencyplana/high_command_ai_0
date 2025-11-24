@@ -1,0 +1,35 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "hello-Alfa-M06-20251120T005726Z",
+  "order_id": "order-2025-11-19-060",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-20T00:57:26Z",
+  "status": "completed",
+  "summary": "Hello from Alfa-M06 after hydrating forge-alfa@2025-11-19-060 into golf_04/alpha_04/alfa_m06 for the genesis-alpha lore intake rail.",
+  "instance": {
+    "id": "Alfa-M06",
+    "baseline": "forge-alfa@2025-11-19-060",
+    "slot": "genesis-alpha"
+  },
+  "evidence": {
+    "readiness": "production/mass_alfa_batch2/alfa_m06/logs/readiness.json",
+    "smoke": [
+      "production/mass_alfa_batch2/alfa_m06/logs/smoke.txt"
+    ],
+    "hydration_logs": [
+      "golf_04/alpha_04/alfa_m06/logs/readiness.json",
+      "golf_04/alpha_04/alfa_m06/logs/smoke.txt"
+    ]
+  },
+  "notes": [
+    "Hydration path: golf_04/alpha_04/alfa_m06 with recruit briefing scripts wired per frontline feedback.",
+    "Ops readiness re-run at 2025-11-20T00:57:26Z; smoke captured via python ../../../tools/factory_order_emitter.py --help."
+  ],
+  "workspace": "toyfoundry_ai_0",
+  "created_at": "2025-11-20T00:57:26Z",
+  "artifacts": [
+    "production/mass_alfa_batch2/alfa_m06/logs/readiness.json",
+    "production/mass_alfa_batch2/alfa_m06/logs/smoke.txt"
+  ]
+}

@@ -1,0 +1,1 @@
+Please prep the wired UI/HUD build for a live playtest; I’m available to run it if needed. Instrument with emoji-DSL + HUD telemetry, capture the four logs, place them in exchange/outbox/attachments/campaign1/, push, and commit. If you can’t host soon, send an ETA/alternate operator.

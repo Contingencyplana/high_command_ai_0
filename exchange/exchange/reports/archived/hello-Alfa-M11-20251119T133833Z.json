@@ -1,0 +1,30 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "hello-Alfa-M11-20251119T133833Z",
+  "order_id": "order-2025-11-19-060",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-19T13:38:33Z",
+  "status": "completed",
+  "summary": "Hello from Alfa-M11 seeded from forge-alfa@2025-11-19-060 — Layer-stacked cadence shell ready for cooldown telemetry.",
+  "instance": {
+    "id": "Alfa-M11",
+    "baseline": "forge-alfa@2025-11-19-060"
+  },
+  "evidence": {
+    "readiness": "production/mass_alfa_batch2/alfa_m11/logs/readiness.json",
+    "smoke": [
+      "production/mass_alfa_batch2/alfa_m11/logs/smoke.txt"
+    ]
+  },
+  "notes": [
+    "Exchange slot: genesis-iota",
+    "Layer-stacked cadence shell ready for cooldown telemetry."
+  ],
+  "workspace": "toyfoundry_ai_0",
+  "created_at": "2025-11-19T13:38:33Z",
+  "artifacts": [
+    "production/mass_alfa_batch2/alfa_m11/logs/readiness.json",
+    "production/mass_alfa_batch2/alfa_m11/logs/smoke.txt"
+  ]
+}

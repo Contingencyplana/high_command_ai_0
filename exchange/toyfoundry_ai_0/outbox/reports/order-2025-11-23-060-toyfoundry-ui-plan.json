@@ -1,0 +1,15 @@
+{
+  "order_id": "order-2025-11-23-060",
+  "report_id": "order-2025-11-23-060-toyfoundry-ui-plan",
+  "workspace": "toyfoundry_ai_0",
+  "summary": "Owner assigned for real wired UI/HUD playtest; scheduling live run with emoji-DSL inputs and HUD telemetry, then cadence + emitter smoke and hub drop.",
+  "owner": "toyfoundry_ai_0",
+  "eta_playtest": "2025-11-26",
+  "actions": [
+    "Wire UI inputs through emoji DSL/guardrails and HUD telemetry (ui_state, revive, one_more_prompt, emoji_latency_sample).",
+    "Run real UI/HUD playtest and emit logs to logs/order-2025-11-23-060-m1-ui-live.jsonl and logs/order-2025-11-23-060-m1-ui-live-telemetry.json.",
+    "Rerun cadence + emitter smoke and capture logs (order-2025-11-23-060-m1-cadence.log, order-2025-11-23-060-m1-emitter-help.log).",
+    "Mirror refreshed artifacts to exchange/outbox/attachments/campaign1/ and push to hub.",
+    "Update ledger and file completion report once real run is logged."
+  ]
+}

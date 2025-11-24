@@ -1,0 +1,35 @@
+{
+  "schema": "factory-report@1.0",
+  "report_id": "hello-Alfa-M07-20251120T010017Z",
+  "order_id": "order-2025-11-19-060",
+  "reported_by": "toyfoundry_ai_0",
+  "receiver": "high_command_ai_0",
+  "timestamp_reported": "2025-11-20T01:00:17Z",
+  "status": "completed",
+  "summary": "Hello from Alfa-M07 after hydrating forge-alfa@2025-11-19-060 into the genesis-beta call-and-response overlay rail.",
+  "instance": {
+    "id": "Alfa-M07",
+    "baseline": "forge-alfa@2025-11-19-060",
+    "slot": "genesis-beta"
+  },
+  "evidence": {
+    "readiness": "production/mass_alfa_batch2/alfa_m07/logs/readiness.json",
+    "smoke": [
+      "production/mass_alfa_batch2/alfa_m07/logs/smoke.txt"
+    ],
+    "hydration_logs": [
+      "golf_05/beta_02/alfa_m07/logs/readiness.json",
+      "golf_05/beta_02/alfa_m07/logs/smoke.txt"
+    ]
+  },
+  "notes": [
+    "Hydration path: golf_05/beta_02/alfa_m07 with music overlay toggles matching frontline feedback.",
+    "Ops readiness rerun at 2025-11-20T01:00:17Z; smoke captured from python ../../../tools/factory_order_emitter.py --help."
+  ],
+  "workspace": "toyfoundry_ai_0",
+  "created_at": "2025-11-20T01:00:17Z",
+  "artifacts": [
+    "production/mass_alfa_batch2/alfa_m07/logs/readiness.json",
+    "production/mass_alfa_batch2/alfa_m07/logs/smoke.txt"
+  ]
+}

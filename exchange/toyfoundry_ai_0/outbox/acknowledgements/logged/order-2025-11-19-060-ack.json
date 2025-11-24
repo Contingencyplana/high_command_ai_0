@@ -1,0 +1,73 @@
+{
+  "order_id": "order-2025-11-19-060",
+  "ack_id": "order-2025-11-19-060-ack",
+  "workspace": "high_command_ai_0",
+  "ack_timestamp": "2025-11-22T03:47:39Z",
+  "notes": "Hydrated Alfa Batch 2 (M04, M06-M11) in High Command; readiness/smoke rerun, hello reports staged for downstream pulls (factory_order_emitter missing and flagged in smoke).",
+  "artifacts": [
+    {
+      "name": "baseline_manifest",
+      "path": "production/mass_alfa_batch2/baseline.md"
+    },
+    {
+      "name": "instances_tracker",
+      "path": "production/mass_alfa_batch2/instances.json"
+    },
+    {
+      "name": "slot_manifest_Alfa-M04",
+      "path": "golf_03/kappa_04/alfa_m04/README.md"
+    },
+    {
+      "name": "hello_Alfa-M04",
+      "path": "outbox/reports/hello-Alfa-M04-20251122T034500Z.json"
+    },
+    {
+      "name": "slot_manifest_Alfa-M06",
+      "path": "golf_04/alpha_04/alfa_m06/README.md"
+    },
+    {
+      "name": "hello_Alfa-M06",
+      "path": "outbox/reports/hello-Alfa-M06-20251122T034501Z.json"
+    },
+    {
+      "name": "slot_manifest_Alfa-M07",
+      "path": "golf_05/beta_02/alfa_m07/README.md"
+    },
+    {
+      "name": "hello_Alfa-M07",
+      "path": "outbox/reports/hello-Alfa-M07-20251122T034502Z.json"
+    },
+    {
+      "name": "slot_manifest_Alfa-M08",
+      "path": "golf_05/gamma_06/alfa_m08/README.md"
+    },
+    {
+      "name": "hello_Alfa-M08",
+      "path": "outbox/reports/hello-Alfa-M08-20251122T034503Z.json"
+    },
+    {
+      "name": "slot_manifest_Alfa-M09",
+      "path": "golf_06/epsilon_01/alfa_m09/README.md"
+    },
+    {
+      "name": "hello_Alfa-M09",
+      "path": "outbox/reports/hello-Alfa-M09-20251122T034504Z.json"
+    },
+    {
+      "name": "slot_manifest_Alfa-M10",
+      "path": "golf_06/eta_07/alfa_m10/README.md"
+    },
+    {
+      "name": "hello_Alfa-M10",
+      "path": "outbox/reports/hello-Alfa-M10-20251122T034505Z.json"
+    },
+    {
+      "name": "slot_manifest_Alfa-M11",
+      "path": "golf_07/iota_05/alfa_m11/README.md"
+    },
+    {
+      "name": "hello_Alfa-M11",
+      "path": "outbox/reports/hello-Alfa-M11-20251122T034506Z.json"
+    }
+  ]
+}
