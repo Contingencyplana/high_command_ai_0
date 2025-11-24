@@ -1,0 +1,11 @@
+{
+  "order_id": "order-2025-11-14-059",
+  "ack_id": "order-2025-11-14-059-ack",
+  "workspace": "high_command_ai_0",
+  "ack_timestamp": "2025-11-18T03:41:00Z",
+  "notes": "Hydrated Alfa-M05 under golf_00/delta_00/alfa_m05; readiness + exchange logs attached for Alpha squad.",
+  "artifacts": [
+    {"name": "instances_tracker", "path": "production/mass_alfa_batch1/instances.json"},
+    {"name": "slot_manifest", "path": "golf_00/delta_00/alfa_m05/README.md"}
+  ]
+}

@@ -1,0 +1,42 @@
+[OK] Exchange Online - connected to C:\Users\Admin\high_command_exchange
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\orders\.gitkeep -> C:\Users\Admin\high_command_exchange\orders\.gitkeep
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\orders\order-2025-11-13-902.json -> C:\Users\Admin\high_command_exchange\orders\order-2025-11-13-902.json
+[OK] Synced 2 orders file(s) to C:\Users\Admin\high_command_exchange\orders
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\.gitkeep -> C:\Users\Admin\high_command_exchange\reports\.gitkeep
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M01-20251113T182415Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M01-20251113T182415Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M02-20251113T182415Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M02-20251113T182415Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M03-20251113T182415Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M03-20251113T182415Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M04-20251113T182415Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M04-20251113T182415Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M04-20251121T054012Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M04-20251121T054012Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M04-20251122T034500Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M04-20251122T034500Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M05-20251113T182415Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M05-20251113T182415Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M06-20251119T133833Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M06-20251119T133833Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M06-20251120T005726Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M06-20251120T005726Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M06-20251122T034501Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M06-20251122T034501Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M07-20251119T133833Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M07-20251119T133833Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M07-20251120T010017Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M07-20251120T010017Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M07-20251122T034502Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M07-20251122T034502Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M08-20251119T133833Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M08-20251119T133833Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M08-20251120T010439Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M08-20251120T010439Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M08-20251122T034503Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M08-20251122T034503Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M09-20251119T133833Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M09-20251119T133833Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M09-20251120T010557Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M09-20251120T010557Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M09-20251122T034504Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M09-20251122T034504Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M10-20251119T133833Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M10-20251119T133833Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M10-20251120T010741Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M10-20251120T010741Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M10-20251122T034505Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M10-20251122T034505Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M11-20251119T133833Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M11-20251119T133833Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M11-20251120T010909Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M11-20251120T010909Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\hello-Alfa-M11-20251122T034506Z.json -> C:\Users\Admin\high_command_exchange\reports\hello-Alfa-M11-20251122T034506Z.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\order-2025-11-13-054-report.json -> C:\Users\Admin\high_command_exchange\reports\order-2025-11-13-054-report.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\order-2025-11-13-902-report.json -> C:\Users\Admin\high_command_exchange\reports\order-2025-11-13-902-report.json
+Copied C:\Users\Admin\toyfoundry_ai_0\outbox\reports\order-2025-11-19-060-report.json -> C:\Users\Admin\high_command_exchange\reports\order-2025-11-19-060-report.json
+[OK] Synced 29 reports file(s) to C:\Users\Admin\high_command_exchange\reports
+[OK] Local exchange sync complete.
+ops_readiness written to C:\Users\Admin\toyfoundry_ai_0\logs\ops_readiness.json
+exchange_all complete. See C:\Users\Admin\toyfoundry_ai_0\logs\exchange_all.json
+[cadence] RUN: python tools/exchange_heartbeat.py
+[cadence] RUN: python tools/offline_sync_exchange.py
+[cadence] RUN: python -m tools.ops_readiness
+[cadence] RUN: python tools/exchange_all.py
+[cadence] DONE 2025-11-24T08:21:19.700061+00:00Z

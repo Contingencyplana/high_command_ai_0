@@ -1,0 +1,25 @@
+{
+  "order_id": "order-2025-11-23-060",
+  "report_id": "order-2025-11-23-060-toyfoundry-progress",
+  "workspace": "toyfoundry_ai_0",
+  "summary": "Campaign 1 progress: core loop payload + HUD sims/logs delivered; thin UI implementation still missing in repo; real HUD wiring and live playtest required to close M1/UI/M3.",
+  "created_at": "2025-11-24T09:00:00Z",
+  "status": "in_progress",
+  "artifacts": [
+    { "name": "core_loop_payload", "path": "production/campaign1/m1_core_loop_prototype.json" },
+    { "name": "plan", "path": "production/campaign1/README.md" },
+    { "name": "hud_playtest_stub", "path": "logs/order-2025-11-23-060-m1-playtest-run1.jsonl" },
+    { "name": "hud_playtest_sim_ui", "path": "logs/order-2025-11-23-060-m1-ui-playtest.jsonl" },
+    { "name": "hud_telemetry_extraction", "path": "logs/order-2025-11-23-060-m1-hud-telemetry.json" },
+    { "name": "cadence_log", "path": "logs/order-2025-11-23-060-m1-cadence.log" },
+    { "name": "emitter_help_log", "path": "logs/order-2025-11-23-060-m1-emitter-help.log" }
+  ],
+  "risks": [
+    "Thin UI/HUD code not present in repo; need actual implementation to validate metrics and close Campaign 1 milestones."
+  ],
+  "next_steps": [
+    "Integrate thin HUD into UI surface with emoji DSL-only inputs (TTF, revive cadence, one-more-run prompt).",
+    "Run live playtest with HUD and record metrics/logs; update ledger and completion report.",
+    "File completion report for M1/UI/M3 once live run evidence is captured."
+  ]
+}

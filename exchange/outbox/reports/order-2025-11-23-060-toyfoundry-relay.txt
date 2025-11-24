@@ -1,0 +1,3 @@
+We mirrored the thin-runner live evidence (jsonl, telemetry, cadence/emitter) to exchange/outbox/attachments/campaign1/ and logged it in exchange/ledger/2025-11.md (2025-11-24 17:25).
+Acceptance remains pending: we need a real wired UI/HUD playtest that emits the emoji-DSL event contract plus HUD telemetry (ui_state, revive, one_more_prompt, emoji_latency_sample).
+Please name an owner/ETA for the real UI pass, rerun the live playtest, then rerun cadence + emitter smoke and drop the refreshed logs in the same outbox path. Once you run it, we’ll push again.

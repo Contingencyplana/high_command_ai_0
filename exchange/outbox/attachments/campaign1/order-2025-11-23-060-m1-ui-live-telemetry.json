@@ -1,0 +1,23 @@
+{
+  "schema": "toyfoundry-campaign1-hud@1.0",
+  "order_id": "order-2025-11-23-060",
+  "workspace": "toyfoundry_ai_0",
+  "run_id": "campaign1-m1-20251124-live",
+  "metrics": {
+    "time_to_fun_ms": 3200,
+    "revive_ms": 15000,
+    "extraction_ms": 140000,
+    "one_more_accept": true
+  },
+  "events_count": 8,
+  "guardrails": {
+    "input_mode": "emoji_dsl_only",
+    "non_emoji_inputs": [
+      {
+        "type": "revive",
+        "field": "by",
+        "value": "P1"
+      }
+    ]
+  }
+}

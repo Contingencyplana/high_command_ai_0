@@ -1,0 +1,16 @@
+{
+  "order_id": "order-2025-11-14-059",
+  "report_id": "order-2025-11-14-059-report",
+  "workspace": "high_command_ai_0",
+  "summary": "Hydrated Alfa-M05 from forge-alfa@2025-11-13-054; Alpha slot wired with readiness/exchange logs and hello report staged.",
+  "created_at": "2025-11-18T03:41:00Z",
+  "artifacts": [
+    {"name": "baseline_manifest", "path": "production/mass_alfa_batch1/baseline.md"},
+    {"name": "instances_tracker", "path": "production/mass_alfa_batch1/instances.json"},
+    {"name": "alfa_m05_manifest", "path": "production/mass_alfa_batch1/alfa_m05/README.md"},
+    {"name": "slot_manifest", "path": "golf_00/delta_00/alfa_m05/README.md"},
+    {"name": "readiness_log", "path": "logs/mass_alfa_batch1/Alfa-M05/ops_readiness.json"},
+    {"name": "exchange_log", "path": "logs/mass_alfa_batch1/Alfa-M05/exchange_all.json"},
+    {"name": "hello_report", "path": "outbox/reports/hello-Alfa-M05-20251118T034100Z.json"}
+  ]
+}
