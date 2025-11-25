@@ -1,0 +1,97 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "emoji-dream-transmute-bless-20251125162816.398687",
+  "issued_by": "high_command_alfa_zero",
+  "target": "toyfoundry_ai_0",
+  "priority": "realtime",
+  "timestamp_issued": "2025-11-25T16:28:16.398687Z",
+  "summary": "Dream transmute seed -> blessing",
+  "directives": [
+    {
+      "step": 1,
+      "action": "transmute",
+      "details": "Actor dream executes transmute targeting seed. Qualifiers: none. Outcome: bless. Glyph chain: 🌌 🪄 🌱 🌈. Telemetry batch dream-transmute-20251125T162816398Z status success. Correlation trace_id: outland-lore-v1-88-20251125162816."
+    }
+  ],
+  "requires_ack": false,
+  "extensions": {
+    "emoji_runtime_payload": {
+      "template": "basic_ritual",
+      "actor": "actor.dream",
+      "verb": "verb.transmute",
+      "target": "actor.seed",
+      "qualifiers": [],
+      "outcomes": [
+        "outcome.bless"
+      ],
+      "spoken": [
+        "dream",
+        "transmute",
+        "seed",
+        "blessing"
+      ],
+      "raw": [
+        "🌌",
+        "🪄",
+        "🌱",
+        "🌈"
+      ],
+      "schema": "emoji-runtime@1.0",
+      "glyph_chain": [
+        "🌌",
+        "🪄",
+        "🌱",
+        "🌈"
+      ],
+      "summary": "Dream transmute seed -> blessing",
+      "intent": {
+        "actor": "dream",
+        "action": "transmute",
+        "target": "seed",
+        "qualifiers": [],
+        "outcome": "bless"
+      },
+      "telemetry_stub": {
+        "batch_id": "dream-transmute-20251125T162816398Z",
+        "ritual": "dream",
+        "units_processed": 4,
+        "status": "success",
+        "duration_ms": 0,
+        "trace_id": "outland-lore-v1-88-20251125162816",
+        "overlays": [
+          {
+            "overlay_id": "outland-lore-v1",
+            "layer_kind": "lore"
+          }
+        ],
+        "overlay_id": "outland-lore-v1",
+        "overlay_layer": "lore"
+      },
+      "created_at": "2025-11-25T16:28:16.398687Z",
+      "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+      "chain_name": "dream_transmute_bless",
+      "overlay_description": "Transmute dream residue into a blessing",
+      "overlay_cell": {
+        "row": 8,
+        "col": 8,
+        "label": "88"
+      },
+      "fun_flags": {
+        "fun_core": false,
+        "balance_toggles": false,
+        "xp_rate_limit": false,
+        "loot_governor": false
+      },
+      "trace_id": "outland-lore-v1-88-20251125162816",
+      "overlays": [
+        {
+          "overlay_id": "outland-lore-v1",
+          "layer_kind": "lore"
+        }
+      ],
+      "overlay_id": "outland-lore-v1",
+      "overlay_layer": "lore"
+    },
+    "correlation_trace_id": "outland-lore-v1-88-20251125162816"
+  }
+}

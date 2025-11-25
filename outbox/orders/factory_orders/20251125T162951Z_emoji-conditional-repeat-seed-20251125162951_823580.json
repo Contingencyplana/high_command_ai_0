@@ -1,0 +1,99 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "emoji-conditional-repeat-seed-20251125162951.823580",
+  "issued_by": "high_command_alfa_zero",
+  "target": "toyfoundry_ai_0",
+  "priority": "realtime",
+  "timestamp_issued": "2025-11-25T16:29:51.823580Z",
+  "summary": "Seed grow victory -> again",
+  "directives": [
+    {
+      "step": 1,
+      "action": "grow",
+      "details": "Actor seed executes grow targeting seed. Qualifiers: none. Outcome: success / repeat. Glyph chain: 🌱 🌿 ✅ 🔁. Telemetry batch seed-grow-20251125T162951823Z status success. Correlation trace_id: outland-lore-v1-C0-20251125162951."
+    }
+  ],
+  "requires_ack": false,
+  "extensions": {
+    "emoji_runtime_payload": {
+      "template": "conditional_repeat",
+      "actor": "actor.seed",
+      "verb": "verb.grow",
+      "target": null,
+      "qualifiers": [],
+      "outcomes": [
+        "outcome.success",
+        "outcome.repeat"
+      ],
+      "spoken": [
+        "seed",
+        "grow",
+        "victory",
+        "again"
+      ],
+      "raw": [
+        "🌱",
+        "🌿",
+        "✅",
+        "🔁"
+      ],
+      "schema": "emoji-runtime@1.0",
+      "glyph_chain": [
+        "🌱",
+        "🌿",
+        "✅",
+        "🔁"
+      ],
+      "summary": "Seed grow victory -> again",
+      "intent": {
+        "actor": "seed",
+        "action": "grow",
+        "target": "seed",
+        "qualifiers": [],
+        "outcome": "success",
+        "secondary_outcome": "repeat"
+      },
+      "telemetry_stub": {
+        "batch_id": "seed-grow-20251125T162951823Z",
+        "ritual": "seed",
+        "units_processed": 4,
+        "status": "success",
+        "duration_ms": 0,
+        "trace_id": "outland-lore-v1-C0-20251125162951",
+        "overlays": [
+          {
+            "overlay_id": "outland-lore-v1",
+            "layer_kind": "lore"
+          }
+        ],
+        "overlay_id": "outland-lore-v1",
+        "overlay_layer": "lore"
+      },
+      "created_at": "2025-11-25T16:29:51.823580Z",
+      "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+      "chain_name": "conditional_repeat_seed",
+      "overlay_description": "Seed repeatable growth cadence",
+      "overlay_cell": {
+        "row": 12,
+        "col": 0,
+        "label": "C0"
+      },
+      "fun_flags": {
+        "fun_core": false,
+        "balance_toggles": false,
+        "xp_rate_limit": false,
+        "loot_governor": false
+      },
+      "trace_id": "outland-lore-v1-C0-20251125162951",
+      "overlays": [
+        {
+          "overlay_id": "outland-lore-v1",
+          "layer_kind": "lore"
+        }
+      ],
+      "overlay_id": "outland-lore-v1",
+      "overlay_layer": "lore"
+    },
+    "correlation_trace_id": "outland-lore-v1-C0-20251125162951"
+  }
+}
