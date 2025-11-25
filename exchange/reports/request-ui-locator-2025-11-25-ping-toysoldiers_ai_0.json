@@ -1,0 +1,19 @@
+{
+  "order_id": "request-ui-locator-2025-11-25",
+  "report_id": "request-ui-locator-2025-11-25-ping-toysoldiers_ai_0",
+  "workspace": "tons_of_fun_ai_0",
+  "summary": "Need UI repo/path/branch + run command/envs or owner contact by 2025-11-25T20:00:00Z.",
+  "target_front": "toysoldiers_ai_0",
+  "details": {
+    "ask": "Where is the Nightlands UI repo/path/branch? Please include run command and required env vars, or point us to the owner/contact who has it.",
+    "deadline": "2025-11-25T20:00:00Z",
+    "reply_path": "exchange/reports/ or exchange/acknowledgements/logged"
+  },
+  "instructions": [
+    "Reply with repo/path/branch + run command/env vars",
+    "If you are not the owner, share the contact who has it",
+    "Please respond before the stated deadline"
+  ],
+  "created_at": "2025-11-25T12:37:22Z",
+  "artifacts": []
+}

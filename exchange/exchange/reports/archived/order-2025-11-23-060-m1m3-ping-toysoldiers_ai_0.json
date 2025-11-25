@@ -1,0 +1,23 @@
+{
+  "order_id": "order-2025-11-23-060",
+  "report_id": "order-2025-11-23-060-m1m3-ping-toysoldiers_ai_0",
+  "workspace": "high_command_ai_0",
+  "summary": "Ping: confirm owner + dates for M1/M3 or accept provisional by 2025-11-23T23:30:00Z",
+  "target_front": "toysoldiers_ai_0",
+  "details": {
+    "provisional_targets": {
+      "M3_date": "2025-12-05",
+      "M1_date": "2025-11-28"
+    },
+    "deadline": "2025-11-23T23:30:00Z",
+    "reply_path": "exchange/reports/ or exchange/acknowledgements/logged",
+    "ask": "Reply NO-CHANGE or provide owner + dates for M1 and M3"
+  },
+  "instructions": [
+    "Reply NO-CHANGE with owners + M1/M3 dates",
+    "Or send owner + new dates before cutoff",
+    "Silence = accept provisional M1=2025-11-28, M3=2025-12-05"
+  ],
+  "created_at": "2025-11-23T19:55:24Z",
+  "artifacts": []
+}

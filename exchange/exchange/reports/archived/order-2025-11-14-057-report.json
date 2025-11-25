@@ -1,0 +1,33 @@
+{
+  "order_id": "order-2025-11-14-057",
+  "report_id": "order-2025-11-14-057-report",
+  "workspace": "tons_of_fun_ai_0",
+  "summary": "Hydrated Alfa-M03 from forge-alfa@2025-11-13-054 and staged hello/log evidence for Zeta.",
+  "created_at": "2025-11-18T12:04:00Z",
+  "artifacts": [
+    {
+      "name": "baseline_manifest",
+      "path": "production/mass_alfa_batch1/baseline.md"
+    },
+    {
+      "name": "instances_tracker",
+      "path": "production/mass_alfa_batch1/instances.json"
+    },
+    {
+      "name": "alfa_m03_manifest",
+      "path": "production/mass_alfa_batch1/alfa_m03/README.md"
+    },
+    {
+      "name": "readiness_log",
+      "path": "logs/mass_alfa_batch1/Alfa-M03/ops_readiness.json"
+    },
+    {
+      "name": "exchange_log",
+      "path": "logs/mass_alfa_batch1/Alfa-M03/exchange_all.json"
+    },
+    {
+      "name": "hello_report",
+      "path": "outbox/reports/hello-Alfa-M03-20251118T120400Z.json"
+    }
+  ]
+}

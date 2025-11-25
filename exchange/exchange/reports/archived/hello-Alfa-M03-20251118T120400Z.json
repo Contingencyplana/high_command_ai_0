@@ -1,0 +1,21 @@
+{
+  "order_id": "order-2025-11-14-057",
+  "report_id": "hello-Alfa-M03-20251118T120400Z",
+  "workspace": "tons_of_fun_ai_0",
+  "summary": "Hello from Alfa M03 - baseline hydrated, readiness/exchange green, lore focus ready for Zeta handoff.",
+  "created_at": "2025-11-18T12:04:00Z",
+  "artifacts": [
+    {
+      "name": "readiness_log",
+      "path": "logs/mass_alfa_batch1/Alfa-M03/ops_readiness.json"
+    },
+    {
+      "name": "exchange_log",
+      "path": "logs/mass_alfa_batch1/Alfa-M03/exchange_all.json"
+    },
+    {
+      "name": "alfa_manifest",
+      "path": "production/mass_alfa_batch1/alfa_m03/README.md"
+    }
+  ]
+}

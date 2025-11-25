@@ -33,6 +33,7 @@ from storyboard_runner import (
     StoryboardRunResult,
     run_storyboard as run_storyboard_sequence,
 )
+from ui_logging import UILoggingSession
 
 Cell = Tuple[int, int]
 HEX_DIGITS = "0123456789ABCDEF"
@@ -100,6 +101,7 @@ class UIContext:
     operator_id: str = "operator-unknown"
     coop_span_id: Optional[str] = None
     versus_span_id: Optional[str] = None
+    ui_logger: Optional[UILoggingSession] = None
 
     @property
     def repo_root(self) -> Path:
@@ -802,7 +804,15 @@ def dispatch_selected(context: UIContext) -> None:
             overlay_layer=summary.overlay_layer,
             overlays=summary.overlays,
         )
-    _log_session_event(context, event="dispatch")
+        _log_session_event(context, event="dispatch")
+    if context.ui_logger is not None:
+        context.ui_logger.record_command(
+            cell=cell_label(cell),
+            overlays=[oid for oid, _ in overlay_stack] if overlay_stack else [],
+            trace_id=trace_id,
+            label=summary.chain_name or "dispatch",
+            description=summary.description or summary.summary_text,
+        )
     if context.auto_contracts:
         run_contract_suite(context, quiet=True)
 
@@ -1106,6 +1116,10 @@ def build_context(
         lore_layer_enabled=lore_enabled,
         music_layer_enabled=music_enabled,
         operator_id=operator_id,
+        ui_logger=UILoggingSession(
+            repo_root=bridge.repo_root,
+            run_id=f"campaign2-live-{session_id}",
+        ),
     )
 
 
@@ -1202,6 +1216,18 @@ def main() -> None:
     finally:
         # Record session end
         _log_session_event(context, event="session_end")
+        if context.ui_logger is not None and context.session_start_ts is not None:
+            duration_ms = int(
+                (datetime.now(timezone.utc) - context.session_start_ts).total_seconds() * 1000
+            )
+            try:
+                context.ui_logger.finalize(
+                    duration_ms=duration_ms,
+                    log_dir=context.repo_root / "logs",
+                    attachments_dir=context.repo_root / "exchange" / "outbox" / "attachments" / "campaign2",
+                )
+            except Exception:
+                pass
         if close_stream and event_stream is not None:
             event_stream.close()
 
