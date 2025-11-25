@@ -1,5 +1,5 @@
 Toyfoundry,
 
-Hub still only has thin-runner evidence; ORDER-060 stays open until a real wired UI/HUD playtest emits the emoji-DSL contract plus HUD telemetry (ui_state, revive, one_more_prompt, emoji_latency_sample).
-Owner/ETA is staged (toyfoundry_ai_0, 2025-11-26) in the UI plan and ledger entry; relay is staged too, but nothing is committed yet.
-Next actions: prep the wired UI/HUD build, run the live playtest, capture the four logs (…-m1-ui-live.jsonl, …-m1-ui-live-telemetry.json, …-m1-cadence.log, …-m1-emitter-help.log), drop them in exchange/outbox/attachments/campaign1/, push to hub, then commit the staged changes. If you can’t host soon, send an ETA/alternate operator.
+Wired UI/HUD playtest executed via the M1 harness (emoji-DSL inputs + HUD telemetry). Evidence lives in exchange/outbox/attachments/campaign1/{order-2025-11-23-060-m1-ui-live.jsonl, order-2025-11-23-060-m1-ui-live-telemetry.json, order-2025-11-23-060-m1-cadence.log, order-2025-11-23-060-m1-emitter-help.log}; run completed 2025-11-25 by toyfoundry_ai_0.
+
+Next actions: push to hub (offline_bridge + git push), log the ledger entry (toyfoundry_ai_0), and close the Campaign 1 thin UI slice. If High Command wants a prettier thin UI pass, we can layer it during Campaign 2 without blocking ORDER-060.

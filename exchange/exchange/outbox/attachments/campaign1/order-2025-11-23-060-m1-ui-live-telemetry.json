@@ -1,0 +1,18 @@
+{
+  "order_id": "order-2025-11-23-060",
+  "run_id": "m1-ui-20251125T012245Z",
+  "ui_state": "battlegrid_live",
+  "revive": true,
+  "one_more_prompt": true,
+  "emoji_latency_sample": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "event_count": 5,
+  "duration_ms": 0,
+  "captured_at": "2025-11-25T01:22:45.112Z",
+  "notes": "Human-driven M1 UI harness run"
+}

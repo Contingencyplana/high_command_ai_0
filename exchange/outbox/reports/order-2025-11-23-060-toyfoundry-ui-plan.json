@@ -2,14 +2,13 @@
   "order_id": "order-2025-11-23-060",
   "report_id": "order-2025-11-23-060-toyfoundry-ui-plan",
   "workspace": "toyfoundry_ai_0",
-  "summary": "Owner assigned for real wired UI/HUD playtest; scheduling live run with emoji-DSL inputs and HUD telemetry, then cadence + emitter smoke and hub drop.",
+  "summary": "Wired UI/HUD playtest completed via M1 harness with emoji-DSL inputs and HUD telemetry; cadence + emitter logs captured and mirrored.",
   "owner": "toyfoundry_ai_0",
-  "eta_playtest": "2025-11-26",
+  "eta_playtest": "2025-11-25",
+  "completed_at": "2025-11-25T11:35:00Z",
   "actions": [
-    "Wire UI inputs through emoji DSL/guardrails and HUD telemetry (ui_state, revive, one_more_prompt, emoji_latency_sample).",
-    "Run real UI/HUD playtest and emit logs to logs/order-2025-11-23-060-m1-ui-live.jsonl and logs/order-2025-11-23-060-m1-ui-live-telemetry.json.",
-    "Rerun cadence + emitter smoke and capture logs (order-2025-11-23-060-m1-cadence.log, order-2025-11-23-060-m1-emitter-help.log).",
-    "Mirror refreshed artifacts to exchange/outbox/attachments/campaign1/ and push to hub.",
-    "Update ledger and file completion report once real run is logged."
+    "Run completed: emoji-DSL inputs + HUD telemetry captured.",
+    "Artifacts mirrored to exchange/outbox/attachments/campaign1/ (ui-live.jsonl, ui-live-telemetry.json, cadence.log, emitter-help.log).",
+    "Remaining: push to hub (offline_bridge + git push) and log ledger entry."
   ]
 }

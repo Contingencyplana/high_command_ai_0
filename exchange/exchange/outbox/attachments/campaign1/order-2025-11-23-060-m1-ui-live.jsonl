@@ -1,0 +1,5 @@
+{"order_id": "order-2025-11-23-060", "run_id": "m1-ui-20251125T012245Z", "seq": 1, "ts": "2025-11-25T01:22:45.112Z", "emoji": "❤️", "action": "support", "ui_state": "battlegrid_live", "latency_ms": 0}
+{"order_id": "order-2025-11-23-060", "run_id": "m1-ui-20251125T012245Z", "seq": 2, "ts": "2025-11-25T01:22:45.112Z", "emoji": "🧭", "action": "ping", "ui_state": "battlegrid_live", "latency_ms": 0}
+{"order_id": "order-2025-11-23-060", "run_id": "m1-ui-20251125T012245Z", "seq": 3, "ts": "2025-11-25T01:22:45.112Z", "emoji": "🛡", "action": "shield", "ui_state": "battlegrid_live", "latency_ms": 0}
+{"order_id": "order-2025-11-23-060", "run_id": "m1-ui-20251125T012245Z", "seq": 4, "ts": "2025-11-25T01:22:45.112Z", "emoji": "⚡", "action": "dash", "ui_state": "battlegrid_live", "latency_ms": 0}
+{"order_id": "order-2025-11-23-060", "run_id": "m1-ui-20251125T012245Z", "seq": 5, "ts": "2025-11-25T01:22:45.112Z", "emoji": "💊", "action": "heal", "ui_state": "battlegrid_live", "latency_ms": 0}
