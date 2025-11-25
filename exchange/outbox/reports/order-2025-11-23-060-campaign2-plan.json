@@ -1,0 +1,35 @@
+{
+  "order_id": "order-2025-11-23-060",
+  "campaign": "Campaign 2 - Emoji-first command layer",
+  "report_id": "order-2025-11-23-060-campaign2-plan",
+  "workspace": "high_command_ai_0",
+  "status": "in_progress",
+  "created_at": "2025-11-25T12:15:00Z",
+  "updated_at": "2025-11-25T12:15:00Z",
+  "summary": "Planning track opened to wrap abilities/pings in the emoji DSL with thin UI inputs, ship quick-cast wheels + textless comms, and deliver a replayable 90s emoji-only tutorial with telemetry on command latency/accuracy.",
+  "next_steps": [
+    "Align thin UI input path to the emoji DSL end-to-end (quick-cast wheels + textless comms) with guardrail enforcement and rollback toggle.",
+    "Instrument command latency and command accuracy KPIs; keep time-to-fun, revive cadence, and 'one more run' prompts flowing from Campaign 1 HUD telemetry.",
+    "Design and script a 90s replayable emoji-only tutorial that exercises core abilities/pings; emit telemetry to the same DSL channel.",
+    "Extend cadence + emitter smoke to cover DSL routing and tutorial replay to keep ORDER-060 guardrails intact.",
+    "Prepare attachment drop targets under exchange/outbox/attachments/campaign2/ for DSL runs, telemetry, and tutorial traces."
+  ],
+  "telemetry": {
+    "kpis": [
+      "command_latency_ms",
+      "command_accuracy_rate",
+      "time_to_fun",
+      "revive_cadence",
+      "one_more_run_prompt_rate"
+    ],
+    "expected_artifacts": [
+      { "name": "emoji_command_events", "path": "exchange/outbox/attachments/campaign2/command-events.jsonl" },
+      { "name": "command_latency_accuracy", "path": "exchange/outbox/attachments/campaign2/command-latency-accuracy.json" },
+      { "name": "emoji_tutorial_runs", "path": "exchange/outbox/attachments/campaign2/tutorial-runs.jsonl" }
+    ]
+  },
+  "guardrails": [
+    "Route all inputs through existing guardrails; keep a rollback toggle to the non-DSL path until smoke is green.",
+    "Run cadence + emitter smoke after each change to DSL inputs or tutorial content; log results in the ledger."
+  ]
+}

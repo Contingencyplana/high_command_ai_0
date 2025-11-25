@@ -1,0 +1,10 @@
+Fronts,
+
+Campaign 1 thin UI/HUD slice is closed. Hub verified the four attachments under exchange/outbox/attachments/campaign1/ (ui-live.jsonl, ui-live-telemetry.json, cadence.log, emitter-help.log); guardrails intact and no further action needed on ORDER-060/M1.
+
+Spinning up Campaign 2 planning track now (emoji-first command layer, thin UI on the emoji DSL). Focus:
+- quick-cast wheels + textless comms using the emoji DSL end-to-end
+- 90s replayable emoji-only tutorial
+- KPIs: command latency, command accuracy; keep time-to-fun / revive cadence / “one more run” prompts in the telemetry stream
+
+If you want a prettier thin UI pass, we will scope it into Campaign 2 without blocking ORDER-060.

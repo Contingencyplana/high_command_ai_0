@@ -3,3 +3,5 @@ Toyfoundry,
 Wired UI/HUD playtest executed via the M1 harness (emoji-DSL inputs + HUD telemetry). Evidence lives in exchange/outbox/attachments/campaign1/{order-2025-11-23-060-m1-ui-live.jsonl, order-2025-11-23-060-m1-ui-live-telemetry.json, order-2025-11-23-060-m1-cadence.log, order-2025-11-23-060-m1-emitter-help.log}; run completed 2025-11-25 by toyfoundry_ai_0.
 
 Next actions: push to hub (offline_bridge + git push), log the ledger entry (toyfoundry_ai_0), and close the Campaign 1 thin UI slice. If High Command wants a prettier thin UI pass, we can layer it during Campaign 2 without blocking ORDER-060.
+
+Closure: Campaign 1 thin UI/HUD slice closed; evidence mirrored to hub. Proceeding to Campaign 2 (emoji-first command layer).
