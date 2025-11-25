@@ -106,6 +106,20 @@ class UILoggingSession:
             }
         )
 
+    def record_latency_sample(self, latency_ms: int) -> None:
+        try:
+            self.emoji_latency_samples.append(int(latency_ms))
+        except Exception:
+            pass
+        self.events.append(
+            {
+                "timestamp": _ts(),
+                "event": "emoji_latency_sample",
+                "latency_ms": latency_ms,
+                "run_id": self.run_id,
+            }
+        )
+
     def finalize(
         self,
         *,

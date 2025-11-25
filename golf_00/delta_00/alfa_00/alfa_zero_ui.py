@@ -973,6 +973,56 @@ def interactive_loop(context: UIContext) -> None:
         if command in {"map"}:
             list_mapped_cells(context.output_stream)
             continue
+        if command == "downed":
+            if context.ui_logger:
+                context.ui_logger.record_downed()
+                print("Logged HUD downed event.", file=context.output_stream)
+            else:
+                print("UI logger not initialized; cannot log downed event.", file=context.output_stream)
+            continue
+        if command == "revive":
+            if context.ui_logger:
+                context.ui_logger.record_revive()
+                print("Logged HUD revive event.", file=context.output_stream)
+            else:
+                print("UI logger not initialized; cannot log revive event.", file=context.output_stream)
+            continue
+        if command in {"one_more", "one_more_prompt"}:
+            if context.ui_logger:
+                context.ui_logger.record_one_more_prompt()
+                print("Logged HUD one_more_prompt event.", file=context.output_stream)
+            else:
+                print("UI logger not initialized; cannot log one_more_prompt.", file=context.output_stream)
+            continue
+        if command == "latency":
+            if len(tokens) < 2:
+                print("??  Usage: latency <ms>", file=context.output_stream)
+                continue
+            try:
+                sample = int(tokens[1])
+            except ValueError:
+                print("??  latency expects an integer milliseconds value.", file=context.output_stream)
+                continue
+            if context.ui_logger:
+                context.ui_logger.record_latency_sample(sample)
+                print(f"Logged emoji_latency_sample={sample}ms.", file=context.output_stream)
+            else:
+                print("UI logger not initialized; cannot log latency sample.", file=context.output_stream)
+            continue
+        if command == "hud":
+            if len(tokens) < 2:
+                print("??  Usage: hud <state_label>", file=context.output_stream)
+                continue
+            state_label = " ".join(tokens[1:]).strip()
+            if not state_label:
+                print("??  Provide a non-empty HUD state label.", file=context.output_stream)
+                continue
+            if context.ui_logger:
+                context.ui_logger.record_ui_state(state=state_label)
+                print(f"Logged HUD state: {state_label}", file=context.output_stream)
+            else:
+                print("UI logger not initialized; cannot log HUD state.", file=context.output_stream)
+            continue
         if command in {"contracts", "contract", "tests"}:
             run_contract_suite(context)
             _render_overlay_state(context)
