@@ -1,0 +1,3 @@
+Fronts,
+
+Campaign 2 closed. HUD signals captured via alfa_zero_ui (downed, revive, one_more_prompt, emoji_latency_sample=120ms, HUD state=ready) alongside mapped emoji-DSL dispatches. Evidence mirrored to exchange/outbox/attachments/campaign2/; telemetry/logs updated. Ledger entry recorded. Entering Campaign 3 planning lull.
