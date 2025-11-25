@@ -1,0 +1,101 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "emoji-signal-loop-analysis-20251125162907.496145",
+  "issued_by": "high_command_alfa_zero",
+  "target": "toyfoundry_ai_0",
+  "priority": "realtime",
+  "timestamp_issued": "2025-11-25T16:29:07.496145Z",
+  "summary": "Dream scan loop -> rise",
+  "directives": [
+    {
+      "step": 1,
+      "action": "loop",
+      "details": "Actor dream executes loop targeting dream. Qualifiers: inspect. Outcome: gain. Glyph chain: 🌌 🔍 🔄 📈. Telemetry batch dream-loop-20251125T162907496Z status success. Correlation trace_id: outland-lore-v1-AA-20251125162907."
+    }
+  ],
+  "requires_ack": false,
+  "extensions": {
+    "emoji_runtime_payload": {
+      "template": "signal_loop",
+      "actor": "actor.dream",
+      "verb": "verb.loop",
+      "target": null,
+      "qualifiers": [
+        "qualifier.inspect"
+      ],
+      "outcomes": [
+        "outcome.gain"
+      ],
+      "spoken": [
+        "dream",
+        "scan",
+        "loop",
+        "rise"
+      ],
+      "raw": [
+        "🌌",
+        "🔍",
+        "🔄",
+        "📈"
+      ],
+      "schema": "emoji-runtime@1.0",
+      "glyph_chain": [
+        "🌌",
+        "🔍",
+        "🔄",
+        "📈"
+      ],
+      "summary": "Dream scan loop -> rise",
+      "intent": {
+        "actor": "dream",
+        "action": "loop",
+        "target": "dream",
+        "qualifiers": [
+          "inspect"
+        ],
+        "outcome": "gain"
+      },
+      "telemetry_stub": {
+        "batch_id": "dream-loop-20251125T162907496Z",
+        "ritual": "dream",
+        "units_processed": 4,
+        "status": "success",
+        "duration_ms": 0,
+        "trace_id": "outland-lore-v1-AA-20251125162907",
+        "overlays": [
+          {
+            "overlay_id": "outland-lore-v1",
+            "layer_kind": "lore"
+          }
+        ],
+        "overlay_id": "outland-lore-v1",
+        "overlay_layer": "lore"
+      },
+      "created_at": "2025-11-25T16:29:07.496145Z",
+      "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+      "chain_name": "signal_loop_analysis",
+      "overlay_description": "Analyze targeting data for actionable patterns",
+      "overlay_cell": {
+        "row": 10,
+        "col": 10,
+        "label": "AA"
+      },
+      "fun_flags": {
+        "fun_core": false,
+        "balance_toggles": false,
+        "xp_rate_limit": false,
+        "loot_governor": false
+      },
+      "trace_id": "outland-lore-v1-AA-20251125162907",
+      "overlays": [
+        {
+          "overlay_id": "outland-lore-v1",
+          "layer_kind": "lore"
+        }
+      ],
+      "overlay_id": "outland-lore-v1",
+      "overlay_layer": "lore"
+    },
+    "correlation_trace_id": "outland-lore-v1-AA-20251125162907"
+  }
+}

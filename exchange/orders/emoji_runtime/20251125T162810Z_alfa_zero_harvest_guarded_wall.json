@@ -1,0 +1,84 @@
+{
+  "template": "guarded_delivery",
+  "actor": "actor.field",
+  "verb": "verb.grow",
+  "target": "actor.wall",
+  "qualifiers": [
+    "qualifier.safe"
+  ],
+  "outcomes": [
+    "outcome.success"
+  ],
+  "spoken": [
+    "field",
+    "grow",
+    "safe",
+    "wall",
+    "victory"
+  ],
+  "raw": [
+    "🌾",
+    "🌿",
+    "🔒",
+    "🧱",
+    "✅"
+  ],
+  "schema": "emoji-runtime@1.0",
+  "glyph_chain": [
+    "🌾",
+    "🌿",
+    "🔒",
+    "🧱",
+    "✅"
+  ],
+  "summary": "Field grow safe wall -> victory",
+  "intent": {
+    "actor": "field",
+    "action": "grow",
+    "target": "wall",
+    "qualifiers": [
+      "safe"
+    ],
+    "outcome": "success"
+  },
+  "telemetry_stub": {
+    "batch_id": "field-grow-20251125T162810232Z",
+    "ritual": "field",
+    "units_processed": 5,
+    "status": "success",
+    "duration_ms": 0,
+    "trace_id": "outland-lore-v1-58-20251125162810",
+    "overlays": [
+      {
+        "overlay_id": "outland-lore-v1",
+        "layer_kind": "lore"
+      }
+    ],
+    "overlay_id": "outland-lore-v1",
+    "overlay_layer": "lore"
+  },
+  "created_at": "2025-11-25T16:28:10.232257Z",
+  "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+  "chain_name": "harvest_guarded_wall",
+  "overlay_description": "Harvest and reinforce the garden wall",
+  "overlay_cell": {
+    "row": 5,
+    "col": 8,
+    "label": "58"
+  },
+  "fun_flags": {
+    "fun_core": false,
+    "balance_toggles": false,
+    "xp_rate_limit": false,
+    "loot_governor": false
+  },
+  "trace_id": "outland-lore-v1-58-20251125162810",
+  "overlays": [
+    {
+      "overlay_id": "outland-lore-v1",
+      "layer_kind": "lore"
+    }
+  ],
+  "overlay_id": "outland-lore-v1",
+  "overlay_layer": "lore"
+}

@@ -1,0 +1,101 @@
+{
+  "schema": "factory-order@1.0",
+  "order_id": "emoji-signal-loop-command-20251125162846.744300",
+  "issued_by": "high_command_alfa_zero",
+  "target": "toyfoundry_ai_0",
+  "priority": "realtime",
+  "timestamp_issued": "2025-11-25T16:28:46.744300Z",
+  "summary": "Dream north loop -> rise",
+  "directives": [
+    {
+      "step": 1,
+      "action": "loop",
+      "details": "Actor dream executes loop targeting dream. Qualifiers: direction. Outcome: gain. Glyph chain: 🌌 🧭 🔄 📈. Telemetry batch dream-loop-20251125T162846744Z status success. Correlation trace_id: outland-lore-v1-9A-20251125162846."
+    }
+  ],
+  "requires_ack": false,
+  "extensions": {
+    "emoji_runtime_payload": {
+      "template": "signal_loop",
+      "actor": "actor.dream",
+      "verb": "verb.loop",
+      "target": null,
+      "qualifiers": [
+        "qualifier.direction"
+      ],
+      "outcomes": [
+        "outcome.gain"
+      ],
+      "spoken": [
+        "dream",
+        "north",
+        "loop",
+        "rise"
+      ],
+      "raw": [
+        "🌌",
+        "🧭",
+        "🔄",
+        "📈"
+      ],
+      "schema": "emoji-runtime@1.0",
+      "glyph_chain": [
+        "🌌",
+        "🧭",
+        "🔄",
+        "📈"
+      ],
+      "summary": "Dream north loop -> rise",
+      "intent": {
+        "actor": "dream",
+        "action": "loop",
+        "target": "dream",
+        "qualifiers": [
+          "direction"
+        ],
+        "outcome": "gain"
+      },
+      "telemetry_stub": {
+        "batch_id": "dream-loop-20251125T162846744Z",
+        "ritual": "dream",
+        "units_processed": 4,
+        "status": "success",
+        "duration_ms": 0,
+        "trace_id": "outland-lore-v1-9A-20251125162846",
+        "overlays": [
+          {
+            "overlay_id": "outland-lore-v1",
+            "layer_kind": "lore"
+          }
+        ],
+        "overlay_id": "outland-lore-v1",
+        "overlay_layer": "lore"
+      },
+      "created_at": "2025-11-25T16:28:46.744300Z",
+      "source": "golf_00/delta_00/alfa_00/overlay_bridge.py",
+      "chain_name": "signal_loop_command",
+      "overlay_description": "Channel command signals across the targeting relay",
+      "overlay_cell": {
+        "row": 9,
+        "col": 10,
+        "label": "9A"
+      },
+      "fun_flags": {
+        "fun_core": false,
+        "balance_toggles": false,
+        "xp_rate_limit": false,
+        "loot_governor": false
+      },
+      "trace_id": "outland-lore-v1-9A-20251125162846",
+      "overlays": [
+        {
+          "overlay_id": "outland-lore-v1",
+          "layer_kind": "lore"
+        }
+      ],
+      "overlay_id": "outland-lore-v1",
+      "overlay_layer": "lore"
+    },
+    "correlation_trace_id": "outland-lore-v1-9A-20251125162846"
+  }
+}
