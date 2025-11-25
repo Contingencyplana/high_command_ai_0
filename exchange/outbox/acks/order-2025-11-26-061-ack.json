@@ -1,0 +1,22 @@
+{
+  "order_id": "order-2025-11-26-061",
+  "ack_id": "order-2025-11-26-061-ack",
+  "workspace": "toysoldiers_ai_0",
+  "ack_timestamp": "2025-11-25T03:37:41Z",
+  "notes": "Owner Codex (Toysoldiers). Campaign 2 slice accepted: emoji command layer wiring + telemetry. ETA: UI routing + telemetry hooks by 2025-11-25T09:30Z; tutorial slice by 2025-11-25T11:00Z. Will mirror evidence to hub.",
+  "artifacts": [
+    {
+      "name": "order_copy",
+      "path": "exchange/orders/dispatched/order-2025-11-26-061.json"
+    },
+    {
+      "name": "campaign_brief",
+      "path": "planning/campaigns_and_lulls.md"
+    }
+  ],
+  "next_steps": [
+    "Wire UI-facing command surface through emoji DSL (quick-cast + textless comms) with telemetry for latency/accuracy.",
+    "Build 90s emoji-only tutorial and capture playtest evidence (ui_state, revive, one_more_prompt, emoji_latency_sample).",
+    "Mirror ack/evidence via offline_bridge to hub and log ledger entry once playtest captured."
+  ]
+}

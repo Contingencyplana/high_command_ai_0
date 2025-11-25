@@ -1,0 +1,27 @@
+{
+  "order_id": "order-2025-11-23-060",
+  "report_id": "order-2025-11-23-060-valiant-prep",
+  "workspace": "toysoldiers_ai_0",
+  "summary": "Valiant Citadel pre-flight guidance: pull ORDER-060, run cadence/emitter smoke, verify attachments, and hold milestone commitments until M1/M3 owner/date confirmations land.",
+  "created_at": "2025-11-23T18:29:12Z",
+  "artifacts": [
+    "planning/campaigns_and_lulls.md",
+    "planning/alfa_zero_nightlands_duet_storyboard.md",
+    "logs/end_of_block_20251123T182313Z.log",
+    "logs/ops_readiness.json",
+    "logs/exchange_all.json",
+    "logs/factory_order_emitter_help_20251123T181702Z.log",
+    "exchange/acknowledgements/logged/order-2025-11-23-060-ack.json",
+    "exchange/reports/order-2025-11-23-060-m1m3-alignment.json"
+  ],
+  "details": {
+    "steps_for_valiant_citadel": [
+      "Pull ORDER-060 and attached planning scrolls from hub; ensure SHAGI_EXCHANGE_PATH points at C:/Users/Admin/high_command_exchange.",
+      "Run cadence smoke: python tools/exchange_heartbeat.py; python tools/offline_sync_exchange.py; python -m tools.ops_readiness; python tools/exchange_all.py.",
+      "Run emitter smoke: python tools/factory_order_emitter.py --help (log output).",
+      "Confirm owner + target dates for M1 (core loop) and M3 (playtest slice) and reply to alignment ask.",
+      "Hold milestone commitments until cross-front M1/M3 confirmations are logged; share provisional dates if needed."
+    ],
+    "follow_up": "Check for confirmations and nudge if absent after 30-60 minutes."
+  }
+}

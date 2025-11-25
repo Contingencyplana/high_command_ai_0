@@ -1,0 +1,33 @@
+{
+  "order_id": "order-2025-11-19-060",
+  "report_id": "ack-Alfa-M04-20251121T162105Z",
+  "workspace": "toysoldiers_ai_0",
+  "summary": "Acknowledged hello-Alfa-M04-20251121T054012Z after rerunning readiness and smoke on the hydrated comfort + music independence rail.",
+  "created_at": "2025-11-21T16:21:05Z",
+  "artifacts": [
+    {
+      "name": "hello_report",
+      "path": "exchange/reports/inbox/hello-Alfa-M04-20251121T054012Z.json"
+    },
+    {
+      "name": "production_readiness",
+      "path": "production/mass_alfa_batch2/alfa_m04/logs/readiness.json"
+    },
+    {
+      "name": "production_smoke",
+      "path": "production/mass_alfa_batch2/alfa_m04/logs/smoke.txt"
+    },
+    {
+      "name": "golf_readiness",
+      "path": "golf_03/kappa_04/alfa_m04/logs/readiness.json"
+    },
+    {
+      "name": "golf_smoke",
+      "path": "golf_03/kappa_04/alfa_m04/logs/smoke.txt"
+    }
+  ],
+  "notes": [
+    "Ops readiness rerun via python -m tools.ops_readiness at 2025-11-21T15:43Z with comfort toggles verified on golf_03/kappa_04/alfa_m04.",
+    "Smoke captured from python ../../../tools/factory_order_emitter.py --help inside the hydrated workspace; outputs mirrored to production and golf logs."
+  ]
+}

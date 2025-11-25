@@ -1,0 +1,15 @@
+{
+  "order_id": "order-2025-11-26-061",
+  "campaign": "Campaign 2 - Emoji-first command layer",
+  "workspace": "toyfoundry_ai_0",
+  "summary": "Ack tracker for Campaign 2 broadcast to all fronts",
+  "fronts": [
+    { "front": "high_command_ai_0", "owner": null, "eta": null, "status": "pending", "blockers": [] },
+    { "front": "war_office_ai_0", "owner": null, "eta": null, "status": "pending", "blockers": [] },
+    { "front": "toysoldiers_ai_0", "owner": null, "eta": null, "status": "pending", "blockers": [] },
+    { "front": "valiant_citadel_ai_0", "owner": null, "eta": null, "status": "pending", "blockers": [] },
+    { "front": "r_and_d_ai_0", "owner": null, "eta": null, "status": "pending", "blockers": [] },
+    { "front": "tons_of_fun_ai_0", "owner": null, "eta": null, "status": "pending", "blockers": [] }
+  ],
+  "notes": "Update status/owner/eta and blockers as acks arrive."
+}

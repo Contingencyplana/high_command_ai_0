@@ -1,0 +1,7 @@
+Fronts,
+
+Campaign 1 thin UI/HUD slice is closed; wired playtest evidence is in exchange/outbox/attachments/campaign1/ (ui-live.jsonl, ui-live-telemetry.json, cadence.log, emitter-help.log). Ledger/relay updated on hub.
+
+Campaign 2 is live: emoji-first command layer. Goals: route UI through the emoji DSL (quick-cast wheels + textless comms), deliver a ~90s emoji-only tutorial, and instrument command latency/accuracy (retain time-to-fun, revive cadence, “one more run” signals). Order: order-2025-11-26-061 dispatched on hub.
+
+Please acknowledge with your owner + ETA for your Campaign 2 slice, confirm you pulled latest, and flag any blockers. Mirror evidence to hub as you progress.

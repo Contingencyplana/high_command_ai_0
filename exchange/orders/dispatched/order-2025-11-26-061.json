@@ -1,0 +1,58 @@
+{
+  "id": "order-2025-11-26-061",
+  "workspace": "high_command_ai_0",
+  "title": "Campaign 2 Kick: Emoji-First Command Layer",
+  "status": "open",
+  "created_at": "2025-11-26T00:00:00Z",
+  "schema": "high-command-order@1.0",
+  "order_id": "order-2025-11-26-061",
+  "issued_by": "high_command_ai_0",
+  "target": "all_fronts",
+  "priority": "high",
+  "timestamp_issued": "2025-11-26T00:00:00Z",
+  "summary": "Campaign 2 focuses on the emoji-first command layer: UI-aligned DSL for all inputs, quick-cast wheels + textless comms, a 90s emoji-only tutorial, and telemetry on command latency/accuracy.",
+  "context": "Campaign 1 thin UI/HUD slice is closed; wired playtest evidence is mirrored under exchange/outbox/attachments/campaign1/. Proceed to Campaign 2 to make the UI run fully through the emoji DSL and capture command performance telemetry.",
+  "directives": [
+    {
+      "step": 1,
+      "action": "ack_and_pull",
+      "details": "Ack this order with owner + ETA for your Campaign 2 slice. Pull latest to ensure Campaign 1 closure and attachment evidence are present."
+    },
+    {
+      "step": 2,
+      "action": "wire_ui_to_emoji_dsl",
+      "details": "Route all UI inputs through the emoji DSL guardrails (quick-cast wheels + textless comms). Ensure HUD surfaces reflect DSL actions."
+    },
+    {
+      "step": 3,
+      "action": "deliver_emoji_tutorial",
+      "details": "Build a replayable ~90s emoji-only tutorial aligned with the DSL. Teach core commands/abilities and log command latency/accuracy."
+    },
+    {
+      "step": 4,
+      "action": "instrument_and_playtest",
+      "details": "Instrument telemetry for command latency/accuracy and HUD signals (ui_state, revive, one_more_prompt, emoji_latency_sample). Run at least one playtest capturing these metrics."
+    },
+    {
+      "step": 5,
+      "action": "mirror_evidence_and_report",
+      "details": "Mirror evidence to hub (logs + tutorial artifacts), update ledger, and file a completion report with metrics and any blockers."
+    }
+  ],
+  "success_criteria": [
+    "Owner + ETA posted for Campaign 2 per front",
+    "UI runs entirely through emoji DSL (quick-cast + textless comms) with guardrails",
+    "Replayable 90s emoji-only tutorial delivered",
+    "Telemetry captured for command latency/accuracy and HUD signals (ui_state, revive, one_more_prompt, emoji_latency_sample)",
+    "Evidence mirrored to hub; ledger + completion report filed"
+  ],
+  "dependencies": [
+    "order-2025-11-23-060"
+  ],
+  "requires_ack": true,
+  "expires_at": "2025-12-03T23:59:59Z",
+  "attachments": [
+    { "type": "reference", "path": "exchange/outbox/attachments/campaign1/" },
+    { "type": "reference", "path": "planning/campaigns_and_lulls.md" }
+  ]
+}

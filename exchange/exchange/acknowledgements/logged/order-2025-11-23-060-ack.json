@@ -1,0 +1,33 @@
+{
+  "order_id": "order-2025-11-23-060",
+  "ack_id": "order-2025-11-23-060-ack",
+  "workspace": "toysoldiers_ai_0",
+  "ack_timestamp": "2025-11-23T18:17:43Z",
+  "notes": "Pulled Campaign 1 scrolls from the hub, ran cadence smoke (heartbeat -> offline_sync_exchange -> ops_readiness -> exchange_all), captured emitter smoke, and flagged cross-front owner/date confirmation for M1/M3.",
+  "artifacts": [
+    {
+      "name": "campaign_plan_pull",
+      "path": "planning/campaigns_and_lulls.md"
+    },
+    {
+      "name": "storyboard_pull",
+      "path": "planning/alfa_zero_nightlands_duet_storyboard.md"
+    },
+    {
+      "name": "cadence_log",
+      "path": "logs/end_of_block_20251123T181644Z.log"
+    },
+    {
+      "name": "ops_readiness",
+      "path": "logs/ops_readiness.json"
+    },
+    {
+      "name": "exchange_all",
+      "path": "logs/exchange_all.json"
+    },
+    {
+      "name": "emitter_smoke",
+      "path": "logs/factory_order_emitter_help_20251123T181702Z.log"
+    }
+  ]
+}

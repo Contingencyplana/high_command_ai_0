@@ -1,0 +1,21 @@
+{
+  "order_id": "order-2025-11-14-058",
+  "report_id": "hello-Alfa-M04-20251118T024729Z",
+  "workspace": "toysoldiers_ai_0",
+  "summary": "Hello from Alfa M04 - Gamma squad hydrated the forge-alfa@2025-11-13-054 baseline and is prepped for comfort instrumentation.",
+  "created_at": "2025-11-18T02:47:29Z",
+  "artifacts": [
+    {
+      "name": "readiness_log",
+      "path": "logs/mass_alfa_batch1/Alfa-M04/ops_readiness.json"
+    },
+    {
+      "name": "exchange_log",
+      "path": "logs/mass_alfa_batch1/Alfa-M04/exchange_all.json"
+    },
+    {
+      "name": "alfa_manifest",
+      "path": "production/mass_alfa_batch1/alfa_m04/README.md"
+    }
+  ]
+}
