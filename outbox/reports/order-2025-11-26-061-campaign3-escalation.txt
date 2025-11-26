@@ -1,0 +1,7 @@
+Fronts,
+
+No replies yet on the Campaign 3 planning broadcast (battlegrid scenario builder). Please confirm owner + ETA for your Campaign 3 slice.
+
+Reply by 2025-11-27 08:00 AEST (2025-11-26T21:00Z) with owner + target date; if blocked, include blocker and support needed.
+
+Reference: order-2025-11-26-061-campaign3-broadcast.txt (Campaign 2 closed; Campaign 3 planning lull open). Replies can land in exchange/reports/ or exchange/acknowledgements/logged/.
