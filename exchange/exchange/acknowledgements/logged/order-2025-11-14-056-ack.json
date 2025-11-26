@@ -1,0 +1,25 @@
+{
+  "order_id": "order-2025-11-14-056",
+  "ack_id": "order-2025-11-14-056-ack",
+  "workspace": "r_and_d_ai_0",
+  "ack_timestamp": "2025-11-18T00:26:00Z",
+  "notes": "Theta mirrored Toyfoundry’s forge-alfa@2025-11-13-054 freeze, hydrated Alfa M02 in golf_01/delta_12/alfa_02, and reran readiness + exchange smoke ahead of telemetry capture.",
+  "artifacts": [
+    {
+      "name": "batch_readme",
+      "path": "production/mass_alfa_batch1/README.md"
+    },
+    {
+      "name": "alfa_m02_manifest",
+      "path": "production/mass_alfa_batch1/alfa_m02/README.md"
+    },
+    {
+      "name": "telemetry",
+      "path": "production/mass_alfa_batch1/alfa_m02/telemetry.json"
+    },
+    {
+      "name": "slot_anchor",
+      "path": "golf_01/delta_12/alfa_02/README.md"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "order_id": "order-2025-11-14-056",
+  "report_id": "order-2025-11-14-056-report",
+  "workspace": "r_and_d_ai_0",
+  "summary": "Hydrated Alfa M02 from Toyfoundry’s Batch 1 freeze, reran readiness/exchange smoke, and staged hello + telemetry artifacts for Theta.",
+  "created_at": "2025-11-18T00:26:00Z",
+  "artifacts": [
+    {
+      "name": "batch_tracker",
+      "path": "production/mass_alfa_batch1/README.md"
+    },
+    {
+      "name": "instance_manifest",
+      "path": "production/mass_alfa_batch1/alfa_m02/README.md"
+    },
+    {
+      "name": "telemetry",
+      "path": "production/mass_alfa_batch1/alfa_m02/telemetry.json"
+    },
+    {
+      "name": "ledger",
+      "path": "exchange/ledger/index.json"
+    }
+  ]
+}

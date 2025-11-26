@@ -1,0 +1,5 @@
+Fronts,
+
+Campaign 2 closed (emoji-DSL inputs + HUD signals captured). Entering Campaign 3 planning lull: battlegrid scenario builder (lightweight encounter authoring with prefab packs, validated and exported through cadence to hub). Keep slices small with smoke/ledger hooks and rollback toggles; thin UI layering from Campaigns 1–2 remains.
+
+Please acknowledge receipt and provide owner + ETA for your Campaign 3 slice.
