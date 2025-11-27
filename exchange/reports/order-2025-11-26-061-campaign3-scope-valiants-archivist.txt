@@ -1,0 +1,14 @@
+Fronts: Valiant Citadel, Archivist,
+
+Scope packet for Campaign 3 (battlegrid scenario builder):
+- Goal: lightweight encounter authoring (battlegrid + prefab packs) so ops can stage weekly scenarios without code.
+- Flow: author on battlegrid with prefab packs, validate + export through cadence to hub; thin UI persists from Campaigns 1–2.
+- Constraints: keep slices small with smoke/ledger hooks and rollback toggles.
+
+Please confirm:
+- Owner and ETA.
+- Target grid size + scenario inputs/outputs (what you expect to author/emit).
+- Handoff format to hub (files/paths).
+- Any blockers/support needed.
+
+Timezone: assume AEST. If different, state your local time with offset.
